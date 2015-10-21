@@ -38,7 +38,15 @@
     <Compile Include="App.cs" />
     <Compile Include="Common\AsyncExtendedCommand.cs" />
     <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Converters\BooleanNegateConverter.cs" />
     <Compile Include="Common\ExtendedCommand.cs" />
+    <Compile Include="Converters\StringFormatConverter.cs" />
+    <Compile Include="Converters\TruncateDecimalConverter.cs" />
+    <Compile Include="Converters\VisibleNotEmptyConverter.cs" />
+    <Compile Include="Converters\VisibleNotNullConverter.cs" />
+    <Compile Include="Converters\VisibleNotWhitespaceConverter.cs" />
+    <Compile Include="Converters\VisibleWhenEmptyConverter.cs" />
+    <Compile Include="Converters\VisibleWhenNullConverter.cs" />
     <Compile Include="DataServices\IDataService.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,7 +71,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
     <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +78,14 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.1.3.3.6323\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.3.3.6323\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
