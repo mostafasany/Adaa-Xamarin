@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/AdaaMobile/AdaaMobile/AdaaMobile/bin/Debug
+/AdaaMobile/AdaaMobile/AdaaMobile/obj/Debug
+/AdaaMobile/AdaaMobile/AdaaMobile.Droid/bin/Debug
+/AdaaMobile/AdaaMobile/AdaaMobile.Droid/obj/Debug
+*.user
+/AdaaMobile/AdaaMobile/AdaaMobile.iOS/obj/iPhone/Debug
+/AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/Bin/Debug
+/AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/obj/Debug
+*.suo
+/AdaaMobile/packages/WPtoolkit.4.2013.08.16
+/AdaaMobile/packages
