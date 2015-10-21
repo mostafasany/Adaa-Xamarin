@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using AdaaMobile.ViewModels;
 using Foundation;
 using UIKit;
 
@@ -23,7 +23,7 @@ namespace AdaaMobile.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new Locator()));
 
             return base.FinishedLaunching(app, options);
         }

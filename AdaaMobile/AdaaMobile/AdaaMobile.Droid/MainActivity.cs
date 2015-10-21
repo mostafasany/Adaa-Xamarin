@@ -1,5 +1,5 @@
 ﻿using System;
-
+using AdaaMobile.ViewModels;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -17,7 +17,7 @@ namespace AdaaMobile.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            LoadApplication(new App(new Locator()));
         }
     }
 }
