@@ -31,6 +31,7 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<DataService>();
             cb.Register<IDataService>(c => c.Resolve<DataService>());
             cb.RegisterType<LoginViewModel>();
+            cb.RegisterType<AttendanceViewModel>();
         }
 
         public LoginViewModel LoginViewModel
@@ -38,6 +39,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<LoginViewModel>();
+            }
+        }
+
+        public AttendanceViewModel AttendanceViewModel
+        {
+            get
+            {
+                return Container.Resolve<AttendanceViewModel>();
             }
         }
     }

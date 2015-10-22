@@ -11,7 +11,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -51,18 +51,35 @@
                 <DatePicker 
                     Grid.Column="0"
                     Format="d MMM yyyy"
-                    Date="{x:Static sys:DateTime.Now}"
+                    Date="{Binding StartDate}"
                     />
 
                 <DatePicker 
                     Grid.Column="1"
                     Format="d MMM yyyy"
-                   Date="{x:Static sys:DateTime.Now}"
+                   Date="{Binding EndDate}"
                     />
             </Grid>
 
+            <ScrollView Grid.Row="3"  Orientation="Horizontal">
+                <StackLayout x:Name="DaysStack" Orientation="Horizontal" HeightRequest="60">
+
+                </StackLayout>
+            </ScrollView>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                    
+                </Grid.ColumnDefinitions>
+                <Label TextColor="Black" Text="Date" Grid.Column="0"/>
+                <Label TextColor="Black" Text=":" Grid.Column="1"/>
+                <Label TextColor="Black" Text="1 Oct 2015" Grid.Column="2"/>
+            </Grid>
             <Button 
-                Grid.Row="4"
+                Grid.Row="5"
                 HorizontalOptions="FillAndExpand"
                 BackgroundColor="White"
                 TextColor="Black"
@@ -72,7 +89,7 @@
                 >
             </Button>
             <Button 
-                Grid.Row="5"
+                Grid.Row="6"
                 HorizontalOptions="FillAndExpand"
                 BackgroundColor="White"
                 TextColor="Black"
@@ -81,7 +98,7 @@
                 >
             </Button>
             <Button 
-                Grid.Row="6"
+                Grid.Row="7"
                 HorizontalOptions="FillAndExpand"
                 BackgroundColor="Black"
                 TextColor="White"

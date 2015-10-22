@@ -20,7 +20,7 @@ namespace AdaaMobile.Views
             menuPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as AdaaMenuItem);
             BackgroundColor= Color.Blue;
             Master = menuPage;
-            Detail = new NavigationPage(new HomePage());
+            Detail = new NavigationPage(new AttendancePage());
         }
 
         void NavigateTo(AdaaMenuItem menu)
