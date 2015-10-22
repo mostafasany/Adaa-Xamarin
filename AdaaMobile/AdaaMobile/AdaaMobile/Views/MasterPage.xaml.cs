@@ -18,7 +18,7 @@ namespace AdaaMobile.Views
             menuPage = new MenuPage();
 
             menuPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as AdaaMenuItem);
-
+            BackgroundColor= Color.Blue;
             Master = menuPage;
             Detail = new NavigationPage(new HomePage());
         }
@@ -31,7 +31,7 @@ namespace AdaaMobile.Views
             Page displayPage = (Page)Activator.CreateInstance(menu.TargetType);
 
             Detail = new NavigationPage(displayPage);
-
+            
             menuPage.Menu.SelectedItem = null;
             IsPresented = false;
         }
