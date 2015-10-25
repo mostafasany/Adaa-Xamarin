@@ -41,11 +41,33 @@ namespace AdaaMobile.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f030000
+			public const int actionBarBackgroundColor = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int actionBarTextColor = 2130903041;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
 			public const int icon = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int monoandroidsplash = 2130837505;
 			
 			static Drawable()
 			{
@@ -53,6 +75,31 @@ namespace AdaaMobile.Droid
 			}
 			
 			private Drawable()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f040003
+			public const int Mono_Android_Theme_Splash = 2130968579;
+			
+			// aapt resource value: 0x7f040000
+			public const int MyTheme = 2130968576;
+			
+			// aapt resource value: 0x7f040002
+			public const int MyTheme_ActionBar_TitleTextStyle = 2130968578;
+			
+			// aapt resource value: 0x7f040001
+			public const int MyTheme_ActionBarStyle = 2130968577;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

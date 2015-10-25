@@ -6,7 +6,7 @@
              BackgroundColor="#FF366A89"
              >
     <ScrollView>
-        <Grid Padding="10" RowSpacing="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid Padding="10" RowSpacing="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -61,7 +61,7 @@
                     />
             </Grid>
 
-            <ScrollView Grid.Row="3"  Orientation="Horizontal">
+            <ScrollView Grid.Row="3"  Orientation="Horizontal" HorizontalOptions="Fill">
                 <StackLayout x:Name="DaysStack" Orientation="Horizontal" HeightRequest="60">
 
                 </StackLayout>
