@@ -58,6 +58,7 @@
     <Compile Include="ViewModels\EmptyViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\Locator.cs" />
+    <Compile Include="ViewModels\MyRequestsViewModel.cs" />
     <Compile Include="Views\AttendancePage.xaml.cs">
       <DependentUpon>AttendancePage.xaml</DependentUpon>
     </Compile>

@@ -13,14 +13,21 @@ namespace AdaaMobile.Views
     {
         MenuPage menuPage;
 
+        private Color actionBarBackgroundColor = Color.FromRgb(42,82,107);
+        private Color actionBarTextColor = Color.White;
+
         public MasterPage()
         {
             menuPage = new MenuPage();
 
             menuPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as AdaaMenuItem);
-            BackgroundColor= Color.Blue;
+            BackgroundColor = Color.Blue;
             Master = menuPage;
-            Detail = new NavigationPage(new AttendancePage());
+            NavigationPage navPage = new NavigationPage(new AttendancePage());
+            navPage.BarBackgroundColor = actionBarBackgroundColor;
+            navPage.BarTextColor = actionBarTextColor;
+
+            Detail = navPage;
         }
 
         void NavigateTo(AdaaMenuItem menu)
@@ -30,8 +37,12 @@ namespace AdaaMobile.Views
 
             Page displayPage = (Page)Activator.CreateInstance(menu.TargetType);
 
-            Detail = new NavigationPage(displayPage);
-            
+            NavigationPage navPage = new NavigationPage(displayPage);
+
+            navPage.BarBackgroundColor = actionBarBackgroundColor;
+            navPage.BarTextColor = actionBarTextColor;
+
+            Detail = navPage;
             menuPage.Menu.SelectedItem = null;
             IsPresented = false;
         }
