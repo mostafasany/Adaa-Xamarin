@@ -17,27 +17,29 @@ namespace AdaaMobile.Views
             _attendanceViewModel = Locator.Default.AttendanceViewModel;
             BindingContext = _attendanceViewModel;
             PopuplateDaysStack();
-            Action action=()=> {}
-            ;
+            Action action = () => { };
             ToolbarItems.Add(
-                new ToolbarItem("Refresh", "icon.png",action, ToolbarItemOrder.Default));
-    }
+                new ToolbarItem("Refresh", "icon.png", action, ToolbarItemOrder.Default));
+        }
 
-    private void PopuplateDaysStack()
-    {
-        DaysStack.Children.Clear();
-        foreach (var day in _attendanceViewModel.DaysList)
+        private void PopuplateDaysStack()
         {
-            var label = new Label()
+            DaysStack.BatchBegin();
+            DaysStack.Children.Clear();
+            foreach (var day in _attendanceViewModel.DaysList)
             {
-                Text = day,
-                TextColor = Color.Black,
-                BackgroundColor = Color.White,
-                WidthRequest = 60,
-                HeightRequest = 60,
-            };
-            DaysStack.Children.Add(label);
+                var label = new Label()
+                {
+                    Text = day,
+                    TextColor = Color.Black,
+                    BackgroundColor = Color.White,
+                    WidthRequest = 60,
+                    HeightRequest = 60,
+                };
+                DaysStack.Children.Add(label);
+            }
+            DaysStack.BatchCommit();
+            DaysScroll.ForceLayout();
         }
     }
-}
 }

@@ -38,7 +38,7 @@
                     BackgroundColor="#FF6189A2" />
             </Grid>
             <Grid Grid.Row="1" >
-                <Label Grid.Row="1" Text="Select date to view your attendance details"
+                <Label  Text="Select date to view your attendance details"
                TextColor="White"  
                />
             </Grid>
@@ -61,7 +61,7 @@
                     />
             </Grid>
 
-            <ScrollView Grid.Row="3"  Orientation="Horizontal">
+            <ScrollView x:Name="DaysScroll" Grid.Row="3"  Orientation="Horizontal">
                 <StackLayout x:Name="DaysStack" Orientation="Horizontal" HeightRequest="60">
 
                 </StackLayout>

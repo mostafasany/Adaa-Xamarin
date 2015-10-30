@@ -4,5 +4,6 @@
              x:Class="AdaaMobile.Views.LoginPage"
              IsBusy="{Binding IsBusy}"
              >
-	<Label Text="TestMe" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Label Text="TestMe" VerticalOptions="Center" HorizontalOptions="Center" />
+
 </ContentPage>

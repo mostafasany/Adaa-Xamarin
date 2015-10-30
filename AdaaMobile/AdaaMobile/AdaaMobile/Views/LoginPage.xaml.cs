@@ -14,6 +14,7 @@ namespace AdaaMobile.Views
         {
             InitializeComponent();
             BindingContext = Locator.Default.LoginViewModel;
+           
         }
     }
 }
