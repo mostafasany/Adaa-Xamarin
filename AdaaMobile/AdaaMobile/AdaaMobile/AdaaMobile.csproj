@@ -49,11 +49,22 @@
     <Compile Include="Converters\VisibleWhenNullConverter.cs" />
     <Compile Include="DataServices\DataService.cs" />
     <Compile Include="DataServices\IDataService.cs" />
+    <Compile Include="Helpers\ILocalize.cs" />
     <Compile Include="Helpers\MenuCell.cs" />
     <Compile Include="Helpers\MenuListView.cs" />
     <Compile Include="Models\AdaaMenuItem.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strings\AppResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AttendanceViewModel.cs" />
     <Compile Include="ViewModels\EmptyViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -107,6 +118,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Strings\AppResources.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.ar.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README_FIRST.txt" />
+    <Content Include="Strings\LocalizationNotes.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />

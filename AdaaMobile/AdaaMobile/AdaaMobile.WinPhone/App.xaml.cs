@@ -4,9 +4,9 @@ using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using AdaaMobile.Strings;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using AdaaMobile.WinPhone.Resources;
 
 namespace AdaaMobile.WinPhone
 {
@@ -201,7 +201,7 @@ namespace AdaaMobile.WinPhone
                 //
                 // If a compiler error is hit then ResourceFlowDirection is missing from
                 // the resource file.
-                FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
+                FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.FlowDirection);
                 RootFrame.FlowDirection = flow;
             }
             catch

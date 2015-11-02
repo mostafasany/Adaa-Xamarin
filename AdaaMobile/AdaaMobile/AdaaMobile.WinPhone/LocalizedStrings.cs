@@ -1,4 +1,4 @@
-﻿using AdaaMobile.WinPhone.Resources;
+﻿using AdaaMobile.Strings;
 
 namespace AdaaMobile.WinPhone
 {

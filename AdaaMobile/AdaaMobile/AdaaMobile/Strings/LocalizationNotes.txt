@@ -1,0 +1,10 @@
+﻿
+
+****If it doesn't work in DEBUG mode (Android only)
+
+If the translated strings are working in your RELEASE Android builds 
+but not while debugging, right-click on the Android Project 
+and select Options > Build > Android Build 
+and ensure that the Fast assembly deployment is NOT ticked.
+This option causes problems with loading resources 
+and should not be used if you are testing localized apps.
