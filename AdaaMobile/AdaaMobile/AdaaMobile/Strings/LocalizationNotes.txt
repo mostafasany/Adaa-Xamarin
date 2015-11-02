@@ -1,4 +1,6 @@
-﻿
+﻿For IOS:
+https://developer.xamarin.com/guides/cross-platform/xamarin-forms/localization/#iOS_Application_Project
+
 
 ****If it doesn't work in DEBUG mode (Android only)
 

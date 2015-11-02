@@ -28,6 +28,7 @@ namespace AdaaMobile.Views
             navPage.BarTextColor = actionBarTextColor;
 
             Detail = navPage;
+
         }
 
         void NavigateTo(AdaaMenuItem menu)

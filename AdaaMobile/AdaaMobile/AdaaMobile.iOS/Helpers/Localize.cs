@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Globalization;
-using System.Runtime.CompilerServices;
+
 using AdaaMobile.Helpers;
+using AdaaMobile.iOS.Helpers;
 using Foundation;
+using Xamarin.Forms;
 
-//[assembly: Dependency(typeof(ILocalize))]
+[assembly: Dependency(typeof(Localize))]
 
-namespace AdaaMobile.Helpers
+namespace AdaaMobile.iOS.Helpers
 {
     public class Localize : ILocalize
     {

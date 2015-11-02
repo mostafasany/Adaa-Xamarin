@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("AdaaMobile.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("AdaaMobile.Droid.Resource", IsApplication=true)]
 
-namespace AdaaMobile
+namespace AdaaMobile.Droid
 {
 	
 	

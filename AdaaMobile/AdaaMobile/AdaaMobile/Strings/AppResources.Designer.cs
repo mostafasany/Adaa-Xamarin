@@ -30,7 +30,7 @@ namespace AdaaMobile.Strings {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public AppResources() {
+        internal AppResources() {
         }
         
         /// <summary>
@@ -58,6 +58,24 @@ namespace AdaaMobile.Strings {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attendance.
+        /// </summary>
+        public static string Attendance {
+            get {
+                return ResourceManager.GetString("Attendance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exceptions.
+        /// </summary>
+        public static string Exceptions {
+            get {
+                return ResourceManager.GetString("Exceptions", resourceCulture);
             }
         }
         

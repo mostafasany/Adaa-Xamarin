@@ -52,19 +52,16 @@
     <Compile Include="Helpers\ILocalize.cs" />
     <Compile Include="Helpers\MenuCell.cs" />
     <Compile Include="Helpers\MenuListView.cs" />
+    <Compile Include="MarkupExtensions\TranslateExtension.cs" />
     <Compile Include="Models\AdaaMenuItem.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strings\AppResources.ar.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.ar.resx</DependentUpon>
-    </Compile>
     <Compile Include="Strings\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Strings\LocalizedStrings.cs" />
     <Compile Include="ViewModels\AttendanceViewModel.cs" />
     <Compile Include="ViewModels\EmptyViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -112,6 +109,8 @@
       <HintPath>..\..\packages\Xamarin.Forms.1.3.3.6323\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Globalization" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -119,8 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Strings\AppResources.ar.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.ar.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\AppResources.resx">
