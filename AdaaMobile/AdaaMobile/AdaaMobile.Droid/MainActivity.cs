@@ -1,4 +1,5 @@
 ﻿using System;
+using AdaaMobile.Droid.Helpers;
 using AdaaMobile.ViewModels;
 using Android.App;
 using Android.Content.PM;

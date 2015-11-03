@@ -1,6 +1,4 @@
-﻿using AdaaMobile.WinPhone.Resources;
-
-namespace AdaaMobile.WinPhone
+﻿namespace AdaaMobile.Strings
 {
     /// <summary>
     /// Provides access to string resources.
