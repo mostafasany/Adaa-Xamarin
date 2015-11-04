@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using AdaaMobile.Helpers;
 using AdaaMobile.Strings;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -185,6 +187,13 @@ namespace AdaaMobile.WinPhone
         {
             try
             {
+                //Override system culture by user selection.
+                string culture = new AppSettings().SelectedCultureName;
+                var netCulture = new CultureInfo(culture);
+
+                System.Threading.Thread.CurrentThread.CurrentCulture = netCulture;
+                System.Threading.Thread.CurrentThread.CurrentUICulture = netCulture;
+
                 // Set the font to match the display language defined by the
                 // ResourceLanguage resource string for each supported language.
                 //

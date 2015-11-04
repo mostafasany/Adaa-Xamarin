@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using AdaaMobile.Helpers;
 using AdaaMobile.ViewModels;
 using Foundation;
 using UIKit;
@@ -22,11 +24,23 @@ namespace AdaaMobile.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new Locator()));
-
             return base.FinishedLaunching(app, options);
         }
-         
+
+        public AppDelegate()
+        {
+            SetLanaguge(new AppSettings().SelectedCultureName);
+        }
+
+        private void SetLanaguge(string culture)
+        {
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture);
+            SetValueForKey(NSArray.FromStrings(culture), new NSString("AppleLanguages"));
+        }
+
     }
 }

@@ -35,11 +35,12 @@ namespace AdaaMobile.Droid
 
         private void SetCulture(string culture)
         {
-            //Set net cultures
+            //Set .Net culture
             var netCulture = new CultureInfo(culture);
             System.Threading.Thread.CurrentThread.CurrentCulture = netCulture;
             System.Threading.Thread.CurrentThread.CurrentUICulture = netCulture;
 
+            //Set Java Culture
             var androidCulture = culture.Replace("-", "_"); // turns pt-R into pt_BR
             var locale = new Locale(androidCulture);
             Java.Util.Locale.Default = locale;
