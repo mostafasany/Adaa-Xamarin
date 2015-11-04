@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using AdaaMobile.Droid.Helpers;
+using AdaaMobile.Helpers;
 using AdaaMobile.ViewModels;
 using Android.App;
 using Android.Content.PM;
@@ -7,6 +9,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Java.Lang;
+using Java.Util;
 
 namespace AdaaMobile.Droid
 {
@@ -18,7 +22,30 @@ namespace AdaaMobile.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App(new Locator()));
+
+            //Create new locator instance.
+            var locator = new Locator();
+            //Get user selected culture from last run or default
+            string culture = new AppSettings().SelectedCultureName;
+            //Override system culture
+            SetCulture(culture);
+
+            LoadApplication(new App(locator));
+        }
+
+        private void SetCulture(string culture)
+        {
+            //Set net cultures
+            var netCulture = new CultureInfo(culture);
+            System.Threading.Thread.CurrentThread.CurrentCulture = netCulture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = netCulture;
+
+            var androidCulture = culture.Replace("-", "_"); // turns pt-R into pt_BR
+            var locale = new Locale(androidCulture);
+            Java.Util.Locale.Default = locale;
+
+            var config = new Android.Content.Res.Configuration { Locale = locale };
+            BaseContext.Resources.UpdateConfiguration(config, BaseContext.Resources.DisplayMetrics);
         }
     }
 }

@@ -14,5 +14,6 @@ namespace AdaaMobile.Droid.Helpers
             var netLanguage = androidLocale.ToString().Replace("_", "-"); // turns pt_BR into pt-BR
             return new System.Globalization.CultureInfo(netLanguage);
         }
+
     }
 }

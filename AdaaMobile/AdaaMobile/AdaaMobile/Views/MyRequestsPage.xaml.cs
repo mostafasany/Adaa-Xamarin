@@ -13,7 +13,6 @@ namespace AdaaMobile.Views
         public MyRequestsPage()
         {
             InitializeComponent();
-           
         }
     }
 }

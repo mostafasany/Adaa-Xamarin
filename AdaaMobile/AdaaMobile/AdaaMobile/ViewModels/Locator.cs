@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.DataServices;
+using AdaaMobile.Helpers;
 using Autofac;
 
 namespace AdaaMobile.ViewModels
@@ -29,7 +31,9 @@ namespace AdaaMobile.ViewModels
         protected virtual void RegisterDependencies(ContainerBuilder cb)
         {
             cb.RegisterType<DataService>();
-            cb.Register<IDataService>(c => c.Resolve<DataService>());
+            cb.Register<IDataService>(c=>c.Resolve<DataService>());
+            cb.RegisterType<AppSettings>().SingleInstance();
+            cb.Register<IAppSettings>(c => c.Resolve<AppSettings>());
             cb.RegisterType<LoginViewModel>();
             cb.RegisterType<AttendanceViewModel>();
         }
@@ -47,6 +51,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<AttendanceViewModel>();
+            }
+        }
+
+        public IAppSettings AppSettings
+        {
+            get
+            {
+                return Container.Resolve<IAppSettings>();
             }
         }
     }

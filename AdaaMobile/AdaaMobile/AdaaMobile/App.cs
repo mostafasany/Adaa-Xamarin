@@ -16,7 +16,6 @@ namespace AdaaMobile
             Locator.Container = locator.CreateContainer();
             //Set static instance of locator.
             Locator.Default = locator;
-   ;
            
             // The root page of your application
             MainPage = new MasterPage();
