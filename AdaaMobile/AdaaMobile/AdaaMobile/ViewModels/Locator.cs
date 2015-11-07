@@ -31,7 +31,8 @@ namespace AdaaMobile.ViewModels
         protected virtual void RegisterDependencies(ContainerBuilder cb)
         {
             cb.RegisterType<DataService>();
-            cb.Register<IDataService>(c=>c.Resolve<DataService>());
+            cb.RegisterType<MockDataService>();
+            cb.Register<IDataService>(c=>c.Resolve<MockDataService>());
             cb.RegisterType<AppSettings>().SingleInstance();
             cb.Register<IAppSettings>(c => c.Resolve<AppSettings>());
             cb.RegisterType<LoginViewModel>();

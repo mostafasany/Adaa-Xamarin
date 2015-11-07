@@ -49,6 +49,8 @@
     <Compile Include="Converters\VisibleWhenNullConverter.cs" />
     <Compile Include="DataServices\DataService.cs" />
     <Compile Include="DataServices\IDataService.cs" />
+    <Compile Include="DataServices\MockDataService.cs" />
+    <Compile Include="DataServices\Requests\ResponseWrapper.cs" />
     <Compile Include="Helpers\AppSettings.cs" />
     <Compile Include="Helpers\IAppSettings.cs" />
     <Compile Include="Helpers\ILocalize.cs" />
