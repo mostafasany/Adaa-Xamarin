@@ -36,6 +36,7 @@ namespace AdaaMobile.ViewModels
             cb.Register<IAppSettings>(c => c.Resolve<AppSettings>());
             cb.RegisterType<LoginViewModel>();
             cb.RegisterType<AttendanceViewModel>();
+            cb.RegisterType<DirectoryViewModel>();
         }
 
         public LoginViewModel LoginViewModel
@@ -51,6 +52,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<AttendanceViewModel>();
+            }
+        }
+
+        public DirectoryViewModel DirectoryViewModel
+        {
+            get
+            {
+                return Container.Resolve<DirectoryViewModel>();
             }
         }
 
