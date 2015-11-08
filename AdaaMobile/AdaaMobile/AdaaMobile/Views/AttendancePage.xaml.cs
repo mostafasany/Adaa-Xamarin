@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.Views
 {
@@ -14,7 +15,7 @@ namespace AdaaMobile.Views
         public AttendancePage()
         {
             InitializeComponent();
-            Title = "Attendance";
+			Title = AppResources.Attendance;
             _attendanceViewModel = Locator.Default.AttendanceViewModel;
             BindingContext = _attendanceViewModel;
             PopuplateDaysStack();

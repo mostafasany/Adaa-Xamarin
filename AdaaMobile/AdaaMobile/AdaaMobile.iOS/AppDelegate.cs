@@ -27,12 +27,32 @@ namespace AdaaMobile.iOS
             
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new Locator()));
+
+
             return base.FinishedLaunching(app, options);
         }
 
         public AppDelegate()
         {
             //SetLanaguge(new AppSettings().SelectedCultureName);
+			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
+			UIWindow  window = new UIWindow (UIScreen.MainScreen.Bounds);
+
+			new AppSettings ().SelectedCultureName = "ar-EG";
+			string selectedCultureNAme = new AppSettings ().SelectedCultureName;
+			selectedCultureNAme = "ar-EG";
+
+			Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(selectedCultureNAme);
+			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(selectedCultureNAme);
+
+
+			//			viewController = new StartingLanguageViewcontroller ();
+			//			UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle ("app_bar.png"), UIBarMetrics.Default);
+			//			navigation = new UINavigationController (viewController);
+			//			navigation.NavigationBar.TintColor = UIColor.White;
+			//			navigation.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White}; 
+			//			window.RootViewController = navigation;
+
         }
 
         private void SetLanaguge(string culture)
@@ -45,24 +65,7 @@ namespace AdaaMobile.iOS
 		public override void FinishedLaunching (UIApplication application)
 		{
 
-			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
-			UIWindow  window = new UIWindow (UIScreen.MainScreen.Bounds);
 
-			string selectedCultureNAme = new AppSettings ().SelectedCultureName;
-
-			Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(selectedCultureNAme);
-			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(selectedCultureNAme);
-
-
-//			viewController = new StartingLanguageViewcontroller ();
-//			UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle ("app_bar.png"), UIBarMetrics.Default);
-//			navigation = new UINavigationController (viewController);
-//			navigation.NavigationBar.TintColor = UIColor.White;
-//			navigation.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White}; 
-//			window.RootViewController = navigation;
-
-			// make the window visible
-			window.MakeKeyAndVisible ();
 
 		}
 
