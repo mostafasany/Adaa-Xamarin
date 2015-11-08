@@ -32,7 +32,7 @@ namespace AdaaMobile.iOS
 
         public AppDelegate()
         {
-            SetLanaguge(new AppSettings().SelectedCultureName);
+            //SetLanaguge(new AppSettings().SelectedCultureName);
         }
 
         private void SetLanaguge(string culture)
@@ -41,6 +41,30 @@ namespace AdaaMobile.iOS
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture);
             SetValueForKey(NSArray.FromStrings(culture), new NSString("AppleLanguages"));
         }
+
+		public override void FinishedLaunching (UIApplication application)
+		{
+
+			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
+			UIWindow  window = new UIWindow (UIScreen.MainScreen.Bounds);
+
+			string selectedCultureNAme = new AppSettings ().SelectedCultureName;
+
+			Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(selectedCultureNAme);
+			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(selectedCultureNAme);
+
+
+//			viewController = new StartingLanguageViewcontroller ();
+//			UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle ("app_bar.png"), UIBarMetrics.Default);
+//			navigation = new UINavigationController (viewController);
+//			navigation.NavigationBar.TintColor = UIColor.White;
+//			navigation.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White}; 
+//			window.RootViewController = navigation;
+
+			// make the window visible
+			window.MakeKeyAndVisible ();
+
+		}
 
     }
 }
