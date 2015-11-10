@@ -13,3 +13,10 @@
 *.suo
 /AdaaMobile/packages/WPtoolkit.4.2013.08.16
 /AdaaMobile/packages
+/AdaaMobile/AdaaMobile/AdaaMobile/bin/Release
+/AdaaMobile/AdaaMobile/AdaaMobile/obj/Release
+/AdaaMobile/AdaaMobile/AdaaMobile.Droid/bin/Release
+/AdaaMobile/AdaaMobile/AdaaMobile.Droid/obj/Release
+/AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/Bin/Release
+/AdaaMobile/AdaaMobile/AdaaMobile.iOS/obj/iPhone/Release
+/AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/obj/Release
