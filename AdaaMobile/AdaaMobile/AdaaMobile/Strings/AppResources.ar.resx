@@ -117,22 +117,247 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="AdaaTimesheet" xml:space="preserve">
+    <value>ADAA Timesheet</value>
+  </data>
+  <data name="AdditionalComment" xml:space="preserve">
+    <value>Additional Comment</value>
+  </data>
+  <data name="AdditionalComments" xml:space="preserve">
+    <value>Additional Comments</value>
+  </data>
+  <data name="Announcement" xml:space="preserve">
+    <value>Announcement</value>
+  </data>
+  <data name="AnnouncementCap" xml:space="preserve">
+    <value>ANNOUNCEMENT</value>
+  </data>
+  <data name="AnnouncementType" xml:space="preserve">
+    <value>Announcement Type</value>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>عربى</value>
+  </data>
   <data name="Attendance" xml:space="preserve">
     <value>الحضور</value>
+  </data>
+  <data name="BuisnessCard" xml:space="preserve">
+    <value>Buisness Card</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Certificate" xml:space="preserve">
+    <value>Certificate</value>
+  </data>
+  <data name="CertificateNameInArabic" xml:space="preserve">
+    <value>Certificate Name in Arabic</value>
+  </data>
+  <data name="CertificateNameInEnglish" xml:space="preserve">
+    <value>Certificate Name in English</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Change Language</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="DayPass" xml:space="preserve">
+    <value>Day Pass</value>
+  </data>
+  <data name="DelegateName" xml:space="preserve">
+    <value>Delegate Name</value>
+  </data>
+  <data name="Delegation" xml:space="preserve">
+    <value>Delegation</value>
+  </data>
+  <data name="DelegationDetailsCap" xml:space="preserve">
+    <value>DELEGATION DETAILS</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="DepratureTime" xml:space="preserve">
+    <value>Deprature Time</value>
+  </data>
+  <data name="Directory" xml:space="preserve">
+    <value>Directory</value>
+  </data>
+  <data name="DirectoryCap" xml:space="preserve">
+    <value>DIRECTORY</value>
+  </data>
+  <data name="DriverRequest" xml:space="preserve">
+    <value>Driver Request</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="EmployeeID" xml:space="preserve">
+    <value>Employee ID</value>
+  </data>
+  <data name="EmptyPlaceHolder" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
   </data>
   <data name="Exceptions" xml:space="preserve">
     <value>الإستثنائات</value>
   </data>
+  <data name="ExpectedReturnTime" xml:space="preserve">
+    <value>Expected Return Time</value>
+  </data>
   <data name="Failed" xml:space="preserve">
     <value>حدث خطأ</value>
+  </data>
+  <data name="FirstSeen" xml:space="preserve">
+    <value>First Seen</value>
   </data>
   <data name="FlowDirection" xml:space="preserve">
     <value>RightToLeft</value>
   </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>إستعادة كلمة المرور</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="GreetingCard" xml:space="preserve">
+    <value>Greeting Card</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="InArabic" xml:space="preserve">
+    <value>in Arabic</value>
+  </data>
+  <data name="InEnglish" xml:space="preserve">
+    <value>in English</value>
+  </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Job Title</value>
+  </data>
+  <data name="LastSeen" xml:space="preserve">
+    <value>Last Seen</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>سجل الدخول</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="MyDelegationsCap" xml:space="preserve">
+    <value>MY DELEGATIONS</value>
+  </data>
+  <data name="MyRequests" xml:space="preserve">
+    <value>My Requests</value>
+  </data>
+  <data name="MyRequestsCap" xml:space="preserve">
+    <value>MY REQUESTS</value>
+  </data>
+  <data name="MySubAttendanceCap" xml:space="preserve">
+    <value>MY SUB ATTENDANCE</value>
+  </data>
+  <data name="MyTasks" xml:space="preserve">
+    <value>My Tasks</value>
+  </data>
+  <data name="MyTasksCap" xml:space="preserve">
+    <value>MY TASKS</value>
+  </data>
+  <data name="NewDelegationCap" xml:space="preserve">
+    <value>NEW DELEGATION</value>
+  </data>
+  <data name="NewRequestCap" xml:space="preserve">
+    <value>NEW REQUEST</value>
+  </data>
+  <data name="OfferMaintenance" xml:space="preserve">
+    <value>Offer Maintenance</value>
+  </data>
+  <data name="OfferServices" xml:space="preserve">
+    <value>Offer Services</value>
+  </data>
+  <data name="OfficeNumber" xml:space="preserve">
+    <value>Office Number</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="PriorityNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="ReasonType" xml:space="preserve">
+    <value>Reason Type</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="RequestDetails" xml:space="preserve">
+    <value>Request Details</value>
+  </data>
+  <data name="RequestDetailsCap" xml:space="preserve">
+    <value>REQUEST DETAILS</value>
+  </data>
+  <data name="RequestStatus" xml:space="preserve">
+    <value>Request Status</value>
+  </data>
+  <data name="ResearchRequest" xml:space="preserve">
+    <value>Research Request</value>
+  </data>
   <data name="ResourceLanguage" xml:space="preserve">
     <value>ar</value>
+  </data>
+  <data name="ReturnToday" xml:space="preserve">
+    <value>Return Today</value>
+  </data>
+  <data name="RuleStatus" xml:space="preserve">
+    <value>Rule Status</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SelectServiceCap" xml:space="preserve">
+    <value>SELECT SERVICE</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsCap" xml:space="preserve">
+    <value>SETTINGS</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>تسجيل حساب جديد</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="SubOrdinate" xml:space="preserve">
+    <value>Sub-ordinate</value>
+  </data>
+  <data name="TaskDetailsCap" xml:space="preserve">
+    <value>TASK DETAILS</value>
+  </data>
+  <data name="UnLockMyAccount" xml:space="preserve">
+    <value>UnLock My Account</value>
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value>Work</value>
   </data>
 </root>

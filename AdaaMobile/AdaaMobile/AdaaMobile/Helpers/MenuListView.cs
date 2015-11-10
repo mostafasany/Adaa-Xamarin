@@ -17,6 +17,13 @@ namespace AdaaMobile.Helpers
 
             data.Add(new AdaaMenuItem()
             {
+                Title = "Home",
+                IconSource = "icon.png",
+                TargetType = typeof(HomePage)
+            });
+
+            data.Add(new AdaaMenuItem()
+            {
                 Title = "Profile",
                 IconSource = "icon.png",
                 TargetType = typeof(ProfilePage)

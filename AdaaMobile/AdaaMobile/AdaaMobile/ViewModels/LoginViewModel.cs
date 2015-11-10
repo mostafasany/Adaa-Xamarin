@@ -76,6 +76,8 @@ namespace AdaaMobile.ViewModels
 
             //Initialize commands
             LoginCommand = new AsyncExtendedCommand(LoginAsync, false);
+            ForgetPasswordCommand = new ExtendedCommand(ForgetPassword);
+            SignUpCommand = new ExtendedCommand(SignUp);
 
 #if DEBUG
             UserName = "Test";
@@ -88,9 +90,11 @@ namespace AdaaMobile.ViewModels
         #region Commands
 
         public AsyncExtendedCommand LoginCommand { get; set; }
-#endregion
+        public ExtendedCommand SignUpCommand { get; set; }
+        public ExtendedCommand ForgetPasswordCommand { get; set; }
+        #endregion
 
-#region Methods
+        #region Methods
         private async Task LoginAsync()
         {
             try
@@ -106,7 +110,7 @@ namespace AdaaMobile.ViewModels
                         //sucess
                         //await _navigation.PopModalAsync(false);
                         //await _navigation.PushAsync(new MasterPage(), true);
-                        App.Current.MainPage=new MasterPage();
+                        App.Current.MainPage = new MasterPage();
                         return;
                     }
                 }
@@ -125,12 +129,23 @@ namespace AdaaMobile.ViewModels
 
         }
 
+        private void SignUp()
+        {
+            _navigation.PushAsync(new SignUpPage());
+        }
+
+        private void ForgetPassword()
+        {
+            _navigation.PushAsync(new ForgetPasswordPage());
+
+        }
+
         private void SetLoginCommandState()
         {
             LoginCommand.CanExecute = !string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password);
         }
 
-#endregion
+        #endregion
 
     }
 }

@@ -66,6 +66,9 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f020000
 			public const int icon = 2130837504;
 			
+			// aapt resource value: 0x7f020001
+			public const int splash = 2130837505;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -87,6 +90,9 @@ namespace AdaaMobile.Droid
 			
 			// aapt resource value: 0x7f040001
 			public const int MyTheme_ActionBarStyle = 2130968577;
+			
+			// aapt resource value: 0x7f040003
+			public const int Theme_Splash = 2130968579;
 			
 			static Style()
 			{

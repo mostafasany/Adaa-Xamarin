@@ -26,7 +26,7 @@ namespace AdaaMobile.Views
                 Content = new Label
                 {
                     TextColor = Color.FromHex("AAAAAA"),
-                    Text = "MENU",
+                    Text = "",
                 }
             };
 
