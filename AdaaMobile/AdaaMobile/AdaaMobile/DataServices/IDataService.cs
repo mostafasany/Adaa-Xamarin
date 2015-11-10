@@ -6,12 +6,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models;
+using AdaaMobile.Models.Response;
 
 namespace AdaaMobile.DataServices
 {
     public interface IDataService
     {
-        Task<User> LoginAsync(string userName, string password);
+        Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password);
         Task<ResponseWrapper<List<Employee>>> GetEmpolyees(CancellationToken? token);
     }
 }

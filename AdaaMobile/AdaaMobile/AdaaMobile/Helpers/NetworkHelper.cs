@@ -6,7 +6,7 @@ namespace AdaaMobile.Helpers
     {
         public bool HasInternetAccess()
         {
-            throw new NotImplementedException();
+            return true;//TODO:Add connectivity Nuget package or it's functionality copied here.
         }
     }
 }

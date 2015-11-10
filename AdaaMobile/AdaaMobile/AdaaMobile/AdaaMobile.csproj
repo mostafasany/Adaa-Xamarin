@@ -52,10 +52,13 @@
     <Compile Include="DataServices\IDataService.cs" />
     <Compile Include="DataServices\MockDataService.cs" />
     <Compile Include="DataServices\Requests\ResponseWrapper.cs" />
+    <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Helpers\AppSettings.cs" />
-    <Compile Include="Helpers\IAppSettings.cs" />
-    <Compile Include="Helpers\ILocalize.cs" />
-    <Compile Include="Helpers\INetworkHelper.cs" />
+    <Compile Include="Helpers\DialogManager.cs" />
+    <Compile Include="Helpers\Interfaces\IAppSettings.cs" />
+    <Compile Include="Helpers\Interfaces\IDialogManager.cs" />
+    <Compile Include="Helpers\Interfaces\ILocalize.cs" />
+    <Compile Include="Helpers\Interfaces\INetworkHelper.cs" />
     <Compile Include="Helpers\MenuCell.cs" />
     <Compile Include="Helpers\MenuListView.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
@@ -63,6 +66,8 @@
     <Compile Include="Models\AdaaMenuItem.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\KeyedCollection.cs" />
+    <Compile Include="Models\Request\LoginBodyParamters.cs" />
+    <Compile Include="Models\Response\LoginResponse.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strings\AppResources.Designer.cs">

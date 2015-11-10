@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.ViewModels;
+using Autofac;
 using Xamarin.Forms;
 
 namespace AdaaMobile.Views
@@ -13,8 +14,9 @@ namespace AdaaMobile.Views
         public LoginPage()
         {
             InitializeComponent();
-            BindingContext = Locator.Default.LoginViewModel;
-           
+            BindingContext = Locator.Container.Resolve<LoginViewModel>(
+                new TypedParameter(typeof(INavigation), Navigation));
+
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using AdaaMobile.Helpers;
 
 namespace AdaaMobile.DataServices.Requests
@@ -33,9 +35,9 @@ namespace AdaaMobile.DataServices.Requests
 
         private readonly INetworkHelper _networkHelper;
 
-        private ContentType _resultContentType = ContentType.Json;
+        private ContentType _resultContentType = ContentType.Xml;
         /// <summary>
-        /// Default is Json
+        /// Default is Xml
         /// </summary>
         public ContentType ResultContentType
         {
@@ -134,7 +136,7 @@ namespace AdaaMobile.DataServices.Requests
             {
                 response.ResponseStatus = ResponseStatus.HttpError;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 response.ResponseStatus = ResponseStatus.ClientSideError;
             }
@@ -231,32 +233,39 @@ namespace AdaaMobile.DataServices.Requests
                 responseWrapper.ResponseStatus = ResponseStatus.SuccessWithNoData;
                 return;
             }
-            if (ResultContentType == ContentType.Json)
+            try
             {
-                try
+
+                if (ResultContentType == ContentType.Json)
                 {
                     //var result = JsonConvert.DeserializeObject<TR>(stringValue);
                     //responseWrapper.Result = result;
                     //responseWrapper.ResponseStatus = ResponseStatus.SuccessWithResult;
                     throw new NotImplementedException();
                 }
-                catch (Exception)
+                else if (ResultContentType == ContentType.Xml)
                 {
-                    responseWrapper.ResponseStatus = ResponseStatus.ParserException;
-                    return;
+                    var serializer = new XmlSerializer(typeof(TR));
+                    using (var reader = new StringReader(stringValue))
+                    {
+                        responseWrapper.Result = (TR)serializer.Deserialize(reader);
+                    }
+                }
+                else if (ResultContentType == ContentType.Text)
+                {
+                    //Only TR with type string can be assigned to Text
+                    if (typeof(TR) != typeof(string))
+                    {
+                        responseWrapper.ResponseStatus = ResponseStatus.ParserException;
+                        return;
+                    }
+                    responseWrapper.Result = (TR)(object)stringValue;
                 }
             }
-            else if (ResultContentType == ContentType.Text)
+            catch (Exception)
             {
-                try
-                {
-                    responseWrapper.Result = (TR)Convert.ChangeType(stringValue, typeof(TR));
-                }
-                catch (Exception)
-                {
-                    responseWrapper.ResponseStatus = ResponseStatus.ParserException;
-                    return;
-                }
+                responseWrapper.ResponseStatus = ResponseStatus.ParserException;
+                return;
             }
 
             if (responseWrapper.Result.Equals(default(TR))) responseWrapper.ResponseStatus = ResponseStatus.SuccessWithNoData;

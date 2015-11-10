@@ -18,7 +18,7 @@ namespace AdaaMobile
             Locator.Default = locator;
            
             // The root page of your application
-            MainPage = new MasterPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

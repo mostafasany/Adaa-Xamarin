@@ -123,8 +123,14 @@
   <data name="Exceptions" xml:space="preserve">
     <value>الإستثنائات</value>
   </data>
+  <data name="Failed" xml:space="preserve">
+    <value>حدث خطأ</value>
+  </data>
   <data name="FlowDirection" xml:space="preserve">
     <value>RightToLeft</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>سجل الدخول</value>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
     <value>ar</value>

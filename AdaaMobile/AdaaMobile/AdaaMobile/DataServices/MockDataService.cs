@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models;
+using AdaaMobile.Models.Response;
 
 namespace AdaaMobile.DataServices
 {
@@ -28,6 +29,11 @@ namespace AdaaMobile.DataServices
             new Employee() {Name = "Manager 2"},
             };
             return response;
+        }
+
+        Task<ResponseWrapper<LoginResponse>> IDataService.LoginAsync(string userName, string password)
+        {
+            throw new NotImplementedException();
         }
     }
 }
