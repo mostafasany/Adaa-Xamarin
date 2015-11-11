@@ -42,6 +42,8 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<DataService>();
             cb.RegisterType<MockDataService>();
             cb.Register<IDataService>(c => c.Resolve<DataService>());
+            cb.RegisterType<NavigationService>();
+            cb.Register<INavigationService>(c => c.Resolve<NavigationService>());
             cb.RegisterType<LoginViewModel>();
             //cb.Register<LoginViewModel>((c, prms) =>
             //new LoginViewModel(
@@ -76,6 +78,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<IAppSettings>();
+            }
+        }
+
+        public INavigationService NavigationService
+        {
+            get
+            {
+                return Container.Resolve<INavigationService>();
             }
         }
     }

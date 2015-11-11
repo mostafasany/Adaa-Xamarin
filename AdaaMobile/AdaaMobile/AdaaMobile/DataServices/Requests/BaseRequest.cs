@@ -136,7 +136,7 @@ namespace AdaaMobile.DataServices.Requests
             {
                 response.ResponseStatus = ResponseStatus.HttpError;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 response.ResponseStatus = ResponseStatus.ClientSideError;
             }

@@ -136,6 +136,15 @@ namespace AdaaMobile.Strings {
         /// <summary>
         ///   Looks up a localized string similar to Attendance.
         /// </summary>
+        public static string Attendance {
+            get {
+                return ResourceManager.GetString("Attendance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attendance.
+        /// </summary>
         public static string AttendanceTab {
             get {
                 return ResourceManager.GetString("AttendanceTab", resourceCulture);

@@ -58,12 +58,16 @@
     <Compile Include="Helpers\Interfaces\IAppSettings.cs" />
     <Compile Include="Helpers\Interfaces\IDialogManager.cs" />
     <Compile Include="Helpers\Interfaces\ILocalize.cs" />
+    <Compile Include="Helpers\Interfaces\INavigationService.cs" />
     <Compile Include="Helpers\Interfaces\INetworkHelper.cs" />
-    <Compile Include="Helpers\MenuCell.cs" />
-    <Compile Include="Helpers\MenuListView.cs" />
+    <Compile Include="Helpers\NavigationService.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="Views\MasterView\MasterHelper.cs" />
+    <Compile Include="Views\MasterView\MenuCell.cs" />
+    <Compile Include="Views\MasterView\MenuListView.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="MarkupExtensions\TranslateExtension.cs" />
-    <Compile Include="Models\AdaaMenuItem.cs" />
+    <Compile Include="Models\AdaaPageItem.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\KeyedCollection.cs" />
     <Compile Include="Models\Request\LoginBodyParamters.cs" />
@@ -97,10 +101,10 @@
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterPage.xaml.cs">
+    <Compile Include="Views\MasterView\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuPage.cs" />
+    <Compile Include="Views\MasterView\MenuPage.cs" />
     <Compile Include="Views\MyRequestsPage.xaml.cs">
       <DependentUpon>MyRequestsPage.xaml</DependentUpon>
     </Compile>
@@ -186,7 +190,7 @@
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPage.xaml">
+    <EmbeddedResource Include="Views\MasterView\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

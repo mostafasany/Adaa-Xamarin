@@ -2,5 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AdaaMobile.Views.HomePage">
-  <Label Text="HomeView" VerticalOptions="Center" HorizontalOptions="Center"  />
+  <Grid>
+        <Label Text="HomeView" VerticalOptions="Center" HorizontalOptions="Center"  />
+      <ListView ItemsSource="{Binding Pages}">
+          
+      </ListView>
+    </Grid>
 </ContentPage>
