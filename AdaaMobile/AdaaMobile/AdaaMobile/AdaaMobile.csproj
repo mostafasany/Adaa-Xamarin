@@ -38,6 +38,8 @@
     <Compile Include="App.cs" />
     <Compile Include="Common\AsyncExtendedCommand.cs" />
     <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Controls\ColumnsPanel.cs" />
+    <Compile Include="Controls\FlexibleColumnsPanel.cs" />
     <Compile Include="Converters\BooleanNegateConverter.cs" />
     <Compile Include="Common\ExtendedCommand.cs" />
     <Compile Include="Converters\StringFormatConverter.cs" />
@@ -232,7 +234,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="Mock\" />
   </ItemGroup>
   <ItemGroup>
