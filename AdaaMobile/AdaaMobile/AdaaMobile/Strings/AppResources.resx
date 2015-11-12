@@ -141,6 +141,9 @@
   <data name="Arabic" xml:space="preserve">
     <value>عربى</value>
   </data>
+  <data name="Attendance" xml:space="preserve">
+    <value>Attendance</value>
+  </data>
   <data name="AttendanceTab" xml:space="preserve">
     <value>Attendance</value>
   </data>

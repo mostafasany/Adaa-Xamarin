@@ -8,6 +8,7 @@ using AdaaMobile.DataServices;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Helpers;
 using AdaaMobile.Views;
+using AdaaMobile.Views.MasterView;
 using Xamarin.Forms;
 
 namespace AdaaMobile.ViewModels
@@ -19,6 +20,7 @@ namespace AdaaMobile.ViewModels
         private readonly IDataService _dataService;
         private readonly IDialogManager _dialogManager;
         private readonly INavigation _navigation;
+        private readonly INavigationService _navigationService;
         #endregion
 
         #region Properties
@@ -68,11 +70,12 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public LoginViewModel(IDataService dataService, IDialogManager dialogManager, INavigation navigation)
+        public LoginViewModel(IDataService dataService, IDialogManager dialogManager, INavigation navigation, INavigationService navigationService)
         {
             _dataService = dataService;
             _dialogManager = dialogManager;
             _navigation = navigation;
+            _navigationService = navigationService;
 
             //Initialize commands
             LoginCommand = new AsyncExtendedCommand(LoginAsync, false);
@@ -107,17 +110,14 @@ namespace AdaaMobile.ViewModels
                 {
                     if (response.Result.Status == "ok")
                     {
-                        //sucess
-                        //await _navigation.PopModalAsync(false);
-                        //await _navigation.PushAsync(new MasterPage(), true);
-                        App.Current.MainPage = new MasterPage();
+                        _navigationService.SetAppCurrentPage(typeof(MasterPage));
                         return;
                     }
                 }
 
                 await _dialogManager.DisplayAlert("Alert", "login failed", "ok");
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 //Show error
             }

@@ -144,6 +144,9 @@
   <data name="Attendance" xml:space="preserve">
     <value>الحضور</value>
   </data>
+  <data name="Attendance1" xml:space="preserve">
+    <value>Attendance</value>
+  </data>
   <data name="BuisnessCard" xml:space="preserve">
     <value>Buisness Card</value>
   </data>
