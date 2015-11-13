@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AdaaMobile.ViewModels;
 using AdaaMobile.Views;
+using AdaaMobile.Views.MasterView;
 using Xamarin.Forms;
 
 namespace AdaaMobile
@@ -12,13 +13,14 @@ namespace AdaaMobile
 	{
 		public App(Locator locator)
 		{
+            InitializeComponent();
 			//Build dependencies and set static instance of Container
 			Locator.Container = locator.CreateContainer();
 			//Set static instance of locator.
 			Locator.Default = locator;
 
 			// The root page of your application
-			MainPage = new NavigationPage(new LoginPage());
+			MainPage = new MasterPage();
 		}
 
 		protected override void OnStart()

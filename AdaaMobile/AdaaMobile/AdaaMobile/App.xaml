@@ -7,6 +7,7 @@
             <Style x:Key="labelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="Green" />
             </Style>
+            <Color x:Key="AppBackgroundLight" >#FF007C84</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

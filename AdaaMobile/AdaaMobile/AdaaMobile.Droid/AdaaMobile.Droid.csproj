@@ -131,7 +131,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Resources\drawable\HomeItemIcon.png" />
+    <AndroidResource Include="Resources\drawable\HomeItemIcon.png" />
     <Content Include="PluginsHelp\SettingsReadme.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\Values\styles.xml" />

@@ -15,14 +15,25 @@ namespace AdaaMobile.Controls
         #region Fields
         #endregion
 
-        #region Spacing bindable property
-        public static readonly BindableProperty SpacingProperty =
-            BindableProperty.Create<ColumnsPanel, double>(p => p.Spacing, 10.0,
+        #region VerticalSpacing bindable property
+        public static readonly BindableProperty VerticalSpacingProperty =
+            BindableProperty.Create<ColumnsPanel, double>(p => p.VerticalSpacing, 10.0,
                 propertyChanged: (bindable, old, newvalue) => ((ColumnsPanel)bindable).OnSizeChanged());
-        public double Spacing
+        public double VerticalSpacing
         {
-            get { return (double)GetValue(SpacingProperty); }
-            set { SetValue(SpacingProperty, value); }
+            get { return (double)GetValue(VerticalSpacingProperty); }
+            set { SetValue(VerticalSpacingProperty, value); }
+        }
+        #endregion
+
+        #region HorizontalSpacing bindable property
+        public static readonly BindableProperty HorizontalSpacingProperty =
+            BindableProperty.Create<ColumnsPanel, double>(p => p.HorizontalSpacing, 10.0,
+                propertyChanged: (bindable, old, newvalue) => ((ColumnsPanel)bindable).OnSizeChanged());
+        public double HorizontalSpacing
+        {
+            get { return (double)GetValue(HorizontalSpacingProperty); }
+            set { SetValue(HorizontalSpacingProperty, value); }
         }
         #endregion
 
@@ -180,6 +191,7 @@ namespace AdaaMobile.Controls
 
             double internalWidth = double.IsPositiveInfinity(widthConstraint) ? double.PositiveInfinity : Math.Max(0, widthConstraint);
             double internalHeight = double.IsPositiveInfinity(heightConstraint) ? double.PositiveInfinity : Math.Max(0, heightConstraint);
+
             return DoMeasure(internalWidth, internalHeight);
 
         }
@@ -187,15 +199,15 @@ namespace AdaaMobile.Controls
         private SizeRequest DoMeasure(double widthConstraint, double heightConstraint)
         {
             if (ColumnCount == 0 ||
-                Math.Abs(ColumnWidth) < 1e06 ||
+                Math.Abs(ColumnWidth) < 1e-6 ||
                 Math.Abs(ColumnHeight) < 1e-6)
                 return new SizeRequest(new Size(0, 0), new Size(0, 0));
             int childrenCount = Children.Count;
             int rowCount = (int)Math.Ceiling(childrenCount * 1.0 / ColumnCount);
 
             //Calculate row height
-            double width = rowCount * ColumnWidth;
-            double height = rowCount * ColumnHeight;
+            double width = ColumnCount * ColumnWidth + (ColumnCount - 1) * HorizontalSpacing;
+            double height = rowCount * ColumnHeight + (rowCount ) * VerticalSpacing;
             double minWidth = width;
             double minHeight = height;
 
@@ -225,11 +237,11 @@ namespace AdaaMobile.Controls
                 //Update yPos and reset row height
                 if (column == 0)
                 {
-                    yPos += rowHeight;
+                    yPos += rowHeight + VerticalSpacing;
                     rowHeight = 0;
                 }
                 rowHeight = Math.Max(rowHeight, childHeight);
-                xPos = x + column * childWidth;
+                xPos = x + (column * (childWidth + HorizontalSpacing));
                 var region = new Rectangle(xPos, yPos, childWidth, childHeight);
                 LayoutChildIntoBoundingRegion(child, region);
             }

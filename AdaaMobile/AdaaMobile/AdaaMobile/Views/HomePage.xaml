@@ -3,26 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              x:Class="AdaaMobile.Views.HomePage">
-    <Grid>
-        <Label Text="HomeView" VerticalOptions="Center" HorizontalOptions="Center"  />
-        <controls:ColumnsPanel ColumnCount="2"
+       <Grid>
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Fill"
+                    Orientation="Vertical">
+          <!--TODO:Change hardwired sizes after fixing center issue which enters loop in GetRequestSize
+              handle orientation to increase number of items to 3
+          -->
+            <controls:ColumnsPanel ColumnCount="2"
                              ItemSource="{Binding Pages}"
+                             HorizontalOptions="Center" 
                              ColumnWidth="150"
                              ColumnHeight="150"
+                             HorizontalSpacing="30"
+                             VerticalSpacing="40"
                              >
-            <controls:ColumnsPanel.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <BoxView VerticalOptions="Fill" 
-                                 HorizontalOptions="Fill"
-                                 BackgroundColor="#FF007C84"
+                <controls:ColumnsPanel.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="10" 
+                                 VerticalOptions="Fill" 
+                                 HorizontalOptions="Fill">
+                            <Grid VerticalOptions="FillAndExpand" 
+                                 HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource AppBackgroundLight}"
                                  >
-                            <Label Text="{Binding Title}" VerticalOptions="Fill" HorizontalOptions="Fill"/>
-                        </BoxView>
-                    </Grid>
-                </DataTemplate>
-            </controls:ColumnsPanel.ItemTemplate>
+                                <Image Source="{Binding IconSource}" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center"
+                                   HeightRequest="70"
+                                   WidthRequest="70"
+                                   />
+                            </Grid>
+                            <Label Text="{Binding Title}" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </controls:ColumnsPanel.ItemTemplate>
 
-        </controls:ColumnsPanel>
-    </Grid>
+            </controls:ColumnsPanel>
+        </ScrollView>
+         </Grid>
 </ContentPage>
