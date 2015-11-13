@@ -15,7 +15,6 @@ namespace AdaaMobile.Views
         public AttendancePage()
         {
             InitializeComponent();
-			Title = AppResources.Attendance;
             _attendanceViewModel = Locator.Default.AttendanceViewModel;
             BindingContext = _attendanceViewModel;
             PopuplateDaysStack();
