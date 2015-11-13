@@ -6,14 +6,22 @@
     <Grid>
         <Label Text="HomeView" VerticalOptions="Center" HorizontalOptions="Center"  />
         <controls:ColumnsPanel ColumnCount="2"
-                             
+                             ItemSource="{Binding Pages}"
                              ColumnWidth="150"
+                             ColumnHeight="150"
                              >
-            <Label Text="Test1" BackgroundColor="Red"/>
-            <Label Text="Test2" BackgroundColor="Red"/>
-            <Label Text="Test3" HeightRequest="100"  BackgroundColor="Red"/>
-            <Label Text="Test4" BackgroundColor="Red" VerticalOptions="Fill"/>
-            <Label Text="Test3" HeightRequest="100"  BackgroundColor="Green"/>
+            <controls:ColumnsPanel.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <BoxView VerticalOptions="Fill" 
+                                 HorizontalOptions="Fill"
+                                 BackgroundColor="#FF007C84"
+                                 >
+                            <Label Text="{Binding Title}" VerticalOptions="Fill" HorizontalOptions="Fill"/>
+                        </BoxView>
+                    </Grid>
+                </DataTemplate>
+            </controls:ColumnsPanel.ItemTemplate>
 
         </controls:ColumnsPanel>
     </Grid>

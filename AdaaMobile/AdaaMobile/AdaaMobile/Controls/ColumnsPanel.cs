@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,24 +44,7 @@ namespace AdaaMobile.Controls
         }
         #endregion
 
-        #region ItemSource
 
-        public static readonly BindableProperty ItemSourceProperty =
-            BindableProperty.Create<ColumnsPanel, IEnumerable>
-                (p => p.ItemSource, default(IEnumerable), propertyChanged: OnItemSourceChanged);
-
-        private static void OnItemSourceChanged(BindableObject bindable, IEnumerable oldvalue, IEnumerable newvalue)
-        {
-            var columnsPanel = (ColumnsPanel)bindable;
-            columnsPanel.OnSizeChanged();
-        }
-
-        public IEnumerable ItemSource
-        {
-            get { return (IEnumerable)GetValue(ItemSourceProperty); }
-            set { SetValue(ItemSourceProperty, value); }
-        }
-        #endregion
 
         #region ColumnCount
         public static readonly BindableProperty ColumnCountProperty =
@@ -72,7 +56,7 @@ namespace AdaaMobile.Controls
             get { return (int)GetValue(ColumnCountProperty); }
             set { SetValue(ColumnCountProperty, value); }
         }
-        #endregion
+
 
         #region ColumnHeight
         public static readonly BindableProperty ColumnHeightProperty =
@@ -97,6 +81,90 @@ namespace AdaaMobile.Controls
             set { SetValue(ColumnWidthProperty, value); }
         }
         #endregion
+
+        #region ItemSource
+
+        public static readonly BindableProperty ItemSourceProperty =
+            BindableProperty.Create<ColumnsPanel, IEnumerable>
+                (p => p.ItemSource, default(IEnumerable), propertyChanged: OnItemSourceChanged);
+
+        private static void OnItemSourceChanged(BindableObject bindable, IEnumerable oldvalue, IEnumerable newvalue)
+        {
+            var columnsPanel = (ColumnsPanel)bindable;
+
+            if (oldvalue is INotifyCollectionChanged)
+            {
+                var coll = (INotifyCollectionChanged)oldvalue;
+                // Unsubscribe from CollectionChanged on the old collection
+                coll.CollectionChanged += columnsPanel.OnCollectionChanged;
+            }
+
+            if (newvalue is INotifyCollectionChanged)
+            {
+                var coll = (INotifyCollectionChanged)newvalue;
+                // Subscribe to CollectionChanged on the new collection
+                coll.CollectionChanged += columnsPanel.OnCollectionChanged;
+            }
+
+            //Trigger reloading of item source
+            var args = new NotifyCollectionChangedEventArgs
+                (NotifyCollectionChangedAction.Reset);
+            columnsPanel.OnCollectionChanged(columnsPanel, args);
+            //columnsPanel.OnSizeChanged();
+        }
+
+        public IEnumerable ItemSource
+        {
+            get { return (IEnumerable)GetValue(ItemSourceProperty); }
+            set { SetValue(ItemSourceProperty, value); }
+        }
+        #endregion
+
+        #endregion
+
+        #region Events
+
+        #endregion
+
+
+        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
+        {
+            BatchBegin();
+            if (args.Action == NotifyCollectionChangedAction.Reset)
+            {
+                Children.Clear();
+                AddItems(ItemSource as IList);
+            }
+            else
+            {
+                RemoveItems(args.OldItems);
+                AddItems(args.NewItems);
+            }
+            BatchCommit();
+        }
+
+        private void RemoveItems(IList oldItems)
+        {
+            foreach (object item in oldItems)
+            {
+                var matchedChild = Children.FirstOrDefault((v) => v.BindingContext == item);
+                if (matchedChild != null)
+                    Children.Remove(matchedChild);
+            }
+        }
+
+        private void AddItems(IList items)
+        {
+            foreach (object item in items)
+            {
+                var child = ItemTemplate.CreateContent() as View;
+                if (child == null)
+                    return;
+
+                child.BindingContext = item;
+                Children.Add(child);
+            }
+        }
 
         protected void OnSizeChanged()
         {

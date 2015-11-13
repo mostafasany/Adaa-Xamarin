@@ -45,12 +45,7 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<NavigationService>();
             cb.Register<INavigationService>(c => c.Resolve<NavigationService>());
             cb.RegisterType<LoginViewModel>();
-            //cb.Register<LoginViewModel>((c, prms) =>
-            //new LoginViewModel(
-            //    c.Resolve<IDataService>()
-            //    , c.Resolve<IDialogManager>()
-            //    , prms.TypedAs<INavigation>())
-            //    );
+            cb.RegisterType<HomeViewModel>();
             cb.RegisterType<AttendanceViewModel>();
             cb.RegisterType<DirectoryViewModel>();
         }
