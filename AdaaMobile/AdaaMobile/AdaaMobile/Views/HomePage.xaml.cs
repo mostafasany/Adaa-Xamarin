@@ -13,11 +13,27 @@ namespace AdaaMobile.Views
     public partial class HomePage : ContentPage
     {
         private readonly HomeViewModel _homeViewModel;
+        static bool IsPortrait(Page p) { return p.Width < p.Height; }
         public HomePage()
         {
             InitializeComponent();
+            
             _homeViewModel = Locator.Container.Resolve<HomeViewModel>();
             BindingContext = _homeViewModel;
+            SizeChanged += HomePage_SizeChanged;
+        }
+
+        private void HomePage_SizeChanged(object sender, EventArgs e)
+        {
+            //if (IsPortrait(this))
+            //{
+            //    PagesPanel.ColumnCount = 2;
+            //}
+            //else
+            //{
+            //    PagesPanel.ColumnCount = 3;
+            //}
+
         }
 
         private void PageItem_Tapped(object sender, EventArgs e)
@@ -26,11 +42,10 @@ namespace AdaaMobile.Views
             if (element == null) return;
             var model = (element.BindingContext) as AdaaPageItem;
             _homeViewModel.PageClickedCommand.Execute(model);
+
         }
 
-        private void Button_OnClicked(object sender, EventArgs e)
-        {
-            
-        }
+
     }
 }
+

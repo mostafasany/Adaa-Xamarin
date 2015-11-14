@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Common\AsyncExtendedCommand.cs" />
     <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\ColumnsPanel.cs" />
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />
     <Compile Include="Converters\BooleanNegateConverter.cs" />

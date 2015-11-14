@@ -113,6 +113,7 @@
   <ItemGroup>
     <Compile Include="CustomRenderers\InnerAndroidScrollViewRenderer.cs" />
     <Compile Include="Helpers\Localize.cs" />
+    <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

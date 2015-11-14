@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using AdaaMobile.Helpers;
+using AdaaMobile.iOS.CustomRenderers;
 using AdaaMobile.ViewModels;
 using Foundation;
 using UIKit;
@@ -26,6 +27,8 @@ namespace AdaaMobile.iOS
         {
             
             global::Xamarin.Forms.Forms.Init();
+            ImageCircleRenderer.Init();
+
             LoadApplication(new App(new Locator()));
 
 

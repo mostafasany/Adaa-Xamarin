@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using AdaaMobile.Controls;
+using AdaaMobile.Droid.CustomRenderers;
 using AdaaMobile.Droid.Helpers;
 using AdaaMobile.Helpers;
 using AdaaMobile.ViewModels;
@@ -22,7 +24,7 @@ namespace AdaaMobile.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-
+            ImageCircleRenderer.Init();
             //Create new locator instance.
             var locator = new Locator();
             //Get user selected culture from last run or default
