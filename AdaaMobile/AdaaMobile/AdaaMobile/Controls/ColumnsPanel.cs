@@ -134,12 +134,6 @@ namespace AdaaMobile.Controls
         #endregion
 
         #region Events
-        public event EventHandler<ItemTappedEventArgs> ItemTapped;
-        protected virtual void OnItemTapped(ItemTappedEventArgs e)
-        {
-            var handler = ItemTapped;
-            if (handler != null) handler(this, e);
-        }
 
         #endregion
 

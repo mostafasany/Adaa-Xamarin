@@ -4,10 +4,17 @@
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              x:Name="MainWindow"
              x:Class="AdaaMobile.Views.HomePage">
-  <Grid> 
-    <ScrollView HorizontalOptions="FillAndExpand"   
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <RelativeLayout></RelativeLayout>
+    <ScrollView HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill"
-                Orientation="Vertical">
+                Orientation="Vertical"
+                Grid.Row="1"
+                >
       <!--TODO:Change hardwired sizes after fixing center issue which enters loop in GetRequestSize
               handle orientation to increase number of items to 3
           -->
@@ -22,13 +29,14 @@
                              >
         <controls:ColumnsPanel.ItemTemplate>
           <DataTemplate>
-            
+
             <StackLayout Spacing="10"
                      VerticalOptions="Fill"
                      HorizontalOptions="Fill">
               <Grid VerticalOptions="FillAndExpand"
                    HorizontalOptions="FillAndExpand"
                    BackgroundColor="{StaticResource AppBackgroundLight}"
+                   
                                  >
                 <Image Source="{Binding IconSource}"
                    VerticalOptions="Center"
@@ -36,12 +44,25 @@
                    HeightRequest="70"
                    WidthRequest="70"
                                    />
+                
+                <BoxView 
+                  HorizontalOptions="Fill" 
+                  VerticalOptions="End"
+                  HeightRequest="4"
+                  Color="{StaticResource YellowAccent}"
+                  />
+                <!--duplicating gesture becuase of issue in Gesture in Android on nested panels
+                    See,https://bugzilla.xamarin.com/show_bug.cgi?id=25943
+                -->
+                <Grid.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="PageItem_Tapped"/>
+                </Grid.GestureRecognizers>
               </Grid>
-              <Label Text="{Binding Title}" HorizontalOptions="Center"/>
-
-              <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Tapped="PageItem_Tapped"/>
-              </StackLayout.GestureRecognizers>
+              <Label Text="{Binding Title}" HorizontalOptions="Fill" XAlign="Center">
+                <Label.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="PageItem_Tapped"/>
+                </Label.GestureRecognizers>
+              </Label>
             </StackLayout>
           </DataTemplate>
         </controls:ColumnsPanel.ItemTemplate>

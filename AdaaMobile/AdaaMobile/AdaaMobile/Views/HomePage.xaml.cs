@@ -27,5 +27,10 @@ namespace AdaaMobile.Views
             var model = (element.BindingContext) as AdaaPageItem;
             _homeViewModel.PageClickedCommand.Execute(model);
         }
+
+        private void Button_OnClicked(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
