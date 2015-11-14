@@ -7,11 +7,13 @@
              >
     
     <StackLayout>
+
         <Entry Text="{Binding UserName,Mode=TwoWay}"/>
         <Entry Text="{Binding Password,Mode=TwoWay}"/>
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
         <Button Text="{ext:Translate Login}" Command="{Binding LoginCommand}"/>
-        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>
-        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>
+<!--        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>-->
+<!--        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>-->
     </StackLayout>
 
 </ContentPage>
