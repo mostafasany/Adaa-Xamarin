@@ -6,5 +6,6 @@ namespace AdaaMobile.Helpers
     public interface ILocalize
     {
         CultureInfo GetCurrentCultureInfo();
+		void UpdateCultureInfo (string cultureName);
     }
 }

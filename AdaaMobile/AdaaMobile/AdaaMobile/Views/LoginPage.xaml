@@ -1,19 +1,34 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.LoginPage"
-             IsBusy="{Binding IsBusy}"
-             >
-    
-    <StackLayout>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" 
+x:Class="AdaaMobile.Views.LoginPage" 
+IsBusy="{Binding IsBusy}">
+	<Grid Padding="5,5,5,5">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="190" />
+			<RowDefinition Height="90" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+		</Grid.RowDefinitions>
 
-        <Entry Text="{Binding UserName,Mode=TwoWay}"/>
-        <Entry Text="{Binding Password,Mode=TwoWay}"/>
-        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-        <Button Text="{ext:Translate Login}" Command="{Binding LoginCommand}"/>
-<!--        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>-->
-<!--        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>-->
-    </StackLayout>
+		<Grid Grid.Row="1" >
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition Height="2" />
+			<RowDefinition Height="40" />
+		</Grid.RowDefinitions>
 
+		<Entry Grid.Row="0" BackgroundColor="White" TextColor="{StaticResource PurbleAccent}"  Placeholder="{ext:Translate UserName}" Text="{Binding UserName,Mode=TwoWay}"  />
+		<BoxView Grid.Row="1" HorizontalOptions= "Fill" BackgroundColor="{StaticResource PurbleAccent}" />
+		<Entry Grid.Row="2" BackgroundColor="White" TextColor="{StaticResource PurbleAccent}"  Placeholder="{ext:Translate Password}" Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
+		</Grid>
+
+		<ActivityIndicator Grid.Row="2" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+		<Button Grid.Row="3"  Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+		<!--        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>-->
+		<!--        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>-->
+	</Grid>
 </ContentPage>

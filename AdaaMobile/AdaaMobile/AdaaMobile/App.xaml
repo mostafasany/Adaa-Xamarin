@@ -9,11 +9,18 @@
             </Style>
 
 
+            <Style x:Key="ButtonDefaultStyle" TargetType="Button">
+               <Setter Property="BackgroundColor" Value="#FF007C84" />
+               <Setter Property="TextColor" Value="White" />
+               <Setter Property="BorderRadius" Value="0" />
+            </Style>
+
           <!--Update Value-->
           <Color x:Key="AppBackgroundDark" >#FF007C84</Color>
          
           <Color x:Key="AppBackgroundLight" >#FF007C84</Color>
           <Color x:Key="YellowAccent" >#FFFFD205</Color>
+          <Color  x:Key="PurbleAccent"> #FF007C84 </Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
