@@ -8,9 +8,6 @@
                 <Setter Property="TextColor" Value="Green" />
             </Style>
 
-             <Style x:Key="labelStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="Green" />
-            </Style>
 
           <!--Update Value-->
           <Color x:Key="AppBackgroundDark" >#FF007C84</Color>
