@@ -5,12 +5,13 @@ using AdaaMobile.Helpers;
 using AdaaMobile.iOS.Helpers;
 using Foundation;
 using Xamarin.Forms;
+using System.Threading;
 
 [assembly: Dependency(typeof(Localize))]
 
 namespace AdaaMobile.iOS.Helpers
 {
-    public class Localize : ILocalize
+	public class Localize : ILocalize
     {
         public System.Globalization.CultureInfo GetCurrentCultureInfo()
         {
@@ -45,5 +46,11 @@ namespace AdaaMobile.iOS.Helpers
 			return new System.Globalization.CultureInfo( new AppSettings ().SelectedCultureName);
 
         }
+
+		public void UpdateCultureInfo (string cultureName)
+		{
+			Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);
+			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(cultureName);
+		}
     }
 }
