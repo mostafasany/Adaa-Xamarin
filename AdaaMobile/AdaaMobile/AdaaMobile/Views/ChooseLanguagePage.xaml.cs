@@ -12,7 +12,7 @@ namespace AdaaMobile
 		public ChooseLanguagePage ()
 		{
 			InitializeComponent ();
-
+		
 			EnglishButton.Clicked += EnglishButton_Clicked;
 			ArabicButton.Clicked += ArabicButton_Clicked1;;
 

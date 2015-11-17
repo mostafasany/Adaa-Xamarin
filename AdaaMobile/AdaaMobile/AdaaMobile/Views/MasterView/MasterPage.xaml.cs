@@ -18,10 +18,7 @@ namespace AdaaMobile.Views.MasterView
             SetMenuPage();
             Detail = MasterHelper.CreatePage(typeof(HomePage));
 
-			AppSettings settings = new AppSettings ();
-			if (string.IsNullOrEmpty (settings.UserToken)) {
-				Navigation.PushModalAsync  ( new NavigationPage( new LoginPage ()));
-			}
+
         }
 
         private void SetMenuPage()
