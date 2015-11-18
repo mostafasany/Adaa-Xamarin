@@ -13,7 +13,7 @@ using Android.Widget;
 using Android.OS;
 using Java.Lang;
 using Java.Util;
-
+using Xamarin;
 namespace AdaaMobile.Droid
 {
     [Activity(Label = "AdaaMobile", Icon = "@drawable/icon", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -21,6 +21,8 @@ namespace AdaaMobile.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+
+			Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
