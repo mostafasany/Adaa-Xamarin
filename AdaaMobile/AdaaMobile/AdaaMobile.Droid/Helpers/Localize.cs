@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Droid.Helpers
 {
-    public class Localize : ILocalize
+	public class Localize : ILocalize
     {
         public System.Globalization.CultureInfo GetCurrentCultureInfo()
         {
@@ -15,5 +15,10 @@ namespace AdaaMobile.Droid.Helpers
             return new System.Globalization.CultureInfo(netLanguage);
         }
 
+		public void UpdateCultureInfo (string cultureName)
+		{
+			//TODO 
+			// Implement this 
+		}
     }
 }

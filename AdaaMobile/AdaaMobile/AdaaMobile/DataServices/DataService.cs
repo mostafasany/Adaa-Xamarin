@@ -34,6 +34,7 @@ namespace AdaaMobile.DataServices
                 UserName = userName,
                 Password = password
             };
+			string t = loginParamters.SerializeXml ();
             var stringContent = new StringContent(loginParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
             return await request.PostAsync<LoginResponse>(stringContent);
         }

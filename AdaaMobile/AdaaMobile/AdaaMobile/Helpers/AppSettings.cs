@@ -15,6 +15,10 @@ namespace AdaaMobile.Helpers
         private const string SelectedCultureKey = "SelectedCultureKey";
         private readonly string _selectedCultureDefault = "en-US";
 
+		private const string UserTokenKey = "UserTokenKey";
+		private readonly string _userTokenDefault = string.Empty;
+
+
         public string SelectedCultureName
         {
             get
@@ -23,5 +27,14 @@ namespace AdaaMobile.Helpers
             }
             set { CrossSettings.Current.AddOrUpdateValue(SelectedCultureKey, value); }
         }
+
+		public string UserToken
+		{
+			get
+			{
+				return CrossSettings.Current.GetValueOrDefault(UserTokenKey, _userTokenDefault);
+			}
+			set { CrossSettings.Current.AddOrUpdateValue(UserTokenKey, value); }
+		}
     }
 }

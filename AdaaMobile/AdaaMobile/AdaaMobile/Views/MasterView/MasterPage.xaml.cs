@@ -17,6 +17,8 @@ namespace AdaaMobile.Views.MasterView
             BackgroundColor = (Color)Application.Current.Resources["AppBackgroundLight"];
             SetMenuPage();
             Detail = MasterHelper.CreatePage(typeof(HomePage));
+
+
         }
 
         private void SetMenuPage()

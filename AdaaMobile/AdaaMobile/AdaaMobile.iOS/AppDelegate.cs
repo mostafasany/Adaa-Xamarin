@@ -7,6 +7,7 @@ using AdaaMobile.iOS.CustomRenderers;
 using AdaaMobile.ViewModels;
 using Foundation;
 using UIKit;
+using Xamarin;
 
 namespace AdaaMobile.iOS
 {
@@ -31,8 +32,9 @@ namespace AdaaMobile.iOS
 
             LoadApplication(new App(new Locator()));
 
-
+			Insights.Initialize ("b2655f07a3c842df659dcf2532c519804a88ec7d");
             return base.FinishedLaunching(app, options);
+
         }
 
         public AppDelegate()

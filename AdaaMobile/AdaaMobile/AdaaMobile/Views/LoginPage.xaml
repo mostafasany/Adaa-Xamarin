@@ -1,17 +1,35 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.LoginPage"
-             IsBusy="{Binding IsBusy}"
-             >
-    
-    <StackLayout>
-        <Entry Text="{Binding UserName,Mode=TwoWay}"/>
-        <Entry Text="{Binding Password,Mode=TwoWay}"/>
-        <Button Text="{ext:Translate Login}" Command="{Binding LoginCommand}"/>
-        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>
-        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>
-    </StackLayout>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}">
 
+<Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
+<Grid.RowDefinitions>
+<RowDefinition Height="*"/>
+<RowDefinition Height="Auto"/>
+</Grid.RowDefinitions>
+		<Image Grid.RowSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill" Source="splashscreen.jpg" />
+
+	<Grid Grid.Row="1" Padding="5,5,5,5" >
+		<Grid.RowDefinitions>
+			<RowDefinition Height="90" />
+			<RowDefinition Height="10" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="80" />
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" BackgroundColor="White" >
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40" />
+				<RowDefinition Height="1" />
+				<RowDefinition Height="40" />
+
+			</Grid.RowDefinitions>
+			<Entry Grid.Row="0"  BackgroundColor="White" TextColor="{StaticResource PurpleAccent}" Placeholder="{ext:Translate UserName}" Text="{Binding UserName,Mode=TwoWay}" />
+			<BoxView Grid.Row="1" HorizontalOptions="Fill" BackgroundColor="{StaticResource PurpleAccent}" />
+			<Entry Grid.Row="2" BackgroundColor="White" TextColor="{StaticResource PurpleAccent}" Placeholder="{ext:Translate Password}" Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
+		</Grid>
+		<ActivityIndicator Grid.Row="1" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+		<Button Grid.Row="2" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+		<!--        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>-->
+		<!--        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>-->
+	</Grid>
+	</Grid>
 </ContentPage>

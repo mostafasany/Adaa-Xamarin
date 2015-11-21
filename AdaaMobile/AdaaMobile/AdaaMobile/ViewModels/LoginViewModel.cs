@@ -108,8 +108,9 @@ namespace AdaaMobile.ViewModels
                 var response = await _dataService.LoginAsync(UserName, Password);
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
-                    if (response.Result.Status == "ok")
+					if (response.Result.Status == "ok" && !string.IsNullOrEmpty( response.Result.UserToken))
                     {
+						new AppSettings().UserToken = response.Result.UserToken;
                         _navigationService.SetAppCurrentPage(typeof(MasterPage));
                         return;
                     }

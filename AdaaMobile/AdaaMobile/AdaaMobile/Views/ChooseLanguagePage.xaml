@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.ChooseLanguagePage">
+	<ContentPage.Content>
+
+	<Grid x:Name="MainGrid">
+
+
+	<Grid.RowDefinitions>
+	<RowDefinition Height="2*"/>
+	<RowDefinition Height="60"/>
+	<RowDefinition Height="*"/>
+	</Grid.RowDefinitions>
+
+			<Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Source="splashscreen.jpg"/> 
+	<Grid Grid.Row="1" Padding="5,0,5,5">
+
+	<Grid.RowDefinitions>
+			<RowDefinition Height="40" />		
+		</Grid.RowDefinitions>
+	<Grid.ColumnDefinitions>
+	<ColumnDefinition Width="*"  />
+	<ColumnDefinition Width="*"  />
+	</Grid.ColumnDefinitions>
+	<Button x:Name="EnglishButton" Grid.Column="0" Text="English" Style="{StaticResource ButtonDefaultStyle}" />
+	<Button x:Name="ArabicButton" Grid.Column="1" Text="عربي" Style="{StaticResource ButtonDefaultStyle}" />
+	</Grid>
+	</Grid>
+	</ContentPage.Content>
+</ContentPage>
