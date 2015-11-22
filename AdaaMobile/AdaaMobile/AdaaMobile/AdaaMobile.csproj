@@ -42,6 +42,7 @@
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />
     <Compile Include="Converters\BooleanNegateConverter.cs" />
     <Compile Include="Common\ExtendedCommand.cs" />
+    <Compile Include="Converters\BoolToColorConverter.cs" />
     <Compile Include="Converters\StringFormatConverter.cs" />
     <Compile Include="Converters\TruncateDecimalConverter.cs" />
     <Compile Include="Converters\VisibleNotEmptyConverter.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Helpers\Interfaces\INavigationService.cs" />
     <Compile Include="Helpers\Interfaces\INetworkHelper.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
+    <Compile Include="Models\DayWrapper.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="Views\MasterView\MasterHelper.cs" />
     <Compile Include="Views\MasterView\MenuCell.cs" />
@@ -103,8 +105,8 @@
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterView\MasterPage.xaml.cs">
-      <DependentUpon>MasterPage.xaml</DependentUpon>
+    <Compile Include="Views\MasterView\AddaMasterPage.xaml.cs">
+      <DependentUpon>AddaMasterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterView\MenuPage.cs" />
     <Compile Include="Views\MyRequestsPage.xaml.cs">
@@ -131,6 +133,27 @@
     <Compile Include="Views\SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Response\Attendance.cs" />
+    <Compile Include="Models\Request\AttendanceQParameters.cs" />
+    <Compile Include="Models\Response\AttendanceException.cs" />
+    <Compile Include="Models\Request\AttendanceExceptionQParamters.cs" />
+    <Compile Include="Models\Request\DaypassRequestQParameters.cs" />
+    <Compile Include="Models\Request\DaypassRequestBParameters.cs" />
+    <Compile Include="Models\Response\NewDayPassResponse.cs" />
+    <Compile Include="Models\Response\DayPassesResponse.cs" />
+    <Compile Include="Models\Request\DayPassesQParameters.cs" />
+    <Compile Include="Models\Request\DaypassApproveQParameters.cs" />
+    <Compile Include="Models\Request\DayPassTasksQParameters.cs" />
+    <Compile Include="Models\Response\DayPassApproveResponse.cs" />
+    <Compile Include="Models\Response\DayPassTasksResponse.cs" />
+    <Compile Include="Controls\DataTemplateSelector.cs" />
+    <Compile Include="Controls\RepeaterView.cs" />
+    <Compile Include="Controls\TemplateSelector.cs" />
+    <Compile Include="Exceptions\InvalidNestingException.cs" />
+    <Compile Include="Exceptions\InvalidVisualObjectException.cs" />
+    <Compile Include="Exceptions\NoDataTemplateMatchException.cs" />
+    <Compile Include="Exceptions\PropertyNotFoundException.cs" />
+    <Compile Include="Controls\CollectionChangedHandle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="QueryExtensions">
@@ -163,6 +186,7 @@
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\..\packages\Xamarin.Forms.2.0.0.6482\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -207,7 +231,7 @@
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MasterView\MasterPage.xaml">
+    <EmbeddedResource Include="Views\MasterView\AddaMasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

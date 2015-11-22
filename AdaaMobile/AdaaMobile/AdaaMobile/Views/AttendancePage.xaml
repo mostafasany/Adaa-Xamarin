@@ -3,104 +3,155 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
+             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              x:Class="AdaaMobile.Views.AttendancePage"
-             BackgroundColor="#FF366A89"
+             BackgroundColor="{StaticResource AppBackgroundLight}"
              >
-    <ScrollView>
-        <StackLayout Padding="10"  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            
-            <!--Top buttons Attendance and Exceptions-->
-            <Grid  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Button Text="{ext:Translate Attendance}" 
-                    Grid.Column="0"
-                    BorderRadius="5" 
-                    TextColor="White"
-                    BorderColor="Black" 
-                    BackgroundColor="Black" />
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="NormalDayColor">Black</Color>
+      <Color x:Key="NormalMonthColor">Black</Color>
+      <Color x:Key="SelectedMonthColor">White</Color>
+      <Color x:Key="NormalBackColor">#FFB4D7DB</Color>
+    </ResourceDictionary>
+  </ContentPage.Resources>
 
-                <Button Text="Exceptions" 
-                    Grid.Column="1"
-                    BorderRadius="5" 
-                    TextColor="Black"
-                    BorderColor="Black" 
-                    BackgroundColor="#FF6189A2" />
-            </Grid>
-            
-            <Label   Text="Select date to view your attendance details"
-               TextColor="White"  
+  <ScrollView>
+    <StackLayout Padding="10"  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+      <!--Top buttons Attendance and Exceptions-->
+      <Grid  >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Text="{ext:Translate Attendance}"
+            Grid.Column="0"
+            BorderRadius="5"
+            TextColor="White"
+            BorderColor="Black"
+            BackgroundColor="Black" />
+
+        <Button Text="Exceptions"
+            Grid.Column="1"
+            BorderRadius="5"
+            TextColor="Black"
+            BorderColor="Black"
+            BackgroundColor="#FF6189A2" />
+      </Grid>
+
+      <Label   Text="Select date to view your attendance details"
+         TextColor="White"
                />
 
-            <!--Date Pickers-->
-            <Grid  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <DatePicker 
-                    Grid.Column="0"
-                    Format="d MMM yyyy"
-                    Date="{Binding StartDate}"
+      <!--Date Pickers-->
+      <Grid  >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DatePicker
+            Grid.Column="0"
+            Format="d MMM yyyy"
+            Date="{Binding StartDate}"
+            />
+
+        <DatePicker
+            Grid.Column="1"
+            Format="d MMM yyyy"
+            Date="{Binding EndDate}"
+            MinimumDate="{Binding StartDate}"
                     />
+      </Grid>
+      <ScrollView x:Name="DaysScroll"   Orientation="Horizontal">
+        <controls:RepeaterView x:TypeArguments="models:DayWrapper" x:Name="DaysStack" ItemsSource="{Binding DaysList}"  Orientation="Horizontal" >
+          <controls:RepeaterView.ItemTemplate>
+            <DataTemplate>
+              <Grid RowSpacing="0">
+                <Grid.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="Day_Tapped" />
+                </Grid.GestureRecognizers>
+                <Grid.RowDefinitions>
+                  <RowDefinition  Height="Auto"/>
+                  <RowDefinition  Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <DatePicker 
-                    Grid.Column="1"
-                    Format="d MMM yyyy"
-                    Date="{Binding EndDate}"
-                    
-                    />
-            </Grid>
-
-            <ScrollView x:Name="DaysScroll"   Orientation="Horizontal">
-                <StackLayout x:Name="DaysStack"  Orientation="Horizontal" HeightRequest="60">
-
+                <Label Grid.Row="0"
+                       VerticalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Fill"
+                       BackgroundColor="{StaticResource YellowAccent}" TextColor="Black"
+                       FontSize="Small"
+                       Text="{Binding AbbrWeek}"/>
+                <BoxView BackgroundColor="{StaticResource NormalBackColor}"
+                         x:Name="DayBack"
+                         VerticalOptions="Fill"
+                         HorizontalOptions="Fill"
+                         Grid.Row="1"/>
+                <StackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Padding="12,8" Spacing="3"
+                             Grid.Row="1">
+                  <Label x:Name="DayLabel"
+                         BackgroundColor="Transparent" TextColor="{StaticResource NormalDayColor}"
+                         FontSize="Medium" FontAttributes="Bold"
+                         Text="{Binding Day}"/>
+                  <Label
+                       x:Name="MonthLabel"
+                        BackgroundColor="Transparent" TextColor="{StaticResource NormalMonthColor}"
+                        FontSize="Small"
+                        Text="{Binding AbbrMonth}"/>
                 </StackLayout>
-            </ScrollView>
-            <Grid VerticalOptions="FillAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+              </Grid>
 
-                    
-                </Grid.ColumnDefinitions>
-                <Label TextColor="Black" Text="Date" Grid.Column="0"/>
-                <Label TextColor="Black" Text=":" Grid.Column="1"/>
-                <Label TextColor="Black" Text="1 Oct 2015" Grid.Column="2"/>
-            </Grid>
-            
-            
-            <Button 
+            </DataTemplate>
+          </controls:RepeaterView.ItemTemplate>
+        </controls:RepeaterView>
+      </ScrollView>
+      <Grid VerticalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="Auto"/>
+
+
+        </Grid.ColumnDefinitions>
+        <Label TextColor="Black" Text="Date" Grid.Column="0"/>
+        <Label TextColor="Black" Text=":" Grid.Column="1"/>
+        <Label TextColor="Black" Text="1 Oct 2015" Grid.Column="2"/>
+      </Grid>
+
+
+      <Button
                 
-                HorizontalOptions="FillAndExpand"
-                BackgroundColor="White"
-                TextColor="Black"
-                BorderRadius="5"
-                Text="Delegation"
+          HorizontalOptions="FillAndExpand"
+          BackgroundColor="White"
+          TextColor="Black"
+          BorderRadius="5"
+          Text="Delegation"
                 >
-            </Button>
-            
-            <Button 
-                HorizontalOptions="FillAndExpand"
-                BackgroundColor="White"
-                TextColor="Black"
-                BorderRadius="5"
-                Text="Day Pass"
+      </Button>
+
+      <Button
+          HorizontalOptions="FillAndExpand"
+          BackgroundColor="White"
+          TextColor="Black"
+          BorderRadius="5"
+          Text="Day Pass"
                 >
-            </Button>
-            <Button 
-                HorizontalOptions="FillAndExpand"
-                BackgroundColor="Black"
-                TextColor="White"
-                BorderRadius="5"
-                Text="ADAA Timesheet"
+      </Button>
+      <Button
+          HorizontalOptions="FillAndExpand"
+          BackgroundColor="Black"
+          TextColor="White"
+          BorderRadius="5"
+          Text="ADAA Timesheet"
                 >
 
-            </Button>
-        </StackLayout>
+      </Button>
+    </StackLayout>
 
-    </ScrollView>
+  </ScrollView>
+
 </ContentPage>

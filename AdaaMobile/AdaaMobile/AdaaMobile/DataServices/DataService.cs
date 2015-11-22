@@ -13,7 +13,7 @@ using AdaaMobile.Models.Response;
 
 namespace AdaaMobile.DataServices
 {
-    public class DataService : IDataService
+	public class DataService : IDataService
     {
         private const string BaseUrl = "http://adaa.getsandbox.com";
         private const string ContenTypeKey = "Content-Type";
@@ -39,10 +39,40 @@ namespace AdaaMobile.DataServices
             return await request.PostAsync<LoginResponse>(stringContent);
         }
 
-        public Task<ResponseWrapper<List<Employee>>> GetEmpolyees(CancellationToken? token)
+        public Task<ResponseWrapper<List<Employee>>> GetEmpolyeesAsync(CancellationToken? token)
         {
             throw new NotImplementedException();
 
         }
+
+		public async Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync (AttendanceQParameters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync (AttExceptionQParamters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync (DaypassRequestQParameters qParameters, DaypassRequestBParameters bParamters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<DayPassesResponse>> GetPendingDayPassesAsync (DayPassesQParameters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync (DaypassApproveQParameters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<DayPassTasksResponse>> DayPassTasksResponseAsync (DayPassTasksQParameters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
     }
 }

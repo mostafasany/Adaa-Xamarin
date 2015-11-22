@@ -7,6 +7,7 @@
              
              x:Name="MainWindow"
              x:Class="AdaaMobile.Views.HomePage">
+
   <Grid x:Name="HRelativeLayout">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
@@ -27,7 +28,7 @@
       </Label>
     </StackLayout>
 
-    
+
     <!--Section Background-->
     <BoxView Grid.Row="2" Grid.RowSpan="2"  BackgroundColor="Aqua"/>
 

@@ -111,7 +111,7 @@ namespace AdaaMobile.ViewModels
 					if (response.Result.Status == "ok" && !string.IsNullOrEmpty( response.Result.UserToken))
                     {
 						new AppSettings().UserToken = response.Result.UserToken;
-                        _navigationService.SetAppCurrentPage(typeof(MasterPage));
+                        _navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
                         return;
                     }
                 }

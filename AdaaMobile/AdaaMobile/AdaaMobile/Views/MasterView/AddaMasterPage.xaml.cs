@@ -6,17 +6,17 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Views.MasterView
 {
-    public partial class MasterPage : MasterDetailPage
+    public partial class AddaMasterPage : MasterDetailPage
     {
         private MenuPage menuPage;
         private readonly INavigationService _navigationService;
         private AdaaPageItem _lastSelectedPage;
-        public MasterPage()
+        public AddaMasterPage()
         {
             _navigationService = Locator.Default.NavigationService;
             BackgroundColor = (Color)Application.Current.Resources["AppBackgroundLight"];
             SetMenuPage();
-            Detail = MasterHelper.CreatePage(typeof(HomePage));
+            Detail = MasterHelper.CreatePage(typeof(AttendancePage));
 
 
         }
@@ -45,7 +45,6 @@ namespace AdaaMobile.Views.MasterView
         private void NavigateTo(AdaaPageItem page)
         {
             if (page == null) return;
-            var type = page.TargetType;
             Detail = MasterHelper.CreatePage(page.TargetType);
             menuPage.Menu.SelectedItem = null;
             IsPresented = false;

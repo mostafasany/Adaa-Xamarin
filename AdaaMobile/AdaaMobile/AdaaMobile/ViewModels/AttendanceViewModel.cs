@@ -4,38 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.Common;
+using AdaaMobile.Models;
 
 namespace AdaaMobile.ViewModels
 {
     public class AttendanceViewModel : BindableBase
     {
+        private const int LimitRangeInDays = 32;
 
         #region Fields
         #endregion
 
         #region Properties
-        private DateTime _StartDate;
-
+        private DateTime _startDate;
         public DateTime StartDate
         {
-            get { return _StartDate; }
-            set { SetProperty(ref _StartDate, value); }
+            get { return _startDate; }
+            set
+            {
+                if (SetProperty(ref _startDate, value))
+                {
+                    PopulateDays();
+                }
+            }
         }
 
-        private DateTime _EndDate;
+        private DateTime _endDate;
 
         public DateTime EndDate
         {
-            get { return _EndDate; }
-            set { SetProperty(ref _EndDate, value); }
+            get { return _endDate; }
+            set
+            {
+                if (SetProperty(ref _endDate, value))
+                {
+                    PopulateDays();
+                }
+            }
         }
 
-        private List<string> _DaysList;
+        private List<DayWrapper> _daysList;
 
-        public List<string> DaysList
+        public List<DayWrapper> DaysList
         {
-            get { return _DaysList; }
-            set { SetProperty(ref _DaysList, value); }
+            get { return _daysList; }
+            set { SetProperty(ref _daysList, value); }
         }
 
         #endregion
@@ -44,13 +57,21 @@ namespace AdaaMobile.ViewModels
         public AttendanceViewModel()
         {
 
-            StartDate = new DateTime(2015, 10, 1, 0, 0, 0);
-            EndDate = new DateTime(2015, 10, 31, 0, 0, 0);
-            var days = new List<string>();
+            _startDate = new DateTime(2015, 10, 1, 0, 0, 0);
+            _endDate = new DateTime(2015, 10, 31, 0, 0, 0);
+            PopulateDays();
+        }
+
+        private void PopulateDays()
+        {
+            var days = new List<DayWrapper>();
             var currentDate = StartDate;
-            while (currentDate <= EndDate)
+            var endDate = EndDate;
+            //Limit large unneccessary range if any
+            if ((EndDate - StartDate).Days > LimitRangeInDays) endDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 0, 0, 0);
+            while (currentDate <= endDate)
             {
-                days.Add(currentDate.ToString("d MMM"));
+                days.Add(new DayWrapper(currentDate));
                 currentDate = currentDate.AddDays(1);
             }
             DaysList = days;

@@ -10,14 +10,14 @@ using AdaaMobile.Models.Response;
 
 namespace AdaaMobile.DataServices
 {
-    public class MockDataService : IDataService
+	public class MockDataService : IDataService
     {
-        public Task<User> LoginAsync(string userName, string password)
+		public Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ResponseWrapper<List<Employee>>> GetEmpolyees(CancellationToken? token)
+        public async Task<ResponseWrapper<List<Employee>>> GetEmpolyeesAsync(CancellationToken? token)
         {
             var response = new ResponseWrapper<List<Employee>>();
             response.ResponseStatus = ResponseStatus.SuccessWithResult;
@@ -31,9 +31,34 @@ namespace AdaaMobile.DataServices
             return response;
         }
 
-        Task<ResponseWrapper<LoginResponse>> IDataService.LoginAsync(string userName, string password)
-        {
-            throw new NotImplementedException();
-        }
+		public Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync (AttendanceQParameters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync (AttExceptionQParamters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync (DaypassRequestQParameters qParameters, DaypassRequestBParameters bParamters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<DayPassesResponse>> GetPendingDayPassesAsync (DayPassesQParameters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync (DaypassApproveQParameters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public Task<ResponseWrapper<DayPassTasksResponse>> DayPassTasksResponseAsync (DayPassTasksQParameters parameters, CancellationToken? token)
+		{
+			throw new NotImplementedException ();
+		}
     }
 }

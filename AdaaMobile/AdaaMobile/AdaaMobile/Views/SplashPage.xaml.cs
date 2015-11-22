@@ -25,7 +25,7 @@ namespace AdaaMobile.Views
 			if (string.IsNullOrEmpty (settings.UserToken)) {
 				Navigation.PushModalAsync (new ChooseLanguagePage());
 			} else {
-				Navigation.PushModalAsync (new MasterPage());
+				Navigation.PushModalAsync (new AddaMasterPage());
 			}
 
 //			Device.StartTimer (new TimeSpan(0,0,3), () => {
