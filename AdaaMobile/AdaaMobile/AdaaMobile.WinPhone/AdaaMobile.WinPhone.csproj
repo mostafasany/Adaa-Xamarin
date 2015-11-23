@@ -89,9 +89,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\AdaaMobile\Controls\ImageButton\ImageButtonRenderer.shared.cs">
+      <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomRenderers\ImageButtonRenderer.cs" />
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
     <Compile Include="CustomRenderers\ImageRenderer.cs" />
     <Compile Include="Helpers\Localize.cs" />

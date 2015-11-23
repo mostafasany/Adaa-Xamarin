@@ -40,6 +40,7 @@
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\ColumnsPanel.cs" />
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />
+    <Compile Include="Controls\ImageButton\ImageButtonSourceConverter.cs" />
     <Compile Include="Converters\BooleanNegateConverter.cs" />
     <Compile Include="Common\ExtendedCommand.cs" />
     <Compile Include="Converters\BoolToColorConverter.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="DataServices\IDataService.cs" />
     <Compile Include="DataServices\MockDataService.cs" />
     <Compile Include="DataServices\Requests\ResponseWrapper.cs" />
+    <Compile Include="Enums\ImageOrientation.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Helpers\AppSettings.cs" />
     <Compile Include="Helpers\DialogManager.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="Helpers\Interfaces\INavigationService.cs" />
     <Compile Include="Helpers\Interfaces\INetworkHelper.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
+    <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Models\DayWrapper.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="Views\MasterView\MasterHelper.cs" />

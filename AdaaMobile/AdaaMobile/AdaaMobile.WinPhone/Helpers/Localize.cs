@@ -16,6 +16,11 @@ namespace AdaaMobile.WinPhone.Helpers
         {
             return System.Threading.Thread.CurrentThread.CurrentUICulture;
         }
+
+        public void UpdateCultureInfo(string cultureName)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 }

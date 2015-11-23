@@ -86,6 +86,10 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\AdaaMobile\Controls\ImageButton\ImageButtonRenderer.shared.cs">
+      <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
+    </Compile>
+    <Compile Include="CustomRenderers\ImageButtonRenderer.cs" />
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
     <Compile Include="Helpers\Localize.cs" />
     <Compile Include="Main.cs" />

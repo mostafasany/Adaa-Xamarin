@@ -106,7 +106,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\AdaaMobile\Controls\ImageButton\ImageButtonRenderer.shared.cs">
+      <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
+    </Compile>
+    <Compile Include="CustomRenderers\ImageButtonRenderer.cs" />
     <Compile Include="CustomRenderers\InnerAndroidScrollViewRenderer.cs" />
+    <Compile Include="Extensions\FontExtensions.cs" />
     <Compile Include="Helpers\Localize.cs" />
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
     <Compile Include="MainActivity.cs" />
