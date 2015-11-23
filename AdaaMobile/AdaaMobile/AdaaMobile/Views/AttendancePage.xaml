@@ -74,13 +74,14 @@
           
             />
 
-      <Button Grid.Column="0"
+      <controls:ImageButton Grid.Column="0"
               Text="{Binding StartDate,
                 Converter={StaticResource DateFormatConverter},
                 ConverterParameter=d MMM yyyy}"
               Image="icon.png"
               Clicked="StartDate_Clicked"
-              HeightRequest="40"
+              ImageHeightRequest="40"
+              ImageWidthRequest="40"  
               BackgroundColor="{StaticResource AppBackgroundLight}"
                 />
 
@@ -95,12 +96,14 @@
           MinimumDate="{Binding StartDate}"
           MaximumDate="{x:Static sys:DateTime.Now}"
                     />
-      <Button Grid.Column="1"
+      <controls:ImageButton Grid.Column="1"
                 Text="{Binding EndDate,
                 Converter={StaticResource DateFormatConverter},
                 ConverterParameter=d MMM yyyy}"
                 Image="icon.png"
                 Clicked="EndDate_Clicked"
+                ImageHeightRequest="40"
+                ImageWidthRequest="40"           
                 BackgroundColor="{StaticResource AppBackgroundLight}"
                 />
     </Grid>
@@ -199,16 +202,20 @@
         Text="{ext:Translate DayPass}"
                 >
     </Button>
-    <Button
+    <controls:ImageButton
         HorizontalOptions="FillAndExpand"
+        VerticalOptions="Start"
         BackgroundColor="{StaticResource AppBackgroundLight}"
-        TextColor="White"
+        TextColor="Red"
         BorderRadius="5"
+        ImageHeightRequest="20"
+        ImageWidthRequest="20"
+        Orientation="ImageToLeft"
         Image="icon.png"
         Text="{ext:Translate AdaaTimesheet}"
                 >
 
-    </Button>
+    </controls:ImageButton>
   </StackLayout>
 
   </ScrollView>
