@@ -11,162 +11,164 @@
              >
   <ContentPage.Resources>
     <ResourceDictionary>
-      <Color x:Key="NormalDayColor">Black</Color>
-      <Color x:Key="NormalMonthColor">Black</Color>
-      <Color x:Key="SelectedMonthColor">White</Color>
-      <Color x:Key="NormalBackColor">#FFB4D7DB</Color>
       <converters:BoolToColorConverter x:Key="DayColorConverter"
-       FalseColor="Black"  TrueColor="{StaticResource YellowAccent}"                                  
-      />
+       FalseColor="Black"  TrueColor="{StaticResource YellowAccent}"  />
       <converters:BoolToColorConverter x:Key="MonthColorConverter"
-       FalseColor="White"  TrueColor="{StaticResource YellowAccent}"                                  
-      />
+       FalseColor="Black"  TrueColor="White"  />
       <converters:BoolToColorConverter x:Key="DayBackColorConverter"
-       FalseColor="#FFB4D7DB"  TrueColor="{StaticResource AppBackgroundLight}"                                  
-      />
+       FalseColor="#FFB4D7DB"  TrueColor="{StaticResource AppBackgroundLight}"  />
       <converters:StringFormatConverter x:Key="StringFormatConverter"/>
       <converters:DateFormatConverter x:Key="DateFormatConverter"/>
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <!--<ScrollView>-->
-    <StackLayout Spacing="0"  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+  <ScrollView>
+  <StackLayout Spacing="0"  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
-      <!--Top buttons Attendance and Exceptions-->
-      <Grid  >
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Button Text="{ext:Translate Attendance}"
-            Grid.Column="0"
-            BorderRadius="0"
-            BorderColor="{StaticResource AppBackgroundDark}"
-            x:Name="AttendanceButton"
-            Clicked="OnTabTapped"
+    <!--Top buttons Attendance and Exceptions-->
+    <Grid  >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      
+      <Button Text="{ext:Translate Attendance}"
+          Grid.Column="0"
+          BorderRadius="0"
+          BorderColor="{StaticResource AppBackgroundDark}"
+          x:Name="AttendanceButton"
+          Clicked="OnTabTapped"         
         />
 
-        <Button Text="{ext:Translate Exceptions}"
-            Grid.Column="1"
-            BorderRadius="0"
-            BorderColor="{StaticResource AppBackgroundDark}"
-            x:Name="ExceptionsButton"
-            Clicked="OnTabTapped"
+      <Button Text="{ext:Translate Exceptions}"
+          Grid.Column="1"
+          BorderRadius="0"
+          BorderColor="{StaticResource AppBackgroundDark}"
+          x:Name="ExceptionsButton"
+          Clicked="OnTabTapped"   
       />
-      </Grid>
+    </Grid>
 
-      <Label   Text="Select date to view your attendance details"
-         TextColor="White"
+    <Label   Text="Select date to view your attendance details"
+       TextColor="White"
                />
 
-      <!--Date Pickers-->
-      <Grid  >
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <!--DatePicker isn't customizable, So Hide it and put cutomizable 
+    <!--Date Pickers-->
+    <Grid  >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+            <!--<Image Source="splashscreen.jpg" 
+             Aspect="AspectFill" Grid.ColumnSpan="2" 
+             VerticalOptions="Fill" HorizontalOptions="Fill"/>-->
+      <!--DatePicker isn't customizable, So Hide it and put cutomizable 
         button that triggers Date picker with it's specification-->
-        <DatePicker
-            Grid.Column="0"
-            WidthRequest="0" HeightRequest="0"
-            x:Name="MinDatePicker"
-            Format="d MMM yyyy"
-            Date="{Binding StartDate}"
-            MaximumDate="{Binding EndDate}"
+      <DatePicker
+          Grid.Column="0"
+          WidthRequest="0" HeightRequest="0"
+          x:Name="MinDatePicker"
+          Format="d MMM yyyy"
+          Date="{Binding StartDate}"
+          MaximumDate="{Binding EndDate}"
+          
             />
 
-        <Button Grid.Column="0"
-                Text="{Binding StartDate,
+      <Button Grid.Column="0"
+              Text="{Binding StartDate,
+                Converter={StaticResource DateFormatConverter},
+                ConverterParameter=d MMM yyyy}"
+              Image="icon.png"
+              Clicked="StartDate_Clicked"
+              HeightRequest="40"
+              BackgroundColor="{StaticResource AppBackgroundLight}"
+                />
+
+      <!--DatePicker isn't customizable, So Hide it and put cutomizable 
+        button that triggers Date picker with it's specification-->
+      <DatePicker
+          Grid.Column="1"
+          x:Name="MaxDatePicker"
+          Format="d MMM yyyy"
+          Date="{Binding EndDate}"
+          WidthRequest="0" HeightRequest="0"
+          MinimumDate="{Binding StartDate}"
+          MaximumDate="{x:Static sys:DateTime.Now}"
+                    />
+      <Button Grid.Column="1"
+                Text="{Binding EndDate,
                 Converter={StaticResource DateFormatConverter},
                 ConverterParameter=d MMM yyyy}"
                 Image="icon.png"
-                Clicked="StartDate_Clicked"
+                Clicked="EndDate_Clicked"
                 BackgroundColor="{StaticResource AppBackgroundLight}"
                 />
-
-        <!--DatePicker isn't customizable, So Hide it and put cutomizable 
-        button that triggers Date picker with it's specification-->
-        <DatePicker
-            Grid.Column="1"
-            x:Name="MaxDatePicker"
-            Format="d MMM yyyy"
-            Date="{Binding EndDate}"
-            WidthRequest="0" HeightRequest="0"
-            MinimumDate="{Binding StartDate}"
-            MaximumDate="{x:Static sys:DateTime.Now}"
-                    />
-        <Button Grid.Column="1"
-                  Text="{Binding EndDate,
-                Converter={StaticResource DateFormatConverter},
-                ConverterParameter=d MMM yyyy}"
-                  Image="icon.png"
-                  Clicked="EndDate_Clicked"
-                  BackgroundColor="{StaticResource AppBackgroundLight}"
-                />
-      </Grid>
-      <RelativeLayout>
-        <ListView Rotation="270"
-                  HorizontalOptions="Fill"
-                  HeightRequest="80"
-                  RowHeight="50"
-                  x:Name="DaysList"
-                  InputTransparent="True"
-                  ItemTapped="DayItem_Tapped"
-                  ItemsSource="{Binding DaysList}"
-                  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-40}"
-                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=40}"
-                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=80}"
-                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+    </Grid>
+    <RelativeLayout VerticalOptions="Start" HeightRequest="80">
+      <ListView Rotation="270"
+                HorizontalOptions="Fill"              
+                HeightRequest="80"
+                RowHeight="50"
+                x:Name="DaysList"
+                InputTransparent="True"
+                ItemTapped="DayItem_Tapped"
+                ItemsSource="{Binding DaysList}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-40}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=40}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=80}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
           >
-          <ListView.ItemTemplate>
-            <DataTemplate>
-              <ViewCell>
-                <ViewCell.View>
-                  <Grid RowSpacing="0" Rotation="90"
-                       TranslationX="15"
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <Grid RowSpacing="0" Rotation="90"
+                     TranslationX="15"
                                        >
-                   
-                    <Grid.RowDefinitions>
-                      <RowDefinition  Height="Auto"/>
-                      <RowDefinition  Height="Auto"/>
-                    </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0"
+                  <Grid.RowDefinitions>
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="Auto"/>
+                  </Grid.RowDefinitions>
+
+                  <Label Grid.Row="0"
+                         VerticalOptions="Fill"
+                         HorizontalTextAlignment="Center"
+                         HorizontalOptions="Fill"
+                         BackgroundColor="{StaticResource YellowAccent}"
+                         TextColor="Black"
+                         FontSize="Small"
+                         Text="{Binding AbbrWeek}"/>
+                  <BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
+                           x:Name="DayBack"
                            VerticalOptions="Fill"
-                           HorizontalTextAlignment="Center"
                            HorizontalOptions="Fill"
-                           BackgroundColor="{StaticResource YellowAccent}"
-                           TextColor="Black"
-                           FontSize="Small"
-                           Text="{Binding AbbrWeek}"/>
-                    <BoxView BackgroundColor="{StaticResource NormalBackColor}"
-                             x:Name="DayBack"
-                             VerticalOptions="Fill"
-                             HorizontalOptions="Fill"
-                             Grid.Row="1"/>
-                    <StackLayout VerticalOptions="Center"
-                                 HorizontalOptions="Center"
-                                 Padding="12,8" Spacing="2"
-                                 Grid.Row="1">
-                      <Label x:Name="DayLabel"
-                             BackgroundColor="Transparent" TextColor="{StaticResource NormalDayColor}"
-                             FontSize="Medium" FontAttributes="Bold"
-                             Text="{Binding Day}"/>
-                      <Label
-                           x:Name="MonthLabel"
-                            BackgroundColor="Transparent" TextColor="{StaticResource NormalMonthColor}"
-                            FontSize="Small"
-                            Text="{Binding AbbrMonth}"/>
-                    </StackLayout>
-                  </Grid>
-                </ViewCell.View>
-              </ViewCell>
-            </DataTemplate>
+                           Grid.Row="1"/>
+                  <StackLayout VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Padding="12,8" Spacing="2"
+                               Grid.Row="1">
+                    <Label x:Name="DayLabel"
+                           BackgroundColor="Transparent"
+                           TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}"
+                           FontSize="Medium" FontAttributes="Bold"
+                           Text="{Binding Day}"/>
+                    <Label
+                         x:Name="MonthLabel"
+                          BackgroundColor="Transparent"
+                         TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}"
+                          FontSize="Small"
+                          Text="{Binding AbbrMonth}"/>
+                  </StackLayout>
+                </Grid>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
 
-          </ListView.ItemTemplate>
-        </ListView>
-      </RelativeLayout>
+        </ListView.ItemTemplate>
+      </ListView>
+    </RelativeLayout>
+    <StackLayout VerticalOptions="FillAndExpand">
       <Grid VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBackgroundLight}">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="Auto"/>
@@ -177,38 +179,38 @@
         <Label TextColor="Black" Text=":" Grid.Column="1"/>
         <Label TextColor="Black" Text="1 Oct 2015" Grid.Column="2"/>
       </Grid>
-
-
-      <Button
-                
-          HorizontalOptions="FillAndExpand"
-          BackgroundColor="White"
-          TextColor="Black"
-          BorderRadius="5"
-          Text="{ext:Translate Delegation}"
-                >
-      </Button>
-
-      <Button
-          HorizontalOptions="FillAndExpand"
-          BackgroundColor="White"
-          TextColor="{StaticResource AppBackgroundLight}"
-          BorderRadius="5"
-          Text="{ext:Translate DayPass}"
-                >
-      </Button>
-      <Button
-          HorizontalOptions="FillAndExpand"
-          BackgroundColor="{StaticResource AppBackgroundLight}"
-          TextColor="White"
-          BorderRadius="5"
-          Image="icon.png"
-          Text="{ext:Translate AdaaTimesheet}"
-                >
-
-      </Button>
     </StackLayout>
 
-  <!--</ScrollView>-->
+    <Button
+                
+        HorizontalOptions="FillAndExpand"
+        BackgroundColor="White"
+        TextColor="Black"
+        BorderRadius="5"
+        Text="{ext:Translate Delegation}"
+                >
+    </Button>
+
+    <Button
+        HorizontalOptions="FillAndExpand"
+        BackgroundColor="White"
+        TextColor="{StaticResource AppBackgroundLight}"
+        BorderRadius="5"
+        Text="{ext:Translate DayPass}"
+                >
+    </Button>
+    <Button
+        HorizontalOptions="FillAndExpand"
+        BackgroundColor="{StaticResource AppBackgroundLight}"
+        TextColor="White"
+        BorderRadius="5"
+        Image="icon.png"
+        Text="{ext:Translate AdaaTimesheet}"
+                >
+
+    </Button>
+  </StackLayout>
+
+  </ScrollView>
 
 </ContentPage>

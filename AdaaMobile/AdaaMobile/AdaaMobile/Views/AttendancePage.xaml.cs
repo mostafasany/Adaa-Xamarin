@@ -43,48 +43,6 @@ namespace AdaaMobile.Views
 
         }
 
-        #region Days List Related Methods
-        private void Day_Tapped(object sender, EventArgs e)
-        {
-            var tappedGrid = (Layout)sender;
-            if (tappedGrid == _lastTappedGrid) return;
-            //Set selected state
-            SetTextColor(tappedGrid, DayLabelName, (Color)App.Current.Resources["YellowAccent"]);
-            SetTextColor(tappedGrid, MonthLabelName, Color.White);
-            SetBackColor(tappedGrid, DayBackName, (Color)App.Current.Resources["AppBackgroundLight"]);
-
-            //Reset to normal state
-            if (_lastTappedGrid != null)
-            {
-                SetTextColor(_lastTappedGrid, DayLabelName, Color.Black);
-                SetTextColor(_lastTappedGrid, MonthLabelName, Color.Black);
-                SetBackColor(_lastTappedGrid, DayBackName, (Color)Resources[DayBackNormalKey]);
-
-            }
-
-            //Assign last tapped grid
-            _lastTappedGrid = tappedGrid;
-        }
-
-        private void SetTextColor(Layout grid, string labelName, Color color)
-        {
-            var label = grid.FindByName<Label>(labelName);
-            if (label != null)
-            {
-                label.TextColor = color;
-            }
-        }
-
-        private void SetBackColor(Layout grid, string boxName, Color color)
-        {
-            var boxView = grid.FindByName<BoxView>(boxName);
-            if (boxView != null)
-            {
-                boxView.BackgroundColor = color;
-            }
-        }
-        #endregion
-
         #region DatePickers
         private void EndDate_Clicked(object sender, EventArgs e)
         {
@@ -133,6 +91,11 @@ namespace AdaaMobile.Views
 
         #endregion
 
+        /// <summary>
+        /// Changes color state and triggers new load of details.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DayItem_Tapped(object sender, ItemTappedEventArgs e)
         {
             Debug.WriteLine("ItemTapped");
