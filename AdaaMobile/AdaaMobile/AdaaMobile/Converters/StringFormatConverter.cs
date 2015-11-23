@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Converters
 {
-    public class Converter : IValueConverter
+    public class StringFormatConverter : IValueConverter
     {
         public object Convert ( object value, Type targetType, object parameter,  CultureInfo culture)
         {

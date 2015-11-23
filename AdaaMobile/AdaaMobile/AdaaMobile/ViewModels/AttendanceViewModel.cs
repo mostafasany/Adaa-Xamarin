@@ -44,12 +44,19 @@ namespace AdaaMobile.ViewModels
         }
 
         private List<DayWrapper> _daysList;
-
         public List<DayWrapper> DaysList
         {
             get { return _daysList; }
             set { SetProperty(ref _daysList, value); }
         }
+
+        private DayWrapper _selectedDay;
+        public DayWrapper SelectedDay
+        {
+            get { return _selectedDay; }
+            set { SetProperty(ref _selectedDay, value); }
+        }
+
 
         #endregion
 
@@ -68,7 +75,7 @@ namespace AdaaMobile.ViewModels
             var currentDate = StartDate;
             var endDate = EndDate;
             //Limit large unneccessary range if any
-            if ((EndDate - StartDate).Days > LimitRangeInDays) endDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 0, 0, 0);
+           // if ((EndDate - StartDate).Days > LimitRangeInDays) endDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 0, 0, 0);
             while (currentDate <= endDate)
             {
                 days.Add(new DayWrapper(currentDate));

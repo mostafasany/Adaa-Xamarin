@@ -43,6 +43,7 @@
     <Compile Include="Converters\BooleanNegateConverter.cs" />
     <Compile Include="Common\ExtendedCommand.cs" />
     <Compile Include="Converters\BoolToColorConverter.cs" />
+    <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="Converters\StringFormatConverter.cs" />
     <Compile Include="Converters\TruncateDecimalConverter.cs" />
     <Compile Include="Converters\VisibleNotEmptyConverter.cs" />
