@@ -27,6 +27,7 @@ namespace AdaaMobile.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             ImageCircleRenderer.Init();
+            ExtendedGridRenderer.Init();
             //Create new locator instance.
             var locator = new Locator();
             //Get user selected culture from last run or default

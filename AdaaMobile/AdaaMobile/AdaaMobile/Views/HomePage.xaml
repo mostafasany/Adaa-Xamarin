@@ -30,7 +30,7 @@
 
 
     <!--Section Background-->
-    <BoxView Grid.Row="2" Grid.RowSpan="2"  BackgroundColor="Aqua"/>
+    <BoxView Grid.Row="2" Grid.RowSpan="2"  BackgroundColor="Aqua" />
 
     <!--Seperator under user profile-->
     <BoxView
@@ -78,11 +78,17 @@
             <StackLayout Spacing="10"
                      VerticalOptions="Fill"
                      HorizontalOptions="Fill">
-              <Grid VerticalOptions="FillAndExpand"
-                   HorizontalOptions="FillAndExpand"
-                   BackgroundColor="{StaticResource AppBackgroundLight}"
-                   
-                                 >
+              <controls:ExtendedGrid VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand" 
+                    CornerRadius="3"                 
+                    BackgroundColor="Transparent">
+                <controls:RoundedBoxView
+                  BackgroundColor="{StaticResource AppBackgroundLight}"
+                  CornerRadius="3"
+                  VerticalOptions="Fill"
+                  HorizontalOptions="Fill"
+                  />
+                
                 <Image Source="{Binding IconSource}"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
@@ -102,7 +108,7 @@
                 <Grid.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
                 </Grid.GestureRecognizers>
-              </Grid>
+              </controls:ExtendedGrid >
               <Label Text="{Binding Title}" HorizontalOptions="Fill" XAlign="Center">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
