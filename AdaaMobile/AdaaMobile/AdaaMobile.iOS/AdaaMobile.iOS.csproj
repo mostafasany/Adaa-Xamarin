@@ -89,6 +89,7 @@
     <Compile Include="..\AdaaMobile\Controls\ImageButton\ImageButtonRenderer.shared.cs">
       <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
     </Compile>
+    <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
     <Compile Include="CustomRenderers\ImageButtonRenderer.cs" />
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
     <Compile Include="Extensions\UIViewExtensions.cs" />
