@@ -206,7 +206,7 @@ namespace AdaaMobile.Controls
             int rowCount = Children.Count / columnWidths.Length;
             double rowHeight = 0;
             double yPos = y, xPos = x;
-            int index = 0;
+            //int index = 0;
             for (int row = 0; row < rowCount; row++)
             {
                 var child = Children[row];

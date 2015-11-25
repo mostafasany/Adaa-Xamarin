@@ -43,6 +43,9 @@
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonSourceConverter.cs" />
     <Compile Include="Controls\RoundedBoxView.cs" />
+    <Compile Include="Controls\SvgImage\ColorPair.cs" />
+    <Compile Include="Controls\SvgImage\ISvgImageRenderer.cs" />
+    <Compile Include="Controls\SvgImage\SvgImage.cs" />
     <Compile Include="Converters\BooleanNegateConverter.cs" />
     <Compile Include="Common\ExtendedCommand.cs" />
     <Compile Include="Converters\BoolToColorConverter.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="DataServices\MockDataService.cs" />
     <Compile Include="DataServices\Requests\ResponseWrapper.cs" />
     <Compile Include="Enums\ImageOrientation.cs" />
+    <Compile Include="Controls\SvgImage\SvgImageRendererExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Helpers\AppSettings.cs" />
     <Compile Include="Helpers\DialogManager.cs" />

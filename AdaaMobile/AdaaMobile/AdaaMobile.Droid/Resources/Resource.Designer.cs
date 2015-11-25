@@ -26,7 +26,7 @@ namespace AdaaMobile.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::NGraphics.Android.Custom.Resource.String.library_name = global::AdaaMobile.Droid.Resource.String.library_name;
+			global::NGraphics.Android.Resource.String.library_name = global::AdaaMobile.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::AdaaMobile.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::AdaaMobile.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::AdaaMobile.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;

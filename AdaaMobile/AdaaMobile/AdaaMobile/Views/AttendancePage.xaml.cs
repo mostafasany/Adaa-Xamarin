@@ -18,7 +18,6 @@ namespace AdaaMobile.Views
         private Button _lastTappedTab;
 
         #region List Related fields
-        private Layout _lastTappedGrid;
         private const string DayLabelName = "DayLabel";
         private const string MonthLabelName = "MonthLabel";
         private const string DayBackName = "DayBack";

@@ -129,10 +129,10 @@
       <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
     </Compile>
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
-    <Compile Include="CustomRenderers\ExtendedSvgImageRenderer.cs" />
     <Compile Include="CustomRenderers\ImageButtonRenderer.cs" />
     <Compile Include="CustomRenderers\InnerAndroidScrollViewRenderer.cs" />
     <Compile Include="CustomRenderers\RoundBoxRenderer.cs" />
+    <Compile Include="CustomRenderers\SvgImageRenderer.cs" />
     <Compile Include="Extensions\FontExtensions.cs" />
     <Compile Include="Extensions\ViewExtensions.cs" />
     <Compile Include="Helpers\Localize.cs" />
@@ -157,7 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\HomeItemIcon.png" />
-    <Content Include="PluginsHelp\SettingsReadme.txt" />
+    <None Include="PluginsHelp\SettingsReadme.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\Values\styles.xml" />
     <AndroidResource Include="Resources\drawable\splash.jpg" />

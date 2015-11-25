@@ -6,7 +6,6 @@ using AdaaMobile.Helpers;
 using AdaaMobile.iOS.CustomRenderers;
 using AdaaMobile.ViewModels;
 using Foundation;
-using SVG.Forms.Plugin.iOS;
 using UIKit;
 using Xamarin;
 

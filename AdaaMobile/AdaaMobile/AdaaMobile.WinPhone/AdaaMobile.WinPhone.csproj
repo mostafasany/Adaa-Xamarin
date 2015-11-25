@@ -98,6 +98,7 @@
     <Compile Include="CustomRenderers\ImageButtonRenderer.cs" />
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
     <Compile Include="CustomRenderers\ImageRenderer.cs" />
+    <Compile Include="CustomRenderers\SvgImageRenderer.cs" />
     <Compile Include="Extensions\BorderExtensions.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\RectangleExtensions.cs" />

@@ -18,7 +18,7 @@ namespace AdaaMobile.WinPhone.CustomRenderers
     /// <summary>
     /// Used for registration with dependency service
     /// </summary>
-		public async static void Init()
+		public  static void Init()
 		{
 			var temp = DateTime.Now;
 		}

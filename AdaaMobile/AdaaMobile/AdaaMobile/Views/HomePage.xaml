@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
-             xmlns:abstractions="clr-namespace:SVG.Forms.Plugin.Abstractions;assembly=SVG.Forms.Plugin.Abstractions"
+             
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              BackgroundColor="{StaticResource AppBackgroundLight}"
              
@@ -81,8 +81,8 @@
                      VerticalOptions="Fill"
                      HorizontalOptions="Fill">
               <controls:ExtendedGrid VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand" 
-                    CornerRadius="3"                 
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="3"
                     BackgroundColor="Transparent">
                 <controls:RoundedBoxView
                   BackgroundColor="{StaticResource AppBackgroundLight}"
@@ -90,19 +90,23 @@
                   VerticalOptions="Fill"
                   HorizontalOptions="Fill"
                   />
-                
+
                 <!--<Image Source="{Binding IconSource}"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
                    HeightRequest="70"
                    WidthRequest="70"
                                    />-->
-<abstractions:SvgImage  
-                       SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}" 
-                       SvgPath="AdaaMobile.Images.twitter.svg" 
-                       HeightRequest="70" WidthRequest="70" 
-                       BackgroundColor="Transparent"
-                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                <controls:SvgImage
+                                       SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
+                                       SvgPath="AdaaMobile.Images.twitter.svg"
+                                       HeightRequest="70" WidthRequest="70"
+                                       BackgroundColor="Transparent"
+                                       HorizontalOptions="Center" VerticalOptions="Center">
+                <controls:SvgImage.ReplacementColors>
+                  <controls:ColorPair OldColor="#FFFFFF" NewColor="Red"></controls:ColorPair>
+                </controls:SvgImage.ReplacementColors>
+                </controls:SvgImage>
                 <BoxView
                   HorizontalOptions="Fill"
                   VerticalOptions="End"
@@ -116,7 +120,7 @@
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
                 </Grid.GestureRecognizers>
               </controls:ExtendedGrid >
-              <Label Text="{Binding Title}" HorizontalOptions="Fill" XAlign="Center">
+              <Label Text="{Binding Title}" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
                 </Label.GestureRecognizers>

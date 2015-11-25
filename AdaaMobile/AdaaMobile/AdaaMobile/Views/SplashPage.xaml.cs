@@ -23,9 +23,9 @@ namespace AdaaMobile.Views
 
 			AppSettings settings = new AppSettings ();
 			if (string.IsNullOrEmpty (settings.UserToken)) {
-				Navigation.PushModalAsync (new ChooseLanguagePage());
+				await Navigation.PushModalAsync (new ChooseLanguagePage());
 			} else {
-				Navigation.PushModalAsync (new AddaMasterPage());
+                await Navigation.PushModalAsync (new AddaMasterPage());
 			}
 
 //			Device.StartTimer (new TimeSpan(0,0,3), () => {

@@ -13,7 +13,6 @@ using Android.Widget;
 using Android.OS;
 using Java.Lang;
 using Java.Util;
-using SVG.Forms.Plugin.Droid;
 using Xamarin;
 namespace AdaaMobile.Droid
 {
