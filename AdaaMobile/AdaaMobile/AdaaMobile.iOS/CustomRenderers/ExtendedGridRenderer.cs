@@ -7,11 +7,15 @@ using AdaaMobile.iOS.CustomRenderers;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using CoreAnimation;
+using CoreGraphics;
+using Foundation;
 
 [assembly:
   ExportRenderer(typeof(AdaaMobile.Controls.ExtendedGrid), typeof(ExtendedGridRenderer))]
 namespace AdaaMobile.iOS.CustomRenderers
 {
+	[Preserve(AllMembers = true)]
     public class ExtendedGridRenderer : ViewRenderer<ExtendedGrid, UIView>
     {
         private AdaaMobile.Controls.ExtendedGrid _extendedGrid
@@ -22,7 +26,7 @@ namespace AdaaMobile.iOS.CustomRenderers
         protected override void OnElementChanged(ElementChangedEventArgs<ExtendedGrid> e)
         {
             base.OnElementChanged(e);
-            if (Control == null || e.NewElement == null) return;
+            if (Control == null ) return;
             UpdateCornerRadius();
         }
 
@@ -40,8 +44,24 @@ namespace AdaaMobile.iOS.CustomRenderers
         private void UpdateCornerRadius()
         {
             Control.Layer.BackgroundColor = Color.Transparent.ToCGColor();
-            Control.Layer.MasksToBounds = true;
-            Control.Layer.CornerRadius = (float)_extendedGrid.CornerRadius * 5;
+            Control.Layer.CornerRadius = (float)_extendedGrid.CornerRadius * 8;
+			//Control.Layer.MasksToBounds = true;
+			//Control.ClipsToBounds = true;
+
+
+			float fCornerRadius = 25f;
+
+			// Add a layer that holds the rounded corners.
+			UIBezierPath oMaskPath =  UIBezierPath.FromRoundedRect (Control.Bounds, UIRectCorner.AllCorners, new CGSize (fCornerRadius, fCornerRadius));
+
+			CAShapeLayer oMaskLayer = new CAShapeLayer ();
+			oMaskLayer.Frame = Control.Bounds;
+			oMaskLayer.Path = oMaskPath.CGPath;
+
+			// Set the newly created shape layer as the mask for the image view's layer
+			Control.Layer.Mask = oMaskLayer;
         }
+
+
     }
 }
