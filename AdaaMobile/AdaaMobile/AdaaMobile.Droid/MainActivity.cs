@@ -13,6 +13,7 @@ using Android.Widget;
 using Android.OS;
 using Java.Lang;
 using Java.Util;
+using SVG.Forms.Plugin.Droid;
 using Xamarin;
 namespace AdaaMobile.Droid
 {
@@ -28,6 +29,7 @@ namespace AdaaMobile.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             ImageCircleRenderer.Init();
             ExtendedGridRenderer.Init();
+            SvgImageRenderer.Init();
             //Create new locator instance.
             var locator = new Locator();
             //Get user selected culture from last run or default

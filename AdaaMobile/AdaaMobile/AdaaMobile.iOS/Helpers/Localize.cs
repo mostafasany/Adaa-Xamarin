@@ -24,7 +24,7 @@ namespace AdaaMobile.iOS.Helpers
 //                if (prefLanguageOnly == "pt")
 //                {
 //                    if (pref == "pt")
-//                        pref = "pt-BR"; // get the correct Brazilian language strings from the PCL RESX (note the local iOS folder is still "pt")
+//                        pref = "pt-BR"; // get the correct Brazilian language strings from the Pcl RESX (note the local iOS folder is still "pt")
 //                    else
 //                        pref = "pt-PT"; // Portugal
 //                }

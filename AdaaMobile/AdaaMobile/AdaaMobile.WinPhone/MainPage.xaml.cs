@@ -9,6 +9,7 @@ using AdaaMobile.ViewModels;
 using AdaaMobile.WinPhone.CustomRenderers;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using SVG.Forms.Plugin.WindowsPhone;
 
 namespace AdaaMobile.WinPhone
 {
@@ -21,7 +22,7 @@ namespace AdaaMobile.WinPhone
 
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
-
+            SvgImageRenderer.Init();
             LoadApplication(new AdaaMobile.App(new Locator()));
         }
     }

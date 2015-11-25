@@ -70,6 +70,7 @@
     <Compile Include="Helpers\Interfaces\INetworkHelper.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
+    <Compile Include="Helpers\SvgAssembly.cs" />
     <Compile Include="Models\DayWrapper.cs" />
     <Compile Include="Models\Request\CurrentUserProfileQParameters.cs" />
     <Compile Include="Models\Response\UserProfile.cs" />
@@ -176,6 +177,10 @@
     <Reference Include="Refractored.Xam.Settings.Abstractions, Version=1.5.2.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\packages\Xam.Plugins.Settings.1.5.2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Refractored.Xam.Settings.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="SVG.Forms.Plugin.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.Svg.1.0.0.26\lib\portable-net45+wp8+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SVG.Forms.Plugin.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
     </Reference>
@@ -230,6 +235,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\twitter.svg" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Strings\LocalizationNotes.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />

@@ -6,6 +6,7 @@ using AdaaMobile.Helpers;
 using AdaaMobile.iOS.CustomRenderers;
 using AdaaMobile.ViewModels;
 using Foundation;
+using SVG.Forms.Plugin.iOS;
 using UIKit;
 using Xamarin;
 
@@ -29,7 +30,7 @@ namespace AdaaMobile.iOS
             
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
-
+            SvgImageRenderer.Init();
             LoadApplication(new App(new Locator()));
 
 			Insights.Initialize ("b2655f07a3c842df659dcf2532c519804a88ec7d");

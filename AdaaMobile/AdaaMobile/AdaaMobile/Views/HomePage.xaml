@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
+             xmlns:abstractions="clr-namespace:SVG.Forms.Plugin.Abstractions;assembly=SVG.Forms.Plugin.Abstractions"
+             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              BackgroundColor="{StaticResource AppBackgroundLight}"
              
              x:Name="MainWindow"
@@ -89,13 +91,18 @@
                   HorizontalOptions="Fill"
                   />
                 
-                <Image Source="{Binding IconSource}"
+                <!--<Image Source="{Binding IconSource}"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
                    HeightRequest="70"
                    WidthRequest="70"
-                                   />
-
+                                   />-->
+<abstractions:SvgImage  
+                       SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}" 
+                       SvgPath="AdaaMobile.Images.twitter.svg" 
+                       HeightRequest="70" WidthRequest="70" 
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
                 <BoxView
                   HorizontalOptions="Fill"
                   VerticalOptions="End"
