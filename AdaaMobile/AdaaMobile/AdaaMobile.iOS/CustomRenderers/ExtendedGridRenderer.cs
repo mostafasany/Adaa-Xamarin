@@ -16,7 +16,7 @@ using Foundation;
 namespace AdaaMobile.iOS.CustomRenderers
 {
 	[Preserve(AllMembers = true)]
-    public class ExtendedGridRenderer : ViewRenderer<ExtendedGrid, UIView>
+	public class ExtendedGridRenderer : VisualElementRenderer<ExtendedGrid>
     {
         /// <summary>
         /// Used for registration with dependency service
@@ -34,7 +34,7 @@ namespace AdaaMobile.iOS.CustomRenderers
         protected override void OnElementChanged(ElementChangedEventArgs<ExtendedGrid> e)
         {
             base.OnElementChanged(e);
-            if (Control == null ) return;
+			if (NativeView == null ) return;
             UpdateCornerRadius();
         }
 
@@ -51,23 +51,23 @@ namespace AdaaMobile.iOS.CustomRenderers
 
         private void UpdateCornerRadius()
         {
-            Control.Layer.BackgroundColor = Color.Transparent.ToCGColor();
-            Control.Layer.CornerRadius = (float)_extendedGrid.CornerRadius * 8;
-			//Control.Layer.MasksToBounds = true;
-			//Control.ClipsToBounds = true;
+			NativeView.Layer.BackgroundColor = Color.Transparent.ToCGColor();
+			NativeView.Layer.CornerRadius = (float)_extendedGrid.CornerRadius * 5;
+			NativeView.Layer.MasksToBounds = true;
+			NativeView.ClipsToBounds = true;
+			ClipsToBounds = true;
 
-
-			float fCornerRadius = 25f;
-
-			// Add a layer that holds the rounded corners.
-			UIBezierPath oMaskPath =  UIBezierPath.FromRoundedRect (Control.Bounds, UIRectCorner.AllCorners, new CGSize (fCornerRadius, fCornerRadius));
-
-			CAShapeLayer oMaskLayer = new CAShapeLayer ();
-			oMaskLayer.Frame = Control.Bounds;
-			oMaskLayer.Path = oMaskPath.CGPath;
-
-			// Set the newly created shape layer as the mask for the image view's layer
-			Control.Layer.Mask = oMaskLayer;
+//			float fCornerRadius = 25f;
+//
+//			// Add a layer that holds the rounded corners.
+//			UIBezierPath oMaskPath =  UIBezierPath.FromRoundedRect (NativeView.Bounds, UIRectCorner.AllCorners, new CGSize (fCornerRadius, fCornerRadius));
+//
+//			CAShapeLayer oMaskLayer = new CAShapeLayer ();
+//			oMaskLayer.Frame = NativeView.Bounds;
+//			oMaskLayer.Path = oMaskPath.CGPath;
+//
+//			// Set the newly created shape layer as the mask for the image view's layer
+//			NativeView.Layer.Mask = oMaskLayer;
         }
 
 

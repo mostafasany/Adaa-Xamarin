@@ -15,7 +15,7 @@ namespace AdaaMobile.Controls
         }
 
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create("CornerRadius", typeof(double), typeof(RoundedBoxView), default(double));
+			BindableProperty.Create("CornerRadius", typeof(double),  typeof(ExtendedGrid), default(double));
 
         public double CornerRadius
         {

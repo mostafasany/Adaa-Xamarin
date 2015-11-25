@@ -78,6 +78,7 @@
           <DataTemplate>
 
             <StackLayout Spacing="10"
+            Padding="10"
                      VerticalOptions="Fill"
                      HorizontalOptions="Fill">
               <controls:ExtendedGrid VerticalOptions="FillAndExpand"
@@ -110,7 +111,7 @@
                 <BoxView
                   HorizontalOptions="Fill"
                   VerticalOptions="End"
-                  HeightRequest="4"
+                  HeightRequest="6"
                   Color="{StaticResource YellowAccent}"
                   />
                 <!--duplicating gesture becuase of issue in Gesture in Android on nested panels

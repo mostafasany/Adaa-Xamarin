@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -8,6 +8,7 @@
 /AdaaMobile/AdaaMobile/AdaaMobile.Droid/obj/Debug
 *.user
 /AdaaMobile/AdaaMobile/AdaaMobile.iOS/obj/iPhone/Debug
+/AdaaMobile/AdaaMobile/AdaaMobile.iOS/obj/iPhoneSimulator/Debug
 /AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/Bin/Debug
 /AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/obj/Debug
 *.suo
@@ -19,6 +20,7 @@
 /AdaaMobile/AdaaMobile/AdaaMobile.Droid/obj/Release
 /AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/Bin/Release
 /AdaaMobile/AdaaMobile/AdaaMobile.iOS/obj/iPhone/Release
+/AdaaMobile/AdaaMobile/AdaaMobile.iOS/obj/iPhoneSimulator/Release
 /AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/obj/Release
 /AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/obj/x86/Debug
 /AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/obj/x86/Release
