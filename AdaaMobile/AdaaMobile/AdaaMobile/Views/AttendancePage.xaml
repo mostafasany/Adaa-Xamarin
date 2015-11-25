@@ -111,7 +111,7 @@
       <ListView Rotation="270"
                 HorizontalOptions="Fill"              
                 HeightRequest="80"
-                RowHeight="50"
+                RowHeight="60"
                 x:Name="DaysList"
                 InputTransparent="True"
                 ItemTapped="DayItem_Tapped"
@@ -126,7 +126,7 @@
             <ViewCell>
               <ViewCell.View>
                 <Grid RowSpacing="0" Rotation="90"
-                     TranslationX="15"
+                     TranslationX="20"
                                        >
 
                   <Grid.RowDefinitions>
@@ -155,13 +155,15 @@
                            BackgroundColor="Transparent"
                            TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}"
                            FontSize="Medium" FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
                            Text="{Binding Day}"/>
                     <Label
                          x:Name="MonthLabel"
                           BackgroundColor="Transparent"
                          TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}"
-                          FontSize="Small"
-                          Text="{Binding AbbrMonth}"/>
+                         FontSize="Small"
+                         HorizontalTextAlignment="Center"
+                         Text="{Binding AbbrMonth}"/>
                   </StackLayout>
                 </Grid>
               </ViewCell.View>

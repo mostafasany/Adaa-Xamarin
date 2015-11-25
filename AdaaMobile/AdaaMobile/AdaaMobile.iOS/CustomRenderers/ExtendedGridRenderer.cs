@@ -22,9 +22,8 @@ namespace AdaaMobile.iOS.CustomRenderers
         protected override void OnElementChanged(ElementChangedEventArgs<ExtendedGrid> e)
         {
             base.OnElementChanged(e);
-            if (Control == null) return;
-            Control.Layer.MasksToBounds = true;
-            Control.Layer.CornerRadius = (float)_extendedGrid.CornerRadius;
+            if (Control == null || e.NewElement == null) return;
+            UpdateCornerRadius();
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -32,11 +31,17 @@ namespace AdaaMobile.iOS.CustomRenderers
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName == ExtendedGrid.CornerRadiusProperty.PropertyName)
             {
-                Control.Layer.MasksToBounds = true;
-                Control.Layer.CornerRadius = (float)_extendedGrid.CornerRadius;
+                UpdateCornerRadius();
             }
 
 
+        }
+
+        private void UpdateCornerRadius()
+        {
+            Control.Layer.BackgroundColor = Color.Transparent.ToCGColor();
+            Control.Layer.MasksToBounds = true;
+            Control.Layer.CornerRadius = (float)_extendedGrid.CornerRadius * 5;
         }
     }
 }
