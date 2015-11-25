@@ -120,7 +120,7 @@ namespace AdaaMobile.ViewModels
 
                 await _dialogManager.DisplayAlert("Alert", "login failed", "ok");
             }
-            catch (Exception)
+            catch (Exception ex) 
             {
                 //Show error
             }
