@@ -18,6 +18,14 @@ namespace AdaaMobile.iOS.CustomRenderers
 	[Preserve(AllMembers = true)]
     public class ExtendedGridRenderer : ViewRenderer<ExtendedGrid, UIView>
     {
+        /// <summary>
+        /// Used for registration with dependency service
+        /// </summary>
+        public  static void Init()
+        {
+            var temp = DateTime.Now;
+        }
+
         private AdaaMobile.Controls.ExtendedGrid _extendedGrid
         {
             get { return Element as AdaaMobile.Controls.ExtendedGrid; }

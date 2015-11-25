@@ -30,6 +30,7 @@ namespace AdaaMobile.iOS
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
             SvgImageRenderer.Init();
+            ExtendedGridRenderer.Init();
             LoadApplication(new App(new Locator()));
 
 			Insights.Initialize ("b2655f07a3c842df659dcf2532c519804a88ec7d");
