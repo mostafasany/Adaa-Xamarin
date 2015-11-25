@@ -132,6 +132,12 @@
     <BundleResource Include="Resources\HomeItemIcon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="NGraphics.Custom">
+      <HintPath>..\..\packages\NGraphics\NGraphics.Custom.dll</HintPath>
+    </Reference>
+    <Reference Include="NGraphics.iOS.Custom">
+      <HintPath>..\..\packages\NGraphics\NGraphics.iOS.Custom.dll</HintPath>
+    </Reference>
     <Reference Include="QueryExtensions">
       <HintPath>..\..\packages\QueryExtensions.dll</HintPath>
     </Reference>

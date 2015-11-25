@@ -64,6 +64,14 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="NGraphics.Android.Custom, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NGraphics\NGraphics.Android.Custom.dll</HintPath>
+    </Reference>
+    <Reference Include="NGraphics.Custom, Version=1.0.5741.13259, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NGraphics\NGraphics.Custom.dll</HintPath>
+    </Reference>
     <Reference Include="QueryExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\QueryExtensions.dll</HintPath>
