@@ -245,6 +245,7 @@ namespace AdaaMobile.DataServices.Requests
                 }
                 else if (ResultContentType == ContentType.Xml)
                 {
+                    bool isFixed = FixXml(ref stringValue);
                     var serializer = new XmlSerializer(typeof(TR));
                     using (var reader = new StringReader(stringValue))
                     {
@@ -262,7 +263,7 @@ namespace AdaaMobile.DataServices.Requests
                     responseWrapper.Result = (TR)(object)stringValue;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 responseWrapper.ResponseStatus = ResponseStatus.ParserException;
                 return;
@@ -271,6 +272,16 @@ namespace AdaaMobile.DataServices.Requests
             if (responseWrapper.Result.Equals(default(TR))) responseWrapper.ResponseStatus = ResponseStatus.SuccessWithNoData;
             //Check if the result is of type Ilist, and the count ==0, if true assign ResponseStatus to no Data
             else if (responseWrapper.Result is IList && (responseWrapper.Result as IList).Count == 0) responseWrapper.ResponseStatus = ResponseStatus.SuccessWithNoData;
+        }
+
+        private bool FixXml(ref string stringValue)
+        {
+            if (String.IsNullOrWhiteSpace(stringValue)) return false;
+            if (!stringValue.StartsWith("<root>"))
+            {
+                stringValue = string.Format("<root>{0}</root>", stringValue);
+            }
+            return true;
         }
     }
 

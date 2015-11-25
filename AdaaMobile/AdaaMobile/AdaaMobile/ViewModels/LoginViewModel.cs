@@ -7,6 +7,7 @@ using AdaaMobile.Common;
 using AdaaMobile.DataServices;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Helpers;
+using AdaaMobile.Models.Request;
 using AdaaMobile.Views;
 using AdaaMobile.Views.MasterView;
 using Xamarin.Forms;
@@ -108,9 +109,10 @@ namespace AdaaMobile.ViewModels
                 var response = await _dataService.LoginAsync(UserName, Password);
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
-					if (response.Result.Status == "ok" && !string.IsNullOrEmpty( response.Result.UserToken))
+                    if (response.Result.Status == "ok" && !string.IsNullOrEmpty(response.Result.UserToken))
                     {
-						new AppSettings().UserToken = response.Result.UserToken;
+                        bool success = await GetCurrentUserProfileAsync(response.Result.UserToken);
+                        new AppSettings().UserToken = response.Result.UserToken;
                         _navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
                         return;
                     }
@@ -118,7 +120,7 @@ namespace AdaaMobile.ViewModels
 
                 await _dialogManager.DisplayAlert("Alert", "login failed", "ok");
             }
-            catch (Exception )
+            catch (Exception)
             {
                 //Show error
             }
@@ -128,6 +130,17 @@ namespace AdaaMobile.ViewModels
                 IsBusy = false;
             }
 
+        }
+
+        private async Task<bool> GetCurrentUserProfileAsync(string token)
+        {
+            var paramters = new CurrentUserProfileQParameters()
+            {
+                LangId = "ar",
+                UserToken = token
+            };
+            var result = await _dataService.GetCurrentUserProfile(paramters);
+            return true;
         }
 
         private void SignUp()

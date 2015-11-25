@@ -71,6 +71,8 @@
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Models\DayWrapper.cs" />
+    <Compile Include="Models\Request\CurrentUserProfileQParameters.cs" />
+    <Compile Include="Models\Response\UserProfile.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="Views\MasterView\MasterHelper.cs" />
     <Compile Include="Views\MasterView\MenuCell.cs" />

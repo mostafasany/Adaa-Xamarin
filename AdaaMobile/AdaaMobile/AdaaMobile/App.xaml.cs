@@ -21,7 +21,7 @@ namespace AdaaMobile
 
 
 			// The root page of your application
-			MainPage = new AddaMasterPage();
+			MainPage = new LoginPage();
 		}
 
 		protected override void OnStart()

@@ -6,13 +6,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models;
+using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
 
 namespace AdaaMobile.DataServices
 {
 	public class MockDataService : IDataService
     {
-		public Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password)
+	    public Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentUserProfileQParameters paramters, CancellationToken? token = null)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    public Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password)
         {
             throw new NotImplementedException();
         }

@@ -10,12 +10,15 @@ using AdaaMobile.Extensions;
 using AdaaMobile.Models;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
+using QueryExtensions;
 
 namespace AdaaMobile.DataServices
 {
-	public class DataService : IDataService
+    public class DataService : IDataService
     {
-        private const string BaseUrl = "http://adaa.getsandbox.com";
+        // private const string BaseUrl = "http://adaa.getsandbox.com";
+        private const string BaseUrl = "https://etime.adaa.abudhabi.ae/adaamobile/mobileservice.ashx";
+
         private const string ContenTypeKey = "Content-Type";
         private const string XmlContentType = "application/xml";
         private readonly Func<BaseRequest> RequestFactory;
@@ -24,19 +27,32 @@ namespace AdaaMobile.DataServices
             RequestFactory = requestFactory;
         }
 
-        public async Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password)
+        public async Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentUserProfileQParameters paramters, CancellationToken? token = null)
         {
             var request = RequestFactory();
-            request.RequestUrl = string.Format("{0}/{1}", BaseUrl, "validatelogin");
+            request.RequestUrl = BaseUrl.AppendQueryString(paramters);
             request.ResultContentType = ContentType.Xml;
-            var loginParamters = new LoginBodyParamters()
+            return await request.GetAsync<UserProfile>(token);
+        }
+
+        public async Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password)
+        {
+            //var request = RequestFactory();
+            //request.RequestUrl = string.Format("{0}/{1}", BaseUrl, "validatelogin");
+            //request.ResultContentType = ContentType.Xml;
+            //var loginParamters = new LoginBodyParamters()
+            //{
+            //    UserName = userName,
+            //    Password = password
+            //};
+            //string t = loginParamters.SerializeXml();
+            //var stringContent = new StringContent(loginParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
+            //return await request.PostAsync<LoginResponse>(stringContent);
+            return new ResponseWrapper<LoginResponse>()
             {
-                UserName = userName,
-                Password = password
+                ResponseStatus = ResponseStatus.SuccessWithResult,
+                Result = new LoginResponse() { Status = "ok", UserToken = "2015112208415581449" }
             };
-			string t = loginParamters.SerializeXml ();
-            var stringContent = new StringContent(loginParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
-            return await request.PostAsync<LoginResponse>(stringContent);
         }
 
         public Task<ResponseWrapper<List<Employee>>> GetEmpolyeesAsync(CancellationToken? token)
@@ -45,34 +61,34 @@ namespace AdaaMobile.DataServices
 
         }
 
-		public async Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync (AttendanceQParameters parameters, CancellationToken? token)
-		{
-			throw new NotImplementedException ();
-		}
+        public async Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync(AttendanceQParameters parameters, CancellationToken? token)
+        {
+            throw new NotImplementedException();
+        }
 
-		public Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync (AttExceptionQParamters parameters, CancellationToken? token)
-		{
-			throw new NotImplementedException ();
-		}
+        public Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(AttExceptionQParamters parameters, CancellationToken? token)
+        {
+            throw new NotImplementedException();
+        }
 
-		public Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync (DaypassRequestQParameters qParameters, DaypassRequestBParameters bParamters, CancellationToken? token)
-		{
-			throw new NotImplementedException ();
-		}
+        public Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync(DaypassRequestQParameters qParameters, DaypassRequestBParameters bParamters, CancellationToken? token)
+        {
+            throw new NotImplementedException();
+        }
 
-		public Task<ResponseWrapper<DayPassesResponse>> GetPendingDayPassesAsync (DayPassesQParameters parameters, CancellationToken? token)
-		{
-			throw new NotImplementedException ();
-		}
+        public Task<ResponseWrapper<DayPassesResponse>> GetPendingDayPassesAsync(DayPassesQParameters parameters, CancellationToken? token)
+        {
+            throw new NotImplementedException();
+        }
 
-		public Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync (DaypassApproveQParameters parameters, CancellationToken? token)
-		{
-			throw new NotImplementedException ();
-		}
+        public Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync(DaypassApproveQParameters parameters, CancellationToken? token)
+        {
+            throw new NotImplementedException();
+        }
 
-		public Task<ResponseWrapper<DayPassTasksResponse>> DayPassTasksResponseAsync (DayPassTasksQParameters parameters, CancellationToken? token)
-		{
-			throw new NotImplementedException ();
-		}
+        public Task<ResponseWrapper<DayPassTasksResponse>> DayPassTasksResponseAsync(DayPassTasksQParameters parameters, CancellationToken? token)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
