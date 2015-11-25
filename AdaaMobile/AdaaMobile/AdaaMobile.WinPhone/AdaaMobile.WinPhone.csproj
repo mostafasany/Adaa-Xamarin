@@ -169,6 +169,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="QueryExtensions">
+      <HintPath>..\..\packages\QueryExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime">
     </Reference>
     <Reference Include="System.Runtime.Extensions">

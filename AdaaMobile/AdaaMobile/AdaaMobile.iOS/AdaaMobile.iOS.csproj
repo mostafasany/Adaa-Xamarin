@@ -132,6 +132,9 @@
     <BundleResource Include="Resources\HomeItemIcon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="QueryExtensions">
+      <HintPath>..\..\packages\QueryExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
