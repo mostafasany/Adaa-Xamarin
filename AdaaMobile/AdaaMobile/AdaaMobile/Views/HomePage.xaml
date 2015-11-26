@@ -65,62 +65,74 @@
       <!--    TODO:Change hardwired sizes 
               handle orientation to increase number of items to 3
           -->
-      <controls:ColumnsPanel ColumnCount="2"
+      <controls:ColumnsPanel
                        x:Name="PagesPanel"
                        ItemSource="{Binding Pages}"
                        HorizontalOptions="Center"
-                       ColumnWidth="140"
-                       ColumnHeight="140"
-                       HorizontalSpacing="40"
-                       VerticalSpacing="40"
+                       VerticalOptions="Fill"
+                       ColumnCount="3"
+                       ColumnWidth="100"
+                       ColumnSpacing="10"
+                       RowSpacing="20"
+                       Padding="10,0"
                              >
         <controls:ColumnsPanel.ItemTemplate>
           <DataTemplate>
 
             <StackLayout Spacing="10"
-            Padding="10"
                      VerticalOptions="Fill"
                      HorizontalOptions="Fill">
-              <controls:ExtendedGrid VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand"
-                    CornerRadius="3"
-                    BackgroundColor="Transparent">
-                <controls:RoundedBoxView
+              <RelativeLayout
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill"
+                               
+                                >
+                <controls:ExtendedGrid VerticalOptions="Fill"
+                      HorizontalOptions="Fill"
+                      CornerRadius="3"
+                      BackgroundColor="Transparent"
+                      RelativeLayout.WidthConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+                      RelativeLayout.HeightConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.9}">
+                  <controls:RoundedBoxView
                   BackgroundColor="{StaticResource AppBackgroundLight}"
                   CornerRadius="3"
                   VerticalOptions="Fill"
                   HorizontalOptions="Fill"
                   />
 
-                <!--<Image Source="{Binding IconSource}"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   HeightRequest="70"
-                   WidthRequest="70"
-                                   />-->
-                <controls:SvgImage
-                                       SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
-                                       SvgPath="AdaaMobile.Images.twitter.svg"
-                                       HeightRequest="70" WidthRequest="70"
-                                       BackgroundColor="Transparent"
-                                       HorizontalOptions="Center" VerticalOptions="Center">
-                <controls:SvgImage.ReplacementColors>
-                  <controls:ColorPair OldColor="#FFFFFF" NewColor="Red"></controls:ColorPair>
-                </controls:SvgImage.ReplacementColors>
-                </controls:SvgImage>
-                <BoxView
-                  HorizontalOptions="Fill"
-                  VerticalOptions="End"
-                  HeightRequest="6"
-                  Color="{StaticResource YellowAccent}"
+
+                  <controls:SvgImage
+                                      SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
+                                      SvgPath="AdaaMobile.Images.twitter.svg"
+                                      HeightRequest="50" WidthRequest="50"
+                                      BackgroundColor="Transparent"
+                                      HorizontalOptions="Center" VerticalOptions="Center">
+                    <controls:SvgImage.ReplacementColors>
+                      <controls:ColorPair OldColor="#FFFFFF" NewColor="Red"></controls:ColorPair>
+                    </controls:SvgImage.ReplacementColors>
+                  </controls:SvgImage>
+
+
+                  <BoxView
+                    HorizontalOptions="Fill"
+                    VerticalOptions="End"
+                    HeightRequest="6"
+                    Color="{StaticResource YellowAccent}"
                   />
-                <!--duplicating gesture becuase of issue in Gesture in Android on nested panels
+                  <!--duplicating gesture becuase of issue in Gesture in Android on nested panels
                     See,https://bugzilla.xamarin.com/show_bug.cgi?id=25943
                 -->
-                <Grid.GestureRecognizers>
-                  <TapGestureRecognizer Tapped="PageItem_Tapped"/>
-                </Grid.GestureRecognizers>
-              </controls:ExtendedGrid >
+                  <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="PageItem_Tapped"/>
+                  </Grid.GestureRecognizers>
+                </controls:ExtendedGrid >
+              </RelativeLayout>
               <Label Text="{Binding Title}" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>

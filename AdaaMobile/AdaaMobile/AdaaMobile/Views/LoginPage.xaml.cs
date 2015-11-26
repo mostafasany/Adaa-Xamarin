@@ -16,7 +16,7 @@ namespace AdaaMobile.Views
             InitializeComponent();
             BindingContext = Locator.Container.Resolve<LoginViewModel>(
                 new TypedParameter(typeof(INavigation), Navigation));
-
+   
         }
     }
 }

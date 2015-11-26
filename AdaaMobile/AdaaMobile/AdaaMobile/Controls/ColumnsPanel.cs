@@ -15,25 +15,25 @@ namespace AdaaMobile.Controls
         #region Fields
         #endregion
 
-        #region VerticalSpacing bindable property
-        public static readonly BindableProperty VerticalSpacingProperty =
-            BindableProperty.Create<ColumnsPanel, double>(p => p.VerticalSpacing, 10.0,
+        #region RowSpacing bindable property
+        public static readonly BindableProperty RowSpacingProperty =
+            BindableProperty.Create<ColumnsPanel, double>(p => p.RowSpacing, 10.0,
                 propertyChanged: (bindable, old, newvalue) => ((ColumnsPanel)bindable).OnSizeChanged());
-        public double VerticalSpacing
+        public double RowSpacing
         {
-            get { return (double)GetValue(VerticalSpacingProperty); }
-            set { SetValue(VerticalSpacingProperty, value); }
+            get { return (double)GetValue(RowSpacingProperty); }
+            set { SetValue(RowSpacingProperty, value); }
         }
         #endregion
 
-        #region HorizontalSpacing bindable property
-        public static readonly BindableProperty HorizontalSpacingProperty =
-            BindableProperty.Create<ColumnsPanel, double>(p => p.HorizontalSpacing, 10.0,
+        #region ColumnSpacing bindable property
+        public static readonly BindableProperty ColumnSpacingProperty =
+            BindableProperty.Create<ColumnsPanel, double>(p => p.ColumnSpacing, 10.0,
                 propertyChanged: (bindable, old, newvalue) => ((ColumnsPanel)bindable).OnSizeChanged());
-        public double HorizontalSpacing
+        public double ColumnSpacing
         {
-            get { return (double)GetValue(HorizontalSpacingProperty); }
-            set { SetValue(HorizontalSpacingProperty, value); }
+            get { return (double)GetValue(ColumnSpacingProperty); }
+            set { SetValue(ColumnSpacingProperty, value); }
         }
         #endregion
 
@@ -68,7 +68,7 @@ namespace AdaaMobile.Controls
             set { SetValue(ColumnCountProperty, value); }
         }
 
-
+        #endregion
         #region ColumnHeight
         public static readonly BindableProperty ColumnHeightProperty =
             BindableProperty.Create<ColumnsPanel, double>(p => p.ColumnHeight, default(double)
@@ -131,7 +131,7 @@ namespace AdaaMobile.Controls
         }
         #endregion
 
-        #endregion
+
 
         #region Events
 
@@ -179,7 +179,8 @@ namespace AdaaMobile.Controls
 
         protected void OnSizeChanged()
         {
-            ForceLayout();
+            if (ColumnCount == 0 || Math.Abs(ColumnWidth) < 1e-6) return;
+            InvalidateLayout();
         }
 
         protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
@@ -199,20 +200,55 @@ namespace AdaaMobile.Controls
         private SizeRequest DoMeasure(double widthConstraint, double heightConstraint)
         {
             if (ColumnCount == 0 ||
-                Math.Abs(ColumnWidth) < 1e-6 ||
-                Math.Abs(ColumnHeight) < 1e-6)
+                Math.Abs(ColumnWidth) < 1e-6)
                 return new SizeRequest(new Size(0, 0), new Size(0, 0));
             int childrenCount = Children.Count;
             int rowCount = (int)Math.Ceiling(childrenCount * 1.0 / ColumnCount);
 
-            //Calculate row height
-            double width = ColumnCount * ColumnWidth + (ColumnCount - 1) * HorizontalSpacing;
-            double height = rowCount * ColumnHeight + (rowCount ) * VerticalSpacing;
+
+            double width = ColumnCount * ColumnWidth + (ColumnCount - 1) * ColumnSpacing;
+            double height = 0;
+            if (ColumnHeight > 0)
+            {
+                //Column Height is specified
+
+                height = rowCount * ColumnHeight + (rowCount - 1) * RowSpacing;
+            }
+            else
+            {
+                //Calculate based on child size
+                double rowHeight = 0;
+                for (int index = 0; index < Children.Count; index++)
+                {
+                    var child = Children[index];
+                    var childSize = child.GetSizeRequest(ColumnWidth, heightConstraint);
+
+                    if (index % ColumnCount == 0)
+                    {
+                        height += rowHeight + RowSpacing;
+                        rowHeight = childSize.Request.Height;
+                    }
+                    else
+                    {
+                        rowHeight = Math.Max(childSize.Request.Height, rowHeight);
+                    }
+                }
+                height += rowHeight;//Add last row height
+            }
             double minWidth = width;
             double minHeight = height;
+            var size = new Size(width + Padding.Left + Padding.Right, height + Padding.Bottom + Padding.Top);
 
-            return new SizeRequest(new Size(width, height), new Size(minWidth, minHeight));
+            return new SizeRequest(size, size);
         }
+
+        //private SizeRequest MeasureBasedOnCount(double widthConstraint, double heightConstraint)
+        //{
+        //    if (double.IsPositiveInfinity(heightConstraint))
+        //    {
+        //        return new SizeRequest(new Size(widthConstraint, heightConstraint), new Size(widthConstraint, heightConstraint));
+        //    }
+        //}
 
         /// <summary>
         /// 
@@ -223,6 +259,10 @@ namespace AdaaMobile.Controls
         /// <param name="height"></param>
         protected override void LayoutChildren(double x, double y, double width, double height)
         {
+            if (ColumnCount == 0 ||
+                Math.Abs(ColumnWidth) < 1e-6)
+                return;
+
             double rowHeight = 0;
             double yPos = y, xPos = x;
             for (int index = 0; index < Children.Count; index++)
@@ -230,22 +270,22 @@ namespace AdaaMobile.Controls
                 var child = Children[index];
                 int row = index / ColumnCount;
                 int column = index % ColumnCount;
-                var request = child.GetSizeRequest(width, height);
+                var request = child.GetSizeRequest(ColumnWidth, height);
                 double childWidth = ColumnWidth;
                 double childHeight = ColumnHeight > 0 ? ColumnHeight : request.Request.Height;
 
                 //Update yPos and reset row height
                 if (column == 0)
                 {
-                    yPos += rowHeight + VerticalSpacing;
+                    yPos += rowHeight + RowSpacing;
                     rowHeight = 0;
                 }
                 rowHeight = Math.Max(rowHeight, childHeight);
-                xPos = x + (column * (childWidth + HorizontalSpacing));
+                xPos = x + (column * (childWidth + ColumnSpacing));
                 var region = new Rectangle(xPos, yPos, childWidth, childHeight);
                 LayoutChildIntoBoundingRegion(child, region);
             }
-        }    
+        }
     }
 }
 
