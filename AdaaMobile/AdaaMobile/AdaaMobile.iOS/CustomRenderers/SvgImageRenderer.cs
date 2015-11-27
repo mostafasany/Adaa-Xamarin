@@ -23,7 +23,7 @@ namespace AdaaMobile.iOS.CustomRenderers
         /// <summary>
         ///   Used for registration with dependency service
         /// </summary>
-        public static void Init()
+        public new static void Init()
         {
             var temp = DateTime.Now;
         }
@@ -76,12 +76,10 @@ namespace AdaaMobile.iOS.CustomRenderers
             }
         }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Image> e)
+        public override void LayoutSubviews()
         {
-            base.OnElementChanged(e);
             Render();
+            base.LayoutSubviews();
         }
-
-
     }
 }
