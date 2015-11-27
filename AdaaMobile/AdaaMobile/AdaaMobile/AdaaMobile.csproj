@@ -41,6 +41,7 @@
     <Compile Include="Controls\ColumnsPanel.cs" />
     <Compile Include="Controls\ExtendedGrid.cs" />
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />
+    <Compile Include="Controls\HorizontalListView.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonSourceConverter.cs" />
     <Compile Include="Controls\RoundedBoxView.cs" />
     <Compile Include="Controls\SvgImage\ColorPair.cs" />

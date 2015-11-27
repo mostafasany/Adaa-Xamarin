@@ -8,6 +8,7 @@ using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
+#pragma warning disable 1998
 
 namespace AdaaMobile.DataServices
 {

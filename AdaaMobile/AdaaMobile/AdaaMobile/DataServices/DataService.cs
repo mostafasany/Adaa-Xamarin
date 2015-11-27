@@ -38,22 +38,22 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password)
         {
-            //var request = RequestFactory();
-            //request.RequestUrl = string.Format("{0}/{1}", BaseUrl, "validatelogin");
-            //request.ResultContentType = ContentType.Xml;
-            //var loginParamters = new LoginBodyParamters()
-            //{
-            //    UserName = userName,
-            //    Password = password
-            //};
-            //string t = loginParamters.SerializeXml();
-            //var stringContent = new StringContent(loginParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
-            //return await request.PostAsync<LoginResponse>(stringContent);
-            return new ResponseWrapper<LoginResponse>()
+            var request = RequestFactory();
+            request.RequestUrl = string.Format("{0}/{1}", BaseUrl, "validatelogin");
+            request.ResultContentType = ContentType.Xml;
+            var loginParamters = new LoginBodyParamters()
             {
-                ResponseStatus = ResponseStatus.SuccessWithResult,
-                Result = new LoginResponse() { Status = "ok", UserToken = "2015112208415581449" }
+                UserName = userName,
+                Password = password
             };
+            string t = loginParamters.SerializeXml();
+            var stringContent = new StringContent(loginParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
+            return await request.PostAsync<LoginResponse>(stringContent);
+            //return new ResponseWrapper<LoginResponse>()
+            //{
+            //    ResponseStatus = ResponseStatus.SuccessWithResult,
+            //    Result = new LoginResponse() { Status = "ok", UserToken = "2015112208415581449" }
+            //};
         }
 
         public Task<ResponseWrapper<List<Employee>>> GetEmpolyeesAsync(CancellationToken? token)

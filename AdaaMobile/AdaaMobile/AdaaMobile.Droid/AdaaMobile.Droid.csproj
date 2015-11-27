@@ -158,7 +158,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\HomeItemIcon.png" />
     <None Include="PluginsHelp\SettingsReadme.txt" />
-    <Content Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\Values\styles.xml" />
     <AndroidResource Include="Resources\drawable\splash.jpg" />
   </ItemGroup>

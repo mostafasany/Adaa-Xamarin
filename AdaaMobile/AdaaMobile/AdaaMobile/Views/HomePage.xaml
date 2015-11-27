@@ -46,14 +46,17 @@
     <!--User Circle Profile-->
     <controls:CircleImage HeightRequest="90"
                           WidthRequest="90"
-                          Source="icon.png"
-                          BorderThickness="8"
+                          BorderThickness="5"
                           BorderColor="{StaticResource YellowAccent}"
                           Grid.Row="1"
                           Grid.RowSpan="2"
                           VerticalOptions="Center"
                           HorizontalOptions="Center"
-                           />
+                           >
+      <controls:CircleImage.Source>
+        <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="icon"/>
+      </controls:CircleImage.Source>
+    </controls:CircleImage>
 
 
     <ScrollView HorizontalOptions="Center"
@@ -62,16 +65,11 @@
                 x:Name="PagesScrollView"
                 Grid.Row="3"
                 >
-      <!--    TODO:Change hardwired sizes 
-              handle orientation to increase number of items to 3
-          -->
       <controls:ColumnsPanel
                        x:Name="PagesPanel"
                        ItemSource="{Binding Pages}"
                        HorizontalOptions="Center"
                        VerticalOptions="Fill"
-                       ColumnCount="3"
-                       ColumnWidth="100"
                        ColumnSpacing="10"
                        RowSpacing="20"
                        Padding="10,0"
@@ -84,9 +82,7 @@
                      HorizontalOptions="Fill">
               <RelativeLayout
                                 HorizontalOptions="Fill"
-                                VerticalOptions="Fill"
-                               
-                                >
+                                VerticalOptions="Fill" >
                 <controls:ExtendedGrid VerticalOptions="Fill"
                       HorizontalOptions="Fill"
                       CornerRadius="3"

@@ -107,7 +107,7 @@
                 BackgroundColor="{StaticResource AppBackgroundLight}"
                 />
     </Grid>
-    <RelativeLayout VerticalOptions="Start" HeightRequest="80">
+    <RelativeLayout VerticalOptions="Start" >
       <ListView Rotation="270"
                 HorizontalOptions="Fill"              
                 HeightRequest="80"
@@ -126,8 +126,7 @@
             <ViewCell>
               <ViewCell.View>
                 <Grid RowSpacing="0" Rotation="90"
-                     TranslationX="20"
-                                       >
+                     TranslationX="20"                              >
 
                   <Grid.RowDefinitions>
                     <RowDefinition  Height="Auto"/>
