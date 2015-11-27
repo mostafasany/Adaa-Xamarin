@@ -25,23 +25,23 @@ namespace AdaaMobile.Views
         {
             base.OnSizeAllocated(width, height);
 
-            //PagesPanel.BatchBegin();
-            //if (IsPortrait(this))
-            //{
-            //    PagesPanel.ColumnCount = 3;
-            //}
-            //else
-            //{
-            //    PagesPanel.ColumnCount = 4;
-            //}
-            ////double minSide = Math.Min(Width, Height);
-            ////double maxSide = Math.Min(Width, Height);
-            //double itemWidth = (Width - PagesPanel.Padding.Left - PagesPanel.Padding.Right - PagesPanel.ColumnSpacing * (PagesPanel.ColumnCount - 1))
-            //                   / (PagesPanel.ColumnCount);
-            //PagesPanel.ColumnWidth = itemWidth;
-            ////PagesPanel.ColumnHeight = itemWidth;
+            PagesPanel.BatchBegin();
+            if (IsPortrait(this))
+            {
+                PagesPanel.ColumnCount = 3;
+            }
+            else
+            {
+                PagesPanel.ColumnCount = 4;
+            }
+            //double minSide = Math.Min(Width, Height);
+            //double maxSide = Math.Min(Width, Height);
+            double itemWidth = (Width - PagesPanel.Padding.Left - PagesPanel.Padding.Right - PagesPanel.ColumnSpacing * (PagesPanel.ColumnCount - 1))
+                               / (PagesPanel.ColumnCount);
+            PagesPanel.ColumnWidth = itemWidth;
+            //PagesPanel.ColumnHeight = itemWidth;
 
-            //PagesPanel.BatchCommit();
+            PagesPanel.BatchCommit();
 
         }
 
@@ -66,8 +66,6 @@ namespace AdaaMobile.Views
             _homeViewModel.PageClickedCommand.Execute(model);
 
         }
-
-
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿//Link https://github.com/BradChase2011/Xamarin.Forms.Plugins
 
+using System;
 using System.Reflection;
 using Xamarin.Forms;
 
@@ -9,7 +10,10 @@ namespace AdaaMobile.Controls
     public class SvgImage : Image
     {
         private bool _isTemplateLoaded = false;
-
+        /// <summary>
+        /// This is used to prevent loop in measuring
+        /// </summary>
+        private double _lastMeasuredWidth;
         #region Properties
         /// <summary>
         /// The path to the svg file
@@ -51,6 +55,32 @@ namespace AdaaMobile.Controls
             get { return (ColorPairs)GetValue(ReplacementColorsProperty); }
             set { SetValue(ReplacementColorsProperty, value); }
         }
+        #endregion
+
+        #region Percentage
+        /// <summary>
+        /// This will affect getSizeRequest and will return new Size(Percentage * widthContsraint,Percentage * widthContsraint)
+        /// </summary>
+        public static readonly BindableProperty PercentageProperty =
+            BindableProperty.Create<SvgImage, double>(p => p.Percentage, default(double),
+            propertyChanged: (bindable, value, newValue) => ((SvgImage)bindable).OnPercentageChanged());
+
+        public double Percentage
+        {
+            get { return (double)GetValue(PercentageProperty); }
+            set { SetValue(PercentageProperty, value); }
+        }
+
+        private void OnPercentageChanged()
+        {
+            //if (Percentage > 0)
+            //{
+            //    double width = Parent.ParentView.Width * 0.5;
+            //    WidthRequest = width;
+            //    HeightRequest = width;
+            //}
+        }
+
         #endregion
 
         #region Startup
@@ -108,5 +138,28 @@ namespace AdaaMobile.Controls
             //    renderer.Render( );
         }
         #endregion
+
+        public override SizeRequest GetSizeRequest(double widthConstraint, double heightConstraint)
+        {
+            //Update if Percentage is set and width constraint is larger than zero
+            if (Percentage > 0 && !double.IsPositiveInfinity(widthConstraint) && widthConstraint > 0)
+            {
+                ////Only update if there is change in widthConstraint
+                if (Math.Abs(_lastMeasuredWidth - widthConstraint) > 1e-6 && Math.Abs(_lastMeasuredWidth - widthConstraint) > 1e-6)
+                {
+                    double width = widthConstraint * Percentage;
+                    _lastMeasuredWidth = width;
+                }
+                else
+                {
+                    ;
+                }
+                return new SizeRequest(new Size(_lastMeasuredWidth, _lastMeasuredWidth), new Size(_lastMeasuredWidth, _lastMeasuredWidth));
+            }
+            else
+            {
+                return base.GetSizeRequest(widthConstraint, heightConstraint);
+            }
+        }
     }
 }

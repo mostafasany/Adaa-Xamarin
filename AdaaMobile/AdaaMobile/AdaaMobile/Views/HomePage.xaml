@@ -110,8 +110,8 @@
                   <controls:SvgImage
                                       SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
                                       SvgPath="AdaaMobile.Images.twitter.svg"
-                                      HeightRequest="50" WidthRequest="50"
                                       BackgroundColor="Transparent"
+                                      Percentage="0.5"
                                       HorizontalOptions="Center" VerticalOptions="Center">
                     <controls:SvgImage.ReplacementColors>
                       <controls:ColorPair OldColor="#FFFFFF" NewColor="Red"></controls:ColorPair>
