@@ -114,12 +114,24 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
             var clippingPath = new Path();
             RectF rect = new RectF(0, 0, Width, Height);
-            clippingPath.AddRoundRect(rect, (float)_extendedGrid.CornerRadius * 5, (float)_extendedGrid.CornerRadius * 5, Path.Direction.Ccw);
+            double cornderRadius = PixelToDp(_extendedGrid.CornerRadius);
+            clippingPath.AddRoundRect(rect, (float)cornderRadius, (float)cornderRadius, Path.Direction.Ccw);
             canvas.Save();
             canvas.ClipPath(clippingPath);
             var result = base.DrawChild(canvas, child, drawingTime);
             canvas.Restore();
             return result;
+        }
+
+        /// <summary>
+        /// http://stackoverflow.com/questions/24465513/how-to-get-detect-screen-size-in-xamarin-forms
+        /// </summary>
+        /// <param name="pixel"></param>
+        /// <returns></returns>
+        private double PixelToDp(double pixel)
+        {
+            var scale = Resources.DisplayMetrics.Density;
+            return (double)((pixel * scale) + 0.5f);
         }
     }
 }

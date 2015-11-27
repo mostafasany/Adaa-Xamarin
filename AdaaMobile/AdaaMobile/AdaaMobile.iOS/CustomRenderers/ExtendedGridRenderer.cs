@@ -51,8 +51,9 @@ namespace AdaaMobile.iOS.CustomRenderers
 
         private void UpdateCornerRadius()
         {
-			NativeView.Layer.BackgroundColor = Color.Transparent.ToCGColor();
-			NativeView.Layer.CornerRadius = (float)_extendedGrid.CornerRadius * 5;
+            var scaleFactor = UIScreen.MainScreen.Scale;
+            NativeView.Layer.BackgroundColor = Color.Transparent.ToCGColor();
+			NativeView.Layer.CornerRadius = (float)_extendedGrid.CornerRadius * scaleFactor;
 			NativeView.Layer.MasksToBounds = true;
 			NativeView.ClipsToBounds = true;
 			ClipsToBounds = true;

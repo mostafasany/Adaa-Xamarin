@@ -43,28 +43,18 @@ namespace AdaaMobile.Droid.CustomRenderers
                 Invalidate();
             }
             this.UpdateFrom(_formControl, e.PropertyName);
-            
+
         }
 
         protected override bool DrawChild(Canvas canvas, View child, long drawingTime)
         {
-            //var clippingPath = new Path();
-            //RectF rect = new RectF(0, 0, Width, Height);
-            //clippingPath.AddRoundRect(rect, (float)_formControl.CornerRadius, (float)_formControl.CornerRadius, Path.Direction.Cw);
-            //canvas.Save();
-            //canvas.ClipPath(clippingPath);
-            //var result= base.DrawChild(canvas, child, drawingTime);
-            
-            //canvas.Restore();
-            //return result;
-
             var radius = Math.Min(Width, Height) / 2;
             var strokeWidth = (_formControl).BorderThickness;
             radius -= strokeWidth / 2;
 
 
             Path path = new Path();
-            path.AddCircle(Width / 2, Height / 2, radius, Path.Direction.Ccw);
+            path.AddCircle(Width / 2, Height / 2, (float)PixelToDp(radius), Path.Direction.Ccw);
             canvas.Save();
             canvas.ClipPath(path);
 
@@ -72,6 +62,17 @@ namespace AdaaMobile.Droid.CustomRenderers
 
             canvas.Restore();
             return result;
+        }
+
+        /// <summary>
+        /// http://stackoverflow.com/questions/24465513/how-to-get-detect-screen-size-in-xamarin-forms
+        /// </summary>
+        /// <param name="pixel"></param>
+        /// <returns></returns>
+        private double PixelToDp(double pixel)
+        {
+            var scale = Resources.DisplayMetrics.Density;
+            return (double)((pixel * scale) + 0.5f);
         }
     }
 }

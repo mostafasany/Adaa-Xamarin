@@ -14,7 +14,8 @@ namespace AdaaMobile.iOS.Extensions
                 return;
 
             nativeControl.Layer.MasksToBounds = true;
-            nativeControl.Layer.CornerRadius = (float)formsControl.CornerRadius * 5;
+            var scaleFactor = UIScreen.MainScreen.Scale;
+            nativeControl.Layer.CornerRadius = (float)formsControl.CornerRadius * scaleFactor;
             nativeControl.UpdateBorder(formsControl.BorderColor, formsControl.BorderThickness);
         }
 
@@ -23,10 +24,10 @@ namespace AdaaMobile.iOS.Extensions
         {
             if (nativeControl == null || formsControl == null)
                 return;
-
+            var scaleFactor = UIScreen.MainScreen.Scale;
             if (propertyChanged == AdaaMobile.Controls.RoundedBoxView.CornerRadiusProperty.PropertyName)
             {
-                nativeControl.Layer.CornerRadius = (float)formsControl.CornerRadius;
+                nativeControl.Layer.CornerRadius = (float)formsControl.CornerRadius * scaleFactor;
             }
 
             if (propertyChanged == AdaaMobile.Controls.RoundedBoxView.BorderColorProperty.PropertyName)
