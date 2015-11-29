@@ -3,34 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AdaaMobile.Views.DirectoryPage"
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+             BackgroundColor="White"
              >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <!--IsGroupingEnabled="True"
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <!--IsGroupingEnabled="True"
               GroupDisplayBinding="{Binding Key}"
               GroupShortNameBinding="{Binding Key}"-->
-        <ListView 
-              ItemsSource="{Binding GroupedEmployees}" 
-              HasUnevenRows="False"
-              IsGroupingEnabled="True"
-              GroupDisplayBinding="{Binding Key}"
-              GroupShortNameBinding="{Binding Key}"
+    <ListView
+          ItemsSource="{Binding GroupedEmployees}"
+          HasUnevenRows="true"
+          IsGroupingEnabled="True"
+          GroupDisplayBinding="{Binding Key}"
+          GroupShortNameBinding="{Binding Key}"
               >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <controls:ExtendedGrid VerticalOptions="Fill"
-                      HorizontalOptions="Fill"
-                      CornerRadius="3"
-                      BackgroundColor="Black"
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell >
+            <ViewCell.View>
+              <Grid Padding="15">
+                <controls:ExtendedGrid VerticalOptions="Fill"
+              HorizontalOptions="Fill"
+              CornerRadius="5"
+              BackgroundColor="Transparent"
                       >
-                            <Label HorizontalOptions="Fill" VerticalOptions="Fill" TextColor="White" Text="{Binding Name}"></Label>
-                        </controls:ExtendedGrid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </Grid>
+                  
+                  <Label HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="{StaticResource AppBackgroundLight}" TextColor="White" Text="{Binding Name}"></Label>
+                </controls:ExtendedGrid>
+              </Grid>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </Grid>
 </ContentPage>
