@@ -34,7 +34,7 @@ namespace AdaaMobile.iOS.CustomRenderers
         protected override void OnElementChanged(ElementChangedEventArgs<ExtendedGrid> e)
         {
             base.OnElementChanged(e);
-            if (NativeView == null) return;
+			if (NativeView == null || _extendedGrid == null) return;
             UpdateCornerRadius();
         }
 

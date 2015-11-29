@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AdaaMobile.Views.DirectoryPage"
-             
+             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              >
     <Grid>
         <Grid.RowDefinitions>
@@ -21,9 +21,13 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label TextColor="White" Text="{Binding Name}"></Label>
-                        </StackLayout>
+                        <controls:ExtendedGrid VerticalOptions="Fill"
+                      HorizontalOptions="Fill"
+                      CornerRadius="3"
+                      BackgroundColor="Black"
+                      >
+                            <Label HorizontalOptions="Fill" VerticalOptions="Fill" TextColor="White" Text="{Binding Name}"></Label>
+                        </controls:ExtendedGrid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
