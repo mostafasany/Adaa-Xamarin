@@ -64,7 +64,7 @@ namespace AdaaMobile.ViewModels
         public AttendanceViewModel()
         {
 
-            _startDate = new DateTime(2015, 10, 1, 0, 0, 0);
+            _startDate = new DateTime(2015, 10,1, 0, 0, 0);
             _endDate = new DateTime(2015, 10, 31, 0, 0, 0);
             PopulateDays();
         }
