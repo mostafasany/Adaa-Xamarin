@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,53 +8,44 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Controls
 {
-    public class HorizontalListView : ListView
+    public class HorizontalListView : ContentView, IVisualElementController, IElementController
     {
-        private Size _firstViewSize;
-        private RelativeLayout _parent;
-        public HorizontalListView()
+
+        #region ItemTemplate
+        public static readonly BindableProperty ItemTemplateProperty = BindableProperty.Create<HorizontalListView, DataTemplate>(p => p.ItemTemplate, default(DataTemplate));
+
+        public DataTemplate ItemTemplate
         {
-            //var relativeLayout = new RelativeLayout();
-            Rotation = 270;
+            get { return (DataTemplate)GetValue(ItemTemplateProperty); }
+            set { SetValue(ItemTemplateProperty, value); }
+        }
+        #endregion
+
+        #region ItemSource
+        public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create<HorizontalListView, IEnumerable>(p => p.ItemsSource, default(IEnumerable));
+
+        public IEnumerable ItemsSource
+        {
+            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value); }
+        }
+        #endregion
+
+        public void SetValueFromRenderer(BindableProperty property, object value)
+        {
+            //throw new NotImplementedException();
         }
 
-        protected override void SetupContent(Cell content, int index)
+        public void SetValueFromRenderer(BindablePropertyKey propertyKey, object value)
         {
-            var viewCell = (ViewCell)content;
-            viewCell.View.Rotation = 90;
-            var sizeRequest = viewCell.View.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
-            if (_firstViewSize.IsZero)
-            {
-                _firstViewSize = sizeRequest.Request;
-                UpdateConstraints();
-            }
-            base.SetupContent(content, index);
+            //throw new NotImplementedException();
         }
 
-        private void UpdateConstraints()
+        public void NativeSizeChanged()
         {
-            TranslationX = Width / 2 - _firstViewSize.Width;
-            //TranslationY = -1 * Width  + _firstViewSize.Width / 2;
-            //if (_parent != null)
-            //{
-            //    HeightRequest = _firstViewSize.Width +20;
-            //}
+            //throw new NotImplementedException();
         }
 
-        protected override void OnParentSet()
-        {
-            base.OnParentSet();
-            _parent = (RelativeLayout)Parent;
-        }
 
-        public override SizeRequest GetSizeRequest(double widthConstraint, double heightConstraint)
-        {
-            return base.GetSizeRequest(widthConstraint, heightConstraint);
-        }
-
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height);
-        }
     }
 }

@@ -23,110 +23,97 @@
   </ContentPage.Resources>
 
   <ScrollView>
-  <StackLayout Spacing="0"  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <StackLayout Spacing="0"  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
-    <!--Top buttons Attendance and Exceptions-->
-    <Grid  >
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
-      
-      <Button Text="{ext:Translate Attendance}"
-          Grid.Column="0"
-          BorderRadius="0"
-          BorderColor="{StaticResource AppBackgroundDark}"
-          x:Name="AttendanceButton"
-          Clicked="OnTabTapped"         
+      <!--Top buttons Attendance and Exceptions-->
+      <Grid  >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Text="{ext:Translate Attendance}"
+            Grid.Column="0"
+            BorderRadius="0"
+            BorderColor="{StaticResource AppBackgroundDark}"
+            x:Name="AttendanceButton"
+            Clicked="OnTabTapped"
         />
 
-      <Button Text="{ext:Translate Exceptions}"
-          Grid.Column="1"
-          BorderRadius="0"
-          BorderColor="{StaticResource AppBackgroundDark}"
-          x:Name="ExceptionsButton"
-          Clicked="OnTabTapped"   
+        <Button Text="{ext:Translate Exceptions}"
+            Grid.Column="1"
+            BorderRadius="0"
+            BorderColor="{StaticResource AppBackgroundDark}"
+            x:Name="ExceptionsButton"
+            Clicked="OnTabTapped"
       />
-    </Grid>
+      </Grid>
 
-    <Label   Text="Select date to view your attendance details"
-       TextColor="White"
+      <Label   Text="Select date to view your attendance details"
+         TextColor="White"
                />
 
-    <!--Date Pickers-->
-    <Grid  >
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
-            <!--<Image Source="splashscreen.jpg" 
+      <!--Date Pickers-->
+      <Grid  >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--<Image Source="splashscreen.jpg" 
              Aspect="AspectFill" Grid.ColumnSpan="2" 
              VerticalOptions="Fill" HorizontalOptions="Fill"/>-->
-      <!--DatePicker isn't customizable, So Hide it and put cutomizable 
+        <!--DatePicker isn't customizable, So Hide it and put cutomizable 
         button that triggers Date picker with it's specification-->
-      <DatePicker
-          Grid.Column="0"
-          WidthRequest="0" HeightRequest="0"
-          x:Name="MinDatePicker"
-          Format="d MMM yyyy"
-          Date="{Binding StartDate}"
-          MaximumDate="{Binding EndDate}"
+        <DatePicker
+            Grid.Column="0"
+            WidthRequest="0" HeightRequest="0"
+            x:Name="MinDatePicker"
+            Format="d MMM yyyy"
+            Date="{Binding StartDate}"
+            MaximumDate="{Binding EndDate}"
           
             />
 
-      <controls:ImageButton Grid.Column="0"
-              Text="{Binding StartDate,
-                Converter={StaticResource DateFormatConverter},
-                ConverterParameter=d MMM yyyy}"
-              Image="icon.png"
-              Clicked="StartDate_Clicked"
-              ImageHeightRequest="40"
-              ImageWidthRequest="40"  
-              BackgroundColor="{StaticResource AppBackgroundLight}"
-                />
-
-      <!--DatePicker isn't customizable, So Hide it and put cutomizable 
-        button that triggers Date picker with it's specification-->
-      <DatePicker
-          Grid.Column="1"
-          x:Name="MaxDatePicker"
-          Format="d MMM yyyy"
-          Date="{Binding EndDate}"
-          WidthRequest="0" HeightRequest="0"
-          MinimumDate="{Binding StartDate}"
-          MaximumDate="{x:Static sys:DateTime.Now}"
-                    />
-      <controls:ImageButton Grid.Column="1"
-                Text="{Binding EndDate,
+        <controls:ImageButton Grid.Column="0"
+                Text="{Binding StartDate,
                 Converter={StaticResource DateFormatConverter},
                 ConverterParameter=d MMM yyyy}"
                 Image="icon.png"
-                Clicked="EndDate_Clicked"
+                Clicked="StartDate_Clicked"
                 ImageHeightRequest="40"
-                ImageWidthRequest="40"           
+                ImageWidthRequest="40"
                 BackgroundColor="{StaticResource AppBackgroundLight}"
                 />
-    </Grid>
-    <RelativeLayout VerticalOptions="Start" >
-      <ListView Rotation="270"
-                HorizontalOptions="Fill"              
-                HeightRequest="80"
-                RowHeight="60"
-                x:Name="DaysList"
-                InputTransparent="True"
-                ItemTapped="DayItem_Tapped"
-                ItemsSource="{Binding DaysList}"
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-40}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=40}"
-                RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=80}"
-                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
-          >
-        <ListView.ItemTemplate>
+
+        <!--DatePicker isn't customizable, So Hide it and put cutomizable 
+        button that triggers Date picker with it's specification-->
+        <DatePicker
+            Grid.Column="1"
+            x:Name="MaxDatePicker"
+            Format="d MMM yyyy"
+            Date="{Binding EndDate}"
+            WidthRequest="0" HeightRequest="0"
+            MinimumDate="{Binding StartDate}"
+            MaximumDate="{x:Static sys:DateTime.Now}"
+                    />
+        <controls:ImageButton Grid.Column="1"
+                  Text="{Binding EndDate,
+                Converter={StaticResource DateFormatConverter},
+                ConverterParameter=d MMM yyyy}"
+                  Image="icon.png"
+                  Clicked="EndDate_Clicked"
+                  ImageHeightRequest="40"
+                  ImageWidthRequest="40"
+                  BackgroundColor="{StaticResource AppBackgroundLight}"
+                />
+      </Grid>
+
+      <controls:HorizontalListView ItemsSource="{Binding DaysList}" VerticalOptions="Start" HeightRequest="100"  HorizontalOptions="Fill">
+        <controls:HorizontalListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
               <ViewCell.View>
-                <Grid RowSpacing="0" Rotation="90"
-                     TranslationX="20"                              >
+                <Grid RowSpacing="0"                          >
 
                   <Grid.RowDefinitions>
                     <RowDefinition  Height="Auto"/>
@@ -168,56 +155,55 @@
               </ViewCell.View>
             </ViewCell>
           </DataTemplate>
+        </controls:HorizontalListView.ItemTemplate>
+      </controls:HorizontalListView>
+      
+      <StackLayout VerticalOptions="FillAndExpand">
+        <Grid VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBackgroundLight}">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Label TextColor="Black" Text="Date" Grid.Column="0"/>
+          <Label TextColor="Black" Text=":" Grid.Column="1"/>
+          <Label TextColor="Black" Text="1 Oct 2015" Grid.Column="2"/>
+        </Grid>
+      </StackLayout>
 
-        </ListView.ItemTemplate>
-      </ListView>
-    </RelativeLayout>
-    <StackLayout VerticalOptions="FillAndExpand">
-      <Grid VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBackgroundLight}">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <Label TextColor="Black" Text="Date" Grid.Column="0"/>
-        <Label TextColor="Black" Text=":" Grid.Column="1"/>
-        <Label TextColor="Black" Text="1 Oct 2015" Grid.Column="2"/>
-      </Grid>
-    </StackLayout>
-
-    <Button
+      <Button
                 
-        HorizontalOptions="FillAndExpand"
-        BackgroundColor="White"
-        TextColor="Black"
-        BorderRadius="5"
-        Text="{ext:Translate Delegation}"
+          HorizontalOptions="FillAndExpand"
+          BackgroundColor="White"
+          TextColor="Black"
+          BorderRadius="5"
+          Text="{ext:Translate Delegation}"
                 >
-    </Button>
+      </Button>
 
-    <Button
-        HorizontalOptions="FillAndExpand"
-        BackgroundColor="White"
-        TextColor="{StaticResource AppBackgroundLight}"
-        BorderRadius="5"
-        Text="{ext:Translate DayPass}"
+      <Button
+          HorizontalOptions="FillAndExpand"
+          BackgroundColor="White"
+          TextColor="{StaticResource AppBackgroundLight}"
+          BorderRadius="5"
+          Text="{ext:Translate DayPass}"
                 >
-    </Button>
-    <controls:ImageButton
-        HorizontalOptions="FillAndExpand"
-        VerticalOptions="Start"
-        BackgroundColor="{StaticResource AppBackgroundLight}"
-        TextColor="Red"
-        BorderRadius="5"
-        ImageHeightRequest="20"
-        ImageWidthRequest="20"
-        Orientation="ImageToLeft"
-        Image="icon.png"
-        Text="{ext:Translate AdaaTimesheet}"
+      </Button>
+      <controls:ImageButton
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="Start"
+          BackgroundColor="{StaticResource AppBackgroundLight}"
+          TextColor="Red"
+          BorderRadius="5"
+          ImageHeightRequest="20"
+          ImageWidthRequest="20"
+          Orientation="ImageToLeft"
+          Image="icon.png"
+          Text="{ext:Translate AdaaTimesheet}"
                 >
 
-    </controls:ImageButton>
-  </StackLayout>
+      </controls:ImageButton>
+    </StackLayout>
 
   </ScrollView>
 
