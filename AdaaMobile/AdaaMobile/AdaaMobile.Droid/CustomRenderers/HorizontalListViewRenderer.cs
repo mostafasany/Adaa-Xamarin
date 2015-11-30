@@ -34,7 +34,7 @@ namespace AdaaMobile.Droid.CustomRenderers
     {
         private RecyclerView _recyclerView;
         private HorizontalListLayoutManager _layoutManager;
-        private bool isSpecificHeight;//A value of false will update the List height to wrap childs.
+        private bool _isSpecificHeight;//A value of false will update the List height to wrap childs.
         /// <summary>
         /// The data source
         /// </summary>
@@ -65,7 +65,7 @@ namespace AdaaMobile.Droid.CustomRenderers
             if (e.NewElement != null)
             {
                 Bind(e.NewElement);
-                if (Element.HeightRequest > 0) isSpecificHeight = true;
+                if (Element.HeightRequest > 0) _isSpecificHeight = true;
                 _recyclerView = new RecyclerView(Xamarin.Forms.Forms.Context);
                 _layoutManager = new HorizontalListLayoutManager(Xamarin.Forms.Forms.Context, LinearLayoutManager.Horizontal, false);
                 _recyclerView.SetLayoutManager(_layoutManager);
@@ -80,7 +80,7 @@ namespace AdaaMobile.Droid.CustomRenderers
         private void _recyclerView_LayoutChange(object sender, LayoutChangeEventArgs e)
         {
             //TODO:Test to make sure it doesn't make performance issues
-            if (_layoutManager != null && !isSpecificHeight)
+            if (_layoutManager != null && !_isSpecificHeight)
             {
                 //This the is the only way I find so far to update the size in Xamarin forms
                 //when list height is auto and not hardwired.
