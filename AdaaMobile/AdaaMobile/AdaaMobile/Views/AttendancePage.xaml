@@ -108,22 +108,20 @@
                 />
       </Grid>
       <StackLayout>
-        <controls:HorizontalListView ItemsSource="{Binding DaysList}" VerticalOptions="Start"     HorizontalOptions="Fill">
+        <controls:HorizontalListView ItemsSource="{Binding DaysList}" VerticalOptions="Start"  HeightRequest="100"   HorizontalOptions="Fill">
           <controls:HorizontalListView.ItemTemplate>
             <DataTemplate>
               <ViewCell>
                 <ViewCell.View>
-                  <Grid RowSpacing="0" HeightRequest="80"  WidthRequest="100"               >
-                    <BoxView BackgroundColor="Aqua" VerticalOptions="Fill"
-                                              HorizontalOptions="Fill"
-                                              Grid.Row="0" Grid.RowSpan="2"/>
+                    <!--<Label Text="{Binding AbbrWeek}" ></Label>-->
+                  <Grid RowSpacing="0"             >              
                     <Grid.RowDefinitions>
-                      <RowDefinition  Height="*"/>
+                      <RowDefinition  Height="Auto"/>
                       <RowDefinition  Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0"
-                           VerticalOptions="Fill"
+                           VerticalOptions="Start"
                            HorizontalTextAlignment="Center"
                            HorizontalOptions="Fill"
                            BackgroundColor="{StaticResource YellowAccent}"

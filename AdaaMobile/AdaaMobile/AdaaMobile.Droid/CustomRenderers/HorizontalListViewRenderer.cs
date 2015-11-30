@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using AdaaMobile.Controls;
 using AdaaMobile.Droid.CustomRenderers;
@@ -28,6 +29,25 @@ namespace AdaaMobile.Droid.CustomRenderers
         private RecyclerView _recyclerView;
         private HorizontalListLayoutManager _layoutManager;
 
+        /// <summary>
+        /// The data source
+        /// </summary>
+        private HorizontalListViewAdapter _dataSource;
+
+        /// <summary>
+        /// Gets the data source.
+        /// </summary>
+        /// <value>The data source.</value>
+        private HorizontalListViewAdapter DataSource
+        {
+            get
+            {
+                return _dataSource ??
+                    (_dataSource =
+                        new HorizontalListViewAdapter(this.OnBindViewHolder, this.OnCreateViewHolder, this.GetItemsCount));
+            }
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<HorizontalListView> e)
         {
             base.OnElementChanged(e);
@@ -42,16 +62,6 @@ namespace AdaaMobile.Droid.CustomRenderers
             _recyclerView.LayoutChange += _recyclerView_LayoutChange;
             base.SetNativeControl(_recyclerView);
 
-        }
-
-        protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
-        {
-            base.OnSizeChanged(w, h, oldw, oldh);
-        }
-
-        protected override void OnLayout(bool changed, int l, int t, int r, int b)
-        {
-            base.OnLayout(changed, l, t, r, b);
         }
 
         private void _recyclerView_LayoutChange(object sender, LayoutChangeEventArgs e)
@@ -99,38 +109,25 @@ namespace AdaaMobile.Droid.CustomRenderers
             }
         }
 
-        /// <summary>
-		/// The data source
-		/// </summary>
-		private HorizontalListViewAdapter _dataSource;
-        /// <summary>
-        /// Gets the data source.
-        /// </summary>
-        /// <value>The data source.</value>
-        private HorizontalListViewAdapter DataSource
-        {
-            get
-            {
-                return _dataSource ??
-                    (_dataSource =
-                        new HorizontalListViewAdapter(this.OnBindViewHolder, this.OnCreateViewHolder, this.GetItemsCount));
-            }
-        }
-
         private RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
 
-            //var viewCellBinded = (Element.ItemTemplate.CreateContent() as ViewCell);
-            //System.Diagnostics.Debug.Assert(viewCellBinded != null, "viewCellBinded != null");
-            //viewCellBinded.BindingContext = new DayWrapper(DateTime.Now) { };
-            //var renderer = Platform.CreateRenderer(viewCellBinded.View);
-            ////renderer.ViewGroup.LayoutParameters = new LayoutParams(100, 100);
-            ////renderer.ViewGroup.SetBackgroundColor(global::Android.Graphics.Color.Blue);
-            //return new HorizontalListViewHolder(renderer.ViewGroup, renderer);
-            var tempView = new TextView(Xamarin.Forms.Forms.Context);
-            tempView.Text = "Test";
-            tempView.Background = new ColorDrawable(Color.Aqua.ToAndroid());
-            return new HorizontalListViewHolder(tempView);
+            var viewCellBinded = (Element.ItemTemplate.CreateContent() as ViewCell);
+            System.Diagnostics.Debug.Assert(viewCellBinded != null, "viewCellBinded != null");
+            viewCellBinded.BindingContext = new DayWrapper(DateTime.Now) { };
+
+
+            var renderer = XamarinRenderer.Convert(viewCellBinded.View, Element);
+
+            var requestSize = viewCellBinded.View.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+            Rectangle rect = new Rectangle(0, 0, requestSize.Request.Width, requestSize.Request.Height);
+            viewCellBinded.View.Layout(rect);
+            //renderer.Tracker.UpdateLayout();
+            var layoutParams = new ViewGroup.LayoutParams((int)PixelToDp(rect.Width), (int)PixelToDp(rect.Height));
+            renderer.ViewGroup.LayoutParameters = layoutParams;
+
+            return new HorizontalListViewHolder(renderer.ViewGroup, renderer);
+
         }
 
         public void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
@@ -160,7 +157,7 @@ namespace AdaaMobile.Droid.CustomRenderers
         /// http://stackoverflow.com/questions/24465513/how-to-get-detect-screen-size-in-xamarin-forms
         /// </summary>
         /// <param name="pixel"></param>
-        /// <returns></returns>
+        /// <returns>Dp to be used inside android renderer.</returns>
         private double PixelToDp(double pixel)
         {
             var scale = Resources.DisplayMetrics.Density;
@@ -181,7 +178,9 @@ namespace AdaaMobile.Droid.CustomRenderers
     }
 
 
-
+    /// <summary>
+    /// Adapter for Recyclerview, It uses delegate methods to pass functionalities.
+    /// </summary>
     public class HorizontalListViewAdapter : RecyclerView.Adapter
     {
         //Delegates
@@ -215,6 +214,9 @@ namespace AdaaMobile.Droid.CustomRenderers
         }
     }
 
+    /// <summary>
+    /// Custom view holder for views of Recylcerview
+    /// </summary>
     public class HorizontalListViewHolder : RecyclerView.ViewHolder
     {
         public IVisualElementRenderer Renderer { get; set; }
@@ -233,5 +235,58 @@ namespace AdaaMobile.Droid.CustomRenderers
         }
     }
 
+    #region Platform Render Workaround code
+    public class XamarinRenderer
+    {
 
+        // Solution for render issue extracted from this link
+        // Thanks for thaihung203 for the brilliant solution
+        // See https://forums.xamarin.com/discussion/comment/148210/#Comment_148210
+        // and https://github.com/thaihung203/xfpopup/blob/master/xfpopup/xfpopup.Droid/DroidXFPopupSrvc.cs
+        private static Type _platformType = Type.GetType("Xamarin.Forms.Platform.Android.Platform, Xamarin.Forms.Platform.Android", true);
+
+        private static BindableProperty _rendererProperty;
+
+        public static BindableProperty RendererProperty
+        {
+            get { return _rendererProperty ?? (_rendererProperty = (BindableProperty)_platformType.GetField("RendererProperty", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Public).GetValue(null)); }
+        }
+
+        private static PropertyInfo _isplatformenabledprop;
+
+        public static PropertyInfo IsPlatformEnabledProperty
+        {
+            get
+            {
+                return _isplatformenabledprop ?? (_isplatformenabledprop = typeof(VisualElement).GetProperty("IsPlatformEnabled", BindingFlags.NonPublic | BindingFlags.Instance));
+            }
+        }
+
+        private static PropertyInfo _platform;
+
+        public static PropertyInfo PlatformProperty
+        {
+            get
+            {
+                return _platform ?? (_platform = typeof(VisualElement).GetProperty("Platform", BindingFlags.NonPublic | BindingFlags.Instance));
+            }
+        }
+
+        public static IVisualElementRenderer Convert(Xamarin.Forms.View source, Xamarin.Forms.View valid)
+        {
+            IVisualElementRenderer render = (IVisualElementRenderer)source.GetValue(RendererProperty);
+            if (render == null)
+            {
+                render = Platform.CreateRenderer(source);
+                source.SetValue(RendererProperty, render);
+                var p = PlatformProperty.GetValue(valid);
+                PlatformProperty.SetValue(source, p);
+                IsPlatformEnabledProperty.SetValue(source, true);
+            }
+
+            return render;
+        }
+
+    }
+    #endregion
 }
