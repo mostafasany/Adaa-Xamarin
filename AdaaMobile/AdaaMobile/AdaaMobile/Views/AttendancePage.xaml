@@ -70,6 +70,7 @@
             x:Name="MinDatePicker"
             Format="d MMM yyyy"
             Date="{Binding StartDate}"
+            MinimumDate="{Binding MinimumDate}"
             MaximumDate="{Binding EndDate}"
           
             />
@@ -108,7 +109,10 @@
                 />
       </Grid>
       <StackLayout>
-        <controls:HorizontalListView ItemsSource="{Binding DaysList}" VerticalOptions="Start"  HeightRequest="100"   HorizontalOptions="Fill">
+        <controls:HorizontalListView ItemsSource="{Binding DaysList}"
+                                     ItemTapped="Day_Tapped"
+                                     VerticalOptions="Start" 
+                                     HorizontalOptions="Fill">
           <controls:HorizontalListView.ItemTemplate>
             <DataTemplate>
               <ViewCell>

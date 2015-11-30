@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -19,16 +20,21 @@ using Android.Widget;
 using Java.Lang;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using PropertyChangingEventArgs = Xamarin.Forms.PropertyChangingEventArgs;
 using View = Android.Views.View;
 
 [assembly: ExportRenderer(typeof(HorizontalListView), typeof(HorizontalListViewRenderer))]
 namespace AdaaMobile.Droid.CustomRenderers
 {
+    //Some snippets related to recycler view of the Renderer is from xamrin android sample 
+    //See: https://developer.xamarin.com/guides/android/user_interface/recyclerview/
+    //Some snippets related to data source structure inspired from XLabs GridView
+    //See: https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/src/Forms/XLabs.Forms.Droid/Controls/GridView/GridViewRenderer.cs
     public class HorizontalListViewRenderer : ViewRenderer<HorizontalListView, RecyclerView>
     {
         private RecyclerView _recyclerView;
         private HorizontalListLayoutManager _layoutManager;
-
+        private bool isSpecificHeight;//A value of false will update the List height to wrap childs.
         /// <summary>
         /// The data source
         /// </summary>
@@ -51,23 +57,30 @@ namespace AdaaMobile.Droid.CustomRenderers
         protected override void OnElementChanged(ElementChangedEventArgs<HorizontalListView> e)
         {
             base.OnElementChanged(e);
+            if (e.OldElement != null)
+            {
+                Unbind(e.OldElement);
+            }
 
-            _recyclerView = new RecyclerView(Xamarin.Forms.Forms.Context);
-            _layoutManager = new HorizontalListLayoutManager(Xamarin.Forms.Forms.Context, LinearLayoutManager.Horizontal, false);
-            _recyclerView.SetLayoutManager(_layoutManager);
-            //_recyclerView.SetMinimumHeight(100);
-            _recyclerView.HasFixedSize = false;
-            _recyclerView.SetAdapter(DataSource);
-            _recyclerView.Background = new ColorDrawable(Color.Red.ToAndroid());
-            _recyclerView.LayoutChange += _recyclerView_LayoutChange;
-            base.SetNativeControl(_recyclerView);
-
+            if (e.NewElement != null)
+            {
+                Bind(e.NewElement);
+                if (Element.HeightRequest > 0) isSpecificHeight = true;
+                _recyclerView = new RecyclerView(Xamarin.Forms.Forms.Context);
+                _layoutManager = new HorizontalListLayoutManager(Xamarin.Forms.Forms.Context, LinearLayoutManager.Horizontal, false);
+                _recyclerView.SetLayoutManager(_layoutManager);
+                _recyclerView.HasFixedSize = false;
+                _recyclerView.SetAdapter(DataSource);
+                _recyclerView.Background = new ColorDrawable(Color.Transparent.ToAndroid());
+                _recyclerView.LayoutChange += _recyclerView_LayoutChange;
+                base.SetNativeControl(_recyclerView);
+            }
         }
 
         private void _recyclerView_LayoutChange(object sender, LayoutChangeEventArgs e)
         {
             //TODO:Test to make sure it doesn't make performance issues
-            if (_layoutManager != null)
+            if (_layoutManager != null && !isSpecificHeight)
             {
                 //This the is the only way I find so far to update the size in Xamarin forms
                 //when list height is auto and not hardwired.
@@ -79,12 +92,6 @@ namespace AdaaMobile.Droid.CustomRenderers
             }
         }
 
-
-        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            base.OnElementPropertyChanged(sender, e);
-        }
-
         /// <summary>
         /// Unbinds the specified old element.
         /// </summary>
@@ -93,7 +100,12 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
             if (oldElement != null)
             {
-
+                oldElement.PropertyChanging += ElementPropertyChanging;
+                oldElement.PropertyChanged -= ElementPropertyChanged;
+                if (oldElement.ItemsSource is INotifyCollectionChanged)
+                {
+                    (oldElement.ItemsSource as INotifyCollectionChanged).CollectionChanged -= DataCollectionChanged;
+                }
             }
         }
 
@@ -105,34 +117,120 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
             if (newElement != null)
             {
+                newElement.PropertyChanging += ElementPropertyChanging;
+                newElement.PropertyChanged += ElementPropertyChanged;
+                if (newElement.ItemsSource is INotifyCollectionChanged)
+                {
+                    (newElement.ItemsSource as INotifyCollectionChanged).CollectionChanged += DataCollectionChanged;
+                }
+            }
+        }
+
+        private void ElementPropertyChanging(object sender, PropertyChangingEventArgs e)
+        {
+            if (e.PropertyName == "ItemsSource")
+            {
+                if (this.Element.ItemsSource is INotifyCollectionChanged)
+                {
+                    (this.Element.ItemsSource as INotifyCollectionChanged).CollectionChanged -= DataCollectionChanged;
+                }
+            }
+        }
+
+        private void ElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "ItemsSource")
+            {
+                if (this.Element.ItemsSource is INotifyCollectionChanged)
+                {
+                    (this.Element.ItemsSource as INotifyCollectionChanged).CollectionChanged += DataCollectionChanged;
+                }
+                _dataSource.NotifyDataSetChanged();
+            }
+        }
+
+        private void DataCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            //TODO:Test different scenarios
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    _dataSource.NotifyItemInserted(e.NewStartingIndex);
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    _dataSource.NotifyItemRemoved(e.OldStartingIndex);
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    _dataSource.NotifyItemChanged(e.NewStartingIndex);
+                    break;
+                case NotifyCollectionChangedAction.Move:
+                    _dataSource.NotifyItemMoved(e.OldStartingIndex, e.NewStartingIndex);
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    _dataSource.NotifyDataSetChanged();
+                    break;
 
             }
         }
 
-        private RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
+        private void RaiseItemTappedEvent(HorizontaListItemTappedEventArgs args)
         {
-
-            var viewCellBinded = (Element.ItemTemplate.CreateContent() as ViewCell);
-            System.Diagnostics.Debug.Assert(viewCellBinded != null, "viewCellBinded != null");
-            viewCellBinded.BindingContext = new DayWrapper(DateTime.Now) { };
-
-
-            var renderer = XamarinRenderer.Convert(viewCellBinded.View, Element);
-
-            var requestSize = viewCellBinded.View.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
-            Rectangle rect = new Rectangle(0, 0, requestSize.Request.Width, requestSize.Request.Height);
-            viewCellBinded.View.Layout(rect);
-            //renderer.Tracker.UpdateLayout();
-            var layoutParams = new ViewGroup.LayoutParams((int)PixelToDp(rect.Width), (int)PixelToDp(rect.Height));
-            renderer.ViewGroup.LayoutParameters = layoutParams;
-
-            return new HorizontalListViewHolder(renderer.ViewGroup, renderer);
-
+            if (Element != null)
+            {
+                Element.RaiseItemTapped(args);
+            }
         }
 
+        /// <summary>
+        /// This method is passed to HorizontalListViewAdapter to create view holder.
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="viewType"></param>
+        /// <returns></returns>
+        private RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
+        {
+            var viewCellBinded = (Element.ItemTemplate.CreateContent() as ViewCell);
+            System.Diagnostics.Debug.Assert(viewCellBinded != null, "viewCellBinded != null");
+
+            var renderer = XamarinRendererHelper.Convert(viewCellBinded.View, Element);
+            System.Diagnostics.Debug.Assert(renderer != null, "renderer != null");
+
+            return new HorizontalListViewHolder(renderer.ViewGroup, renderer, RaiseItemTappedEvent);
+        }
+
+        /// <summary>
+        /// This method is passed to HorizontalListViewAdapter to bind view holder.
+        /// </summary>
+        /// <param name="holder"></param>
+        /// <param name="position"></param>
         public void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            //var bindedHolder = (HorizontalListViewHolder)holder;
+            var bindedHolder = (HorizontalListViewHolder)holder;
+            //retrieve item
+            object item = GetItem(position);
+
+            //Set binding context
+            bindedHolder.Renderer.Element.BindingContext = item;
+
+            //Update width and height based on binding data
+            var renderer = bindedHolder.Renderer;
+            var element = bindedHolder.Renderer.Element;
+
+            //Update layout
+            var requestSize = element.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+            Rectangle rect = new Rectangle(0, 0, requestSize.Request.Width, requestSize.Request.Height);
+            element.Layout(rect);
+            var layoutParams = new ViewGroup.LayoutParams((int)PixelToDp(rect.Width), (int)PixelToDp(rect.Height));
+            renderer.ViewGroup.LayoutParameters = layoutParams;
+        }
+
+        /// <summary>
+        /// Retieves the item at 'position' from Element.ItemSource.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        private object GetItem(int position)
+        {
             object item;
             if (Element.ItemsSource is IList)
             {
@@ -142,9 +240,14 @@ namespace AdaaMobile.Droid.CustomRenderers
             {
                 item = this.Element.ItemsSource.Cast<object>().ElementAt(position);
             }
-            //bindedHolder.Renderer.Element.BindingContext = item;
+
+            return item;
         }
 
+        /// <summary>
+        /// Gets items source count.
+        /// </summary>
+        /// <returns></returns>
         public int GetItemsCount()
         {
             var collection = this.Element.ItemsSource as IList;
@@ -174,7 +277,6 @@ namespace AdaaMobile.Droid.CustomRenderers
             var scale = Resources.DisplayMetrics.Density;
             return (double)((dp - 0.5f) / scale);
         }
-
     }
 
 
@@ -185,8 +287,11 @@ namespace AdaaMobile.Droid.CustomRenderers
     {
         //Delegates
         public delegate void OnBindViewHolderDelegate(RecyclerView.ViewHolder holder, int position);
+
         public delegate RecyclerView.ViewHolder OnCreateViewHolderDelegate(ViewGroup parent, int viewType);
+
         public delegate int GetItemsCount();
+
         //Fields
         private readonly OnBindViewHolderDelegate _bindDelegate;
         private readonly OnCreateViewHolderDelegate _createDelegate;
@@ -198,6 +303,7 @@ namespace AdaaMobile.Droid.CustomRenderers
             _createDelegate = createDelegate;
             _itemsCountDelegate = itemsCountDelegate;
         }
+
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             _bindDelegate(holder, position);
@@ -207,6 +313,7 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
             return _createDelegate(parent, viewType);
         }
+
 
         public override int ItemCount
         {
@@ -221,6 +328,8 @@ namespace AdaaMobile.Droid.CustomRenderers
     {
         public IVisualElementRenderer Renderer { get; set; }
 
+        public Action<HorizontaListItemTappedEventArgs> ItemTapped { get; set; }
+
         public HorizontalListViewHolder(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
         }
@@ -229,17 +338,23 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
         }
 
-        public HorizontalListViewHolder(ViewGroup itemView, IVisualElementRenderer rendererBinded) : base(itemView)
+        public HorizontalListViewHolder(ViewGroup itemView, IVisualElementRenderer rendererBinded, Action<HorizontaListItemTappedEventArgs> itemTapped) : base(itemView)
         {
             Renderer = rendererBinded;
+            ItemTapped = itemTapped;
+            //wire click event, 
+            EventHandler handler = null;
+            handler = (sender, args) => { itemTapped(new HorizontaListItemTappedEventArgs((Xamarin.Forms.View)Renderer.Element, Renderer.Element.BindingContext)); };
+            ItemView.Click -= handler; //remove handler to prevent multiple supscription, (It's a little bit defensive)
+            itemView.Click += handler;
         }
     }
 
     #region Platform Render Workaround code
-    public class XamarinRenderer
-    {
 
-        // Solution for render issue extracted from this link
+    public class XamarinRendererHelper
+    {
+        // Solution for render issue added from this links
         // Thanks for thaihung203 for the brilliant solution
         // See https://forums.xamarin.com/discussion/comment/148210/#Comment_148210
         // and https://github.com/thaihung203/xfpopup/blob/master/xfpopup/xfpopup.Droid/DroidXFPopupSrvc.cs
@@ -256,20 +371,14 @@ namespace AdaaMobile.Droid.CustomRenderers
 
         public static PropertyInfo IsPlatformEnabledProperty
         {
-            get
-            {
-                return _isplatformenabledprop ?? (_isplatformenabledprop = typeof(VisualElement).GetProperty("IsPlatformEnabled", BindingFlags.NonPublic | BindingFlags.Instance));
-            }
+            get { return _isplatformenabledprop ?? (_isplatformenabledprop = typeof(VisualElement).GetProperty("IsPlatformEnabled", BindingFlags.NonPublic | BindingFlags.Instance)); }
         }
 
         private static PropertyInfo _platform;
 
         public static PropertyInfo PlatformProperty
         {
-            get
-            {
-                return _platform ?? (_platform = typeof(VisualElement).GetProperty("Platform", BindingFlags.NonPublic | BindingFlags.Instance));
-            }
+            get { return _platform ?? (_platform = typeof(VisualElement).GetProperty("Platform", BindingFlags.NonPublic | BindingFlags.Instance)); }
         }
 
         public static IVisualElementRenderer Convert(Xamarin.Forms.View source, Xamarin.Forms.View valid)
@@ -286,7 +395,7 @@ namespace AdaaMobile.Droid.CustomRenderers
 
             return render;
         }
-
     }
+
     #endregion
 }

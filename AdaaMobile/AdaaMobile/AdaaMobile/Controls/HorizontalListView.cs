@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace AdaaMobile.Controls
 {
-    public class HorizontalListView : ContentView, IVisualElementController, IElementController
+    public class HorizontalListView : ContentView
     {
 
         #region ItemTemplate
@@ -31,21 +32,49 @@ namespace AdaaMobile.Controls
         }
         #endregion
 
-        public void SetValueFromRenderer(BindableProperty property, object value)
+        #region ItemTappedCommand   
+        public static readonly BindableProperty ItemTappedCommandProperty = BindableProperty.Create<HorizontalListView, ICommand>(p => p.ItemTappedCommand, default(ICommand));
+        public ICommand ItemTappedCommand
         {
-            //throw new NotImplementedException();
+            get { return (ICommand)GetValue(ItemTappedCommandProperty); }
+            set { SetValue(ItemTappedCommandProperty, value); }
+        }
+        #endregion
+
+        public void RaiseItemTapped(HorizontaListItemTappedEventArgs args)
+        {
+            if (args == null || args.View == null) return;
+
+            if (ItemTappedCommand != null)
+            {
+                ItemTappedCommand.Execute(args.Item);
+            }
+
+            OnItemTapped(args);
         }
 
-        public void SetValueFromRenderer(BindablePropertyKey propertyKey, object value)
+        #region Custom Events
+
+        public event EventHandler<HorizontaListItemTappedEventArgs> ItemTapped;
+
+        protected virtual void OnItemTapped(HorizontaListItemTappedEventArgs e)
         {
-            //throw new NotImplementedException();
+            var handler = ItemTapped;
+            if (handler != null) handler.Invoke(this, e);
         }
 
-        public void NativeSizeChanged()
+        #endregion
+    }
+
+    public class HorizontaListItemTappedEventArgs : EventArgs
+    {
+        public View View { get; private set; }
+        public object Item { get; private set; }
+
+        public HorizontaListItemTappedEventArgs(View view, object item)
         {
-            //throw new NotImplementedException();
+            View = view;
+            Item = item;
         }
-
-
     }
 }

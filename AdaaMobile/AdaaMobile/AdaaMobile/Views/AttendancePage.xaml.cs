@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdaaMobile.Controls;
 using AdaaMobile.Models;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
@@ -95,7 +96,7 @@ namespace AdaaMobile.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DayItem_Tapped(object sender, ItemTappedEventArgs e)
+        private void Day_Tapped(object sender, HorizontaListItemTappedEventArgs e)
         {
             Debug.WriteLine("ItemTapped");
             var newDay = (DayWrapper)e.Item;

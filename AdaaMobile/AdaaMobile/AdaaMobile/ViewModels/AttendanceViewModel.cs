@@ -10,7 +10,7 @@ namespace AdaaMobile.ViewModels
 {
     public class AttendanceViewModel : BindableBase
     {
-        private const int LimitRangeInDays = 32;
+        private const int LimitRangeInDays = 2 * 365;
 
         #region Fields
         #endregion
@@ -43,6 +43,13 @@ namespace AdaaMobile.ViewModels
             }
         }
 
+        private DateTime _minimumDate = DateTime.Now.Subtract(TimeSpan.FromDays(LimitRangeInDays));
+        public DateTime MinimumDate
+        {
+            get { return _minimumDate; }
+            set { _minimumDate = value; }
+        }
+
         private List<DayWrapper> _daysList;
         public List<DayWrapper> DaysList
         {
@@ -64,7 +71,7 @@ namespace AdaaMobile.ViewModels
         public AttendanceViewModel()
         {
 
-            _startDate = new DateTime(2015, 10,1, 0, 0, 0);
+            _startDate = new DateTime(2015, 10, 1, 0, 0, 0);
             _endDate = new DateTime(2015, 10, 31, 0, 0, 0);
             PopulateDays();
         }
@@ -75,7 +82,7 @@ namespace AdaaMobile.ViewModels
             var currentDate = StartDate;
             var endDate = EndDate;
             //Limit large unneccessary range if any
-           // if ((EndDate - StartDate).Days > LimitRangeInDays) endDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 0, 0, 0);
+            // if ((EndDate - StartDate).Days > LimitRangeInDays) endDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 0, 0, 0);
             while (currentDate <= endDate)
             {
                 days.Add(new DayWrapper(currentDate));
