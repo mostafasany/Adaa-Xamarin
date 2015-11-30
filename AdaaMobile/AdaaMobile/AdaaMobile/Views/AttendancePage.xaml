@@ -107,57 +107,59 @@
                   BackgroundColor="{StaticResource AppBackgroundLight}"
                 />
       </Grid>
+      <StackLayout>
+        <controls:HorizontalListView ItemsSource="{Binding DaysList}" VerticalOptions="Start"     HorizontalOptions="Fill">
+          <controls:HorizontalListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <ViewCell.View>
+                  <Grid RowSpacing="0" HeightRequest="80"  WidthRequest="100"               >
+                    <BoxView BackgroundColor="Aqua" VerticalOptions="Fill"
+                                              HorizontalOptions="Fill"
+                                              Grid.Row="0" Grid.RowSpan="2"/>
+                    <Grid.RowDefinitions>
+                      <RowDefinition  Height="*"/>
+                      <RowDefinition  Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-      <controls:HorizontalListView ItemsSource="{Binding DaysList}" VerticalOptions="Start" HeightRequest="100"  HorizontalOptions="Fill">
-        <controls:HorizontalListView.ItemTemplate>
-          <DataTemplate>
-            <ViewCell>
-              <ViewCell.View>
-                <Grid RowSpacing="0"                          >
-
-                  <Grid.RowDefinitions>
-                    <RowDefinition  Height="Auto"/>
-                    <RowDefinition  Height="Auto"/>
-                  </Grid.RowDefinitions>
-
-                  <Label Grid.Row="0"
-                         VerticalOptions="Fill"
-                         HorizontalTextAlignment="Center"
-                         HorizontalOptions="Fill"
-                         BackgroundColor="{StaticResource YellowAccent}"
-                         TextColor="Black"
-                         FontSize="Small"
-                         Text="{Binding AbbrWeek}"/>
-                  <BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
-                           x:Name="DayBack"
+                    <Label Grid.Row="0"
                            VerticalOptions="Fill"
-                           HorizontalOptions="Fill"
-                           Grid.Row="1"/>
-                  <StackLayout VerticalOptions="Center"
-                               HorizontalOptions="Center"
-                               Padding="12,8" Spacing="2"
-                               Grid.Row="1">
-                    <Label x:Name="DayLabel"
-                           BackgroundColor="Transparent"
-                           TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}"
-                           FontSize="Medium" FontAttributes="Bold"
                            HorizontalTextAlignment="Center"
-                           Text="{Binding Day}"/>
-                    <Label
-                         x:Name="MonthLabel"
-                          BackgroundColor="Transparent"
-                         TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}"
-                         FontSize="Small"
-                         HorizontalTextAlignment="Center"
-                         Text="{Binding AbbrMonth}"/>
-                  </StackLayout>
-                </Grid>
-              </ViewCell.View>
-            </ViewCell>
-          </DataTemplate>
-        </controls:HorizontalListView.ItemTemplate>
-      </controls:HorizontalListView>
-      
+                           HorizontalOptions="Fill"
+                           BackgroundColor="{StaticResource YellowAccent}"
+                           TextColor="Black"
+                           FontSize="Small"
+                           Text="{Binding AbbrWeek}"/>
+                    <BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
+                             x:Name="DayBack"
+                             VerticalOptions="Fill"
+                             HorizontalOptions="Fill"
+                             Grid.Row="1"/>
+                    <StackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Padding="12,8" Spacing="2"
+                                 Grid.Row="1">
+                      <Label x:Name="DayLabel"
+                             BackgroundColor="Transparent"
+                             TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}"
+                             FontSize="Medium" FontAttributes="Bold"
+                             HorizontalTextAlignment="Center"
+                             Text="{Binding Day}"/>
+                      <Label
+                           x:Name="MonthLabel"
+                            BackgroundColor="Transparent"
+                           TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}"
+                           FontSize="Small"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding AbbrMonth}"/>
+                    </StackLayout>
+                  </Grid>
+                </ViewCell.View>
+              </ViewCell>
+            </DataTemplate>
+          </controls:HorizontalListView.ItemTemplate>
+        </controls:HorizontalListView>
+      </StackLayout>
       <StackLayout VerticalOptions="FillAndExpand">
         <Grid VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBackgroundLight}">
           <Grid.ColumnDefinitions>

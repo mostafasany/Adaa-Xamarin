@@ -133,6 +133,7 @@
       <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
     </Compile>
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
+    <Compile Include="CustomRenderers\HorizontalListLayoutManager.cs" />
     <Compile Include="CustomRenderers\HorizontalListViewRenderer.cs" />
     <Compile Include="CustomRenderers\ImageButtonRenderer.cs" />
     <Compile Include="CustomRenderers\InnerAndroidScrollViewRenderer.cs" />
