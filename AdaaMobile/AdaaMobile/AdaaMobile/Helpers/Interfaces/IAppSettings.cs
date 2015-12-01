@@ -10,5 +10,6 @@ namespace AdaaMobile.Helpers
     public interface IAppSettings
     {
         string SelectedCultureName { get; set; }
+		string UserToken { get; set;}
     }
 }

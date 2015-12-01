@@ -136,9 +136,16 @@ namespace AdaaMobile.ViewModels
         {
             var paramters = new CurrentUserProfileQParameters()
             {
-                LangId = "ar",
+                LangId = "arb",
                 UserToken = token
             };
+
+			var r = await _dataService.GetEmpolyeesAsync (new GetAllEmployeesQParameters (){ 
+				Langid = "arb",
+				UserToken = "2015112823041470554",
+				Server = "adaamobile",
+				Url = "?funcname=getAllEmployeesList"
+			}, null);
             var result = await _dataService.GetCurrentUserProfile(paramters);
             return true;
         }

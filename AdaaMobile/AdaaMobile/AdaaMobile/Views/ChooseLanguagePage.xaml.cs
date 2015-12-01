@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using AdaaMobile.Helpers;
 using AdaaMobile.Views;
+using AdaaMobile.ViewModels;
 
 namespace AdaaMobile
 {
@@ -20,7 +21,7 @@ namespace AdaaMobile
 
 		void ArabicButton_Clicked1 (object sender, EventArgs e)
 		{
-			new AppSettings ().SelectedCultureName = "ar";
+			Locator.Default.AppSettings.SelectedCultureName = "ar";
 
 			DependencyService.Get<ILocalize>().UpdateCultureInfo("ar");
 			Navigation.PushModalAsync (new LoginPage ());
@@ -28,7 +29,8 @@ namespace AdaaMobile
 
 		void EnglishButton_Clicked (object sender, EventArgs e)
 		{
-			new AppSettings ().SelectedCultureName = "en-us";
+			
+			Locator.Default.AppSettings.SelectedCultureName = "en-us";
 			DependencyService.Get<ILocalize>().UpdateCultureInfo("en-us");
 
 			Navigation.PushModalAsync (new LoginPage ());

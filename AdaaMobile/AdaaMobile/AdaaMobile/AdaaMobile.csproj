@@ -169,6 +169,8 @@
     <Compile Include="Exceptions\NoDataTemplateMatchException.cs" />
     <Compile Include="Exceptions\PropertyNotFoundException.cs" />
     <Compile Include="Controls\CollectionChangedHandle.cs" />
+    <Compile Include="Models\Request\GetAllEmployeesQParameters.cs" />
+    <Compile Include="Models\Response\GetAllEmployeesResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
