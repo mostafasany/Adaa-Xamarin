@@ -54,9 +54,11 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
             {
                 _itemsTappedDelgate(collectionView, indexPath);
             });
-            var foundRecognizer = cell.GestureRecognizers.FirstOrDefault((r) => r.GetType() == recognizer.GetType());
-            if (foundRecognizer != null)
-                cell.RemoveGestureRecognizer(foundRecognizer);
+			if (cell.GestureRecognizers != null) {
+				var foundRecognizer = cell.GestureRecognizers.FirstOrDefault ((r) => r.GetType () == recognizer.GetType ());
+				if (foundRecognizer != null)
+					cell.RemoveGestureRecognizer (foundRecognizer);
+			}
             cell.AddGestureRecognizer(recognizer);
 
             return cell;

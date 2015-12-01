@@ -11,6 +11,7 @@
     <AssemblyName>AdaaMobileiOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <XamarinInsightsApiKey>3230ca2aa40f96367664b5d07cf9fd5c6295fd78</XamarinInsightsApiKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
