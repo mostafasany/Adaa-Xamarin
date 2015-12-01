@@ -107,11 +107,13 @@ namespace AdaaMobile.ViewModels
                 IsBusy = true;
                 BusyMessage = "Loading";
                 var response = await _dataService.LoginAsync(UserName, Password);
+				bool success2 = await GetCurrentUserProfileAsync(null);
+
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
                     if (response.Result.Status == "ok" && !string.IsNullOrEmpty(response.Result.UserToken))
                     {
-                        bool success = await GetCurrentUserProfileAsync(response.Result.UserToken);
+						bool success = await GetCurrentUserProfileAsync(response.Result.UserToken);
                         new AppSettings().UserToken = response.Result.UserToken;
                         _navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
                         return;
