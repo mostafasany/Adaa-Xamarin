@@ -88,8 +88,6 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
 
         }
 
-
-
         private void MakeMeasureSpec(RecyclerView.Recycler recycler, int position, int widthSpec,
                                    int heightSpec, int[] measuredDimension)
         {

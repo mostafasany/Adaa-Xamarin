@@ -57,7 +57,9 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
                 _recyclerView = new RecyclerView(Xamarin.Forms.Forms.Context);
                 _layoutManager = new HorizontalListLayoutManager(Xamarin.Forms.Forms.Context, LinearLayoutManager.Horizontal, false);
                 _recyclerView.SetLayoutManager(_layoutManager);
-                _recyclerView.HasFixedSize = false;
+
+                _recyclerView.HasFixedSize = Element.HasFixedItemSize;
+
                 _recyclerView.SetAdapter(DataSource);
                 _recyclerView.Background = new ColorDrawable(Element.BackgroundColor.ToAndroid());
                 _recyclerView.LayoutChange += _recyclerView_LayoutChange;
@@ -70,12 +72,19 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
             //TODO:Test to make sure it doesn't make performance issues
             if (_layoutManager != null && !_isSpecificHeight)
             {
-                //This the is the only way I find so far to update the size in Xamarin forms
-                //when list height is auto and not hardwired.
-                int height = _layoutManager.GetMeasuredHeight();
-                if (height > 0)
+                if (Element.HasFixedItemSize)
                 {
-                    Element.HeightRequest = DpToPixel(height);
+                    Element.HeightRequest = DpToPixel(Element.ItemHeight);
+                }
+                else
+                {
+                    //This the is the only way I find so far to update the size in Xamarin forms
+                    //when list height is auto and not hardwired.
+                    int height = _layoutManager.GetMeasuredHeight();
+                    if (height > 0)
+                    {
+                        Element.HeightRequest = DpToPixel(height);
+                    }
                 }
             }
         }
@@ -205,7 +214,16 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
             var element = bindedHolder.Renderer.Element;
 
             //Update layout
-            var requestSize = element.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+            SizeRequest requestSize;
+            if (Element.HasFixedItemSize)
+            {
+                requestSize = element.GetSizeRequest(Element.ItemWidth, Element.ItemHeight);
+            }
+            else
+            {
+                requestSize = element.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+            }
+
             Rectangle rect = new Rectangle(0, 0, requestSize.Request.Width, requestSize.Request.Height);
             element.Layout(rect);
             var layoutParams = new ViewGroup.LayoutParams((int)PixelToDp(rect.Width), (int)PixelToDp(rect.Height));
