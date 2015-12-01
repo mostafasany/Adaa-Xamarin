@@ -2,7 +2,7 @@ using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 
-namespace AdaaMobile.Droid.CustomRenderers
+namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
 {
     //Ported from this Android Answer http://stackoverflow.com/a/28303955/2086772
     //It solves Wrap_Content issue for Recycler Viewer for vertical and horiztonal orientations.

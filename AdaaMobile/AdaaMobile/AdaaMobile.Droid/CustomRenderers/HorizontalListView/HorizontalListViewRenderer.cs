@@ -1,36 +1,24 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using AdaaMobile.Controls;
-using AdaaMobile.Droid.CustomRenderers;
-using AdaaMobile.Models;
-using Android.App;
-using Android.Content;
+using AdaaMobile.Droid.CustomRenderers.HorizontalListView;
 using Android.Graphics.Drawables;
-using Android.OS;
-using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Widget;
-using Java.Lang;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using PropertyChangingEventArgs = Xamarin.Forms.PropertyChangingEventArgs;
-using View = Android.Views.View;
 
 [assembly: ExportRenderer(typeof(HorizontalListView), typeof(HorizontalListViewRenderer))]
-namespace AdaaMobile.Droid.CustomRenderers
+namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
 {
     //Some snippets related to recycler view of the Renderer is from xamrin android sample 
     //See: https://developer.xamarin.com/guides/android/user_interface/recyclerview/
     //Some snippets related to data source structure inspired from XLabs GridView
     //See: https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/src/Forms/XLabs.Forms.Droid/Controls/GridView/GridViewRenderer.cs
-    public class HorizontalListViewRenderer : ViewRenderer<HorizontalListView, RecyclerView>
+    public class HorizontalListViewRenderer : ViewRenderer<Controls.HorizontalListView, RecyclerView>
     {
         private RecyclerView _recyclerView;
         private HorizontalListLayoutManager _layoutManager;
@@ -54,7 +42,7 @@ namespace AdaaMobile.Droid.CustomRenderers
             }
         }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<HorizontalListView> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Controls.HorizontalListView> e)
         {
             base.OnElementChanged(e);
             if (e.OldElement != null)
@@ -71,7 +59,7 @@ namespace AdaaMobile.Droid.CustomRenderers
                 _recyclerView.SetLayoutManager(_layoutManager);
                 _recyclerView.HasFixedSize = false;
                 _recyclerView.SetAdapter(DataSource);
-                _recyclerView.Background = new ColorDrawable(Color.Transparent.ToAndroid());
+                _recyclerView.Background = new ColorDrawable(Element.BackgroundColor.ToAndroid());
                 _recyclerView.LayoutChange += _recyclerView_LayoutChange;
                 base.SetNativeControl(_recyclerView);
             }
@@ -96,11 +84,11 @@ namespace AdaaMobile.Droid.CustomRenderers
         /// Unbinds the specified old element.
         /// </summary>
         /// <param name="oldElement">The old element.</param>
-        private void Unbind(HorizontalListView oldElement)
+        private void Unbind(Controls.HorizontalListView oldElement)
         {
             if (oldElement != null)
             {
-                oldElement.PropertyChanging += ElementPropertyChanging;
+                oldElement.PropertyChanging -= ElementPropertyChanging;
                 oldElement.PropertyChanged -= ElementPropertyChanged;
                 if (oldElement.ItemsSource is INotifyCollectionChanged)
                 {
@@ -113,7 +101,7 @@ namespace AdaaMobile.Droid.CustomRenderers
         /// Binds the specified new element.
         /// </summary>
         /// <param name="newElement">The new element.</param>
-        private void Bind(HorizontalListView newElement)
+        private void Bind(Controls.HorizontalListView newElement)
         {
             if (newElement != null)
             {
@@ -151,7 +139,7 @@ namespace AdaaMobile.Droid.CustomRenderers
 
         private void DataCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            //TODO:Test different scenarios
+            //TODO:Test different scenarios & Check Ranges Add, Remove
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
@@ -203,7 +191,7 @@ namespace AdaaMobile.Droid.CustomRenderers
         /// </summary>
         /// <param name="holder"></param>
         /// <param name="position"></param>
-        public void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
+        private void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             var bindedHolder = (HorizontalListViewHolder)holder;
             //retrieve item
@@ -245,10 +233,10 @@ namespace AdaaMobile.Droid.CustomRenderers
         }
 
         /// <summary>
-        /// Gets items source count.
+        /// Gets items source count. It's used primarily in Data source.
         /// </summary>
         /// <returns></returns>
-        public int GetItemsCount()
+        private int GetItemsCount()
         {
             var collection = this.Element.ItemsSource as IList;
             if (collection != null) return collection.Count;
@@ -277,125 +265,15 @@ namespace AdaaMobile.Droid.CustomRenderers
             var scale = Resources.DisplayMetrics.Density;
             return (double)((dp - 0.5f) / scale);
         }
-    }
 
-
-    /// <summary>
-    /// Adapter for Recyclerview, It uses delegate methods to pass functionalities.
-    /// </summary>
-    public class HorizontalListViewAdapter : RecyclerView.Adapter
-    {
-        //Delegates
-        public delegate void OnBindViewHolderDelegate(RecyclerView.ViewHolder holder, int position);
-
-        public delegate RecyclerView.ViewHolder OnCreateViewHolderDelegate(ViewGroup parent, int viewType);
-
-        public delegate int GetItemsCount();
-
-        //Fields
-        private readonly OnBindViewHolderDelegate _bindDelegate;
-        private readonly OnCreateViewHolderDelegate _createDelegate;
-        private readonly GetItemsCount _itemsCountDelegate;
-
-        public HorizontalListViewAdapter(OnBindViewHolderDelegate bindDelegate, OnCreateViewHolderDelegate createDelegate, GetItemsCount itemsCountDelegate) : base()
+        protected override void Dispose(bool disposing)
         {
-            _bindDelegate = bindDelegate;
-            _createDelegate = createDelegate;
-            _itemsCountDelegate = itemsCountDelegate;
-        }
-
-        public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
-        {
-            _bindDelegate(holder, position);
-        }
-
-        public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
-        {
-            return _createDelegate(parent, viewType);
-        }
-
-
-        public override int ItemCount
-        {
-            get { return _itemsCountDelegate(); }
-        }
-    }
-
-    /// <summary>
-    /// Custom view holder for views of Recylcerview
-    /// </summary>
-    public class HorizontalListViewHolder : RecyclerView.ViewHolder
-    {
-        public IVisualElementRenderer Renderer { get; set; }
-
-        public Action<HorizontaListItemTappedEventArgs> ItemTapped { get; set; }
-
-        public HorizontalListViewHolder(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
-        {
-        }
-
-        public HorizontalListViewHolder(View itemView) : base(itemView)
-        {
-        }
-
-        public HorizontalListViewHolder(ViewGroup itemView, IVisualElementRenderer rendererBinded, Action<HorizontaListItemTappedEventArgs> itemTapped) : base(itemView)
-        {
-            Renderer = rendererBinded;
-            ItemTapped = itemTapped;
-            //wire click event, 
-            EventHandler handler = null;
-            handler = (sender, args) => { itemTapped(new HorizontaListItemTappedEventArgs((Xamarin.Forms.View)Renderer.Element, Renderer.Element.BindingContext)); };
-            ItemView.Click -= handler; //remove handler to prevent multiple supscription, (It's a little bit defensive)
-            itemView.Click += handler;
-        }
-    }
-
-    #region Platform Render Workaround code
-
-    public class XamarinRendererHelper
-    {
-        // Solution for render issue added from this links
-        // Thanks for thaihung203 for the brilliant solution
-        // See https://forums.xamarin.com/discussion/comment/148210/#Comment_148210
-        // and https://github.com/thaihung203/xfpopup/blob/master/xfpopup/xfpopup.Droid/DroidXFPopupSrvc.cs
-        private static Type _platformType = Type.GetType("Xamarin.Forms.Platform.Android.Platform, Xamarin.Forms.Platform.Android", true);
-
-        private static BindableProperty _rendererProperty;
-
-        public static BindableProperty RendererProperty
-        {
-            get { return _rendererProperty ?? (_rendererProperty = (BindableProperty)_platformType.GetField("RendererProperty", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Public).GetValue(null)); }
-        }
-
-        private static PropertyInfo _isplatformenabledprop;
-
-        public static PropertyInfo IsPlatformEnabledProperty
-        {
-            get { return _isplatformenabledprop ?? (_isplatformenabledprop = typeof(VisualElement).GetProperty("IsPlatformEnabled", BindingFlags.NonPublic | BindingFlags.Instance)); }
-        }
-
-        private static PropertyInfo _platform;
-
-        public static PropertyInfo PlatformProperty
-        {
-            get { return _platform ?? (_platform = typeof(VisualElement).GetProperty("Platform", BindingFlags.NonPublic | BindingFlags.Instance)); }
-        }
-
-        public static IVisualElementRenderer Convert(Xamarin.Forms.View source, Xamarin.Forms.View valid)
-        {
-            IVisualElementRenderer render = (IVisualElementRenderer)source.GetValue(RendererProperty);
-            if (render == null)
+            base.Dispose(disposing);
+            if (disposing)
             {
-                render = Platform.CreateRenderer(source);
-                source.SetValue(RendererProperty, render);
-                var p = PlatformProperty.GetValue(valid);
-                PlatformProperty.SetValue(source, p);
-                IsPlatformEnabledProperty.SetValue(source, true);
+                Unbind(Element);
             }
-
-            return render;
         }
     }
 
-    #endregion
 }
