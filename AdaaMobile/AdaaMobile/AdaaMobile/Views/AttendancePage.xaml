@@ -108,7 +108,7 @@
                   BackgroundColor="{StaticResource AppBackgroundLight}"
                 />
       </Grid>
-      <StackLayout>
+      <StackLayout Padding="0,5,0,5">
         <controls:HorizontalListView ItemsSource="{Binding DaysList}"
                                      ItemTapped="Day_Tapped"
                                      VerticalOptions="Start" 

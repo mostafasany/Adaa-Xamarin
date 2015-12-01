@@ -74,6 +74,7 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
                 var renderer = GetRenderer();
                 _view = GetRenderer().NativeView;
 
+
                 ContentView.AddSubview(_view);
 
                 //Listen for property changed
@@ -87,6 +88,7 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
             }
             else
             {
+				//TODO Reset the viewCell incase it's not binded.
                 _viewCell.BindingContext = data;
             }
         }

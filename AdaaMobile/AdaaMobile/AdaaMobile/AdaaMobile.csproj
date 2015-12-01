@@ -243,6 +243,20 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\twitter.svg" />
+    <Content Include="Images\account_services_icn.svg" />
+    <Content Include="Images\Attendance_icn.svg" />
+    <Content Include="Images\Directory.svg" />
+    <Content Include="Images\E-Services.svg" />
+    <Content Include="Images\Home.svg" />
+    <Content Include="Images\ITServiceDesk.svg" />
+    <Content Include="Images\My Requests.svg" />
+    <Content Include="Images\My Tasks.svg" />
+    <Content Include="Images\MyRequests.svg" />
+    <Content Include="Images\MyTasks.svg" />
+    <Content Include="Images\Oracle.svg" />
+    <Content Include="Images\Profile.svg" />
+    <Content Include="Images\Settings.svg" />
+    <Content Include="Images\Timesheet.svg" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Strings\LocalizationNotes.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />

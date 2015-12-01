@@ -59,13 +59,15 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
                 _collectionView.SelectionEnable = false;//Not in the plan currently
 
                 _collectionView.BackgroundColor = Element.BackgroundColor.ToUIColor();
-                //_collectionView.ItemSize = new CoreGraphics.CGSize((float)Element.ItemWidth, (float)Element.ItemHeight);
-                //_collectionView.RowSpacing = Element.RowSpacing;
-                //_collectionView.ColumnSpacing = Element.ColumnSpacing;
-
+				_collectionView.ItemSize = new CoreGraphics.CGSize((float)100, (float)200);
+//                _collectionView.ItemSize = new CoreGraphics.CGSize((float)Element.ItemWidth, (float)Element.ItemHeight);
+				_collectionView.RowSpacing = 0;//Todo
+				_collectionView.ColumnSpacing = Element.ColumnSpacing;
+				Element.HeightRequest = 200;
                 //Horizontal 
                 UICollectionViewFlowLayout flowLayout = (UICollectionViewFlowLayout)_collectionView.CollectionViewLayout;
-                flowLayout.ScrollDirection = UICollectionViewScrollDirection.Horizontal;
+				flowLayout.ScrollDirection = UICollectionViewScrollDirection.Horizontal;
+				flowLayout.MinimumInteritemSpacing = 200000000f;
 
                 //Set Source and Delegate
                 _collectionView.Source = DataSource;
@@ -166,7 +168,9 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
 
         private void RaiseItemTappedEvent(UICollectionView collectionView, NSIndexPath indexPath)
         {
-            var args = new HorizontaListItemTappedEventArgs(null, null);
+			var currentCell = (HorizontalListCell)collectionView.CellForItem (indexPath);
+
+			var args = new HorizontaListItemTappedEventArgs(currentCell.ViewCell.View, currentCell.ViewCell.BindingContext);
             if (Element != null)
             {
                 Element.RaiseItemTapped(args);
@@ -198,7 +202,7 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
         public UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
         {
             cellId = cellId ?? new NSString(HorizontalListCell.Key);
-            var item = Element.ItemsSource.Cast<object>().ElementAt(indexPath.Row);
+			var item = GetItem (indexPath.Row);
             var collectionCell = collectionView.DequeueReusableCell(cellId, indexPath) as HorizontalListCell;
 
             collectionCell.RecycleCell(item, Element.ItemTemplate, Element);
