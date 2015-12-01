@@ -56,9 +56,12 @@ namespace AdaaMobile.DataServices
             //};
         }
 
-        public Task<ResponseWrapper<List<Employee>>> GetEmpolyeesAsync(CancellationToken? token)
+		public async Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters, CancellationToken? token)
         {
-            throw new NotImplementedException();
+			var request = RequestFactory();
+			request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+			request.ResultContentType = ContentType.Xml;
+			return await request.GetAsync<GetAllEmployeesResponse>(token);
 
         }
 

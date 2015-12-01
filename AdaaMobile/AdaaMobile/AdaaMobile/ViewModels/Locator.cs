@@ -40,7 +40,7 @@ namespace AdaaMobile.ViewModels
             cb.Register<IDialogManager>(c => c.Resolve<DialogManager>());
             cb.RegisterType<BaseRequest>();
             cb.RegisterType<DataService>();
-            cb.RegisterType<MockDataService>();
+//            cb.RegisterType<MockDataService>();
             cb.Register<IDataService>(c => c.Resolve<DataService>());
             cb.RegisterType<NavigationService>();
             cb.Register<INavigationService>(c => c.Resolve<NavigationService>());

@@ -18,7 +18,7 @@ namespace AdaaMobile.DataServices
 
 
         Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password);
-        Task<ResponseWrapper<List<Employee>>> GetEmpolyeesAsync(CancellationToken? token);
+		Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters,  CancellationToken? token);
 
         //Attendance and exception
         Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync(AttendanceQParameters parameters, CancellationToken? token);

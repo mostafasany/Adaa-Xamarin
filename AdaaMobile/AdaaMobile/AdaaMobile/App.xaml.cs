@@ -6,6 +6,7 @@ using AdaaMobile.ViewModels;
 using AdaaMobile.Views;
 using AdaaMobile.Views.MasterView;
 using Xamarin.Forms;
+using AdaaMobile.Helpers;
 
 namespace AdaaMobile
 {
@@ -20,8 +21,15 @@ namespace AdaaMobile
 			Locator.Default = locator;
 
 
+			IAppSettings settings = Locator.Default.AppSettings;
+			if (string.IsNullOrEmpty (settings.UserToken)) {
+				MainPage = new ChooseLanguagePage();
+			} else {
+				MainPage = new AddaMasterPage();
+			}
+
 			// The root page of your application
-			MainPage = new AddaMasterPage();
+
 		}
 
 		protected override void OnStart()
