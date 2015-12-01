@@ -18,7 +18,7 @@ namespace AdaaMobile.DataServices
     public class DataService : IDataService
     {
         // private const string BaseUrl = "http://adaa.getsandbox.com";
-        private const string BaseUrl = "https://etime.adaa.abudhabi.ae/adaamobile/mobileservice.ashx";
+		private const string BaseUrl = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy";
 
         private const string ContenTypeKey = "Content-Type";
         private const string XmlContentType = "application/xml";
