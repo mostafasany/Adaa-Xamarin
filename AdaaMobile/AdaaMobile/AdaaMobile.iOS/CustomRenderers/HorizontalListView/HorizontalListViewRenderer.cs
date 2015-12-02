@@ -71,7 +71,7 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
 
                 //Set Source and Delegate
                 _collectionView.Source = DataSource;
-                _collectionView.Delegate = new HorizontalListDelegate();
+                _collectionView.Delegate = new CustomUICollectionViewDelegateFlowLayout();
 
                 SetNativeControl(_collectionView);
 

@@ -91,6 +91,7 @@
       <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
     </Compile>
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
+    <Compile Include="CustomRenderers\HorizontalListView\CustomUICollectionViewDelegateFlowLayout.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListCell.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListDataSource.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListDelegate.cs" />
