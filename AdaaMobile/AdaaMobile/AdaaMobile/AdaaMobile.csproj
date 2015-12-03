@@ -79,6 +79,9 @@
     <Compile Include="Helpers\SvgAssembly.cs" />
     <Compile Include="Models\DayWrapper.cs" />
     <Compile Include="Models\Request\CurrentUserProfileQParameters.cs" />
+    <Compile Include="Models\Request\ExceptionsQParameter.cs" />
+    <Compile Include="Models\Request\LoginQParameters.cs" />
+    <Compile Include="Models\Response\GetExceptionsRepsonse.cs" />
     <Compile Include="Models\Response\UserProfile.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="Views\MasterView\MasterHelper.cs" />
@@ -151,7 +154,7 @@
     <Compile Include="Models\Response\Attendance.cs" />
     <Compile Include="Models\Request\AttendanceQParameters.cs" />
     <Compile Include="Models\Response\AttendanceException.cs" />
-    <Compile Include="Models\Request\AttendanceExceptionQParamters.cs" />
+    <Compile Include="Models\Request\ExceptionQParamters.cs" />
     <Compile Include="Models\Request\DaypassRequestQParameters.cs" />
     <Compile Include="Models\Request\DaypassRequestBParameters.cs" />
     <Compile Include="Models\Response\NewDayPassResponse.cs" />

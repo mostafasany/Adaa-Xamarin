@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AdaaMobile
+﻿namespace AdaaMobile.Models.Response
 {
 	public class DayPassApproveResponse
 	{

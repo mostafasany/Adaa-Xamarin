@@ -1,34 +1,13 @@
-﻿using System;
-using System.Xml.Serialization;
-using AdaaMobile.Models;
+﻿using System.Xml.Serialization;
 
-namespace AdaaMobile
+namespace AdaaMobile.Models.Response
 {
-
-	[XmlRoot("root")]
-	public class GetAllEmployeesResponse
-	{
-
-		private Employee[] itemField;
-
-		   [XmlElement("Item")]
-			public Employee[] Employees
-			{
-				get
-				{
-					return this.itemField;
-				}
-				set
-				{
-					this.itemField = value;
-				}
-			}
-		}
-
-
-
-
-
+    [XmlRoot("root")]
+    public class GetAllEmployeesResponse
+    {
+        [XmlElement("Item")]
+        public Employee[] Employees { get; set; }
+    }
 
 }
 

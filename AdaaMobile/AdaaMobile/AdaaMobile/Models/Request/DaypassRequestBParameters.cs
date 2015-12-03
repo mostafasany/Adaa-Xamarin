@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AdaaMobile
+﻿namespace AdaaMobile.Models.Request
 {
 	public class DaypassRequestBParameters
 	{

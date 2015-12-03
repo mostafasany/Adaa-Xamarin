@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Extensions;
+using AdaaMobile.Helpers;
 using AdaaMobile.Models;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
@@ -22,15 +23,17 @@ namespace AdaaMobile.DataServices
         private const string Server = "adaamobile";
         private const string ContenTypeKey = "Content-Type";
         private const string XmlContentType = "application/xml";
-        private readonly Func<BaseRequest> RequestFactory;
-        public DataService(Func<BaseRequest> requestFactory)
+        private readonly Func<BaseRequest> _requestFactory;
+        private readonly IAppSettings _appSettings;
+        public DataService(Func<BaseRequest> requestFactory, IAppSettings appSettings)
         {
-            RequestFactory = requestFactory;
+            _requestFactory = requestFactory;
+            _appSettings = appSettings;
         }
 
         public async Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentUserProfileQParameters paramters, CancellationToken? token = null)
         {
-            var request = RequestFactory();
+            var request = _requestFactory();
             request.RequestUrl = BaseUrl.AppendQueryString(paramters);
             request.ResultContentType = ContentType.Xml;
             return await request.GetAsync<UserProfile>(token);
@@ -38,9 +41,16 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password)
         {
-            var request = RequestFactory();
-            request.RequestUrl = string.Format("{0}/{1}", BaseUrl, "validatelogin");
+            var qParamters = new LoginQParameters()
+            {
+                Server = Server,
+                Langid = _appSettings.Language,
+            };
+
+            var request = _requestFactory();
             request.ResultContentType = ContentType.Xml;
+            request.RequestUrl =  BaseUrl.AppendQueryString(qParamters);
+
             var loginParamters = new LoginBodyParamters()
             {
                 UserName = userName,
@@ -53,7 +63,7 @@ namespace AdaaMobile.DataServices
         public async Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters, CancellationToken? token = null)
         {
             parameters.Server = Server;
-            var request = RequestFactory();
+            var request = _requestFactory();
             request.RequestUrl = BaseUrl.AppendQueryString(parameters);
             request.ResultContentType = ContentType.Xml;
             return await request.GetAsync<GetAllEmployeesResponse>(token);
@@ -63,15 +73,41 @@ namespace AdaaMobile.DataServices
         public async Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync(AttendanceQParameters parameters, CancellationToken? token = null)
         {
             parameters.Server = Server;
-            var request = RequestFactory();
+            var request = _requestFactory();
             request.RequestUrl = BaseUrl.AppendQueryString(parameters);
             request.ResultContentType = ContentType.Xml;
             return await request.GetAsync<Attendance>(token);
         }
 
-        public Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(AttExceptionQParamters parameters, CancellationToken? token = null)
+        public async Task<ResponseWrapper<GetExceptionsRepsonse>> GetAttendanceExceptionsAsync(ExceptionsQParameter parameters, CancellationToken? token = null)
         {
-            throw new NotImplementedException();
+            //parameters.Server = Server;
+            //var request = _requestFactory();
+            //request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            //request.ResultContentType = ContentType.Xml;
+            //return await request.GetAsync<GetExceptionsRepsonse>(token);
+            //TODO:Change when implemented in Backend
+            return new ResponseWrapper<GetExceptionsRepsonse>()
+            {
+                ResponseStatus = ResponseStatus.SuccessWithResult,
+                Result = new GetExceptionsRepsonse()
+                {
+                    ExceptionDays = new ExceptionDay[] {
+                        new ExceptionDay(){ Date =DateTime.Now.Subtract(TimeSpan.FromDays(4))},
+                        new ExceptionDay(){ Date =DateTime.Now.Subtract(TimeSpan.FromDays(3))},
+                        new ExceptionDay(){ Date =DateTime.Now.Subtract(TimeSpan.FromDays(1))},
+                    }
+                }
+            };
+        }
+
+        public async Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(ExceptionQParamters parameters, CancellationToken? token = null)
+        {
+            parameters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<AttendanceException>(token);
         }
 
         public Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync(DaypassRequestQParameters qParameters, DaypassRequestBParameters bParamters, CancellationToken? token = null)

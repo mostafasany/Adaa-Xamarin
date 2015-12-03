@@ -26,6 +26,9 @@ namespace AdaaMobile.ViewModels
 
         #region Properties
         private DateTime _startDate;
+        /// <summary>
+        /// Date of first picker, this date will be used to show the starting range for Attendance and Exceptions.
+        /// </summary>
         public DateTime StartDate
         {
             get { return _startDate; }
@@ -39,7 +42,9 @@ namespace AdaaMobile.ViewModels
         }
 
         private DateTime _endDate;
-
+        /// <summary>
+        /// Date of second picker, this date will be used to show the end of range for Attendance and Exceptions.
+        /// </summary>
         public DateTime EndDate
         {
             get { return _endDate; }
@@ -53,11 +58,25 @@ namespace AdaaMobile.ViewModels
         }
 
         private DateTime _minimumDate = DateTime.Now.Subtract(TimeSpan.FromDays(LimitRangeInDays));
+        /// <summary>
+        /// First picker can't go below this date.
+        /// </summary>
         public DateTime MinimumDate
         {
             get { return _minimumDate; }
             set { _minimumDate = value; }
         }
+
+        private AttendanceMode _attendanceMode;
+        /// <summary>
+        /// This represents the current mode whether we are showing attendance or Exceptions.
+        /// </summary>
+        public AttendanceMode AttendanceMode
+        {
+            get { return _attendanceMode; }
+            set { SetProperty(ref _attendanceMode, value); }
+        }
+
 
         private List<DayWrapper> _daysList;
         public List<DayWrapper> DaysList
@@ -67,6 +86,9 @@ namespace AdaaMobile.ViewModels
         }
 
         private DayWrapper _selectedDay;
+        /// <summary>
+        /// This is the selected day.
+        /// </summary>
         public DayWrapper SelectedDay
         {
             get { return _selectedDay; }
@@ -74,6 +96,9 @@ namespace AdaaMobile.ViewModels
         }
 
         private Attendance _currentAttendance;
+        /// <summary>
+        /// Current Attendance data for selected day.
+        /// </summary>
         public Attendance CurrentAttendance
         {
             get { return _currentAttendance; }
@@ -82,6 +107,9 @@ namespace AdaaMobile.ViewModels
 
 
         private bool _isBusy;
+        /// <summary>
+        /// Boolean to indicate an ongoin operation.
+        /// </summary>
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -89,6 +117,9 @@ namespace AdaaMobile.ViewModels
         }
 
         private string _busyMessage;
+        /// <summary>
+        /// Loading message.
+        /// </summary>
         public string BusyMessage
         {
             get { return _busyMessage; }
@@ -96,6 +127,9 @@ namespace AdaaMobile.ViewModels
         }
 
         private string _errorMessage;
+        /// <summary>
+        /// Will be used to report errors.
+        /// </summary>
         public string ErrorMessage
         {
             get { return _errorMessage; }
@@ -112,7 +146,9 @@ namespace AdaaMobile.ViewModels
 
             _startDate = new DateTime(2015, 10, 1, 0, 0, 0);
             _endDate = new DateTime(2015, 10, 31, 0, 0, 0);
-            PopulateDays();
+
+            //Set initial mode to Attendance
+            SwitchMode(AttendanceMode.Attendance);
         }
 
         private async void PopulateDays()
@@ -122,8 +158,6 @@ namespace AdaaMobile.ViewModels
                    var days = new List<DayWrapper>();
                    var currentDate = StartDate;
                    var endDate = EndDate;
-                   //Limit large unneccessary range if any
-                   // if ((EndDate - StartDate).Days > LimitRangeInDays) endDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 0, 0, 0);
                    while (currentDate <= endDate)
                    {
                        days.Add(new DayWrapper(currentDate));
@@ -135,18 +169,49 @@ namespace AdaaMobile.ViewModels
             DaysList = daysList;
 
             //Initialize commands
-            LoadAttendanceCommand = new AsyncExtendedCommand(LoadDayDetailsAsync);
+            LoadAttendanceCommand = new AsyncExtendedCommand(LoadAttendanceDetailsAsync);
+            LoadExceptionsCommand = new AsyncExtendedCommand(LoadExceptionsAsync);
         }
         #endregion
 
         #region Commands
 
         public AsyncExtendedCommand LoadAttendanceCommand { get; set; }
+        public AsyncExtendedCommand LoadExceptionsCommand { get; set; }
         #endregion
 
         #region Methods
 
-        private async Task LoadDayDetailsAsync(CancellationToken token)
+        private void SwitchMode(AttendanceMode mode)
+        {
+            //Set current mode, This will trigger changes in Bindings.
+            AttendanceMode = mode;
+            //Clear Selected Date
+            SelectedDay = null;
+            //Clear current Attendance
+            CurrentAttendance = null;
+            //Clear days list
+            DaysList = null;
+            if (mode == AttendanceMode.Attendance)
+            {
+                //Cancel loading Exceptions command if any
+                LoadExceptionsCommand.Cancel();
+
+                //Populate list with the specified range
+                PopulateDays();
+            }
+            else
+            {
+
+                //Cancel Loading attendance command if any
+                LoadAttendanceCommand.Cancel();
+
+                //Load Exceptions List
+                LoadExceptionsCommand.Execute(null);
+            }
+        }
+
+        private async Task LoadAttendanceDetailsAsync(CancellationToken token)
         {
             if (SelectedDay == null) return;
             try
@@ -185,7 +250,17 @@ namespace AdaaMobile.ViewModels
 
         }
 
+        private async Task LoadExceptionsAsync(CancellationToken token)
+        {
+        }
+
         #endregion
 
+    }
+
+    public enum AttendanceMode
+    {
+        Attendance,
+        Exceptions
     }
 }

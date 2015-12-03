@@ -18,11 +18,12 @@ namespace AdaaMobile.DataServices
 
 
         Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password);
-		Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters,  CancellationToken? token = null);
+        Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters, CancellationToken? token = null);
 
         //Attendance and exception
         Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync(AttendanceQParameters parameters, CancellationToken? token = null);
-        Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(AttExceptionQParamters parameters, CancellationToken? token = null);
+        Task<ResponseWrapper<GetExceptionsRepsonse>> GetAttendanceExceptionsAsync(ExceptionsQParameter parameters, CancellationToken? token = null);
+        Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(ExceptionQParamters parameters, CancellationToken? token = null);
 
         //New day pass and pending day passes
         Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync(DaypassRequestQParameters qParameters, DaypassRequestBParameters bParamters, CancellationToken? token = null);
