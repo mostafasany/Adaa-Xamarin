@@ -39,6 +39,9 @@ namespace AdaaMobile.DataServices
             return await request.GetAsync<UserProfile>(token);
         }
 
+        //TODO:Check Http Client multiple requests issue of Pcl and If we have to switch
+
+
         public async Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password)
         {
             var qParamters = new LoginQParameters()

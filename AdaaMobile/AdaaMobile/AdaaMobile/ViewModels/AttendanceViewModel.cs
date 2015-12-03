@@ -36,7 +36,7 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _startDate, value))
                 {
-                    PopulateDays();
+                    LoadDaysForMode(AttendanceMode);//Refresh data based on current mode
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _endDate, value))
                 {
-                    PopulateDays();
+                    LoadDaysForMode(AttendanceMode);//Refresh data based on current mode
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _currentAttendance, value); }
         }
 
-
+        //TODO:Decide to use to property to report progress to three seperate properties
         private bool _isBusy;
         /// <summary>
         /// Boolean to indicate an ongoin operation.
@@ -147,31 +147,14 @@ namespace AdaaMobile.ViewModels
             _startDate = new DateTime(2015, 10, 1, 0, 0, 0);
             _endDate = new DateTime(2015, 10, 31, 0, 0, 0);
 
-            //Set initial mode to Attendance
-            SwitchMode(AttendanceMode.Attendance);
-        }
-
-        private async void PopulateDays()
-        {
-            var daysList = await Task.Run<List<DayWrapper>>(() =>
-               {
-                   var days = new List<DayWrapper>();
-                   var currentDate = StartDate;
-                   var endDate = EndDate;
-                   while (currentDate <= endDate)
-                   {
-                       days.Add(new DayWrapper(currentDate));
-                       currentDate = currentDate.AddDays(1);
-                   }
-                   return days;
-               });
-
-            DaysList = daysList;
-
             //Initialize commands
             LoadAttendanceCommand = new AsyncExtendedCommand(LoadAttendanceDetailsAsync);
             LoadExceptionsCommand = new AsyncExtendedCommand(LoadExceptionsAsync);
+
+            //Set initial mode to Attendance
+            LoadDaysForMode(AttendanceMode.Attendance);
         }
+
         #endregion
 
         #region Commands
@@ -182,7 +165,29 @@ namespace AdaaMobile.ViewModels
 
         #region Methods
 
-        private void SwitchMode(AttendanceMode mode)
+        /// <summary>
+        /// This is used to populate days list with the specified list.
+        /// Be Aware this is used only With Attendance Mode.
+        /// Use LoadExceptions with Exceptions Mode
+        /// </summary>
+        private async void PopulateAttendanceDays()
+        {
+            var daysList = await Task.Run<List<DayWrapper>>(() =>
+            {
+                var days = new List<DayWrapper>();
+                var currentDate = StartDate;
+                var endDate = EndDate;
+                while (currentDate <= endDate)
+                {
+                    days.Add(new DayWrapper(currentDate));
+                    currentDate = currentDate.AddDays(1);
+                }
+                return days;
+            });
+
+            DaysList = daysList;
+        }
+        public void LoadDaysForMode(AttendanceMode mode)
         {
             //Set current mode, This will trigger changes in Bindings.
             AttendanceMode = mode;
@@ -192,13 +197,19 @@ namespace AdaaMobile.ViewModels
             CurrentAttendance = null;
             //Clear days list
             DaysList = null;
+            //Set is busy to false
+            IsBusy = false;
+            //Set Busy message to null
+            BusyMessage = null;
+            //Clear any errors from previous attempt to loading
+            ErrorMessage = null;
             if (mode == AttendanceMode.Attendance)
             {
                 //Cancel loading Exceptions command if any
                 LoadExceptionsCommand.Cancel();
 
                 //Populate list with the specified range
-                PopulateDays();
+                PopulateAttendanceDays();
             }
             else
             {
@@ -244,14 +255,61 @@ namespace AdaaMobile.ViewModels
             }
             finally
             {
-                IsBusy = false;
-                BusyMessage = null;
+                //Don't set IsBusy to false on cancel from here.
+                //As this might interchange with the newer request
+                //Instead set IsBusy manually before calling cancel method
+                if (!token.IsCancellationRequested)
+                {
+                    IsBusy = false;
+                    BusyMessage = null;
+                }
             }
 
         }
 
+        /// <summary>
+        /// Load Exceptions happened in Specified Range.
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         private async Task LoadExceptionsAsync(CancellationToken token)
         {
+            try
+            {
+                IsBusy = true;
+                BusyMessage = AppResources.Loading;
+                ErrorMessage = null;
+
+                if (token.IsCancellationRequested) return;
+
+                var paramters = new ExceptionsQParameter()
+                {
+                };
+                var response = await _dataService.GetAttendanceExceptionsAsync(paramters, token);
+
+                if (token.IsCancellationRequested) return;
+
+                if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result.ExceptionDays != null)
+                {
+                    DaysList = response.Result.ExceptionDays.Select(ex => new DayWrapper(ex.Date)).ToList();
+                }
+
+            }
+            catch (Exception)
+            {
+                ErrorMessage = AppResources.LoadingError;
+            }
+            finally
+            {
+                //Don't set IsBusy to false on cancel from here.
+                //As this might interchange with the newer request
+                //Instead set IsBusy manually before calling cancel method
+                if (!token.IsCancellationRequested)
+                {
+                    IsBusy = false;
+                    BusyMessage = null;
+                }
+            }
         }
 
         #endregion

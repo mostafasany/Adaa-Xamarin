@@ -81,8 +81,8 @@
                 ConverterParameter=d MMM yyyy}"
                 Source="icon.png"
                 Clicked="StartDate_Clicked"
-                ImageHeightRequest="40"
-                ImageWidthRequest="40"
+                ImageHeightRequest="50"
+                ImageWidthRequest="50"
                 BackgroundColor="{StaticResource AppBackgroundLight}"
                 />
 
@@ -103,8 +103,8 @@
                 ConverterParameter=d MMM yyyy}"
                   Source="icon.png"
                   Clicked="EndDate_Clicked"
-                  ImageHeightRequest="40"
-                  ImageWidthRequest="40"
+                  ImageHeightRequest="50"
+                  ImageWidthRequest="50"
                   BackgroundColor="{StaticResource AppBackgroundLight}"
                 />
       </Grid>
@@ -162,7 +162,8 @@
           </controls:HorizontalListView.ItemTemplate>
         </controls:HorizontalListView>
       </StackLayout>
-      <StackLayout VerticalOptions="FillAndExpand" MinimumHeightRequest="150">
+      <Grid VerticalOptions="FillAndExpand" MinimumHeightRequest="150">
+        <!--Attendance Details Grid-->
         <Grid VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBackgroundLight}">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -180,16 +181,24 @@
           <Label TextColor="White" Text="---" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" HorizontalTextAlignment="Start"/>
           <!--Seperator-->
           <!--Headers -->
-         <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate FirstSeen}" Grid.Column="0" Grid.Row="3"/>
-         <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate LastSeen}" Grid.Column="1" Grid.Row="3" HorizontalTextAlignment="Center"/>
-         <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Duration}" Grid.Column="2" Grid.Row="3"/>
+          <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate FirstSeen}" Grid.Column="0" Grid.Row="3"/>
+          <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate LastSeen}" Grid.Column="1" Grid.Row="3" HorizontalTextAlignment="Center"/>
+          <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Duration}" Grid.Column="2" Grid.Row="3"/>
           <!--Values-->
-         <Label TextColor="White" Text="{Binding CurrentAttendance.FirstSeen}" Grid.Column="0" Grid.Row="4"/>
-         <Label TextColor="White" Text="{Binding CurrentAttendance.LastSeen}" Grid.Column="1" Grid.Row="4" HorizontalTextAlignment="Center"/>
-         <Label TextColor="White" Text="{Binding CurrentAttendance.Duration}" Grid.Column="2" Grid.Row="4"/>
-        
+          <Label TextColor="White" Text="{Binding CurrentAttendance.FirstSeen}" Grid.Column="0" Grid.Row="4"/>
+          <Label TextColor="White" Text="{Binding CurrentAttendance.LastSeen}" Grid.Column="1" Grid.Row="4" HorizontalTextAlignment="Center"/>
+          <Label TextColor="White" Text="{Binding CurrentAttendance.Duration}" Grid.Column="2" Grid.Row="4"/>
+
         </Grid>
-      </StackLayout>
+        
+        <!--Exception Details Grid TODO:-->
+        <Grid>
+          
+        </Grid>
+        <ActivityIndicator  IsRunning="{Binding IsBusy}"
+                     HeightRequest="50" WidthRequest="50"
+                     VerticalOptions="Center" HorizontalOptions="Center"/>
+      </Grid>
 
       <Grid>
         <Grid.ColumnDefinitions>
@@ -203,8 +212,8 @@
             BackgroundColor="{StaticResource YellowAccent}"
             Orientation="ImageOnTop"
             TextColor="Black"
-            ImageHeightRequest="70"
-            ImageWidthRequest="70"
+            ImageHeightRequest="100"
+            ImageWidthRequest="100"
             BorderRadius="{StaticResource CornerRadius}"
             Text="{ext:Translate Delegation}"
                 >
@@ -219,6 +228,8 @@
             BackgroundColor="{StaticResource YellowAccent}"
             Orientation="ImageOnTop"
             TextColor="Black"
+            ImageHeightRequest="100"
+            ImageWidthRequest="100"
             BorderRadius="{StaticResource CornerRadius}"
             Text="{ext:Translate DayPass}">
           <controls:ImageButton.Source>

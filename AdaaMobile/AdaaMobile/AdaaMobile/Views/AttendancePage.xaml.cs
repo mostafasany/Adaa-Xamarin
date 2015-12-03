@@ -81,12 +81,24 @@ namespace AdaaMobile.Views
         {
             var button = (Button)sender;
             if (button == _lastTappedTab) return;
+            //Change color state of tapped button to Active
             SelectButton(button, true);
+            //Change color state of tapped button to be not Active
             if (_lastTappedTab != null)
             {
                 SelectButton(_lastTappedTab, false);
             }
             _lastTappedTab = button;
+
+            //Switch to different modes based on tapped button
+            if (button == AttendanceButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Attendance)
+            {
+                _attendanceViewModel.LoadDaysForMode(AttendanceMode.Attendance);
+            }
+            else if (button == ExceptionsButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Exceptions)
+            {
+                _attendanceViewModel.LoadDaysForMode(AttendanceMode.Exceptions);
+            }
         }
 
         #endregion
@@ -98,7 +110,7 @@ namespace AdaaMobile.Views
         /// <param name="e"></param>
         private void Day_Tapped(object sender, HorizontaListItemTappedEventArgs e)
         {
-            Debug.WriteLine("ItemTapped");
+            //Change color states of clicked day
             var newDay = (DayWrapper)e.Item;
             newDay.IsSelected = true;
             var oldDay = _attendanceViewModel.SelectedDay;
@@ -106,8 +118,15 @@ namespace AdaaMobile.Views
                 oldDay.IsSelected = false;
             _attendanceViewModel.SelectedDay = newDay;
 
-            //Load details
-            _attendanceViewModel.LoadAttendanceCommand.Execute(null);
+            if (_attendanceViewModel.AttendanceMode == AttendanceMode.Attendance)
+            {
+                //Load Attendance details
+                _attendanceViewModel.LoadAttendanceCommand.Execute(null);
+            }
+            else
+            {
+                //TODO:Load Exception details
+            }
         }
     }
 }
