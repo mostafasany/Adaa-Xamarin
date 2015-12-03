@@ -183,6 +183,8 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
         /// <returns></returns>
         private nint GetItemsCount(UICollectionView collectionView, nint section)
         {
+            if (Element.ItemsSource == null) return 0;
+
             var collection = this.Element.ItemsSource as IList;
             if (collection != null) return collection.Count;
 

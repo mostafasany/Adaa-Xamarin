@@ -1,25 +1,27 @@
-﻿using System;
-using QueryExtensions;
+﻿using QueryExtensions;
 
-namespace AdaaMobile
+namespace AdaaMobile.Models.Request
 {
-	public class GetAllEmployeesQParameters
-	{
-		
-		[QueryParameter ("server")]
-		public string Server { get; set; }
+    public class GetAllEmployeesQParameters
+    {
 
-		[QueryParameter ("url")]
-		public string Url { get; set; }
+        [QueryParameter("server")]
+        public string Server { get; set; }
 
-		[QueryParameter ("langid")]
-		public string Langid { get; set; }
+        [QueryParameter("url")]
+        public string Url
+        {
+            get { return "?funcname=getAllEmployeesList"; }
+        }
 
-		[QueryParameter ("userToken")]
-		public string UserToken { get; set; }
+        [QueryParameter("langid")]
+        public string Langid { get; set; }
 
-	}
-		
+        [QueryParameter("userToken")]
+        public string UserToken { get; set; }
+
+    }
+
 
 }
 

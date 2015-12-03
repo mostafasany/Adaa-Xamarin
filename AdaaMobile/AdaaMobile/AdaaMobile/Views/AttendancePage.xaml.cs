@@ -105,6 +105,9 @@ namespace AdaaMobile.Views
             if (oldDay != null && oldDay != newDay)
                 oldDay.IsSelected = false;
             _attendanceViewModel.SelectedDay = newDay;
+
+            //Load details
+            _attendanceViewModel.LoadAttendanceCommand.Execute(null);
         }
     }
 }

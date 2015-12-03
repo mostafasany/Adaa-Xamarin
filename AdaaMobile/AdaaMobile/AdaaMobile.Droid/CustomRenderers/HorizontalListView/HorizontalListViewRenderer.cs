@@ -256,6 +256,7 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
         /// <returns></returns>
         private int GetItemsCount()
         {
+            if (Element.ItemsSource == null) return 0;
             var collection = this.Element.ItemsSource as IList;
             if (collection != null) return collection.Count;
 

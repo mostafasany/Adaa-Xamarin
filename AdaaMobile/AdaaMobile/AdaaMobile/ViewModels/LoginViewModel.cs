@@ -22,6 +22,7 @@ namespace AdaaMobile.ViewModels
         private readonly IDialogManager _dialogManager;
         private readonly INavigation _navigation;
         private readonly INavigationService _navigationService;
+        private readonly IAppSettings _appSettings;
         #endregion
 
         #region Properties
@@ -71,12 +72,13 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public LoginViewModel(IDataService dataService, IDialogManager dialogManager, INavigation navigation, INavigationService navigationService)
+        public LoginViewModel(IDataService dataService, IDialogManager dialogManager, INavigation navigation, INavigationService navigationService, IAppSettings appSettings)
         {
             _dataService = dataService;
             _dialogManager = dialogManager;
             _navigation = navigation;
             _navigationService = navigationService;
+            _appSettings = appSettings;
 
             //Initialize commands
             LoginCommand = new AsyncExtendedCommand(LoginAsync, false);
@@ -114,7 +116,7 @@ namespace AdaaMobile.ViewModels
                     if (response.Result.Status == "ok" && !string.IsNullOrEmpty(response.Result.UserToken))
                     {
 						bool success = await GetCurrentUserProfileAsync(response.Result.UserToken);
-                        new AppSettings().UserToken = response.Result.UserToken;
+                        _appSettings.UserToken = response.Result.UserToken;
                         _navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
                         return;
                     }
@@ -143,11 +145,9 @@ namespace AdaaMobile.ViewModels
             };
 
 			var r = await _dataService.GetEmpolyeesAsync (new GetAllEmployeesQParameters (){ 
-				Langid = "arb",
-				UserToken = "2015112823041470554",
-				Server = "adaamobile",
-				Url = "?funcname=getAllEmployeesList"
-			}, null);
+				Langid = _appSettings.Language,
+				UserToken =_appSettings.UserToken,
+			});
             var result = await _dataService.GetCurrentUserProfile(paramters);
             return true;
         }

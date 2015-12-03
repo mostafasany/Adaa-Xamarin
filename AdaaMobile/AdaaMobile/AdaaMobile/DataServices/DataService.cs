@@ -18,8 +18,8 @@ namespace AdaaMobile.DataServices
     public class DataService : IDataService
     {
         // private const string BaseUrl = "http://adaa.getsandbox.com";
-		private const string BaseUrl = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy";
-
+        private const string BaseUrl = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy";
+        private const string Server = "adaamobile";
         private const string ContenTypeKey = "Content-Type";
         private const string XmlContentType = "application/xml";
         private readonly Func<BaseRequest> RequestFactory;
@@ -46,51 +46,50 @@ namespace AdaaMobile.DataServices
                 UserName = userName,
                 Password = password
             };
-            string t = loginParamters.SerializeXml();
             var stringContent = new StringContent(loginParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
             return await request.PostAsync<LoginResponse>(stringContent);
-            //return new ResponseWrapper<LoginResponse>()
-            //{
-            //    ResponseStatus = ResponseStatus.SuccessWithResult,
-            //    Result = new LoginResponse() { Status = "ok", UserToken = "2015112208415581449" }
-            //};
         }
 
-		public async Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters, CancellationToken? token)
+        public async Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters, CancellationToken? token = null)
         {
-			var request = RequestFactory();
-			request.RequestUrl = BaseUrl.AppendQueryString(parameters);
-			request.ResultContentType = ContentType.Xml;
-			return await request.GetAsync<GetAllEmployeesResponse>(token);
+            parameters.Server = Server;
+            var request = RequestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetAllEmployeesResponse>(token);
 
         }
 
-        public  Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync(AttendanceQParameters parameters, CancellationToken? token)
+        public async Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync(AttendanceQParameters parameters, CancellationToken? token = null)
         {
-            throw new NotImplementedException();
+            parameters.Server = Server;
+            var request = RequestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<Attendance>(token);
         }
 
-        public Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(AttExceptionQParamters parameters, CancellationToken? token)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync(DaypassRequestQParameters qParameters, DaypassRequestBParameters bParamters, CancellationToken? token)
+        public Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(AttExceptionQParamters parameters, CancellationToken? token = null)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ResponseWrapper<DayPassesResponse>> GetPendingDayPassesAsync(DayPassesQParameters parameters, CancellationToken? token)
+        public Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync(DaypassRequestQParameters qParameters, DaypassRequestBParameters bParamters, CancellationToken? token = null)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync(DaypassApproveQParameters parameters, CancellationToken? token)
+        public Task<ResponseWrapper<DayPassesResponse>> GetPendingDayPassesAsync(DayPassesQParameters parameters, CancellationToken? token = null)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ResponseWrapper<DayPassTasksResponse>> DayPassTasksResponseAsync(DayPassTasksQParameters parameters, CancellationToken? token)
+        public Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync(DaypassApproveQParameters parameters, CancellationToken? token = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ResponseWrapper<DayPassTasksResponse>> DayPassTasksResponseAsync(DayPassTasksQParameters parameters, CancellationToken? token = null)
         {
             throw new NotImplementedException();
         }

@@ -17,12 +17,12 @@ namespace AdaaMobile.Common
             get { return _canExecute; }
             set
             {
-                if(_canExecute != value)
+                if (_canExecute != value)
                 {
                     _canExecute = value;
                     OnPropertyChanged();
                     EventHandler canExecuteChanged = CanExecuteChanged;
-                    if(canExecuteChanged != null)
+                    if (canExecuteChanged != null)
                         canExecuteChanged(this, EventArgs.Empty);
                 }
             }
@@ -47,13 +47,13 @@ namespace AdaaMobile.Common
             private set { _cts = value; }
         }
 
-        public AsyncExtendedCommand ( Func<Task> executeFunction, bool canExecute = true )
+        public AsyncExtendedCommand(Func<Task> executeFunction, bool canExecute = true)
         {
             this._executeFunction = executeFunction;
             this._canExecute = canExecute;
         }
 
-        public AsyncExtendedCommand ( Func<CancellationToken, Task> cancelableExecuteFunction, bool canExecute = true )
+        public AsyncExtendedCommand(Func<CancellationToken, Task> cancelableExecuteFunction, bool canExecute = true)
         {
             this._cancelableExecuteFunction = cancelableExecuteFunction;
             this._canExecute = canExecute;
@@ -61,22 +61,28 @@ namespace AdaaMobile.Common
 
         public event EventHandler CanExecuteChanged;
 
-        bool ICommand.CanExecute ( object parameter )
+        bool ICommand.CanExecute(object parameter)
         {
             return CanExecute;
         }
 
-        async void ICommand.Execute ( object parameter )
+        async void ICommand.Execute(object parameter)
         {
 
-            if(CanExecute)
+            if (CanExecute)
             {
-                if(_executeFunction != null)
+                if (_executeFunction != null)
                 {
                     await _executeFunction.Invoke();
                 }
-                else if(_cancelableExecuteFunction != null)
+                else if (_cancelableExecuteFunction != null)
                 {
+                    //Cancel previous command if any
+                    if (Cts != null && !Cts.IsCancellationRequested)
+                    {
+                        Cts.Cancel();
+                    }
+                    //Create new CancellationTokenSource
                     Cts = new CancellationTokenSource();
                     await _cancelableExecuteFunction.Invoke(Cts.Token);
                 }
@@ -87,14 +93,14 @@ namespace AdaaMobile.Common
             }
         }
 
-        public void Execute ( object parameter )
+        public void Execute(object parameter)
         {
             (this as ICommand).Execute(parameter);
         }
 
-        public void Cancel ()
+        public void Cancel()
         {
-            if(Cts != null && !Cts.IsCancellationRequested)
+            if (Cts != null && !Cts.IsCancellationRequested)
             {
                 Cts.Cancel();
             }
@@ -114,12 +120,12 @@ namespace AdaaMobile.Common
             get { return _canExecute; }
             set
             {
-                if(_canExecute != value)
+                if (_canExecute != value)
                 {
                     _canExecute = value;
                     OnPropertyChanged();
                     EventHandler canExecuteChanged = CanExecuteChanged;
-                    if(canExecuteChanged != null)
+                    if (canExecuteChanged != null)
                         canExecuteChanged(this, EventArgs.Empty);
                 }
             }
@@ -133,13 +139,13 @@ namespace AdaaMobile.Common
         }
 
         //parametrized Action constructors
-        public AsyncExtendedCommand ( Func<T, Task> executeFunction, bool canExecute = true )
+        public AsyncExtendedCommand(Func<T, Task> executeFunction, bool canExecute = true)
         {
             this._executeFunction = executeFunction;
             this._canExecute = canExecute;
         }
 
-        public AsyncExtendedCommand ( Func<T, CancellationToken, Task> cancelableExecuteFunction, bool canExecute = true )
+        public AsyncExtendedCommand(Func<T, CancellationToken, Task> cancelableExecuteFunction, bool canExecute = true)
         {
             this._cancelableExecuteFunction = cancelableExecuteFunction;
             this._canExecute = canExecute;
@@ -147,17 +153,17 @@ namespace AdaaMobile.Common
 
         public event EventHandler CanExecuteChanged;
 
-        bool ICommand.CanExecute ( object parameter )
+        bool ICommand.CanExecute(object parameter)
         {
             return CanExecute;
         }
 
-        void ICommand.Execute ( object parameter )
+        void ICommand.Execute(object parameter)
         {
-            if(CanExecute)
+            if (CanExecute)
             {
                 var genericParameter = parameter;
-                if(parameter != null && parameter.GetType() != typeof(T))
+                if (parameter != null && parameter.GetType() != typeof(T))
                 {
                     try
                     {
@@ -169,10 +175,17 @@ namespace AdaaMobile.Common
                     }
                 }
 
-                if(_executeFunction != null)
+                if (_executeFunction != null)
                     _executeFunction.Invoke((T)genericParameter);
-                else if(_cancelableExecuteFunction != null)
+                else if (_cancelableExecuteFunction != null)
                 {
+
+                    //Cancel previous command if any
+                    if (Cts != null && !Cts.IsCancellationRequested)
+                    {
+                        Cts.Cancel();
+                    }
+                    //Create new CancellationTokenSource
                     Cts = new CancellationTokenSource();
 
                     _cancelableExecuteFunction.Invoke((T)genericParameter, Cts.Token);
@@ -184,14 +197,14 @@ namespace AdaaMobile.Common
             }
         }
 
-        public void Execute ( object parameter )
+        public void Execute(object parameter)
         {
             (this as ICommand).Execute(parameter);
         }
 
-        public void Cancel ()
+        public void Cancel()
         {
-            if(Cts != null && !Cts.IsCancellationRequested)
+            if (Cts != null && !Cts.IsCancellationRequested)
             {
                 Cts.Cancel();
             }

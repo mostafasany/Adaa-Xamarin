@@ -54,7 +54,7 @@
                           HorizontalOptions="Center"
                            >
       <controls:CircleImage.Source>
-        <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="icon"/>
+        <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon"/>
       </controls:CircleImage.Source>
     </controls:CircleImage>
 

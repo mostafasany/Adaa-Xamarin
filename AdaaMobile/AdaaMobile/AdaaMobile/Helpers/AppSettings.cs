@@ -15,8 +15,8 @@ namespace AdaaMobile.Helpers
         private const string SelectedCultureKey = "SelectedCultureKey";
         private readonly string _selectedCultureDefault = "en-US";
 
-		private const string UserTokenKey = "UserTokenKey";
-		private readonly string _userTokenDefault = string.Empty;
+        private const string UserTokenKey = "UserTokenKey";
+        private readonly string _userTokenDefault = string.Empty;
 
 
         public string SelectedCultureName
@@ -28,13 +28,29 @@ namespace AdaaMobile.Helpers
             set { CrossSettings.Current.AddOrUpdateValue(SelectedCultureKey, value); }
         }
 
-		public string UserToken
-		{
-			get
-			{
-				return CrossSettings.Current.GetValueOrDefault(UserTokenKey, _userTokenDefault);
-			}
-			set { CrossSettings.Current.AddOrUpdateValue(UserTokenKey, value); }
-		}
+        public string UserToken
+        {
+            get
+            {
+                string token = CrossSettings.Current.GetValueOrDefault(UserTokenKey, _userTokenDefault);
+#if DEBUG
+                if (string.IsNullOrEmpty(token))
+                    return "2015112823041470554";
+#endif
+                return token;
+
+            }
+            set { CrossSettings.Current.AddOrUpdateValue(UserTokenKey, value); }
+        }
+
+        public string Language
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(SelectedCultureName) || SelectedCultureName.StartsWith("en"))
+                    return "eng";
+                return "arb";
+            }
+        }
     }
 }

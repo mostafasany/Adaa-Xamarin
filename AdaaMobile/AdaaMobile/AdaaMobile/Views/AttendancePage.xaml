@@ -34,7 +34,7 @@
 
         <Button Text="{ext:Translate Attendance}"
             Grid.Column="0"
-            BorderRadius="0"
+            BorderRadius="{StaticResource CornerRadius}"
             BorderColor="{StaticResource AppBackgroundDark}"
             x:Name="AttendanceButton"
             Clicked="OnTabTapped"
@@ -42,7 +42,7 @@
 
         <Button Text="{ext:Translate Exceptions}"
             Grid.Column="1"
-            BorderRadius="0"
+            BorderRadius="{StaticResource CornerRadius}"
             BorderColor="{StaticResource AppBackgroundDark}"
             x:Name="ExceptionsButton"
             Clicked="OnTabTapped"
@@ -79,7 +79,7 @@
                 Text="{Binding StartDate,
                 Converter={StaticResource DateFormatConverter},
                 ConverterParameter=d MMM yyyy}"
-                Image="icon.png"
+                Source="icon.png"
                 Clicked="StartDate_Clicked"
                 ImageHeightRequest="40"
                 ImageWidthRequest="40"
@@ -101,7 +101,7 @@
                   Text="{Binding EndDate,
                 Converter={StaticResource DateFormatConverter},
                 ConverterParameter=d MMM yyyy}"
-                  Image="icon.png"
+                  Source="icon.png"
                   Clicked="EndDate_Clicked"
                   ImageHeightRequest="40"
                   ImageWidthRequest="40"
@@ -111,14 +111,14 @@
       <StackLayout Padding="0,5,0,5">
         <controls:HorizontalListView ItemsSource="{Binding DaysList}"
                                      ItemTapped="Day_Tapped"
-                                     VerticalOptions="Start" 
+                                     VerticalOptions="Start"
                                      HorizontalOptions="Fill">
           <controls:HorizontalListView.ItemTemplate>
             <DataTemplate>
               <ViewCell>
                 <ViewCell.View>
-                    <!--<Label Text="{Binding AbbrWeek}" ></Label>-->
-                  <Grid RowSpacing="0"             >              
+                  <!--<Label Text="{Binding AbbrWeek}" ></Label>-->
+                  <Grid RowSpacing="0"             >
                     <Grid.RowDefinitions>
                       <RowDefinition  Height="Auto"/>
                       <RowDefinition  Height="Auto"/>
@@ -162,51 +162,71 @@
           </controls:HorizontalListView.ItemTemplate>
         </controls:HorizontalListView>
       </StackLayout>
-      <StackLayout VerticalOptions="FillAndExpand">
+      <StackLayout VerticalOptions="FillAndExpand" MinimumHeightRequest="150">
         <Grid VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBackgroundLight}">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
-          <Label TextColor="Black" Text="Date" Grid.Column="0"/>
-          <Label TextColor="Black" Text=":" Grid.Column="1"/>
-          <Label TextColor="Black" Text="1 Oct 2015" Grid.Column="2"/>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Location}" Grid.Column="0" Grid.ColumnSpan="3"/>
+          <Label TextColor="White" Text="---" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" HorizontalTextAlignment="Start"/>
+          <!--Seperator-->
+          <!--Headers -->
+         <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate FirstSeen}" Grid.Column="0" Grid.Row="3"/>
+         <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate LastSeen}" Grid.Column="1" Grid.Row="3" HorizontalTextAlignment="Center"/>
+         <Label TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Duration}" Grid.Column="2" Grid.Row="3"/>
+          <!--Values-->
+         <Label TextColor="White" Text="{Binding CurrentAttendance.FirstSeen}" Grid.Column="0" Grid.Row="4"/>
+         <Label TextColor="White" Text="{Binding CurrentAttendance.LastSeen}" Grid.Column="1" Grid.Row="4" HorizontalTextAlignment="Center"/>
+         <Label TextColor="White" Text="{Binding CurrentAttendance.Duration}" Grid.Column="2" Grid.Row="4"/>
+        
         </Grid>
       </StackLayout>
 
-      <Button
-                
-          HorizontalOptions="FillAndExpand"
-          BackgroundColor="White"
-          TextColor="Black"
-          BorderRadius="5"
-          Text="{ext:Translate Delegation}"
-                >
-      </Button>
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-      <Button
-          HorizontalOptions="FillAndExpand"
-          BackgroundColor="White"
-          TextColor="{StaticResource AppBackgroundLight}"
-          BorderRadius="5"
-          Text="{ext:Translate DayPass}"
+        <controls:ImageButton
+            Grid.Column="0"
+            HorizontalOptions="Fill"
+            BackgroundColor="{StaticResource YellowAccent}"
+            Orientation="ImageOnTop"
+            TextColor="Black"
+            ImageHeightRequest="70"
+            ImageWidthRequest="70"
+            BorderRadius="{StaticResource CornerRadius}"
+            Text="{ext:Translate Delegation}"
                 >
-      </Button>
-      <controls:ImageButton
-          HorizontalOptions="FillAndExpand"
-          VerticalOptions="Start"
-          BackgroundColor="{StaticResource AppBackgroundLight}"
-          TextColor="Red"
-          BorderRadius="5"
-          ImageHeightRequest="20"
-          ImageWidthRequest="20"
-          Orientation="ImageToLeft"
-          Image="icon.png"
-          Text="{ext:Translate AdaaTimesheet}"
-                >
+          <controls:ImageButton.Source>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon"/>
+          </controls:ImageButton.Source>
+        </controls:ImageButton>
 
-      </controls:ImageButton>
+        <controls:ImageButton
+            Grid.Column="1"
+            HorizontalOptions="Fill"
+            BackgroundColor="{StaticResource YellowAccent}"
+            Orientation="ImageOnTop"
+            TextColor="Black"
+            BorderRadius="{StaticResource CornerRadius}"
+            Text="{ext:Translate DayPass}">
+          <controls:ImageButton.Source>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon"/>
+          </controls:ImageButton.Source>
+
+        </controls:ImageButton>
+      </Grid>
     </StackLayout>
 
   </ScrollView>

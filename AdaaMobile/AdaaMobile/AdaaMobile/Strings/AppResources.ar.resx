@@ -363,11 +363,16 @@
   <data name="Work" xml:space="preserve">
     <value>Work</value>
   </data>
-
-   <data name="UserName" xml:space="preserve">
+  <data name="UserName" xml:space="preserve">
     <value>اسم المستخدم</value>
-    </data>
-     <data name="Password" xml:space="preserve">
+  </data>
+  <data name="Password" xml:space="preserve">
     <value>الاسم السري</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="LoadingError" xml:space="preserve">
+    <value>LoadingError</value>
   </data>
 </root>
