@@ -21,13 +21,13 @@ namespace AdaaMobile
 			Locator.Default = locator;
 
 
-			MainPage = new AddaMasterPage();
-//			IAppSettings settings = Locator.Default.AppSettings;
-//			if (string.IsNullOrEmpty (settings.UserToken)) {
-//				MainPage = new ChooseLanguagePage();
-//			} else {
-//				MainPage = new AddaMasterPage();
-//			}
+			//MainPage = new AddaMasterPage();
+			IAppSettings settings = Locator.Default.AppSettings;
+			if (string.IsNullOrEmpty (settings.UserToken)) {
+				MainPage = new ChooseLanguagePage();
+			} else {
+				MainPage = new AddaMasterPage();
+			}
 
 
 

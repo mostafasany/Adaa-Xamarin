@@ -183,6 +183,7 @@
     <Compile Include="Controls\CollectionChangedHandle.cs" />
     <Compile Include="Models\Request\GetAllEmployeesQParameters.cs" />
     <Compile Include="Models\Response\GetAllEmployeesResponse.cs" />
+    <Compile Include="Helpers\LoggedUserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">

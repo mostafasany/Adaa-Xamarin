@@ -21,9 +21,9 @@ namespace AdaaMobile
 
 		void ArabicButton_Clicked1 (object sender, EventArgs e)
 		{
-			Locator.Default.AppSettings.SelectedCultureName = "ar";
+			Locator.Default.AppSettings.SelectedCultureName = "ar-EG";
 
-			DependencyService.Get<ILocalize>().UpdateCultureInfo("ar");
+			DependencyService.Get<ILocalize>().UpdateCultureInfo("ar-EG");
 			Navigation.PushModalAsync (new LoginPage ());
 		}
 

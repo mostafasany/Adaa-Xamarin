@@ -10,9 +10,9 @@
 
 
             <Style x:Key="ButtonDefaultStyle" TargetType="Button">
-               <Setter Property="BackgroundColor" Value="#FF007C84" />
-               <Setter Property="TextColor" Value="White" />
-               <Setter Property="BorderRadius" Value="0" />
+               <Setter Property="BackgroundColor" Value="White" />
+               <Setter Property="TextColor" Value="#FF007C84" />
+               <Setter Property="BorderRadius" Value="5" />
             </Style>
 
           <!--Update Value-->

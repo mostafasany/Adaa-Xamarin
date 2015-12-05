@@ -23,6 +23,10 @@ namespace AdaaMobile.ViewModels
         private readonly INavigation _navigation;
         private readonly INavigationService _navigationService;
         private readonly IAppSettings _appSettings;
+
+		private const string LOGIN_RESPONSE_VALID_TOKEN = "Successfully Validated";
+		private const string LOGIN_RESPONSE_USER_NOT_FOUND = "User Not Found";
+		private const string LOGIN_RESPONSE_WRONG_PASSWORD = "Wrong Password";
         #endregion
 
         #region Properties
@@ -86,8 +90,8 @@ namespace AdaaMobile.ViewModels
             SignUpCommand = new ExtendedCommand(SignUp);
 
 #if DEBUG
-            UserName = "Test";
-            Password = "123456";
+			UserName = "Mobileuser3";
+			Password = "pass-123";
 #endif
         }
 
@@ -109,24 +113,32 @@ namespace AdaaMobile.ViewModels
                 IsBusy = true;
                 BusyMessage = "Loading";
                 var response = await _dataService.LoginAsync(UserName, Password);
-                bool success2 = await GetCurrentUserProfileAsync(null);
 
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
-                    if (response.Result.Status == "ok" && !string.IsNullOrEmpty(response.Result.UserToken))
+					if (response.Result.Message == LOGIN_RESPONSE_VALID_TOKEN && !string.IsNullOrEmpty(response.Result.UserToken))
                     {
+						_appSettings.UserToken = response.Result.UserToken;
                         bool success = await GetCurrentUserProfileAsync(response.Result.UserToken);
-                        _appSettings.UserToken = response.Result.UserToken;
                         _navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
                         return;
                     }
+					else if(response.Result.Message == LOGIN_RESPONSE_WRONG_PASSWORD ||
+						response.Result.Message == "Wrong username or password"){
+						//TODO Get this from Resources file
+
+						await _dialogManager.DisplayAlert("Alert", "Please enter valid password", "Ok");
+						return;
+					}
                 }
+
 
                 await _dialogManager.DisplayAlert("Alert", "login failed", "ok");
             }
             catch (Exception)
             {
                 //Show error
+				_dialogManager.DisplayAlert("Error", "Something error happened", "Ok");
             }
             finally
             {
@@ -140,16 +152,14 @@ namespace AdaaMobile.ViewModels
         {
             var paramters = new CurrentProfileQParameters()
             {
-                Langid = "arb",
+				Langid = _appSettings.Language,
                 UserToken = token
             };
-
-            var r = await _dataService.GetEmpolyeesAsync(new GetAllEmployeesQParameters()
-            {
-                Langid = _appSettings.Language,
-                UserToken = _appSettings.UserToken,
-            });
             var result = await _dataService.GetCurrentUserProfile(paramters);
+
+			if (result.ResponseStatus == ResponseStatus.SuccessWithResult) {
+				LoggedUserInfo.CurrentUserProfile = result.Result;
+			}
             return true;
         }
 

@@ -13,7 +13,11 @@ namespace AdaaMobile.Models.Response
         [XmlElement("status")]
         public string Status { get; set; }
 
-		[XmlElement("userToken")]
+		[XmlElement("msg")]
+		public string Message{ get; set;}
+
+
+		[XmlElement("token")]
 		public string UserToken { get; set; }
     }
 }
