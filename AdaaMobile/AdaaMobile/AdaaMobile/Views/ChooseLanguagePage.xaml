@@ -11,7 +11,7 @@
 	<RowDefinition Height="*"/>
 	</Grid.RowDefinitions>
 
-			<Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Source="splashscreen.jpg"/> 
+			<Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Source="splashscreen.jpg" Aspect="Fill"/> 
 	<Grid Grid.Row="1" Padding="5,0,5,5">
 
 	<Grid.RowDefinitions>
