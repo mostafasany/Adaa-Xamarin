@@ -16,7 +16,7 @@ namespace AdaaMobile.Models.Response
             public string DisplayName { get; set; }
 
             [XmlElement("UserID")]
-            public uint UserID { get; set; }
+            public string UserId { get; set; }
 
             [XmlElement("JobTitle")]
             public string JobTitle { get; set; }

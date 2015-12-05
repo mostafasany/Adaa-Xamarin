@@ -38,9 +38,11 @@ namespace AdaaMobile.ViewModels
             cb.Register<INetworkHelper>(c => c.Resolve<NetworkHelper>());
             cb.RegisterType<DialogManager>().SingleInstance();
             cb.Register<IDialogManager>(c => c.Resolve<DialogManager>());
+            cb.RegisterType<RequestMessageResolver>().SingleInstance();
+            cb.Register<IRequestMessageResolver>(c => c.Resolve<RequestMessageResolver>());
             cb.RegisterType<BaseRequest>();
             cb.RegisterType<DataService>();
-//            cb.RegisterType<MockDataService>();
+            //            cb.RegisterType<MockDataService>();
             cb.Register<IDataService>(c => c.Resolve<DataService>());
             cb.RegisterType<NavigationService>();
             cb.Register<INavigationService>(c => c.Resolve<NavigationService>());
@@ -48,6 +50,7 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<HomeViewModel>();
             cb.RegisterType<AttendanceViewModel>();
             cb.RegisterType<DirectoryViewModel>();
+            cb.RegisterType<ProfileViewModel>();
         }
 
 
@@ -65,6 +68,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<DirectoryViewModel>();
+            }
+        }
+
+        public ProfileViewModel ProfileViewModel
+        {
+            get
+            {
+                return Container.Resolve<ProfileViewModel>();
             }
         }
 

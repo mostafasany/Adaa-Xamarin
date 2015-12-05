@@ -369,10 +369,35 @@
   <data name="Password" xml:space="preserve">
     <value>الاسم السري</value>
   </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>Adaa</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="Loading" xml:space="preserve">
     <value>Loading</value>
   </data>
   <data name="LoadingError" xml:space="preserve">
     <value>LoadingError</value>
+  </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>No Data</value>
+  </data>
+  <data name="NoInternet" xml:space="preserve">
+    <value>NoInternet</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="UnlockAccountError" xml:space="preserve">
+    <value>Unlocking account request was unsuccessful</value>
+    <comment>When backend doesn't return any message</comment>
   </data>
 </root>

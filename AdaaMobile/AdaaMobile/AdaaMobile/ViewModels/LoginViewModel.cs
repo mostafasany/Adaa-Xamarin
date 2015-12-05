@@ -109,13 +109,13 @@ namespace AdaaMobile.ViewModels
                 IsBusy = true;
                 BusyMessage = "Loading";
                 var response = await _dataService.LoginAsync(UserName, Password);
-				bool success2 = await GetCurrentUserProfileAsync(null);
+                bool success2 = await GetCurrentUserProfileAsync(null);
 
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
                     if (response.Result.Status == "ok" && !string.IsNullOrEmpty(response.Result.UserToken))
                     {
-						bool success = await GetCurrentUserProfileAsync(response.Result.UserToken);
+                        bool success = await GetCurrentUserProfileAsync(response.Result.UserToken);
                         _appSettings.UserToken = response.Result.UserToken;
                         _navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
                         return;
@@ -124,7 +124,7 @@ namespace AdaaMobile.ViewModels
 
                 await _dialogManager.DisplayAlert("Alert", "login failed", "ok");
             }
-            catch (Exception ) 
+            catch (Exception)
             {
                 //Show error
             }
@@ -138,16 +138,17 @@ namespace AdaaMobile.ViewModels
 
         private async Task<bool> GetCurrentUserProfileAsync(string token)
         {
-            var paramters = new CurrentUserProfileQParameters()
+            var paramters = new CurrentProfileQParameters()
             {
-                LangId = "arb",
+                Langid = "arb",
                 UserToken = token
             };
 
-			var r = await _dataService.GetEmpolyeesAsync (new GetAllEmployeesQParameters (){ 
-				Langid = _appSettings.Language,
-				UserToken =_appSettings.UserToken,
-			});
+            var r = await _dataService.GetEmpolyeesAsync(new GetAllEmployeesQParameters()
+            {
+                Langid = _appSettings.Language,
+                UserToken = _appSettings.UserToken,
+            });
             var result = await _dataService.GetCurrentUserProfile(paramters);
             return true;
         }

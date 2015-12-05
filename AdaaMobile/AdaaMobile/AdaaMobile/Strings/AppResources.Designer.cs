@@ -125,6 +125,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adaa.
+        /// </summary>
+        public static string ApplicationName {
+            get {
+                return ResourceManager.GetString("ApplicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to عربى.
         /// </summary>
         public static string Arabic {
@@ -305,6 +314,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Employee ID.
         /// </summary>
         public static string EmployeeID {
@@ -328,6 +346,15 @@ namespace AdaaMobile.Strings {
         public static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
@@ -503,6 +530,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manager.
+        /// </summary>
+        public static string Manager {
+            get {
+                return ResourceManager.GetString("Manager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mobile Number.
         /// </summary>
         public static string MobileNumber {
@@ -584,6 +620,24 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Data.
+        /// </summary>
+        public static string NoData {
+            get {
+                return ResourceManager.GetString("NoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Internet.
+        /// </summary>
+        public static string NoInternet {
+            get {
+                return ResourceManager.GetString("NoInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offer Maintenance.
         /// </summary>
         public static string OfferMaintenance {
@@ -607,6 +661,15 @@ namespace AdaaMobile.Strings {
         public static string OfficeNumber {
             get {
                 return ResourceManager.GetString("OfficeNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
             }
         }
         
@@ -805,6 +868,15 @@ namespace AdaaMobile.Strings {
         public static string TaskDetailsCap {
             get {
                 return ResourceManager.GetString("TaskDetailsCap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlocking account request was unsuccessful.
+        /// </summary>
+        public static string UnlockAccountError {
+            get {
+                return ResourceManager.GetString("UnlockAccountError", resourceCulture);
             }
         }
         

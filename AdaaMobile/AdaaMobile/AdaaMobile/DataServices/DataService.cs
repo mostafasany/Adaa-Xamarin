@@ -31,12 +31,31 @@ namespace AdaaMobile.DataServices
             _appSettings = appSettings;
         }
 
-        public async Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentUserProfileQParameters paramters, CancellationToken? token = null)
+        public async Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentProfileQParameters paramters, CancellationToken? token = null)
         {
+            paramters.Server = Server;
             var request = _requestFactory();
             request.RequestUrl = BaseUrl.AppendQueryString(paramters);
             request.ResultContentType = ContentType.Xml;
             return await request.GetAsync<UserProfile>(token);
+        }
+
+        public async Task<ResponseWrapper<UserProfile>> GetOtherUserProfile(OtherProfileQParameters paramters, CancellationToken? token = null)
+        {
+            paramters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(paramters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<UserProfile>(token);
+        }
+
+        public async Task<ResponseWrapper<UnlockAccountResponse>> UnlockAccountAsync(UnlockAccountQParameters paramters, CancellationToken? token = null)
+        {
+            paramters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(paramters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<UnlockAccountResponse>(token);
         }
 
         //TODO:Check Http Client multiple requests issue of Pcl and If we have to switch
@@ -52,7 +71,7 @@ namespace AdaaMobile.DataServices
 
             var request = _requestFactory();
             request.ResultContentType = ContentType.Xml;
-            request.RequestUrl =  BaseUrl.AppendQueryString(qParamters);
+            request.RequestUrl = BaseUrl.AppendQueryString(qParamters);
 
             var loginParamters = new LoginBodyParamters()
             {

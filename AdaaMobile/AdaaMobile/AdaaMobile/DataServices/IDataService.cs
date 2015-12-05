@@ -14,10 +14,12 @@ namespace AdaaMobile.DataServices
     public interface IDataService
     {
         //Accounts module
-        Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentUserProfileQParameters paramters, CancellationToken? token = null);
-
-
         Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password);
+        Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentProfileQParameters paramters, CancellationToken? token = null);
+        Task<ResponseWrapper<UserProfile>> GetOtherUserProfile(OtherProfileQParameters paramters, CancellationToken? token = null);
+        Task<ResponseWrapper<UnlockAccountResponse>> UnlockAccountAsync(UnlockAccountQParameters paramters, CancellationToken? token = null);
+
+        //Directory
         Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters, CancellationToken? token = null);
 
         //Attendance and exception

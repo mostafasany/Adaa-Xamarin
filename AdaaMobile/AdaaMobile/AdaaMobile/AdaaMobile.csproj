@@ -52,6 +52,7 @@
     <Compile Include="Common\ExtendedCommand.cs" />
     <Compile Include="Converters\BoolToColorConverter.cs" />
     <Compile Include="Converters\DateFormatConverter.cs" />
+    <Compile Include="Converters\EnumToBoolConverter.cs" />
     <Compile Include="Converters\StringFormatConverter.cs" />
     <Compile Include="Converters\TruncateDecimalConverter.cs" />
     <Compile Include="Converters\VisibleNotEmptyConverter.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Converters\VisibleNotWhitespaceConverter.cs" />
     <Compile Include="Converters\VisibleWhenEmptyConverter.cs" />
     <Compile Include="Converters\VisibleWhenNullConverter.cs" />
+    <Compile Include="DataServices\RequestMessageResolver.cs" />
     <Compile Include="DataServices\Requests\BaseRequest.cs" />
     <Compile Include="DataServices\DataService.cs" />
     <Compile Include="DataServices\IDataService.cs" />
@@ -78,12 +80,16 @@
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Helpers\SvgAssembly.cs" />
     <Compile Include="Models\DayWrapper.cs" />
-    <Compile Include="Models\Request\CurrentUserProfileQParameters.cs" />
     <Compile Include="Models\Request\ExceptionsQParameter.cs" />
     <Compile Include="Models\Request\LoginQParameters.cs" />
+    <Compile Include="Models\Request\CurrentProfileQParameters.cs" />
+    <Compile Include="Models\Request\OtherProfileQParameters.cs" />
+    <Compile Include="Models\Request\UnlockAccountQParameters.cs" />
     <Compile Include="Models\Response\GetExceptionsRepsonse.cs" />
+    <Compile Include="Models\Response\UnlockAccountResponse.cs" />
     <Compile Include="Models\Response\UserProfile.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="Views\MasterView\MasterHelper.cs" />
     <Compile Include="Views\MasterView\MenuCell.cs" />
     <Compile Include="Views\MasterView\MenuListView.cs" />
@@ -135,6 +141,9 @@
     </Compile>
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfilePropertyControl.xaml.cs">
+      <DependentUpon>ProfilePropertyControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -321,6 +330,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ForgetPasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ProfilePropertyControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

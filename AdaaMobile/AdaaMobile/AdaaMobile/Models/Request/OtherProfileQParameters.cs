@@ -7,18 +7,23 @@ using QueryExtensions;
 
 namespace AdaaMobile.Models.Request
 {
-    public class LoginQParameters
+    public class OtherProfileQParameters
     {
         [QueryParameter("server")]
         public string Server { get; set; }
 
         [QueryParameter("url")]
-        public string Url
-        {
-            get { return "?funcname=validateLogin"; }
+        public string Url {
+            get { return "funcname=getUserProfile"; }
         }
 
         [QueryParameter("langid")]
         public string Langid { get; set; }
+
+        [QueryParameter("userToken")]
+        public string UserToken { get; set; }
+
+        [QueryParameter("empID")]
+        public string EmpId { get; set; }
     }
 }

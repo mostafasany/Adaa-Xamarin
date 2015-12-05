@@ -16,7 +16,7 @@ namespace AdaaMobile.Views.MasterView
             _navigationService = Locator.Default.NavigationService;
             BackgroundColor = (Color)Application.Current.Resources["AppBackgroundLight"];
             SetMenuPage();
-            Detail = MasterHelper.CreatePage(typeof(AttendancePage));
+            Detail = MasterHelper.CreatePage(typeof(ProfilePage));
 
 
         }

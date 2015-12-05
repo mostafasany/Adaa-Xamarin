@@ -19,7 +19,7 @@
     </Grid.RowDefinitions>
 
     <StackLayout Padding="8" Grid.Row="0">
-      <Label HorizontalOptions="Center" XAlign="Center">
+      <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
         <Label.FormattedText>
           <FormattedString>
             <Span Text="Welcome," FontSize="Medium"/>
