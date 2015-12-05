@@ -1,0 +1,11 @@
+For the Windows Phone toolkit make sure that you have
+marked the icons in the "Toolkit.Content" folder as content.  That way they 
+can be used as the icons for the ApplicationBar control.
+
+Notes:
+----------
+1- Handle No internet connection.
+2- Handle toekn not valid, navigate to login.
+3- 
+4- 
+5- 

@@ -52,10 +52,11 @@ namespace AdaaMobile.iOS.CustomRenderers
         private void UpdateCornerRadius()
         {
             var scaleFactor = UIScreen.MainScreen.Scale;
-            NativeView.Layer.BackgroundColor = Color.Transparent.ToCGColor();
+            //NativeView.Layer.BackgroundColor = Color.Transparent.ToCGColor();
             NativeView.Layer.CornerRadius = (float)_extendedGrid.CornerRadius * scaleFactor;
             NativeView.Layer.MasksToBounds = false;
             NativeView.ClipsToBounds = true;
+
         }
 
 

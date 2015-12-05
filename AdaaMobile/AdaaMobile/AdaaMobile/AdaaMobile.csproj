@@ -270,13 +270,13 @@
     <Content Include="Images\Profile.svg" />
     <Content Include="Images\Settings.svg" />
     <Content Include="Images\Timesheet.svg" />
-    <Content Include="README_FIRST.txt" />
     <Content Include="Strings\LocalizationNotes.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+    <Content Include="Notes.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MasterView\AddaMasterPage.xaml">
