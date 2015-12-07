@@ -199,6 +199,7 @@
     <Compile Include="Views\UserServicesPage.xaml.cs">
       <DependentUpon>UserServicesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">

@@ -77,14 +77,18 @@
 
         <controls:ImageButton Grid.Column="0"
                 Text="{Binding StartDate,
-                Converter={StaticResource DateFormatConverter},
+                Converter={StaticResource DateFormatConverter},s
                 ConverterParameter=d MMM yyyy}"
-                Source="icon.png"
+
                 Clicked="StartDate_Clicked"
                 ImageHeightRequest="50"
                 ImageWidthRequest="50"
                 BackgroundColor="{StaticResource AppBackgroundLight}"
-                />
+                >
+                 <controls:ImageButton.Source>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon-Small.png"/>
+          </controls:ImageButton.Source>
+          </controls:ImageButton>
 
         <!--DatePicker isn't customizable, So Hide it and put cutomizable 
         button that triggers Date picker with it's specification-->
@@ -101,12 +105,15 @@
                   Text="{Binding EndDate,
                 Converter={StaticResource DateFormatConverter},
                 ConverterParameter=d MMM yyyy}"
-                  Source="icon.png"
                   Clicked="EndDate_Clicked"
                   ImageHeightRequest="50"
                   ImageWidthRequest="50"
                   BackgroundColor="{StaticResource AppBackgroundLight}"
-                />
+                >
+                 <controls:ImageButton.Source>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon-Small.png"/>
+          </controls:ImageButton.Source>
+          </controls:ImageButton>
       </Grid>
       <StackLayout Padding="0,5,0,5">
         <controls:HorizontalListView ItemsSource="{Binding DaysList}"
@@ -218,7 +225,7 @@
             Text="{ext:Translate Delegation}"
                 >
           <controls:ImageButton.Source>
-            <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon"/>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon-Small.png"/>
           </controls:ImageButton.Source>
         </controls:ImageButton>
 
@@ -233,7 +240,7 @@
             BorderRadius="{StaticResource CornerRadius}"
             Text="{ext:Translate DayPass}">
           <controls:ImageButton.Source>
-            <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon"/>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon-Small.png"/>
           </controls:ImageButton.Source>
 
         </controls:ImageButton>

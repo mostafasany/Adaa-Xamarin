@@ -52,10 +52,11 @@
                           Grid.RowSpan="2"
                           VerticalOptions="Center"
                           HorizontalOptions="Center"
+                          Source="{Binding Image}"
                            >
-      <controls:CircleImage.Source>
+<!--      <controls:CircleImage.Source>
         <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon-76.png"/>
-      </controls:CircleImage.Source>
+      </controls:CircleImage.Source>-->
     </controls:CircleImage>
 
 
@@ -140,5 +141,10 @@
 
       </controls:ColumnsPanel>
     </ScrollView>
+
+    <ActivityIndicator  IsRunning="{Binding IsBusy}"
+                     HeightRequest="60" WidthRequest="60"
+                     Grid.Row="0" Grid.RowSpan="3"
+                     VerticalOptions="Center" HorizontalOptions="Center"/>
   </Grid>
 </ContentPage>

@@ -6,12 +6,16 @@
 
 
 	<Grid.RowDefinitions>
-	<RowDefinition Height="2*"/>
+	<RowDefinition Height="5*"/>
 	<RowDefinition Height="60"/>
 	<RowDefinition Height="*"/>
 	</Grid.RowDefinitions>
 
-			<Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Source="splashscreen.jpg" Aspect="Fill"/> 
+		<Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+		 <Image.Source>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="Default"/>
+          </Image.Source>
+		</Image>
 	<Grid Grid.Row="1" Padding="5,0,5,5">
 
 	<Grid.RowDefinitions>

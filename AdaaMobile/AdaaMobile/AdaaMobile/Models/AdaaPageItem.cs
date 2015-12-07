@@ -24,7 +24,7 @@ namespace AdaaMobile.Models
                 data.Add(new AdaaPageItem()
                 {
                     Title = "Home",
-                    IconSource = "icon.png",
+						IconSource = "Icon-Small",
                     TargetType = typeof(HomePage)
                 });
 
