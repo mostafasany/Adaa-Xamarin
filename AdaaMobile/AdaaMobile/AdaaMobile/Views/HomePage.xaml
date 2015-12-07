@@ -54,7 +54,7 @@
                           HorizontalOptions="Center"
                            >
       <controls:CircleImage.Source>
-        <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon"/>
+        <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon-76.png"/>
       </controls:CircleImage.Source>
     </controls:CircleImage>
 
@@ -105,12 +105,12 @@
 
                   <controls:SvgImage
                                       SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
-                                      SvgPath="AdaaMobile.Images.twitter.svg"
+                                      SvgPath="{Binding IconSource}"
                                       BackgroundColor="Transparent"
                                       Percentage="0.5"
                                       HorizontalOptions="Center" VerticalOptions="Center">
                     <controls:SvgImage.ReplacementColors>
-                      <controls:ColorPair OldColor="#FFFFFF" NewColor="Red"></controls:ColorPair>
+                      <controls:ColorPair OldColor="#FFFFFF" NewColor="{StaticResource YellowAccent}"></controls:ColorPair>
                     </controls:SvgImage.ReplacementColors>
                   </controls:SvgImage>
 
