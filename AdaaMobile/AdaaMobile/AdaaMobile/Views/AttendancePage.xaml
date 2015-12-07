@@ -78,7 +78,7 @@
 
         <controls:ImageButton Grid.Column="0"
                 Text="{Binding StartDate,
-                Converter={StaticResource DateFormatConverter},s
+                Converter={StaticResource DateFormatConverter},
                 ConverterParameter=d MMM yyyy}"
 
                 Clicked="StartDate_Clicked"

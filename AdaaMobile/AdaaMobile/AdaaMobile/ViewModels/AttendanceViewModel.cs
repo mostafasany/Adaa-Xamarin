@@ -154,8 +154,9 @@ namespace AdaaMobile.ViewModels
             _dataService = dataService;
             _appSettings = appSettings;
 
-            _startDate = new DateTime(2015, 10, 1, 0, 0, 0);
-            _endDate = new DateTime(2015, 10, 31, 0, 0, 0);
+            _endDate = DateTime.Now;
+            _startDate = _endDate.Subtract(TimeSpan.FromDays(14));
+
 
             //Initialize commands
             LoadAttendanceCommand = new AsyncExtendedCommand(LoadAttendanceDetailsAsync);
@@ -183,7 +184,7 @@ namespace AdaaMobile.ViewModels
         /// Be Aware this is used only With Attendance Mode.
         /// Use LoadExceptions with Exceptions Mode
         /// </summary>
-        private async void PopulateAttendanceDays()
+        private  void PopulateAttendanceDays()
         {
             //Create new Days List on background task.
             //var daysList = await Task.Run(() =>
