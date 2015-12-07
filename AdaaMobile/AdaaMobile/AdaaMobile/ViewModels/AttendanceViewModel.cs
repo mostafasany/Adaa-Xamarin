@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AdaaMobile.Common;
@@ -19,7 +18,7 @@ namespace AdaaMobile.ViewModels
     {
 
         #region Fields
-        private const int LimitRangeInDays = 2 * 365;
+        private const int LimitRangeInDays = 2 * 30;
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
         #endregion
@@ -36,7 +35,7 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _startDate, value))
                 {
-                    LoadDaysForMode(AttendanceMode);//Refresh data based on current mode
+                    PopulateAttendanceDays();
                 }
             }
         }
@@ -52,7 +51,7 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _endDate, value))
                 {
-                    LoadDaysForMode(AttendanceMode);//Refresh data based on current mode
+                    PopulateAttendanceDays();
                 }
             }
         }
@@ -105,7 +104,18 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _currentAttendance, value); }
         }
 
-        //TODO:Decide to use to property to report progress to three seperate properties
+        private AttendanceException _currentException;
+        /// <summary>
+        /// CurrentException for selected day.
+        /// </summary>
+        public AttendanceException CurrentException
+        {
+            get { return _currentException; }
+            set { SetProperty(ref _currentException, value); }
+        }
+
+
+        //TODO:Decide to use one property to report progress or two seperate properties
         private bool _isBusy;
         /// <summary>
         /// Boolean to indicate an ongoin operation.
@@ -150,9 +160,11 @@ namespace AdaaMobile.ViewModels
             //Initialize commands
             LoadAttendanceCommand = new AsyncExtendedCommand(LoadAttendanceDetailsAsync);
             LoadExceptionsCommand = new AsyncExtendedCommand(LoadExceptionsAsync);
+            LoadExceptionDetailsCommand = new AsyncExtendedCommand(LoadExceptionDetailsAsync);
 
             //Set initial mode to Attendance
-            LoadDaysForMode(AttendanceMode.Attendance);
+            AttendanceMode = AttendanceMode.Attendance;
+            PopulateAttendanceDays();
         }
 
         #endregion
@@ -161,6 +173,7 @@ namespace AdaaMobile.ViewModels
 
         public AsyncExtendedCommand LoadAttendanceCommand { get; set; }
         public AsyncExtendedCommand LoadExceptionsCommand { get; set; }
+        public AsyncExtendedCommand LoadExceptionDetailsCommand { get; set; }
         #endregion
 
         #region Methods
@@ -172,53 +185,89 @@ namespace AdaaMobile.ViewModels
         /// </summary>
         private async void PopulateAttendanceDays()
         {
-            var daysList = await Task.Run<List<DayWrapper>>(() =>
+            //Create new Days List on background task.
+            //var daysList = await Task.Run(() =>
+            //{
+            var days = new List<DayWrapper>();
+            var currentDate = StartDate;
+            var endDate = EndDate;
+            while (currentDate <= endDate)
             {
-                var days = new List<DayWrapper>();
-                var currentDate = StartDate;
-                var endDate = EndDate;
-                while (currentDate <= endDate)
-                {
-                    days.Add(new DayWrapper(currentDate));
-                    currentDate = currentDate.AddDays(1);
-                }
-                return days;
-            });
+                days.Add(new DayWrapper(currentDate));
+                currentDate = currentDate.AddDays(1);
+            }
+            //    return days;
+            //});
 
-            DaysList = daysList;
+            DaysList = days;
+
+
+            //Update selected day state
+            if (SelectedDay != null)
+            {
+                //If it's in Range only update reference to use the equivalend object in list
+                if (SelectedDay.Date >= StartDate && SelectedDay.Date <= EndDate)
+                {
+                    int index = (int)(SelectedDay.Date - StartDate).TotalDays;
+                    SelectedDay = DaysList[index];
+                    SelectedDay.IsSelected = true; //UI-Related
+                }
+                else
+                {
+                    //Cancel current requests if any and clear current selected becuase it'sn't in the current Range
+                    SelectedDay = null;
+                    if (AttendanceMode == AttendanceMode.Attendance)
+                    {
+                        CurrentAttendance = null;
+                        LoadAttendanceCommand.Cancel();
+
+                    }
+                    else
+                    {
+                        CurrentException = null;
+                        LoadExceptionDetailsCommand.Cancel();
+                    }
+
+                    IsBusy = false;
+                    ErrorMessage = null;
+                }
+            }
+
+
         }
-        public void LoadDaysForMode(AttendanceMode mode)
+        public void SwitchMode(AttendanceMode mode)
         {
             //Set current mode, This will trigger changes in Bindings.
             AttendanceMode = mode;
-            //Clear Selected Date
-            SelectedDay = null;
-            //Clear current Attendance
-            CurrentAttendance = null;
-            //Clear days list
-            DaysList = null;
+
             //Set is busy to false
             IsBusy = false;
             //Set Busy message to null
             BusyMessage = null;
             //Clear any errors from previous attempt to loading
             ErrorMessage = null;
+
             if (mode == AttendanceMode.Attendance)
             {
+                //Clear current Exception
+                CurrentException = null;
+
                 //Cancel loading Exceptions command if any
                 LoadExceptionsCommand.Cancel();
 
-                //Populate list with the specified range
-                PopulateAttendanceDays();
+                //Load Attendance Details for selected day.
+                LoadAttendanceCommand.Execute(null);
             }
             else
             {
+                //Clear current Attendance
+                CurrentAttendance = null;
 
                 //Cancel Loading attendance command if any
                 LoadAttendanceCommand.Cancel();
 
-                //Load Exceptions List
-                LoadExceptionsCommand.Execute(null);
+                //Load Exception Details for selected day.
+                LoadExceptionDetailsCommand.Execute(null);
             }
         }
 
@@ -282,9 +331,7 @@ namespace AdaaMobile.ViewModels
 
                 if (token.IsCancellationRequested) return;
 
-                var paramters = new ExceptionsQParameter()
-                {
-                };
+                var paramters = new ExceptionsQParameter();
                 var response = await _dataService.GetAttendanceExceptionsAsync(paramters, token);
 
                 if (token.IsCancellationRequested) return;
@@ -292,6 +339,50 @@ namespace AdaaMobile.ViewModels
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result.ExceptionDays != null)
                 {
                     DaysList = response.Result.ExceptionDays.Select(ex => new DayWrapper(ex.Date)).ToList();
+                }
+
+            }
+            catch (Exception)
+            {
+                ErrorMessage = AppResources.LoadingError;
+            }
+            finally
+            {
+                //Don't set IsBusy to false on cancel from here.
+                //As this might interchange with the newer request
+                //Instead set IsBusy manually before calling cancel method
+                if (!token.IsCancellationRequested)
+                {
+                    IsBusy = false;
+                    BusyMessage = null;
+                }
+            }
+        }
+
+        private async Task LoadExceptionDetailsAsync(CancellationToken token)
+        {
+            if (SelectedDay == null) return;
+            try
+            {
+                IsBusy = true;
+                BusyMessage = AppResources.Loading;
+                ErrorMessage = null;
+                CurrentAttendance = null;
+
+                if (token.IsCancellationRequested) return;
+                var paramters = new ExceptionDetailsQParamters()
+                {
+                    Date = SelectedDay.Date,
+                    Langid = _appSettings.Language,
+                    UserToken = _appSettings.UserToken
+                };
+                var response = await _dataService.GetAttendanceExceptionAsync(paramters, token);
+
+                if (token.IsCancellationRequested) return;
+
+                if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
+                {
+                    CurrentException = response.Result;
                 }
 
             }

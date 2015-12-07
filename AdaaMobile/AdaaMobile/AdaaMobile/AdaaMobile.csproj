@@ -163,7 +163,7 @@
     <Compile Include="Models\Response\Attendance.cs" />
     <Compile Include="Models\Request\AttendanceQParameters.cs" />
     <Compile Include="Models\Response\AttendanceException.cs" />
-    <Compile Include="Models\Request\ExceptionQParamters.cs" />
+    <Compile Include="Models\Request\ExceptionDetailsQParamters.cs" />
     <Compile Include="Models\Request\DaypassRequestQParameters.cs" />
     <Compile Include="Models\Request\DaypassRequestBParameters.cs" />
     <Compile Include="Models\Response\NewDayPassResponse.cs" />

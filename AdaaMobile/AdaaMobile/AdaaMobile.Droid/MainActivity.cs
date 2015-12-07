@@ -31,10 +31,10 @@ namespace AdaaMobile.Droid
             SvgImageRenderer.Init();
             //Create new locator instance.
             var locator = new Locator();
-            //Get user selected culture from last run or default
-            string culture = new AppSettings().SelectedCultureName;
-            //Override system culture
-            SetCulture(culture);
+            ////Get user selected culture from last run or default
+            //string culture = new AppSettings().SelectedCultureName;
+            ////Override system culture
+            //SetCulture(culture);
 
             LoadApplication(new App(locator));
         }

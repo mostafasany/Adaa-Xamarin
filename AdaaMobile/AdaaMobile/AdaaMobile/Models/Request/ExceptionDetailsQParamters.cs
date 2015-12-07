@@ -1,8 +1,9 @@
-﻿using QueryExtensions;
+﻿using System;
+using QueryExtensions;
 
 namespace AdaaMobile.Models.Request
 {
-    public class ExceptionQParamters
+    public class ExceptionDetailsQParamters
     {
         [QueryParameter("server")]
         public string Server { get; set; }
@@ -10,7 +11,7 @@ namespace AdaaMobile.Models.Request
         [QueryParameter("url")]
         public string Url
         {
-            get { return "?funcname=getAttendanceExceptions"; }//TODO:Change after backend Rename
+            get { return "?funcname=getAttendanceExceptions"; }
         }
 
         [QueryParameter("langid")]
@@ -19,8 +20,8 @@ namespace AdaaMobile.Models.Request
         [QueryParameter("userToken")]
         public string UserToken { get; set; }
 
-        [QueryParameter("date")]
-        public string Date { get; set; }
+        [QueryParameter("date", Format = "d_M_yyyy")]
+        public DateTime Date { get; set; }
 
     }
 }

@@ -93,11 +93,11 @@ namespace AdaaMobile.Views
             //Switch to different modes based on tapped button
             if (button == AttendanceButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Attendance)
             {
-                _attendanceViewModel.LoadDaysForMode(AttendanceMode.Attendance);
+                _attendanceViewModel.SwitchMode(AttendanceMode.Attendance);
             }
             else if (button == ExceptionsButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Exceptions)
             {
-                _attendanceViewModel.LoadDaysForMode(AttendanceMode.Exceptions);
+                _attendanceViewModel.SwitchMode(AttendanceMode.Exceptions);
             }
         }
 
