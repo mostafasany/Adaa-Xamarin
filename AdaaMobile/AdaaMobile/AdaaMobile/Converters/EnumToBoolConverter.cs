@@ -18,7 +18,7 @@ namespace AdaaMobile.Converters
                 Type enumType = value.GetType();
 
                 var enumValue = Enum.Parse(enumType, value.ToString());
-                var enumPrameter = Enum.Parse(enumType, value.ToString());
+                var enumPrameter = Enum.Parse(enumType, parameter.ToString());
                 if (enumValue.Equals(enumPrameter)) return true;
                 return false;
             }

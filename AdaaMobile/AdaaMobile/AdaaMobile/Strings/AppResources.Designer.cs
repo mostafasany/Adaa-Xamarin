@@ -485,6 +485,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Late.
+        /// </summary>
+        public static string Late {
+            get {
+                return ResourceManager.GetString("Late", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading.
         /// </summary>
         public static string Loading {
@@ -733,6 +742,15 @@ namespace AdaaMobile.Strings {
         public static string Reject {
             get {
                 return ResourceManager.GetString("Reject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remaining.
+        /// </summary>
+        public static string Remaining {
+            get {
+                return ResourceManager.GetString("Remaining", resourceCulture);
             }
         }
         

@@ -4,17 +4,26 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdaaMobile.Helpers;
+using AdaaMobile.ViewModels;
 using Xamarin.Forms;
 
 namespace AdaaMobile.Converters
 {
     public class DateFormatConverter : IValueConverter
     {
+        private CultureInfo CurrentCulture;
+
+        public DateFormatConverter()
+        {
+            CurrentCulture = new CultureInfo(Locator.Default.AppSettings.SelectedCultureName);
+        }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (!(value is DateTime || value is DateTimeOffset) || parameter == null) return value;
 
-
+            //TODO:Check why UI thread still the same as os culture
+            culture = CurrentCulture;
             string result;
             if (value is DateTime)
             {

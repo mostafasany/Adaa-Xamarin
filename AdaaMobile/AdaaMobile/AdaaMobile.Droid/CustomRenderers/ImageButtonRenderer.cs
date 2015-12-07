@@ -161,7 +161,7 @@ namespace AdaaMobile.CustomRenderers
         private Drawable GetScaleDrawable(Drawable drawable, int width, int height)
         {
             var returnValue = new ScaleDrawable(drawable, 0, RequestToPixels(width), RequestToPixels(height)).Drawable;
-            returnValue.SetBounds(0, 0, width, height);
+            returnValue.SetBounds(0, 0, RequestToPixels(width), RequestToPixels(height));
             return returnValue;
         }
 

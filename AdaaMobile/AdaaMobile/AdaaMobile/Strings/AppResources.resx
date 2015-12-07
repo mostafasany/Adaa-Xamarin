@@ -400,4 +400,10 @@
     <value>Unlocking account request was unsuccessful</value>
     <comment>When backend doesn't return any message</comment>
   </data>
+  <data name="Late" xml:space="preserve">
+    <value>Late</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>Remaining</value>
+  </data>
 </root>
