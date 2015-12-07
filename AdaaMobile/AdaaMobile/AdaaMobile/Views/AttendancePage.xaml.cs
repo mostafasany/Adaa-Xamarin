@@ -125,7 +125,8 @@ namespace AdaaMobile.Views
             }
             else
             {
-                //TODO:Load Exception details
+                //Load Exceptiojn details
+                _attendanceViewModel.LoadExceptionDetailsCommand.Execute(null);
             }
         }
     }

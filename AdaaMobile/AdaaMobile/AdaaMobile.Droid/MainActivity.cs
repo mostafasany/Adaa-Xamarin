@@ -19,11 +19,14 @@ namespace AdaaMobile.Droid
     [Activity(Label = "AdaaMobile", Icon = "@drawable/icon", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
+        public static MainActivity Instance;
         protected override void OnCreate(Bundle bundle)
         {
 
 			Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
             base.OnCreate(bundle);
+
+            Instance = this;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             ImageCircleRenderer.Init();
@@ -31,12 +34,18 @@ namespace AdaaMobile.Droid
             SvgImageRenderer.Init();
             //Create new locator instance.
             var locator = new Locator();
-            ////Get user selected culture from last run or default
-            //string culture = new AppSettings().SelectedCultureName;
-            ////Override system culture
-            //SetCulture(culture);
+            //Get user selected culture from last run or default
+            string culture = new AppSettings().SelectedCultureName;
+            //Override system culture
+            SetCulture(culture);
 
             LoadApplication(new App(locator));
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Instance = null;
         }
 
         private void SetCulture(string culture)

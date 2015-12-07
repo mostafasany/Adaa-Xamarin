@@ -10,42 +10,49 @@ using AdaaMobile.Helpers;
 
 namespace AdaaMobile
 {
-	public partial class App : Application
-	{
-		public App(Locator locator)
-		{
+    public partial class App : Application
+    {
+        public App(Locator locator)
+        {
             InitializeComponent();
-			//Build dependencies and set static instance of Container
-			Locator.Container = locator.CreateContainer();
-			//Set static instance of locator.
-			Locator.Default = locator;
+            //Build dependencies and set static instance of Container
+            Locator.Container = locator.CreateContainer();
+            //Set static instance of locator.
+            Locator.Default = locator;
 
 
-			//MainPage = new AddaMasterPage();
-			IAppSettings settings = Locator.Default.AppSettings;
-			if (string.IsNullOrEmpty (settings.UserToken)) {
-				MainPage = new ChooseLanguagePage();
-			} else {
-				MainPage = new AddaMasterPage();
-			}
+            //MainPage = new AddaMasterPage();
+            IAppSettings settings = Locator.Default.AppSettings;
+            if (!settings.IsCultureSet)
+            {
+                MainPage = new ChooseLanguagePage();
+            }
+            else if (string.IsNullOrEmpty(settings.UserToken))
+            {
+                MainPage = new LoginPage();
+            }
+            else
+            {
+                MainPage = new AddaMasterPage();
+            }
 
 
 
-		}
+        }
 
-		protected override void OnStart()
-		{
-			// Handle when your app starts
-		}
+        protected override void OnStart()
+        {
+            // Handle when your app starts
+        }
 
-		protected override void OnSleep()
-		{
-			// Handle when your app sleeps
-		}
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+        }
 
-		protected override void OnResume()
-		{
-			// Handle when your app resumes
-		}
-	}
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
+        }
+    }
 }

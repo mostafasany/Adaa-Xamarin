@@ -31,6 +31,12 @@ namespace AdaaMobile.Droid.Helpers
 
             var config = new Android.Content.Res.Configuration { Locale = locale };
             Forms.Context.Resources.UpdateConfiguration(config, Forms.Context.Resources.DisplayMetrics);
+
+            var instance = MainActivity.Instance;
+            if (instance != null)
+            {
+                instance.Recreate();
+            }
         }
     }
 }

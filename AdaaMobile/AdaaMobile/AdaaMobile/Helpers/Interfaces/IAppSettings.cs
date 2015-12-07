@@ -15,5 +15,7 @@ namespace AdaaMobile.Helpers
         /// It converts SelectedCultureName to qualifier used by backend, arb or eng
         /// </summary>
         string Language { get; }
+
+        bool IsCultureSet { get; }
     }
 }

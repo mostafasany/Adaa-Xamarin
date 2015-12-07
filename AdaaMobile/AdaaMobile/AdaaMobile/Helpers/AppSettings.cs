@@ -28,15 +28,24 @@ namespace AdaaMobile.Helpers
             set { CrossSettings.Current.AddOrUpdateValue(SelectedCultureKey, value); }
         }
 
+        public bool IsCultureSet
+        {
+            get
+            {
+                var value = CrossSettings.Current.GetValueOrDefault(SelectedCultureKey, "");
+                return !String.IsNullOrEmpty(value);
+            }
+        }
+
         public string UserToken
         {
             get
             {
                 string token = CrossSettings.Current.GetValueOrDefault(UserTokenKey, _userTokenDefault);
-//#if DEBUG
-//                if (string.IsNullOrEmpty(token))
-//					return "2015120522225570554";
-//#endif
+                //#if DEBUG
+                //                if (string.IsNullOrEmpty(token))
+                //					return "2015120522225570554";
+                //#endif
                 return token;
 
             }
