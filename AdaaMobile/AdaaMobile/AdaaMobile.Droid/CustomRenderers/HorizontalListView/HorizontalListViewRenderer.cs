@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -56,6 +57,7 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
                 if (Element.HeightRequest > 0) _isSpecificHeight = true;
                 _recyclerView = new RecyclerView(Xamarin.Forms.Forms.Context);
                 _layoutManager = new HorizontalListLayoutManager(Xamarin.Forms.Forms.Context, LinearLayoutManager.Horizontal, false);
+                _layoutManager.OnMeasuredDimensionChanged += _layoutManager_OnMeasuredDimensionChanged;
                 _recyclerView.SetLayoutManager(_layoutManager);
 
                 _recyclerView.HasFixedSize = Element.HasFixedItemSize;
@@ -81,12 +83,23 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
                     //This the is the only way I find so far to update the size in Xamarin forms
                     //when list height is auto and not hardwired.
                     int height = _layoutManager.GetMeasuredHeight();
-                    if (height > 0)
+                    if (height > 0 && Math.Abs(height - Element.HeightRequest) > 1e-6)
                     {
                         Element.HeightRequest = DpToPixel(height);
+                        //TODO:This doesn't update the Element height request correctly , till a anew layout happen
+
+                        //Element.UpdateLayout();
+                        //var layoutParams = new ViewGroup.LayoutParams((int)400, (int)height);
+                        //Control.LayoutParameters = layoutParams;
+                        //Control.Layout(0, 0, (int)Control.Width, height);
                     }
                 }
             }
+        }
+
+        private void _layoutManager_OnMeasuredDimensionChanged(object sender, EventArgs args)
+        {
+            
         }
 
         /// <summary>

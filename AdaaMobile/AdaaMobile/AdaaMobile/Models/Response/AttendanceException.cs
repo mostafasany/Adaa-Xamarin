@@ -13,6 +13,13 @@ namespace AdaaMobile.Models.Response
 
         [XmlElement("Remaining")]
         public string Remaining { get; set; }
+
+        [XmlElement("FirstSeenLoc")]
+        public string FirstSeenLoc { get; set; }
+
+        [XmlElement("LastSeenLoc")]
+        public string LastSeenLoc { get; set; }
+        
     }
 }
 

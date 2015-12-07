@@ -1,5 +1,7 @@
+using System;
 using Android.Content;
 using Android.Support.V7.Widget;
+using Android.Util;
 using Android.Views;
 
 namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
@@ -86,7 +88,10 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
 
             SetMeasuredDimension(width, height);
 
+            OnOnMeasuredDimensionChanged();
         }
+
+
 
         private void MakeMeasureSpec(RecyclerView.Recycler recycler, int position, int widthSpec,
                                    int heightSpec, int[] measuredDimension)
@@ -105,6 +110,14 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
                 measuredDimension[1] = view.MeasuredHeight + p.BottomMargin + p.TopMargin;
                 recycler.RecycleView(view);
             }
+        }
+
+        public event EventHandler OnMeasuredDimensionChanged;
+
+        protected virtual void OnOnMeasuredDimensionChanged()
+        {
+            var handler = OnMeasuredDimensionChanged;
+            if (handler != null) handler?.Invoke(this, EventArgs.Empty);
         }
     }
 }

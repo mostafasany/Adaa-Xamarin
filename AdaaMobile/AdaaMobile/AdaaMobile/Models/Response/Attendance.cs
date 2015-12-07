@@ -14,6 +14,12 @@ namespace AdaaMobile.Models.Response
 
         [XmlElement("Duration")]
         public string Duration { get; set; }
+
+        [XmlElement("FirstSeenLoc")]
+        public string FirstSeenLoc { get; set; }
+
+        [XmlElement("LastSeenLoc")]
+        public string LastSeenLoc { get; set; }
     }
 
 

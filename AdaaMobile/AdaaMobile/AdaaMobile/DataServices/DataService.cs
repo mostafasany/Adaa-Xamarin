@@ -123,7 +123,7 @@ namespace AdaaMobile.DataServices
             };
         }
 
-        public async Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(ExceptionQParamters parameters, CancellationToken? token = null)
+        public async Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(ExceptionDetailsQParamters parameters, CancellationToken? token = null)
         {
             parameters.Server = Server;
             var request = _requestFactory();

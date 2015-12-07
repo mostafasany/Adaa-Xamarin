@@ -92,6 +92,12 @@ namespace AdaaMobile.Controls
             OnItemTapped(args);
         }
 
+        public void UpdateLayout()
+        {
+            InvalidateMeasure();
+            InvalidateLayout();
+        }
+
         #region Custom Events
 
         public event EventHandler<HorizontaListItemTappedEventArgs> ItemTapped;
