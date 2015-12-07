@@ -256,7 +256,7 @@
     <value>سجل الدخول</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value>Logout</value>
+    <value>تسجيل الخروج</value>
   </data>
   <data name="MobileNumber" xml:space="preserve">
     <value>Mobile Number</value>

@@ -55,6 +55,11 @@ namespace AdaaMobile.ViewModels
 			Pages = GetHomePages ();
 			PageClickedCommand = new ExtendedCommand<AdaaPageItem> (PageItemClicked);
 			LoadCommand = new AsyncExtendedCommand (LoadAsync);
+			//Default Image for User profile
+				Image = new FileImageSource()
+			{
+				File = Device.OnPlatform("Icon-Small.png", "icon.png", "icon.png")
+			};
 		}
 
 		#endregion
