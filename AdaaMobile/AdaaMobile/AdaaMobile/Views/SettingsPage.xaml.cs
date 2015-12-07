@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdaaMobile.Strings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace AdaaMobile.Views
         public SettingsPage()
         {
             InitializeComponent();
-			Title = "Settings";
+            Title = AppResources.Settings;
         }
     }
 }

@@ -51,6 +51,7 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<AttendanceViewModel>();
             cb.RegisterType<DirectoryViewModel>();
             cb.RegisterType<ProfileViewModel>();
+            cb.RegisterType<SettingsViewModel>();
         }
 
 
@@ -76,6 +77,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<ProfileViewModel>();
+            }
+        }
+
+        public SettingsViewModel SettingsViewModel
+        {
+            get
+            {
+                return Container.Resolve<SettingsViewModel>();
             }
         }
 
