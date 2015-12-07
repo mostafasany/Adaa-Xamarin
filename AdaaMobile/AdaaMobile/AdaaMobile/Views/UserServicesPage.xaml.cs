@@ -10,6 +10,7 @@ namespace AdaaMobile
 		public UserServicesPage ()
 		{
 			InitializeComponent ();
+			Title = "User account services";
 		}
 	}
 }

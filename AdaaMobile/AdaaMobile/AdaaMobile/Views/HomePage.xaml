@@ -144,7 +144,7 @@
 
     <ActivityIndicator  IsRunning="{Binding IsBusy}"
                      HeightRequest="60" WidthRequest="60"
-                     Grid.Row="0" Grid.RowSpan="3"
+                     Grid.Row="2" Grid.RowSpan="2"
                      VerticalOptions="Center" HorizontalOptions="Center"/>
   </Grid>
 </ContentPage>

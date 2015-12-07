@@ -1,5 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.UserServicesPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
+xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"  x:Class="AdaaMobile.UserServicesPage"
+IsBusy="{Binding IsBusy}">
+
+  <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Image Grid.RowSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+      <Image.Source>
+        <OnPlatform x:TypeArguments="ImageSource" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="home-white"/>
+      </Image.Source>
+    </Image>
+
+    <Grid Grid.Row="1" Padding="5,5,5,5" >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="10" />
+        <RowDefinition Height="40" />
+        <RowDefinition Height="20" />
+      </Grid.RowDefinitions>
+      
+
+      <ActivityIndicator Grid.Row="1" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+      <Button Grid.Row="2" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+
+    </Grid>
+  </Grid>
 </ContentPage>

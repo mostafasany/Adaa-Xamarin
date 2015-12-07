@@ -70,7 +70,7 @@ namespace AdaaMobile.Views
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			if (_homeViewModel.Image == null)
+
 			{
 				_homeViewModel.LoadCommand.Execute(null);
 			}

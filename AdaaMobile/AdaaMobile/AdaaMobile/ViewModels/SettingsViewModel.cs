@@ -4,17 +4,18 @@ using AdaaMobile.Helpers;
 using AdaaMobile.Strings;
 using System;
 using System.Threading.Tasks;
+using AdaaMobile.Views;
 
 namespace AdaaMobile
 {
     public class SettingsViewModel : BindableBase
     {
         #region Fields
-        private string _otherUserId;
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
         private readonly IDialogManager _dialogManager;
         private readonly IRequestMessageResolver _messageResolver;
+		private readonly INavigationService _navigationService;
         #endregion
 
         #region Properties
@@ -29,19 +30,35 @@ namespace AdaaMobile
             set { SetProperty(ref _isBusy, value); }
         }
 
-
+		private int _SelectedLanguageIndex;
+		public int SelectedLanguageIndex
+		{
+			get { return _SelectedLanguageIndex; }
+			set { 
+				SetProperty(ref _SelectedLanguageIndex, value);
+				UpdateLanguage (value);
+			}
+		}
 
         #endregion
 
         #region Initialization
-        public SettingsViewModel(IDataService dataService, IAppSettings appSettings, IDialogManager dialogManager, IRequestMessageResolver messageResolver)
+		public SettingsViewModel(IDataService dataService, IAppSettings appSettings, IDialogManager dialogManager,
+			IRequestMessageResolver messageResolver, INavigationService navigationService)
         {
             _dataService = dataService;
             _appSettings = appSettings;
             _dialogManager = dialogManager;
             _messageResolver = messageResolver;
+			_navigationService = navigationService;
 
             LogoutCommand = new AsyncExtendedCommand(DoLogout);
+
+			if (appSettings.SelectedCultureName == "en-us") {
+				_SelectedLanguageIndex = 0;
+			} else {
+				_SelectedLanguageIndex = 1;
+			}
 
         }
 
@@ -51,7 +68,7 @@ namespace AdaaMobile
 
         #region Commands
 
-        public AsyncExtendedCommand LogoutCommand { get; set; }
+		public AsyncExtendedCommand LogoutCommand { get; set; }
 
         #endregion
 
@@ -59,9 +76,19 @@ namespace AdaaMobile
         private async Task DoLogout()
         {
             _appSettings.UserToken = string.Empty;
+			_navigationService.SetAppCurrentPage (typeof(LoginPage));
 
         }
 
+
+		void UpdateLanguage (int value)
+		{
+			if (value == 0) {
+				
+			} else {
+				
+			}
+		}
         #endregion
 
     }
