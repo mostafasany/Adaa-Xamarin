@@ -184,6 +184,21 @@
     <Compile Include="Models\Request\GetAllEmployeesQParameters.cs" />
     <Compile Include="Models\Response\GetAllEmployeesResponse.cs" />
     <Compile Include="Helpers\LoggedUserInfo.cs" />
+    <Compile Include="Views\EServicesPage.xaml.cs">
+      <DependentUpon>EServicesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimesheetPage.xaml.cs">
+      <DependentUpon>TimesheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OracleServicesPage.xaml.cs">
+      <DependentUpon>OracleServicesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ITServiesPage.xaml.cs">
+      <DependentUpon>ITServiesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserServicesPage.xaml.cs">
+      <DependentUpon>UserServicesPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
@@ -247,6 +262,35 @@
     <EmbeddedResource Include="Views\SplashPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\EServicesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TimesheetPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\OracleServicesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ITServiesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserServicesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\account_services_icn.svg" />
+    <EmbeddedResource Include="Images\Attendance_icn.svg" />
+    <EmbeddedResource Include="Images\Directory.svg" />
+    <EmbeddedResource Include="Images\E-Services.svg" />
+    <EmbeddedResource Include="Images\Home.svg" />
+    <EmbeddedResource Include="Images\ITServiceDesk.svg" />
+    <EmbeddedResource Include="Images\My Requests.svg" />
+    <EmbeddedResource Include="Images\My Tasks.svg" />
+    <EmbeddedResource Include="Images\MyRequests.svg" />
+    <EmbeddedResource Include="Images\MyTasks.svg" />
+    <EmbeddedResource Include="Images\Oracle.svg" />
+    <EmbeddedResource Include="Images\Profile.svg" />
+    <EmbeddedResource Include="Images\Settings.svg" />
+    <EmbeddedResource Include="Images\Timesheet.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -256,20 +300,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\twitter.svg" />
-    <Content Include="Images\account_services_icn.svg" />
-    <Content Include="Images\Attendance_icn.svg" />
-    <Content Include="Images\Directory.svg" />
-    <Content Include="Images\E-Services.svg" />
-    <Content Include="Images\Home.svg" />
-    <Content Include="Images\ITServiceDesk.svg" />
-    <Content Include="Images\My Requests.svg" />
-    <Content Include="Images\My Tasks.svg" />
-    <Content Include="Images\MyRequests.svg" />
-    <Content Include="Images\MyTasks.svg" />
-    <Content Include="Images\Oracle.svg" />
-    <Content Include="Images\Profile.svg" />
-    <Content Include="Images\Settings.svg" />
-    <Content Include="Images\Timesheet.svg" />
     <Content Include="Strings\LocalizationNotes.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

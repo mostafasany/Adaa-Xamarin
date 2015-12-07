@@ -11,14 +11,16 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 <RowDefinition Height="*"/>
 <RowDefinition Height="Auto"/>
 </Grid.RowDefinitions>
-		<Image Grid.RowSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill" Source="splashscreen.jpg" Aspect="Fill" />
+		<Image Grid.RowSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill" Source="Default" Aspect="Fill" >
+
+		</Image>
 
 	<Grid Grid.Row="1" Padding="5,5,5,5" >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="10" />
 			<RowDefinition Height="40" />
-			<RowDefinition Height="80" />
+			<RowDefinition Height="40" />
 		</Grid.RowDefinitions>
 		<controls:ExtendedGrid Grid.Row="0"  CornerRadius="3" HorizontalOptions="Fill"
                        BackgroundColor="White" Padding="6" >
