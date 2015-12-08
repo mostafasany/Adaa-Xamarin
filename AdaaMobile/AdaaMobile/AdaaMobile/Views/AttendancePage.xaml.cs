@@ -41,6 +41,8 @@ namespace AdaaMobile.Views
             SelectButton(ExceptionsButton, false);
             _lastTappedTab = AttendanceButton;
 
+			Title = "Attendance";
+
         }
 
         #region DatePickers
