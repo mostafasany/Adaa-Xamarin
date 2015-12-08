@@ -23,11 +23,23 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <ScrollView>
+ <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
+<Grid.RowDefinitions>
+<RowDefinition Height="*"/>
+<RowDefinition Height="Auto"/>
+</Grid.RowDefinitions>
+		<Image Grid.RowSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+		 <Image.Source>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="home-white"/>
+          </Image.Source>
+		</Image>
+
+
+  <ScrollView Grid.Row="1" >
     <StackLayout
       Spacing="0"
       Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-      BackgroundColor="{StaticResource AppBackgroundLight}"
+      BackgroundColor="Transparent"
       >
 
       <!--Top buttons Attendance and Exceptions-->
@@ -56,7 +68,7 @@
 
 
       <!--Date Pickers-->
-      <Grid BackgroundColor="White" Padding="15" ColumnSpacing="10" HeightRequest="150">
+      <Grid BackgroundColor="Transparent" Padding="15" ColumnSpacing="10" HeightRequest="150">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"/>
           <ColumnDefinition Width="*"/>
@@ -174,9 +186,9 @@
           </controls:HorizontalListView.ItemTemplate>
         </controls:HorizontalListView>
       </StackLayout>
-      <Grid  VerticalOptions="FillAndExpand" MinimumHeightRequest="140" Padding="25,10">
+      <Grid  VerticalOptions="FillAndExpand" MinimumHeightRequest="140"  BackgroundColor="{StaticResource AppBackgroundLight}">
         <!--Attendance Details Grid-->
-        <Grid VerticalOptions="FillAndExpand"
+        <Grid VerticalOptions="FillAndExpand" Padding="25,10"
               IsVisible="{Binding AttendanceMode,
               Converter={StaticResource EnumToBoolConverter},ConverterParameter=Attendance}"    
           >
@@ -289,5 +301,6 @@
     </StackLayout>
 
   </ScrollView>
+  </Grid>
 
 </ContentPage>
