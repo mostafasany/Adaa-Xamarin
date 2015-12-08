@@ -117,7 +117,7 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
         protected virtual void OnOnMeasuredDimensionChanged()
         {
             var handler = OnMeasuredDimensionChanged;
-            if (handler != null) handler?.Invoke(this, EventArgs.Empty);
+            if (handler != null) handler.Invoke(this, EventArgs.Empty);
         }
     }
 }
