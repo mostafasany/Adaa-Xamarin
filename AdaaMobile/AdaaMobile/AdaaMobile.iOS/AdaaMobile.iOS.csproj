@@ -112,6 +112,7 @@
     <ITunesArtwork Include="iTunesArtwork" />
     <None Include="packages.config" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+    <Compile Include="CustomRenderers\CustomEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdaaMobile\AdaaMobile.csproj">

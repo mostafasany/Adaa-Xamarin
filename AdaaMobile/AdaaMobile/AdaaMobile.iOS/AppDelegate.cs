@@ -44,13 +44,13 @@ namespace AdaaMobile.iOS
 			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
 			UIWindow  window = new UIWindow (UIScreen.MainScreen.Bounds);
 
-			new AppSettings ().SelectedCultureName = "ar-EG";
+			//new AppSettings ().SelectedCultureName = "ar-EG";
 			string selectedCultureNAme = new AppSettings ().SelectedCultureName;
-			selectedCultureNAme = "ar-EG";
-
-			Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(selectedCultureNAme);
-			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(selectedCultureNAme);
-
+			//selectedCultureNAme = "ar-EG";
+			if (string.IsNullOrEmpty (selectedCultureNAme)) {
+				Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo (selectedCultureNAme);
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo (selectedCultureNAme);
+			}
 
 			//			viewController = new StartingLanguageViewcontroller ();
 			//			UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle ("app_bar.png"), UIBarMetrics.Default);

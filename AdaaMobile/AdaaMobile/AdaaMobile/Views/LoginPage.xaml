@@ -22,7 +22,7 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="10" />
 			<RowDefinition Height="40" />
-			<RowDefinition Height="20" />
+
 		</Grid.RowDefinitions>
 		<controls:ExtendedGrid Grid.Row="0"  CornerRadius="3" HorizontalOptions="Fill"
                        BackgroundColor="White" Padding="6" >

@@ -85,7 +85,7 @@ namespace AdaaMobile.ViewModels
             _appSettings = appSettings;
 
             //Initialize commands
-            LoginCommand = new AsyncExtendedCommand(LoginAsync, false);
+			LoginCommand = new AsyncExtendedCommand(LoginAsync, true);
             ForgetPasswordCommand = new ExtendedCommand(ForgetPassword);
             SignUpCommand = new ExtendedCommand(SignUp);
 
@@ -176,7 +176,8 @@ namespace AdaaMobile.ViewModels
 
         private void SetLoginCommandState()
         {
-            LoginCommand.CanExecute = !string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password);
+			LoginCommand.CanExecute = true;
+				//!string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password);
         }
 
         #endregion

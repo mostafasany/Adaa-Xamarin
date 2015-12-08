@@ -162,10 +162,12 @@ namespace AdaaMobile.ViewModels
 					};
 					var result = await _dataService.GetCurrentUserProfile(paramters);
 
-					if (result.ResponseStatus == ResponseStatus.SuccessWithResult) {
+					if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null) {
 						LoggedUserInfo.CurrentUserProfile = result.Result;
+						if( !string.IsNullOrEmpty( result.Result.UserImage64)){
 						Func<Stream> streamFunc = GetStream;
 						Image = ImageSource.FromStream (streamFunc);
+						}
 					}
 				}
 					
