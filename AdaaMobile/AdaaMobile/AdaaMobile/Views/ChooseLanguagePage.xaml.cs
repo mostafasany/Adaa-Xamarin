@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
 using AdaaMobile.Helpers;
-using AdaaMobile.Views;
 using AdaaMobile.ViewModels;
+using Xamarin.Forms;
 
-namespace AdaaMobile
+namespace AdaaMobile.Views
 {
 	public partial class ChooseLanguagePage : ContentPage
 	{
@@ -30,8 +27,8 @@ namespace AdaaMobile
 		void EnglishButton_Clicked (object sender, EventArgs e)
 		{
 			
-			Locator.Default.AppSettings.SelectedCultureName = "en-us";
-			DependencyService.Get<ILocalize>().UpdateCultureInfo("en-us");
+			Locator.Default.AppSettings.SelectedCultureName = "en-US";
+			DependencyService.Get<ILocalize>().UpdateCultureInfo("en-US");
 
 			Navigation.PushModalAsync (new LoginPage ());
 		}

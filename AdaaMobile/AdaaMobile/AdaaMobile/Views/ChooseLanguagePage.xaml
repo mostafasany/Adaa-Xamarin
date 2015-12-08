@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.ChooseLanguagePage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.Views.ChooseLanguagePage">
 	<ContentPage.Content>
 
 	<Grid x:Name="MainGrid">
@@ -7,26 +7,22 @@
 
 	<Grid.RowDefinitions>
 	<RowDefinition Height="5*"/>
-	<RowDefinition Height="60"/>
+	<RowDefinition Height="Auto"/>
 	<RowDefinition Height="*"/>
 	</Grid.RowDefinitions>
 
-		<Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+  <Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
 		 <Image.Source>
             <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="Default"/>
           </Image.Source>
 		</Image>
 	<Grid Grid.Row="1" Padding="5,0,5,5">
-
-	<Grid.RowDefinitions>
-			<RowDefinition Height="40" />		
-		</Grid.RowDefinitions>
 	<Grid.ColumnDefinitions>
 	<ColumnDefinition Width="*"  />
 	<ColumnDefinition Width="*"  />
 	</Grid.ColumnDefinitions>
-	<Button x:Name="EnglishButton" Grid.Column="0" Text="English" Style="{StaticResource ButtonDefaultStyle}" />
-	<Button x:Name="ArabicButton" Grid.Column="1" Text="عربي" Style="{StaticResource ButtonDefaultStyle}" />
+	<Button VerticalOptions="Center" x:Name="EnglishButton" Grid.Column="0" Text="English" Style="{StaticResource ButtonDefaultStyle}" />
+	<Button VerticalOptions="Center" x:Name="ArabicButton" Grid.Column="1" Text="عربي" Style="{StaticResource ButtonDefaultStyle}" />
 	</Grid>
 	</Grid>
 	</ContentPage.Content>

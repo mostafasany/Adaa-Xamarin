@@ -128,7 +128,7 @@ namespace AdaaMobile.DataServices.Requests
                 else
                     response.ResponseStatus = ResponseStatus.TimeOut;
             }
-            catch (WebException)
+            catch (WebException ex)
             {
                 response.ResponseStatus = ResponseStatus.HttpError;
             }
