@@ -6,39 +6,48 @@ using System.Threading.Tasks;
 
 namespace AdaaMobile.Models
 {
-	/// <remarks/>
-	[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    /// <remarks/>
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public class Employee
     {
         public string Name { get; set; }
-		private string userNameField;
+        private string userNameField;
 
-		private uint userIDField;
+        private uint userIDField;
 
-		/// <remarks/>
-		public string UserName
-		{
-			get
-			{
-				return this.userNameField;
-			}
-			set
-			{
-				this.userNameField = value;
-			}
-		}
+        /// <remarks/>
+        public string UserName
+        {
+            get
+            {
+                return this.userNameField;
+            }
+            set
+            {
+                this.userNameField = value;
+            }
+        }
 
-		/// <remarks/>
-		public uint UserID
-		{
-			get
-			{
-				return this.userIDField;
-			}
-			set
-			{
-				this.userIDField = value;
-			}
-		}
+        /// <remarks/>
+        public uint UserID
+        {
+            get
+            {
+                return this.userIDField;
+            }
+            set
+            {
+                this.userIDField = value;
+            }
+        }
+
+
+        public string NameSort
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Name) || Name.Length == 0) return "?"; return Name[0].ToString().ToUpper();
+            }
+        }
     }
 }
