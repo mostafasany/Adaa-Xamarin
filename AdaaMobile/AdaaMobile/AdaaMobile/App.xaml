@@ -17,9 +17,9 @@
 
           <!--Update Value-->
           <Color x:Key="AppBackgroundDark" >#FF003438</Color>        
-          <Color x:Key="AppBackgroundLight" >#007c85</Color>
-          <Color x:Key="YellowAccent" >#e9bf04</Color>
-          <Color  x:Key="PurpleAccent"> #007c85 </Color>
+          <Color x:Key="AppBackgroundLight" >#FF007c85</Color>
+          <Color x:Key="YellowAccent" >#FFe9bf04</Color>
+          <Color  x:Key="PurpleAccent"> #FF007c85 </Color>
           
           <x:Int32 x:Key="CornerRadius">5</x:Int32>
         </ResourceDictionary>

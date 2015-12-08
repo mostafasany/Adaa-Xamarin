@@ -28,15 +28,49 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
       </Grid.RowDefinitions>
       
 
-      <Picker x:Name="LanguagePicker" Grid.Row="0" SelectedIndex="{Binding SelectedLanguageIndex}" HorizontalOptions="Fill">
+      <controls:ExtendedGrid 
+      Padding="5,0,0,0"
+      Grid.Row="0" VerticalOptions="Fill"
+                      HorizontalOptions="Fill"
+                      CornerRadius="3"
+                      BackgroundColor="Transparent"
+                      RelativeLayout.WidthConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+                      RelativeLayout.HeightConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.9}">
+         <Grid.RowDefinitions>
+   
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="10" />
+      </Grid.RowDefinitions>
+                  <controls:RoundedBoxView
+                  BackgroundColor="#22007c85"
+                  BorderColor="#44007c85"
+                  CornerRadius="3"
+                  VerticalOptions="Fill"
+                  HorizontalOptions="Fill"
+                  Grid.RowSpan="4"
+                  />
+
+                  <Grid Padding="5,0,0,0" Grid.Row="0" HorizontalOptions="Fill">
+                    <Label Text="Language" TextColor="Black" HorizontalOptions="Fill" >
+                    </Label>
+                    </Grid>
+      <Picker x:Name="LanguagePicker"  BackgroundColor="Transparent" Grid.Row="1" SelectedIndex="{Binding SelectedLanguageIndex}" HorizontalOptions="Fill">
         <Picker.Items>
             <x:String>English</x:String> 
             <x:String>العربية</x:String>
         </Picker.Items>
     </Picker> 
+    </controls:ExtendedGrid>
 
       <ActivityIndicator Grid.Row="1" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-      <Button Grid.Row="2" Text="{ext:Translate Logout}" Command="{Binding LogoutCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+      <Button BorderColor="#44007c85" BorderWidth="1" BackgroundColor="#22007c85" Grid.Row="2" Text="{ext:Translate Logout}" Command="{Binding LogoutCommand}" TextColor="White" Style="{StaticResource ButtonDefaultStyle}" />
       <!--        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>-->
       <!--        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>-->
     </Grid>
