@@ -113,6 +113,7 @@
     <None Include="packages.config" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
     <Compile Include="CustomRenderers\CustomEntryRenderer.cs" />
+    <Compile Include="CustomRenderers\NoLineNavigationRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdaaMobile\AdaaMobile.csproj">
@@ -143,6 +144,8 @@
     <BundleResource Include="Resources\home-black%402x.png" />
     <BundleResource Include="Resources\home-white-568h%402x.png" />
     <BundleResource Include="Resources\home-white%402x.png" />
+    <BundleResource Include="Resources\menu.png" />
+    <BundleResource Include="Resources\menu%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">

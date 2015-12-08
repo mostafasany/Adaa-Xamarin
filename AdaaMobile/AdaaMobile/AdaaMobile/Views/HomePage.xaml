@@ -26,7 +26,7 @@
 		</Image>
 
     <StackLayout Padding="8" Grid.Row="0">
-      <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
+      <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
         <Label.FormattedText>
           <FormattedString>
             <Span Text="Welcome," FontSize="Medium"/>

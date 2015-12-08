@@ -8,7 +8,7 @@ namespace AdaaMobile.Views.MasterView
 
         public MenuPage()
         {
-			//Icon = "HomeItemIcon.png";
+			Icon = "menu.png";
             Title = "menu"; // The Title property must be set.
             BackgroundColor = Color.FromHex("333333");
 
