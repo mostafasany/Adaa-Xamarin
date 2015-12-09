@@ -3,10 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
-             
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              BackgroundColor="{StaticResource AppBackgroundLight}"
-             
              x:Name="MainWindow"
              x:Class="AdaaMobile.Views.HomePage">
 
@@ -20,10 +18,12 @@
 
 
     <Image Grid.RowSpan="1" Grid.Row="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
-		 <Image.Source>
-            <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="Default"/>
-          </Image.Source>
-		</Image>
+      <Image.Source>
+        <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="Default"/>
+      </Image.Source>
+    </Image>
+
+
 
     <StackLayout Padding="8" Grid.Row="0">
       <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
@@ -61,11 +61,12 @@
                           HorizontalOptions="Center"
                           Source="{Binding Image}"
                            >
-<!--      <controls:CircleImage.Source>
-        <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="icon.png" iOS="Icon-76.png"/>
-      </controls:CircleImage.Source>-->
-    </controls:CircleImage>
 
+    </controls:CircleImage>
+    <ActivityIndicator  IsRunning="{Binding IsBusy}"
+                         HeightRequest="60" WidthRequest="60"
+                         Grid.Row="1" Grid.RowSpan="2"
+                         VerticalOptions="Center" HorizontalOptions="Center"/>
 
     <ScrollView HorizontalOptions="Center"
                 VerticalOptions="Fill"
@@ -151,9 +152,6 @@
       </controls:ColumnsPanel>
     </ScrollView>
 
-    <ActivityIndicator  IsRunning="{Binding IsBusy}"
-                     HeightRequest="60" WidthRequest="60"
-                     Grid.Row="2" Grid.RowSpan="2"
-                     VerticalOptions="Center" HorizontalOptions="Center"/>
+
   </Grid>
 </ContentPage>

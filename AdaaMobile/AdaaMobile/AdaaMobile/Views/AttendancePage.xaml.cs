@@ -32,9 +32,9 @@ namespace AdaaMobile.Views
             BindingContext = _attendanceViewModel;
 
             //Add App bar icon
-            Action action = () => { };
-            ToolbarItems.Add(
-                new ToolbarItem("Refresh", "icon.png", action, ToolbarItemOrder.Default));
+            //Action action = () => { };
+            //ToolbarItems.Add(
+            //    new ToolbarItem("Refresh", "icon.png", action, ToolbarItemOrder.Default));
 
             //Select Tabs
             SelectButton(AttendanceButton, true);

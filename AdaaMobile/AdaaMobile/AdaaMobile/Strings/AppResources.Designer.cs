@@ -683,7 +683,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to psssword.
+        ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {

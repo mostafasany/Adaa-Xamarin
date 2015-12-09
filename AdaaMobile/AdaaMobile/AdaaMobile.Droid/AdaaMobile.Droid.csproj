@@ -37,7 +37,7 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkSkip>AdaaMobile</AndroidLinkSkip>
-    <AndroidLinkMode>Full</AndroidLinkMode>
+    <AndroidLinkMode>None</AndroidLinkMode>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <AndroidStoreUncompressedFileExtensions />

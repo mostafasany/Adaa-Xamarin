@@ -25,7 +25,7 @@ namespace AdaaMobile.Droid
 
 			Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
             base.OnCreate(bundle);
-
+            RequestedOrientation = ScreenOrientation.Portrait;
             Instance = this;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);

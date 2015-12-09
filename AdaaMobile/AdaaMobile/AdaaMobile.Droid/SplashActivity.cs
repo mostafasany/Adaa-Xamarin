@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -19,7 +20,7 @@ namespace AdaaMobile.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+            RequestedOrientation = ScreenOrientation.Portrait;
             // Create your application here
             StartActivity(typeof(MainActivity));
         }
