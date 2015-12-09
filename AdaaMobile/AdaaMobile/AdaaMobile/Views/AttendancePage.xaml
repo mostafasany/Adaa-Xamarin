@@ -35,10 +35,10 @@
     </Image>
 
 
-    <ScrollView Grid.Row="1" >
+    <ScrollView Grid.Row="1" VerticalOptions="Start">
       <StackLayout
         Spacing="0"
-        Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+        Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"
         BackgroundColor="Transparent"
       >
 
@@ -282,9 +282,9 @@
               BackgroundColor="{StaticResource YellowAccent}"
               Orientation="ImageOnTop"
               TextColor="Black"
-              ImageHeightRequest="30"
-              ImageWidthRequest="30"
-              HeightRequest="140"
+              ImageHeightRequest="90"
+              ImageWidthRequest="90"
+              HeightRequest="120"
               BorderRadius="{StaticResource CornerRadius}"
               Text="{ext:Translate Delegation}"
                 >
@@ -300,9 +300,9 @@
               BackgroundColor="{StaticResource YellowAccent}"
               Orientation="ImageOnTop"
               TextColor="Black"
-              ImageHeightRequest="30"
-              ImageWidthRequest="30"
-              HeightRequest="140"
+              ImageHeightRequest="90"
+              ImageWidthRequest="90"
+              HeightRequest="120"
               BorderRadius="{StaticResource CornerRadius}"
               Text="{ext:Translate DayPass}">
             <controls:ImageButton.Source>
