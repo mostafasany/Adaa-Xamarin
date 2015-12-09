@@ -1,12 +1,10 @@
-﻿using AdaaMobile.Common;
+﻿using System.Threading.Tasks;
+using AdaaMobile.Common;
 using AdaaMobile.DataServices;
 using AdaaMobile.Helpers;
-using AdaaMobile.Strings;
-using System;
-using System.Threading.Tasks;
 using AdaaMobile.Views;
 
-namespace AdaaMobile
+namespace AdaaMobile.ViewModels
 {
     public class SettingsViewModel : BindableBase
     {

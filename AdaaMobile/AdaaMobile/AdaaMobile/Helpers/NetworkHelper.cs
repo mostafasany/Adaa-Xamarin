@@ -1,4 +1,5 @@
 ﻿using System;
+using AdaaMobile.Plugins.Connectivity;
 
 namespace AdaaMobile.Helpers
 {
@@ -6,7 +7,7 @@ namespace AdaaMobile.Helpers
     {
         public bool HasInternetAccess()
         {
-            return true;//TODO:Add connectivity Nuget package or it's functionality copied here.
+            return CrossConnectivity.Current.IsConnected;
         }
     }
 }

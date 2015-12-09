@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.Common;
 using AdaaMobile.DataServices;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Helpers;
 using AdaaMobile.Models.Request;
+using AdaaMobile.Strings;
 using AdaaMobile.Views;
 using AdaaMobile.Views.MasterView;
 using Xamarin.Forms;
@@ -23,10 +21,10 @@ namespace AdaaMobile.ViewModels
         private readonly INavigation _navigation;
         private readonly INavigationService _navigationService;
         private readonly IAppSettings _appSettings;
-
-        private const string LOGIN_RESPONSE_VALID_TOKEN = "Successfully Validated";
-        private const string LOGIN_RESPONSE_USER_NOT_FOUND = "User Not Found";
-        private const string LOGIN_RESPONSE_WRONG_PASSWORD = "Wrong Password";
+        private readonly IRequestMessageResolver _messageResolver;
+        private const string LoginResponseValidToken = "Successfully Validated";
+        private const string LoginResponseUserNotFound = "User Not Found";
+        private const string LoginResponseWrongPassword = "Wrong Password";
         #endregion
 
         #region Properties
@@ -76,13 +74,14 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public LoginViewModel(IDataService dataService, IDialogManager dialogManager, INavigation navigation, INavigationService navigationService, IAppSettings appSettings)
+        public LoginViewModel(IDataService dataService, IDialogManager dialogManager, INavigation navigation, INavigationService navigationService, IAppSettings appSettings, IRequestMessageResolver messageResolver)
         {
             _dataService = dataService;
             _dialogManager = dialogManager;
             _navigation = navigation;
             _navigationService = navigationService;
             _appSettings = appSettings;
+            _messageResolver = messageResolver;
 
             //Initialize commands
             LoginCommand = new AsyncExtendedCommand(LoginAsync, true);
@@ -90,8 +89,8 @@ namespace AdaaMobile.ViewModels
             SignUpCommand = new ExtendedCommand(SignUp);
 
 #if DEBUG
-			UserName = "Mobileuser3";
-			Password = "pass-123";
+            UserName = "Mobileuser3";
+            Password = "pass-123";
 #endif
         }
 
@@ -111,38 +110,35 @@ namespace AdaaMobile.ViewModels
             {
                 LoginCommand.CanExecute = false;
                 IsBusy = true;
-                BusyMessage = "Loading";
+                BusyMessage = AppResources.Loading;
                 var response = await _dataService.LoginAsync(UserName, Password);
 
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
-                    if (response.Result.Message == LOGIN_RESPONSE_VALID_TOKEN && !string.IsNullOrEmpty(response.Result.UserToken))
+                    if (response.Result.Message == LoginResponseValidToken && !string.IsNullOrEmpty(response.Result.UserToken))
                     {
                         _appSettings.UserToken = response.Result.UserToken;
-                        //bool success = await GetCurrentUserProfileAsync(response.Result.UserToken);
-                        //await _dialogManager.DisplayAlert("OK", response.Result.Message + "\n" + response.Result.UserToken, "Ok");
-
                         _navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
-                      //  _navigation.PushModalAsync(new AddaMasterPage());
-                        return;
                     }
-                    else if (response.Result.Message == LOGIN_RESPONSE_WRONG_PASSWORD ||
-                        response.Result.Message == "Wrong username or password")
+                    else if (response.Result.Message == LoginResponseWrongPassword ||
+                             response.Result.Message == "Wrong username or password")
                     {
-                        //TODO Get this from Resources file
-
-                        await _dialogManager.DisplayAlert("Alert", "Please enter valid password", "Ok");
-                        return;
+                        await _dialogManager.DisplayAlert(AppResources.Alert, AppResources.EnterValidPassword, AppResources.Ok);
                     }
                 }
+                else
+                {
+                    string message = _messageResolver.GetMessage(response);
+                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                }
 
-
-                await _dialogManager.DisplayAlert("Alert", "login failed", "ok");
             }
             catch (Exception)
             {
                 //Show error
+#pragma warning disable 4014
                 _dialogManager.DisplayAlert("Error", "Something error happened", "Ok");
+#pragma warning restore 4014
             }
             finally
             {

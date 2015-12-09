@@ -98,6 +98,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alert.
+        /// </summary>
+        public static string Alert {
+            get {
+                return ResourceManager.GetString("Alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Announcement.
         /// </summary>
         public static string Announcement {
@@ -346,6 +355,15 @@ namespace AdaaMobile.Strings {
         public static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter valid password.
+        /// </summary>
+        public static string EnterValidPassword {
+            get {
+                return ResourceManager.GetString("EnterValidPassword", resourceCulture);
             }
         }
         

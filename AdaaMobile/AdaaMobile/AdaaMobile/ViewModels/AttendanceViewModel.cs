@@ -21,6 +21,8 @@ namespace AdaaMobile.ViewModels
         private const int LimitRangeInDays = 2 * 30;
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
+        private readonly IRequestMessageResolver _messageResolver;
+        private readonly IDialogManager _dialogManager;
         #endregion
 
         #region Properties
@@ -149,10 +151,12 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public AttendanceViewModel(IDataService dataService, IAppSettings appSettings)
+        public AttendanceViewModel(IDataService dataService, IAppSettings appSettings, IRequestMessageResolver messageResolver, IDialogManager dialogManager)
         {
             _dataService = dataService;
             _appSettings = appSettings;
+            _messageResolver = messageResolver;
+            _dialogManager = dialogManager;
 
             //_endDate = DateTime.Now;
             //_startDate = _endDate.Subtract(TimeSpan.FromDays(14));
@@ -297,6 +301,11 @@ namespace AdaaMobile.ViewModels
                 {
                     CurrentAttendance = response.Result;
                 }
+                else
+                {
+                    string message = _messageResolver.GetMessage(response);
+                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                }
 
             }
             catch (Exception)
@@ -341,6 +350,11 @@ namespace AdaaMobile.ViewModels
                 {
                     DaysList = response.Result.ExceptionDays.Select(ex => new DayWrapper(ex.Date)).ToList();
                 }
+                else
+                {
+                    string message = _messageResolver.GetMessage(response);
+                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                }
 
             }
             catch (Exception)
@@ -384,6 +398,11 @@ namespace AdaaMobile.ViewModels
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
                     CurrentException = response.Result;
+                }
+                else
+                {
+                    string message = _messageResolver.GetMessage(response);
+                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
                 }
 
             }

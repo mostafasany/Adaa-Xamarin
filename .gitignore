@@ -25,3 +25,7 @@
 /AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/obj/x86/Debug
 /AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/obj/x86/Release
 /AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/Bin/x86/Release
+*.bak
+/AdaaMobile/AdaaMobile/AdaaMobile.iOS/obj/iPhone/Ad-Hoc
+/AdaaMobile/AdaaMobile/AdaaMobile.WinPhone/obj/ARM/Release
+*.userprefs

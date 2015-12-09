@@ -108,6 +108,8 @@
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
+    <Compile Include="Plugins\Connectivity\ConnectivityImplementation.cs" />
+    <Compile Include="Plugins\Connectivity\Reachability.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <ITunesArtwork Include="iTunesArtwork" />
     <None Include="packages.config" />
