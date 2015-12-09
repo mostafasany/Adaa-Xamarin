@@ -8,8 +8,11 @@
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              Title="{Binding DisplayName}"
-             BackgroundColor="{StaticResource AppBackgroundLight}"
              x:Class="AdaaMobile.Views.ProfilePage">
+
+  <ContentPage.BackgroundImage>
+    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="home-white"/>
+  </ContentPage.BackgroundImage>
   <ContentPage.Resources>
     <ResourceDictionary>
       <converters:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
@@ -29,15 +32,15 @@
 
 
     <!--Section Background-->
-    <BoxView Grid.Row="2" Grid.RowSpan="3"  BackgroundColor="White" />
+    <BoxView Grid.Row="0" Grid.RowSpan="2"  BackgroundColor="{StaticResource AppBackgroundLight}" />
 
     <!--Seperator under user profile-->
     <BoxView
                   HorizontalOptions="Fill"
-                  VerticalOptions="Start"
+                  VerticalOptions="End"
                   HeightRequest="2"
                   Color="{StaticResource YellowAccent}"
-                  Grid.Row="2"
+                  Grid.Row="1"
                   />
 
     <!--User Circle Profile-->
@@ -67,7 +70,7 @@
               Command="{Binding UnlockMyAccountCommand}"
               IsVisible="{Binding UserProfileMode,
             Converter={StaticResource EnumToBoolConverter}
-            ,ConverterParameter=Attendance}"
+            ,ConverterParameter=CurrentUser}"
             />
     </Grid>
     <ScrollView HorizontalOptions="Fill"
