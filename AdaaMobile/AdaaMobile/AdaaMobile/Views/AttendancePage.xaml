@@ -156,10 +156,17 @@
                            TextColor="Black"
                            FontSize="Small"
                            Text="{Binding AbbrWeek}"/>
+                          
                     <BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
                              x:Name="DayBack"
                              VerticalOptions="Fill"
                              HorizontalOptions="Fill"
+                             Grid.Row="1"/>
+                              <BoxView BackgroundColor="#AAFFFFFF"
+                            
+                             VerticalOptions="FillAndExpand"
+                             HorizontalOptions="End"
+                             WidthRequest="1"
                              Grid.Row="1"/>
                     <StackLayout VerticalOptions="Center"
                                  HorizontalOptions="Center"

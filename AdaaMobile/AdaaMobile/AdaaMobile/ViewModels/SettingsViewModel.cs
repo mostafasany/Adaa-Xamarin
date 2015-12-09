@@ -84,9 +84,9 @@ namespace AdaaMobile
 		void UpdateLanguage (int value)
 		{
 			if (value == 0) {
-				
+				_appSettings.SelectedCultureName = "en-US";
 			} else {
-				
+				_appSettings.SelectedCultureName = "ar-EG";
 			}
 		}
         #endregion
