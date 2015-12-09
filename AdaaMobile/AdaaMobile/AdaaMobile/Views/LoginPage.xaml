@@ -22,7 +22,8 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="10" />
 			<RowDefinition Height="Auto" />
-
+      <!--TODO Make it percentange-->
+      <RowDefinition Height="50" />
 		</Grid.RowDefinitions>
 		<controls:ExtendedGrid Grid.Row="0"  CornerRadius="3" HorizontalOptions="Fill"
                        BackgroundColor="White" Padding="6" >
@@ -37,7 +38,7 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 			<Entry Grid.Row="2" BackgroundColor="White" TextColor="{StaticResource PurpleAccent}" Placeholder="{ext:Translate Password}" Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
 		</controls:ExtendedGrid>
 
-		<ActivityIndicator Grid.Row="1" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+		<ActivityIndicator Grid.Row="3" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 		<Button Grid.Row="2" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
 		<!--        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>-->
 		<!--        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>-->

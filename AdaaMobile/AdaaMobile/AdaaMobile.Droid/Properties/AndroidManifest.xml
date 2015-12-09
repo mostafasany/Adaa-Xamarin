@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" package="com.adaa.droid" android:versionCode="1" android:versionName="1.0">
 	<uses-sdk android:minSdkVersion="14" />
-	<application android:label="Adaa" android:icon="@drawable/icon"></application>
 	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="Adaa" android:icon="@drawable/icon"></application>
 </manifest>

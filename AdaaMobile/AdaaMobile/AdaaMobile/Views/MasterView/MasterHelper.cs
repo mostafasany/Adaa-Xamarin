@@ -9,23 +9,31 @@ namespace AdaaMobile.Views.MasterView
 {
     public class MasterHelper
     {
-		private static readonly Color ActionBarBackgroundColor = Color.FromRgba(0, 124, 133, 1);
+        private static readonly Color ActionBarBackgroundColor = Color.FromRgba(0, 124, 133, 1);
         private static readonly Color ActionBarTextColor = Color.White;
 
         public static Page CreatePage<TPageType>(TPageType pageType, bool wrapInNavigation = true) where TPageType : Type
         {
-            Page displayPage = (Page)Activator.CreateInstance(pageType);
 
-            if (wrapInNavigation)
+            try
             {
-                NavigationPage navPage = new NavigationPage(displayPage)
+                Page displayPage = (Page)Activator.CreateInstance(pageType);
+
+                if (wrapInNavigation)
                 {
-                    BarBackgroundColor = ActionBarBackgroundColor,
-                    BarTextColor = ActionBarTextColor
-                };
-                return navPage;
+                    NavigationPage navPage = new NavigationPage(displayPage)
+                    {
+                        BarBackgroundColor = ActionBarBackgroundColor,
+                        BarTextColor = ActionBarTextColor
+                    };
+                    return navPage;
+                }
+                return displayPage;
             }
-            return displayPage;
+            catch (Exception e)
+            {
+                return null;
+            }
         }
     }
 }
