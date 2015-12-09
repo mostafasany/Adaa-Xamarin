@@ -131,5 +131,10 @@ namespace AdaaMobile.Views
                 _attendanceViewModel.LoadExceptionDetailsCommand.Execute(null);
             }
         }
+
+        private void Date_Selected(object sender, DateChangedEventArgs e)
+        {
+            //_attendanceViewModel.PopulateAttendanceDays();
+        }
     }
 }

@@ -30,12 +30,6 @@
       <RowDefinition Height="*"/>
       <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
-    <!--<Image Grid.RowSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
-      <Image.Source>
-        <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="home-white"/>
-      </Image.Source>
-    </Image>-->
-
 
     <ScrollView Grid.Row="1" VerticalOptions="Start">
       <StackLayout
@@ -55,6 +49,7 @@
               Grid.Column="0"
               BorderColor="{StaticResource AppBackgroundDark}"
               BorderWidth="1"
+              BorderRadius="0"
               x:Name="AttendanceButton"
               Clicked="OnTabTapped"
         />
@@ -62,10 +57,10 @@
           <Button Text="{ext:Translate Exceptions}"
               Grid.Column="1"
               BorderWidth="1"
+              BorderRadius="0"
               BorderColor="{StaticResource AppBackgroundDark}"
               x:Name="ExceptionsButton"
-              Clicked="OnTabTapped"
-      />
+              Clicked="OnTabTapped"/>
         </Grid>
 
 
@@ -84,6 +79,7 @@
               Format="d MMM yyyy"
               Date="{Binding StartDate}"
               MinimumDate="{Binding MinimumDate}"
+              DateSelected="Date_Selected"
               MaximumDate="{Binding EndDate}"
               VerticalOptions="End"
             />
@@ -115,6 +111,7 @@
               WidthRequest="0" HeightRequest="0"
               MinimumDate="{Binding StartDate}"
               MaximumDate="{x:Static sys:DateTime.Now}"
+              DateSelected="Date_Selected"
               VerticalOptions="End"
              
                     />
@@ -283,7 +280,7 @@
               TextColor="Black"
               ImageHeightRequest="90"
               ImageWidthRequest="90"
-              HeightRequest="120"
+              HeightRequest="100"
               BorderRadius="{StaticResource CornerRadius}"
               Text="{ext:Translate Delegation}"
                 >
@@ -301,7 +298,7 @@
               TextColor="Black"
               ImageHeightRequest="90"
               ImageWidthRequest="90"
-              HeightRequest="120"
+              HeightRequest="100"
               BorderRadius="{StaticResource CornerRadius}"
               Text="{ext:Translate DayPass}">
             <controls:ImageButton.Source>

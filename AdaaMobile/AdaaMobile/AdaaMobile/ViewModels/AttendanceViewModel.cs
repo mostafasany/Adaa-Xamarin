@@ -24,7 +24,7 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Properties
-        private DateTime _startDate;
+        private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(14));
         /// <summary>
         /// Date of first picker, this date will be used to show the starting range for Attendance and Exceptions.
         /// </summary>
@@ -40,7 +40,7 @@ namespace AdaaMobile.ViewModels
             }
         }
 
-        private DateTime _endDate;
+        private DateTime _endDate = DateTime.Now;
         /// <summary>
         /// Date of second picker, this date will be used to show the end of range for Attendance and Exceptions.
         /// </summary>
@@ -154,8 +154,8 @@ namespace AdaaMobile.ViewModels
             _dataService = dataService;
             _appSettings = appSettings;
 
-            _endDate = DateTime.Now;
-            _startDate = _endDate.Subtract(TimeSpan.FromDays(14));
+            //_endDate = DateTime.Now;
+            //_startDate = _endDate.Subtract(TimeSpan.FromDays(14));
 
 
             //Initialize commands
@@ -184,7 +184,7 @@ namespace AdaaMobile.ViewModels
         /// Be Aware this is used only With Attendance Mode.
         /// Use LoadExceptions with Exceptions Mode
         /// </summary>
-        private  void PopulateAttendanceDays()
+        public void PopulateAttendanceDays()
         {
             //Create new Days List on background task.
             //var daysList = await Task.Run(() =>
