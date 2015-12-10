@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 using AdaaMobile.Controls;
+using AdaaMobile.CustomRenderers;
 using AdaaMobile.Droid.CustomRenderers;
 using AdaaMobile.Droid.Extensions;
 using AdaaMobile.Enums;
@@ -12,7 +13,8 @@ using Xamarin.Forms.Platform.Android;
 
 //Author https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/src/Forms/XLabs.Forms/Controls/
 [assembly: ExportRenderer(typeof(ImageButton), typeof(ImageButtonRenderer))]
-namespace AdaaMobile.Droid.CustomRenderers
+// ReSharper disable once CheckNamespace
+namespace AdaaMobile.CustomRenderers
 {
     /// <summary>
     /// Draws a button on the Android platform with the image shown in the right 

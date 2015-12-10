@@ -12,6 +12,7 @@ using System.IO;
 using AdaaMobile.Models.Request;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.DataServices;
+using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
 
 namespace AdaaMobile.ViewModels
@@ -46,6 +47,16 @@ namespace AdaaMobile.ViewModels
             get { return _isBusy; }
             set { SetProperty(ref _isBusy, value); }
         }
+
+        private UserProfile _userProfile;
+
+        public UserProfile UserProfile
+        {
+            get { return _userProfile; }
+            set { SetProperty(ref _userProfile, value); }
+        }
+
+
 
         #endregion
 
@@ -165,12 +176,12 @@ namespace AdaaMobile.ViewModels
                 LoadCommand.CanExecute = false;
                 IsBusy = true;
 
-                if (LoggedUserInfo.CurrentUserProfile != null && !String.IsNullOrWhiteSpace(LoggedUserInfo.CurrentUserProfile.UserImage64))
-                {
-                    Func<Stream> streamFunc = GetStream;
-                    Image = ImageSource.FromStream(streamFunc);
-                }
-                else
+                //if (LoggedUserInfo.CurrentUserProfile != null && !String.IsNullOrWhiteSpace(LoggedUserInfo.CurrentUserProfile.UserImage64))
+                //{
+                //    Func<Stream> streamFunc = GetStream;
+                //    Image = ImageSource.FromStream(streamFunc);
+                //}
+                //else
                 {
                     var paramters = new CurrentProfileQParameters()
                     {
@@ -182,6 +193,7 @@ namespace AdaaMobile.ViewModels
                     if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
                     {
                         LoggedUserInfo.CurrentUserProfile = result.Result;
+                        UserProfile = result.Result;
                         if (!string.IsNullOrEmpty(result.Result.UserImage64))
                         {
                             Func<Stream> streamFunc = GetStream;

@@ -19,5 +19,5 @@ namespace AdaaMobile.Droid
 		}
 	}
 }
-}
+
 

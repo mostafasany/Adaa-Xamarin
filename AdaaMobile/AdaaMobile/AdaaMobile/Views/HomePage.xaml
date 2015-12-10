@@ -26,7 +26,7 @@
           <FormattedString>
             <Span Text="Welcome," FontSize="Medium"/>
             <Span Text="{x:Static system:Environment.NewLine}"/>
-            <Span Text="Samah AlBrieki" FontSize="Large"/>
+            <Span Text="{Binding UserProfile.DisplayName}" FontSize="Large"/>
           </FormattedString>
         </Label.FormattedText>
       </Label>
