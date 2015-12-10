@@ -14,11 +14,10 @@ namespace AdaaMobile.Views.MasterView
 
         public static Page CreatePage<TPageType>(TPageType pageType, bool wrapInNavigation = true) where TPageType : Type
         {
-
             try
             {
                 //Page displayPage = (Page)Activator.CreateInstance(pageType);
-                Page displayPage = (Page)CreatePage(pageType);
+                Page displayPage = (Page)CreateInnerPage(pageType);
 
                 if (wrapInNavigation)
                 {
@@ -37,7 +36,7 @@ namespace AdaaMobile.Views.MasterView
             }
         }
 
-        private static Page CreatePage(Type pageType)
+        private static Page CreateInnerPage(Type pageType)
         {
             if (pageType == typeof(HomePage)) return new HomePage();
             if (pageType == typeof(ProfilePage)) return new ProfilePage();
