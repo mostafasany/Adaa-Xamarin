@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -119,6 +120,9 @@ namespace AdaaMobile.DataServices.Requests
                 {
                     response.ResponseStatus = ResponseStatus.HttpError;//Override responseWrapper status value to be HttpError
                 }
+
+                CheckInvalidToken(response);
+
                 return response;
             }
             catch (OperationCanceledException)
@@ -136,7 +140,7 @@ namespace AdaaMobile.DataServices.Requests
             {
                 response.ResponseStatus = ResponseStatus.HttpError;
             }
-            catch (Exception )
+            catch (Exception)
             {
                 response.ResponseStatus = ResponseStatus.ClientSideError;
             }
@@ -197,7 +201,7 @@ namespace AdaaMobile.DataServices.Requests
                 {
                     response.ResponseStatus = ResponseStatus.HttpError;//Override responseWrapper status value to be HttpError
                 }
-
+                CheckInvalidToken(response);
                 return response;
             }
             catch (OperationCanceledException)
@@ -224,6 +228,27 @@ namespace AdaaMobile.DataServices.Requests
                 if (httpClient != null) httpClient.Dispose();
             }
             return response;
+        }
+
+        private void CheckInvalidToken<TR>(ResponseWrapper<TR> responseWrapper)
+        {
+            if (responseWrapper == null || responseWrapper.Result == null) return;
+            try
+            {
+                var property = responseWrapper.Result.GetType().GetRuntimeProperty("Message");
+                if (property != null)
+                {
+                    string value = (string)property.GetValue(responseWrapper.Result);
+                    if (String.Equals(value, "Token Not Valid", StringComparison.OrdinalIgnoreCase))
+                    {
+                        responseWrapper.ResponseStatus = ResponseStatus.InvalidToken;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //ignored
+            }
         }
 
         private void ParseResult<TR>(string stringValue, ResponseWrapper<TR> responseWrapper)
@@ -263,7 +288,7 @@ namespace AdaaMobile.DataServices.Requests
                     responseWrapper.Result = (TR)(object)stringValue;
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 responseWrapper.ResponseStatus = ResponseStatus.ParserException;
                 return;

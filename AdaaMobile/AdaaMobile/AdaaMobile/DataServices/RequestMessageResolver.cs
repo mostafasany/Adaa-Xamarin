@@ -23,7 +23,8 @@ namespace AdaaMobile.DataServices
                     return AppResources.Ok;
                 case ResponseStatus.NoInternet:
                     return AppResources.NoInternet;
-
+                case ResponseStatus.InvalidToken:
+                    return "Invalid Session, You will be redirected to login page";
                 case ResponseStatus.SuccessWithNoData:
                     return AppResources.NoData;
                 case ResponseStatus.UserCanceled:

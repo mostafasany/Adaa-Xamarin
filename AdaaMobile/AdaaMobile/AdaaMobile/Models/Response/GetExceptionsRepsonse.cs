@@ -11,6 +11,9 @@ namespace AdaaMobile.Models.Response
     [System.Xml.Serialization.XmlRoot(ElementName = "root", Namespace = "", IsNullable = false)]
     public class GetExceptionsRepsonse
     {
+        [XmlElement("msg")]
+        public string Message { get; set; }
+
         [XmlElement("Item")]
         public ExceptionDay[] ExceptionDays { get; set; }
     }
