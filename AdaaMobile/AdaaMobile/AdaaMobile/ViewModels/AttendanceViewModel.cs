@@ -11,6 +11,7 @@ using AdaaMobile.Models;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
+using AdaaMobile.Views;
 
 namespace AdaaMobile.ViewModels
 {
@@ -18,15 +19,16 @@ namespace AdaaMobile.ViewModels
     {
 
         #region Fields
-        private const int LimitRangeInDays = 2 * 30;
+        private const int LimitRangeInDays = 1 * 30;
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
         private readonly IDialogManager _dialogManager;
+        private readonly INavigationService _navigationService;
         #endregion
 
         #region Properties
-        private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(14));
+        private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(10));
         /// <summary>
         /// Date of first picker, this date will be used to show the starting range for Attendance and Exceptions.
         /// </summary>
@@ -151,12 +153,13 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public AttendanceViewModel(IDataService dataService, IAppSettings appSettings, IRequestMessageResolver messageResolver, IDialogManager dialogManager)
+        public AttendanceViewModel(IDataService dataService, IAppSettings appSettings, IRequestMessageResolver messageResolver, IDialogManager dialogManager, INavigationService navigationService)
         {
             _dataService = dataService;
             _appSettings = appSettings;
             _messageResolver = messageResolver;
             _dialogManager = dialogManager;
+            _navigationService = navigationService;
 
             //_endDate = DateTime.Now;
             //_startDate = _endDate.Subtract(TimeSpan.FromDays(14));
@@ -305,6 +308,11 @@ namespace AdaaMobile.ViewModels
                 {
                     string message = _messageResolver.GetMessage(response);
                     await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+
+                    if (response.ResponseStatus == ResponseStatus.InvalidToken)
+                    {
+                        _navigationService.SetAppCurrentPage(typeof(LoginPage));
+                    }
                 }
 
             }
@@ -354,6 +362,10 @@ namespace AdaaMobile.ViewModels
                 {
                     string message = _messageResolver.GetMessage(response);
                     await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    if (response.ResponseStatus == ResponseStatus.InvalidToken)
+                    {
+                        _navigationService.SetAppCurrentPage(typeof(LoginPage));
+                    }
                 }
 
             }
@@ -403,6 +415,11 @@ namespace AdaaMobile.ViewModels
                 {
                     string message = _messageResolver.GetMessage(response);
                     await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    if (response.ResponseStatus == ResponseStatus.InvalidToken)
+                    {
+                        _navigationService.SetAppCurrentPage(typeof(LoginPage));
+                    }
+
                 }
 
             }

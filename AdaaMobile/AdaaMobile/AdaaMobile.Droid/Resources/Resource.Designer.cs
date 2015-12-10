@@ -2444,32 +2444,32 @@ namespace AdaaMobile.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f090047
-			public const int abc_background_cache_hint_selector_material_dark = 2131296327;
-			
-			// aapt resource value: 0x7f090048
-			public const int abc_background_cache_hint_selector_material_light = 2131296328;
-			
 			// aapt resource value: 0x7f090049
-			public const int abc_color_highlight_material = 2131296329;
+			public const int abc_background_cache_hint_selector_material_dark = 2131296329;
+			
+			// aapt resource value: 0x7f09004a
+			public const int abc_background_cache_hint_selector_material_light = 2131296330;
+			
+			// aapt resource value: 0x7f09004b
+			public const int abc_color_highlight_material = 2131296331;
 			
 			// aapt resource value: 0x7f090004
 			public const int abc_input_method_navigation_guard = 2131296260;
 			
-			// aapt resource value: 0x7f09004a
-			public const int abc_primary_text_disable_only_material_dark = 2131296330;
-			
-			// aapt resource value: 0x7f09004b
-			public const int abc_primary_text_disable_only_material_light = 2131296331;
-			
 			// aapt resource value: 0x7f09004c
-			public const int abc_primary_text_material_dark = 2131296332;
+			public const int abc_primary_text_disable_only_material_dark = 2131296332;
 			
 			// aapt resource value: 0x7f09004d
-			public const int abc_primary_text_material_light = 2131296333;
+			public const int abc_primary_text_disable_only_material_light = 2131296333;
 			
 			// aapt resource value: 0x7f09004e
-			public const int abc_search_url_text = 2131296334;
+			public const int abc_primary_text_material_dark = 2131296334;
+			
+			// aapt resource value: 0x7f09004f
+			public const int abc_primary_text_material_light = 2131296335;
+			
+			// aapt resource value: 0x7f090050
+			public const int abc_search_url_text = 2131296336;
 			
 			// aapt resource value: 0x7f090005
 			public const int abc_search_url_text_normal = 2131296261;
@@ -2480,17 +2480,23 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f090007
 			public const int abc_search_url_text_selected = 2131296263;
 			
-			// aapt resource value: 0x7f09004f
-			public const int abc_secondary_text_material_dark = 2131296335;
+			// aapt resource value: 0x7f090051
+			public const int abc_secondary_text_material_dark = 2131296337;
 			
-			// aapt resource value: 0x7f090050
-			public const int abc_secondary_text_material_light = 2131296336;
+			// aapt resource value: 0x7f090052
+			public const int abc_secondary_text_material_light = 2131296338;
 			
 			// aapt resource value: 0x7f090008
 			public const int accent_material_dark = 2131296264;
 			
 			// aapt resource value: 0x7f090009
 			public const int accent_material_light = 2131296265;
+			
+			// aapt resource value: 0x7f090047
+			public const int actionBarBackgroundColor = 2131296327;
+			
+			// aapt resource value: 0x7f090048
+			public const int actionBarTextColor = 2131296328;
 			
 			// aapt resource value: 0x7f09000a
 			public const int background_floating_material_dark = 2131296266;
@@ -2681,11 +2687,11 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f09003b
 			public const int switch_thumb_disabled_material_light = 2131296315;
 			
-			// aapt resource value: 0x7f090051
-			public const int switch_thumb_material_dark = 2131296337;
+			// aapt resource value: 0x7f090053
+			public const int switch_thumb_material_dark = 2131296339;
 			
-			// aapt resource value: 0x7f090052
-			public const int switch_thumb_material_light = 2131296338;
+			// aapt resource value: 0x7f090054
+			public const int switch_thumb_material_light = 2131296340;
 			
 			// aapt resource value: 0x7f09003c
 			public const int switch_thumb_normal_material_dark = 2131296316;
@@ -4500,8 +4506,11 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f080144
 			public const int MyTheme = 2131231044;
 			
+			// aapt resource value: 0x7f080146
+			public const int MyTheme_ActionBar_TitleTextStyle = 2131231046;
+			
 			// aapt resource value: 0x7f080145
-			public const int MyTheme_Base = 2131231045;
+			public const int MyTheme_ActionBarStyle = 2131231045;
 			
 			// aapt resource value: 0x7f080016
 			public const int Platform_AppCompat = 2131230742;
@@ -4790,6 +4799,9 @@ namespace AdaaMobile.Droid
 			
 			// aapt resource value: 0x7f080001
 			public const int Theme_MediaRouter_Light = 2131230721;
+			
+			// aapt resource value: 0x7f080147
+			public const int Theme_Splash = 2131231047;
 			
 			// aapt resource value: 0x7f0800ee
 			public const int ThemeOverlay_AppCompat = 2131230958;

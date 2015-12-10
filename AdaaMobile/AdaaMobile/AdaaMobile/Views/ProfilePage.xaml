@@ -56,7 +56,7 @@
                            >
     </controls:CircleImage>
 
-    <Grid Grid.Row="3" HorizontalOptions="Fill" Padding="15"
+    <!--<Grid Grid.Row="3" HorizontalOptions="Fill" Padding="15"
           IsVisible="{Binding UserProfile,Converter={StaticResource TrueWhenNotNullConverter}}"
           >
       <Button  HorizontalOptions="Fill"
@@ -72,7 +72,7 @@
             Converter={StaticResource EnumToBoolConverter}
             ,ConverterParameter=CurrentUser}"
             />
-    </Grid>
+    </Grid>-->
     <ScrollView HorizontalOptions="Fill"
                 VerticalOptions="Fill"
                 Orientation="Vertical"

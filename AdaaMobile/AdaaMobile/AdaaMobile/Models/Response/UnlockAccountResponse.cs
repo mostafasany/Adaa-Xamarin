@@ -12,6 +12,6 @@ namespace AdaaMobile.Models.Response
     public class UnlockAccountResponse
     {
         [XmlElement("msg")]
-        public string Msg { get; set; }
+        public string Message { get; set; }
     }
 }

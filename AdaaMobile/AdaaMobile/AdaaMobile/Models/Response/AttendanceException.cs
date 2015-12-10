@@ -6,7 +6,7 @@ namespace AdaaMobile.Models.Response
     public class AttendanceException
     {
         [XmlElement("msg")]
-        public string Msg { get; set; }
+        public string Message { get; set; }
 
         [XmlElement("Late")]
         public string Late { get; set; }

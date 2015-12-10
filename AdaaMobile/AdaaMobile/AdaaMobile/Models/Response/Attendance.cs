@@ -6,6 +6,9 @@ namespace AdaaMobile.Models.Response
     [System.Xml.Serialization.XmlRoot(ElementName = "root", Namespace = "", IsNullable = false)]
     public partial class Attendance
     {
+        [XmlElement("msg")]
+        public string Message { get; set; }
+
         [XmlElement("FirstSeen")]
         public string FirstSeen { get; set; }
 

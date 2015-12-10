@@ -9,6 +9,7 @@ using AdaaMobile.Helpers;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
+using AdaaMobile.Views;
 using Xamarin.Forms;
 
 namespace AdaaMobile.ViewModels
@@ -21,6 +22,7 @@ namespace AdaaMobile.ViewModels
         private readonly IAppSettings _appSettings;
         private readonly IDialogManager _dialogManager;
         private readonly IRequestMessageResolver _messageResolver;
+        private readonly INavigationService _navigationService;
         #endregion
 
         #region Properties
@@ -78,12 +80,13 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public ProfileViewModel(IDataService dataService, IAppSettings appSettings, IDialogManager dialogManager, IRequestMessageResolver messageResolver)
+        public ProfileViewModel(IDataService dataService, IAppSettings appSettings, IDialogManager dialogManager, IRequestMessageResolver messageResolver, INavigationService navigationService)
         {
             _dataService = dataService;
             _appSettings = appSettings;
             _dialogManager = dialogManager;
             _messageResolver = messageResolver;
+            _navigationService = navigationService;
             //Default Image for User profile
             Image = new FileImageSource()
             {
@@ -133,9 +136,16 @@ namespace AdaaMobile.ViewModels
                             Image = ImageSource.FromStream(streamFunc);
                         }
                     }
-                    else
+                    
+                }
+                else
+                {
+                    string message = _messageResolver.GetMessage(resposne);
+                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+
+                    if (resposne.ResponseStatus == ResponseStatus.InvalidToken)
                     {
-                        ErrorMessage = _messageResolver.GetMessage(resposne);
+                        _navigationService.SetAppCurrentPage(typeof(LoginPage));
                     }
                 }
             }
@@ -202,13 +212,17 @@ namespace AdaaMobile.ViewModels
                     UserToken = _appSettings.UserToken
                 };
                 var response = await _dataService.UnlockAccountAsync(parameters);
-                if (response.Result != null && !String.IsNullOrWhiteSpace(response.Result.Msg))
+                if (response.Result != null && !String.IsNullOrWhiteSpace(response.Result.Message))
                 {
-                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Msg, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
                 }
                 else
                 {
                     await _dialogManager.DisplayAlert(AppResources.Error, _messageResolver.GetMessage(response), AppResources.Ok);
+                    if (response.ResponseStatus == ResponseStatus.InvalidToken)
+                    {
+                        _navigationService.SetAppCurrentPage(typeof(LoginPage));
+                    }
                 }
             }
             catch (Exception)

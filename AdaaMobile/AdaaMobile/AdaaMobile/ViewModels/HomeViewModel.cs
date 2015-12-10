@@ -192,6 +192,10 @@ namespace AdaaMobile.ViewModels
                     {
                         string message = _messageResolver.GetMessage(result);
                         await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                        if (result.ResponseStatus == ResponseStatus.InvalidToken)
+                        {
+                            _navigationService.SetAppCurrentPage(typeof(LoginPage));
+                        }
                     }
                 }
 

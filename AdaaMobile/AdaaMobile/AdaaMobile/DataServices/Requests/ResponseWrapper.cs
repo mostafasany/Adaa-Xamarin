@@ -22,6 +22,7 @@ namespace AdaaMobile.DataServices.Requests
         SuccessWithResult,
         NoInternet,
         HttpError,
+        InvalidToken,//session ended
         SuccessWithNoData,//Operation with server went successfully,but server returns empty response
         ClientSideError,
         TimeOut,//Request Timedout
