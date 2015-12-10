@@ -16,9 +16,10 @@ namespace AdaaMobile.Views.MasterView
             var cell = new DataTemplate(typeof(MenuCell));
             cell.SetBinding(TextCell.TextProperty, "Title");
             cell.SetBinding(ImageCell.ImageSourceProperty, "IconSource");
-			RowHeight = 70;
+			RowHeight = 90;
             ItemTemplate = cell;
-			SeparatorColor = (Color)App.Current.Resources ["YellowAccent"];
+			SeparatorColor = Color.Transparent;
+				//(Color)App.Current.Resources ["YellowAccent"];
         }
     }
 }
