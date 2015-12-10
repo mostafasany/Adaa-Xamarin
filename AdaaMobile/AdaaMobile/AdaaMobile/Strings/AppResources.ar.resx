@@ -406,4 +406,10 @@
   <data name="Remaining" xml:space="preserve">
     <value>Remaining</value>
   </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="EnterValidPassword" xml:space="preserve">
+    <value>Please enter valid password</value>
+  </data>
 </root>

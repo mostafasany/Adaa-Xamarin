@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -30,7 +30,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -88,6 +88,10 @@
     <Compile Include="Models\Response\GetExceptionsRepsonse.cs" />
     <Compile Include="Models\Response\UnlockAccountResponse.cs" />
     <Compile Include="Models\Response\UserProfile.cs" />
+    <Compile Include="Plugins\Connectivity\BaseConnectivity.cs" />
+    <Compile Include="Plugins\Connectivity\ConnectionType.cs" />
+    <Compile Include="Plugins\Connectivity\CrossConnectivity.cs" />
+    <Compile Include="Plugins\Connectivity\IConnectivity.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="Views\MasterView\MasterHelper.cs" />

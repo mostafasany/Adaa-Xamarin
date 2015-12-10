@@ -12,6 +12,7 @@ using System.IO;
 using AdaaMobile.Models.Request;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.DataServices;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.ViewModels
 {
@@ -23,6 +24,8 @@ namespace AdaaMobile.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
+        private readonly IRequestMessageResolver _messageResolver;
+        private readonly IDialogManager _dialogManager;
         #endregion
 
         #region Properties
@@ -38,7 +41,6 @@ namespace AdaaMobile.ViewModels
         }
 
         private bool _isBusy;
-
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -49,11 +51,13 @@ namespace AdaaMobile.ViewModels
 
         #region Initialization
 
-        public HomeViewModel(IDataService dataService, IAppSettings appSettings, INavigationService navigationService)
+        public HomeViewModel(IDataService dataService, IAppSettings appSettings, INavigationService navigationService, IRequestMessageResolver messageResolver, IDialogManager dialogManager)
         {
             _dataService = dataService;
             _appSettings = appSettings;
             _navigationService = navigationService;
+            _messageResolver = messageResolver;
+            _dialogManager = dialogManager;
             Pages = GetHomePages();
             PageClickedCommand = new ExtendedCommand<AdaaPageItem>(PageItemClicked);
             LoadCommand = new AsyncExtendedCommand(LoadAsync);
@@ -183,6 +187,11 @@ namespace AdaaMobile.ViewModels
                             Func<Stream> streamFunc = GetStream;
                             Image = ImageSource.FromStream(streamFunc);
                         }
+                    }
+                    else
+                    {
+                        string message = _messageResolver.GetMessage(result);
+                        await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
                     }
                 }
 
