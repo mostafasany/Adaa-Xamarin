@@ -123,6 +123,7 @@
     <Compile Include="..\AdaaMobile\Controls\ImageButton\ImageButtonRenderer.shared.cs">
       <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
     </Compile>
+    <Compile Include="CustomRenderers\ExtendedEntryRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListLayoutManager.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListViewAdapter.cs" />

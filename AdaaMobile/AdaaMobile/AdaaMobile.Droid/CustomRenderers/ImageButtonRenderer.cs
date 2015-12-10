@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 using AdaaMobile.Controls;
-using AdaaMobile.CustomRenderers;
+using AdaaMobile.Droid.CustomRenderers;
 using AdaaMobile.Droid.Extensions;
 using AdaaMobile.Enums;
 using Android.Graphics;
@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 
 //Author https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/src/Forms/XLabs.Forms/Controls/
 [assembly: ExportRenderer(typeof(ImageButton), typeof(ImageButtonRenderer))]
-namespace AdaaMobile.CustomRenderers
+namespace AdaaMobile.Droid.CustomRenderers
 {
     /// <summary>
     /// Draws a button on the Android platform with the image shown in the right 
@@ -122,7 +122,7 @@ namespace AdaaMobile.CustomRenderers
         /// <returns>A loaded <see cref="Bitmap"/>.</returns>
         private async Task<Bitmap> GetBitmapAsync(ImageSource source)
         {
-            var handler = ImageButtonRenderer.GetHandler(source);
+            var handler = AdaaMobile.CustomRenderers.ImageButtonRenderer.GetHandler(source);
             var returnValue = (Bitmap)null;
 
 			if(handler != null)
