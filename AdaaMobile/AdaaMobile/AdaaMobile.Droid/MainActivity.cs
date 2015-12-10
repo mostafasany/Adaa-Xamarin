@@ -16,14 +16,16 @@ using Java.Util;
 using Xamarin;
 namespace AdaaMobile.Droid
 {
-    [Activity(Label = "AdaaMobile", Icon = "@drawable/icon", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "AdaaMobile", Icon = "@drawable/icon", MainLauncher = false,
+        Theme = "@style/MyTheme",
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         public static MainActivity Instance;
         protected override void OnCreate(Bundle bundle)
         {
 
-			Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
+            Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
             base.OnCreate(bundle);
             RequestedOrientation = ScreenOrientation.Portrait;
             Instance = this;

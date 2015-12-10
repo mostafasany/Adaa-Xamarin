@@ -19,18 +19,18 @@ namespace AdaaMobile.Droid.Helpers
 
         public void UpdateCultureInfo(string cultureName)
         {
-            //Set .Net culture
-            var netCulture = new CultureInfo(cultureName);
-            System.Threading.Thread.CurrentThread.CurrentCulture = netCulture;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = netCulture;
+            ////Set .Net culture
+            //var netCulture = new CultureInfo(cultureName);
+            //System.Threading.Thread.CurrentThread.CurrentCulture = netCulture;
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = netCulture;
 
-            //Set Java Culture
-            var androidCulture = cultureName.Replace("-", "_"); // turns pt-R into pt_BR
-            var locale = new Locale(androidCulture);
-            Java.Util.Locale.Default = locale;
+            ////Set Java Culture
+            //var androidCulture = cultureName.Replace("-", "_"); // turns pt-R into pt_BR
+            //var locale = new Locale(androidCulture);
+            //Java.Util.Locale.Default = locale;
 
-            var config = new Android.Content.Res.Configuration { Locale = locale };
-            Forms.Context.Resources.UpdateConfiguration(config, Forms.Context.Resources.DisplayMetrics);
+            //var config = new Android.Content.Res.Configuration { Locale = locale };
+            //Forms.Context.Resources.UpdateConfiguration(config, Forms.Context.Resources.DisplayMetrics);
 
             var instance = MainActivity.Instance;
             if (instance != null)
