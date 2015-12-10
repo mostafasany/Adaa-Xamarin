@@ -165,6 +165,14 @@
     <BundleResource Include="Resources\ProximaNova-Semibold.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\directory.png" />
+    <BundleResource Include="Resources\home.png" />
+    <BundleResource Include="Resources\myrequests.png" />
+    <BundleResource Include="Resources\mytasks.png" />
+    <BundleResource Include="Resources\profile.png" />
+    <BundleResource Include="Resources\settings.png" />
+    <BundleResource Include="Resources\timesheet.png" />
+    <BundleResource Include="Resources\attendance_icn.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">

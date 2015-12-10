@@ -12,12 +12,13 @@ namespace AdaaMobile.Views.MasterView
             VerticalOptions = LayoutOptions.FillAndExpand;
             BackgroundColor = Color.Transparent;
             //SeparatorVisibility = SeparatorVisibility.None;
-
+			BackgroundColor = (Color)App.Current.Resources["AppBackgroundDark"];
             var cell = new DataTemplate(typeof(MenuCell));
             cell.SetBinding(TextCell.TextProperty, "Title");
             cell.SetBinding(ImageCell.ImageSourceProperty, "IconSource");
-
+			RowHeight = 70;
             ItemTemplate = cell;
+			SeparatorColor = (Color)App.Current.Resources ["YellowAccent"];
         }
     }
 }

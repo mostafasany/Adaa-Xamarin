@@ -24,49 +24,49 @@ namespace AdaaMobile.Models
                 data.Add(new AdaaPageItem()
                 {
                     Title = "Home",
-                    IconSource = "icon.png",
+					IconSource = "home.png",
                     TargetType = typeof(HomePage)
                 });
 
                 data.Add(new AdaaPageItem()
                 {
                     Title = "Profile",
-                    IconSource = "icon.png",
+					IconSource = "profile.png",
                     TargetType = typeof(ProfilePage)
                 });
 
                 data.Add(new AdaaPageItem()
                 {
                     Title = "Attendance",
-                    IconSource = "icon.png",
+					IconSource = "attendance_icn.png",
                     TargetType = typeof(AttendancePage)
                 });
 
                 data.Add(new AdaaPageItem()
                 {
                     Title = "Directory",
-                    IconSource = "icon.png",
+					IconSource = "directory.png",
                     TargetType = typeof(DirectoryPage)
                 });
 
                 data.Add(new AdaaPageItem()
                 {
                     Title = "My Requests",
-                    IconSource = "icon.png",
+						IconSource = "myrequests.png",
                     TargetType = typeof(MyRequestsPage)
                 });
 
                 data.Add(new AdaaPageItem()
                 {
                     Title = "My Tasks",
-                    IconSource = "icon.png",
+						IconSource = "mytasks.png",
                     TargetType = typeof(MyTasksPage)
                 });
 
                 data.Add(new AdaaPageItem()
                 {
                     Title = "Settings",
-                    IconSource = "icon.png",
+						IconSource = "settings.png",
                     TargetType = typeof(SettingsPage)
                 });
                 return data;

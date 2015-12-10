@@ -76,14 +76,14 @@ namespace AdaaMobile.ViewModels
 
             data.Add(new AdaaPageItem()
             {
-                Title = "Adaa Attendance",
+                Title = "ADAA Attendance",
                 IconSource = "AdaaMobile.Images.Attendance_icn.svg",
                 TargetType = typeof(AttendancePage)
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "Employee directory",
+                Title = "Employee Directory",
                 IconSource = "AdaaMobile.Images.Directory.svg",
                 TargetType = typeof(DirectoryPage)
             });
@@ -98,42 +98,42 @@ namespace AdaaMobile.ViewModels
 
             data.Add(new AdaaPageItem()
             {
-                Title = "Adaa timesheet",
+                Title = "ADAA Timesheet",
                 IconSource = "AdaaMobile.Images.Timesheet.svg",
                 TargetType = typeof(TimesheetPage)
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "My requests",
+                Title = "My Requests",
                 IconSource = "AdaaMobile.Images.MyRequests.svg",
                 TargetType = typeof(MyRequestsPage)
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "My tasks",
+                Title = "My Tasks",
                 IconSource = "AdaaMobile.Images.MyTasks.svg",
                 TargetType = typeof(MyTasksPage)
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "Oracle services",
+                Title = "Oracle Services",
                 IconSource = "AdaaMobile.Images.Oracle.svg",
                 TargetType = typeof(OracleServicesPage)
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "IT services desk",
+                Title = "IT Services Desk",
                 IconSource = "AdaaMobile.Images.ITServiceDesk.svg",
                 TargetType = typeof(ITServiesPage)
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "User account services",
+                Title = "User Account Services",
                 IconSource = "AdaaMobile.Images.Profile.svg",
                 TargetType = typeof(UserServicesPage)
             });

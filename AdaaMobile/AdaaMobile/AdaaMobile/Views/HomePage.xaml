@@ -134,7 +134,7 @@
                   </Grid.GestureRecognizers>
                 </controls:ExtendedGrid >
               </RelativeLayout>
-              <Label Text="{Binding Title}" TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
+              <Label Text="{Binding Title}" Font="Bold" TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
                 </Label.GestureRecognizers>

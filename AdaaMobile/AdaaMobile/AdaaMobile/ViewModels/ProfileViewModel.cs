@@ -90,7 +90,7 @@ namespace AdaaMobile.ViewModels
             //Default Image for User profile
             Image = new FileImageSource()
             {
-                File = Device.OnPlatform("icon", "icon.png", "icon")//TODO:Change to actual default file
+				File = Device.OnPlatform("Icon-Small.png", "icon.png", "icon")//TODO:Change to actual default file
             };
 
             LoadCommand = new AsyncExtendedCommand(LoadAsync);
