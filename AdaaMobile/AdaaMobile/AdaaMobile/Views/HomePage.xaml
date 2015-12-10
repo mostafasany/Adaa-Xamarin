@@ -26,9 +26,10 @@
           <FormattedString>
             <Span Text="Welcome," FontSize="Medium"/>
             <Span Text="{x:Static system:Environment.NewLine}"/>
-            <Span Text="{Binding UserProfile.DisplayName}" FontSize="Large"/>
           </FormattedString>
         </Label.FormattedText>
+      </Label>
+    <Label Text="{Binding UserProfile.DisplayName}" FontSize="Large" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
       </Label>
     </StackLayout>
 

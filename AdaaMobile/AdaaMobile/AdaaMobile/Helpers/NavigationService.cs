@@ -15,7 +15,7 @@ namespace AdaaMobile.Helpers
         {
             try
             {
-                if (Application.Current.MainPage != null && App.Current.MainPage.GetType() == typeof(TPageType)) return false;
+                //if (Application.Current.MainPage != null && App.Current.MainPage.GetType() == typeof(TPageType)) return false;
                 Page displayPage = (Page)Activator.CreateInstance(pageType);
                 Application.Current.MainPage = displayPage;
                 return true;
