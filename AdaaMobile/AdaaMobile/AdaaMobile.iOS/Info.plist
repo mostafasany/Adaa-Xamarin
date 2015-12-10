@@ -23,7 +23,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>7.0</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.adaa.AdaaMobile</string>
 	<key>CFBundleVersion</key>
@@ -50,5 +50,10 @@
 	<string>Adaa</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ProximaNova-Regular.otf</string>
+		<string>ProximaNova-Semibold.otf</string>
+	</array>
 </dict>
 </plist>

@@ -17,6 +17,11 @@ namespace AdaaMobile.Views
             BindingContext = Locator.Container.Resolve<LoginViewModel>(
                 new TypedParameter(typeof(INavigation), Navigation));
    
+			LoginBtn.FontFamily = Device.OnPlatform (
+				"ProximaNova-Semibold",
+				null,
+				null
+			);
         }
     }
 }
