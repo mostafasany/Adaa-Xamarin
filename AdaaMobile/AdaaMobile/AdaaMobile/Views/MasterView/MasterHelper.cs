@@ -17,7 +17,8 @@ namespace AdaaMobile.Views.MasterView
 
             try
             {
-                Page displayPage = (Page)Activator.CreateInstance(pageType);
+                //Page displayPage = (Page)Activator.CreateInstance(pageType);
+                Page displayPage = (Page)CreatePage(pageType);
 
                 if (wrapInNavigation)
                 {
@@ -34,6 +35,27 @@ namespace AdaaMobile.Views.MasterView
             {
                 return null;
             }
+        }
+
+        private static Page CreatePage(Type pageType)
+        {
+            if (pageType == typeof(HomePage)) return new HomePage();
+            if (pageType == typeof(ProfilePage)) return new ProfilePage();
+            if (pageType == typeof(AttendancePage)) return new AttendancePage();
+            if (pageType == typeof(DirectoryPage)) return new DirectoryPage();
+            if (pageType == typeof(EServicesPage)) return new EServicesPage();
+            if (pageType == typeof(ForgetPasswordPage)) return new ForgetPasswordPage();
+            if (pageType == typeof(ITServiesPage)) return new ITServiesPage();
+            if (pageType == typeof(LoginPage)) return new LoginPage();
+            if (pageType == typeof(ITServiesPage)) return new ITServiesPage();
+            if (pageType == typeof(MyRequestsPage)) return new MyRequestsPage();
+            if (pageType == typeof(MyTasksPage)) return new MyTasksPage();
+            if (pageType == typeof(OracleServicesPage)) return new OracleServicesPage();
+            if (pageType == typeof(SettingsPage)) return new SettingsPage();
+            if (pageType == typeof(SignUpPage)) return new SignUpPage();
+            if (pageType == typeof(TimesheetPage)) return new TimesheetPage();
+            if (pageType == typeof(UserServicesPage)) return new UserServicesPage();
+            return new HomePage();
         }
     }
 }

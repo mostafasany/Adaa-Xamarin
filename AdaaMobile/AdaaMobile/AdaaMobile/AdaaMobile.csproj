@@ -76,6 +76,7 @@
     <Compile Include="Helpers\Interfaces\ILocalize.cs" />
     <Compile Include="Helpers\Interfaces\INavigationService.cs" />
     <Compile Include="Helpers\Interfaces\INetworkHelper.cs" />
+    <Compile Include="Helpers\LinkerIncludeFiles.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Helpers\SvgAssembly.cs" />

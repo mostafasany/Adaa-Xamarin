@@ -18,7 +18,7 @@ namespace AdaaMobile.Views.MasterView
             //Icon = Device.OnPlatform("menu", "menu.png", "menu");
             
             SetMenuPage();
-            Detail = MasterHelper.CreatePage(typeof(HomePage));
+            Detail = MasterHelper.CreatePage(typeof(ProfilePage));
 
 
         }
