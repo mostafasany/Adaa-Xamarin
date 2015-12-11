@@ -41,7 +41,7 @@ namespace AdaaMobile.Views
 			                            / (PagesPanel.ColumnCount);
             PagesPanel.ColumnWidth = itemWidth;
             //PagesPanel.ColumnHeight = itemWidth;
-
+           
             PagesPanel.BatchCommit();
 
         }

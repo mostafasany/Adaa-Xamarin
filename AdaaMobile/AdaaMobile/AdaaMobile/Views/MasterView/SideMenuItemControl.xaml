@@ -41,7 +41,7 @@
       </controls:SvgImage.ReplacementColors>
     </controls:SvgImage>
     <Label Grid.Column="2" TextColor="White" VerticalOptions="Center" VerticalTextAlignment="Center"
-           BackgroundColor="Transparent" FontSize="Medium"
+           BackgroundColor="Transparent" FontSize="Small"
     Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
 
   </Grid>

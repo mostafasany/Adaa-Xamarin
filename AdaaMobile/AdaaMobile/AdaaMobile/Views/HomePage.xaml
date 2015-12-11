@@ -135,10 +135,13 @@
                   </Grid.GestureRecognizers>
                 </controls:ExtendedGrid >
               </RelativeLayout>
-              <Label Text="{Binding Title}" Font="SemiBold" FontSize="Micro" TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
+              <Label Text="{Binding Title}" Font="SemiBold" TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
                 </Label.GestureRecognizers>
+              <Label.FontSize>
+                <OnPlatform x:TypeArguments="x:Double" WinPhone="Small" Android="Small" iOS="Micro"/>
+              </Label.FontSize>
               </Label>
             </StackLayout>
           </DataTemplate>
