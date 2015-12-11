@@ -19,6 +19,7 @@ namespace AdaaMobile.Views.MasterView
 
             _lastSelectedControl = HomeControl;
             _lastSelectedControl.IsSelected = true;
+			Icon = "menu.png";
         }
 
         private void SideMenuItemControl_OnTapped(object sender, EventArgs e)
