@@ -19,6 +19,7 @@ namespace AdaaMobile.Views
             BindingContext = _homeViewModel;
 
             SizeChanged += HomePage_SizeChanged;
+			Title = "Welcome,";
         }
 
         protected override void OnSizeAllocated(double width, double height)
@@ -36,8 +37,8 @@ namespace AdaaMobile.Views
             }
             //double minSide = Math.Min(Width, Height);
             //double maxSide = Math.Min(Width, Height);
-            double itemWidth = (Width - PagesPanel.Padding.Left - PagesPanel.Padding.Right - PagesPanel.ColumnSpacing * (PagesPanel.ColumnCount - 1))
-                               / (PagesPanel.ColumnCount);
+			double itemWidth = (Width - PagesPanel.Padding.Left - PagesPanel.Padding.Right - PagesPanel.ColumnSpacing * (PagesPanel.ColumnCount - 1))
+			                            / (PagesPanel.ColumnCount);
             PagesPanel.ColumnWidth = itemWidth;
             //PagesPanel.ColumnHeight = itemWidth;
 

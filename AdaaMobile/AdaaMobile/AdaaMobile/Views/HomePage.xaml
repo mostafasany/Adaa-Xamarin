@@ -20,16 +20,16 @@
     <!--Section Background-->
     <BoxView Grid.Row="0" Grid.RowSpan="2" BackgroundColor="{StaticResource AppBackgroundLight}"  />
     
-    <StackLayout Padding="8" Grid.Row="0">
-      <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
+    <StackLayout Padding="0" Grid.Row="0">
+<!--      <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
         <Label.FormattedText>
           <FormattedString>
             <Span Text="Welcome," FontSize="Medium"/>
             <Span Text="{x:Static system:Environment.NewLine}"/>
           </FormattedString>
         </Label.FormattedText>
-      </Label>
-    <Label Text="{Binding UserProfile.DisplayName}" FontSize="Large" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
+      </Label>-->
+    <Label Text="{Binding UserProfile.DisplayName}" Font="SemiBold" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
       </Label>
     </StackLayout>
 
@@ -46,8 +46,8 @@
                   />
 
     <!--User Circle Profile-->
-    <controls:CircleImage HeightRequest="90"
-                          WidthRequest="90"
+    <controls:CircleImage HeightRequest="70"
+                          WidthRequest="70"
                           BorderThickness="5"
                           BorderColor="{StaticResource YellowAccent}"
                           Grid.Row="1"
@@ -75,9 +75,9 @@
                        ItemSource="{Binding Pages}"
                        HorizontalOptions="Center"
                        VerticalOptions="Fill"
-                       ColumnSpacing="10"
+                       ColumnSpacing="20"
                        RowSpacing="20"
-                       Padding="10,0"
+                       Padding="50,0"
                        BackgroundColor="Transparent"
                              >
         <controls:ColumnsPanel.ItemTemplate>
@@ -113,7 +113,7 @@
                                       SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
                                       SvgPath="{Binding IconSource}"
                                       BackgroundColor="Transparent"
-                                      Percentage="0.4"
+                                      Percentage="0.3"
                                       HorizontalOptions="Center" VerticalOptions="Center">
                     <controls:SvgImage.ReplacementColors>
                       <controls:ColorPair OldColor="#FFFFFF" NewColor="{StaticResource YellowAccent}"></controls:ColorPair>
@@ -135,7 +135,7 @@
                   </Grid.GestureRecognizers>
                 </controls:ExtendedGrid >
               </RelativeLayout>
-              <Label Text="{Binding Title}" Font="Bold" TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
+              <Label Text="{Binding Title}" Font="SemiBold"  FontSize="Small" TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
                 </Label.GestureRecognizers>
