@@ -20,7 +20,7 @@ namespace AdaaMobile.Helpers
                 Application.Current.MainPage = displayPage;
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }

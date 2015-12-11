@@ -156,6 +156,10 @@ namespace AdaaMobile.Controls
                 }
                 return new SizeRequest(new Size(_lastMeasuredWidth, _lastMeasuredWidth), new Size(_lastMeasuredWidth, _lastMeasuredWidth));
             }
+            else if (WidthRequest > 0 && HeightRequest > 0)
+            {
+                return new SizeRequest(new Size(WidthRequest, HeightRequest), new Size(WidthRequest, HeightRequest));
+            }
             else
             {
                 return base.GetSizeRequest(widthConstraint, heightConstraint);
