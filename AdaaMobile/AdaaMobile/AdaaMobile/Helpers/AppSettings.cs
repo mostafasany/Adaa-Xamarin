@@ -9,11 +9,14 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Helpers
 {
-    public class AppSettings : IAppSettings
+	public class AppSettings : IAppSettings
     {
 
         private const string SelectedCultureKey = "SelectedCultureKey";
         private readonly string _selectedCultureDefault = "en-US";
+
+		private const string NextSelectedCultureKey = "NextSelectedCultureKey";
+		private readonly string _nextselectedCultureDefault = string.Empty;
 
         private const string UserTokenKey = "UserTokenKey";
         private readonly string _userTokenDefault = string.Empty;
@@ -27,6 +30,14 @@ namespace AdaaMobile.Helpers
             }
             set { CrossSettings.Current.AddOrUpdateValue(SelectedCultureKey, value); }
         }
+
+		public string NextSelectedCultureName {
+			get
+			{
+				return CrossSettings.Current.GetValueOrDefault(NextSelectedCultureKey, _nextselectedCultureDefault);
+			}
+			set { CrossSettings.Current.AddOrUpdateValue(NextSelectedCultureKey, value); }
+		}
 
         public bool IsCultureSet
         {
@@ -51,6 +62,8 @@ namespace AdaaMobile.Helpers
             }
             set { CrossSettings.Current.AddOrUpdateValue(UserTokenKey, value); }
         }
+
+	
 
         public string Language
         {

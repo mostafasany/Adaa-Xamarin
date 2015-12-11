@@ -38,6 +38,14 @@ namespace AdaaMobile.ViewModels
 			}
 		}
 
+		private string _SelectedLanguageName;
+		public string SelectedLanguageName
+		{
+			get { return _SelectedLanguageName; }
+			set { 
+				SetProperty(ref _SelectedLanguageName, value);
+			}
+		}
         #endregion
 
         #region Initialization
@@ -83,9 +91,14 @@ namespace AdaaMobile.ViewModels
 		{
 			if (value == 0) {
 				_appSettings.SelectedCultureName = "en-US";
+				SelectedLanguageName = "English";
+
 			} else {
 				_appSettings.SelectedCultureName = "ar-EG";
+				SelectedLanguageName = "العربية";
 			}
+			_dialogManager.DisplayAlert ("Language saved",
+				"please reopen the app to change the language", "");
 		}
         #endregion
 

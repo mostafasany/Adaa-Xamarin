@@ -45,7 +45,16 @@ namespace AdaaMobile.iOS
 			UIWindow  window = new UIWindow (UIScreen.MainScreen.Bounds);
 
 			//new AppSettings ().SelectedCultureName = "ar-EG";
-			string selectedCultureNAme = new AppSettings ().SelectedCultureName;
+
+
+
+
+			IAppSettings settings = new AppSettings ();
+			if (!string.IsNullOrEmpty (settings.NextSelectedCultureName)) {
+				settings.SelectedCultureName = settings.NextSelectedCultureName;
+				settings.NextSelectedCultureName = string.Empty;
+			}
+			string selectedCultureNAme = settings.SelectedCultureName;
 			//selectedCultureNAme = "ar-EG";
 			if (string.IsNullOrEmpty (selectedCultureNAme)) {
 				Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo (selectedCultureNAme);

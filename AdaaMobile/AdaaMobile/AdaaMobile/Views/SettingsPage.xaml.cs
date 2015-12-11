@@ -23,7 +23,21 @@ namespace AdaaMobile.Views
 
 			_settingsViewModel = Locator.Default.SettingsViewModel;
 			BindingContext = _settingsViewModel;
+			LanguageButton.Clicked+= LanguageButton_Clicked;
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.Tapped += TapGestureRecognizer_Tapped;
+			SelectedLanguageNameGrid.GestureRecognizers.Add(tapGestureRecognizer);
 
+        }
+
+        void TapGestureRecognizer_Tapped (object sender, EventArgs e)
+        {
+			LanguagePicker.Focus ();
+        }
+
+        void LanguageButton_Clicked (object sender, EventArgs e)
+        {
+			LanguagePicker.Focus ();
         }
 
         

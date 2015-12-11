@@ -17,5 +17,7 @@ namespace AdaaMobile.Helpers
         string Language { get; }
 
         bool IsCultureSet { get; }
+
+		string NextSelectedCultureName { get; set; }
     }
 }

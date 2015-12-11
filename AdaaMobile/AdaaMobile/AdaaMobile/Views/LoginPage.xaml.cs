@@ -22,6 +22,8 @@ namespace AdaaMobile.Views
 				null,
 				null
 			);
+
+
         }
     }
 }
