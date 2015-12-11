@@ -13,20 +13,33 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 </Grid.RowDefinitions>
 		<Image Grid.RowSpan="1" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
 		 <Image.Source>
-            <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="Default"/>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="loginbackground.png" Android="loginbackground.jpg" iOS="loginbackground.png"/>
           </Image.Source>
 		</Image>
 
-		<ScrollView Grid.Row="0">
-	<Grid  Padding="20,5,20,5" VerticalOptions="End" >
+		<ScrollView x:Name="MainScrollView" Grid.Row="0">
+	<Grid  Padding="20,5,20,5" VerticalOptions="Fill" >
 		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="5" />
 			<RowDefinition Height="Auto" />
-      <!--TODO Make it percentange-->
-      <RowDefinition Height="20" />
+			 <!--TODO Make it percentange-->
+      <RowDefinition Height="30" />
 		</Grid.RowDefinitions>
-		<controls:ExtendedGrid Grid.Row="0"  CornerRadius="3" HorizontalOptions="Fill"
+
+		<Grid Grid.Row="0" Padding="20,15,20,45" VerticalOptions="End" >
+		<Grid.RowDefinitions>
+			<RowDefinition Height="100" />
+			</Grid.RowDefinitions>
+			<Image  HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+		 <Image.Source>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="logo.png" Android="logo.png" iOS="logo.png"/>
+          </Image.Source>
+		</Image>
+     </Grid>
+
+		<controls:ExtendedGrid Grid.Row="1"  CornerRadius="3" HorizontalOptions="Fill"
                        BackgroundColor="White" Padding="8,6,8,6" >
 			<controls:ExtendedGrid.RowDefinitions>
 				<RowDefinition Height="40" />
@@ -39,8 +52,9 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 			<controls:ExtendedEntry   Grid.Row="2" HasBorder="false" PlaceholderTextColor="Gray"  BackgroundColor="White" TextColor="{StaticResource PurpleAccent}" Placeholder="{ext:Translate Password}" Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
 		</controls:ExtendedGrid>
 
-		<ActivityIndicator Grid.Row="3" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-		<Button x:Name="LoginBtn" Grid.Row="2" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+		<Button x:Name="LoginBtn" Grid.Row="3" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+		<ActivityIndicator Grid.Row="2" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+
 	</Grid>
 	</ScrollView>
 	</Grid>

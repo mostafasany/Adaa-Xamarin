@@ -3,6 +3,7 @@ using AdaaMobile.Common;
 using AdaaMobile.DataServices;
 using AdaaMobile.Helpers;
 using AdaaMobile.Views;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.ViewModels
 {
@@ -34,10 +35,19 @@ namespace AdaaMobile.ViewModels
 			get { return _SelectedLanguageIndex; }
 			set { 
 				SetProperty(ref _SelectedLanguageIndex, value);
+				if(_SelectedLanguageIndex != value)
 				UpdateLanguage (value);
 			}
 		}
 
+		private string _SelectedLanguageName;
+		public string SelectedLanguageName
+		{
+			get { return _SelectedLanguageName; }
+			set { 
+				SetProperty(ref _SelectedLanguageName, value);
+			}
+		}
         #endregion
 
         #region Initialization
@@ -54,8 +64,10 @@ namespace AdaaMobile.ViewModels
 
 			if (appSettings.SelectedCultureName == "en-us") {
 				_SelectedLanguageIndex = 0;
+				SelectedLanguageName = "English";
 			} else {
 				_SelectedLanguageIndex = 1;
+				SelectedLanguageName = "العربية";
 			}
 
         }
@@ -79,13 +91,18 @@ namespace AdaaMobile.ViewModels
         }
 
 
-		void UpdateLanguage (int value)
+		async void UpdateLanguage (int value)
 		{
 			if (value == 0) {
 				_appSettings.SelectedCultureName = "en-US";
+				SelectedLanguageName = "English";
+
 			} else {
 				_appSettings.SelectedCultureName = "ar-EG";
+				SelectedLanguageName = "العربية";
 			}
+			await _dialogManager.DisplayAlert ("Language saved",
+				"please reopen the app to change the language", AppResources.Ok);
 		}
         #endregion
 

@@ -36,8 +36,14 @@ namespace AdaaMobile.Droid
             SvgImageRenderer.Init();
             //Create new locator instance.
             var locator = new Locator();
+
+			IAppSettings settings = new AppSettings ();
+			if (!string.IsNullOrEmpty (settings.NextSelectedCultureName)) {
+				settings.SelectedCultureName = settings.NextSelectedCultureName;
+				settings.NextSelectedCultureName = string.Empty;
+			}
             //Get user selected culture from last run or default
-            string culture = new AppSettings().SelectedCultureName;
+			string culture = settings.SelectedCultureName;
             //Override system culture
             SetCulture(culture);
 

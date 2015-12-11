@@ -23,6 +23,7 @@ namespace AdaaMobile
 
             //MainPage = new AddaMasterPage();
             IAppSettings settings = Locator.Default.AppSettings;
+
             if (!settings.IsCultureSet)
             {
                 MainPage = new Views.ChooseLanguagePage();
