@@ -53,6 +53,7 @@
     <Compile Include="Converters\BoolToColorConverter.cs" />
     <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="Converters\EnumToBoolConverter.cs" />
+    <Compile Include="Converters\FontSizeExtendedConverter.cs" />
     <Compile Include="Converters\StringFormatConverter.cs" />
     <Compile Include="Converters\TruncateDecimalConverter.cs" />
     <Compile Include="Converters\VisibleNotEmptyConverter.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Helpers\AppSettings.cs" />
     <Compile Include="Helpers\DialogManager.cs" />
+    <Compile Include="Helpers\FontHelper.cs" />
     <Compile Include="Helpers\Interfaces\IAppSettings.cs" />
     <Compile Include="Helpers\Interfaces\IDialogManager.cs" />
     <Compile Include="Helpers\Interfaces\ILocalize.cs" />
