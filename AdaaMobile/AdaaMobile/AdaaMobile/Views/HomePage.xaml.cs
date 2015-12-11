@@ -19,7 +19,7 @@ namespace AdaaMobile.Views
             BindingContext = _homeViewModel;
 
             SizeChanged += HomePage_SizeChanged;
-			Title = "Welcome,";
+			//Title = "Welcome,";
         }
 
         protected override void OnSizeAllocated(double width, double height)

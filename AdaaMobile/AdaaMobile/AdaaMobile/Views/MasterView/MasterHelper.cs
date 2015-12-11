@@ -9,7 +9,7 @@ namespace AdaaMobile.Views.MasterView
 {
     public class MasterHelper
     {
-        private static readonly Color ActionBarBackgroundColor =(Color) App.Current.Resources["AppBackgroundLight"];
+        private static readonly Color ActionBarBackgroundColor = (Color)App.Current.Resources["AppBackgroundLight"];
         private static readonly Color ActionBarTextColor = Color.White;
 
         public static Page CreatePage<TPageType>(TPageType pageType, bool wrapInNavigation = true) where TPageType : Type
@@ -26,6 +26,12 @@ namespace AdaaMobile.Views.MasterView
                         BarBackgroundColor = ActionBarBackgroundColor,
                         BarTextColor = ActionBarTextColor
                     };
+
+                    ////Hide nav bar in home, to show Welcome message center aligned in all platforms
+                    //if (displayPage.GetType() == typeof(HomePage))
+                    //{
+                    //    NavigationPage.SetHasNavigationBar(displayPage, false);
+                    //}
                     return navPage;
                 }
                 return displayPage;

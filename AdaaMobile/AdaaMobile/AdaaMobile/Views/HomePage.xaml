@@ -21,14 +21,14 @@
     <BoxView Grid.Row="0" Grid.RowSpan="2" BackgroundColor="{StaticResource AppBackgroundLight}"  />
     
     <StackLayout Padding="0" Grid.Row="0">
-<!--      <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
+      <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
         <Label.FormattedText>
           <FormattedString>
             <Span Text="Welcome," FontSize="Medium"/>
-            <Span Text="{x:Static system:Environment.NewLine}"/>
+            <!--<Span Text="{x:Static system:Environment.NewLine}"/>-->
           </FormattedString>
         </Label.FormattedText>
-      </Label>-->
+      </Label>
     <Label Text="{Binding UserProfile.DisplayName}" Font="SemiBold" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
       </Label>
     </StackLayout>
