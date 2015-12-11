@@ -2,9 +2,13 @@
 
 namespace AdaaMobile.Models.Response
 {
-    [System.Xml.Serialization.XmlRoot(ElementName = "root", Namespace = "", IsNullable = false)]
+    //Used in ExceptionsResponse
+    [System.Xml.Serialization.XmlRoot(ElementName = "item", Namespace = "", IsNullable = false)]
     public class AttendanceException
     {
+        [XmlElement("Date")]
+        public string Date { get; set; }
+
         [XmlElement("msg")]
         public string Message { get; set; }
 
@@ -13,6 +17,9 @@ namespace AdaaMobile.Models.Response
 
         [XmlElement("Remaining")]
         public string Remaining { get; set; }
+
+        [XmlElement("Duration")]
+        public string Duration { get; set; }
 
         [XmlElement("FirstSeenLoc")]
         public string FirstSeenLoc { get; set; }

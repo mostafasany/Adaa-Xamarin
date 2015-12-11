@@ -103,24 +103,11 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<GetExceptionsRepsonse>> GetAttendanceExceptionsAsync(ExceptionsQParameter parameters, CancellationToken? token = null)
         {
-            //parameters.Server = Server;
-            //var request = _requestFactory();
-            //request.RequestUrl = BaseUrl.AppendQueryString(parameters);
-            //request.ResultContentType = ContentType.Xml;
-            //return await request.GetAsync<GetExceptionsRepsonse>(token);
-            //TODO:Change when implemented in Backend
-            return new ResponseWrapper<GetExceptionsRepsonse>()
-            {
-                ResponseStatus = ResponseStatus.SuccessWithResult,
-                Result = new GetExceptionsRepsonse()
-                {
-                    ExceptionDays = new ExceptionDay[] {
-                        new ExceptionDay(){ Date =DateTime.Now.Subtract(TimeSpan.FromDays(4))},
-                        new ExceptionDay(){ Date =DateTime.Now.Subtract(TimeSpan.FromDays(3))},
-                        new ExceptionDay(){ Date =DateTime.Now.Subtract(TimeSpan.FromDays(1))},
-                    }
-                }
-            };
+            parameters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetExceptionsRepsonse>(token);
         }
 
         public async Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(ExceptionDetailsQParamters parameters, CancellationToken? token = null)
