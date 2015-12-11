@@ -76,6 +76,7 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
     VerticalOptions="Fill" >
     <Button 
     x:Name="LanguageButton" BackgroundColor="Transparent"
+    BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
       HorizontalOptions="Start"
     VerticalOptions="Fill" 
     Text="Choose language" TextColor="Black" Font="SemiBold"
@@ -85,8 +86,9 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
     </Grid>
        <Grid x:Name="SelectedLanguageNameGrid" Padding="5,0,0,0" Grid.Row="2" HorizontalOptions="Fill"
     VerticalOptions="Fill" >
-    <Label  x:Name="SelectedLanguageNameLabel" HorizontalOptions="Fill"
-    VerticalOptions="Fill"  Text="{Binding SelectedLanguageName}" TextColor="{StaticResource AppBackgroundDark}" />
+    <Button  x:Name="SelectedLanguageNameLabel" HorizontalOptions="Start" BackgroundColor="Transparent"
+    VerticalOptions="Fill" BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
+      Text="{Binding SelectedLanguageName}" TextColor="{StaticResource AppBackgroundDark}" />
     </Grid>
     </controls:ExtendedGrid>
 
