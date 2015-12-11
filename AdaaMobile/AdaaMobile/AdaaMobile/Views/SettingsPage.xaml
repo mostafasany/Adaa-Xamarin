@@ -63,7 +63,7 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
                     </Label>-->
                     </Grid>
       <Picker x:Name="LanguagePicker"   BackgroundColor="Transparent" 
-      		Grid.Row="1" SelectedIndex="{Binding SelectedLanguageIndex}" HorizontalOptions="Fill"
+      		Grid.Row="1"  HorizontalOptions="Fill"
       		 WidthRequest="0" HeightRequest="0" IsVisible= "false"
               >
         <Picker.Items>

@@ -34,9 +34,10 @@ namespace AdaaMobile.ViewModels
 		{
 			get { return _SelectedLanguageIndex; }
 			set { 
+//				if(_SelectedLanguageIndex != value)
+//					UpdateLanguage (value);
 				SetProperty(ref _SelectedLanguageIndex, value);
-				if(_SelectedLanguageIndex != value)
-				UpdateLanguage (value);
+
 			}
 		}
 
@@ -91,7 +92,7 @@ namespace AdaaMobile.ViewModels
         }
 
 
-		async void UpdateLanguage (int value)
+		public async void UpdateLanguage (int value)
 		{
 			if (value == 0) {
 				_appSettings.SelectedCultureName = "en-US";

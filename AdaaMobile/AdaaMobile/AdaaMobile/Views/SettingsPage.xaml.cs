@@ -29,6 +29,26 @@ namespace AdaaMobile.Views
 //			SelectedLanguageNameGrid.GestureRecognizers.Add(tapGestureRecognizer);
 //			SelectedLanguageNameLabel.GestureRecognizers.Add(tapGestureRecognizer);
 			SelectedLanguageNameLabel.Clicked += SelectedLanguageNameLabel_Clicked;
+
+			//LanguagePicker.SelectedIndexChanged += LanguagePicker_SelectedIndexChanged;
+			LanguagePicker.Unfocused += LanguagePicker_Unfocused;
+			LanguagePicker.SelectedIndex = _settingsViewModel.SelectedLanguageIndex;
+
+        }
+
+        void LanguagePicker_Unfocused (object sender, FocusEventArgs e)
+        {
+			if (LanguagePicker.SelectedIndex != _settingsViewModel.SelectedLanguageIndex) {
+				_settingsViewModel.SelectedLanguageIndex = LanguagePicker.SelectedIndex;
+				_settingsViewModel.UpdateLanguage (LanguagePicker.SelectedIndex);
+			}
+        }
+
+        void LanguagePicker_SelectedIndexChanged (object sender, EventArgs e)
+        {
+			_settingsViewModel.UpdateLanguage (LanguagePicker.SelectedIndex);
+			LanguagePicker.Unfocus ();
+
         }
 
         void SelectedLanguageNameLabel_Clicked (object sender, EventArgs e)
