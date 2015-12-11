@@ -24,11 +24,15 @@ namespace AdaaMobile.Views.MasterView
 
         private void SideMenuItemControl_OnTapped(object sender, EventArgs e)
         {
+            
             //OnOnItemTapped();//This will be used in Master details page to set IsPresented to false
-            (App.Current.MainPage as MasterDetailPage).IsPresented = false;
-            var selectedControl = sender as SideMenuItemControl;
+            var masterDetailPage = Application.Current.MainPage as MasterDetailPage;
+            if (masterDetailPage != null) masterDetailPage.IsPresented = false;
 
+            var selectedControl = sender as SideMenuItemControl;
+            
             if (selectedControl == null || !(selectedControl.BindingContext is Type)) return;
+            //AnimateControl(selectedControl);
             if (!selectedControl.IsPageSupported)
             {
                 return;//Page is not supported in this current release build
@@ -43,6 +47,13 @@ namespace AdaaMobile.Views.MasterView
             //set last selected to item
             _lastSelectedControl = selectedControl;
             Locator.Default.NavigationService.SetMasterDetailsPage(pageType);
+        }
+
+        private async void AnimateControl(SideMenuItemControl selectedControl)
+        {
+            selectedControl.Opacity = .5;
+            await Task.Delay(400);
+            selectedControl.Opacity = 1;
         }
 
         public event EventHandler ItemTapped;
