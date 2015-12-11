@@ -85,7 +85,7 @@
                        VerticalOptions="Fill"
                        ColumnSpacing="20"
                        RowSpacing="12"
-                       Padding="35,0"
+                       Padding="35,2"
                        BackgroundColor="Transparent"
                              >
         <controls:ColumnsPanel.ItemTemplate>
