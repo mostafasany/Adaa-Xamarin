@@ -18,7 +18,7 @@
     <MandroidI18n />
     <JavaMaximumHeapSize>
     </JavaMaximumHeapSize>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidLinkMode>None</AndroidLinkMode>
@@ -175,6 +175,9 @@
     <AndroidResource Include="Resources\drawable\profile.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\timesheet.png" />
+    <AndroidResource Include="Resources\drawable\date.png" />
+    <AndroidResource Include="Resources\drawable\daypass.png" />
+    <AndroidResource Include="Resources\drawable\delegation.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\HomeItemIcon.png" />
