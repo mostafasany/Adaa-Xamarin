@@ -94,7 +94,9 @@
                   ImageWidthRequest="25"
                   VerticalOptions="End"
                   HeightRequest="40"
-                  BackgroundColor="White"
+                  BackgroundColor="{StaticResource AppBackgroundLight}"
+                  TextColor="White"
+
                 >
             <controls:ImageButton.Source>
               <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="date.png" iOS="date.png"/>
@@ -124,7 +126,9 @@
                     VerticalOptions="End"
                     ImageWidthRequest="25"
                     FontSize="Small"
-                    BackgroundColor="White"
+                                     BackgroundColor="{StaticResource AppBackgroundLight}"
+                                     TextColor = "White"
+
                     HeightRequest="40"
                 >
             <controls:ImageButton.Source>
