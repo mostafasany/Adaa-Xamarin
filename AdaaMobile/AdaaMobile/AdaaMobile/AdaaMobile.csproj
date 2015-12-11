@@ -94,10 +94,9 @@
     <Compile Include="Plugins\Connectivity\CrossConnectivity.cs" />
     <Compile Include="Plugins\Connectivity\IConnectivity.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="Views\MasterView\MasterHelper.cs" />
-    <Compile Include="Views\MasterView\MenuCell.cs" />
-    <Compile Include="Views\MasterView\MenuListView.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="MarkupExtensions\TranslateExtension.cs" />
     <Compile Include="Models\AdaaPageItem.cs" />
@@ -137,7 +136,12 @@
     <Compile Include="Views\MasterView\AddaMasterPage.xaml.cs">
       <DependentUpon>AddaMasterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterView\MenuPage.cs" />
+    <Compile Include="Views\MasterView\MasterMenuPage.xaml.cs">
+      <DependentUpon>MasterMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterView\SideMenuItemControl.xaml.cs">
+      <DependentUpon>SideMenuItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MyRequestsPage.xaml.cs">
       <DependentUpon>MyRequestsPage.xaml</DependentUpon>
     </Compile>
@@ -375,6 +379,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ProfilePropertyControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterView\SideMenuItemControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterView\MasterMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
