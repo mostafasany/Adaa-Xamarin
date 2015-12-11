@@ -24,7 +24,7 @@ namespace AdaaMobile.CustomRenderers
         /// <summary>
         /// The padding to use in the control.
         /// </summary>
-        private const int CONTROL_PADDING = 2;
+        private const int CONTROL_PADDING = 3;
 
         /// <summary>
         /// Identifies the iPad.
@@ -169,8 +169,8 @@ namespace AdaaMobile.CustomRenderers
             }
             else
             {
-                titleInsets = new UIEdgeInsets(heightRequest, Convert.ToInt32(-1 * widthRequest / 2), -1 * heightRequest, Convert.ToInt32(widthRequest / 2));
-                imageInsets = new UIEdgeInsets(0, titleWidth / 2, 0, -1 * titleWidth / 2);
+                titleInsets = new UIEdgeInsets(heightRequest +3, Convert.ToInt32(-1 * widthRequest / 2), -1 * heightRequest, Convert.ToInt32(widthRequest / 2)+3);
+                imageInsets = new UIEdgeInsets(3, titleWidth / 2 , 0, -1 * titleWidth / 2 + 3);
             }
 
             targetButton.TitleEdgeInsets = titleInsets;

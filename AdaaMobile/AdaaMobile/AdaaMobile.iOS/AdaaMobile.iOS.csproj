@@ -173,6 +173,9 @@
     <BundleResource Include="Resources\settings.png" />
     <BundleResource Include="Resources\timesheet.png" />
     <BundleResource Include="Resources\attendance_icn.png" />
+    <BundleResource Include="Resources\date.png" />
+    <BundleResource Include="Resources\daypass.png" />
+    <BundleResource Include="Resources\delegation.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
