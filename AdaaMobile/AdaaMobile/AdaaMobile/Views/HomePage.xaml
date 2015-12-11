@@ -7,7 +7,7 @@
              x:Name="MainWindow"
              x:Class="AdaaMobile.Views.HomePage">
   <ContentPage.BackgroundImage>
-    <OnPlatform x:TypeArguments="x:String" WinPhone="home_black.jpg" Android="home_black.jpg" iOS="home-black"/>
+    <OnPlatform x:TypeArguments="x:String" WinPhone="home_black.jpg" Android="home_black.jpg" iOS="homeblack"/>
   </ContentPage.BackgroundImage>
   <Grid x:Name="HRelativeLayout">
     <Grid.RowDefinitions>
@@ -17,14 +17,22 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
+
+    <Image x:Name="iosBackgroundImage" IsVisible = "false" Grid.RowSpan="4" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+		 <Image.Source>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="home_black.jpg" Android="home_black.jpg" iOS="homeblack"/>
+          </Image.Source>
+		</Image>
+
+
     <!--Section Background-->
     <BoxView Grid.Row="0" Grid.RowSpan="2" BackgroundColor="{StaticResource AppBackgroundLight}"  />
     
     <StackLayout Padding="0" Grid.Row="0">
-      <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
+      <Label x:Name="WelcomeLabel" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" IsVisible="false" >
         <Label.FormattedText>
           <FormattedString>
-            <Span Text="Welcome," FontSize="Medium"/>
+            <Span Text="Welcome," FontSize="Medium" Font="SemiBold"/>
             <!--<Span Text="{x:Static system:Environment.NewLine}"/>-->
           </FormattedString>
         </Label.FormattedText>
@@ -76,7 +84,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Fill"
                        ColumnSpacing="20"
-                       RowSpacing="16"
+                       RowSpacing="12"
                        Padding="35,0"
                        BackgroundColor="Transparent"
                              >

@@ -18,6 +18,16 @@ namespace AdaaMobile.Views
             _homeViewModel = Locator.Container.Resolve<HomeViewModel>();
             BindingContext = _homeViewModel;
 
+
+			if (Device.OS == TargetPlatform.iOS) {
+				Title = "Welcome,";
+				WelcomeLabel.IsVisible = false;
+				iosBackgroundImage.IsVisible = true;
+			} else {
+				Title = "";
+				WelcomeLabel.IsVisible = true;
+				iosBackgroundImage.IsVisible = false;
+			}
             SizeChanged += HomePage_SizeChanged;
 			//Title = "Welcome,";
         }

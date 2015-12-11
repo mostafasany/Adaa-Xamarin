@@ -153,8 +153,6 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\splashscreen.jpg" />
     <BundleResource Include="Resources\HomeItemIcon.png" />
-    <BundleResource Include="Resources\home-black-568h%402x.png" />
-    <BundleResource Include="Resources\home-black%402x.png" />
     <BundleResource Include="Resources\home-white-568h%402x.png" />
     <BundleResource Include="Resources\home-white%402x.png" />
     <BundleResource Include="Resources\menu.png" />
@@ -176,6 +174,9 @@
     <BundleResource Include="Resources\date.png" />
     <BundleResource Include="Resources\daypass.png" />
     <BundleResource Include="Resources\delegation.png" />
+    <BundleResource Include="Resources\homeblack.png" />
+    <BundleResource Include="Resources\homeblack%402x.png" />
+    <BundleResource Include="Resources\homeblack-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
