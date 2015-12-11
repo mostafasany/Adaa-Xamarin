@@ -127,8 +127,7 @@ namespace AdaaMobile.Views
             }
             else
             {
-                //Load Exceptiojn details
-                _attendanceViewModel.LoadExceptionDetailsCommand.Execute(null);
+                //Binding is happening through Selected day
             }
         }
 

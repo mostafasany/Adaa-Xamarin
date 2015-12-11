@@ -14,15 +14,8 @@ namespace AdaaMobile.Models.Response
         [XmlElement("msg")]
         public string Message { get; set; }
 
-        [XmlElement("Item")]
-        public ExceptionDay[] ExceptionDays { get; set; }
+        [XmlElement("item")]
+        public AttendanceException[] ExceptionDays { get; set; }
     }
 
-    public class ExceptionDay
-    {
-        [XmlElement("RawDate")]
-        public string RawDate { get; set; }
-
-        public DateTime Date { get; set; }
-    }
 }
