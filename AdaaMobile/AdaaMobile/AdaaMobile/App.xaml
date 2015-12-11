@@ -17,7 +17,7 @@
       </Style>
 
       <!--Update Value-->
-      <Color x:Key="AppBackgroundDark" >#FF003438</Color>
+      <Color x:Key="AppBackgroundDark" >#FF007c85</Color>
       <Color x:Key="AppBackgroundLight" >#FF007c85</Color>
       <Color x:Key="YellowAccent" >#FFe9bf04</Color>
       <Color  x:Key="PurpleAccent"> #FF007c85 </Color>

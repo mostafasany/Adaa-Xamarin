@@ -46,7 +46,7 @@
 
           <Button Text="{ext:Translate Attendance}"
               Grid.Column="0"
-              BorderColor="{StaticResource AppBackgroundDark}"
+              BorderColor="{StaticResource PurpleAccent}"
               BorderWidth="1"
               BorderRadius="0"
               x:Name="AttendanceButton"
@@ -58,7 +58,7 @@
               Grid.Column="1"
               BorderWidth="1"
               BorderRadius="0"
-              BorderColor="{StaticResource AppBackgroundDark}"
+              BorderColor="{StaticResource PurpleAccent}"
               x:Name="ExceptionsButton"
               Clicked="OnTabTapped"/>
         </Grid>

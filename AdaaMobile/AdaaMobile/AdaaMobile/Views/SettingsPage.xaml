@@ -9,7 +9,7 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
 
   <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
     <Grid.RowDefinitions>
-      <RowDefinition Height="60"/>
+      <RowDefinition Height="10"/>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
@@ -46,7 +46,7 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
    
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
-        <RowDefinition Height="10" />
+        <RowDefinition Height="20" />
       </Grid.RowDefinitions>
                   <controls:RoundedBoxView
                   BackgroundColor="#22007c85"
@@ -61,7 +61,7 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
                     <Label Text="Language" TextColor="Black" HorizontalOptions="Fill" >
                     </Label>
                     </Grid>
-      <Picker x:Name="LanguagePicker"  BackgroundColor="Transparent" Grid.Row="1" SelectedIndex="{Binding SelectedLanguageIndex}" HorizontalOptions="Fill">
+      <Picker x:Name="LanguagePicker"   BackgroundColor="Transparent" Grid.Row="1" SelectedIndex="{Binding SelectedLanguageIndex}" HorizontalOptions="Fill">
         <Picker.Items>
             <x:String>English</x:String> 
             <x:String>العربية</x:String>
@@ -70,7 +70,7 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
     </controls:ExtendedGrid>
 
       <ActivityIndicator Grid.Row="1" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-      <Button BorderColor="#44007c85" BorderWidth="1" BackgroundColor="#22007c85" Grid.Row="2" Text="{ext:Translate Logout}" Command="{Binding LogoutCommand}" TextColor="White" Style="{StaticResource ButtonDefaultStyle}" />
+      <Button BorderColor="#44007c85" BorderWidth="2" BackgroundColor="#22007c85" Grid.Row="2" Text="{ext:Translate Logout}" Command="{Binding LogoutCommand}" TextColor="White" Style="{StaticResource ButtonDefaultStyle}" />
       <!--        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>-->
       <!--        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>-->
     </Grid>
