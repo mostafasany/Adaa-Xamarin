@@ -71,7 +71,8 @@ namespace AdaaMobile.Views.MasterView
             if (handler != null) handler(this, EventArgs.Empty);
         }
 
-        private void OnGridTapped(object sender, EventArgs e)
+
+        private void Button_OnClicked(object sender, EventArgs e)
         {
             OnTapped();
         }

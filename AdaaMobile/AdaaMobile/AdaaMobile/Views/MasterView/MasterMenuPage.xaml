@@ -11,8 +11,8 @@
   <ContentPage.Resources>
     <ResourceDictionary>
       <x:Double x:Key="ExtraSpace">3</x:Double>
-      <x:Double x:Key="InnerStackSpacing">12</x:Double>
-      <Thickness x:Key="InnerStackPadding" Top="15" Bottom="15"/>
+      <x:Double x:Key="InnerStackSpacing">8</x:Double>
+      <Thickness x:Key="InnerStackPadding" Top="10" Bottom="10"/>
     </ResourceDictionary>
   </ContentPage.Resources>
   <ScrollView>
