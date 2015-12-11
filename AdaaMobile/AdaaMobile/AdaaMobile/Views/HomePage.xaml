@@ -12,8 +12,8 @@
   <Grid x:Name="HRelativeLayout">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
-      <RowDefinition Height="40"/>
-      <RowDefinition Height="40"/>
+      <RowDefinition Height="35"/>
+      <RowDefinition Height="35"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
@@ -77,7 +77,7 @@
                        VerticalOptions="Fill"
                        ColumnSpacing="20"
                        RowSpacing="20"
-                       Padding="50,0"
+                       Padding="40,0"
                        BackgroundColor="Transparent"
                              >
         <controls:ColumnsPanel.ItemTemplate>
@@ -135,7 +135,7 @@
                   </Grid.GestureRecognizers>
                 </controls:ExtendedGrid >
               </RelativeLayout>
-              <Label Text="{Binding Title}" Font="SemiBold"  FontSize="Small" TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
+              <Label Text="{Binding Title}" Font="SemiBold" FontSize="Micro" TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
                 </Label.GestureRecognizers>
