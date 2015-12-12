@@ -34,6 +34,8 @@ namespace AdaaMobile.iOS
             LoadApplication(new App(new Locator()));
 
 			Insights.Initialize ("b2655f07a3c842df659dcf2532c519804a88ec7d");
+
+		
             return base.FinishedLaunching(app, options);
 
         }
@@ -43,8 +45,6 @@ namespace AdaaMobile.iOS
             //SetLanaguge(new AppSettings().SelectedCultureName);
 			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
 			UIWindow  window = new UIWindow (UIScreen.MainScreen.Bounds);
-
-			//new AppSettings ().SelectedCultureName = "ar-EG";
 
 
 
@@ -60,6 +60,8 @@ namespace AdaaMobile.iOS
 				Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo (selectedCultureNAme);
 				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo (selectedCultureNAme);
 			}
+
+
 
 			//			viewController = new StartingLanguageViewcontroller ();
 			//			UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle ("app_bar.png"), UIBarMetrics.Default);

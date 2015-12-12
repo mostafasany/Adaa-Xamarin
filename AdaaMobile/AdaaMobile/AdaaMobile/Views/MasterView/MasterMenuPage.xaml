@@ -11,11 +11,13 @@
   <ContentPage.Resources>
     <ResourceDictionary>
       <x:Double x:Key="ExtraSpace">3</x:Double>
-      <x:Double x:Key="InnerStackSpacing">8</x:Double>
-      <Thickness x:Key="InnerStackPadding" Top="10" Bottom="10"/>
+      <x:Double x:Key="InnerStackSpacing">6</x:Double>
+      <Thickness x:Key="InnerStackPadding" Top="6" Bottom="6"/>
     </ResourceDictionary>
   </ContentPage.Resources>
   <ScrollView>
+
+   <StackLayout VerticalOptions="End" HorizontalOptions="Fill" BackgroundColor="Transparent" Padding="0,30,0,10">
     <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent">
 
       <StackLayout Spacing="{StaticResource InnerStackSpacing}" 
@@ -87,6 +89,7 @@
                   VerticalOptions="Start" HorizontalOptions="Fill"
                   BindingContext="{x:Type views:SettingsPage}" IsPageSupported="True"/>
       </StackLayout>
+    </StackLayout>
     </StackLayout>
   </ScrollView>
 </ContentPage>
