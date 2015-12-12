@@ -16,6 +16,8 @@ namespace AdaaMobile.Helpers
         /// <param name="pageType"></param>
         bool SetAppCurrentPage<TPageType>(TPageType pageType) where TPageType : Type;
 
+
+		bool NavigateToPage<TPageType>(TPageType pageType) where TPageType : Type;
         /// <summary>
         /// This will try to set details page in master,
         /// It will fail if the current page isn't master.

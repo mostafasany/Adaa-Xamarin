@@ -139,7 +139,7 @@ namespace AdaaMobile.ViewModels
         #region Methods
         private async Task DoNavigateToChangePassword()
         {
-            _navigationService.SetAppCurrentPage(typeof(ChangePasswordPage));
+			_navigationService.SetMasterDetailsPage(typeof(ChangePasswordPage));
         }
 
         private async Task UnlockMyAccountAsync()

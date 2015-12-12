@@ -16,7 +16,7 @@ namespace AdaaMobile.Views
         public UserServicesPage()
         {
             InitializeComponent();
-            _userServicesViewModel = Locator.Container.Resolve<UserAccountServicesViewModel>();
+			_userServicesViewModel = Locator.Default.UserAccountServicesViewModel;
             BindingContext = _userServicesViewModel;
 
 

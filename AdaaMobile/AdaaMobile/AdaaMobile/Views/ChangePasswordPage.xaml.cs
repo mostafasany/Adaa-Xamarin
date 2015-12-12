@@ -17,15 +17,17 @@ namespace AdaaMobile.Views
         public ChangePasswordPage()
         {
             InitializeComponent();
-            _changePasswordModel = Locator.Container.Resolve<ChangePasswordViewModel>();
+			_changePasswordModel = Locator.Default.ChangePasswordViewModel;
             BindingContext = _changePasswordModel;
 
+			Title = "Change Password";
             Action action = () =>
             {
                 _changePasswordModel.ChangePasswordCommand.Execute(null);
             };
             ToolbarItems.Add(
-                new ToolbarItem(AppResources.Save, "icon.png", action, ToolbarItemOrder.Primary));
+				new ToolbarItem(AppResources.Save, "date.png", action, ToolbarItemOrder.Primary));
+			
             //Work-around for iOS for cut-images
             if (Device.OS == TargetPlatform.iOS)
             {
@@ -37,5 +39,19 @@ namespace AdaaMobile.Views
             }
 
         }
+
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+//			var master = Application.Current.MainPage as MasterDetailPage;
+//			if (master != null) {
+//				Action action = () =>
+//				{
+//					_changePasswordModel.ChangePasswordCommand.Execute(null);
+//				};
+//				master.ToolbarItems.Add(
+//					new ToolbarItem(AppResources.Save, "icon.png", action, ToolbarItemOrder.Primary));
+//			}
+		}
     }
 }

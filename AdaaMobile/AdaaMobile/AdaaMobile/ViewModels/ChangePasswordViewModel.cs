@@ -109,7 +109,7 @@ namespace AdaaMobile.ViewModels
                 {
                     await _dialogManager.DisplayAlert(AppResources.Alert, AppResources.PassAndConfirmPassAreNotEqual, AppResources.Ok);
                 }
-                else if (IsTextContainSpecialCharacters(NewPassword))
+				else if (!IsValaidPassword(NewPassword))
                 {
                     await _dialogManager.DisplayAlert(AppResources.Alert, AppResources.PassShouldnotContainSpecialChars, AppResources.Ok);
                 }
@@ -143,16 +143,16 @@ namespace AdaaMobile.ViewModels
             }
             finally
             {
-                LoadCommand.CanExecute = true;
+				ChangePasswordCommand.CanExecute = true;
                 IsBusy = false;
             }
         }
 
 
 
-        private bool IsTextContainSpecialCharacters(string value)
+        private bool IsValaidPassword(string value)
         {
-            var regexItem = new Regex("^[a-zA-Z0-9 ]*$");
+			var regexItem = new Regex(@"^[a-z0-9.@#$\-]+$");
 
             return regexItem.IsMatch(value);
         }
