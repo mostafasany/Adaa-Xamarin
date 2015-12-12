@@ -96,11 +96,14 @@
                   ImageHeightRequest="25"
                   ImageWidthRequest="25"
                   VerticalOptions="End"
-                  HeightRequest="35"
                   BackgroundColor="{StaticResource AppBackgroundNormal}"
                   TextColor="White"
 
                 >
+                <controls:ImageButton.HeightRequest>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="34"/>
+            </controls:ImageButton.HeightRequest>
+
             <controls:ImageButton.Source>
               <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="date.png" iOS="date.png"/>
             </controls:ImageButton.Source>
@@ -132,8 +135,10 @@
                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                     BackgroundColor="{StaticResource AppBackgroundNormal}"
                     TextColor = "White"
-                    HeightRequest="35"
                 >
+                <controls:ImageButton.HeightRequest>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="34"/>
+            </controls:ImageButton.HeightRequest>
             <controls:ImageButton.Source>
               <OnPlatform x:TypeArguments="ImageSource" WinPhone="date.png" Android="date.png" iOS="date.png"/>
             </controls:ImageButton.Source>
