@@ -32,7 +32,7 @@ namespace AdaaMobile.Helpers
 			{
 				//if (Application.Current.MainPage != null && App.Current.MainPage.GetType() == typeof(TPageType)) return false;
 				Page displayPage = (Page)Activator.CreateInstance(pageType);
-				Application.Current.MainPage.Navigation.PushAsync( displayPage);
+				(Application.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync( displayPage);
 				return true;
 			}
 			catch (Exception ex)

@@ -116,7 +116,7 @@ namespace AdaaMobile.ViewModels
 
         private void DoNavigateToChangePassword()
         {
-            _navigationService.SetMasterDetailsPage(typeof(ChangePasswordPage));
+			_navigationService.NavigateToPage(typeof(ChangePasswordPage));
         }
 
         private async Task UnlockMyAccountAsync()

@@ -19,7 +19,7 @@ namespace AdaaMobile.Views
             _userServicesViewModel = Locator.Default.UserAccountServicesViewModel;
             BindingContext = _userServicesViewModel;
 
-
+			Title = "User Account Services";
             //Work-around for iOS for cut-images
             if (Device.OS == TargetPlatform.iOS)
             {
