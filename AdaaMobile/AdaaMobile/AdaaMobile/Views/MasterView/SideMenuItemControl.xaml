@@ -35,8 +35,8 @@
                           SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
                           SvgPath="{Binding Svg,Source={x:Reference ParentView}}"
                           BackgroundColor="Transparent"
-                          HeightRequest="30"
-                          WidthRequest="30"
+                          HeightRequest="24"
+                          WidthRequest="24"
                           Grid.Column="1"
                           Percentage="0"
                           HorizontalOptions="Center" VerticalOptions="Center">
