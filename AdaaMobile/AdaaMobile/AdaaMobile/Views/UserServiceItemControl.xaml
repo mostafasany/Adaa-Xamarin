@@ -13,14 +13,15 @@
     </ResourceDictionary>
   </ContentView.Resources>
   <Grid  Padding="15,0" >
-    <Button  VerticalOptions="Fill"  HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}"
-            Text="" TextColor="Transparent" BackgroundColor="{StaticResource AppBackgroundSemi}"
+    <Button x:Name="MainBtn"  VerticalOptions="Fill"  HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}"
+            Text="" TextColor="Transparent" BackgroundColor="#cc007c85"
             Clicked="Button_OnClicked">
 
     </Button>
 
     <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
                            VerticalOptions="Start" HeightRequest="70"
+
                            CornerRadius="{StaticResource CornerRadius}" 
                            >
       <Grid.ColumnDefinitions>
