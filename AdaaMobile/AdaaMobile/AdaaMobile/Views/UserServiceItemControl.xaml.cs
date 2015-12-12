@@ -10,6 +10,9 @@ namespace AdaaMobile.Views.MasterView
         public UserServiceItemControl()
         {
             InitializeComponent();
+			if (Device.OS == TargetPlatform.iOS) {
+				MainBtn.BorderRadius = 10;
+			}
         }
 
         #region Title p
