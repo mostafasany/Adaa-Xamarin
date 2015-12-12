@@ -21,6 +21,7 @@
 
     <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
                            VerticalOptions="Start" HeightRequest="70"
+
                            CornerRadius="{StaticResource CornerRadius}" 
                            >
       <Grid.ColumnDefinitions>

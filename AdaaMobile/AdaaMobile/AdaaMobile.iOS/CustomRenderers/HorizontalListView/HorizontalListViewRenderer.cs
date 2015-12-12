@@ -58,6 +58,7 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
                 _collectionView.AllowsMultipleSelection = false;
                 _collectionView.SelectionEnable = false;//Not in the plan currently
 
+				_collectionView.ShowsHorizontalScrollIndicator = false;
                 _collectionView.BackgroundColor = Element.BackgroundColor.ToUIColor();
 				_collectionView.ItemSize = new CoreGraphics.CGSize((float)110, (float)72);
 //                _collectionView.ItemSize = new CoreGraphics.CGSize((float)Element.ItemWidth, (float)Element.ItemHeight);
