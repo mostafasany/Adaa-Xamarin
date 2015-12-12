@@ -30,12 +30,12 @@
     <masterView:UserServiceItemControl Grid.Row="1"
                                        Title="{ext:Translate ChangeLaptopPass}"
                                        Message="{Binding PasswordStatus}"
-                                       IndicatorColor="Red"
+                                       IndicatorColor="{Binding PasswordColor}"
                                        Command="{Binding  NavigateToChangePasswordCommand}" />
     <masterView:UserServiceItemControl Grid.Row="2"
                                        Title="{ext:Translate UnlockLaptopAccount}"
                                        Message="{Binding AccountStatus}"
-                                       IndicatorColor="Green"
+                                       IndicatorColor="{Binding AccountColor}"
                                        Command="{Binding  UnlockMyAccountCommand}" />
 
     <ActivityIndicator  IsRunning="{Binding IsBusy}"

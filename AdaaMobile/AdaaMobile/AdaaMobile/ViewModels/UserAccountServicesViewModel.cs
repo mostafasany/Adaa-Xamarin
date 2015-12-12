@@ -24,8 +24,8 @@ namespace AdaaMobile.ViewModels
         private readonly IDialogManager _dialogManager;
 
         private readonly Color _unResolvedColor = Color.Gray;
-        private readonly Color _validColor = Color.Red;
-        private readonly Color _inValidColor = Color.Green;
+        private readonly Color _validColor = Color.Green;
+        private readonly Color _inValidColor = Color.Red;
         #endregion
 
         #region Properties
@@ -40,13 +40,7 @@ namespace AdaaMobile.ViewModels
         public string AccountStatus
         {
             get { return _accountStatus; }
-            set
-            {
-                if (SetProperty(ref _accountStatus, value))
-                {
-                    SetAccountColor();
-                }
-            }
+            set { SetProperty(ref _accountStatus, value); }
         }
 
 
@@ -56,13 +50,7 @@ namespace AdaaMobile.ViewModels
         public Color AccountColor
         {
             get { return _accountColor; }
-            set
-            {
-                if (SetProperty(ref _accountColor, value))
-                {
-                    SetPasswordColor();
-                }
-            }
+            set { SetProperty(ref _accountColor, value); }
         }
 
         private Color _passwordColor;
@@ -94,6 +82,9 @@ namespace AdaaMobile.ViewModels
             LoadCommand = new AsyncExtendedCommand(LoadAsync);
             UnlockMyAccountCommand = new AsyncExtendedCommand(UnlockMyAccountAsync);
             NavigateToChangePasswordCommand = new ExtendedCommand(DoNavigateToChangePassword);
+
+            PasswordColor = _unResolvedColor;
+            AccountColor = _unResolvedColor;
         }
 
 
@@ -109,14 +100,18 @@ namespace AdaaMobile.ViewModels
 
         #region Methods
 
-        private void SetAccountColor()
+        private void SetPasswordColor(string message)
         {
-           //if (string.IsNullOrWhiteSpace(AccountStatus))
+            if (string.IsNullOrWhiteSpace(message)) PasswordColor = _unResolvedColor;
+            else if (message.Equals("Password Expired", StringComparison.OrdinalIgnoreCase)) PasswordColor = _inValidColor;
+            else PasswordColor = _validColor;
         }
 
-        private void SetPasswordColor()
+        private void SetAccountColor(string message)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(message)) AccountColor = _unResolvedColor;
+            else if (message.Equals("Account Locked", StringComparison.OrdinalIgnoreCase)) AccountColor = _inValidColor;
+            else AccountColor = _validColor;
         }
 
         private void DoNavigateToChangePassword()
@@ -197,9 +192,12 @@ namespace AdaaMobile.ViewModels
             if (passwordresult.ResponseStatus == ResponseStatus.SuccessWithResult && passwordresult.Result != null)
             {
                 PasswordStatus = passwordresult.Result.Message;
+                SetPasswordColor(passwordresult.Result.Message);
+
             }
             else
             {
+                PasswordColor = _unResolvedColor;
                 string message = _messageResolver.GetMessage(passwordresult);
                 if (passwordresult.ResponseStatus == ResponseStatus.InvalidToken)
                 {
@@ -227,9 +225,11 @@ namespace AdaaMobile.ViewModels
             if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
             {
                 AccountStatus = result.Result.Message;
+                SetAccountColor(AccountStatus);
             }
             else
             {
+                AccountColor = _unResolvedColor;
                 string message = _messageResolver.GetMessage(result);
                 if (result.ResponseStatus == ResponseStatus.InvalidToken)
                 {

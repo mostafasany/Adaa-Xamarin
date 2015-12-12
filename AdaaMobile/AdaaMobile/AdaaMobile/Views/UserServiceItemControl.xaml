@@ -12,14 +12,15 @@
     <ResourceDictionary>
     </ResourceDictionary>
   </ContentView.Resources>
-  <Grid MinimumHeightRequest="150" Padding="15,0">
-    <Button VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}"
+  <Grid  Padding="15,0" >
+    <Button  VerticalOptions="Fill"  HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}"
             Text="" TextColor="Transparent" BackgroundColor="#cc007c85"
             Clicked="Button_OnClicked">
 
     </Button>
-    
+
     <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
+                           VerticalOptions="Start" HeightRequest="70"
                            CornerRadius="{StaticResource CornerRadius}" 
                            >
       <Grid.ColumnDefinitions>
@@ -43,19 +44,13 @@
       <Label Grid.Row="1"  Grid.Column="1"
              TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
              HorizontalTextAlignment="Start"
-             FontSize="Small" Text="{Binding Title,Source={x:Reference ParentView}}" />
+             FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Title,Source={x:Reference ParentView}}" />
 
       <Label Grid.Row="2"  Grid.Column="1"
              TextColor="White" BackgroundColor="Transparent"
              HorizontalTextAlignment="Start"
-             FontSize="Medium" Text="{Binding Message,Source={x:Reference ParentView}}" />
+             FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
 
-      <!---Chevron character-->
-      <!--<Label 
-             Grid.Column="2" WidthRequest="25"
-             TextColor="White" BackgroundColor="Transparent"
-             VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"
-             FontSize="Medium" Text="#x203A" />-->
 
       <!--<controls:SvgImage
                           SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
@@ -66,7 +61,17 @@
                           Grid.Column="2"
                           Grid.Row="0" Grid.RowSpan="4"
                           HorizontalOptions="Start" VerticalOptions="Center"/>-->
-
+      <Image
+                          HeightRequest="10"
+                          WidthRequest="10"
+                          Grid.Column="2"
+                          Grid.Row="0" Grid.RowSpan="4"
+                          HorizontalOptions="Start" VerticalOptions="Center"
+       >
+        <Image.Source>
+          <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
+        </Image.Source>
+      </Image >
     </controls:ExtendedGrid>
   </Grid>
 </ContentView>
