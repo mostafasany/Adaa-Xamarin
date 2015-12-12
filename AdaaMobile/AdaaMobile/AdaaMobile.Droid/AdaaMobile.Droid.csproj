@@ -211,4 +211,7 @@
     <AndroidAsset Include="Assets\ProximaNova-Regular.otf" />
     <AndroidAsset Include="Assets\ProximaNova-Semibold.otf" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\chevron.png" />
+  </ItemGroup>
 </Project>

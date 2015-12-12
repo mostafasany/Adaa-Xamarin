@@ -233,6 +233,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change my laptop password.
+        /// </summary>
+        public static string ChangeLaptopPass {
+            get {
+                return ResourceManager.GetString("ChangeLaptopPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
         public static string ChangePassword {
@@ -1048,6 +1057,15 @@ namespace AdaaMobile.Strings {
         public static string UnlockAccountError {
             get {
                 return ResourceManager.GetString("UnlockAccountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlock my laptop account.
+        /// </summary>
+        public static string UnlockLaptopAccount {
+            get {
+                return ResourceManager.GetString("UnlockLaptopAccount", resourceCulture);
             }
         }
         

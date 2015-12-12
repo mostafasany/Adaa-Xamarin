@@ -288,7 +288,7 @@
               BackgroundColor="{StaticResource YellowAccent}"
               Orientation="ImageOnTop"
               TextColor="Black"
-              BorderRadius="{StaticResource CornerRadius}"
+              BorderRadius="{StaticResource BorderRadius}"
               Text="{ext:Translate Delegation}"
                 >
             <controls:ImageButton.HeightRequest>
@@ -316,7 +316,7 @@
               BackgroundColor="{StaticResource YellowAccent}"
               Orientation="ImageOnTop"
               TextColor="Black"
-              BorderRadius="{StaticResource CornerRadius}"
+              BorderRadius="{StaticResource BorderRadius}"
               Text="{ext:Translate DayPass}">
 
             <controls:ImageButton.HeightRequest>
