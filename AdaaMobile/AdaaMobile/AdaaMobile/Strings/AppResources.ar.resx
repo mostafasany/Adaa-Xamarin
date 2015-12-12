@@ -451,4 +451,19 @@
   <data name="WrongUsernameOrPassword" xml:space="preserve">
     <value>Wrong username or password</value>
   </data>
+  <data name="PassAndConfirmPassAreNotEqual" xml:space="preserve">
+    <value>Password and confirm password are not equal</value>
+  </data>
+  <data name="PassLessThan8CharsMessage" xml:space="preserve">
+    <value>Password and confirm password should be at least 8 charachters</value>
+  </data>
+  <data name="PassShouldnotContainSpecialChars" xml:space="preserve">
+    <value>Password should not contain special charachters</value>
+  </data>
+  <data name="PleaseEnterPassAndConfirmPass" xml:space="preserve">
+    <value>Please Enter new password and confirm password</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
 </root>

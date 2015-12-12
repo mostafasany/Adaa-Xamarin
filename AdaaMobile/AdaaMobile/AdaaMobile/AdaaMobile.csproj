@@ -84,22 +84,34 @@
     <Compile Include="Helpers\SvgAssembly.cs" />
     <Compile Include="Models\ExceptionDayWrapper.cs" />
     <Compile Include="Models\DayWrapper.cs" />
+    <Compile Include="Models\Request\AccountStatusQParameters.cs" />
+    <Compile Include="Models\Request\ChangePasswordBodyParamters.cs" />
+    <Compile Include="Models\Request\ChangePasswordQParameters.cs" />
     <Compile Include="Models\Request\ExceptionsQParameter.cs" />
     <Compile Include="Models\Request\LoginQParameters.cs" />
     <Compile Include="Models\Request\CurrentProfileQParameters.cs" />
     <Compile Include="Models\Request\OtherProfileQParameters.cs" />
+    <Compile Include="Models\Request\PasswordStatusQParameters.cs" />
     <Compile Include="Models\Request\UnlockAccountQParameters.cs" />
+    <Compile Include="Models\Response\AccountStatusResponse.cs" />
+    <Compile Include="Models\Response\ChangePasswordResponse.cs" />
     <Compile Include="Models\Response\ExceptionsResponse.cs" />
     <Compile Include="Models\Response\GetExceptionsRepsonse.cs" />
+    <Compile Include="Models\Response\PasswordStatusResponse.cs" />
     <Compile Include="Models\Response\UnlockAccountResponse.cs" />
     <Compile Include="Models\Response\UserProfile.cs" />
     <Compile Include="Plugins\Connectivity\BaseConnectivity.cs" />
     <Compile Include="Plugins\Connectivity\ConnectionType.cs" />
     <Compile Include="Plugins\Connectivity\CrossConnectivity.cs" />
     <Compile Include="Plugins\Connectivity\IConnectivity.cs" />
+    <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\UserAccountServicesViewModel.cs" />
+    <Compile Include="Views\ChangePasswordPage.xaml.cs">
+      <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MasterView\MasterHelper.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="MarkupExtensions\TranslateExtension.cs" />
@@ -395,6 +407,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MasterView\MasterMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ChangePasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

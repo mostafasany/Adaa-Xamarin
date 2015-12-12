@@ -19,6 +19,13 @@ namespace AdaaMobile.DataServices
         Task<ResponseWrapper<UserProfile>> GetOtherUserProfile(OtherProfileQParameters paramters, CancellationToken? token = null);
         Task<ResponseWrapper<UnlockAccountResponse>> UnlockAccountAsync(UnlockAccountQParameters paramters, CancellationToken? token = null);
 
+
+        Task<ResponseWrapper<ChangePasswordResponse>> ChangePasswordAsync(string password,ChangePasswordQParameters paramters, CancellationToken? token = null);
+
+        Task<ResponseWrapper<PasswordStatusResponse>> GetPasswordStatusAsync(PasswordStatusQParameters paramters, CancellationToken? token = null);
+        Task<ResponseWrapper<AccountStatusResponse>> GetAccountStatusAsync(AccountStatusQParameters paramters, CancellationToken? token = null);
+
+
         //Directory
         Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters, CancellationToken? token = null);
 

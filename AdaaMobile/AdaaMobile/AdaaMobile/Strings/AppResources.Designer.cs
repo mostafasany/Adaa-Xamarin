@@ -782,6 +782,33 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password and confirm password are not equal.
+        /// </summary>
+        public static string PassAndConfirmPassAreNotEqual {
+            get {
+                return ResourceManager.GetString("PassAndConfirmPassAreNotEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password and confirm password should be at least 8 charachters.
+        /// </summary>
+        public static string PassLessThan8CharsMessage {
+            get {
+                return ResourceManager.GetString("PassLessThan8CharsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password should not contain special charachters.
+        /// </summary>
+        public static string PassShouldnotContainSpecialChars {
+            get {
+                return ResourceManager.GetString("PassShouldnotContainSpecialChars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
@@ -796,6 +823,15 @@ namespace AdaaMobile.Strings {
         public static string Pending {
             get {
                 return ResourceManager.GetString("Pending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter new password and confirm password.
+        /// </summary>
+        public static string PleaseEnterPassAndConfirmPass {
+            get {
+                return ResourceManager.GetString("PleaseEnterPassAndConfirmPass", resourceCulture);
             }
         }
         
@@ -913,6 +949,15 @@ namespace AdaaMobile.Strings {
         public static string RuleStatus {
             get {
                 return ResourceManager.GetString("RuleStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

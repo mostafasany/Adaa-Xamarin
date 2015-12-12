@@ -31,6 +31,9 @@ namespace AdaaMobile.DataServices
             _appSettings = appSettings;
         }
 
+
+        #region Accounts module
+
         public async Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentProfileQParameters paramters, CancellationToken? token = null)
         {
             paramters.Server = Server;
@@ -80,6 +83,40 @@ namespace AdaaMobile.DataServices
             };
             var stringContent = new StringContent(loginParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
             return await request.PostAsync<LoginResponse>(stringContent);
+        }
+
+        #endregion
+        public async Task<ResponseWrapper<ChangePasswordResponse>> ChangePasswordAsync(string password, ChangePasswordQParameters paramters, CancellationToken? token = default(CancellationToken?))
+        {
+            paramters.Server = Server;
+            var request = _requestFactory();
+            request.ResultContentType = ContentType.Xml;
+            request.RequestUrl = BaseUrl.AppendQueryString(paramters);
+
+            var loginParamters = new ChangePasswordBodyParamters()
+            {
+                Password = password
+            };
+            var stringContent = new StringContent(loginParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
+            return await request.PostAsync<ChangePasswordResponse>(stringContent);
+        }
+
+        public async Task<ResponseWrapper<PasswordStatusResponse>> GetPasswordStatusAsync(PasswordStatusQParameters paramters, CancellationToken? token = default(CancellationToken?))
+        {
+            paramters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(paramters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<PasswordStatusResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<AccountStatusResponse>> GetAccountStatusAsync(AccountStatusQParameters paramters, CancellationToken? token = default(CancellationToken?))
+        {
+            paramters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(paramters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<AccountStatusResponse>(token);
         }
 
         public async Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters, CancellationToken? token = null)
@@ -138,5 +175,7 @@ namespace AdaaMobile.DataServices
         {
             throw new NotImplementedException();
         }
+
+
     }
 }
