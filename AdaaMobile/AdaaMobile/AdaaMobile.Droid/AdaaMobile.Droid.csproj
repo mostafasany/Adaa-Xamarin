@@ -215,4 +215,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\chevron.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\navigationimage.png" />
+  </ItemGroup>
 </Project>
