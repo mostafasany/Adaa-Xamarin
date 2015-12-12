@@ -44,7 +44,7 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 			<controls:ExtendedGrid.RowDefinitions>
 				<RowDefinition Height="40" />
 				<RowDefinition Height="1" />
-				<RowDefinition Height="40" />
+				<RowDefinition Height="60" />
 
 			</controls:ExtendedGrid.RowDefinitions>
 			<controls:ExtendedEntry  Grid.Row="0" HasBorder="false" PlaceholderTextColor="Gray"   BackgroundColor="White" TextColor="{StaticResource PurpleAccent}" Placeholder="{ext:Translate UserName}" Text="{Binding UserName,Mode=TwoWay}" />

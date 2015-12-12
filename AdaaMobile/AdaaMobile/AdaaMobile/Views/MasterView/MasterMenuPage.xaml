@@ -21,12 +21,12 @@
       <StackLayout Spacing="{StaticResource InnerStackSpacing}" 
                    Padding="{StaticResource InnerStackPadding}" >
         <masterView:SideMenuItemControl x:Name="HomeControl"
-        Svg="AdaaMobile.Images.Home.svg"  Title="Home" Tapped="SideMenuItemControl_OnTapped"
+        Svg="AdaaMobile.Images.Home.svg"  Title="{ext:Translate Home}" Tapped="SideMenuItemControl_OnTapped"
        VerticalOptions="Start" HorizontalOptions="Fill"
        BindingContext="{x:Type views:HomePage}" IsPageSupported="True"/>
 
         <masterView:SideMenuItemControl
-              Svg="AdaaMobile.Images.Profile.svg"  Title="Profile" Tapped="SideMenuItemControl_OnTapped"
+              Svg="AdaaMobile.Images.Profile.svg"  Title="{ext:Translate Profile}" Tapped="SideMenuItemControl_OnTapped"
               VerticalOptions="Start" HorizontalOptions="Fill"
               BindingContext="{x:Type views:ProfilePage}" IsPageSupported="True"/>
 

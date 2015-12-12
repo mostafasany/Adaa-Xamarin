@@ -4,6 +4,7 @@ using AdaaMobile.Models;
 using AdaaMobile.ViewModels;
 using Autofac;
 using Xamarin.Forms;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.Views
 {
@@ -20,7 +21,7 @@ namespace AdaaMobile.Views
 
 
 			if (Device.OS == TargetPlatform.iOS) {
-				Title = "Welcome,";
+				Title = AppResources.Welcome;
 				WelcomeLabel.IsVisible = false;
 				iosBackgroundImage.IsVisible = true;
 			} else {

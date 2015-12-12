@@ -412,4 +412,58 @@
   <data name="EnterValidPassword" xml:space="preserve">
     <value>Please enter valid password</value>
   </data>
+  <data name="ADAAAttendance" xml:space="preserve">
+    <value>ADAA Attendance</value>
+  </data>
+  <data name="ChooseLanguage" xml:space="preserve">
+    <value>Choose language</value>
+  </data>
+  <data name="EmployeeDirectory" xml:space="preserve">
+    <value>Employee Directory</value>
+  </data>
+  <data name="EServices" xml:space="preserve">
+    <value>E-Services</value>
+  </data>
+  <data name="InvalidSessionMessage" xml:space="preserve">
+    <value>Invalid Session, You will be redirected to login page</value>
+  </data>
+  <data name="ITServicesDesk" xml:space="preserve">
+    <value>IT Services Desk</value>
+  </data>
+  <data name="LanguageChangedText" xml:space="preserve">
+    <value>please reopen the app to change the language</value>
+  </data>
+  <data name="LanguageSaved" xml:space="preserve">
+    <value>Language saved</value>
+  </data>
+  <data name="OracleServices" xml:space="preserve">
+    <value>Oracle Services</value>
+  </data>
+  <data name="SomethingErrorHappened" xml:space="preserve">
+    <value>Something error happened</value>
+  </data>
+  <data name="UserAccountServices" xml:space="preserve">
+    <value>User Account Services</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome,</value>
+  </data>
+  <data name="WrongUsernameOrPassword" xml:space="preserve">
+    <value>Wrong username or password</value>
+  </data>
+  <data name="PassAndConfirmPassAreNotEqual" xml:space="preserve">
+    <value>Password and confirm password are not equal</value>
+  </data>
+  <data name="PassLessThan8CharsMessage" xml:space="preserve">
+    <value>Password and confirm password should be at least 8 charachters</value>
+  </data>
+  <data name="PassShouldnotContainSpecialChars" xml:space="preserve">
+    <value>Password should not contain special charachters</value>
+  </data>
+  <data name="PleaseEnterPassAndConfirmPass" xml:space="preserve">
+    <value>Please Enter new password and confirm password</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
 </root>

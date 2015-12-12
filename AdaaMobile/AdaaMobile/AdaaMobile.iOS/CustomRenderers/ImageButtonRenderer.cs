@@ -24,7 +24,7 @@ namespace AdaaMobile.CustomRenderers
         /// <summary>
         /// The padding to use in the control.
         /// </summary>
-        private const int CONTROL_PADDING = 3;
+        private const int CONTROL_PADDING = 4;
 
         /// <summary>
         /// Identifies the iPad.
@@ -60,7 +60,7 @@ namespace AdaaMobile.CustomRenderers
                 switch (imageButton.Orientation)
                 {
                     case ImageOrientation.ImageToLeft:
-                        AlignToLeft(targetButton);
+					AlignToLeft(imageButton.ImageWidthRequest,targetButton);
                         break;
                     case ImageOrientation.ImageToRight:
                         AlignToRight(imageButton.ImageWidthRequest, targetButton);
@@ -118,13 +118,16 @@ namespace AdaaMobile.CustomRenderers
         /// Properly aligns the title and image on a button to the left.
         /// </summary>
         /// <param name="targetButton">The button to align.</param>
-        private static void AlignToLeft(UIButton targetButton)
+		private static void AlignToLeft(int widthRequest, UIButton targetButton)
         {
             targetButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Left;
             targetButton.TitleLabel.TextAlignment = UITextAlignment.Left;
 
-            var titleInsets = new UIEdgeInsets(0, CONTROL_PADDING, 0, -1 * CONTROL_PADDING);
+			var titleInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*2, 0,  CONTROL_PADDING);
             targetButton.TitleEdgeInsets = titleInsets;
+
+			var imageInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*2, 0,  CONTROL_PADDING);
+			targetButton.ImageEdgeInsets = imageInsets;
         }
 
         /// <summary>
@@ -169,8 +172,8 @@ namespace AdaaMobile.CustomRenderers
             }
             else
             {
-                titleInsets = new UIEdgeInsets(heightRequest +3, Convert.ToInt32(-1 * widthRequest / 2), -1 * heightRequest, Convert.ToInt32(widthRequest / 2)+3);
-                imageInsets = new UIEdgeInsets(3, titleWidth / 2 , 0, -1 * titleWidth / 2 + 3);
+				titleInsets = new UIEdgeInsets(heightRequest +CONTROL_PADDING, Convert.ToInt32(-1 * widthRequest / 2), -1 * heightRequest, Convert.ToInt32(widthRequest / 2)+CONTROL_PADDING);
+				imageInsets = new UIEdgeInsets(CONTROL_PADDING, titleWidth / 2 , 0, -1 * titleWidth / 2 + CONTROL_PADDING);
             }
 
             targetButton.TitleEdgeInsets = titleInsets;

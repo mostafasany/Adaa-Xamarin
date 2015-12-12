@@ -87,66 +87,75 @@ namespace AdaaMobile.ViewModels
 
             data.Add(new AdaaPageItem()
             {
-                Title = "ADAA Attendance",
+                Title = AppResources.ADAAAttendance,
                 IconSource = "AdaaMobile.Images.Attendance_icn.svg",
-                TargetType = typeof(AttendancePage)
+                TargetType = typeof(AttendancePage),
+                IsEnabled = true
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "Employee Directory",
+                Title = AppResources.EmployeeDirectory,
                 IconSource = "AdaaMobile.Images.Directory.svg",
-                TargetType = typeof(DirectoryPage)
+                TargetType = typeof(DirectoryPage),
+                IsEnabled = false
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "E-Services",
+                Title = AppResources.EServices,
                 IconSource = "AdaaMobile.Images.E-Services.svg",
-                TargetType = typeof(EServicesPage)
+                TargetType = typeof(EServicesPage),
+                IsEnabled = false
             });
 
 
             data.Add(new AdaaPageItem()
             {
-                Title = "ADAA Timesheet",
+                Title = AppResources.AdaaTimesheet,
                 IconSource = "AdaaMobile.Images.Timesheet.svg",
-                TargetType = typeof(TimesheetPage)
+                TargetType = typeof(TimesheetPage),
+                IsEnabled = false
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "My Requests",
+                Title = AppResources.MyRequests,
                 IconSource = "AdaaMobile.Images.MyRequests.svg",
-                TargetType = typeof(MyRequestsPage)
+                TargetType = typeof(MyRequestsPage),
+                IsEnabled = false
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "My Tasks",
+                Title = AppResources.MyTasks,
                 IconSource = "AdaaMobile.Images.MyTasks.svg",
-                TargetType = typeof(MyTasksPage)
+                TargetType = typeof(MyTasksPage),
+                IsEnabled = false
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "Oracle Services",
+                Title = AppResources.OracleServices,
                 IconSource = "AdaaMobile.Images.Oracle.svg",
-                TargetType = typeof(OracleServicesPage)
+                TargetType = typeof(OracleServicesPage),
+                IsEnabled = false
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "IT Services Desk",
+                Title = AppResources.ITServicesDesk,
                 IconSource = "AdaaMobile.Images.ITServiceDesk.svg",
-                TargetType = typeof(ITServiesPage)
+                TargetType = typeof(ITServiesPage),
+                IsEnabled = false
             });
 
             data.Add(new AdaaPageItem()
             {
-                Title = "User Account Services",
+                Title = AppResources.UserAccountServices,
                 IconSource = "AdaaMobile.Images.Profile.svg",
-                TargetType = typeof(UserServicesPage)
+                TargetType = typeof(UserServicesPage),
+                IsEnabled = true
             });
             return data;
         }
@@ -163,7 +172,7 @@ namespace AdaaMobile.ViewModels
 
         private void PageItemClicked(AdaaPageItem item)
         {
-            if (item == null)
+            if (item == null || item.IsEnabled == false)
                 return;
             _navigationService.SetMasterDetailsPage(item.TargetType);
         }

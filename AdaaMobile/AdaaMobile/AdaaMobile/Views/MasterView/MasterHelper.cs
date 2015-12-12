@@ -59,7 +59,8 @@ namespace AdaaMobile.Views.MasterView
             if (pageType == typeof(SettingsPage)) return new SettingsPage();
             if (pageType == typeof(SignUpPage)) return new SignUpPage();
             if (pageType == typeof(TimesheetPage)) return new TimesheetPage();
-            if (pageType == typeof(UserServicesPage)) return new UserServicesPage();
+			if (pageType == typeof(UserServicesPage)) return new UserServicesPage();
+			if (pageType == typeof(ChangePasswordPage)) return new ChangePasswordPage();
             return new HomePage();
         }
     }

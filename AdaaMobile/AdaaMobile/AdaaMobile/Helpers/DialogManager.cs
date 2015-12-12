@@ -7,8 +7,10 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Helpers
 {
-    public class DialogManager : IDialogManager
+	public class DialogManager : IDialogManager
     {
+		
+
         public async Task DisplayAlert(string title, string message, string cancel)
         {
             await Application.Current.MainPage.DisplayAlert(title, message, cancel);
