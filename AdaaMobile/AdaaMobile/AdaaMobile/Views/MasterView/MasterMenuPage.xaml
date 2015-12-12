@@ -6,7 +6,7 @@
              xmlns:adaaMobile="clr-namespace:AdaaMobile;assembly=AdaaMobile"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              x:Class="AdaaMobile.Views.MasterView.MasterMenuPage"
-             BackgroundColor="{StaticResource AppBackgroundNormal}"
+             BackgroundColor="White"
     >
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -17,15 +17,15 @@
   </ContentPage.Resources>
   <Grid >
     
-    <!--<Image  VerticalOptions="End" HorizontalOptions="Fill" HeightRequest="300" Aspect="AspectFill" >
+    <Image  VerticalOptions="End" HorizontalOptions="Fill" HeightRequest="200" Aspect="AspectFill" >
       <Image.Source>
         <OnPlatform x:TypeArguments="ImageSource" WinPhone="" Android="navigationimage.png" iOS="navigation-image"/>
       </Image.Source>
-    </Image>-->
+    </Image>
       
-    <ScrollView  BackgroundColor="{StaticResource AppBackgroundSemi}" >
-      <StackLayout VerticalOptions="End" HorizontalOptions="Fill" BackgroundColor="Transparent" Padding="0,30,0,10">
-        <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent">
+    <ScrollView  BackgroundColor="{StaticResource SideMenuBackgroundSemi}" >
+      <StackLayout VerticalOptions="End" HorizontalOptions="Fill"  Padding="0,30,0,10">
+        <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill" >
 
           <StackLayout Spacing="{StaticResource InnerStackSpacing}"
                        Padding="{StaticResource InnerStackPadding}" >

@@ -75,7 +75,7 @@ namespace AdaaMobile.ViewModels
             //Default Image for User profile
             Image = new FileImageSource()
             {
-				File = Device.OnPlatform("profilebig.png", "profilebig.png", "profilebig.png")//TODO:Change to actual default file
+				File = Device.OnPlatform("profilebig.png", "Profilebig.png", "profilebig.png")//TODO:Change to actual default file
             };
         }
 
