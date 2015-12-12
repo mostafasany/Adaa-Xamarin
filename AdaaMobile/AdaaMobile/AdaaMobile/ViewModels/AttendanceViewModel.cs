@@ -19,7 +19,7 @@ namespace AdaaMobile.ViewModels
     {
 
         #region Fields
-        private const int LimitRangeInDays = 1 * 30;
+        private const int LimitRangeInDays = 12 * 30;
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
@@ -28,13 +28,13 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Properties
-        private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(10));
+		private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(LimitRangeInDays));
         /// <summary>
         /// Date of first picker, this date will be used to show the starting range for Attendance and Exceptions.
         /// </summary>
         public DateTime StartDate
         {
-            get { return _startDate; }
+			get { return _startDate; }
             set
             {
                 if (SetProperty(ref _startDate, value))

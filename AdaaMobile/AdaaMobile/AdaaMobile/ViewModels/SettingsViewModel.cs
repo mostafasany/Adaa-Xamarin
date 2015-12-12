@@ -63,7 +63,7 @@ namespace AdaaMobile.ViewModels
 
             LogoutCommand = new AsyncExtendedCommand(DoLogout);
 
-			if (appSettings.SelectedCultureName == "en-us") {
+			if (appSettings.SelectedCultureName == "en-US") {
 				_SelectedLanguageIndex = 0;
 				SelectedLanguageName = "English";
 			} else {
