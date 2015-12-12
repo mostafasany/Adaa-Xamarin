@@ -6,10 +6,9 @@ using AdaaMobile.Models.Request;
 using AdaaMobile.Strings;
 using AdaaMobile.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using AdaaMobile.Models.Response;
+using Xamarin.Forms;
 
 namespace AdaaMobile.ViewModels
 {
@@ -23,6 +22,10 @@ namespace AdaaMobile.ViewModels
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
         private readonly IDialogManager _dialogManager;
+
+        private readonly Color _unResolvedColor = Color.Gray;
+        private readonly Color _validColor = Color.Red;
+        private readonly Color _inValidColor = Color.Green;
         #endregion
 
         #region Properties
@@ -33,20 +36,49 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _isBusy, value); }
         }
 
-
-        private string _AccountStatus;
+        private string _accountStatus;
         public string AccountStatus
         {
-            get { return _AccountStatus; }
-            set { SetProperty(ref _AccountStatus, value); }
+            get { return _accountStatus; }
+            set
+            {
+                if (SetProperty(ref _accountStatus, value))
+                {
+                    SetAccountColor();
+                }
+            }
         }
 
 
-        private string _PasswordStatus;
+
+        private Color _accountColor;
+
+        public Color AccountColor
+        {
+            get { return _accountColor; }
+            set
+            {
+                if (SetProperty(ref _accountColor, value))
+                {
+                    SetPasswordColor();
+                }
+            }
+        }
+
+        private Color _passwordColor;
+
+        public Color PasswordColor
+        {
+            get { return _passwordColor; }
+            set { SetProperty(ref _passwordColor, value); }
+        }
+
+
+        private string _passwordStatus;
         public string PasswordStatus
         {
-            get { return _PasswordStatus; }
-            set { SetProperty(ref _PasswordStatus, value); }
+            get { return _passwordStatus; }
+            set { SetProperty(ref _passwordStatus, value); }
         }
         #endregion
 
@@ -61,85 +93,35 @@ namespace AdaaMobile.ViewModels
             _dialogManager = dialogManager;
             LoadCommand = new AsyncExtendedCommand(LoadAsync);
             UnlockMyAccountCommand = new AsyncExtendedCommand(UnlockMyAccountAsync);
-            NavigateToChangePasswordCommand = new AsyncExtendedCommand(DoNavigateToChangePassword);
+            NavigateToChangePasswordCommand = new ExtendedCommand(DoNavigateToChangePassword);
         }
 
 
-        private async Task LoadAsync()
-        {
-            try
-            {
-                LoadCommand.CanExecute = false;
-                IsBusy = true;
-                {
-                    var paramters = new AccountStatusQParameters()
-                    {
-                        Langid = _appSettings.Language,
-                        UserToken = _appSettings.UserToken
-                    };
-                    var result = await _dataService.GetAccountStatusAsync(paramters);
 
-                    if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
-                    {
-                        AccountStatus = result.Result.Message;
-                    }
-                    else
-                    {
-                        string message = _messageResolver.GetMessage(result);
-                        await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
-                        if (result.ResponseStatus == ResponseStatus.InvalidToken)
-                        {
-                            _navigationService.SetAppCurrentPage(typeof(LoginPage));
-
-                        }
-                    }
-
-                    var passwordparamters = new PasswordStatusQParameters()
-                    {
-                        Langid = _appSettings.Language,
-                        UserToken = _appSettings.UserToken
-                    };
-                    var passwordresult = await _dataService.GetPasswordStatusAsync(passwordparamters);
-
-                    if (passwordresult.ResponseStatus == ResponseStatus.SuccessWithResult && passwordresult.Result != null)
-                    {
-                        PasswordStatus = passwordresult.Result.Message;
-                    }
-                    else
-                    {
-                        string message = _messageResolver.GetMessage(passwordresult);
-                        await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
-                        if (result.ResponseStatus == ResponseStatus.InvalidToken)
-                        {
-                            _navigationService.SetAppCurrentPage(typeof(LoginPage));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                LoadCommand.CanExecute = true;
-                IsBusy = false;
-            }
-
-        }
 
         #endregion
 
         #region Commands
         public AsyncExtendedCommand LoadCommand { get; set; }
-        public AsyncExtendedCommand NavigateToChangePasswordCommand { get; set; }
+        public ExtendedCommand NavigateToChangePasswordCommand { get; set; }
         public AsyncExtendedCommand UnlockMyAccountCommand { get; set; }
         #endregion
 
         #region Methods
-        private async Task DoNavigateToChangePassword()
+
+        private void SetAccountColor()
         {
-			_navigationService.SetMasterDetailsPage(typeof(ChangePasswordPage));
+           //if (string.IsNullOrWhiteSpace(AccountStatus))
+        }
+
+        private void SetPasswordColor()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoNavigateToChangePassword()
+        {
+            _navigationService.SetMasterDetailsPage(typeof(ChangePasswordPage));
         }
 
         private async Task UnlockMyAccountAsync()
@@ -179,6 +161,89 @@ namespace AdaaMobile.ViewModels
                 IsBusy = false;
             }
 
+        }
+
+        private async Task LoadAsync()
+        {
+            try
+            {
+                LoadCommand.CanExecute = false;
+                IsBusy = true;
+                var passwordResponse = await GetPasswordStatusAsync();
+                if (passwordResponse.ResponseStatus == ResponseStatus.InvalidToken) return;
+                var accountResponse = await GetAccountStatusAsync();
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+            finally
+            {
+                LoadCommand.CanExecute = true;
+                IsBusy = false;
+            }
+
+        }
+
+        private async Task<ResponseWrapper<PasswordStatusResponse>> GetPasswordStatusAsync()
+        {
+            var passwordparamters = new PasswordStatusQParameters()
+            {
+                Langid = _appSettings.Language,
+                UserToken = _appSettings.UserToken
+            };
+            var passwordresult = await _dataService.GetPasswordStatusAsync(passwordparamters);
+
+            if (passwordresult.ResponseStatus == ResponseStatus.SuccessWithResult && passwordresult.Result != null)
+            {
+                PasswordStatus = passwordresult.Result.Message;
+            }
+            else
+            {
+                string message = _messageResolver.GetMessage(passwordresult);
+                if (passwordresult.ResponseStatus == ResponseStatus.InvalidToken)
+                {
+                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    _navigationService.SetAppCurrentPage(typeof(LoginPage));
+
+                }
+                else
+                {
+                    PasswordStatus = message;
+                }
+            }
+            return passwordresult;
+        }
+
+        private async Task<ResponseWrapper<Models.Response.AccountStatusResponse>> GetAccountStatusAsync()
+        {
+            var paramters = new AccountStatusQParameters()
+            {
+                Langid = _appSettings.Language,
+                UserToken = _appSettings.UserToken
+            };
+            var result = await _dataService.GetAccountStatusAsync(paramters);
+
+            if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
+            {
+                AccountStatus = result.Result.Message;
+            }
+            else
+            {
+                string message = _messageResolver.GetMessage(result);
+                if (result.ResponseStatus == ResponseStatus.InvalidToken)
+                {
+                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    _navigationService.SetAppCurrentPage(typeof(LoginPage));
+
+                }
+                else
+                {
+                    AccountStatus = message;
+                }
+            }
+
+            return result;
         }
         #endregion
     }

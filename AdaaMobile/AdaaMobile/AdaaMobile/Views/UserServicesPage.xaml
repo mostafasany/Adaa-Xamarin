@@ -5,17 +5,18 @@
              xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
+             xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile"
              x:Name="MainWindow"
              x:Class="AdaaMobile.Views.UserServicesPage">
   <ContentPage.BackgroundImage>
     <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
   </ContentPage.BackgroundImage>
-  <Grid x:Name="HRelativeLayout">
+  <Grid RowSpacing="15">
     <Grid.RowDefinitions>
-      <RowDefinition Height="20"/>
+      <RowDefinition Height="5"/>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
-      <RowDefinition Height="50"/>
+      <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
 
@@ -26,12 +27,20 @@
     </Image>
 
 
-    <Button Grid.Row="1" Text="Change my laptop password" Command="{Binding  NavigateToChangePasswordCommand}" />
-    <Button Grid.Row="2" Text="Unlock account" Command="{Binding  UnlockMyAccountCommand}" />
-    
+    <masterView:UserServiceItemControl Grid.Row="1"
+                                       Title="{ext:Translate ChangeLaptopPass}"
+                                       Message="{Binding PasswordStatus}"
+                                       IndicatorColor="Red"
+                                       Command="{Binding  NavigateToChangePasswordCommand}" />
+    <masterView:UserServiceItemControl Grid.Row="2"
+                                       Title="{ext:Translate UnlockLaptopAccount}"
+                                       Message="{Binding AccountStatus}"
+                                       IndicatorColor="Green"
+                                       Command="{Binding  UnlockMyAccountCommand}" />
+
     <ActivityIndicator  IsRunning="{Binding IsBusy}"
                          HeightRequest="60" WidthRequest="60"
-                         Grid.Row="3" Grid.RowSpan="2"
+                         Grid.Row="0" Grid.RowSpan="4"
                          VerticalOptions="Center" HorizontalOptions="Center"/>
 
 

@@ -16,7 +16,7 @@ namespace AdaaMobile.Views
         public UserServicesPage()
         {
             InitializeComponent();
-			_userServicesViewModel = Locator.Default.UserAccountServicesViewModel;
+            _userServicesViewModel = Locator.Default.UserAccountServicesViewModel;
             BindingContext = _userServicesViewModel;
 
 
@@ -30,6 +30,12 @@ namespace AdaaMobile.Views
                 iosBackgroundImage.IsVisible = false;
             }
 
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _userServicesViewModel.LoadCommand.Execute(null);
         }
     }
 }

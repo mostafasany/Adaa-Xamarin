@@ -466,4 +466,10 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="ChangeLaptopPass" xml:space="preserve">
+    <value>Change my laptop password</value>
+  </data>
+  <data name="UnlockLaptopAccount" xml:space="preserve">
+    <value>Unlock my laptop account</value>
+  </data>
 </root>
