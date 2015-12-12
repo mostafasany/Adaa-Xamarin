@@ -22,7 +22,7 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="5" />
+			<RowDefinition Height="40" />
 			<RowDefinition Height="Auto" />
 			 <!--TODO Make it percentange-->
       <RowDefinition Height="30" />
