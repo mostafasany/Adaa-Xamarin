@@ -19,7 +19,8 @@ namespace AdaaMobile.ViewModels
     {
 
         #region Fields
-        private const int LimitRangeInDays = 12 * 30;
+        private const int LimitRangeInDays = 1 * 30;
+        private const int BottomLimitInDays = 2 * 12 * 30;
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
@@ -28,17 +29,20 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Properties
-		private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(LimitRangeInDays));
+        private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(LimitRangeInDays));
         /// <summary>
         /// Date of first picker, this date will be used to show the starting range for Attendance and Exceptions.
         /// </summary>
         public DateTime StartDate
         {
-			get { return _startDate; }
+            get { return _startDate; }
             set
             {
                 if (SetProperty(ref _startDate, value))
                 {
+                    var span = EndDate - StartDate;
+                    if (span.Days > LimitRangeInDays)
+                        EndDate = _startDate.Add(TimeSpan.FromDays(LimitRangeInDays));
                     SwitchMode(AttendanceMode);
                 }
             }
@@ -55,12 +59,15 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _endDate, value))
                 {
+                    var span = EndDate - StartDate;
+                    if (span.Days > LimitRangeInDays)
+                        StartDate = _endDate.Subtract(TimeSpan.FromDays(LimitRangeInDays));
                     SwitchMode(AttendanceMode);
                 }
             }
         }
 
-        private DateTime _minimumDate = DateTime.Now.Subtract(TimeSpan.FromDays(LimitRangeInDays));
+        private DateTime _minimumDate = DateTime.Now.Subtract(TimeSpan.FromDays(BottomLimitInDays));
         /// <summary>
         /// First picker can't go below this date.
         /// </summary>
@@ -69,6 +76,15 @@ namespace AdaaMobile.ViewModels
             get { return _minimumDate; }
             set { _minimumDate = value; }
         }
+
+        private DateTime _maximum;
+
+        public DateTime Maximum
+        {
+            get { return _maximum; }
+            set { SetProperty(ref _maximum, value); }
+        }
+
 
         private AttendanceMode _attendanceMode;
         /// <summary>
