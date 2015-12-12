@@ -96,7 +96,7 @@
                   ImageHeightRequest="25"
                   ImageWidthRequest="25"
                   VerticalOptions="End"
-                  HeightRequest="40"
+                  HeightRequest="35"
                   BackgroundColor="{StaticResource AppBackgroundLight}"
                   TextColor="White"
 
@@ -132,7 +132,7 @@
                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                     BackgroundColor="{StaticResource AppBackgroundLight}"
                     TextColor = "White"
-                    HeightRequest="40"
+                    HeightRequest="35"
                 >
             <controls:ImageButton.Source>
               <OnPlatform x:TypeArguments="ImageSource" WinPhone="date.png" Android="date.png" iOS="date.png"/>

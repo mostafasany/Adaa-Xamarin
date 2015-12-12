@@ -33,12 +33,12 @@
       <Label x:Name="WelcomeLabel" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" IsVisible="false" >
         <Label.FormattedText>
           <FormattedString>
-            <Span Text="{ext:Translate Welcome}" FontSize="Medium" Font="SemiBold"/>
+            <Span Text="{ext:Translate Welcome}" FontSize="Medium" />
             <!--<Span Text="{x:Static system:Environment.NewLine}"/>-->
           </FormattedString>
         </Label.FormattedText>
       </Label>
-      <Label Text="{Binding UserProfile.DisplayName}" Font="SemiBold" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
+      <Label Text="{Binding UserProfile.DisplayName}" Font="Bold" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
       </Label>
     </StackLayout>
 

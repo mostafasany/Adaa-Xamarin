@@ -55,5 +55,9 @@
 		<string>ProximaNova-Regular.otf</string>
 		<string>ProximaNova-Semibold.otf</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>

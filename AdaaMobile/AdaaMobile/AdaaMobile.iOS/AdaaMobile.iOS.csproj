@@ -179,6 +179,7 @@
     <BundleResource Include="Resources\homeblack-568h%402x.png" />
     <BundleResource Include="Resources\loginbackground.png" />
     <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\Profilebig.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
