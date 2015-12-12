@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" 
+             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+             
              x:Class="AdaaMobile.Views.SettingsPage" IsBusy="{Binding IsBusy}">
 
 
@@ -79,7 +80,7 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
     BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
       HorizontalOptions="Start"
     VerticalOptions="Fill" 
-    Text="Choose language" TextColor="Black" Font="SemiBold"
+    Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
               >
 
     </Button> 

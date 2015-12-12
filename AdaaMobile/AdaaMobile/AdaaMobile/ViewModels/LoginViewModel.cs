@@ -137,7 +137,7 @@ namespace AdaaMobile.ViewModels
             {
                 //Show error
 #pragma warning disable 4014
-                _dialogManager.DisplayAlert("Error", "Something error happened", "Ok");
+                _dialogManager.DisplayAlert(AppResources.Alert, AppResources.SomethingErrorHappened, AppResources.Ok);
 #pragma warning restore 4014
             }
             finally

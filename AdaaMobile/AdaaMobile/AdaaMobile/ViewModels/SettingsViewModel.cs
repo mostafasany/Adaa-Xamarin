@@ -102,8 +102,8 @@ namespace AdaaMobile.ViewModels
 				_appSettings.SelectedCultureName = "ar-EG";
 				SelectedLanguageName = "العربية";
 			}
-			await _dialogManager.DisplayAlert ("Language saved",
-				"please reopen the app to change the language", AppResources.Ok);
+			await _dialogManager.DisplayAlert (AppResources.LanguageSaved,
+				AppResources.LanguageChangedText, AppResources.Ok);
 		}
         #endregion
 

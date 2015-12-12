@@ -71,6 +71,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ADAA Attendance.
+        /// </summary>
+        public static string ADAAAttendance {
+            get {
+                return ResourceManager.GetString("ADAAAttendance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ADAA Timesheet.
         /// </summary>
         public static string AdaaTimesheet {
@@ -233,6 +242,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose language.
+        /// </summary>
+        public static string ChooseLanguage {
+            get {
+                return ResourceManager.GetString("ChooseLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Day Pass.
         /// </summary>
         public static string DayPass {
@@ -332,6 +350,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Employee Directory.
+        /// </summary>
+        public static string EmployeeDirectory {
+            get {
+                return ResourceManager.GetString("EmployeeDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Employee ID.
         /// </summary>
         public static string EmployeeID {
@@ -373,6 +400,15 @@ namespace AdaaMobile.Strings {
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-Services.
+        /// </summary>
+        public static string EServices {
+            get {
+                return ResourceManager.GetString("EServices", resourceCulture);
             }
         }
         
@@ -485,11 +521,47 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Session, You will be redirected to login page.
+        /// </summary>
+        public static string InvalidSessionMessage {
+            get {
+                return ResourceManager.GetString("InvalidSessionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IT Services Desk.
+        /// </summary>
+        public static string ITServicesDesk {
+            get {
+                return ResourceManager.GetString("ITServicesDesk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Job Title.
         /// </summary>
         public static string JobTitle {
             get {
                 return ResourceManager.GetString("JobTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to please reopen the app to change the language.
+        /// </summary>
+        public static string LanguageChangedText {
+            get {
+                return ResourceManager.GetString("LanguageChangedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language saved.
+        /// </summary>
+        public static string LanguageSaved {
+            get {
+                return ResourceManager.GetString("LanguageSaved", resourceCulture);
             }
         }
         
@@ -701,6 +773,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oracle Services.
+        /// </summary>
+        public static string OracleServices {
+            get {
+                return ResourceManager.GetString("OracleServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
@@ -881,6 +962,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something error happened.
+        /// </summary>
+        public static string SomethingErrorHappened {
+            get {
+                return ResourceManager.GetString("SomethingErrorHappened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         public static string Submit {
@@ -926,6 +1016,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User Account Services.
+        /// </summary>
+        public static string UserAccountServices {
+            get {
+                return ResourceManager.GetString("UserAccountServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to user name.
         /// </summary>
         public static string UserName {
@@ -935,11 +1034,29 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Welcome,.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Work.
         /// </summary>
         public static string Work {
             get {
                 return ResourceManager.GetString("Work", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong username or password.
+        /// </summary>
+        public static string WrongUsernameOrPassword {
+            get {
+                return ResourceManager.GetString("WrongUsernameOrPassword", resourceCulture);
             }
         }
     }
