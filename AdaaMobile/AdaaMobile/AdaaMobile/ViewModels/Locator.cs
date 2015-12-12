@@ -52,6 +52,8 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<DirectoryViewModel>();
             cb.RegisterType<ProfileViewModel>();
             cb.RegisterType<SettingsViewModel>();
+            cb.RegisterType<UserAccountServicesViewModel>();
+            cb.RegisterType<ChangePasswordViewModel>();
         }
 
 
@@ -85,6 +87,22 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<SettingsViewModel>();
+            }
+        }
+
+        public UserAccountServicesViewModel UserAccountServicesViewModel
+        {
+            get
+            {
+                return Container.Resolve<UserAccountServicesViewModel>();
+            }
+        }
+
+        public ChangePasswordViewModel ChangePasswordViewModel
+        {
+            get
+            {
+                return Container.Resolve<ChangePasswordViewModel>();
             }
         }
 

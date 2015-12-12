@@ -153,8 +153,8 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\splashscreen.jpg" />
     <BundleResource Include="Resources\HomeItemIcon.png" />
-    <BundleResource Include="Resources\home-white-568h%402x.png" />
-    <BundleResource Include="Resources\home-white%402x.png" />
+    <BundleResource Include="Resources\homewhite-568h%402x.png" />
+    <BundleResource Include="Resources\homewhite%402x.png" />
     <BundleResource Include="Resources\menu.png" />
     <BundleResource Include="Resources\menu%402x.png" />
     <BundleResource Include="Resources\ProximaNova-Regular.otf">
