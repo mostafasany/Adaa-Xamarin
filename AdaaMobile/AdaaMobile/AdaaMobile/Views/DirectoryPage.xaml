@@ -30,7 +30,7 @@
               BackgroundColor="Transparent"
                       >
                   
-                  <Label HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="{StaticResource AppBackgroundLight}" TextColor="White" Text="{Binding Name}"></Label>
+                  <Label HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="{StaticResource AppBackgroundNormal}" TextColor="White" Text="{Binding Name}"></Label>
                 </controls:ExtendedGrid>
               </Grid>
             </ViewCell.View>

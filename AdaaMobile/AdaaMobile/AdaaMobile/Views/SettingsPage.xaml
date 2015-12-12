@@ -89,13 +89,13 @@
     VerticalOptions="Fill" >
     <Button  x:Name="SelectedLanguageNameLabel" HorizontalOptions="Start" BackgroundColor="Transparent"
     VerticalOptions="Fill" BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
-      Text="{Binding SelectedLanguageName}" TextColor="{StaticResource AppBackgroundDark}" />
+      Text="{Binding SelectedLanguageName}" TextColor="{StaticResource AppBackgroundNormal}" />
     </Grid>
     </controls:ExtendedGrid>
 
       <ActivityIndicator Grid.Row="1" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
       <Button BorderColor="#44007c85" BorderWidth="2" BackgroundColor="#22007c85" Grid.Row="2" HorizontalOptions="Fill" VerticalOptions="Fill" 
-      Text="{ext:Translate Logout}" Command="{Binding LogoutCommand}" TextColor="{StaticResource AppBackgroundDark}" Style="{StaticResource ButtonDefaultStyle}" />
+      Text="{ext:Translate Logout}" Command="{Binding LogoutCommand}" TextColor="{StaticResource AppBackgroundNormal}" Style="{StaticResource ButtonDefaultStyle}" />
       <!--        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>-->
       <!--        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>-->
     </Grid>

@@ -13,7 +13,7 @@ namespace AdaaMobile.Views.MasterView
         public AddaMasterPage()
         {
             _navigationService = Locator.Default.NavigationService;
-            BackgroundColor = (Color)Application.Current.Resources["AppBackgroundLight"];
+            BackgroundColor = (Color)Application.Current.Resources["AppBackgroundNormal"];
             //Icon = Device.OnPlatform("menu", "menu.png", "menu");
 
             SetMenuPage();

@@ -19,7 +19,7 @@
       <converters:BoolToColorConverter x:Key="MonthColorConverter"
        FalseColor="Black"  TrueColor="White"  />
       <converters:BoolToColorConverter x:Key="DayBackColorConverter"
-       FalseColor="#FFB4D7DB"  TrueColor="{StaticResource AppBackgroundLight}"  />
+       FalseColor="#FFB4D7DB"  TrueColor="{StaticResource AppBackgroundNormal}"  />
       <converters:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
       <converters:StringFormatConverter x:Key="StringFormatConverter"/>
       <converters:DateFormatConverter x:Key="DateFormatConverter"/>
@@ -48,7 +48,7 @@
 
           <Button Text="{ext:Translate Attendance}"
               Grid.Column="0"
-              BorderColor="{StaticResource PurpleAccent}"
+              BorderColor="{StaticResource AppBackgroundNormal}"
               BorderWidth="1"
               BorderRadius="0"
               x:Name="AttendanceButton"
@@ -60,7 +60,7 @@
               Grid.Column="1"
               BorderWidth="1"
               BorderRadius="0"
-              BorderColor="{StaticResource PurpleAccent}"
+              BorderColor="{StaticResource AppBackgroundNormal}"
               x:Name="ExceptionsButton"
               Clicked="OnTabTapped"/>
         </Grid>
@@ -97,7 +97,7 @@
                   ImageWidthRequest="25"
                   VerticalOptions="End"
                   HeightRequest="35"
-                  BackgroundColor="{StaticResource AppBackgroundLight}"
+                  BackgroundColor="{StaticResource AppBackgroundNormal}"
                   TextColor="White"
 
                 >
@@ -130,7 +130,7 @@
                     VerticalOptions="End"
                     ImageWidthRequest="25"
                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                    BackgroundColor="{StaticResource AppBackgroundLight}"
+                    BackgroundColor="{StaticResource AppBackgroundNormal}"
                     TextColor = "White"
                     HeightRequest="35"
                 >
@@ -205,7 +205,7 @@
             </controls:HorizontalListView.ItemTemplate>
           </controls:HorizontalListView>
         </StackLayout>
-        <Grid  VerticalOptions="FillAndExpand" MinimumHeightRequest="160"  BackgroundColor="{StaticResource AppBackgroundLight}">
+        <Grid  VerticalOptions="FillAndExpand" MinimumHeightRequest="160"  BackgroundColor="{StaticResource AppBackgroundNormal}">
           <!--Attendance Details Grid-->
           <Grid VerticalOptions="FillAndExpand" Padding="25,10"
                 IsVisible="{Binding AttendanceMode,
