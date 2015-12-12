@@ -60,7 +60,7 @@ namespace AdaaMobile.Views
         #region Tabs Methods
         private void SelectButton(Button button, bool selected)
         {
-			var darkColor = (Color)Application.Current.Resources["PurpleAccent"];
+			var darkColor = (Color)Application.Current.Resources["AppBackgroundNormal"];
 
             if (selected)
             {

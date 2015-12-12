@@ -6,7 +6,7 @@
              xmlns:adaaMobile="clr-namespace:AdaaMobile;assembly=AdaaMobile"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              x:Class="AdaaMobile.Views.MasterView.MasterMenuPage"
-             BackgroundColor="{StaticResource AppBackgroundLight}"
+             BackgroundColor="Transparent"
     >
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -15,8 +15,7 @@
       <Thickness x:Key="InnerStackPadding" Top="6" Bottom="6"/>
     </ResourceDictionary>
   </ContentPage.Resources>
-  <ScrollView>
-
+  <ScrollView   BackgroundColor="{StaticResource AppBackgroundSemi}">
    <StackLayout VerticalOptions="End" HorizontalOptions="Fill" BackgroundColor="Transparent" Padding="0,30,0,10">
     <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent">
 

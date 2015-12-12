@@ -32,7 +32,7 @@
 
 
     <!--Section Background-->
-    <BoxView Grid.Row="0" Grid.RowSpan="2"  BackgroundColor="{StaticResource AppBackgroundLight}" />
+    <BoxView Grid.Row="0" Grid.RowSpan="2"  BackgroundColor="{StaticResource AppBackgroundNormal}" />
 
     <!--Seperator under user profile-->
     <BoxView

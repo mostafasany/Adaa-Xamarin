@@ -17,10 +17,9 @@
       </Style>
 
       <!--Update Value-->
-      <Color x:Key="AppBackgroundDark" >#FF006A70</Color>
-      <Color x:Key="AppBackgroundLight">#FF007c85</Color>
+      <Color x:Key="AppBackgroundNormal">#FF007c85</Color>
+      <Color x:Key="AppBackgroundSemi">#B2007c85</Color>
       <Color x:Key="YellowAccent" >#FFe9bf04</Color>
-      <Color  x:Key="PurpleAccent"> #FF007c85 </Color>
 
       <x:Int32 x:Key="BorderRadius">5</x:Int32>
       <x:Double x:Key="CornerRadius">5</x:Double>

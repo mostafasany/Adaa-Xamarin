@@ -9,7 +9,7 @@ namespace AdaaMobile.Views.MasterView
 {
     public class MasterHelper
     {
-        private static readonly Color ActionBarBackgroundColor = (Color)App.Current.Resources["AppBackgroundLight"];
+        private static readonly Color ActionBarBackgroundColor = (Color)App.Current.Resources["AppBackgroundNormal"];
         private static readonly Color ActionBarTextColor = Color.White;
 
         public static Page CreatePage<TPageType>(TPageType pageType, bool wrapInNavigation = true) where TPageType : Type

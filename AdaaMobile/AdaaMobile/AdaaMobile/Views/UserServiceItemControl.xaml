@@ -14,7 +14,7 @@
   </ContentView.Resources>
   <Grid  Padding="15,0" >
     <Button  VerticalOptions="Fill"  HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}"
-            Text="" TextColor="Transparent" BackgroundColor="#cc007c85"
+            Text="" TextColor="Transparent" BackgroundColor="{StaticResource AppBackgroundSemi}"
             Clicked="Button_OnClicked">
 
     </Button>
