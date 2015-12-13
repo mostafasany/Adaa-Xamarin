@@ -22,10 +22,9 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="40" />
+			<RowDefinition Height="15" />
 			<RowDefinition Height="Auto" />
-			 <!--TODO Make it percentange-->
-      <RowDefinition Height="30" />
+      <RowDefinition Height="40" />
 		</Grid.RowDefinitions>
 
 		<Grid Grid.Row="0" Padding="20,15,20,45" VerticalOptions="End" >
@@ -44,18 +43,31 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 			<controls:ExtendedGrid.RowDefinitions>
 				<RowDefinition Height="40" />
 				<RowDefinition Height="1" />
-				<RowDefinition Height="60" />
+				<RowDefinition Height="40" />
 
 			</controls:ExtendedGrid.RowDefinitions>
-			<controls:ExtendedEntry  Grid.Row="0" HasBorder="false" PlaceholderTextColor="Gray"   BackgroundColor="White" TextColor="{StaticResource AppBackgroundNormal}" Placeholder="{ext:Translate UserName}" Text="{Binding UserName,Mode=TwoWay}" />
-			<BoxView Grid.Row="1" HorizontalOptions="Fill" BackgroundColor="{StaticResource AppBackgroundNormal}" />
-			<controls:ExtendedEntry   Grid.Row="2" HasBorder="false" PlaceholderTextColor="Gray"  BackgroundColor="White" TextColor="{StaticResource AppBackgroundNormal}" Placeholder="{ext:Translate Password}" Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
+			<controls:ExtendedEntry  Grid.Row="0" HasBorder="false"
+                               PlaceholderTextColor="Gray"   
+                               BackgroundColor="White" 
+                               TextColor="{StaticResource AppBackgroundNormal}"
+                               Placeholder="{ext:Translate UserName}" 
+                               Text="{Binding UserName,Mode=TwoWay}" />
+			<BoxView Grid.Row="1" 
+               HorizontalOptions="Fill"
+               BackgroundColor="{StaticResource AppBackgroundNormal}" />
+			<controls:ExtendedEntry   
+        Grid.Row="2" HasBorder="false" 
+        PlaceholderTextColor="Gray" 
+        BackgroundColor="White" 
+        TextColor="{StaticResource AppBackgroundNormal}" 
+        Placeholder="{ext:Translate Password}" 
+        Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
 		</controls:ExtendedGrid>
 
-		<Button x:Name="LoginBtn" Grid.Row="3" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
-		<ActivityIndicator Grid.Row="2" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+    <Button x:Name="LoginBtn" Grid.Row="3" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+    <ActivityIndicator Grid.Row="4" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 
-	</Grid>
+  </Grid>
 	</ScrollView>
 	</Grid>
 </ContentPage>
