@@ -6,28 +6,27 @@
              
              x:Class="AdaaMobile.Views.SettingsPage" IsBusy="{Binding IsBusy}">
 
-  <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
+  <Grid HorizontalOptions="Fill" VerticalOptions="Fill"  >
     <Grid.RowDefinitions>
       <RowDefinition Height="10"/>
-      <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
-    <Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
-       <Image.Source>
+    <Image Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+      <Image.Source>
         <OnPlatform x:TypeArguments="ImageSource" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="home-white"/>
       </Image.Source>
     </Image>
 
-    <Grid Grid.Row="2" Padding="15,5,15,5" >
+    <Grid Grid.Row="1" Padding="15,5,15,5" VerticalOptions="Fill" >
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
         <RowDefinition Height="10" />
-        <RowDefinition Height="40" />
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="20" />
       </Grid.RowDefinitions>
-      
 
-      <controls:ExtendedGrid 
+
+      <controls:ExtendedGrid
       Padding="5,0,0,0"
       Grid.Row="0" VerticalOptions="Fill"
                       HorizontalOptions="Fill"
@@ -42,57 +41,53 @@
                                         Property=Width,
                                         Factor=0.9}">
 
-         <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="20" />
-      </Grid.RowDefinitions>
-                  <controls:RoundedBoxView
-                  BackgroundColor="#22007c85"
-                  BorderColor="#44007c85"
-                  CornerRadius="3"
-                  VerticalOptions="Fill"
-                  HorizontalOptions="Fill"
-                  Grid.RowSpan="4"
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <controls:RoundedBoxView
+        BackgroundColor="#22007c85"
+        BorderColor="#44007c85"
+        CornerRadius="3"
+        VerticalOptions="Fill"
+        HorizontalOptions="Fill"
+        Grid.RowSpan="4"
                   />
 
-                  <Grid Padding="5,0,0,0" Grid.Row="0" HorizontalOptions="Fill">
-<!--                    <Label Text="Language" TextColor="Black" HorizontalOptions="Fill" >
-                    </Label>-->
-                    </Grid>
-      <Picker x:Name="LanguagePicker"   BackgroundColor="Transparent" 
-      		Grid.Row="1"  HorizontalOptions="Fill"
-      		 WidthRequest="0" HeightRequest="0" IsVisible= "false"
+        <Picker x:Name="LanguagePicker"   BackgroundColor="Transparent"
+            Grid.Row="1"  HorizontalOptions="Fill"
+             WidthRequest="0" HeightRequest="0" IsVisible= "false"
               >
-        <Picker.Items>
-            <x:String>English</x:String> 
+          <Picker.Items>
+            <x:String>English</x:String>
             <x:String>العربية</x:String>
-        </Picker.Items>
-    </Picker> 
+          </Picker.Items>
+        </Picker>
 
-    <Grid Padding="5,0,0,0" Grid.Row="1" HorizontalOptions="Fill"
-    VerticalOptions="Fill" >
-    <Button 
-    x:Name="LanguageButton" BackgroundColor="Transparent"
-    BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
-      HorizontalOptions="Start"
-    VerticalOptions="Fill" 
-    Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
+        <Grid Padding="5,0,0,0" Grid.Row="1" HorizontalOptions="Fill"
+        VerticalOptions="Fill" >
+          <Button
+          x:Name="LanguageButton" BackgroundColor="Transparent"
+          BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
+            HorizontalOptions="Start"
+          VerticalOptions="Fill"
+          Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
               >
 
-    </Button> 
-    </Grid>
-       <Grid x:Name="SelectedLanguageNameGrid" Padding="5,0,0,0" Grid.Row="2" HorizontalOptions="Fill"
-    VerticalOptions="Fill" >
-    <Button  x:Name="SelectedLanguageNameLabel" HorizontalOptions="Start" BackgroundColor="Transparent"
-    VerticalOptions="Fill" BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
-      Text="{Binding SelectedLanguageName}" TextColor="{StaticResource AppBackgroundNormal}" />
-    </Grid>
-    </controls:ExtendedGrid>
+          </Button>
+        </Grid>
+        <Grid x:Name="SelectedLanguageNameGrid" Padding="5,0,0,0" Grid.Row="2" HorizontalOptions="Fill"
+     VerticalOptions="Fill" >
+          <Button  x:Name="SelectedLanguageNameLabel" HorizontalOptions="Start" BackgroundColor="Transparent"
+          VerticalOptions="Fill" BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
+            Text="{Binding SelectedLanguageName}" TextColor="{StaticResource AppBackgroundNormal}" />
+        </Grid>
+      </controls:ExtendedGrid>
 
       <ActivityIndicator Grid.Row="1" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-      <Button BorderColor="#44007c85" BorderWidth="2" BackgroundColor="#22007c85" Grid.Row="2" HorizontalOptions="Fill" VerticalOptions="Fill" 
+      <Button BorderColor="#44007c85"  BorderWidth="2" BackgroundColor="#22007c85" Grid.Row="2" HorizontalOptions="Fill" VerticalOptions="Fill"
       Text="{ext:Translate Logout}" Command="{Binding LogoutCommand}" TextColor="{StaticResource AppBackgroundNormal}" Style="{StaticResource ButtonDefaultStyle}" />
       <!--        <Button Text="{ext:Translate SignUp}" Command="{Binding SignUpCommand}"/>-->
       <!--        <Button Text="{ext:Translate ForgetPassword}" Command="{Binding ForgetPasswordCommand}"/>-->
