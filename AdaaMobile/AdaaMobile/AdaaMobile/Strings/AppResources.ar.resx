@@ -472,4 +472,10 @@
   <data name="UnlockLaptopAccount" xml:space="preserve">
     <value>Unlock my laptop account</value>
   </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
 </root>
