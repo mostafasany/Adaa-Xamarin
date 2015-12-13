@@ -48,11 +48,13 @@ namespace AdaaMobile.Views
         #region DatePickers
         private void EndDate_Clicked(object sender, EventArgs e)
         {
+            MaxDatePicker.Unfocus();
             MaxDatePicker.Focus();
         }
 
         private void StartDate_Clicked(object sender, EventArgs e)
         {
+            MinDatePicker.Unfocus();
             MinDatePicker.Focus();
         }
         #endregion
