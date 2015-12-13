@@ -218,4 +218,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\navigationimage.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\attendance.png" />
+  </ItemGroup>
 </Project>
