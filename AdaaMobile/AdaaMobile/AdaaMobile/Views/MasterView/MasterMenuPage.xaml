@@ -17,11 +17,11 @@
   </ContentPage.Resources>
   <Grid >
     
-    <Image  VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="Fill" >
+<!--    <Image  VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="Fill" >
       <Image.Source>
-        <OnPlatform x:TypeArguments="ImageSource" WinPhone="" Android="navigationimage.png" iOS="navigation-image"/>
+        <OnPlatform x:TypeArguments="ImageSource" WinPhone="" Android="navigationimage.png" iOS="navigation-image.png"/>
       </Image.Source>
-    </Image>
+    </Image>-->
       
     <ScrollView   >
       <StackLayout VerticalOptions="End" HorizontalOptions="Fill"  Padding="0,30,0,10">

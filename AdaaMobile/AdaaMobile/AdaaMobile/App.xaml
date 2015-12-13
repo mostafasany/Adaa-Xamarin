@@ -22,7 +22,7 @@
       <Color x:Key="YellowAccent" >#FFe9bf04</Color>
       <Color x:Key="SideMenuBackgroundNormal">#FF1a5e64</Color>
       <Color x:Key="SideMenuBackgroundSemi">#B21a5e64</Color>
-      
+
 
       <x:Int32 x:Key="BorderRadius">5</x:Int32>
       <x:Double x:Key="CornerRadius">5</x:Double>
