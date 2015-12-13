@@ -7,6 +7,8 @@ using AdaaMobile.Helpers;
 using AdaaMobile.ViewModels;
 using Android.App;
 using Android.Content.PM;
+using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
@@ -16,7 +18,7 @@ using Java.Util;
 using Xamarin;
 namespace AdaaMobile.Droid
 {
-    [Activity(Label = "AdaaMobile", Icon = "@drawable/icon", MainLauncher = false,
+    [Activity(Label = "AdaaMobile", MainLauncher = false,
         Theme = "@style/MyTheme",
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
@@ -28,6 +30,7 @@ namespace AdaaMobile.Droid
             Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
             base.OnCreate(bundle);
             RequestedOrientation = ScreenOrientation.Portrait;
+            ActionBar.SetIcon(new ColorDrawable(Color.Transparent));
             Instance = this;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
@@ -37,13 +40,14 @@ namespace AdaaMobile.Droid
             //Create new locator instance.
             var locator = new Locator();
 
-			IAppSettings settings = new AppSettings ();
-			if (!string.IsNullOrEmpty (settings.NextSelectedCultureName)) {
-				settings.SelectedCultureName = settings.NextSelectedCultureName;
-				settings.NextSelectedCultureName = string.Empty;
-			}
+            IAppSettings settings = new AppSettings();
+            if (!string.IsNullOrEmpty(settings.NextSelectedCultureName))
+            {
+                settings.SelectedCultureName = settings.NextSelectedCultureName;
+                settings.NextSelectedCultureName = string.Empty;
+            }
             //Get user selected culture from last run or default
-			string culture = settings.SelectedCultureName;
+            string culture = settings.SelectedCultureName;
             //Override system culture
             SetCulture(culture);
 

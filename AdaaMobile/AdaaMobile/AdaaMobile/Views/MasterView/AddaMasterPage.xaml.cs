@@ -14,8 +14,8 @@ namespace AdaaMobile.Views.MasterView
         {
             _navigationService = Locator.Default.NavigationService;
             BackgroundColor = (Color)Application.Current.Resources["AppBackgroundNormal"];
-            //Icon = Device.OnPlatform("menu", "menu.png", "menu");
-
+            //Icon = Device.OnPlatform("menu", "icon.png", "menu");
+            
             SetMenuPage();
             Detail = MasterHelper.CreatePage(typeof(HomePage));
 
