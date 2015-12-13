@@ -3329,7 +3329,7 @@ namespace AdaaMobile.Droid
 			public const int icon = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int loginbackground = 2130837602;
+			public const int login = 2130837602;
 			
 			// aapt resource value: 0x7f020063
 			public const int logo = 2130837603;

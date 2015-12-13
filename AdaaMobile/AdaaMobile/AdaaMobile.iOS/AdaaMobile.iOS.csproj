@@ -236,6 +236,14 @@
     <BundleResource Include="Resources\daypass%403x.png" />
     <BundleResource Include="Resources\delegation%402x.png" />
     <BundleResource Include="Resources\delegation%403x.png" />
+    <BundleResource Include="Resources\login%402x.png" />
+    <BundleResource Include="Resources\logo%402x.png" />
+    <BundleResource Include="Resources\login-568h%402x.png" />
+    <BundleResource Include="Resources\logo-568h%402x.png" />
+    <BundleResource Include="Resources\login-667h%402x.png" />
+    <BundleResource Include="Resources\logo-667h%402x.png" />
+    <BundleResource Include="Resources\login-736h%403x.png" />
+    <BundleResource Include="Resources\logo-736h%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Insights.1.11.2\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\..\packages\Xamarin.Insights.1.11.2\build\Xamarin.iOS10\Xamarin.Insights.targets')" />
