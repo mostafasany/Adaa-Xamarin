@@ -14,14 +14,17 @@ namespace AdaaMobile.Views
 			EnglishButton.Clicked += EnglishButton_Clicked;
 			ArabicButton.Clicked += ArabicButton_Clicked1;;
 
+//			Image i;
+//			i.Aspect = 
+
 		}
 
 		void ArabicButton_Clicked1 (object sender, EventArgs e)
 		{
-			Locator.Default.AppSettings.SelectedCultureName = "ar-EG";
-
-			DependencyService.Get<ILocalize>().UpdateCultureInfo("ar-EG");
-			Navigation.PushModalAsync (new LoginPage ());
+//			Locator.Default.AppSettings.SelectedCultureName = "ar-EG";
+//
+//			DependencyService.Get<ILocalize>().UpdateCultureInfo("ar-EG");
+//			Navigation.PushModalAsync (new LoginPage ());
 		}
 
 		void EnglishButton_Clicked (object sender, EventArgs e)

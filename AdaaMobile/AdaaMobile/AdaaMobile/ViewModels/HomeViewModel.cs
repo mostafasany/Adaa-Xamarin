@@ -75,7 +75,7 @@ namespace AdaaMobile.ViewModels
             //Default Image for User profile
             Image = new FileImageSource()
             {
-				File = Device.OnPlatform("profilebig.png", "Profilebig.png", "profilebig.png")//TODO:Change to actual default file
+				File = Device.OnPlatform("Profilebig.png", "Profilebig.png", "Profilebig.png")//TODO:Change to actual default file
             };
         }
 
@@ -183,15 +183,13 @@ namespace AdaaMobile.ViewModels
             try
             {
                 LoadCommand.CanExecute = false;
-                IsBusy = true;
-
+				IsBusy = true;
                 //if (LoggedUserInfo.CurrentUserProfile != null && !String.IsNullOrWhiteSpace(LoggedUserInfo.CurrentUserProfile.UserImage64))
                 //{
                 //    Func<Stream> streamFunc = GetStream;
                 //    Image = ImageSource.FromStream(streamFunc);
                 //}
                 //else
-                {
                     var paramters = new CurrentProfileQParameters()
                     {
                         Langid = _appSettings.Language,
@@ -218,10 +216,7 @@ namespace AdaaMobile.ViewModels
                             _navigationService.SetAppCurrentPage(typeof(LoginPage));
                         }
                     }
-                }
-
-
-            }
+			}
             catch (Exception ex)
             {
 

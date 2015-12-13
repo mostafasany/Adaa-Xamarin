@@ -133,7 +133,7 @@ namespace AdaaMobile.ViewModels
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //Show error
 #pragma warning disable 4014

@@ -11,9 +11,9 @@
 	<RowDefinition Height="*"/>
 	</Grid.RowDefinitions>
 
-  <Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+  <Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill"  >
 		 <Image.Source>
-            <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="Default"/>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="Bck"/>
           </Image.Source>
 		</Image>
 	<Grid Grid.Row="1" Padding="5,0,5,5">

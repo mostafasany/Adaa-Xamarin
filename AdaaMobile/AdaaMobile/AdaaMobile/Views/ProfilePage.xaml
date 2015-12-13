@@ -11,7 +11,7 @@
              x:Class="AdaaMobile.Views.ProfilePage">
 
   <ContentPage.BackgroundImage>
-    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="home-white"/>
+    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
   </ContentPage.BackgroundImage>
   <ContentPage.Resources>
     <ResourceDictionary>

@@ -119,7 +119,7 @@
 
                 >
               <controls:ImageButton.HeightRequest>
-                <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="30"/>
+                <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36"/>
               </controls:ImageButton.HeightRequest>
 
               <controls:ImageButton.Source>
@@ -155,7 +155,7 @@
                       TextColor = "White"
                 >
               <controls:ImageButton.HeightRequest>
-                <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="30"/>
+                <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36"/>
               </controls:ImageButton.HeightRequest>
               <controls:ImageButton.Source>
                 <OnPlatform x:TypeArguments="ImageSource" WinPhone="date.png" Android="date.png" iOS="date"/>
