@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Accept" xml:space="preserve">
-    <value>Accept</value>
+    <value>موافق</value>
   </data>
   <data name="AdaaTimesheet" xml:space="preserve">
-    <value>ADAA Timesheet</value>
+    <value>ساعات العمل</value>
   </data>
   <data name="AdditionalComment" xml:space="preserve">
-    <value>Additional Comment</value>
+    <value>تعليق إضافي</value>
   </data>
   <data name="AdditionalComments" xml:space="preserve">
-    <value>Additional Comments</value>
+    <value>تعليقات إضافية</value>
   </data>
   <data name="Announcement" xml:space="preserve">
-    <value>Announcement</value>
+    <value>إعلان</value>
   </data>
   <data name="AnnouncementCap" xml:space="preserve">
-    <value>ANNOUNCEMENT</value>
+    <value>إعلان</value>
   </data>
   <data name="AnnouncementType" xml:space="preserve">
-    <value>Announcement Type</value>
+    <value>نوع الإعلان</value>
   </data>
   <data name="Arabic" xml:space="preserve">
     <value>عربى</value>
@@ -145,112 +145,112 @@
     <value>الحضور</value>
   </data>
   <data name="Attendance1" xml:space="preserve">
-    <value>Attendance</value>
+    <value>الحضور</value>
   </data>
   <data name="BuisnessCard" xml:space="preserve">
-    <value>Buisness Card</value>
+    <value>بطاقة العمل</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>إلغاء</value>
   </data>
   <data name="Certificate" xml:space="preserve">
-    <value>Certificate</value>
+    <value>شهادة</value>
   </data>
   <data name="CertificateNameInArabic" xml:space="preserve">
-    <value>Certificate Name in Arabic</value>
+    <value>شهادة باللغة العربية</value>
   </data>
   <data name="CertificateNameInEnglish" xml:space="preserve">
-    <value>Certificate Name in English</value>
+    <value>شهادة باللغة الإنجليزية</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change Language</value>
+    <value>تغيير اللغة</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>Change Password</value>
+    <value>تغيير كلمة السر</value>
   </data>
   <data name="DayPass" xml:space="preserve">
-    <value>Day Pass</value>
+    <value>إذن عمل</value>
   </data>
   <data name="DelegateName" xml:space="preserve">
-    <value>Delegate Name</value>
+    <value>اسم الموظف المنتدب</value>
   </data>
   <data name="Delegation" xml:space="preserve">
-    <value>Delegation</value>
+    <value>انتداب</value>
   </data>
   <data name="DelegationDetailsCap" xml:space="preserve">
-    <value>DELEGATION DETAILS</value>
+    <value>تفاصيل الإنتداب</value>
   </data>
   <data name="Department" xml:space="preserve">
-    <value>Department</value>
+    <value>القسم</value>
   </data>
   <data name="DepratureTime" xml:space="preserve">
-    <value>Deprature Time</value>
+    <value>وقت المغادرة</value>
   </data>
   <data name="Directory" xml:space="preserve">
-    <value>Directory</value>
+    <value>سجل الموظفين</value>
   </data>
   <data name="DirectoryCap" xml:space="preserve">
-    <value>DIRECTORY</value>
+    <value>سجل الموظفين</value>
   </data>
   <data name="DriverRequest" xml:space="preserve">
-    <value>Driver Request</value>
+    <value>طلب سائق</value>
   </data>
   <data name="Duration" xml:space="preserve">
-    <value>Duration</value>
+    <value>الوقت</value>
   </data>
   <data name="EmployeeID" xml:space="preserve">
-    <value>Employee ID</value>
+    <value>رقم الموظف</value>
   </data>
   <data name="EmptyPlaceHolder" xml:space="preserve">
     <value>---</value>
   </data>
   <data name="English" xml:space="preserve">
-    <value>English</value>
+    <value>الإنجليزية</value>
   </data>
   <data name="Exceptions" xml:space="preserve">
-    <value>الإستثنائات</value>
+    <value>الإستثناءات</value>
   </data>
   <data name="ExpectedReturnTime" xml:space="preserve">
-    <value>Expected Return Time</value>
+    <value>وقت العودة المتوقع</value>
   </data>
   <data name="Failed" xml:space="preserve">
     <value>حدث خطأ</value>
   </data>
   <data name="FirstSeen" xml:space="preserve">
-    <value>First Seen</value>
+    <value>وقت الدخول</value>
   </data>
   <data name="FlowDirection" xml:space="preserve">
-    <value>RightToLeft</value>
+    <value>من اليمين لليسار</value>
   </data>
   <data name="ForgetPassword" xml:space="preserve">
     <value>إستعادة كلمة المرور</value>
   </data>
   <data name="FullName" xml:space="preserve">
-    <value>Full Name</value>
+    <value>الإسم بالكامل</value>
   </data>
   <data name="GreetingCard" xml:space="preserve">
-    <value>Greeting Card</value>
+    <value>بطاقة تحية</value>
   </data>
   <data name="Group" xml:space="preserve">
-    <value>Group</value>
+    <value>مجموعة</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>الرئيسية</value>
   </data>
   <data name="InArabic" xml:space="preserve">
-    <value>in Arabic</value>
+    <value>باللغة العربية</value>
   </data>
   <data name="InEnglish" xml:space="preserve">
-    <value>in English</value>
+    <value>باللغة الإنجليزية</value>
   </data>
   <data name="JobTitle" xml:space="preserve">
-    <value>Job Title</value>
+    <value>المسمى الوظيفي</value>
   </data>
   <data name="LastSeen" xml:space="preserve">
-    <value>Last Seen</value>
+    <value>وقت الخروج</value>
   </data>
   <data name="Location" xml:space="preserve">
-    <value>Location</value>
+    <value>الموقع</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>سجل الدخول</value>
@@ -259,218 +259,218 @@
     <value>تسجيل الخروج</value>
   </data>
   <data name="MobileNumber" xml:space="preserve">
-    <value>Mobile Number</value>
+    <value>رقم المحمول</value>
   </data>
   <data name="MyDelegationsCap" xml:space="preserve">
-    <value>MY DELEGATIONS</value>
+    <value>الإنتداب الخاص بي</value>
   </data>
   <data name="MyRequests" xml:space="preserve">
-    <value>My Requests</value>
+    <value>طلباتي</value>
   </data>
   <data name="MyRequestsCap" xml:space="preserve">
-    <value>MY REQUESTS</value>
+    <value>طلباتي</value>
   </data>
   <data name="MySubAttendanceCap" xml:space="preserve">
-    <value>MY SUB ATTENDANCE</value>
+    <value>غياب الموظفين التابعين لي</value>
   </data>
   <data name="MyTasks" xml:space="preserve">
-    <value>My Tasks</value>
+    <value>مهامي</value>
   </data>
   <data name="MyTasksCap" xml:space="preserve">
-    <value>MY TASKS</value>
+    <value>مهامي</value>
   </data>
   <data name="NewDelegationCap" xml:space="preserve">
-    <value>NEW DELEGATION</value>
+    <value>طلب انتداب</value>
   </data>
   <data name="NewRequestCap" xml:space="preserve">
-    <value>NEW REQUEST</value>
+    <value>طلب جديد</value>
   </data>
   <data name="OfferMaintenance" xml:space="preserve">
-    <value>Offer Maintenance</value>
+    <value>إصلاح المكتب</value>
   </data>
   <data name="OfferServices" xml:space="preserve">
-    <value>Offer Services</value>
+    <value>خدمات المكتب</value>
   </data>
   <data name="OfficeNumber" xml:space="preserve">
-    <value>Office Number</value>
+    <value>رقم المكتب</value>
   </data>
   <data name="Pending" xml:space="preserve">
-    <value>Pending</value>
+    <value>معلق</value>
   </data>
   <data name="PriorityNormal" xml:space="preserve">
-    <value>Normal</value>
+    <value>عادي</value>
   </data>
   <data name="Profile" xml:space="preserve">
-    <value>Profile</value>
+    <value>الملف الشخصي</value>
   </data>
   <data name="Reason" xml:space="preserve">
-    <value>Reason</value>
+    <value>السبب</value>
   </data>
   <data name="ReasonType" xml:space="preserve">
-    <value>Reason Type</value>
+    <value>نوع السبب</value>
   </data>
   <data name="Reject" xml:space="preserve">
-    <value>Reject</value>
+    <value>رفض</value>
   </data>
   <data name="RequestDetails" xml:space="preserve">
-    <value>Request Details</value>
+    <value>تفاصيل الطلب</value>
   </data>
   <data name="RequestDetailsCap" xml:space="preserve">
-    <value>REQUEST DETAILS</value>
+    <value>تفاصيل الطلب</value>
   </data>
   <data name="RequestStatus" xml:space="preserve">
-    <value>Request Status</value>
+    <value>حالة الطلب</value>
   </data>
   <data name="ResearchRequest" xml:space="preserve">
-    <value>Research Request</value>
+    <value>طلب بحث</value>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
     <value>ar</value>
   </data>
   <data name="ReturnToday" xml:space="preserve">
-    <value>Return Today</value>
+    <value>العودة</value>
   </data>
   <data name="RuleStatus" xml:space="preserve">
-    <value>Rule Status</value>
+    <value>الحالة</value>
   </data>
   <data name="Select" xml:space="preserve">
-    <value>Select</value>
+    <value>اختر</value>
   </data>
   <data name="SelectServiceCap" xml:space="preserve">
-    <value>SELECT SERVICE</value>
+    <value>اختر خدمة</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>الإعدادات</value>
   </data>
   <data name="SettingsCap" xml:space="preserve">
-    <value>SETTINGS</value>
+    <value>الإعدادات</value>
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>تسجيل حساب جديد</value>
   </data>
   <data name="Submit" xml:space="preserve">
-    <value>Submit</value>
+    <value>اضف</value>
   </data>
   <data name="SubOrdinate" xml:space="preserve">
-    <value>Sub-ordinate</value>
+    <value>الموظف التابع</value>
   </data>
   <data name="TaskDetailsCap" xml:space="preserve">
-    <value>TASK DETAILS</value>
+    <value>تفاصيل المهمة</value>
   </data>
   <data name="UnLockMyAccount" xml:space="preserve">
-    <value>UnLock My Account</value>
+    <value>فتح حسابي</value>
   </data>
   <data name="Work" xml:space="preserve">
-    <value>Work</value>
+    <value>عمل</value>
   </data>
   <data name="UserName" xml:space="preserve">
     <value>اسم المستخدم</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>الاسم السري</value>
+    <value>كلمة المرور</value>
   </data>
   <data name="ApplicationName" xml:space="preserve">
-    <value>Adaa</value>
+    <value>ADAA</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>البريد الإلكتروني</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>خطأ</value>
   </data>
   <data name="Loading" xml:space="preserve">
-    <value>Loading</value>
+    <value>تحميل</value>
   </data>
   <data name="LoadingError" xml:space="preserve">
-    <value>LoadingError</value>
+    <value>خطأ في التحميل</value>
   </data>
   <data name="Manager" xml:space="preserve">
-    <value>Manager</value>
+    <value>مدير</value>
   </data>
   <data name="NoData" xml:space="preserve">
-    <value>No Data</value>
+    <value>لا يوجد بيانات</value>
   </data>
   <data name="NoInternet" xml:space="preserve">
-    <value>NoInternet</value>
+    <value>لا يوجد انترنت</value>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>موافق</value>
   </data>
   <data name="UnlockAccountError" xml:space="preserve">
-    <value>Unlocking account request was unsuccessful</value>
+    <value>تم فتح حسابك بنجاح</value>
     <comment>When backend doesn't return any message</comment>
   </data>
   <data name="Late" xml:space="preserve">
-    <value>Late</value>
+    <value>تأخير</value>
   </data>
   <data name="Remaining" xml:space="preserve">
-    <value>Remaining</value>
+    <value>المتبقي</value>
   </data>
   <data name="Alert" xml:space="preserve">
-    <value>Alert</value>
+    <value>تنبيه</value>
   </data>
   <data name="EnterValidPassword" xml:space="preserve">
-    <value>Please enter valid password</value>
+    <value>الرجاء ادخال كلمة المرور الصحيحة</value>
   </data>
   <data name="ADAAAttendance" xml:space="preserve">
-    <value>ADAA Attendance</value>
+    <value>الغياب</value>
   </data>
   <data name="ChooseLanguage" xml:space="preserve">
-    <value>Choose language</value>
+    <value>اختر اللغة</value>
   </data>
   <data name="EmployeeDirectory" xml:space="preserve">
-    <value>Employee Directory</value>
+    <value>سجل الموظفين</value>
   </data>
   <data name="EServices" xml:space="preserve">
-    <value>E-Services</value>
+    <value>الخدمات</value>
   </data>
   <data name="InvalidSessionMessage" xml:space="preserve">
-    <value>Invalid Session, You will be redirected to login page</value>
+    <value>خطأ - سيتم تحويلك لصفحة الدخول</value>
   </data>
   <data name="ITServicesDesk" xml:space="preserve">
-    <value>IT Services Desk</value>
+    <value>خدمات الدعم التقني</value>
   </data>
   <data name="LanguageChangedText" xml:space="preserve">
-    <value>please reopen the app to change the language</value>
+    <value>الرجاء إعادة فتح التطبيق لتفعيل خدمة تغيير اللغة</value>
   </data>
   <data name="LanguageSaved" xml:space="preserve">
-    <value>Language saved</value>
+    <value>تم تخزين اللغة</value>
   </data>
   <data name="OracleServices" xml:space="preserve">
-    <value>Oracle Services</value>
+    <value>خدمات أوراكل</value>
   </data>
   <data name="SomethingErrorHappened" xml:space="preserve">
-    <value>Something error happened</value>
+    <value>حدث خطأ ما</value>
   </data>
   <data name="UserAccountServices" xml:space="preserve">
-    <value>User Account Services</value>
+    <value>خدمات حساب المستخدم</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome,</value>
+    <value>مرحبا </value>
   </data>
   <data name="WrongUsernameOrPassword" xml:space="preserve">
-    <value>Wrong username or password</value>
+    <value>يوجد خطأ في اسم المستخدم او كلمة المرور</value>
   </data>
   <data name="PassAndConfirmPassAreNotEqual" xml:space="preserve">
-    <value>Password and confirm password are not equal</value>
+    <value>كلمة المرور غير مطابقة لتأكيد كلمة المرور</value>
   </data>
   <data name="PassLessThan8CharsMessage" xml:space="preserve">
-    <value>Password and confirm password should be at least 8 charachters</value>
+    <value>كلمة المرور وتأكيد كلمة المرور يجب ألا تقل عن 8 حروف</value>
   </data>
   <data name="PassShouldnotContainSpecialChars" xml:space="preserve">
-    <value>Password should not contain special charachters</value>
+    <value>يجب الا تحتوي كلمة المرور على حروف خاصة</value>
   </data>
   <data name="PleaseEnterPassAndConfirmPass" xml:space="preserve">
-    <value>Please Enter new password and confirm password</value>
+    <value>يجب إدخال كلمة المرور و تأكيد كلمة المرور</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>
   </data>
   <data name="ChangeLaptopPass" xml:space="preserve">
-    <value>Change my laptop password</value>
+    <value>تغيير كلمة المرور الخاصة بحسابي</value>
   </data>
   <data name="UnlockLaptopAccount" xml:space="preserve">
-    <value>Unlock my laptop account</value>
+    <value>فتح حسابي</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
