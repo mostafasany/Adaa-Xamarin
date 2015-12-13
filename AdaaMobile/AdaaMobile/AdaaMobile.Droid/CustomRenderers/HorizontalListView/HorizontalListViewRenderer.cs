@@ -65,6 +65,7 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
                 _recyclerView.SetAdapter(DataSource);
                 _recyclerView.Background = new ColorDrawable(Element.BackgroundColor.ToAndroid());
                 _recyclerView.LayoutChange += _recyclerView_LayoutChange;
+                
                 base.SetNativeControl(_recyclerView);
             }
         }

@@ -45,6 +45,21 @@ namespace AdaaMobile.Views
 
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                await _attendanceViewModel.PopulateAttendanceDaysAsync();
+                if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
+                    SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count-1]);
+            }
+            catch
+            {
+                //ignored
+            }
+        }
+
         #region DatePickers
         private void EndDate_Clicked(object sender, EventArgs e)
         {
@@ -62,7 +77,7 @@ namespace AdaaMobile.Views
         #region Tabs Methods
         private void SelectButton(Button button, bool selected)
         {
-			var darkColor = (Color)Resources["TabColor"];
+            var darkColor = (Color)Resources["TabColor"];
 
             if (selected)
             {
@@ -116,6 +131,11 @@ namespace AdaaMobile.Views
         {
             //Change color states of clicked day
             var newDay = (DayWrapper)e.Item;
+            SelectDay(newDay);
+        }
+
+        private void SelectDay(DayWrapper newDay)
+        {
             newDay.IsSelected = true;
             var oldDay = _attendanceViewModel.SelectedDay;
             if (oldDay != null && oldDay != newDay)

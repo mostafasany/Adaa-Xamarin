@@ -176,7 +176,7 @@ namespace AdaaMobile.ViewModels
 
             //Set initial mode to Attendance
             AttendanceMode = AttendanceMode.Attendance;
-            PopulateAttendanceDays();
+            
         }
 
         #endregion
@@ -194,7 +194,7 @@ namespace AdaaMobile.ViewModels
         /// Be Aware this is used only With Attendance Mode.
         /// Use LoadExceptions with Exceptions Mode
         /// </summary>
-        public async void PopulateAttendanceDays()
+        public async Task PopulateAttendanceDaysAsync()
         {
             //Create new Days List on background task.
             var daysList = await Task.Run(() =>
@@ -213,7 +213,7 @@ namespace AdaaMobile.ViewModels
             DaysList = daysList;
         }
 
-        public void SwitchMode(AttendanceMode mode)
+        public async void SwitchMode(AttendanceMode mode)
         {
             //Set current mode, This will trigger changes in Bindings.
             AttendanceMode = mode;
@@ -243,7 +243,7 @@ namespace AdaaMobile.ViewModels
 
             if (mode == AttendanceMode.Attendance)
             {
-                PopulateAttendanceDays();
+                await PopulateAttendanceDaysAsync();
             }
             else
             {

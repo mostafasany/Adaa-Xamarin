@@ -76,7 +76,7 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
                 _collectionView.Delegate = new CustomUICollectionViewDelegateFlowLayout();
 
                 SetNativeControl(_collectionView);
-
+                
                 Bind(e.NewElement);
             }
         }
