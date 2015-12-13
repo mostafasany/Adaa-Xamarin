@@ -226,8 +226,7 @@
   <ItemGroup>
     <Content Include="PluginsHelp\SettingsReadme.txt" />
     <BundleResource Include="Resources\chevron.png" />
-    <BundleResource Include="Resources\navigation-image%402x.png" />
-    <BundleResource Include="Resources\navigation-image%403x.png" />
+    <BundleResource Include="Resources\navigation-image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Insights.1.11.2\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\..\packages\Xamarin.Insights.1.11.2\build\Xamarin.iOS10\Xamarin.Insights.targets')" />

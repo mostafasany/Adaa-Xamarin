@@ -20,8 +20,8 @@
       <Color x:Key="AppBackgroundNormal">#FF007c85</Color>
       <Color x:Key="AppBackgroundSemi">#B2007c85</Color>
       <Color x:Key="YellowAccent" >#FFe9bf04</Color>
-      <Color x:Key="SideMenuBackgroundNormal">#FF1A5D65</Color>
-      <Color x:Key="SideMenuBackgroundSemi">#F21A5D65</Color>
+      <Color x:Key="SideMenuBackgroundNormal">#FF1a5e64</Color>
+      <Color x:Key="SideMenuBackgroundSemi">#B21a5e64</Color>
       
 
       <x:Int32 x:Key="BorderRadius">5</x:Int32>
