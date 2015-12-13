@@ -20,13 +20,13 @@ namespace AdaaMobile.Views
 			_changePasswordModel = Locator.Default.ChangePasswordViewModel;
             BindingContext = _changePasswordModel;
 
-			Title = "Change Password";
+			Title = AppResources.ChangePassword;
             Action action = () =>
             {
                 _changePasswordModel.ChangePasswordCommand.Execute(null);
             };
             ToolbarItems.Add(
-				new ToolbarItem(AppResources.Save, "date.png", action, ToolbarItemOrder.Primary));
+				new ToolbarItem(AppResources.Save, "", action, ToolbarItemOrder.Primary));
 			
             //Work-around for iOS for cut-images
             if (Device.OS == TargetPlatform.iOS)
