@@ -41,7 +41,12 @@ namespace AdaaMobile.Views
             SelectButton(ExceptionsButton, false);
             _lastTappedTab = AttendanceButton;
 
-            Title = AppResources.Attendance;
+            
+			if (LoggedUserInfo.CurrentUserProfile != null) {
+				Title = LoggedUserInfo.CurrentUserProfile.DisplayName;
+			} else {
+				//Title = AppResources.Attendance;
+			}
 
         }
 

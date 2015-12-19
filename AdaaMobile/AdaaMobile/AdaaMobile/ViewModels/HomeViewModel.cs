@@ -98,7 +98,7 @@ namespace AdaaMobile.ViewModels
                 Title = AppResources.EmployeeDirectory,
                 IconSource = "AdaaMobile.Images.Directory.svg",
                 TargetType = typeof(DirectoryPage),
-                IsEnabled = false
+					IsEnabled = true
             });
 
             data.Add(new AdaaPageItem()
@@ -153,7 +153,7 @@ namespace AdaaMobile.ViewModels
             data.Add(new AdaaPageItem()
             {
                 Title = AppResources.UserAccountServices,
-                IconSource = "AdaaMobile.Images.Profile.svg",
+					IconSource = "AdaaMobile.Images.account_services_icn.svg",
                 TargetType = typeof(UserServicesPage),
                 IsEnabled = true
             });

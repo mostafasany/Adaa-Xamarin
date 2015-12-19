@@ -22,23 +22,24 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="6" />
 			<RowDefinition Height="Auto" />
       <RowDefinition Height="40" />
 		</Grid.RowDefinitions>
 
-		<Grid Grid.Row="0" Padding="20,8,20,45" VerticalOptions="End" >
+		<Grid Grid.Row="1" Padding="20,8,20,45" VerticalOptions="End" >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
-			<Image  HorizontalOptions="Fill" VerticalOptions="Fill"  >
+			<Image  HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"  >
 		 <Image.Source>
             <OnPlatform x:TypeArguments="ImageSource" WinPhone="logo.png" Android="logo.png" iOS="logo"/>
           </Image.Source>
 		</Image>
      </Grid>
 
-		<controls:ExtendedGrid Grid.Row="1"  CornerRadius="3" HorizontalOptions="Fill"
+		<controls:ExtendedGrid Grid.Row="2"  CornerRadius="3" HorizontalOptions="Fill"
                        BackgroundColor="White" Padding="8,6,8,6" >
 			<controls:ExtendedGrid.RowDefinitions>
 				<RowDefinition Height="40" />
@@ -64,8 +65,8 @@ x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
         Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
 		</controls:ExtendedGrid>
 
-    <Button x:Name="LoginBtn" Grid.Row="3" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
-    <ActivityIndicator Grid.Row="4" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+    <Button x:Name="LoginBtn" Grid.Row="4" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+    <ActivityIndicator Grid.Row="5" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 
   </Grid>
 	</ScrollView>

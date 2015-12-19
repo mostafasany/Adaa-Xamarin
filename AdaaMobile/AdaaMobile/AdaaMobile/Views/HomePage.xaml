@@ -57,7 +57,7 @@
     <!--User Circle Profile-->
     <controls:CircleImage HeightRequest="70"
                           WidthRequest="70"
-                          BorderThickness="5"
+                          BorderThickness="2"
                           BorderColor="{StaticResource YellowAccent}"
                           Grid.Row="1"
                           Grid.RowSpan="2"

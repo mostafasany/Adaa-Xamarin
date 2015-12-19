@@ -6,17 +6,30 @@
 
 
 	<Grid.RowDefinitions>
-	<RowDefinition Height="5*"/>
+	<RowDefinition Height="*"/>
 	<RowDefinition Height="Auto"/>
 	<RowDefinition Height="*"/>
+	<RowDefinition Height="Auto"/>
+	<RowDefinition Height="10"/>
 	</Grid.RowDefinitions>
 
-  <Image Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill"  >
+  <Image Grid.RowSpan="5" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill"  >
 		 <Image.Source>
-            <OnPlatform x:TypeArguments="ImageSource" WinPhone="splash.jpg" Android="splash.jpg" iOS="Bck"/>
+          <OnPlatform x:TypeArguments="ImageSource" WinPhone="login.png" Android="login.png" iOS="login"/>
           </Image.Source>
 		</Image>
-	<Grid Grid.Row="1" Padding="5,0,5,5">
+
+			<Grid Grid.Row="1" Padding="20,8,20,10" VerticalOptions="Fill" >
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Image  HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"  >
+		 <Image.Source>
+            <OnPlatform x:TypeArguments="ImageSource" WinPhone="logo.png" Android="logo.png" iOS="logo"/>
+          </Image.Source>
+		</Image>
+     </Grid>
+	<Grid Grid.Row="3" Padding="5,0,5,5">
 	<Grid.ColumnDefinitions>
 	<ColumnDefinition Width="*"  />
 	<ColumnDefinition Width="*"  />

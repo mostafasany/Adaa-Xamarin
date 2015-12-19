@@ -23,15 +23,15 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string></string>
+	<string>8.0</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.adaa.AdaaMobile</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.2</string>
+	<string>1.0.6</string>
 	<key>CFBundleName</key>
 	<string>ADAA</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.2</string>
+	<string>1.0.6</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ProximaNova-Regular.otf</string>
