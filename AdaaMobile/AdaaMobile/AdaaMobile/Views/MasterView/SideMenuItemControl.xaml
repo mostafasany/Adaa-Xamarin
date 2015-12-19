@@ -46,7 +46,7 @@
           <controls:ColorPair OldColor="#FFFFFF" NewColor="{StaticResource YellowAccent}"></controls:ColorPair>
         </controls:SvgImage.ReplacementColors>
       </controls:SvgImage>
-      <Label Grid.Column="2" TextColor="{Binding IsSelected,Source={x:Reference ParentView}
+      <Label Grid.Column="2" TextColor="{Binding IsPageSupported,Source={x:Reference ParentView}
          ,Converter={StaticResource ListColorConverter}}" VerticalOptions="Center" VerticalTextAlignment="Center"
              BackgroundColor="Transparent" FontSize="Small"
       Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>

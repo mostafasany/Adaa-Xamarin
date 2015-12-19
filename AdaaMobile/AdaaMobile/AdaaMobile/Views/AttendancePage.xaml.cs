@@ -31,6 +31,13 @@ namespace AdaaMobile.Views
             _attendanceViewModel = Locator.Default.AttendanceViewModel;
             BindingContext = _attendanceViewModel;
 
+			//TO Avoid that Date is fired on iOS before pressing Done
+			MinDatePicker.Date = _attendanceViewModel.StartDate;
+			MinDatePicker.Unfocused += MinDatePicker_Unfocused;
+
+			MaxDatePicker.Date = _attendanceViewModel.EndDate;
+			MaxDatePicker.Unfocused += MaxDatePicker_Unfocused;
+
             //Add App bar icon
             //Action action = () => { };
             //ToolbarItems.Add(
@@ -48,6 +55,20 @@ namespace AdaaMobile.Views
 				//Title = AppResources.Attendance;
 			}
 
+        }
+
+        void MaxDatePicker_Unfocused (object sender, FocusEventArgs e)
+        {
+			DatePicker datePicker = (sender as DatePicker);
+			if(datePicker != null && _attendanceViewModel != null)
+				_attendanceViewModel.EndDate = datePicker.Date;
+        }
+
+        void MinDatePicker_Unfocused (object sender, FocusEventArgs e)
+        {
+			DatePicker datePicker = (sender as DatePicker);
+			if(datePicker != null && _attendanceViewModel != null)
+			_attendanceViewModel.StartDate = datePicker.Date;
         }
 
         protected override async void OnAppearing()

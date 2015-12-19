@@ -40,9 +40,9 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _startDate, value))
                 {
-                    var span = EndDate - StartDate;
-                    if (span.Days > LimitRangeInDays)
-                        EndDate = _startDate.Add(TimeSpan.FromDays(LimitRangeInDays));
+//                    var span = EndDate - StartDate;
+//                    if (span.Days > LimitRangeInDays)
+//                        EndDate = _startDate.Add(TimeSpan.FromDays(LimitRangeInDays));
                     SwitchMode(AttendanceMode);
                 }
             }
@@ -59,9 +59,9 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _endDate, value))
                 {
-                    var span = EndDate - StartDate;
-                    if (span.Days > LimitRangeInDays)
-                        StartDate = _endDate.Subtract(TimeSpan.FromDays(LimitRangeInDays));
+//                    var span = EndDate - StartDate;
+//                    if (span.Days > LimitRangeInDays)
+//                        StartDate = _endDate.Subtract(TimeSpan.FromDays(LimitRangeInDays));
                     SwitchMode(AttendanceMode);
                 }
             }
@@ -215,6 +215,10 @@ namespace AdaaMobile.ViewModels
 
         public async void SwitchMode(AttendanceMode mode)
         {
+			if (EndDate >= StartDate && (EndDate - StartDate).Days > LimitRangeInDays ) {
+				await _dialogManager.DisplayAlert (AppResources.ApplicationName, "Please select valid intreval, maximum is one month", AppResources.Ok);
+				return;
+			}
             //Set current mode, This will trigger changes in Bindings.
             AttendanceMode = mode;
 
