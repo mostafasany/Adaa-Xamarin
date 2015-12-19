@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Helpers
 {
-	public class NavigationService : INavigationService
+    public class NavigationService : INavigationService
     {
 
         public bool SetAppCurrentPage<TPageType>(TPageType pageType) where TPageType : Type
@@ -26,20 +26,27 @@ namespace AdaaMobile.Helpers
             }
         }
 
-		public bool NavigateToPage<TPageType> (TPageType pageType) where TPageType : Type
-		{
-			try
-			{
-				//if (Application.Current.MainPage != null && App.Current.MainPage.GetType() == typeof(TPageType)) return false;
-				Page displayPage = (Page)Activator.CreateInstance(pageType);
-				(Application.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync( displayPage);
-				return true;
-			}
-			catch (Exception ex)
-			{
-				return false;
-			}
-		}
+        public bool NavigateToPage<TPageType>(TPageType pageType) where TPageType : Type
+        {
+            try
+            {
+                //if (Application.Current.MainPage != null && App.Current.MainPage.GetType() == typeof(TPageType)) return false;
+                Page displayPage = (Page)Activator.CreateInstance(pageType);
+                if (Application.Current.MainPage is MasterDetailPage)
+                {
+                    (Application.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync(displayPage);
+                }
+                else
+                {
+                    (Application.Current.MainPage as Page).Navigation.PushAsync(displayPage);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
         public bool SetMasterDetailsPage<TPageType>(TPageType pageType, bool wrapInNavigation = true) where TPageType : Type
         {
@@ -56,5 +63,25 @@ namespace AdaaMobile.Helpers
             }
         }
 
+        public void GoBack()
+        {
+            try
+            {
+                if (Application.Current.MainPage is MasterDetailPage)
+                {
+                    (Application.Current.MainPage as MasterDetailPage).Detail.Navigation.PopAsync();
+                }
+                else
+                {
+                    (Application.Current.MainPage as Page).Navigation.PopAsync();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ///TODO Log this error
+            }
+
+        }
     }
 }

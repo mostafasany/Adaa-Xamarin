@@ -210,7 +210,7 @@ namespace AdaaMobile.ViewModels
                     else
                     {
                         string message = _messageResolver.GetMessage(result);
-                        await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
                         if (result.ResponseStatus == ResponseStatus.InvalidToken)
                         {
                             _navigationService.SetAppCurrentPage(typeof(LoginPage));

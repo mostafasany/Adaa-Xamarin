@@ -99,19 +99,19 @@ namespace AdaaMobile.ViewModels
                 IsBusy = true;
                 if (string.IsNullOrEmpty(NewPassword) || string.IsNullOrEmpty(ConfirmPassword))
                 {
-                    await _dialogManager.DisplayAlert(AppResources.Alert, AppResources.PleaseEnterPassAndConfirmPass, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseEnterPassAndConfirmPass, AppResources.Ok);
                 }
                 else if (NewPassword.Length < 8 || ConfirmPassword.Length < 8)
                 {
-                    await _dialogManager.DisplayAlert(AppResources.Alert, AppResources.PassLessThan8CharsMessage, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PassLessThan8CharsMessage, AppResources.Ok);
                 }
                 else if (NewPassword != ConfirmPassword)
                 {
-                    await _dialogManager.DisplayAlert(AppResources.Alert, AppResources.PassAndConfirmPassAreNotEqual, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PassAndConfirmPassAreNotEqual, AppResources.Ok);
                 }
 				else if (!IsValaidPassword(NewPassword))
                 {
-                    await _dialogManager.DisplayAlert(AppResources.Alert, AppResources.PassShouldnotContainSpecialChars, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PassShouldnotContainSpecialChars, AppResources.Ok);
                 }
                 else
                 {
@@ -125,11 +125,15 @@ namespace AdaaMobile.ViewModels
                     {
 
                         await _dialogManager.DisplayAlert(AppResources.ApplicationName, result.Result.Message, AppResources.Ok);
+                        if (result.Result.Message == "Password Changed Successfully")
+                        {
+                            _navigationService.GoBack();
+                        }
                     }
                     else
                     {
                         string message = _messageResolver.GetMessage(result);
-                        await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
                         if (result.ResponseStatus == ResponseStatus.InvalidToken)
                         {
                             _navigationService.SetAppCurrentPage(typeof(LoginPage));

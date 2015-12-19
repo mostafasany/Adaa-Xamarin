@@ -5,8 +5,15 @@
              xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
+             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              x:Name="MainWindow"
              x:Class="AdaaMobile.Views.HomePage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:BoolToColorConverter x:Key="ListColorConverter"
+       FalseColor="Gray"  TrueColor="White"  />
+    </ResourceDictionary>
+  </ContentPage.Resources>
   <ContentPage.BackgroundImage>
     <OnPlatform x:TypeArguments="x:String" WinPhone="home_black.jpg" Android="home_black.jpg" iOS="homeblack"/>
   </ContentPage.BackgroundImage>
@@ -144,7 +151,7 @@
                   </Grid.GestureRecognizers>
                 </controls:ExtendedGrid >
               </RelativeLayout>
-              <Label Text="{Binding Title}" Font="SemiBold" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
+              <Label Text="{Binding Title}" Font="SemiBold" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" HorizontalOptions="Fill" HorizontalTextAlignment="Center" TextColor="{Binding IsEnabled,Converter={StaticResource ListColorConverter}}">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
                 </Label.GestureRecognizers>

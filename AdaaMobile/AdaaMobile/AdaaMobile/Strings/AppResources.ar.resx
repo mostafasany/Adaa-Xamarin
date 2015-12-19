@@ -478,4 +478,10 @@
   <data name="NewPassword" xml:space="preserve">
     <value>New Password</value>
   </data>
+  <data name="PleaseenterUserName" xml:space="preserve">
+    <value>برجاء ادخال اسم المستخدم</value>
+  </data>
+  <data name="PleaseenterUserNameandPassword" xml:space="preserve">
+    <value>برجاء ادخال اسم المستخدم و كلمة المرور</value>
+  </data>
 </root>

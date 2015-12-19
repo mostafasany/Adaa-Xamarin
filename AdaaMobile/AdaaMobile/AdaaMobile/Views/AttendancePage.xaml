@@ -101,7 +101,7 @@
                 Date="{Binding StartDate}"
                 MinimumDate="{Binding MinimumDate}"
                 DateSelected="Date_Selected"
-                MaximumDate="{Binding EndDate}"
+                MaximumDate="{x:Static sys:DateTime.Now}"
                 VerticalOptions="End"
             />
 

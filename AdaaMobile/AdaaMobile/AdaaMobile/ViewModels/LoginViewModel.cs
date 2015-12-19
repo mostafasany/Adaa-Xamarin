@@ -111,25 +111,36 @@ namespace AdaaMobile.ViewModels
                 LoginCommand.CanExecute = false;
                 IsBusy = true;
                 BusyMessage = AppResources.Loading;
-                var response = await _dataService.LoginAsync(UserName, Password);
-
-                if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
+                if (string.IsNullOrEmpty(UserName))
                 {
-                    if (response.Result.Message == LoginResponseValidToken && !string.IsNullOrEmpty(response.Result.UserToken))
-                    {
-                        _appSettings.UserToken = response.Result.UserToken;
-                        _navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
-                    }
-                    else if (response.Result.Message == LoginResponseWrongPassword ||
-                             response.Result.Message == "Wrong username or password")
-                    {
-                        await _dialogManager.DisplayAlert(AppResources.Alert, AppResources.EnterValidPassword, AppResources.Ok);
-                    }
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseenterUserName, AppResources.Ok);
+                }
+                else if (string.IsNullOrEmpty(UserName) && string.IsNullOrEmpty(Password))
+                {
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseenterUserNameandPassword, AppResources.Ok);
                 }
                 else
                 {
-                    string message = _messageResolver.GetMessage(response);
-                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    var response = await _dataService.LoginAsync(UserName, Password);
+
+                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
+                    {
+                        if (response.Result.Message == LoginResponseValidToken && !string.IsNullOrEmpty(response.Result.UserToken))
+                        {
+                            _appSettings.UserToken = response.Result.UserToken;
+                            _navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
+                        }
+                        else if (response.Result.Message == LoginResponseWrongPassword ||
+                                 response.Result.Message == "Wrong username or password")
+                        {
+                            await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.EnterValidPassword, AppResources.Ok);
+                        }
+                    }
+                    else
+                    {
+                        string message = _messageResolver.GetMessage(response);
+                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
+                    }
                 }
 
             }
@@ -137,7 +148,7 @@ namespace AdaaMobile.ViewModels
             {
                 //Show error
 #pragma warning disable 4014
-                _dialogManager.DisplayAlert(AppResources.Alert, AppResources.SomethingErrorHappened, AppResources.Ok);
+                _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.SomethingErrorHappened, AppResources.Ok);
 #pragma warning restore 4014
             }
             finally

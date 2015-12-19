@@ -141,7 +141,7 @@ namespace AdaaMobile.ViewModels
                 else
                 {
                     string message = _messageResolver.GetMessage(resposne);
-                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
 
                     if (resposne.ResponseStatus == ResponseStatus.InvalidToken)
                     {

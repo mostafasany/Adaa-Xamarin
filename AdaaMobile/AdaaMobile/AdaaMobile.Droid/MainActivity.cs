@@ -18,7 +18,7 @@ using Java.Util;
 using Xamarin;
 namespace AdaaMobile.Droid
 {
-    [Activity(Label = "AdaaMobile", MainLauncher = false,
+    [Activity(Label = "ADAA", MainLauncher = false,
         Theme = "@style/MyTheme",
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity

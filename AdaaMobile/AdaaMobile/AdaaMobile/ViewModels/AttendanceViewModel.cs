@@ -280,7 +280,7 @@ namespace AdaaMobile.ViewModels
                 else
                 {
                     string message = _messageResolver.GetMessage(response);
-                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
 
                     if (response.ResponseStatus == ResponseStatus.InvalidToken)
                     {
@@ -292,7 +292,7 @@ namespace AdaaMobile.ViewModels
             catch (Exception)
             {
 #pragma warning disable 4014
-                _dialogManager.DisplayAlert(AppResources.Alert, AppResources.LoadingError, AppResources.Ok);
+                _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.LoadingError, AppResources.Ok);
 #pragma warning restore 4014
             }
             finally
@@ -343,7 +343,7 @@ namespace AdaaMobile.ViewModels
                 else
                 {
                     string message = _messageResolver.GetMessage(response);
-                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
                     if (response.ResponseStatus == ResponseStatus.InvalidToken)
                     {
                         _navigationService.SetAppCurrentPage(typeof(LoginPage));
@@ -354,7 +354,7 @@ namespace AdaaMobile.ViewModels
             catch (Exception)
             {
 #pragma warning disable 4014
-                _dialogManager.DisplayAlert(AppResources.Alert, AppResources.LoadingError, AppResources.Ok);
+                _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.LoadingError, AppResources.Ok);
 #pragma warning restore 4014
             }
             finally

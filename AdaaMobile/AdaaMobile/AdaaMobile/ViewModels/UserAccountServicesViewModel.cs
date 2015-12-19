@@ -201,7 +201,7 @@ namespace AdaaMobile.ViewModels
                 string message = _messageResolver.GetMessage(passwordresult);
                 if (passwordresult.ResponseStatus == ResponseStatus.InvalidToken)
                 {
-                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
                     _navigationService.SetAppCurrentPage(typeof(LoginPage));
 
                 }
@@ -233,7 +233,7 @@ namespace AdaaMobile.ViewModels
                 string message = _messageResolver.GetMessage(result);
                 if (result.ResponseStatus == ResponseStatus.InvalidToken)
                 {
-                    await _dialogManager.DisplayAlert(AppResources.Alert, message, AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
                     _navigationService.SetAppCurrentPage(typeof(LoginPage));
 
                 }
