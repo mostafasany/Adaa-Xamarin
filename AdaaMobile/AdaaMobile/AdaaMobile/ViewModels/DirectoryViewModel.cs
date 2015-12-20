@@ -39,12 +39,18 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _busyMessage, value); }
         }
 
-        private readonly ObservableCollection<KeyedCollection<Employee>> _groupedEmployees = new ObservableCollection<KeyedCollection<Employee>>();
-        public ObservableCollection<KeyedCollection<Employee>> GroupedEmployees
+        //private readonly ObservableCollection<KeyedCollection<Employee>> _groupedEmployees = new ObservableCollection<KeyedCollection<Employee>>();
+        //public ObservableCollection<KeyedCollection<Employee>> GroupedEmployees
+        //{
+        //    get { return _groupedEmployees; }
+        //}
+        private ObservableCollection<Grouping<string, Employee>> _groupedEmployees = new ObservableCollection<Grouping<string, Employee>>();
+        public ObservableCollection<Grouping<string, Employee>> GroupedEmployees
         {
             get { return _groupedEmployees; }
         }
 
+        private Employee[] allEmployees;
         #endregion
 
         #region Initialization
@@ -80,24 +86,9 @@ namespace AdaaMobile.ViewModels
 
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
                 {
-                    Employee[] employees = response.Result.Employees;
+                    allEmployees = response.Result.Employees;
 
-                    var sorted = from emp in employees
-                                 orderby emp.Name
-                                 group emp by emp.NameSort into empGroup
-                                 select new KeyedCollection<Employee>(empGroup.Key);
-
-
-                    var sorted2 = from emp in employees
-                                 orderby emp.Name
-                                 group emp by emp.NameSort into empGroup
-                                  select new Grouping<string, Employee>(empGroup.Key, empGroup);
-
-                    var EmployeesGrouped = new ObservableCollection<Grouping<string, Employee>>(sorted2);
-                    //for (char i = 'a'; i <= 'z'; i++)
-                    //{
-                    //    var x = employees.Where((a) => { return a.Name.ToLower().StartsWith(i + ""); });
-                    //}
+                    await GetGroupedEmployees();
                 }
                 //#if DEBUG
                 //                    Device.BeginInvokeOnMainThread(() =>
@@ -138,13 +129,40 @@ namespace AdaaMobile.ViewModels
             }
 
         }
+
+        public async void GetGroupedEmployees()
+        {
+            var sorted = from emp in allEmployees
+                         orderby emp.Name
+                         group emp by emp.NameSort into empGroup
+                         select new KeyedCollection<Employee>(empGroup.Key);
+
+
+            var sorted2 = from emp in allEmployees
+                          orderby emp.Name
+                          group emp by emp.NameSort into empGroup
+                          select new Grouping<string, Employee>(empGroup.Key, empGroup);
+
+            var EmployeesGrouped = new ObservableCollection<Grouping<string, Employee>>(sorted2);
+
+            _groupedEmployees = EmployeesGrouped;
+            OnPropertyChanged("GroupedEmployees");
+        }
+
+        public void Search(string filter)
+        {
+            var list =
+                    GroupedEmployees.Where(o => o.Any(p => p.Name.ToLower().Contains(filter.ToLower())));
+        }
         #endregion
 
     }
 
-    public class Grouping<K, T> : ObservableCollection<T> {
+    public class Grouping<K, T> : ObservableCollection<T>
+    {
         public K Key { get; private set; }
-        public Grouping(K key, IEnumerable<T> items) {
+        public Grouping(K key, IEnumerable<T> items)
+        {
             Key = key; foreach (var item in items) this.Items.Add(item);
         }
     }

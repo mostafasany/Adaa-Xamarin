@@ -5,14 +5,29 @@
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              BackgroundColor="White"
              >
-  <Grid>
+  <Grid Padding="0,0,0,10">
     <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"></RowDefinition>
       <RowDefinition Height="*"></RowDefinition>
     </Grid.RowDefinitions>
+
+    <SearchBar
+      x:Name="EmployeeSearchBar"
+      Grid.Row="0"
+      HorizontalOptions="Fill"
+      VerticalOptions="Fill"
+      
+      >
+      
+      
+      
+    </SearchBar>
+    
     <!--IsGroupingEnabled="True"
               GroupDisplayBinding="{Binding Key}"
               GroupShortNameBinding="{Binding Key}"-->
     <ListView
+      Grid.Row="1"
           ItemsSource="{Binding GroupedEmployees}"
           HasUnevenRows="true"
           IsGroupingEnabled="True"

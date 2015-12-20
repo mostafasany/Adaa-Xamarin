@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.Views
 {
@@ -16,9 +17,24 @@ namespace AdaaMobile.Views
             InitializeComponent();
             _directoryViewModel = Locator.Default.DirectoryViewModel;
             BindingContext = _directoryViewModel;
+            Title = AppResources.Directory;
+            EmployeeSearchBar.TextChanged += EmployeeSearchBar_TextChanged;
+
         }
 
-        protected  override async void OnAppearing()
+        private async void EmployeeSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(EmployeeSearchBar.Text))
+            {
+                _directoryViewModel.GetGroupedEmployees();
+            }
+            else
+            {
+                _directoryViewModel.Search(EmployeeSearchBar.Text);
+            }
+        }
+
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             await Task.Delay(300);
