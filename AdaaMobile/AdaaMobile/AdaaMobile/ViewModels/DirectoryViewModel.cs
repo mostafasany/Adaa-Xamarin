@@ -88,7 +88,7 @@ namespace AdaaMobile.ViewModels
                 {
                     allEmployees = response.Result.Employees;
 
-                    await GetGroupedEmployees();
+                     GetGroupedEmployees();
                 }
                 //#if DEBUG
                 //                    Device.BeginInvokeOnMainThread(() =>
