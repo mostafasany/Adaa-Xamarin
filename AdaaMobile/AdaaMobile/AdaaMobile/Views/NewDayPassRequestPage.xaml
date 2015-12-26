@@ -5,7 +5,7 @@
              xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.DayPassTaskDetailsPage"
+             x:Class="AdaaMobile.Views.DayPassRequestDetailsPage"
              BackgroundColor="White">
   <ContentPage.BackgroundImage>
     <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
@@ -51,30 +51,33 @@
                      FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                      Text="Departure time" />
 
-              
-              <Label
-                     x:Name="EmployeeIdLabel"
-                     Grid.Row="2"  Grid.Column="0"
-                     TextColor="White" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="Small" />
-
               <TimePicker
-                x:Name="StartTimePicker"
-                BackgroundColor="Transparent"
-                
+               x:Name="StartTimePicker"
+               BackgroundColor="Transparent"
                 />
-              <Label   Grid.Column="0"
-                                   TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-                                   HorizontalTextAlignment="Start"
-                                   FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                                   Text="Full Name" />
 
-              <Label
-                     x:Name="FullNameLabel"
-                     TextColor="White" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="Small" />
+
+
+              <Grid HorizontalOptions="Fill"
+                    >
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label   Grid.Column="0"
+                                 TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                                 HorizontalTextAlignment="Start"
+                                 FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+                                 Text="Return today" />
+                <Switch Grid.Column="1"
+                  x:Name="ReturnTodaySwitch"
+                IsToggled="{Binding isOn}"
+                >
+                </Switch>
+              </Grid>
+            
+                
+
 
               <Label   Grid.Column="0"
                                                 TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
@@ -82,11 +85,7 @@
                                                 FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                                                 Text="Department" />
 
-              <Label
-                     x:Name="DepartmentLabel"
-                     TextColor="White" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="Small" />
+
 
 
             </StackLayout>

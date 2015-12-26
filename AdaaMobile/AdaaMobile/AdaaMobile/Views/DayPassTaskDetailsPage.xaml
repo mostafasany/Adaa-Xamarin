@@ -34,7 +34,7 @@
         <Grid
        Grid.Row="0"
        ColumnSpacing="0"  >
-          <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
+          <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
                            VerticalOptions="Start" HeightRequest="70"
                            CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#cc007c85"
                            >
@@ -94,7 +94,7 @@
           Grid.Row="0"
           ColumnSpacing="0"  >
 
-          <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
+          <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
                            VerticalOptions="Start" HeightRequest="70"
                            CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#cc007c85"
                            >
@@ -186,7 +186,7 @@
           IsVisible="False"
           Grid.Row="1"
           ColumnSpacing="0"  >
-          <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
+          <controls:ExtendedGrid ColumnSpacing="15"  InputTransparent="True"
                               VerticalOptions="Start" HeightRequest="70"
 
                               CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#cc007c85"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdaaMobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +11,14 @@ namespace AdaaMobile.Views
 {
     public partial class NewDayPassRequestPage : ContentPage
     {
+
+        private DayPassViewModel _dayPassViewModel;
         public NewDayPassRequestPage()
         {
             InitializeComponent();
-            
+            _dayPassViewModel = ViewModels.Locator.Default.DayPassViewModel;
+            BindingContext = _dayPassViewModel;
+
         }
     }
 }
