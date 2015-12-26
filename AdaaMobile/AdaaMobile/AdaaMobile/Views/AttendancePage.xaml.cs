@@ -31,12 +31,12 @@ namespace AdaaMobile.Views
             _attendanceViewModel = Locator.Default.AttendanceViewModel;
             BindingContext = _attendanceViewModel;
 
-			//TO Avoid that Date is fired on iOS before pressing Done
-			MinDatePicker.Date = _attendanceViewModel.StartDate;
-			MinDatePicker.Unfocused += MinDatePicker_Unfocused;
+            //TO Avoid that Date is fired on iOS before pressing Done
+            MinDatePicker.Date = _attendanceViewModel.StartDate;
+            MinDatePicker.Unfocused += MinDatePicker_Unfocused;
 
-			MaxDatePicker.Date = _attendanceViewModel.EndDate;
-			MaxDatePicker.Unfocused += MaxDatePicker_Unfocused;
+            MaxDatePicker.Date = _attendanceViewModel.EndDate;
+            MaxDatePicker.Unfocused += MaxDatePicker_Unfocused;
 
             //Add App bar icon
             //Action action = () => { };
@@ -48,27 +48,41 @@ namespace AdaaMobile.Views
             SelectButton(ExceptionsButton, false);
             _lastTappedTab = AttendanceButton;
 
-            
-			if (LoggedUserInfo.CurrentUserProfile != null) {
-				Title = LoggedUserInfo.CurrentUserProfile.DisplayName;
-			} else {
-				//Title = AppResources.Attendance;
-			}
 
+            if (LoggedUserInfo.CurrentUserProfile != null)
+            {
+                Title = LoggedUserInfo.CurrentUserProfile.DisplayName;
+            }
+            else
+            {
+                //Title = AppResources.Attendance;
+            }
+            DayPassBtn.Clicked += DayPassBtn_Clicked;
+            DelegationBtn.Clicked += DelegationBtn_Clicked;
         }
 
-        void MaxDatePicker_Unfocused (object sender, FocusEventArgs e)
+        private void DelegationBtn_Clicked(object sender, EventArgs e)
         {
-			DatePicker datePicker = (sender as DatePicker);
-			if(datePicker != null && _attendanceViewModel != null)
-				_attendanceViewModel.EndDate = datePicker.Date;
+            this.Navigation.PushAsync(new DelegationsPage());
         }
 
-        void MinDatePicker_Unfocused (object sender, FocusEventArgs e)
+        private void DayPassBtn_Clicked(object sender, EventArgs e)
         {
-			DatePicker datePicker = (sender as DatePicker);
-			if(datePicker != null && _attendanceViewModel != null)
-			_attendanceViewModel.StartDate = datePicker.Date;
+            this.Navigation.PushAsync(new DayPassPage());
+        }
+
+        void MaxDatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+            DatePicker datePicker = (sender as DatePicker);
+            if (datePicker != null && _attendanceViewModel != null)
+                _attendanceViewModel.EndDate = datePicker.Date;
+        }
+
+        void MinDatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+            DatePicker datePicker = (sender as DatePicker);
+            if (datePicker != null && _attendanceViewModel != null)
+                _attendanceViewModel.StartDate = datePicker.Date;
         }
 
         protected override async void OnAppearing()
@@ -78,7 +92,7 @@ namespace AdaaMobile.Views
             {
                 await _attendanceViewModel.PopulateAttendanceDaysAsync();
                 if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
-                    SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count-1]);
+                    SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count - 1]);
             }
             catch
             {
