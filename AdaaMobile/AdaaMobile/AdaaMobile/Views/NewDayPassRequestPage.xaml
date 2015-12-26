@@ -24,185 +24,198 @@
         Padding="0,0,0,20"
         >
     <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-      <StackLayout
-        Spacing="0"
-        Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"
-        BackgroundColor="Transparent"
-      >
-        <Grid
-       Grid.Row="0"
-       ColumnSpacing="0"  >
-          <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
-                           VerticalOptions="Start" HeightRequest="70"
-                           CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
+    <Grid
+   Grid.Row="0"
+   ColumnSpacing="8"  >
+      <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
+                       VerticalOptions="Fill" Padding="0,0,0,10"
+                       CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
                            >
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <StackLayout
-              Grid.Row="0"
-              VerticalOptions="Fill"
-          >
-              <Label Grid.Row="1"  Grid.Column="0"
-                     TextColor="Black" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                     Text="Departure time" />
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
 
-                      <Button
-          x:Name="LanguageButton" BackgroundColor="Transparent"
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0"
+               TextColor="Black" BackgroundColor="Transparent"
+               HorizontalTextAlignment="Start"
+               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+               Text="Departure time" />
+
+        <!--<Button
+              Grid.Row="0"
+x:Name="LanguageButton" BackgroundColor="Transparent"
           BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
             HorizontalOptions="Start"
           VerticalOptions="Fill"
           Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
               >
 
-          </Button>
-              <TimePicker
-               x:Name="StartTimePicker"
-               BackgroundColor="Transparent"
-               HorizontalOptions="Fill"
-               VerticalOptions = "Fill"
-               IsEnabled="true"
-               HeightRequest = "0"
+          </Button>-->
+        <TimePicker
+         Grid.Row="1"
+         x:Name="StartTimePicker"
+         BackgroundColor="Transparent"
+         HorizontalOptions="Fill"
+         VerticalOptions = "Fill"
+         IsEnabled="true"
+         Time="{Binding StartTimeSpan}"
                 />
 
+        <BoxView
+          Grid.Row="2"
+          HeightRequest="1"
+          BackgroundColor="Black"
+          HorizontalOptions="Fill"
+              />
 
 
-              <Grid HorizontalOptions="Fill"
+
+        <Grid  Grid.Row="3" HorizontalOptions="Fill"
                     >
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="*" />
-                  <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Label   Grid.Column="0"
-                                 TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-                                 HorizontalTextAlignment="Start"
-                                 FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                                 Text="Return today" />
-                <Switch Grid.Column="1"
-                  x:Name="ReturnTodaySwitch"
-                IsToggled="{Binding isOn}"
-                >
-                </Switch>
-              </Grid>
-            
-                
-
-
-              <Label   Grid.Column="0"
-                                                TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-                                                HorizontalTextAlignment="Start"
-                                                FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                                                Text="Department" />
-
-
-
-
-            </StackLayout>
-          </controls:ExtendedGrid>
-
-
-
-        </Grid>
-
-        <Grid
-          Grid.Row="0"
-          ColumnSpacing="0"  >
-
-          <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
-                           VerticalOptions="Start" HeightRequest="70"
-                           CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
-                           >
-
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <StackLayout
-              Grid.Row="0"
-              VerticalOptions="Fill"
-          >
-
-
-
-              <Label Grid.Row="1"  Grid.Column="0"
-                     TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                     Text="Departure time" />
-
-              <Label
-                     x:Name="DepartureTimeLabel"
-                     Grid.Row="2"  Grid.Column="0"
-                     TextColor="White" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="Small"
-                     Text="{Binding Date}" />
-
-
-              <Label
-                 TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-                 HorizontalTextAlignment="Start"
-                 FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                 Text="Return Today" />
-              <Label
-                     x:Name="ReturnTodayLabel"
-                     Grid.Row="2"  Grid.Column="0"
-                     TextColor="White" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="Small" />
-
-
-              <Label
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Label   Grid.Column="0"
                            TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
                            HorizontalTextAlignment="Start"
                            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                           Text="Expected return time" />
-              <Label
-                     x:Name="ExpectedReturnTimeLabel"
-                     Grid.Row="2"  Grid.Column="0"
-                     TextColor="White" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="Small" />
-
-              <Label
-                 TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-                 HorizontalTextAlignment="Start"
-                 FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                 Text="Duration" />
-              <Label
-                     x:Name="DurationLabel"
-                     Grid.Row="2"  Grid.Column="0"
-                     TextColor="White" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="Small" />
-
-              <Label
-                TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-                HorizontalTextAlignment="Start"
-                FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                Text="Reason type" />
-              <Label
-                     x:Name="ReasonTypeLabel"
-                     Grid.Row="2"  Grid.Column="0"
-                     TextColor="White" BackgroundColor="Transparent"
-                     HorizontalTextAlignment="Start"
-                     FontSize="Small" />
-
-            </StackLayout>
-          </controls:ExtendedGrid>
-
-
-
+                           Text="Return today" />
+          <Switch Grid.Column="1"
+            x:Name="ReturnTodaySwitch"
+          IsToggled="{Binding ReturnToday}"
+           BackgroundColor="White"
+                >
+          </Switch>
         </Grid>
 
+        <BoxView
+      Grid.Row="4"
+      HeightRequest="1"
+      BackgroundColor="Black"
+      HorizontalOptions="Fill"
+              />
 
 
-      </StackLayout>
+        <Label Grid.Row="5"
+               TextColor="Black" BackgroundColor="Transparent"
+               HorizontalTextAlignment="Start"
+               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+               Text="Expected Return time" />
+
+        <TimePicker
+         Grid.Row="6"
+         x:Name="StartTimePicker"
+         BackgroundColor="Transparent"
+         HorizontalOptions="Fill"
+         VerticalOptions = "Fill"
+         IsEnabled="true"
+         Time="{Binding EndTimeSpan}"
+                />
+
+        <BoxView
+    Grid.Row="7"
+    HeightRequest="1"
+    BackgroundColor="Black"
+    HorizontalOptions="Fill"
+              />
+
+
+      </controls:ExtendedGrid>
+
+
+
+    </Grid>
+
+
+    <Grid
+    Grid.Row="1"
+    ColumnSpacing="8"  >
+      <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
+                       VerticalOptions="Fill" Padding="0,0,0,10"
+                       CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
+                           >
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0"
+               TextColor="Black" BackgroundColor="Transparent"
+               HorizontalTextAlignment="Start"
+               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+               Text="Reason type" />
+
+
+        <Picker x:Name="ReasonTypePicker"   BackgroundColor="Transparent"
+            Grid.Row="1"  HorizontalOptions="Fill"
+             WidthRequest="0" HeightRequest="0" IsVisible= "false"
+              >
+          <Picker.Items>
+            <x:String>Work</x:String>
+            <x:String>Personal</x:String>
+          </Picker.Items>
+        </Picker>
+
+        <Grid Padding="5,0,0,0" Grid.Row="1" HorizontalOptions="Fill"
+        VerticalOptions="Fill" >
+          <Button
+          x:Name="ReasonTypeButton" BackgroundColor="Transparent"
+          BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
+            HorizontalOptions="Start"
+          VerticalOptions="Fill"
+          Text="{Binding ReasonType}" TextColor="Black" Font="SemiBold"
+              >
+
+          </Button>
+        </Grid>
+
+        <BoxView
+          Grid.Row="2"
+          HeightRequest="1"
+          BackgroundColor="Black"
+          HorizontalOptions="Fill"
+              />
+
+
+        <Label Grid.Row="3"
+               TextColor="Black" BackgroundColor="Transparent"
+               HorizontalTextAlignment="Start"
+               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+               Text="Reason" />
+
+        <Editor
+          Grid.Row="3"
+          HorizontalOptions="Fill"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="Transparent"
+          TextColor="Black"
+          Text="{Binding Reason}"
+          >
+
+        </Editor>
+      </controls:ExtendedGrid>
+
+
+
+    </Grid>
+
+
   </Grid>
 
 </ContentPage>

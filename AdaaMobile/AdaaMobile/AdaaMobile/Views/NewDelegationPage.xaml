@@ -1,6 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+                           xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
+
+             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
+             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
+             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              x:Class="AdaaMobile.Views.NewDelegationPage">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+
+  <ContentPage.BackgroundImage>
+    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
+  </ContentPage.BackgroundImage>
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="TabColor">#00676e</Color>
+      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
+        Padding="0,0,0,20"
+        >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid
+   Grid.Row="0"
+   ColumnSpacing="8"  >
+      <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
+                       VerticalOptions="Fill" Padding="0,0,0,10"
+                       CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
+                           >
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0"
+               TextColor="Black" BackgroundColor="Transparent"
+               HorizontalTextAlignment="Start"
+               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+               Text="Delegate Name" />
+
+        <!--<Button
+              Grid.Row="0"
+x:Name="LanguageButton" BackgroundColor="Transparent"
+          BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
+            HorizontalOptions="Start"
+          VerticalOptions="Fill"
+          Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
+              >
+
+          </Button>-->
+
+
+        <BoxView
+          Grid.Row="2"
+          HeightRequest="1"
+          BackgroundColor="Black"
+          HorizontalOptions="Fill"
+              />
+
+
+
+
+        <Label Grid.Row="3"
+               TextColor="Black" BackgroundColor="Transparent"
+               HorizontalTextAlignment="Start"
+               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+               Text="Sub ordinate" />
+
+
+        <BoxView
+          Grid.Row="5"
+          HeightRequest="1"
+          BackgroundColor="Black"
+          HorizontalOptions="Fill"
+              />
+
+        <Grid  Grid.Row="6" HorizontalOptions="Fill"
+                    >
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Label   Grid.Column="0"
+                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                           HorizontalTextAlignment="Start"
+                           FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+                           Text="Rule status" />
+          <Switch Grid.Column="1"
+            x:Name="ReturnTodaySwitch"
+          IsToggled="{Binding ReturnToday}"
+           BackgroundColor="White"
+                >
+          </Switch>
+        </Grid>
+
+      </controls:ExtendedGrid>
+
+
+
+    </Grid>
+
+
+  </Grid>
+
 </ContentPage>

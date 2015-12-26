@@ -99,6 +99,14 @@ namespace AdaaMobile.ViewModels
         }
 
 
+
+        private TimeSpan _EndTimeSpan;
+        public TimeSpan EndTimeSpan
+        {
+            get { return _EndTimeSpan; }
+            set { SetProperty(ref _EndTimeSpan, value); }
+        }
+
         private string _EndTime;
         public string EndTime
         {
@@ -131,6 +139,13 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _SelectedTask, value); }
         }
 
+
+        private TimeSpan _StartTimeSpan;
+        public TimeSpan StartTimeSpan
+        {
+            get { return _StartTimeSpan; }
+            set { SetProperty(ref _StartTimeSpan, value); }
+        }
         #endregion
 
         #region Initialization
@@ -247,10 +262,11 @@ namespace AdaaMobile.ViewModels
                     {
                         Langid = _appSettings.Language,
                         UserToken = _appSettings.UserToken,
-                        StartTime = StartTime,
-                        EndTime = EndTime,
+                        StartTime = StartTimeSpan.ToString(@"hh\:mm"),
+                        EndTime = EndTimeSpan.ToString(@"hh\:mm"),
                         WillReturn = ReturnToday ? "Yes" : "No",
-                        ReasonType = ReasonType
+                        ReasonType = ReasonType,
+                        
 
                     };
                     var bodyParameter = new DaypassRequestBParameters()

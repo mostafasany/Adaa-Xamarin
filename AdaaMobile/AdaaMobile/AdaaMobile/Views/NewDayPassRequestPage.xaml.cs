@@ -18,14 +18,33 @@ namespace AdaaMobile.Views
             InitializeComponent();
             _dayPassViewModel = ViewModels.Locator.Default.DayPassViewModel;
             BindingContext = _dayPassViewModel;
-			LanguageButton.Clicked += LanguageButton_Clicked;
+            ReasonTypeButton.Clicked += ReasonTypeButton_Clicked;
+            ReasonTypePicker.SelectedIndexChanged += ReasonTypePicker_SelectedIndexChanged;
+            Action action = () =>
+            {
+                _dayPassViewModel.NewDayPassCommand.Execute(null);
+            };
+            ToolbarItems.Add(
+                new ToolbarItem("Send", "", action, ToolbarItemOrder.Primary));
 
         }
 
-        void LanguageButton_Clicked (object sender, EventArgs e)
+        private void ReasonTypePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-			StartTimePicker.Unfocus ();
-			StartTimePicker.Focus ();
+            _dayPassViewModel.ReasonType = ReasonTypePicker.SelectedIndex == 0 ? "Work" : "Personal";
         }
+
+        private void ReasonTypePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+
+        }
+
+        private void ReasonTypeButton_Clicked(object sender, EventArgs e)
+        {
+            ReasonTypePicker.Unfocus();
+            ReasonTypePicker.Focus();
+        }
+
+
     }
 }
