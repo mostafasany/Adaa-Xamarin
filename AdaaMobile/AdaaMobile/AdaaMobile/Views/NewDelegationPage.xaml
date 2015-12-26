@@ -21,7 +21,7 @@
   </ContentPage.Resources>
 
   <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
-        Padding="0,0,0,20"
+        Padding="10,10,10,10"
         >
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
@@ -32,7 +32,7 @@
    Grid.Row="0"
    ColumnSpacing="8"  >
       <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
-                       VerticalOptions="Fill" Padding="0,0,0,10"
+                       VerticalOptions="Fill" Padding="8"
                        CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
                            >
         <Grid.RowDefinitions>
@@ -103,7 +103,8 @@ x:Name="LanguageButton" BackgroundColor="Transparent"
           <Switch Grid.Column="1"
             x:Name="ReturnTodaySwitch"
           IsToggled="{Binding ReturnToday}"
-           BackgroundColor="White"
+          HorizontalOptions="Fill"
+          VerticalOptions="Fill"
                 >
           </Switch>
         </Grid>

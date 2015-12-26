@@ -30,6 +30,11 @@ namespace AdaaMobile.Views
             DelegationsList.ItemTapped += DelegationsList_ItemTapped;
         }
 
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			_delegationViewModel.LoadDayPassDataCommand.Execute (null);
+		}
         private void DelegationsList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Delegation delegation = (e.Item as Delegation);

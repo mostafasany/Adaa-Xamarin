@@ -45,7 +45,7 @@
         <ViewCell Height="25">
           <StackLayout VerticalOptions="FillAndExpand"
                        Padding="5"
-                       BackgroundColor="#FF111111">
+                       BackgroundColor="Gray">
             <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center"/>
           </StackLayout>
         </ViewCell>

@@ -55,7 +55,8 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<UserAccountServicesViewModel>();
             cb.RegisterType<ChangePasswordViewModel>();
             cb.RegisterType<DirectoryViewModel>();
-            cb.RegisterType<DayPassViewModel>();
+			cb.RegisterType<DayPassViewModel>();
+			cb.RegisterType<DelegationViewModel>();
         }
 
 

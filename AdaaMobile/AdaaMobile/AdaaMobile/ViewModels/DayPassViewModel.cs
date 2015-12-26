@@ -115,7 +115,7 @@ namespace AdaaMobile.ViewModels
         }
 
 
-        private string _ReasonType;
+        private string _ReasonType = "Work";
         public string ReasonType
         {
             get { return _ReasonType; }
