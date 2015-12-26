@@ -82,22 +82,34 @@
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Helpers\SvgAssembly.cs" />
+    <Compile Include="Models\DayPassRequest.cs" />
+    <Compile Include="Models\DayPassTask.cs" />
+    <Compile Include="Models\DelegateSubordinate.cs" />
+    <Compile Include="Models\Delegation.cs" />
     <Compile Include="Models\ExceptionDayWrapper.cs" />
     <Compile Include="Models\DayWrapper.cs" />
     <Compile Include="Models\Request\AccountStatusQParameters.cs" />
     <Compile Include="Models\Request\ChangePasswordBodyParamters.cs" />
     <Compile Include="Models\Request\ChangePasswordQParameters.cs" />
+    <Compile Include="Models\Request\DelegationsQParamters.cs" />
+    <Compile Include="Models\Request\delegationSubordinatesQParamters.cs" />
     <Compile Include="Models\Request\ExceptionsQParameter.cs" />
     <Compile Include="Models\Request\LoginQParameters.cs" />
     <Compile Include="Models\Request\CurrentProfileQParameters.cs" />
+    <Compile Include="Models\Request\NewDelegationQParameter.cs" />
     <Compile Include="Models\Request\OtherProfileQParameters.cs" />
     <Compile Include="Models\Request\PasswordStatusQParameters.cs" />
+    <Compile Include="Models\Request\RemoveDelegationQParameter.cs" />
     <Compile Include="Models\Request\UnlockAccountQParameters.cs" />
     <Compile Include="Models\Response\AccountStatusResponse.cs" />
     <Compile Include="Models\Response\ChangePasswordResponse.cs" />
+    <Compile Include="Models\Response\DelegationsResponse.cs" />
+    <Compile Include="Models\Response\delegationSubordinatesResponse.cs" />
     <Compile Include="Models\Response\ExceptionsResponse.cs" />
     <Compile Include="Models\Response\GetExceptionsRepsonse.cs" />
+    <Compile Include="Models\Response\NewDelegationResponse.cs" />
     <Compile Include="Models\Response\PasswordStatusResponse.cs" />
+    <Compile Include="Models\Response\RemoveDelegationsResponse.cs" />
     <Compile Include="Models\Response\UnlockAccountResponse.cs" />
     <Compile Include="Models\Response\UserProfile.cs" />
     <Compile Include="Plugins\Connectivity\BaseConnectivity.cs" />
@@ -105,12 +117,29 @@
     <Compile Include="Plugins\Connectivity\CrossConnectivity.cs" />
     <Compile Include="Plugins\Connectivity\IConnectivity.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\DayPassViewModel.cs" />
+    <Compile Include="ViewModels\DelegationViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\UserAccountServicesViewModel.cs" />
     <Compile Include="Views\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DayPassPage.xaml.cs">
+      <DependentUpon>DayPassPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DayPassRequestDetailsPage.xaml.cs">
+      <DependentUpon>DayPassRequestDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DayPassTaskDetailsPage.xaml.cs">
+      <DependentUpon>DayPassTaskDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DelegationDetailsPage.xaml.cs">
+      <DependentUpon>DelegationDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DelegationsPage.xaml.cs">
+      <DependentUpon>DelegationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterView\MasterHelper.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
@@ -163,6 +192,12 @@
     </Compile>
     <Compile Include="Views\MyTasksPage.xaml.cs">
       <DependentUpon>MyTasksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewDayPassRequestPage.xaml.cs">
+      <DependentUpon>NewDayPassRequestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewDelegationPage.xaml.cs">
+      <DependentUpon>NewDelegationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -423,6 +458,48 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\UserServiceItemControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DayPassPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\NewDayPassRequestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DayPassTaskDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DayPassRequestDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DelegationsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\NewDelegationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DelegationDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

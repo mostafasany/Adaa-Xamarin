@@ -10,9 +10,12 @@ using AdaaMobile.Models;
 using Xamarin.Forms;
 using AdaaMobile.Helpers;
 using AdaaMobile.DataServices.Requests;
+using AdaaMobile.Models.Request;
 
 namespace AdaaMobile.ViewModels
 {
+    public enum DirectoryType { Directory, Subordinats };
+
     public class DirectoryViewModel : BindableBase
     {
 
@@ -23,6 +26,16 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Properties
+
+        private DirectoryType _DirectoryType = DirectoryType.Directory;
+
+        public DirectoryType DirectoryType
+        {
+            get { return _DirectoryType; }
+            set { _DirectoryType = value; }
+        }
+
+
         private bool _isBusy;
 
         public bool IsBusy
@@ -50,7 +63,15 @@ namespace AdaaMobile.ViewModels
             get { return _groupedEmployees; }
         }
 
+
+        private ObservableCollection<Grouping<string, DelegateSubordinate>> _groupedSubordinates = new ObservableCollection<Grouping<string, DelegateSubordinate>>();
+        public ObservableCollection<Grouping<string, DelegateSubordinate>> GroupedSubordinates
+        {
+            get { return _groupedSubordinates; }
+        }
+
         private Employee[] allEmployees;
+        private DelegateSubordinate[] allSubordinates;
         #endregion
 
         #region Initialization
@@ -73,50 +94,39 @@ namespace AdaaMobile.ViewModels
         #region Methods
         private async Task LoadEmployeesAsync()
         {
+
             try
             {
                 IsBusy = true;
                 LoadEmployeesCommand.CanExecute = false;
-
-                var response = await _dataService.GetEmpolyeesAsync(new Models.Request.GetAllEmployeesQParameters()
+                if (DirectoryType == DirectoryType.Directory)
                 {
-                    Langid = _appSettings.Language,
-                    UserToken = _appSettings.UserToken
-                });
+                    var response = await _dataService.GetEmpolyeesAsync(new Models.Request.GetAllEmployeesQParameters()
+                    {
+                        Langid = _appSettings.Language,
+                        UserToken = _appSettings.UserToken
+                    });
+                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+                    {
+                        allEmployees = response.Result.Employees;
 
-                if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
-                {
-                    allEmployees = response.Result.Employees;
-
-                     GetGroupedEmployees();
+                        GetGroupedEmployees();
+                    }
                 }
-                //#if DEBUG
-                //                    Device.BeginInvokeOnMainThread(() =>
-                //                {
-                //                    // using of add function in this manner works.
+                else
+                {
+                    var response = await _dataService.GetDelegationSubordinatesResponseAsync(new delegationSubordinatesQParamters()
+                    {
+                        Langid = _appSettings.Language,
+                        UserToken = _appSettings.UserToken
+                    });
+                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+                    {
+                        allSubordinates = response.Result.Subordinates;
 
-                //                    GroupedEmployees.Add(new KeyedCollection<Employee>("a")
-                //                {
-                //                    new Employee() {Name = "A Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                    new Employee() {Name = "A2 Employee"},
-                //                });
-                //                    GroupedEmployees.Add(new KeyedCollection<Employee>("b")
-                //                {
-                //                    new Employee() {Name="B Employee"},
-                //                    new Employee() {Name="B2 Employee"},
-                //                }
-                //                    );
-                //                });
-                //#endif
+                        GetGroupedSubordinates();
+                    }
+                }
             }
             catch (Exception)
             {
@@ -132,10 +142,10 @@ namespace AdaaMobile.ViewModels
 
         public async void GetGroupedEmployees()
         {
-            var sorted = from emp in allEmployees
-                         orderby emp.Name
-                         group emp by emp.NameSort into empGroup
-                         select new KeyedCollection<Employee>(empGroup.Key);
+            //var sorted = from emp in allEmployees
+            //             orderby emp.Name
+            //             group emp by emp.NameSort into empGroup
+            //             select new KeyedCollection<Employee>(empGroup.Key);
 
 
             var sorted2 = from emp in allEmployees
@@ -149,8 +159,28 @@ namespace AdaaMobile.ViewModels
             OnPropertyChanged("GroupedEmployees");
         }
 
+        public async void GetGroupedSubordinates()
+        {
+            //var sorted = from emp in allEmployees
+            //             orderby emp.Name
+            //             group emp by emp.NameSort into empGroup
+            //             select new KeyedCollection<Employee>(empGroup.Key);
+
+
+            var sorted2 = from emp in allSubordinates
+                          orderby emp.UserName
+                          group emp by emp.NameSort into empGroup
+                          select new Grouping<string, DelegateSubordinate>(empGroup.Key, empGroup);
+
+            var subordinatesGrouped = new ObservableCollection<Grouping<string, DelegateSubordinate>>(sorted2);
+
+            _groupedSubordinates = subordinatesGrouped;
+            OnPropertyChanged("GroupedSubordinates");
+        }
+
         public void Search(string filter)
         {
+
             var list =
                     GroupedEmployees.Where(o => o.Any(p => p.Name.ToLower().Contains(filter.ToLower())));
         }

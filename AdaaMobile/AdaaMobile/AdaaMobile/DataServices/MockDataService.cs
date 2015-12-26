@@ -63,7 +63,7 @@ namespace AdaaMobile.DataServices
 //			throw new NotImplementedException ();
 //		}
 //
-//		public Task<ResponseWrapper<DayPassTasksResponse>> DayPassTasksResponseAsync (DayPassTasksQParameters parameters, CancellationToken? token)
+//		public Task<ResponseWrapper<DayPassTasksResponse>> GetDayPassTasksResponseAsync (DayPassTasksQParameters parameters, CancellationToken? token)
 //		{
 //			throw new NotImplementedException ();
 //		}

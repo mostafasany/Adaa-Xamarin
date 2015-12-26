@@ -85,7 +85,6 @@ namespace AdaaMobile.DataServices
             return await request.PostAsync<LoginResponse>(stringContent);
         }
 
-        #endregion
         public async Task<ResponseWrapper<ChangePasswordResponse>> ChangePasswordAsync(string password, ChangePasswordQParameters paramters, CancellationToken? token = default(CancellationToken?))
         {
             paramters.Server = Server;
@@ -119,6 +118,8 @@ namespace AdaaMobile.DataServices
             return await request.GetAsync<AccountStatusResponse>(token);
         }
 
+        #endregion
+
         public async Task<ResponseWrapper<GetAllEmployeesResponse>> GetEmpolyeesAsync(GetAllEmployeesQParameters parameters, CancellationToken? token = null)
         {
             parameters.Server = Server;
@@ -128,6 +129,8 @@ namespace AdaaMobile.DataServices
             return await request.GetAsync<GetAllEmployeesResponse>(token);
 
         }
+
+        #region Attendance
 
         public async Task<ResponseWrapper<Attendance>> GetAttendanceRecordAsync(AttendanceQParameters parameters, CancellationToken? token = null)
         {
@@ -155,27 +158,84 @@ namespace AdaaMobile.DataServices
             request.ResultContentType = ContentType.Xml;
             return await request.GetAsync<AttendanceException>(token);
         }
+        #endregion
 
-        public Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync(DaypassRequestQParameters qParameters, DaypassRequestBParameters bParamters, CancellationToken? token = null)
+        #region DayPass
+        public async Task<ResponseWrapper<NewDayPassResponse>> NewDayPassAsync(DaypassRequestQParameters qParameters, DaypassRequestBParameters bodyParamters, CancellationToken? token = null)
+        {
+            qParameters.Server = Server;
+            var request = _requestFactory();
+            request.ResultContentType = ContentType.Xml;
+            request.RequestUrl = BaseUrl.AppendQueryString(qParameters);
+
+            var stringContent = new StringContent(bodyParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
+            return await request.PostAsync<NewDayPassResponse>(stringContent);
+        }
+
+        public async Task<ResponseWrapper<DayPassesResponse>> GetPendingDayPassesAsync(DayPassesQParameters parameters, CancellationToken? token = null)
+        {
+            parameters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<DayPassesResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<DayPassTasksResponse>> GetDayPassTasksResponseAsync(DayPassTasksQParameters parameters, CancellationToken? token = null)
+        {
+            parameters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<DayPassTasksResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync(DaypassApproveQParameters parameters, CancellationToken? token = null)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ResponseWrapper<DayPassesResponse>> GetPendingDayPassesAsync(DayPassesQParameters parameters, CancellationToken? token = null)
+
+        #endregion
+
+        #region Delegation
+        public async Task<ResponseWrapper<delegationSubordinatesResponse>> GetDelegationSubordinatesResponseAsync(delegationSubordinatesQParamters parameters, CancellationToken? token = default(CancellationToken?))
         {
-            throw new NotImplementedException();
+            parameters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<delegationSubordinatesResponse>(token);
         }
 
-        public Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync(DaypassApproveQParameters parameters, CancellationToken? token = null)
+        public async Task<ResponseWrapper<DelegationsResponse>> GetAllDelegationsResponseAsync(DelegationsQParamters parameters, CancellationToken? token = default(CancellationToken?))
         {
-            throw new NotImplementedException();
+            parameters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<DelegationsResponse>(token);
         }
 
-        public Task<ResponseWrapper<DayPassTasksResponse>> DayPassTasksResponseAsync(DayPassTasksQParameters parameters, CancellationToken? token = null)
+        public async Task<ResponseWrapper<NewDelegationResponse>> NewDelegationAsync(NewDelegationQParameter parameters, CancellationToken? token = default(CancellationToken?))
         {
-            throw new NotImplementedException();
+            parameters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<NewDelegationResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<RemoveDelegationsResponse>> RemoveDelegationAsync(RemoveDelegationQParameter parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<RemoveDelegationsResponse>(token);
         }
 
 
+        #endregion
     }
 }

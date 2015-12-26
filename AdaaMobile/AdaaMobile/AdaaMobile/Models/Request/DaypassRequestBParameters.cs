@@ -1,10 +1,12 @@
-﻿namespace AdaaMobile.Models.Request
+﻿using System.Xml.Serialization;
+
+namespace AdaaMobile.Models.Request
 {
-	public class DaypassRequestBParameters
-	{
-		public DaypassRequestBParameters ()
-		{
-		}
-	}
+    public class DaypassRequestBParameters
+    {
+        [XmlElement("reason")]
+        public string Reason { get; set; }
+
+    }
 }
 

@@ -2,14 +2,15 @@
 
 namespace AdaaMobile.Models.Response
 {
-	public class DayPassesResponse
-	{
-		public DayPassesResponse ()
-		{
-		}
+    public class DayPassesResponse
+    {
 
         [XmlElement("msg")]
         public string Message { get; set; }
+
+
+        [XmlElement("Item")]
+        public DayPassRequest[] DayPassList { get; set; }
     }
 }
 
