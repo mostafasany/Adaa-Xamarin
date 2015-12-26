@@ -46,7 +46,7 @@ namespace AdaaMobile.Models
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(Name) || Name.Length == 0) return "?"; return Name[0].ToString().ToUpper();
+				if (string.IsNullOrWhiteSpace(UserName) || UserName.Length == 0) return "A"; return UserName[0].ToString().ToUpper();
             }
         }
     }

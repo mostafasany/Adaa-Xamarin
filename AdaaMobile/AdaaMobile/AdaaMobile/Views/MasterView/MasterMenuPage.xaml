@@ -54,7 +54,7 @@
             <masterView:SideMenuItemControl
                   Svg="AdaaMobile.Images.Directory.svg"  Title="{ext:Translate Directory}" Tapped="SideMenuItemControl_OnTapped"
                   VerticalOptions="Start" HorizontalOptions="Fill"
-                  BindingContext="{x:Type views:DirectoryPage}"  />
+                  BindingContext="{x:Type views:DirectoryPage}"  IsPageSupported="True"/>
           </StackLayout>
           <BoxView
                            HorizontalOptions="Fill" VerticalOptions="Start"

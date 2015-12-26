@@ -18,7 +18,7 @@ namespace AdaaMobile.Helpers
             FontsizeConverter = new FontSizeConverter();
             SmallSize = (double)FontsizeConverter.ConvertFrom("Small");
             MicroSize = (double)FontsizeConverter.ConvertFrom("Micro");
-            MilliSize = (SmallSize + MicroSize) / 2 + Device.OnPlatform(0, 1, 0);
+            MilliSize = (SmallSize + MicroSize) / 2 + Device.OnPlatform(1, 1, 0);
         }
 
         public static double MilliFontSize { get { return MilliSize; } }

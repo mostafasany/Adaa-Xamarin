@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AdaaMobile.Views.DirectoryPage"
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
+             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              BackgroundColor="White"
              >
   <Grid Padding="0,0,0,10">
@@ -16,7 +18,8 @@
       Grid.Row="0"
       HorizontalOptions="Fill"
       VerticalOptions="Fill"
-      
+      BackgroundColor="{StaticResource AppBackgroundNormal}"
+      TextColor="{StaticResource AppBackgroundNormal}"
       >
       
       
@@ -27,27 +30,69 @@
               GroupDisplayBinding="{Binding Key}"
               GroupShortNameBinding="{Binding Key}"-->
     <ListView
+    x:Name="EmployeesListView"
       Grid.Row="1"
           ItemsSource="{Binding GroupedEmployees}"
           HasUnevenRows="true"
-          IsGroupingEnabled="True"
+          IsGroupingEnabled="{Binding GroupingEnabled}"
           GroupDisplayBinding="{Binding Key}"
           GroupShortNameBinding="{Binding Key}"
+          SeparatorColor="Transparent"
               >
+                <ListView.GroupHeaderTemplate>
+      <DataTemplate>
+        <ViewCell Height="25">
+          <StackLayout VerticalOptions="FillAndExpand"
+                       Padding="5"
+                       BackgroundColor="Gray">
+            <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.GroupHeaderTemplate>
+
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell >
             <ViewCell.View>
-              <Grid Padding="15">
-                <controls:ExtendedGrid VerticalOptions="Fill"
-              HorizontalOptions="Fill"
-              CornerRadius="5"
-              BackgroundColor="Transparent"
-                      >
-                  
-                  <Label HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="{StaticResource AppBackgroundNormal}" TextColor="White" Text="{Binding Name}"></Label>
-                </controls:ExtendedGrid>
-              </Grid>
+
+            <Grid  Padding="6" >
+            <controls:ExtendedGrid ColumnSpacing="8" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="#cc007c85"
+                           VerticalOptions="Start" HeightRequest="60"
+                           CornerRadius="{StaticResource CornerRadius}" 
+                           >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="20"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="30"/>
+      </Grid.ColumnDefinitions>
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="12"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="12"/>
+      </Grid.RowDefinitions>
+
+
+      <Label Grid.Row="1"  Grid.Column="1"
+      	     VerticalOptions="Center"
+             TextColor="White" BackgroundColor="Transparent"
+             HorizontalTextAlignment="Start"
+             FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding UserName}" />
+
+      <Image
+                          HeightRequest="10"
+                          WidthRequest="10"
+                          Grid.Column="2"
+                          Grid.Row="1" 
+                          HorizontalOptions="Start" VerticalOptions="Center"
+       >
+        <Image.Source>
+          <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
+        </Image.Source>
+      </Image >
+    </controls:ExtendedGrid>
+  </Grid>
             </ViewCell.View>
           </ViewCell>
         </DataTemplate>

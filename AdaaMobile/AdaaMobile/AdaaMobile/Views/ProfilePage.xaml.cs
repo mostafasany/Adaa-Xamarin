@@ -18,10 +18,19 @@ namespace AdaaMobile.Views
             BindingContext = _profileViewModel;
         }
 
+
+		public ProfilePage (uint userID)
+		{
+			InitializeComponent();
+			_profileViewModel = Locator.Default.ProfileViewModel;
+			_profileViewModel.SetOtherUserId (userID.ToString ());
+			BindingContext = _profileViewModel;
+		}
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (_profileViewModel.UserProfile == null)
+			if (_profileViewModel.UserProfile == null)
             {
                 _profileViewModel.LoadCommand.Execute(null);
             }
