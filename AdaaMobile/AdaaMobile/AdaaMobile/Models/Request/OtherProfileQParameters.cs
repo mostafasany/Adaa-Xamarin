@@ -14,7 +14,7 @@ namespace AdaaMobile.Models.Request
 
         [QueryParameter("url")]
         public string Url {
-            get { return "funcname=getUserProfile"; }
+			get { return "?funcname=getUserProfile"; }
         }
 
         [QueryParameter("langid")]

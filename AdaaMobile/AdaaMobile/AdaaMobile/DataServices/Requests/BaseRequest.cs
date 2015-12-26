@@ -288,7 +288,7 @@ namespace AdaaMobile.DataServices.Requests
                     responseWrapper.Result = (TR)(object)stringValue;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 responseWrapper.ResponseStatus = ResponseStatus.ParserException;
                 return;

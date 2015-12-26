@@ -27,24 +27,6 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-
-                      <Button
-          x:Name="LanguageButton" BackgroundColor="Transparent"
-          BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
-            HorizontalOptions="Start"
-          VerticalOptions="Fill"
-          Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
-              >
-
-          </Button>
-              <TimePicker
-               x:Name="StartTimePicker"
-               BackgroundColor="Transparent"
-               HorizontalOptions="Fill"
-               VerticalOptions = "Fill"
-               IsEnabled="true"
-               HeightRequest = "0"
-                />
       <StackLayout
         Spacing="0"
         Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"
@@ -70,6 +52,23 @@
                      FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                      Text="Departure time" />
 
+                      <Button
+          x:Name="LanguageButton" BackgroundColor="Transparent"
+          BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
+            HorizontalOptions="Start"
+          VerticalOptions="Fill"
+          Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
+              >
+
+          </Button>
+              <TimePicker
+               x:Name="StartTimePicker"
+               BackgroundColor="Transparent"
+               HorizontalOptions="Fill"
+               VerticalOptions = "Fill"
+               IsEnabled="true"
+               HeightRequest = "0"
+                />
 
 
 
