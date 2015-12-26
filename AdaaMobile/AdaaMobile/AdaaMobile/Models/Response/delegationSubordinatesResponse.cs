@@ -14,7 +14,7 @@ namespace AdaaMobile.Models.Response
 
 
         [XmlElement("Item")]
-        public DelegateSubordinate[] Subordinates { get; set; }
+        public Employee[] Subordinates { get; set; }
 
     }
 }

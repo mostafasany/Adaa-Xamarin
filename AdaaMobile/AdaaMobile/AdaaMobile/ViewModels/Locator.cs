@@ -54,6 +54,8 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<SettingsViewModel>();
             cb.RegisterType<UserAccountServicesViewModel>();
             cb.RegisterType<ChangePasswordViewModel>();
+            cb.RegisterType<DirectoryViewModel>();
+            cb.RegisterType<DayPassViewModel>();
         }
 
 
@@ -105,6 +107,24 @@ namespace AdaaMobile.ViewModels
                 return Container.Resolve<ChangePasswordViewModel>();
             }
         }
+
+        public DayPassViewModel DayPassViewModel
+        {
+            get
+            {
+                return Container.Resolve<DayPassViewModel>();
+            }
+        }
+
+        public DelegationViewModel DelegationViewModel
+        {
+            get
+            {
+                return Container.Resolve<DelegationViewModel>();
+            }
+        }
+
+
 
         public IAppSettings AppSettings
         {

@@ -67,6 +67,7 @@
     <Compile Include="DataServices\IDataService.cs" />
     <Compile Include="DataServices\MockDataService.cs" />
     <Compile Include="DataServices\Requests\ResponseWrapper.cs" />
+    <Compile Include="Enums\DirectoryEnums.cs" />
     <Compile Include="Enums\ImageOrientation.cs" />
     <Compile Include="Controls\SvgImage\SvgImageRendererExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />

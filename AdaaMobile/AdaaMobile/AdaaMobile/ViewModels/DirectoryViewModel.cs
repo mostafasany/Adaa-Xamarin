@@ -11,10 +11,11 @@ using Xamarin.Forms;
 using AdaaMobile.Helpers;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Request;
+using AdaaMobile.Enums;
 
 namespace AdaaMobile.ViewModels
 {
-    public enum DirectoryType { Directory, Subordinats };
+
 
     public class DirectoryViewModel : BindableBase
     {
@@ -44,13 +45,13 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _isBusy, value); }
         }
 
-		private bool _GroupingEnabled;
+        private bool _GroupingEnabled;
 
-		public bool GroupingEnabled
-		{
-			get { return _GroupingEnabled; }
-			set { SetProperty(ref _GroupingEnabled, value); }
-		}
+        public bool GroupingEnabled
+        {
+            get { return _GroupingEnabled; }
+            set { SetProperty(ref _GroupingEnabled, value); }
+        }
 
 
         private string _busyMessage;
@@ -73,17 +74,24 @@ namespace AdaaMobile.ViewModels
         }
 
 
-        private ObservableCollection<Grouping<string, DelegateSubordinate>> _groupedSubordinates = new ObservableCollection<Grouping<string, DelegateSubordinate>>();
-        public ObservableCollection<Grouping<string, DelegateSubordinate>> GroupedSubordinates
-        {
-            get { return _groupedSubordinates; }
-        }
+        //private ObservableCollection<Grouping<string, DelegateSubordinate>> _groupedSubordinates = new ObservableCollection<Grouping<string, DelegateSubordinate>>();
+        //public ObservableCollection<Grouping<string, DelegateSubordinate>> GroupedSubordinates
+        //{
+        //    get { return _groupedSubordinates; }
+        //}
 
-		private ObservableCollection<Employee> _notgroupedEmployees = new ObservableCollection<Employee> ();
-		public ObservableCollection<Employee> NotGroupedEmployees
-		{
-			get { return _notgroupedEmployees; }
-		}
+        //private ObservableCollection<DelegateSubordinate> _notgroupedSubordinates = new ObservableCollection<DelegateSubordinate>();
+        //public ObservableCollection<DelegateSubordinate> NotGroupedSubordinates
+        //{
+        //    get { return _notgroupedSubordinates; }
+        //}
+
+
+        private ObservableCollection<Employee> _notgroupedEmployees = new ObservableCollection<Employee>();
+        public ObservableCollection<Employee> NotGroupedEmployees
+        {
+            get { return _notgroupedEmployees; }
+        }
 
 
         private Employee[] allEmployees;
@@ -118,17 +126,17 @@ namespace AdaaMobile.ViewModels
                 LoadEmployeesCommand.CanExecute = false;
                 if (DirectoryType == DirectoryType.Directory)
                 {
-                var response = await _dataService.GetEmpolyeesAsync(new Models.Request.GetAllEmployeesQParameters()
-                {
-                    Langid = _appSettings.Language,
-                    UserToken = _appSettings.UserToken
-                });
-                if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
-                {
-                    allEmployees = response.Result.Employees;
+                    var response = await _dataService.GetEmpolyeesAsync(new Models.Request.GetAllEmployeesQParameters()
+                    {
+                        Langid = _appSettings.Language,
+                        UserToken = _appSettings.UserToken
+                    });
+                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+                    {
+                        allEmployees = response.Result.Employees;
 
-                     GetGroupedEmployees();
-                }
+                        GetGroupedEmployees();
+                    }
                 }
                 else
                 {
@@ -139,9 +147,9 @@ namespace AdaaMobile.ViewModels
                     });
                     if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
                     {
-                        allSubordinates = response.Result.Subordinates;
+                        allEmployees = response.Result.Subordinates;
 
-                        GetGroupedSubordinates();
+                        GetGroupedEmployees();
                     }
                 }
             }
@@ -157,7 +165,7 @@ namespace AdaaMobile.ViewModels
 
         }
 
-		public async Task GetGroupedEmployees()
+        public async Task GetGroupedEmployees()
         {
             //var sorted = from emp in allEmployees
             //             orderby emp.Name
@@ -172,48 +180,72 @@ namespace AdaaMobile.ViewModels
 
             var EmployeesGrouped = new ObservableCollection<Grouping<string, Employee>>(sorted2);
 
-			GroupingEnabled = true;
+            GroupingEnabled = true;
             _groupedEmployees = EmployeesGrouped;
             OnPropertyChanged("GroupedEmployees");
         }
 
-        public async void GetGroupedSubordinates()
-        {
-            //var sorted = from emp in allEmployees
-            //             orderby emp.Name
-            //             group emp by emp.NameSort into empGroup
-            //             select new KeyedCollection<Employee>(empGroup.Key);
+        //public async void GetGroupedSubordinates()
+        //{
+        //    var sorted2 = from emp in allSubordinates
+        //                  orderby emp.UserName
+        //                  group emp by emp.NameSort into empGroup
+        //                  select new Grouping<string, DelegateSubordinate>(empGroup.Key, empGroup);
 
+        //    var subordinatesGrouped = new ObservableCollection<Grouping<string, DelegateSubordinate>>(sorted2);
 
-            var sorted2 = from emp in allSubordinates
-                          orderby emp.UserName
-                          group emp by emp.NameSort into empGroup
-                          select new Grouping<string, DelegateSubordinate>(empGroup.Key, empGroup);
+        //    _groupedSubordinates = subordinatesGrouped;
+        //    OnPropertyChanged("GroupedSubordinates");
+        //}
 
-            var subordinatesGrouped = new ObservableCollection<Grouping<string, DelegateSubordinate>>(sorted2);
-
-            _groupedSubordinates = subordinatesGrouped;
-            OnPropertyChanged("GroupedSubordinates");
-        }
-
-		public async Task<bool> Search(string filter)
+        public async Task<bool> Search(string filter)
         {
 
-            var list =
-				allEmployees.Where(p => p.UserName.ToLower().Contains(filter.ToLower()));
-			if (list == null || list.ToList() == null) {
-				GetGroupedEmployees ();
-				return false;
-			} else {
-				GroupingEnabled = false;
-				_notgroupedEmployees = new ObservableCollection<Employee> ();
-				foreach (var item in list.ToList()) {
-					_notgroupedEmployees.Add (item);
+            //if (DirectoryType == DirectoryType.Directory)
+            {
+                var list =
+                    allEmployees.Where(p => p.UserName.ToLower().Contains(filter.ToLower()));
+                if (list == null || list.ToList() == null)
+                {
+                    GetGroupedEmployees();
+                    return false;
+                }
+                else
+                {
+                    GroupingEnabled = false;
+                    _notgroupedEmployees = new ObservableCollection<Employee>();
+                    foreach (var item in list.ToList())
+                    {
+                        _notgroupedEmployees.Add(item);
 
-				}
-				OnPropertyChanged("NotGroupedEmployees");
-				return true;
-			}
+                    }
+                    OnPropertyChanged("NotGroupedEmployees");
+                    return true;
+                }
+            }
+            //else
+            //{
+
+            //    var list =
+            //        allSubordinates.Where(p => p.UserName.ToLower().Contains(filter.ToLower()));
+            //    if (list == null || list.ToList() == null)
+            //    {
+            //        GetGroupedSubordinates();
+            //        return false;
+            //    }
+            //    else
+            //    {
+            //        GroupingEnabled = false;
+            //        _notgroupedSubordinates = new ObservableCollection<DelegateSubordinate>();
+            //        foreach (var item in list.ToList())
+            //        {
+            //            _notgroupedSubordinates.Add(item);
+
+            //        }
+            //        OnPropertyChanged("NotGroupedSubordinates");
+            //        return true;
+            //    }
+            //}
         }
         #endregion
 

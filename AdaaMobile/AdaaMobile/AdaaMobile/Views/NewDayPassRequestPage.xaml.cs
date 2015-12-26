@@ -13,6 +13,7 @@ namespace AdaaMobile.Views
         public NewDayPassRequestPage()
         {
             InitializeComponent();
+            
         }
     }
 }

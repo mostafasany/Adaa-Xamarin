@@ -1,6 +1,194 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AdaaMobile.Views.DayPassPage">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
+             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
+             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
+             x:Class="AdaaMobile.Views.DayPassPage"
+                          BackgroundColor="White"
+>
+  <ContentPage.BackgroundImage>
+    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
+  </ContentPage.BackgroundImage>
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="TabColor">#00676e</Color>
+      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <!--Top buttons Attendance and Exceptions-->
+    <Grid
+      Grid.Row="0"
+      ColumnSpacing="0"  >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <Button Text="{ext:Translate MyRequests}"
+          Grid.Column="0"
+          BorderColor="#00676e"
+          BorderWidth="1"
+          BorderRadius="0"
+          x:Name="MyRequestsButton"
+          Clicked="OnTabTapped"
+
+        />
+
+      <Button Text="{ext:Translate MyTasks}"
+          Grid.Column="1"
+          BorderWidth="1"
+          BorderRadius="0"
+          BorderColor="#00676e"
+          x:Name="MyTasksButton"
+          Clicked="OnTabTapped"/>
+    </Grid>
+
+
+    <Grid
+      x:Name="MyRequestsListGrid"
+      Grid.Row="1"
+      HorizontalOptions="Fill"
+      VerticalOptions="Fill"
+      IsVisible="True"
+      >
+      <ListView
+         x:Name="MyRequestsList"
+         Grid.Row="1"
+         ItemsSource="{Binding PendingRequests}"
+         IsGroupingEnabled="False"
+         SeparatorColor="Transparent"
+              >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell >
+              <ViewCell.View>
+                <Grid  Padding="15,0" >
+
+                  <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="#cc007c85"
+                                         VerticalOptions="Start" HeightRequest="70"
+
+                                         CornerRadius="{StaticResource CornerRadius}"
+                           >
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                      <RowDefinition Height="*"/>
+                      <RowDefinition Height="Auto"/>
+                      <RowDefinition Height="Auto"/>
+                      <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="1"  Grid.Column="0"
+                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                           HorizontalTextAlignment="Start"
+                           FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Date}" />
+
+                    <Label Grid.Row="2"  Grid.Column="0"
+                           TextColor="White" BackgroundColor="Transparent"
+                           HorizontalTextAlignment="Start"
+                           FontSize="Small" Text="{Binding Date}" />
+
+                    <Image
+                                        HeightRequest="10"
+                                        WidthRequest="10"
+                                        Grid.Column="1"
+                                        Grid.Row="0" Grid.RowSpan="4"
+                                        HorizontalOptions="Start" VerticalOptions="Center"
+       >
+                      <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
+                      </Image.Source>
+                    </Image >
+                  </controls:ExtendedGrid>
+                </Grid>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+
+    </Grid>
+
+    <Grid
+  x:Name="MyTasksListGrid"
+  Grid.Row="1"
+  HorizontalOptions="Fill"
+  VerticalOptions="Fill"
+  IsVisible="False"
+      >
+      <ListView
+         x:Name="MyTasksList"
+         Grid.Row="1"
+         ItemsSource="{Binding DayPassTasks}"
+         IsGroupingEnabled="False"
+         SeparatorColor="Transparent"
+              >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell >
+              <ViewCell.View>
+                <Grid  Padding="15,0" >
+
+                  <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="#cc007c85"
+                                         VerticalOptions="Start" HeightRequest="70"
+
+                                         CornerRadius="{StaticResource CornerRadius}"
+                           >
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                      <RowDefinition Height="*"/>
+                      <RowDefinition Height="Auto"/>
+                      <RowDefinition Height="Auto"/>
+                      <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="1"  Grid.Column="0"
+                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                           HorizontalTextAlignment="Start"
+                           FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Date}" />
+
+                    <Label Grid.Row="2"  Grid.Column="0"
+                           TextColor="White" BackgroundColor="Transparent"
+                           HorizontalTextAlignment="Start"
+                           FontSize="Small" Text="{Binding UserName}" />
+
+                    <Image
+                                        HeightRequest="10"
+                                        WidthRequest="10"
+                                        Grid.Column="1"
+                                        Grid.Row="0" Grid.RowSpan="4"
+                                        HorizontalOptions="Start" VerticalOptions="Center"
+       >
+                      <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
+                      </Image.Source>
+                    </Image >
+                  </controls:ExtendedGrid>
+                </Grid>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+
+    </Grid>
+  </Grid>
+
 </ContentPage>

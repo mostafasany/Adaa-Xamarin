@@ -4,6 +4,7 @@ using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Helpers;
 using AdaaMobile.Models;
 using AdaaMobile.Models.Request;
+using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
 using System;
 using System.Collections.Generic;
@@ -113,6 +114,23 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _ReasonType, value); }
         }
 
+
+
+        private DayPassRequest _SelectedRequest;
+        public DayPassRequest SelectedRequest
+        {
+            get { return _SelectedRequest; }
+            set { SetProperty(ref _SelectedRequest, value); }
+        }
+
+
+        private DayPassTask _SelectedTask;
+        public DayPassTask SelectedTask
+        {
+            get { return _SelectedTask; }
+            set { SetProperty(ref _SelectedTask, value); }
+        }
+
         #endregion
 
         #region Initialization
@@ -133,6 +151,7 @@ namespace AdaaMobile.ViewModels
         #region Commands
         public AsyncExtendedCommand LoadDayPassDataCommand { get; set; }
         public AsyncExtendedCommand NewDayPassCommand { get; set; }
+
         #endregion
 
         #region Methods
@@ -266,6 +285,20 @@ namespace AdaaMobile.ViewModels
                 NewDayPassCommand.CanExecute = true;
                 IsBusy = false;
             }
+        }
+
+
+        public async Task<ResponseWrapper<UserProfile>> LoadProfileAsync(string empId)
+        {
+                //Load other profile
+                var parameters = new OtherProfileQParameters()
+                {
+                    Langid = _appSettings.Language,
+                    UserToken = _appSettings.UserToken,
+                    EmpId = empId
+                };
+
+                return await _dataService.GetOtherUserProfile(parameters);
         }
         #endregion
     }

@@ -1,6 +1,161 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AdaaMobile.Views.DayPassRequestDetailsPage">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
+             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
+             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
+             x:Class="AdaaMobile.Views.DayPassRequestDetailsPage"
+             BackgroundColor="White">
+  <ContentPage.BackgroundImage>
+    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
+  </ContentPage.BackgroundImage>
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="TabColor">#00676e</Color>
+      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
+        Padding="0,0,0,20"
+        >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid
+      Grid.Row="0"
+      ColumnSpacing="0"  >
+
+      <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
+                       VerticalOptions="Start" HeightRequest="70"
+
+                       CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#cc007c85"
+                           >
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout
+          Grid.Row="0"
+          VerticalOptions="Fill"
+          >
+          
+ 
+        
+        <Label Grid.Row="1"  Grid.Column="0"
+               TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+               HorizontalTextAlignment="Start"
+               FontSize="{x:Static helpers:FontHelper.MilliFontSize}" 
+               Text="Departure time" />
+
+        <Label 
+               x:Name="DepartureTimeLabel"
+               Grid.Row="2"  Grid.Column="0"
+               TextColor="White" BackgroundColor="Transparent"
+               HorizontalTextAlignment="Start"
+               FontSize="Small" 
+               Text="{Binding Date}" />
+
+
+          <Label 
+             TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+             HorizontalTextAlignment="Start"
+             FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+             Text="Return Today" />
+          <Label
+                 x:Name="ReturnTodayLabel"
+                 Grid.Row="2"  Grid.Column="0"
+                 TextColor="White" BackgroundColor="Transparent"
+                 HorizontalTextAlignment="Start"
+                 FontSize="Small" />
+
+          
+          <Label
+                       TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                       HorizontalTextAlignment="Start"
+                       FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+                       Text="Expected return time" />
+          <Label
+                 x:Name="ExpectedReturnTimeLabel"
+                 Grid.Row="2"  Grid.Column="0"
+                 TextColor="White" BackgroundColor="Transparent"
+                 HorizontalTextAlignment="Start"
+                 FontSize="Small" />
+
+          <Label
+             TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+             HorizontalTextAlignment="Start"
+             FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+             Text="Duration" />
+          <Label
+                 x:Name="DurationLabel"
+                 Grid.Row="2"  Grid.Column="0"
+                 TextColor="White" BackgroundColor="Transparent"
+                 HorizontalTextAlignment="Start"
+                 FontSize="Small" />
+
+          <Label
+            TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+            HorizontalTextAlignment="Start"
+            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+            Text="Reason type" />
+          <Label
+                 x:Name="ReasonTypeLabel"
+                 Grid.Row="2"  Grid.Column="0"
+                 TextColor="White" BackgroundColor="Transparent"
+                 HorizontalTextAlignment="Start"
+                 FontSize="Small" />
+          
+        </StackLayout>
+      </controls:ExtendedGrid>
+      
+      
+
+    </Grid>
+
+
+    <Grid
+      Grid.Row="1"
+      ColumnSpacing="0"  >
+      <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
+                          VerticalOptions="Start" HeightRequest="70"
+
+                          CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#cc007c85"
+                           >
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout
+          Grid.Row="0"
+          VerticalOptions="Fill"
+          >
+
+
+          <Label Grid.Row="1"  Grid.Column="0"
+                 TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                 HorizontalTextAlignment="Start"
+                 FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+                 Text="Reason" />
+          <Label
+                 x:Name="ReasonLabel"
+                 Grid.Row="2"  Grid.Column="0"
+                 TextColor="White" BackgroundColor="Transparent"
+                 HorizontalTextAlignment="Start"
+                 FontSize="Small"
+                 Text="{Binding Date}" />
+
+
+        </StackLayout>
+      </controls:ExtendedGrid>
+    </Grid>
+    
+  </Grid>
+
 </ContentPage>
