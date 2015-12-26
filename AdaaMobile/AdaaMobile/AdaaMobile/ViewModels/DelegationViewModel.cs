@@ -4,6 +4,7 @@ using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Helpers;
 using AdaaMobile.Models;
 using AdaaMobile.Models.Request;
+using AdaaMobile.Strings;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -128,27 +129,20 @@ namespace AdaaMobile.ViewModels
                 NewDelegationCommand.CanExecute = false;
                 IsBusy = true;
                 BusyMessage = AppResources.Loading;
-                if (string.IsNullOrEmpty(Reason))
+               // if (string.IsNullOrEmpty(Reason))
+                //{
+                //    //await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseenterUserName, AppResources.Ok);
+                //}
+               // else
                 {
-                    //await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseenterUserName, AppResources.Ok);
-                }
-                else
-                {
-                    var qParamters = new DaypassRequestQParameters()
+                    var qParamters = new NewDelegationQParameter ()
                     {
                         Langid = _appSettings.Language,
                         UserToken = _appSettings.UserToken,
-                        StartTime = StartTime,
-                        EndTime = EndTime,
-                        WillReturn = ReturnToday ? "Yes" : "No",
-                        ReasonType = ReasonType
-
+                        DelegateID = "",
+                        SubordinateID = ""
                     };
-                    var bodyParameter = new DaypassRequestBParameters()
-                    {
-                        Reason = Reason
-                    };
-                    var response = await _dataService.NewDayPassAsync(qParamters, bodyParameter);
+                    var response = await _dataService.NewDelegationAsync(qParamters);
 
                     if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                     {
