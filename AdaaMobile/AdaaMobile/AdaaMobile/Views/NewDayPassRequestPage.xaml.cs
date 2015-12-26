@@ -18,7 +18,14 @@ namespace AdaaMobile.Views
             InitializeComponent();
             _dayPassViewModel = ViewModels.Locator.Default.DayPassViewModel;
             BindingContext = _dayPassViewModel;
+			LanguageButton.Clicked += LanguageButton_Clicked;
 
+        }
+
+        void LanguageButton_Clicked (object sender, EventArgs e)
+        {
+			StartTimePicker.Unfocus ();
+			StartTimePicker.Focus ();
         }
     }
 }

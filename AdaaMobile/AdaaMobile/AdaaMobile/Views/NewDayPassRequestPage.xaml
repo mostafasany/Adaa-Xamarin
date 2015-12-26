@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+                           xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
+
              xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
@@ -25,7 +27,24 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <ScrollView Grid.Row="0" VerticalOptions="Fill">
+
+                      <Button
+          x:Name="LanguageButton" BackgroundColor="Transparent"
+          BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
+            HorizontalOptions="Start"
+          VerticalOptions="Fill"
+          Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
+              >
+
+          </Button>
+              <TimePicker
+               x:Name="StartTimePicker"
+               BackgroundColor="Transparent"
+               HorizontalOptions="Fill"
+               VerticalOptions = "Fill"
+               IsEnabled="true"
+               HeightRequest = "0"
+                />
       <StackLayout
         Spacing="0"
         Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"
@@ -34,7 +53,7 @@
         <Grid
        Grid.Row="0"
        ColumnSpacing="0"  >
-          <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
+          <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
                            VerticalOptions="Start" HeightRequest="70"
                            CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
                            >
@@ -51,10 +70,6 @@
                      FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                      Text="Departure time" />
 
-              <TimePicker
-               x:Name="StartTimePicker"
-               BackgroundColor="Transparent"
-                />
 
 
 
@@ -189,7 +204,6 @@
 
 
       </StackLayout>
-    </ScrollView>
   </Grid>
 
 </ContentPage>
