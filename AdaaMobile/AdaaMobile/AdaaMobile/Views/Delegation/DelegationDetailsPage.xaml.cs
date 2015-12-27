@@ -1,22 +1,21 @@
-﻿using AdaaMobile.ViewModels;
+﻿using AdaaMobile.Strings;
+using AdaaMobile.ViewModels;
 using Xamarin.Forms;
 
 namespace AdaaMobile.Views.Delegation
 {
     public partial class DelegationDetailsPage : ContentPage
     {
-        private Models.Response.Delegation delegation;
-        private DelegationViewModel _delegationViewModel;
+        private readonly DelegationDetailsViewModel _delegationDetailsViewModel;
 
         public DelegationDetailsPage(Models.Response.Delegation delegation)
         {
             InitializeComponent();
-            _delegationViewModel = Locator.Default.DelegationViewModel;
-            BindingContext = _delegationViewModel;
-            this.delegation = delegation;
-            Title = "Delegation details";
-            DelegateNameLabel.Text = delegation.DelegateName;
-            SubordinateLabel.Text = delegation.SubordinateName;
+            Title = AppResources.DelegationDetailsCap;
+            _delegationDetailsViewModel = Locator.Default.DelegationDetailsViewModel;
+            _delegationDetailsViewModel.Delegation = delegation;
+            BindingContext = _delegationDetailsViewModel;
+
         }
     }
 }

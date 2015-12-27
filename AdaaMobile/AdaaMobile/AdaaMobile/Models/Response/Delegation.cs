@@ -10,19 +10,19 @@ namespace AdaaMobile.Models.Response
         public string ManagerName { get; set; }
 
         [XmlElement("ManagerID")]
-        public ushort ManagerId { get; set; }
+        public string ManagerId { get; set; }
 
         [XmlElement("DelegateName")]
         public string DelegateName { get; set; }
 
         [XmlElement("DelegateID")]
-        public uint DelegateId { get; set; }
+        public string DelegateId { get; set; }
 
         [XmlElement("SubordinateName")]
         public string SubordinateName { get; set; }
 
         [XmlElement("SubordinateID")]
-        public ushort SubordinateId { get; set; }
+        public string SubordinateId { get; set; }
     }
 }
 

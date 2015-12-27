@@ -935,6 +935,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Delegation.
+        /// </summary>
+        public static string RemoveDelegation {
+            get {
+                return ResourceManager.GetString("RemoveDelegation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request Details.
         /// </summary>
         public static string RequestDetails {

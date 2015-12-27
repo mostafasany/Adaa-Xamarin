@@ -31,6 +31,9 @@ namespace AdaaMobile.Views.Delegation
 		}
         private void DelegationsList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            //Clear color selection
+            DelegationsList.SelectedItem = null;
+
             Models.Response.Delegation delegation = (e.Item as Models.Response.Delegation);
             this.Navigation.PushAsync(new DelegationDetailsPage(delegation));
         }

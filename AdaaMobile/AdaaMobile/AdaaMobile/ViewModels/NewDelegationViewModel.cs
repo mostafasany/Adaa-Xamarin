@@ -126,17 +126,17 @@ namespace AdaaMobile.ViewModels
                 {
                     Langid = _appSettings.Language,
                     UserToken = _appSettings.UserToken,
-                    DelegateID = UserDelegate.UserId + "",
-                    SubordinateID = UserSubOrdinate.UserId + "",
-
+                    DelegateID = UserDelegate.UserId,
+                    SubordinateID = UserSubOrdinate.UserId ,
                 };
+
                 var response = await _dataService.NewDelegationAsync(qParamters);
 
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
                     if (!string.IsNullOrEmpty(response.Result.Message))
                     {
-                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.EnterValidPassword, AppResources.Ok);
+                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
                     }
                 }
                 else

@@ -19,11 +19,11 @@ namespace AdaaMobile.Views
         }
 
 
-		public ProfilePage (uint userID)
+		public ProfilePage (string userId)
 		{
 			InitializeComponent();
 			_profileViewModel = Locator.Default.ProfileViewModel;
-			_profileViewModel.SetOtherUserId (userID.ToString ());
+			_profileViewModel.SetOtherUserId (userId);
 			BindingContext = _profileViewModel;
 		}
 

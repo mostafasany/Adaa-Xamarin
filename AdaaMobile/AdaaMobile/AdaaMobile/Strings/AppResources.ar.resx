@@ -484,6 +484,9 @@
   <data name="PleaseenterUserNameandPassword" xml:space="preserve">
     <value>برجاء ادخال اسم المستخدم و كلمة المرور</value>
   </data>
+  <data name="RemoveDelegation" xml:space="preserve">
+    <value>Remove Delegation</value>
+  </data>
   <data name="SearchAllContacts" xml:space="preserve">
     <value>البحثت فى جميع الحسابات</value>
   </data>

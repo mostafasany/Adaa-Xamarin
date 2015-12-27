@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace AdaaMobile.Models.Response
 {
+    [XmlRoot("root", IsNullable = true)]
     public class RemoveDelegationsResponse
     {
 

@@ -122,6 +122,7 @@
     <Compile Include="Plugins\Connectivity\IConnectivity.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\DayPassViewModel.cs" />
+    <Compile Include="ViewModels\DelegationDetailsViewModel.cs" />
     <Compile Include="ViewModels\DelegationViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />

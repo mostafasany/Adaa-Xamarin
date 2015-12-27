@@ -10,7 +10,7 @@ namespace AdaaMobile.Models.Response
         public string UserName { get; set; }
 
         [XmlElement("UserID")]
-        public uint UserId { get; set; }
+        public string UserId { get; set; }
 
 
         public string NameSort

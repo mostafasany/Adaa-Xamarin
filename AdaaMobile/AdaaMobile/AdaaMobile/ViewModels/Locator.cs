@@ -58,7 +58,8 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<DirectoryViewModel>();
 			cb.RegisterType<DayPassViewModel>();
 			cb.RegisterType<DelegationViewModel>();
-			cb.RegisterType<NewDelegationViewModel>();
+			cb.RegisterType<DelegationDetailsViewModel>();
+            cb.RegisterType<NewDelegationViewModel>();
             
         }
 
@@ -125,6 +126,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<DelegationViewModel>();
+            }
+        }
+
+        public DelegationDetailsViewModel DelegationDetailsViewModel
+        {
+            get
+            {
+                return Container.Resolve<DelegationDetailsViewModel>();
             }
         }
 

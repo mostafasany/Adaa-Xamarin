@@ -30,7 +30,7 @@
     </Grid.RowDefinitions>
 
     <Grid Grid.Row="0" ColumnSpacing="8"  >
-      
+
       <controls:RoundedBoxView CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85" />
       <Grid Padding="0,12" RowSpacing="5" >
 
@@ -46,14 +46,14 @@
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-       <delegation:NewDelegateInfoControl 
-        Title="{ext:Translate DelegateName}"
-        Value="{Binding DelegateName}"
-        TappedCommand="{Binding SelectProfileCommand}"
-        TappedCommandParameter="Directory"
-        Grid.Row="0" Grid.Column="1"
+        <delegation:NewDelegateInfoControl
+         Title="{ext:Translate DelegateName}"
+         Value="{Binding DelegateName}"
+         TappedCommand="{Binding SelectProfileCommand}"
+         TappedCommandParameter="Directory"
+         Grid.Row="0" Grid.Column="1"
         />
-        <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="1" Opacity="0.5" BackgroundColor="Gray" HorizontalOptions="Fill" />
+        <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="1" Opacity="0.5" BackgroundColor="Black" HorizontalOptions="Fill" />
 
         <delegation:NewDelegateInfoControl
         Title="{ext:Translate SubOrdinate}"
@@ -62,8 +62,8 @@
         TappedCommandParameter="Subordinats"
         Grid.Row="2" Grid.Column="1"
         />
-        
-        <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="1" Opacity="0.5" BackgroundColor="Gray" HorizontalOptions="Fill" />
+
+        <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="1" Opacity="0.5" BackgroundColor="Black" HorizontalOptions="Fill" />
 
         <Grid Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" Padding="0,5" >
           <Grid.ColumnDefinitions>
@@ -81,12 +81,12 @@
         </Grid>
 
       </Grid>
-
-
-
     </Grid>
 
-
+    <ActivityIndicator  IsRunning="{Binding IsBusy}"
+                     HeightRequest="50" WidthRequest="50"
+                     Grid.Row="0" Grid.RowSpan="2"
+                     VerticalOptions="Center" HorizontalOptions="Center"/>
   </Grid>
 
 </ContentPage>

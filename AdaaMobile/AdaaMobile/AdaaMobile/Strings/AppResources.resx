@@ -484,6 +484,9 @@
   <data name="PleaseenterUserNameandPassword" xml:space="preserve">
     <value>Please enter User Name and Password</value>
   </data>
+  <data name="RemoveDelegation" xml:space="preserve">
+    <value>Remove Delegation</value>
+  </data>
   <data name="SearchAllContacts" xml:space="preserve">
     <value>Search all contacts</value>
   </data>
