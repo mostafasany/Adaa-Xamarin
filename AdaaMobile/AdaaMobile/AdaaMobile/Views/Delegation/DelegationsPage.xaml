@@ -41,9 +41,9 @@
                   </Grid.ColumnDefinitions>
 
                   <Grid.RowDefinitions>
+                    <RowDefinition Height="16"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="16"/>
                   </Grid.RowDefinitions>
 
                   <!--Add background and set background color of Extended Grid To Transparent, 
