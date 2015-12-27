@@ -41,6 +41,7 @@
     <Compile Include="Controls\ColumnsPanel.cs" />
     <Compile Include="Controls\ExtendedGrid.cs" />
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />
+    <Compile Include="Controls\GestureContentView.cs" />
     <Compile Include="Controls\HorizontalListView.cs" />
     <Compile Include="Controls\ListViewWrapper.cs" />
     <Compile Include="Controls\ImageButton\ImageButtonSourceConverter.cs" />
@@ -79,14 +80,16 @@
     <Compile Include="Helpers\Interfaces\ILocalize.cs" />
     <Compile Include="Helpers\Interfaces\INavigationService.cs" />
     <Compile Include="Helpers\Interfaces\INetworkHelper.cs" />
+    <Compile Include="Helpers\IUserSelection.cs" />
     <Compile Include="Helpers\LinkerIncludeFiles.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Helpers\SvgAssembly.cs" />
-    <Compile Include="Models\DayPassRequest.cs" />
-    <Compile Include="Models\DayPassTask.cs" />
-    <Compile Include="Models\DelegateSubordinate.cs" />
-    <Compile Include="Models\Delegation.cs" />
+    <Compile Include="Helpers\UserSelectionService.cs" />
+    <Compile Include="Models\Response\DayPassRequest.cs" />
+    <Compile Include="Models\Response\DayPassTask.cs" />
+    <Compile Include="Models\Response\DelegateSubordinate.cs" />
+    <Compile Include="Models\Response\Delegation.cs" />
     <Compile Include="Models\ExceptionDayWrapper.cs" />
     <Compile Include="Models\DayWrapper.cs" />
     <Compile Include="Models\Request\AccountStatusQParameters.cs" />
@@ -105,7 +108,7 @@
     <Compile Include="Models\Response\AccountStatusResponse.cs" />
     <Compile Include="Models\Response\ChangePasswordResponse.cs" />
     <Compile Include="Models\Response\DelegationsResponse.cs" />
-    <Compile Include="Models\Response\delegationSubordinatesResponse.cs" />
+    <Compile Include="Models\Response\DelegationSubordinatesResponse.cs" />
     <Compile Include="Models\Response\ExceptionsResponse.cs" />
     <Compile Include="Models\Response\GetExceptionsRepsonse.cs" />
     <Compile Include="Models\Response\NewDelegationResponse.cs" />
@@ -122,6 +125,7 @@
     <Compile Include="ViewModels\DelegationViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\NewDelegationViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\UserAccountServicesViewModel.cs" />
     <Compile Include="Views\Authentication\ChangePasswordPage.xaml.cs">
@@ -146,7 +150,7 @@
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="MarkupExtensions\TranslateExtension.cs" />
     <Compile Include="Models\AdaaPageItem.cs" />
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Response\Employee.cs" />
     <Compile Include="Models\KeyedCollection.cs" />
     <Compile Include="Models\Request\LoginBodyParamters.cs" />
     <Compile Include="Models\Response\LoginResponse.cs" />
@@ -203,8 +207,8 @@
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Delegation\NewUserDelegateInfoControl.xaml.cs">
-      <DependentUpon>NewUserDelegateInfoControl.xaml</DependentUpon>
+    <Compile Include="Views\Delegation\NewDelegateInfoControl.xaml.cs">
+      <DependentUpon>NewDelegateInfoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProfilePropertyControl.xaml.cs">
       <DependentUpon>ProfilePropertyControl.xaml</DependentUpon>
@@ -509,7 +513,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Delegation\NewUserDelegateInfoControl.xaml">
+    <EmbeddedResource Include="Views\Delegation\NewDelegateInfoControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

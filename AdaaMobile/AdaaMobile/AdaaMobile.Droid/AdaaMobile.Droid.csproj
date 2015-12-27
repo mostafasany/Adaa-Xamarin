@@ -243,4 +243,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\chevronblue.png" />
+  </ItemGroup>
 </Project>

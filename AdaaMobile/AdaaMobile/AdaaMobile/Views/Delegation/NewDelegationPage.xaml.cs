@@ -1,4 +1,5 @@
 ﻿using System;
+using AdaaMobile.Strings;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
 
@@ -6,20 +7,20 @@ namespace AdaaMobile.Views.Delegation
 {
     public partial class NewDelegationPage : ContentPage
     {
-        private DelegationViewModel _delegationViewModel;
+        private NewDelegationViewModel _newDelegationViewModel;
 
         public NewDelegationPage()
         {
             InitializeComponent();
-            _delegationViewModel = Locator.Default.DelegationViewModel;
-            BindingContext = _delegationViewModel;
-            Title = "New Delegation";
+            _newDelegationViewModel = Locator.Default.NewDelegationViewModel;
+            BindingContext = _newDelegationViewModel;
+            Title = AppResources.NewDelegationCap;
             Action action = () =>
             {
-                _delegationViewModel.NewDelegationCommand.Execute(null);
+                _newDelegationViewModel.NewDelegationCommand.Execute(null);
             };
             ToolbarItems.Add(
-                new ToolbarItem("Send", "", action, ToolbarItemOrder.Primary));
+                new ToolbarItem(AppResources.Send, "", action, ToolbarItemOrder.Primary));
 
         }
     }

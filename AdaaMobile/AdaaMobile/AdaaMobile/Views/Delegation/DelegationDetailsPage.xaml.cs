@@ -5,10 +5,10 @@ namespace AdaaMobile.Views.Delegation
 {
     public partial class DelegationDetailsPage : ContentPage
     {
-        private Models.Delegation delegation;
+        private Models.Response.Delegation delegation;
         private DelegationViewModel _delegationViewModel;
 
-        public DelegationDetailsPage(Models.Delegation delegation)
+        public DelegationDetailsPage(Models.Response.Delegation delegation)
         {
             InitializeComponent();
             _delegationViewModel = Locator.Default.DelegationViewModel;

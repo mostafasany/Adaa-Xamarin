@@ -1,10 +1,11 @@
-﻿using Xamarin.Forms;
+﻿using AdaaMobile.Controls;
+using Xamarin.Forms;
 
 namespace AdaaMobile.Views.Delegation
 {
-    public partial class NewUserDelegateInfoControl : ContentView
+    public partial class NewDelegateInfoControl : GestureContentView
     {
-        public NewUserDelegateInfoControl()
+        public NewDelegateInfoControl()
         {
             InitializeComponent();
         }
@@ -31,6 +32,10 @@ namespace AdaaMobile.Views.Delegation
             get { return (object)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
         }
+        #endregion
+
+
+        #region Tap Command
         #endregion
     }
 }

@@ -199,13 +199,13 @@ namespace AdaaMobile.DataServices
         #endregion
 
         #region Delegation
-        public async Task<ResponseWrapper<delegationSubordinatesResponse>> GetDelegationSubordinatesResponseAsync(delegationSubordinatesQParamters parameters, CancellationToken? token = default(CancellationToken?))
+        public async Task<ResponseWrapper<DelegationSubordinatesResponse>> GetDelegationSubordinatesResponseAsync(delegationSubordinatesQParamters parameters, CancellationToken? token = default(CancellationToken?))
         {
             parameters.Server = Server;
             var request = _requestFactory();
             request.RequestUrl = BaseUrl.AppendQueryString(parameters);
             request.ResultContentType = ContentType.Xml;
-            return await request.GetAsync<delegationSubordinatesResponse>(token);
+            return await request.GetAsync<DelegationSubordinatesResponse>(token);
         }
 
         public async Task<ResponseWrapper<DelegationsResponse>> GetAllDelegationsResponseAsync(DelegationsQParamters parameters, CancellationToken? token = default(CancellationToken?))

@@ -10,6 +10,7 @@ using AdaaMobile.Helpers;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Enums;
+using AdaaMobile.Models.Response;
 
 namespace AdaaMobile.ViewModels
 {
@@ -22,16 +23,17 @@ namespace AdaaMobile.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
+        private Employee[] _allEmployees;
         #endregion
 
         #region Properties
 
-        private DirectoryType _directoryType = DirectoryType.Directory;
+        private DirectorySourceType _directorySourceType = DirectorySourceType.Directory;
 
-        public DirectoryType DirectoryType
+        public DirectorySourceType DirectorySourceType
         {
-            get { return _directoryType; }
-            set { _directoryType = value; }
+            get { return _directorySourceType; }
+            set { _directorySourceType = value; }
         }
 
 
@@ -60,30 +62,11 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _busyMessage, value); }
         }
 
-        //private readonly ObservableCollection<KeyedCollection<Employee>> _groupedEmployees = new ObservableCollection<KeyedCollection<Employee>>();
-        //public ObservableCollection<KeyedCollection<Employee>> GroupedEmployees
-        //{
-        //    get { return _groupedEmployees; }
-        //}
         private ObservableCollection<Grouping<string, Employee>> _groupedEmployees = new ObservableCollection<Grouping<string, Employee>>();
         public ObservableCollection<Grouping<string, Employee>> GroupedEmployees
         {
             get { return _groupedEmployees; }
         }
-
-
-        //private ObservableCollection<Grouping<string, DelegateSubordinate>> _groupedSubordinates = new ObservableCollection<Grouping<string, DelegateSubordinate>>();
-        //public ObservableCollection<Grouping<string, DelegateSubordinate>> GroupedSubordinates
-        //{
-        //    get { return _groupedSubordinates; }
-        //}
-
-        //private ObservableCollection<DelegateSubordinate> _notgroupedSubordinates = new ObservableCollection<DelegateSubordinate>();
-        //public ObservableCollection<DelegateSubordinate> NotGroupedSubordinates
-        //{
-        //    get { return _notgroupedSubordinates; }
-        //}
-
 
         private ObservableCollection<Employee> _notgroupedEmployees = new ObservableCollection<Employee>();
         public ObservableCollection<Employee> NotGroupedEmployees
@@ -92,8 +75,6 @@ namespace AdaaMobile.ViewModels
         }
 
 
-        private Employee[] _allEmployees;
-        private DelegateSubordinate[] _allSubordinates;
         #endregion
 
         #region Initialization
@@ -122,7 +103,7 @@ namespace AdaaMobile.ViewModels
             {
                 IsBusy = true;
                 LoadEmployeesCommand.CanExecute = false;
-                if (DirectoryType == DirectoryType.Directory)
+                if (DirectorySourceType == DirectorySourceType.Directory)
                 {
                     var response = await _dataService.GetEmpolyeesAsync(new GetAllEmployeesQParameters()
                     {
@@ -167,7 +148,7 @@ namespace AdaaMobile.ViewModels
         {
 
             var sorted = from emp in _allEmployees
-                         orderby emp.Name
+                         orderby emp.UserName
                          group emp by emp.NameSort into empGroup
                          select new Grouping<string, Employee>(empGroup.Key, empGroup);
 
@@ -191,54 +172,28 @@ namespace AdaaMobile.ViewModels
         //    OnPropertyChanged("GroupedSubordinates");
         //}
 
-        public async Task<bool> Search(string filter)
+        public bool Search(string filter)
         {
             if (_allEmployees == null) return false;
-            //if (DirectoryType == DirectoryType.Directory)
+            if (!string.IsNullOrWhiteSpace(filter))
             {
-                var list =
-                    _allEmployees.Where(p => p.UserName.ToLower().Contains(filter.ToLower()));
-                if (!list.Any())
-                {
-                    GroupEmployees();
-                    return false;
-                }
-                else
-                {
-                    GroupingEnabled = false;
-                    _notgroupedEmployees = new ObservableCollection<Employee>();
-                    foreach (var item in list.ToList())
-                    {
-                        _notgroupedEmployees.Add(item);
-
-                    }
-                    OnPropertyChanged("NotGroupedEmployees");
-                    return true;
-                }
+                GroupEmployees();
+                return false;
             }
-            //else
-            //{
+            else
+            {
+                GroupingEnabled = false;
+                var list = _allEmployees.Where(p => p.UserName.ToLower().Contains(filter.ToLower()));
 
-            //    var list =
-            //        allSubordinates.Where(p => p.UserName.ToLower().Contains(filter.ToLower()));
-            //    if (list == null || list.ToList() == null)
-            //    {
-            //        GetGroupedSubordinates();
-            //        return false;
-            //    }
-            //    else
-            //    {
-            //        GroupingEnabled = false;
-            //        _notgroupedSubordinates = new ObservableCollection<DelegateSubordinate>();
-            //        foreach (var item in list.ToList())
-            //        {
-            //            _notgroupedSubordinates.Add(item);
+                _notgroupedEmployees = new ObservableCollection<Employee>();
+                foreach (var item in list.ToList())
+                {
+                    _notgroupedEmployees.Add(item);
 
-            //        }
-            //        OnPropertyChanged("NotGroupedSubordinates");
-            //        return true;
-            //    }
-            //}
+                }
+                OnPropertyChanged("NotGroupedEmployees");
+                return true;
+            }
         }
         #endregion
 

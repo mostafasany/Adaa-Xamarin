@@ -7,6 +7,7 @@
              xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
+             xmlns:delegation="clr-namespace:AdaaMobile.Views.Delegation;assembly=AdaaMobile"
              x:Class="AdaaMobile.Views.Delegation.NewDelegationPage">
 
   <ContentPage.BackgroundImage>
@@ -30,75 +31,56 @@
 
     <Grid Grid.Row="0" ColumnSpacing="8"  >
       
-      <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
-                       VerticalOptions="Fill" Padding="8"
-                       CornerRadius="{StaticResource CornerRadius}"  BackgroundColor="#22007c85"
-                           >
-        <!--<BoxView BackgroundColor="#22007c85" />-->
+      <controls:RoundedBoxView CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85" />
+      <Grid Padding="0,12" RowSpacing="5" >
 
-        <Label Grid.Row="0"
-               TextColor="Black" BackgroundColor="Transparent"
-               HorizontalTextAlignment="Start"
-               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-               Text="{ext:Translate DelegateName}" />
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="15"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="12"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+       <delegation:NewDelegateInfoControl 
+        Title="{ext:Translate DelegateName}"
+        Value="{Binding DelegateName}"
+        TappedCommand="{Binding SelectProfileCommand}"
+        TappedCommandParameter="Directory"
+        Grid.Row="0" Grid.Column="1"
+        />
+        <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="1" Opacity="0.5" BackgroundColor="Gray" HorizontalOptions="Fill" />
 
-        <!--<Button
-              Grid.Row="0"
-x:Name="LanguageButton" BackgroundColor="Transparent"
-          BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
-            HorizontalOptions="Start"
-          VerticalOptions="Fill"
-          Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
-              >
+        <delegation:NewDelegateInfoControl
+        Title="{ext:Translate SubOrdinate}"
+        Value="{Binding SubOrdinateName}"
+        TappedCommand="{Binding SelectProfileCommand}"
+        TappedCommandParameter="Subordinats"
+        Grid.Row="2" Grid.Column="1"
+        />
+        
+        <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="1" Opacity="0.5" BackgroundColor="Gray" HorizontalOptions="Fill" />
 
-          </Button>-->
-
-
-        <BoxView
-          Grid.Row="2"
-          HeightRequest="1"
-          BackgroundColor="Black"
-          HorizontalOptions="Fill"
-              />
-
-
-
-
-        <Label Grid.Row="3"
-               TextColor="Black" BackgroundColor="Transparent"
-               HorizontalTextAlignment="Start"
-               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-               Text="Sub ordinate" />
-
-
-        <BoxView
-          Grid.Row="5"
-          HeightRequest="1"
-          BackgroundColor="Black"
-          HorizontalOptions="Fill"
-              />
-
-        <Grid  Grid.Row="6" HorizontalOptions="Fill"
-                    >
+        <Grid Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" Padding="0,5" >
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto"/>
           </Grid.ColumnDefinitions>
           <Label   Grid.Column="0"
-                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                           TextColor="Black" BackgroundColor="Transparent"
                            HorizontalTextAlignment="Start"
-                           FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                           Text="Rule status" />
+                           FontSize="Medium"
+                           Text="{ext:Translate RuleStatus}" />
           <Switch Grid.Column="1"
-            x:Name="ReturnTodaySwitch"
-          IsToggled="{Binding ReturnToday}"
-          HorizontalOptions="Fill"
-          VerticalOptions="Fill"
-                >
-          </Switch>
+                  x:Name="ReturnTodaySwitch" IsToggled="{Binding ReturnToday}"
+                  HorizontalOptions="Fill" VerticalOptions="Fill"/>
         </Grid>
 
-      </controls:ExtendedGrid>
+      </Grid>
 
 
 

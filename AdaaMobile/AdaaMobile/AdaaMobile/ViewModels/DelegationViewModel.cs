@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdaaMobile.Models.Response;
 
 namespace AdaaMobile.ViewModels
 {
@@ -42,21 +43,19 @@ namespace AdaaMobile.ViewModels
 
 
 
-        private bool _ShowNoDelegations;
+        private bool _showNoDelegations;
         public bool ShowNoDelegations
         {
-            get { return _ShowNoDelegations; }
-            set { SetProperty(ref _ShowNoDelegations, value); }
+            get { return _showNoDelegations; }
+            set { SetProperty(ref _showNoDelegations, value); }
         }
 
 
-
-
-        private ObservableCollection<Delegation> _Delegations;
+        private ObservableCollection<Delegation> _delegations;
         public ObservableCollection<Delegation> Delegations
         {
-            get { return _Delegations; }
-            set { SetProperty(ref _Delegations, value); }
+            get { return _delegations; }
+            set { SetProperty(ref _delegations, value); }
         }
 
         #endregion
@@ -70,7 +69,6 @@ namespace AdaaMobile.ViewModels
             _dialogManager = dialogManager;
             _messageResolver = messageResolver;
             LoadDayPassDataCommand = new AsyncExtendedCommand(LoadDelagationDataAsync);
-            NewDelegationCommand = new AsyncExtendedCommand(DoNewDelegationCommand);
 
         }
 
@@ -78,7 +76,6 @@ namespace AdaaMobile.ViewModels
 
         #region Commands
         public AsyncExtendedCommand LoadDayPassDataCommand { get; set; }
-        public AsyncExtendedCommand NewDelegationCommand { get; set; }
         #endregion
 
         #region Methods
@@ -122,55 +119,7 @@ namespace AdaaMobile.ViewModels
         }
 
 
-        private async Task DoNewDelegationCommand()
-        {
-            try
-            {
-                NewDelegationCommand.CanExecute = false;
-                IsBusy = true;
-                BusyMessage = AppResources.Loading;
-               // if (string.IsNullOrEmpty(Reason))
-                //{
-                //    //await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseenterUserName, AppResources.Ok);
-                //}
-               // else
-                {
-                    var qParamters = new NewDelegationQParameter ()
-                    {
-                        Langid = _appSettings.Language,
-                        UserToken = _appSettings.UserToken,
-                        DelegateID = "",
-                        SubordinateID = ""
-                    };
-                    var response = await _dataService.NewDelegationAsync(qParamters);
-
-                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
-                    {
-                        if (!string.IsNullOrEmpty(response.Result.Message))
-                        {
-                            await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.EnterValidPassword, AppResources.Ok);
-                        }
-                    }
-                    else
-                    {
-                        string message = _messageResolver.GetMessage(response);
-                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                //Show error
-#pragma warning disable 4014
-                _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.SomethingErrorHappened, AppResources.Ok);
-#pragma warning restore 4014
-            }
-            finally
-            {
-                NewDelegationCommand.CanExecute = true;
-                IsBusy = false;
-            }
-        }
+       
         #endregion
     }
 }

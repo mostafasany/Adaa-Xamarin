@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace AdaaMobile.Enums
 {
-    public enum DirectoryType { Directory, Subordinats };
-    public enum DirectoryPageType { Select, Normal };
+    public enum DirectorySourceType { Directory, Subordinats };
+    public enum DirectoryAccessType { Select, Normal };
 }

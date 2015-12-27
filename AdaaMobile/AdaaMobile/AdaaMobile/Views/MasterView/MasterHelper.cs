@@ -48,7 +48,7 @@ namespace AdaaMobile.Views.MasterView
             if (pageType == typeof(HomePage)) return new HomePage();
             if (pageType == typeof(ProfilePage)) return new ProfilePage();
             if (pageType == typeof(AttendancePage)) return new AttendancePage();
-            if (pageType == typeof(DirectoryPage)) return new DirectoryPage(Enums.DirectoryType.Directory, Enums.DirectoryPageType.Normal);
+            if (pageType == typeof(DirectoryPage)) return new DirectoryPage(Enums.DirectorySourceType.Directory, Enums.DirectoryAccessType.Normal);
             if (pageType == typeof(EServicesPage)) return new EServicesPage();
             if (pageType == typeof(ForgetPasswordPage)) return new ForgetPasswordPage();
             if (pageType == typeof(ITServiesPage)) return new ITServiesPage();

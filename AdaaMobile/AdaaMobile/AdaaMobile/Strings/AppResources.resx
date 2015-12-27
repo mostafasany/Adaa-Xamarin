@@ -487,4 +487,7 @@
   <data name="SearchAllContacts" xml:space="preserve">
     <value>Search all contacts</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
 </root>

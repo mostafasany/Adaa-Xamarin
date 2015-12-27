@@ -31,7 +31,7 @@ namespace AdaaMobile.Views.Delegation
 		}
         private void DelegationsList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Models.Delegation delegation = (e.Item as Models.Delegation);
+            Models.Response.Delegation delegation = (e.Item as Models.Response.Delegation);
             this.Navigation.PushAsync(new DelegationDetailsPage(delegation));
         }
     }

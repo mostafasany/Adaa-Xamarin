@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AdaaMobile.Strings;
 using Xamarin.Forms;
 
 namespace AdaaMobile.Views
@@ -19,7 +19,7 @@ namespace AdaaMobile.Views
             _userServicesViewModel = Locator.Default.UserAccountServicesViewModel;
             BindingContext = _userServicesViewModel;
 
-			Title = "User Account Services";
+			Title = AppResources.UserAccountServices;
             //Work-around for iOS for cut-images
             if (Device.OS == TargetPlatform.iOS)
             {

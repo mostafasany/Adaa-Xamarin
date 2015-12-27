@@ -46,6 +46,7 @@ namespace AdaaMobile.ViewModels
             cb.Register<IDataService>(c => c.Resolve<DataService>());
             cb.RegisterType<NavigationService>();
             cb.Register<INavigationService>(c => c.Resolve<NavigationService>());
+            cb.RegisterType<UserSelectionService>();
             cb.RegisterType<LoginViewModel>();
             cb.RegisterType<HomeViewModel>();
             cb.RegisterType<AttendanceViewModel>();
@@ -57,6 +58,8 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<DirectoryViewModel>();
 			cb.RegisterType<DayPassViewModel>();
 			cb.RegisterType<DelegationViewModel>();
+			cb.RegisterType<NewDelegationViewModel>();
+            
         }
 
 
@@ -125,7 +128,13 @@ namespace AdaaMobile.ViewModels
             }
         }
 
-
+        public NewDelegationViewModel NewDelegationViewModel
+        {
+            get
+            {
+                return Container.Resolve<NewDelegationViewModel>();
+            }
+        }
 
         public IAppSettings AppSettings
         {

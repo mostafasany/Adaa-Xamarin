@@ -7,7 +7,8 @@ using System.Xml.Serialization;
 
 namespace AdaaMobile.Models.Response
 {
-    public class delegationSubordinatesResponse
+    [XmlRoot("root")]
+    public class DelegationSubordinatesResponse
     {
         [XmlElement("msg")]
         public string Message { get; set; }

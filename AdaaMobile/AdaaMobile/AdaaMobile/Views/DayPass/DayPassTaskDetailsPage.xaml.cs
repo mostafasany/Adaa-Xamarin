@@ -24,7 +24,7 @@ namespace AdaaMobile.Views.DayPass
             ReasonTypeLabel.Text = task.ReasonType;
             
 
-            EmployeeIdLabel.Text = task.UserID;
+            EmployeeIdLabel.Text = task.UserId;
             FullNameLabel.Text = task.UserName;
 
 
@@ -37,7 +37,7 @@ namespace AdaaMobile.Views.DayPass
 
             try
             {
-                ResponseWrapper<UserProfile> resposne = await _dayPassViewModel.LoadProfileAsync(task.UserID);
+                ResponseWrapper<UserProfile> resposne = await _dayPassViewModel.LoadProfileAsync(task.UserId);
                 if (resposne.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
                     if (resposne.Result != null)

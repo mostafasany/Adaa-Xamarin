@@ -1,4 +1,5 @@
 ﻿using AdaaMobile.Models;
+using AdaaMobile.Models.Response;
 using Xamarin.Forms;
 
 namespace AdaaMobile.Views.DayPass

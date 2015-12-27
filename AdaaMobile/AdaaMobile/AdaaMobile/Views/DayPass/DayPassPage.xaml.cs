@@ -1,5 +1,6 @@
 ﻿using System;
 using AdaaMobile.Models;
+using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
