@@ -62,12 +62,14 @@
       HorizontalOptions="Fill"
       VerticalOptions="Fill"
       IsVisible="True"
+      BackgroundColor="Transparent"
       >
       <ListView
          x:Name="MyRequestsList"
          ItemsSource="{Binding PendingRequests}"
          IsGroupingEnabled="False"
          SeparatorColor="Transparent"
+         BackgroundColor="Transparent"
               >
         <ListView.ItemTemplate>
           <DataTemplate>
@@ -129,12 +131,14 @@
   HorizontalOptions="Fill"
   VerticalOptions="Fill"
   IsVisible="False"
+  BackgroundColor="Transparent"
       >
       <ListView
          x:Name="MyTasksList"
          ItemsSource="{Binding DayPassTasks}"
          IsGroupingEnabled="False"
          SeparatorColor="Transparent"
+         BackgroundColor="Transparent"
               >
         <ListView.ItemTemplate>
           <DataTemplate>
