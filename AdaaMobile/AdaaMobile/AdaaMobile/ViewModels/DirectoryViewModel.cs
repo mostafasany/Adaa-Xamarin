@@ -175,7 +175,7 @@ namespace AdaaMobile.ViewModels
         public bool Search(string filter)
         {
             if (_allEmployees == null) return false;
-            if (!string.IsNullOrWhiteSpace(filter))
+            if (string.IsNullOrWhiteSpace(filter))
             {
                 GroupEmployees();
                 return false;
