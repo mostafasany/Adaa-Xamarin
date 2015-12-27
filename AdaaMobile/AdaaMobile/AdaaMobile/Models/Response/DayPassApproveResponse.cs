@@ -2,6 +2,7 @@
 
 namespace AdaaMobile.Models.Response
 {
+	[XmlRoot("root")]
 	public class DayPassApproveResponse
 	{
 		public DayPassApproveResponse ()

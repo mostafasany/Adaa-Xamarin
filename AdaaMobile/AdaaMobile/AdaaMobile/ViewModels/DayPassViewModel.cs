@@ -254,7 +254,7 @@ namespace AdaaMobile.ViewModels
                 BusyMessage = AppResources.Loading;
                 if (string.IsNullOrEmpty(Reason))
                 {
-                    //await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseenterUserName, AppResources.Ok);
+					await _dialogManager.DisplayAlert(AppResources.ApplicationName, "Please enter reason", AppResources.Ok);
                 }
                 else
                 {
@@ -279,7 +279,7 @@ namespace AdaaMobile.ViewModels
                     {
                         if (!string.IsNullOrEmpty(response.Result.Message))
                         {
-                            await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.EnterValidPassword, AppResources.Ok);
+							await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
                         }
                     }
                     else

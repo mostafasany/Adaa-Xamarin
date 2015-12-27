@@ -15,8 +15,6 @@
 
   <ContentPage.Resources>
     <ResourceDictionary>
-      <Color x:Key="TabColor">#00676e</Color>
-      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
     </ResourceDictionary>
   </ContentPage.Resources>
 
@@ -31,8 +29,8 @@
     <Grid
    Grid.Row="0"
    ColumnSpacing="8"  >
-      <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
-                       VerticalOptions="Fill" Padding="0,0,0,10"
+      <controls:ExtendedGrid ColumnSpacing="15" 
+                       VerticalOptions="Fill" Padding="10,12,10,12"
                        CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
                            >
         <Grid.RowDefinitions>
@@ -53,16 +51,6 @@
                FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                Text="Departure time" />
 
-        <!--<Button
-              Grid.Row="0"
-x:Name="LanguageButton" BackgroundColor="Transparent"
-          BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
-            HorizontalOptions="Start"
-          VerticalOptions="Fill"
-          Text="{ext:Translate ChooseLanguage}" TextColor="Black" Font="SemiBold"
-              >
-
-          </Button>-->
         <TimePicker
          Grid.Row="1"
          x:Name="StartTimePicker"
@@ -76,7 +64,7 @@ x:Name="LanguageButton" BackgroundColor="Transparent"
         <BoxView
           Grid.Row="2"
           HeightRequest="1"
-          BackgroundColor="Black"
+          BackgroundColor="{StaticResource AppBackgroundNormal}"
           HorizontalOptions="Fill"
               />
 
@@ -89,13 +77,14 @@ x:Name="LanguageButton" BackgroundColor="Transparent"
             <ColumnDefinition Width="Auto"/>
           </Grid.ColumnDefinitions>
           <Label   Grid.Column="0"
-                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                           TextColor="Black" BackgroundColor="Transparent"
                            HorizontalTextAlignment="Start"
                            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                            Text="Return today" />
           <Switch Grid.Column="1"
             x:Name="ReturnTodaySwitch"
           IsToggled="{Binding ReturnToday}"
+          HorizontalOptions="Fill" VerticalOptions="Fill"
                 >
           </Switch>
         </Grid>
@@ -103,7 +92,7 @@ x:Name="LanguageButton" BackgroundColor="Transparent"
         <BoxView
       Grid.Row="4"
       HeightRequest="1"
-      BackgroundColor="Black"
+          BackgroundColor="{StaticResource AppBackgroundNormal}"
       HorizontalOptions="Fill"
               />
 
@@ -127,7 +116,7 @@ x:Name="LanguageButton" BackgroundColor="Transparent"
         <BoxView
     Grid.Row="7"
     HeightRequest="1"
-    BackgroundColor="Black"
+          BackgroundColor="{StaticResource AppBackgroundNormal}"
     HorizontalOptions="Fill"
               />
 
@@ -142,8 +131,8 @@ x:Name="LanguageButton" BackgroundColor="Transparent"
     <Grid
     Grid.Row="1"
     ColumnSpacing="8"  >
-      <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
-                       VerticalOptions="Fill" Padding="0,0,0,10"
+      <controls:ExtendedGrid ColumnSpacing="15" 
+                       VerticalOptions="Fill" Padding="10,10,10,10"
                        CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
                            >
         <Grid.RowDefinitions>
@@ -164,6 +153,7 @@ x:Name="LanguageButton" BackgroundColor="Transparent"
         <Picker x:Name="ReasonTypePicker"   BackgroundColor="Transparent"
             Grid.Row="1"  HorizontalOptions="Fill"
              WidthRequest="0" HeightRequest="0" IsVisible= "false"
+
               >
           <Picker.Items>
             <x:String>Work</x:String>
@@ -187,13 +177,13 @@ x:Name="LanguageButton" BackgroundColor="Transparent"
         <BoxView
           Grid.Row="2"
           HeightRequest="1"
-          BackgroundColor="Black"
+          BackgroundColor="{StaticResource AppBackgroundNormal}"
           HorizontalOptions="Fill"
               />
 
 
         <Label Grid.Row="3"
-               TextColor="Black" BackgroundColor="Transparent"
+               TextColor="Gray" BackgroundColor="Transparent"
                HorizontalTextAlignment="Start"
                FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                Text="Reason" />
@@ -205,6 +195,7 @@ x:Name="LanguageButton" BackgroundColor="Transparent"
           BackgroundColor="Transparent"
           TextColor="Black"
           Text="{Binding Reason}"
+          
           >
 
         </Editor>
