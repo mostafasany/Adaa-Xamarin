@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-               xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-                          xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-
+             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.DelegationsPage">
+             x:Class="AdaaMobile.Views.Delegation.DelegationsPage">
   <ContentPage.BackgroundImage>
     <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
   </ContentPage.BackgroundImage>
@@ -28,10 +27,8 @@
           <ViewCell >
             <ViewCell.View>
               <Grid  Padding="15,0" >
-
-                <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="#cc007c85"
+                <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="Transparent"
                                        VerticalOptions="Start" HeightRequest="70"
-
                                        CornerRadius="{StaticResource CornerRadius}"
                            >
                   <Grid.ColumnDefinitions>
@@ -46,6 +43,9 @@
                     <RowDefinition Height="2*"/>
                   </Grid.RowDefinitions>
 
+                  <!--Add background and set background color of Extended Grid To Transparent, 
+                  As there is an issue in rounding backcolor of ExtendedGrid in Android -->
+                  <BoxView BackgroundColor="#cc007c85" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
                   <Label Grid.Row="1"  Grid.Column="0"
                          TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
                          HorizontalTextAlignment="Start"
@@ -75,6 +75,9 @@
       </ListView.ItemTemplate>
     </ListView>
 
+    <ActivityIndicator  IsRunning="{Binding IsBusy}"
+                     HeightRequest="50" WidthRequest="50"
+                     VerticalOptions="Center" HorizontalOptions="Center"/>
   </Grid>
 
 </ContentPage>

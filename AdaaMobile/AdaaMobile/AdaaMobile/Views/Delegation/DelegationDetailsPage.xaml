@@ -7,7 +7,7 @@
              xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.DelegationDetailsPage">
+             x:Class="AdaaMobile.Views.Delegation.DelegationDetailsPage">
   <ContentPage.BackgroundImage>
     <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
   </ContentPage.BackgroundImage>
@@ -21,9 +21,8 @@
       <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
 
-    <controls:ExtendedGrid Grid.Row="0" ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="#cc007c85"
+    <controls:ExtendedGrid Grid.Row="0" ColumnSpacing="15" x:Name="ContentGrid"  BackgroundColor="#cc007c85"
                                      VerticalOptions="Fill" 
-
                                      CornerRadius="{StaticResource CornerRadius}"
                            >
 

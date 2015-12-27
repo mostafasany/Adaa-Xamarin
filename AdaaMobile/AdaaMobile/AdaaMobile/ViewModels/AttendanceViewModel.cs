@@ -12,6 +12,7 @@ using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
 using AdaaMobile.Views;
+using AdaaMobile.Views.Authentication;
 
 namespace AdaaMobile.ViewModels
 {

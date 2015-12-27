@@ -14,6 +14,7 @@ using AdaaMobile.DataServices.Requests;
 using AdaaMobile.DataServices;
 using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
+using AdaaMobile.Views.Authentication;
 
 namespace AdaaMobile.ViewModels
 {

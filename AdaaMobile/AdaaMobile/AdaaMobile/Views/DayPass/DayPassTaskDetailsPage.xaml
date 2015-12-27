@@ -5,7 +5,7 @@
              xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.DayPassTaskDetailsPage"
+             x:Class="AdaaMobile.Views.DayPass.DayPassTaskDetailsPage"
              BackgroundColor="White">
   <ContentPage.BackgroundImage>
     <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>

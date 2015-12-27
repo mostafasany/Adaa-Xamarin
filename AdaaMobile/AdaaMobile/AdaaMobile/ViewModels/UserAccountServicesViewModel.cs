@@ -8,6 +8,7 @@ using AdaaMobile.Views;
 using System;
 using System.Threading.Tasks;
 using AdaaMobile.Models.Response;
+using AdaaMobile.Views.Authentication;
 using Xamarin.Forms;
 
 namespace AdaaMobile.ViewModels

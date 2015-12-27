@@ -3,7 +3,7 @@
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
 xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" 
-x:Class="AdaaMobile.Views.LoginPage" IsBusy="{Binding IsBusy}"
+x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
 >
 
 <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >

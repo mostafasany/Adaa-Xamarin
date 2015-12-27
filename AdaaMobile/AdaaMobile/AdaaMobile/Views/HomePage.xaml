@@ -108,7 +108,7 @@
                 <controls:ExtendedGrid VerticalOptions="Fill"
                       HorizontalOptions="Fill"
                       CornerRadius="3"
-                      BackgroundColor="Transparent"
+                      BackgroundColor="{StaticResource AppBackgroundNormal}"
                       RelativeLayout.WidthConstraint=
                       "{ConstraintExpression Type=RelativeToParent,
                                         Property=Width,
@@ -117,12 +117,12 @@
                       "{ConstraintExpression Type=RelativeToParent,
                                         Property=Width,
                                         Factor=0.9}">
-                  <controls:RoundedBoxView
+                  <!--<controls:RoundedBoxView
                   BackgroundColor="{StaticResource AppBackgroundNormal}"
                   CornerRadius="3"
                   VerticalOptions="Fill"
                   HorizontalOptions="Fill"
-                  />
+                  />-->
 
 
                   <controls:SvgImage

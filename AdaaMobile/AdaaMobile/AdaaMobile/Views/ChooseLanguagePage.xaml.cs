@@ -1,6 +1,7 @@
 ﻿using System;
 using AdaaMobile.Helpers;
 using AdaaMobile.ViewModels;
+using AdaaMobile.Views.Authentication;
 using Xamarin.Forms;
 
 namespace AdaaMobile.Views

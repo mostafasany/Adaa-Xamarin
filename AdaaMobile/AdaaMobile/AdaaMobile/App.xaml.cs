@@ -7,6 +7,7 @@ using AdaaMobile.Views;
 using AdaaMobile.Views.MasterView;
 using Xamarin.Forms;
 using AdaaMobile.Helpers;
+using AdaaMobile.Views.Authentication;
 
 namespace AdaaMobile
 {

@@ -26,14 +26,14 @@ namespace AdaaMobile.Droid.CustomRenderers
     [Preserve(AllMembers = true)]
     public class ExtendedGridRenderer : ViewRenderer<ExtendedGrid, View>
     {
-        private ExtendedGrid _extendedGrid
+        private ExtendedGrid ExtendedGrid
         {
             get { return Element; }
         }
-        private Canvas temp;
-        private Paint paint;
-        private Paint p = new Paint();
-        private Paint transparentPaint;
+        private Canvas _temp;
+        private Paint _paint;
+        private Paint _p = new Paint();
+        private Paint _transparentPaint;
         public ExtendedGridRenderer()
         {
             Log.Debug("ExtendedGrid", "const");
@@ -52,12 +52,12 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
             Bitmap bitmap = Bitmap.CreateBitmap(Width, Height, Bitmap.Config.Argb8888);
 
-            temp = new Canvas(bitmap);
-            paint = new Paint();
-            paint.SetARGB(125, 0, 0, 0);
-            transparentPaint = new Paint();
-            transparentPaint.Color = Color.Transparent;
-            transparentPaint.SetXfermode(new PorterDuffXfermode(PorterDuff.Mode.Clear));
+            _temp = new Canvas(bitmap);
+            _paint = new Paint();
+            _paint.SetARGB(125, 0, 0, 0);
+            _transparentPaint = new Paint();
+            _transparentPaint.Color = Color.Transparent;
+            _transparentPaint.SetXfermode(new PorterDuffXfermode(PorterDuff.Mode.Clear));
         }
         protected override void OnElementChanged(ElementChangedEventArgs<ExtendedGrid> e)
         {
@@ -92,10 +92,13 @@ namespace AdaaMobile.Droid.CustomRenderers
 
         //    try
         //    {
-        //        canvas.DrawColor(Color.Argb(125, 0, 0, 0), PorterDuff.Mode.Clear);
+
+        //        //canvas.DrawColor(Color.Argb(125, 0, 0, 0), PorterDuff.Mode.Clear);
+        //        this.Control.ClipToOutline = false;
+        //        //Control.SetBackgroundColor(ExtendedGrid.BackgroundColor.ToAndroid());
         //        var clippingPath = new Path();
         //        RectF rect = new RectF(0, 0, Width, Height);
-        //        clippingPath.AddRoundRect(rect, (float)_extendedGrid.CornerRadius * 5, (float)_extendedGrid.CornerRadius * 5, Path.Direction.Ccw);
+        //        clippingPath.AddRoundRect(rect, (float)ExtendedGrid.CornerRadius * 5, (float)ExtendedGrid.CornerRadius * 5, Path.Direction.Ccw);
         //        canvas.Save();
         //        canvas.ClipPath(clippingPath);
         //        base.Draw(canvas);
@@ -114,7 +117,7 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
             var clippingPath = new Path();
             RectF rect = new RectF(0, 0, Width, Height);
-            double cornderRadius = PixelToDp(_extendedGrid.CornerRadius);
+            double cornderRadius = PixelToDp(ExtendedGrid.CornerRadius);
             clippingPath.AddRoundRect(rect, (float)cornderRadius, (float)cornderRadius, Path.Direction.Ccw);
             canvas.Save();
             canvas.ClipPath(clippingPath);

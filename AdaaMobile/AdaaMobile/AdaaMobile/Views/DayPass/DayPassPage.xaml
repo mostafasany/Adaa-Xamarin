@@ -7,7 +7,7 @@
              xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.DayPassPage"
+             x:Class="AdaaMobile.Views.DayPass.DayPassPage"
                           BackgroundColor="White"
 >
   <ContentPage.BackgroundImage>
@@ -27,7 +27,7 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <!--Top buttons Attendance and Exceptions-->
+    <!--Top buttons MyRequests and MyTasks-->
     <Grid
       Grid.Row="0"
       ColumnSpacing="0"  >
@@ -65,7 +65,6 @@
       >
       <ListView
          x:Name="MyRequestsList"
-         Grid.Row="1"
          ItemsSource="{Binding PendingRequests}"
          IsGroupingEnabled="False"
          SeparatorColor="Transparent"
@@ -133,7 +132,6 @@
       >
       <ListView
          x:Name="MyTasksList"
-         Grid.Row="1"
          ItemsSource="{Binding DayPassTasks}"
          IsGroupingEnabled="False"
          SeparatorColor="Transparent"
@@ -191,6 +189,11 @@
       </ListView>
 
     </Grid>
+
+    <ActivityIndicator  IsRunning="{Binding IsBusy}"
+                     HeightRequest="50" WidthRequest="50"
+                     Grid.Row="0" Grid.RowSpan="2"
+                     VerticalOptions="Center" HorizontalOptions="Center"/>
   </Grid>
 
 </ContentPage>

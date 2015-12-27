@@ -10,6 +10,7 @@ using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
 using AdaaMobile.Views;
+using AdaaMobile.Views.Authentication;
 using Xamarin.Forms;
 
 namespace AdaaMobile.ViewModels

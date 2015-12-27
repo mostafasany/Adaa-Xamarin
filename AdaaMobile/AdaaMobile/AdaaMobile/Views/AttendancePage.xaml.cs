@@ -63,12 +63,12 @@ namespace AdaaMobile.Views
 
         private void DelegationBtn_Clicked(object sender, EventArgs e)
         {
-            this.Navigation.PushAsync(new DelegationsPage());
+            this.Navigation.PushAsync(new Delegation.DelegationsPage());
         }
 
         private void DayPassBtn_Clicked(object sender, EventArgs e)
         {
-            this.Navigation.PushAsync(new DayPassPage());
+            this.Navigation.PushAsync(new DayPass.DayPassPage());
         }
 
         void MaxDatePicker_Unfocused(object sender, FocusEventArgs e)

@@ -7,7 +7,7 @@
              xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.NewDelegationPage">
+             x:Class="AdaaMobile.Views.Delegation.NewDelegationPage">
 
   <ContentPage.BackgroundImage>
     <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
@@ -28,30 +28,19 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <Grid
-   Grid.Row="0"
-   ColumnSpacing="8"  >
+    <Grid Grid.Row="0" ColumnSpacing="8"  >
+      
       <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True"
                        VerticalOptions="Fill" Padding="8"
-                       CornerRadius="{StaticResource CornerRadius}" BackgroundColor="#22007c85"
+                       CornerRadius="{StaticResource CornerRadius}"  BackgroundColor="#22007c85"
                            >
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
-
-        </Grid.RowDefinitions>
+        <!--<BoxView BackgroundColor="#22007c85" />-->
 
         <Label Grid.Row="0"
                TextColor="Black" BackgroundColor="Transparent"
                HorizontalTextAlignment="Start"
                FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-               Text="Delegate Name" />
+               Text="{ext:Translate DelegateName}" />
 
         <!--<Button
               Grid.Row="0"

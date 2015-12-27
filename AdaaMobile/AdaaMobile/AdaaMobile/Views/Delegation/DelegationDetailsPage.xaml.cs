@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AdaaMobile.Models;
+﻿using AdaaMobile.ViewModels;
 using Xamarin.Forms;
-using AdaaMobile.ViewModels;
 
-namespace AdaaMobile.Views
+namespace AdaaMobile.Views.Delegation
 {
     public partial class DelegationDetailsPage : ContentPage
     {
-        private Delegation delegation;
+        private Models.Delegation delegation;
         private DelegationViewModel _delegationViewModel;
 
-        public DelegationDetailsPage(Delegation delegation)
+        public DelegationDetailsPage(Models.Delegation delegation)
         {
             InitializeComponent();
             _delegationViewModel = Locator.Default.DelegationViewModel;

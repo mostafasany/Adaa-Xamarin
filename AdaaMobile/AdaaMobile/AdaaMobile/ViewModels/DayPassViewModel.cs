@@ -45,106 +45,106 @@ namespace AdaaMobile.ViewModels
         }
 
 
-        private ObservableCollection<DayPassRequest> _PendingRequests;
+        private ObservableCollection<DayPassRequest> _pendingRequests;
         public ObservableCollection<DayPassRequest> PendingRequests
         {
-            get { return _PendingRequests; }
-            set { SetProperty(ref _PendingRequests, value); }
+            get { return _pendingRequests; }
+            set { SetProperty(ref _pendingRequests, value); }
         }
 
 
-        private bool _ShowNoPendingRequests;
+        private bool _showNoPendingRequests;
         public bool ShowNoPendingRequests
         {
-            get { return _ShowNoPendingRequests; }
-            set { SetProperty(ref _ShowNoPendingRequests, value); }
+            get { return _showNoPendingRequests; }
+            set { SetProperty(ref _showNoPendingRequests, value); }
         }
 
-        private ObservableCollection<DayPassTask> _DayPassTasks;
+        private ObservableCollection<DayPassTask> _dayPassTasks;
         public ObservableCollection<DayPassTask> DayPassTasks
         {
-            get { return _DayPassTasks; }
-            set { SetProperty(ref _DayPassTasks, value); }
+            get { return _dayPassTasks; }
+            set { SetProperty(ref _dayPassTasks, value); }
         }
 
 
-        private bool _ShowNoTasks;
+        private bool _showNoTasks;
         public bool ShowNoTasks
         {
-            get { return _ShowNoTasks; }
-            set { SetProperty(ref _ShowNoTasks, value); }
+            get { return _showNoTasks; }
+            set { SetProperty(ref _showNoTasks, value); }
         }
 
-        private bool _ReturnToday;
+        private bool _returnToday;
         public bool ReturnToday
         {
-            get { return _ReturnToday; }
-            set { SetProperty(ref _ReturnToday, value); }
+            get { return _returnToday; }
+            set { SetProperty(ref _returnToday, value); }
         }
 
 
-        private string _Reason;
+        private string _reason;
         public string Reason
         {
-            get { return _Reason; }
-            set { SetProperty(ref _Reason, value); }
+            get { return _reason; }
+            set { SetProperty(ref _reason, value); }
         }
 
 
-        private string _StartTime;
+        private string _startTime;
         public string StartTime
         {
-            get { return _StartTime; }
-            set { SetProperty(ref _StartTime, value); }
+            get { return _startTime; }
+            set { SetProperty(ref _startTime, value); }
         }
 
 
 
-        private TimeSpan _EndTimeSpan;
+        private TimeSpan _endTimeSpan;
         public TimeSpan EndTimeSpan
         {
-            get { return _EndTimeSpan; }
-            set { SetProperty(ref _EndTimeSpan, value); }
+            get { return _endTimeSpan; }
+            set { SetProperty(ref _endTimeSpan, value); }
         }
 
-        private string _EndTime;
+        private string _endTime;
         public string EndTime
         {
-            get { return _EndTime; }
-            set { SetProperty(ref _EndTime, value); }
+            get { return _endTime; }
+            set { SetProperty(ref _endTime, value); }
         }
 
 
-        private string _ReasonType = "Work";
+        private string _reasonType = "Work";
         public string ReasonType
         {
-            get { return _ReasonType; }
-            set { SetProperty(ref _ReasonType, value); }
+            get { return _reasonType; }
+            set { SetProperty(ref _reasonType, value); }
         }
 
 
 
-        private DayPassRequest _SelectedRequest;
+        private DayPassRequest _selectedRequest;
         public DayPassRequest SelectedRequest
         {
-            get { return _SelectedRequest; }
-            set { SetProperty(ref _SelectedRequest, value); }
+            get { return _selectedRequest; }
+            set { SetProperty(ref _selectedRequest, value); }
         }
 
 
-        private DayPassTask _SelectedTask;
+        private DayPassTask _selectedTask;
         public DayPassTask SelectedTask
         {
-            get { return _SelectedTask; }
-            set { SetProperty(ref _SelectedTask, value); }
+            get { return _selectedTask; }
+            set { SetProperty(ref _selectedTask, value); }
         }
 
 
-        private TimeSpan _StartTimeSpan;
+        private TimeSpan _startTimeSpan;
         public TimeSpan StartTimeSpan
         {
-            get { return _StartTimeSpan; }
-            set { SetProperty(ref _StartTimeSpan, value); }
+            get { return _startTimeSpan; }
+            set { SetProperty(ref _startTimeSpan, value); }
         }
         #endregion
 

@@ -7,6 +7,7 @@ using AdaaMobile.Helpers;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Strings;
 using AdaaMobile.Views;
+using AdaaMobile.Views.Authentication;
 using AdaaMobile.Views.MasterView;
 using Xamarin.Forms;
 

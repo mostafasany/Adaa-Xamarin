@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AdaaMobile.Models;
-using Xamarin.Forms;
-using AdaaMobile.ViewModels;
 using AdaaMobile.DataServices.Requests;
+using AdaaMobile.Models;
 using AdaaMobile.Models.Response;
+using AdaaMobile.ViewModels;
+using Xamarin.Forms;
 
-namespace AdaaMobile.Views
+namespace AdaaMobile.Views.DayPass
 {
     public partial class DayPassTaskDetailsPage : ContentPage
     {
@@ -35,7 +31,7 @@ namespace AdaaMobile.Views
 
         }
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 

@@ -124,22 +124,22 @@
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\UserAccountServicesViewModel.cs" />
-    <Compile Include="Views\ChangePasswordPage.xaml.cs">
+    <Compile Include="Views\Authentication\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DayPassPage.xaml.cs">
+    <Compile Include="Views\DayPass\DayPassPage.xaml.cs">
       <DependentUpon>DayPassPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DayPassRequestDetailsPage.xaml.cs">
+    <Compile Include="Views\DayPass\DayPassRequestDetailsPage.xaml.cs">
       <DependentUpon>DayPassRequestDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DayPassTaskDetailsPage.xaml.cs">
+    <Compile Include="Views\DayPass\DayPassTaskDetailsPage.xaml.cs">
       <DependentUpon>DayPassTaskDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DelegationDetailsPage.xaml.cs">
+    <Compile Include="Views\Delegation\DelegationDetailsPage.xaml.cs">
       <DependentUpon>DelegationDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DelegationsPage.xaml.cs">
+    <Compile Include="Views\Delegation\DelegationsPage.xaml.cs">
       <DependentUpon>DelegationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterView\MasterHelper.cs" />
@@ -170,13 +170,13 @@
     <Compile Include="Views\DirectoryPage.xaml.cs">
       <DependentUpon>DirectoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ForgetPasswordPage.xaml.cs">
+    <Compile Include="Views\Authentication\ForgetPasswordPage.xaml.cs">
       <DependentUpon>ForgetPasswordPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginPage.xaml.cs">
+    <Compile Include="Views\Authentication\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterView\AddaMasterPage.xaml.cs">
@@ -194,14 +194,17 @@
     <Compile Include="Views\MyTasksPage.xaml.cs">
       <DependentUpon>MyTasksPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewDayPassRequestPage.xaml.cs">
+    <Compile Include="Views\DayPass\NewDayPassRequestPage.xaml.cs">
       <DependentUpon>NewDayPassRequestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewDelegationPage.xaml.cs">
+    <Compile Include="Views\Delegation\NewDelegationPage.xaml.cs">
       <DependentUpon>NewDelegationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Delegation\NewUserDelegateInfoControl.xaml.cs">
+      <DependentUpon>NewUserDelegateInfoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProfilePropertyControl.xaml.cs">
       <DependentUpon>ProfilePropertyControl.xaml</DependentUpon>
@@ -212,7 +215,7 @@
     <Compile Include="Views\UserServiceItemControl.xaml.cs">
       <DependentUpon>UserServiceItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SignUpPage.xaml.cs">
+    <Compile Include="Views\Authentication\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -359,7 +362,7 @@
     <EmbeddedResource Include="Images\Timesheet.svg" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\LoginPage.xaml">
+    <EmbeddedResource Include="Views\Authentication\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -422,13 +425,13 @@
     <Folder Include="Mock\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\SignUpPage.xaml">
+    <EmbeddedResource Include="Views\Authentication\SignUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ForgetPasswordPage.xaml">
+    <EmbeddedResource Include="Views\Authentication\ForgetPasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -452,7 +455,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ChangePasswordPage.xaml">
+    <EmbeddedResource Include="Views\Authentication\ChangePasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -464,43 +467,49 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\DayPassPage.xaml">
+    <EmbeddedResource Include="Views\DayPass\DayPassPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\NewDayPassRequestPage.xaml">
+    <EmbeddedResource Include="Views\DayPass\NewDayPassRequestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\DayPassTaskDetailsPage.xaml">
+    <EmbeddedResource Include="Views\DayPass\DayPassTaskDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\DayPassRequestDetailsPage.xaml">
+    <EmbeddedResource Include="Views\DayPass\DayPassRequestDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\DelegationsPage.xaml">
+    <EmbeddedResource Include="Views\Delegation\DelegationsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\NewDelegationPage.xaml">
+    <EmbeddedResource Include="Views\Delegation\NewDelegationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\DelegationDetailsPage.xaml">
+    <EmbeddedResource Include="Views\Delegation\DelegationDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Delegation\NewUserDelegateInfoControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -4,6 +4,7 @@ using AdaaMobile.DataServices;
 using AdaaMobile.Helpers;
 using AdaaMobile.Views;
 using AdaaMobile.Strings;
+using AdaaMobile.Views.Authentication;
 
 namespace AdaaMobile.ViewModels
 {

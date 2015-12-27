@@ -1,14 +1,8 @@
-﻿using AdaaMobile.Models;
+﻿using System;
 using AdaaMobile.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
-namespace AdaaMobile.Views
+namespace AdaaMobile.Views.Delegation
 {
     public partial class DelegationsPage : ContentPage
     {
@@ -37,7 +31,7 @@ namespace AdaaMobile.Views
 		}
         private void DelegationsList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Delegation delegation = (e.Item as Delegation);
+            Models.Delegation delegation = (e.Item as Models.Delegation);
             this.Navigation.PushAsync(new DelegationDetailsPage(delegation));
         }
     }
