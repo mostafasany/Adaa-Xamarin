@@ -1007,6 +1007,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search all contacts.
+        /// </summary>
+        public static string SearchAllContacts {
+            get {
+                return ResourceManager.GetString("SearchAllContacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select.
         /// </summary>
         public static string Select {

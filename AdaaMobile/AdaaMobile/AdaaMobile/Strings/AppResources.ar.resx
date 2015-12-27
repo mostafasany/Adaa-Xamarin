@@ -473,15 +473,18 @@
     <value>فتح حسابي</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
-    <value>Confirm Password</value>
+    <value>تأكيد كلمة المرور</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>New Password</value>
+    <value>كلمة مرور جديدة</value>
   </data>
   <data name="PleaseenterUserName" xml:space="preserve">
     <value>برجاء ادخال اسم المستخدم</value>
   </data>
   <data name="PleaseenterUserNameandPassword" xml:space="preserve">
     <value>برجاء ادخال اسم المستخدم و كلمة المرور</value>
+  </data>
+  <data name="SearchAllContacts" xml:space="preserve">
+    <value>البحثت فى جميع الحسابات</value>
   </data>
 </root>

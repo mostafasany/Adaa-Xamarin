@@ -5,12 +5,13 @@
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
+             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              BackgroundColor="White"
              >
   <Grid Padding="0,0,0,10">
     <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"></RowDefinition>
-      <RowDefinition Height="*"></RowDefinition>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
     <SearchBar
@@ -18,15 +19,13 @@
       Grid.Row="0"
       HorizontalOptions="Fill"
       VerticalOptions="Fill"
-      BackgroundColor="{StaticResource AppBackgroundNormal}"
+      BackgroundColor="White"
       TextColor="{StaticResource AppBackgroundNormal}"
-
+      PlaceholderColor="Gray"
+      Placeholder="{ext:Translate SearchAllContacts}"
       >
-      
-      
-      
     </SearchBar>
-    
+
     <!--IsGroupingEnabled="True"
               GroupDisplayBinding="{Binding Key}"
               GroupShortNameBinding="{Binding Key}"-->
@@ -40,64 +39,69 @@
           GroupShortNameBinding="{Binding Key}"
           SeparatorColor="Transparent"
               >
-                <ListView.GroupHeaderTemplate>
-      <DataTemplate>
-        <ViewCell Height="25">
-          <StackLayout VerticalOptions="FillAndExpand"
-                       Padding="5"
-                       BackgroundColor="Gray">
-            <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.GroupHeaderTemplate>
+      <ListView.GroupHeaderTemplate>
+        <DataTemplate>
+          <ViewCell Height="25">
+            <StackLayout VerticalOptions="FillAndExpand"
+                         Padding="5"
+                         BackgroundColor="Gray">
+              <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center"/>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.GroupHeaderTemplate>
 
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell >
             <ViewCell.View>
 
-            <Grid  Padding="6" >
-            <controls:ExtendedGrid ColumnSpacing="8" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="#cc007c85"
-                           VerticalOptions="Start" HeightRequest="60"
-                           CornerRadius="{StaticResource CornerRadius}" 
+              <Grid  Padding="5" >
+                <controls:ExtendedGrid ColumnSpacing="8" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="Transparent"
+                               VerticalOptions="Start" HeightRequest="60"
+                               CornerRadius="{StaticResource CornerRadius}"
                            >
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="20"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="30"/>
-      </Grid.ColumnDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                  </Grid.ColumnDefinitions>
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="12"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="12"/>
-      </Grid.RowDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="12"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="12"/>
+                  </Grid.RowDefinitions>
+                  <BoxView BackgroundColor="#cc007c85" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
 
+                  <Label Grid.Row="1"  Grid.Column="1"
+                         VerticalOptions="Center"
+                         TextColor="White" BackgroundColor="Transparent"
+                         HorizontalTextAlignment="Start"
+                         FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding UserName}" />
 
-      <Label Grid.Row="1"  Grid.Column="1"
-      	     VerticalOptions="Center"
-             TextColor="White" BackgroundColor="Transparent"
-             HorizontalTextAlignment="Start"
-             FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding UserName}" />
-
-      <Image
-                          HeightRequest="10"
-                          WidthRequest="10"
-                          Grid.Column="2"
-                          Grid.Row="1" 
-                          HorizontalOptions="Start" VerticalOptions="Center"
+                  <Image
+                                      HeightRequest="10"
+                                      WidthRequest="10"
+                                      Grid.Column="2"
+                                      Grid.Row="1"
+                                      HorizontalOptions="Start" VerticalOptions="Center"
        >
-        <Image.Source>
-          <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
-        </Image.Source>
-      </Image >
-    </controls:ExtendedGrid>
-  </Grid>
+                    <Image.Source>
+                      <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
+                    </Image.Source>
+                  </Image >
+                </controls:ExtendedGrid>
+              </Grid>
             </ViewCell.View>
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-  </Grid>
+  
+<ActivityIndicator  IsRunning="{Binding IsBusy}"
+                     HeightRequest="50" WidthRequest="50"
+                     Grid.Row="0" Grid.RowSpan="2"
+                     VerticalOptions="Center" HorizontalOptions="Center"/>
+</Grid>
 </ContentPage>

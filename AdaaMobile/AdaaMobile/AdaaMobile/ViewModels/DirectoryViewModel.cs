@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.Common;
 using AdaaMobile.DataServices;
 using AdaaMobile.Models;
-using Xamarin.Forms;
 using AdaaMobile.Helpers;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Request;
@@ -28,12 +26,12 @@ namespace AdaaMobile.ViewModels
 
         #region Properties
 
-        private DirectoryType _DirectoryType = DirectoryType.Directory;
+        private DirectoryType _directoryType = DirectoryType.Directory;
 
         public DirectoryType DirectoryType
         {
-            get { return _DirectoryType; }
-            set { _DirectoryType = value; }
+            get { return _directoryType; }
+            set { _directoryType = value; }
         }
 
 
@@ -45,12 +43,12 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _isBusy, value); }
         }
 
-        private bool _GroupingEnabled;
+        private bool _groupingEnabled;
 
         public bool GroupingEnabled
         {
-            get { return _GroupingEnabled; }
-            set { SetProperty(ref _GroupingEnabled, value); }
+            get { return _groupingEnabled; }
+            set { SetProperty(ref _groupingEnabled, value); }
         }
 
 
@@ -94,8 +92,8 @@ namespace AdaaMobile.ViewModels
         }
 
 
-        private Employee[] allEmployees;
-        private DelegateSubordinate[] allSubordinates;
+        private Employee[] _allEmployees;
+        private DelegateSubordinate[] _allSubordinates;
         #endregion
 
         #region Initialization
@@ -126,16 +124,16 @@ namespace AdaaMobile.ViewModels
                 LoadEmployeesCommand.CanExecute = false;
                 if (DirectoryType == DirectoryType.Directory)
                 {
-                    var response = await _dataService.GetEmpolyeesAsync(new Models.Request.GetAllEmployeesQParameters()
+                    var response = await _dataService.GetEmpolyeesAsync(new GetAllEmployeesQParameters()
                     {
                         Langid = _appSettings.Language,
                         UserToken = _appSettings.UserToken
                     });
                     if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
                     {
-                        allEmployees = response.Result.Employees;
+                        _allEmployees = response.Result.Employees;
 
-                        GetGroupedEmployees();
+                        GroupEmployees();
                     }
                 }
                 else
@@ -147,9 +145,9 @@ namespace AdaaMobile.ViewModels
                     });
                     if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
                     {
-                        allEmployees = response.Result.Subordinates;
+                        _allEmployees = response.Result.Subordinates;
 
-                        GetGroupedEmployees();
+                        GroupEmployees();
                     }
                 }
             }
@@ -165,23 +163,18 @@ namespace AdaaMobile.ViewModels
 
         }
 
-        public async Task GetGroupedEmployees()
+        public void GroupEmployees()
         {
-            //var sorted = from emp in allEmployees
-            //             orderby emp.Name
-            //             group emp by emp.NameSort into empGroup
-            //             select new KeyedCollection<Employee>(empGroup.Key);
 
+            var sorted = from emp in _allEmployees
+                         orderby emp.Name
+                         group emp by emp.NameSort into empGroup
+                         select new Grouping<string, Employee>(empGroup.Key, empGroup);
 
-            var sorted2 = from emp in allEmployees
-                          orderby emp.Name
-                          group emp by emp.NameSort into empGroup
-                          select new Grouping<string, Employee>(empGroup.Key, empGroup);
-
-            var EmployeesGrouped = new ObservableCollection<Grouping<string, Employee>>(sorted2);
+            var employeesGrouped = new ObservableCollection<Grouping<string, Employee>>(sorted);
 
             GroupingEnabled = true;
-            _groupedEmployees = EmployeesGrouped;
+            _groupedEmployees = employeesGrouped;
             OnPropertyChanged("GroupedEmployees");
         }
 
@@ -200,14 +193,14 @@ namespace AdaaMobile.ViewModels
 
         public async Task<bool> Search(string filter)
         {
-
+            if (_allEmployees == null) return false;
             //if (DirectoryType == DirectoryType.Directory)
             {
                 var list =
-                    allEmployees.Where(p => p.UserName.ToLower().Contains(filter.ToLower()));
-                if (list == null || list.ToList() == null)
+                    _allEmployees.Where(p => p.UserName.ToLower().Contains(filter.ToLower()));
+                if (!list.Any())
                 {
-                    GetGroupedEmployees();
+                    GroupEmployees();
                     return false;
                 }
                 else
@@ -251,12 +244,12 @@ namespace AdaaMobile.ViewModels
 
     }
 
-    public class Grouping<K, T> : ObservableCollection<T>
+    public class Grouping<TK, T> : ObservableCollection<T>
     {
-        public K Key { get; private set; }
-        public Grouping(K key, IEnumerable<T> items)
+        public TK Key { get; private set; }
+        public Grouping(TK key, IEnumerable<T> items)
         {
-            Key = key; foreach (var item in items) this.Items.Add(item);
+            Key = key; foreach (var item in items) Items.Add(item);
         }
     }
 

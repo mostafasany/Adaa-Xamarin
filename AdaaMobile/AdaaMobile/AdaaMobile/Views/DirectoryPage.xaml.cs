@@ -35,6 +35,9 @@ namespace AdaaMobile.Views
 
         void EmployeesListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            //Clear Selection color
+            EmployeesListView.SelectedItem = null;
+
             Employee emp = (e.Item as Employee);
             if (emp != null)
             {
@@ -57,7 +60,7 @@ namespace AdaaMobile.Views
             {
                 //if (directoryType == DirectoryType.Directory)
                 {
-                    await _directoryViewModel.GetGroupedEmployees();
+                     _directoryViewModel.GroupEmployees();
                     EmployeesListView.ItemsSource = _directoryViewModel.GroupedEmployees;
                     EmployeesListView.IsGroupingEnabled = true;
                 }
@@ -96,7 +99,10 @@ namespace AdaaMobile.Views
         {
             base.OnAppearing();
             await Task.Delay(300);
-            _directoryViewModel.LoadEmployeesCommand.Execute(null);
+
+            //Check if there data are already loaded to prevent multiple loading.
+            if (_directoryViewModel.GroupedEmployees == null || _directoryViewModel.GroupedEmployees.Count == 0)
+                _directoryViewModel.LoadEmployeesCommand.Execute(null);
         }
     }
 }
