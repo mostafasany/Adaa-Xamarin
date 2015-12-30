@@ -20,7 +20,7 @@
       HorizontalOptions="Fill"
       VerticalOptions="Fill"
       BackgroundColor="White"
-      TextColor="{StaticResource AppBackgroundNormal}"
+      TextColor="Black"
       PlaceholderColor="#FFCCCCCC"
       FontSize="Small"
       Placeholder="{ext:Translate SearchAllContacts}"
@@ -57,9 +57,9 @@
           <ViewCell >
             <ViewCell.View>
 
-              <Grid  Padding="5" >
+              <Grid  Padding="5,3" >
                 <controls:ExtendedGrid ColumnSpacing="8" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="Transparent"
-                               VerticalOptions="Start" HeightRequest="60"
+                               VerticalOptions="Start" HeightRequest="40"
                                CornerRadius="{StaticResource CornerRadius}"
                            >
                   <Grid.ColumnDefinitions>
@@ -69,9 +69,9 @@
                   </Grid.ColumnDefinitions>
 
                   <Grid.RowDefinitions>
-                    <RowDefinition Height="12"/>
+                    <RowDefinition Height="4"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="12"/>
+                    <RowDefinition Height="4"/>
                   </Grid.RowDefinitions>
                   <!--Add background and set background color of Extended Grid To Transparent, 
                   As there is an issue in rounding backcolor of ExtendedGrid in Android -->
