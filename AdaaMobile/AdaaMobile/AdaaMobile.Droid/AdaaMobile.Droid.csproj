@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="CustomRenderers\ExtendedEntryRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
+    <Compile Include="CustomRenderers\ExtendedSwitch\ExtendedSwitchRenderer.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListLayoutManager.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListViewAdapter.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListViewHolder.cs" />
@@ -245,5 +246,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\chevronblue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\note.png" />
   </ItemGroup>
 </Project>

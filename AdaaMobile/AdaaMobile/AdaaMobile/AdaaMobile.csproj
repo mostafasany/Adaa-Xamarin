@@ -40,6 +40,7 @@
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\ColumnsPanel.cs" />
     <Compile Include="Controls\ExtendedGrid.cs" />
+    <Compile Include="Controls\ExtendedSwitch.cs" />
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />
     <Compile Include="Controls\GestureContentView.cs" />
     <Compile Include="Controls\HorizontalListView.cs" />

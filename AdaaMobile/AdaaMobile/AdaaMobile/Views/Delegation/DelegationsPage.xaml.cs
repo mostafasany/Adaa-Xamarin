@@ -1,4 +1,5 @@
 ﻿using System;
+using AdaaMobile.Strings;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
 
@@ -12,23 +13,24 @@ namespace AdaaMobile.Views.Delegation
             InitializeComponent();
             _delegationViewModel = Locator.Default.DelegationViewModel;
             BindingContext = _delegationViewModel;
-            Title = "My Delegations";
+            Title = AppResources.MyDelegationsCap;
 
             Action action = () =>
             {
                 this.Navigation.PushAsync(new NewDelegationPage());
             };
+            string addIcon = Device.OnPlatform("note", "note.png", "note.png");
             ToolbarItems.Add(
-                new ToolbarItem("Add", "", action, ToolbarItemOrder.Primary));
+                new ToolbarItem("", addIcon, action, ToolbarItemOrder.Primary));
 
             DelegationsList.ItemTapped += DelegationsList_ItemTapped;
         }
 
-		protected override void OnAppearing ()
-		{
-			base.OnAppearing ();
-			_delegationViewModel.LoadDayPassDataCommand.Execute (null);
-		}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _delegationViewModel.LoadDayPassDataCommand.Execute(null);
+        }
         private void DelegationsList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             //Clear color selection

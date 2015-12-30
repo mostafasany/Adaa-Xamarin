@@ -3385,23 +3385,29 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f020074
 			public const int navigationimage = 2130837620;
 			
-			// aapt resource value: 0x7f02007a
-			public const int notification_template_icon_bg = 2130837626;
-			
 			// aapt resource value: 0x7f020075
-			public const int profile = 2130837621;
+			public const int note = 2130837621;
+			
+			// aapt resource value: 0x7f02007c
+			public const int notification_template_icon_bg = 2130837628;
 			
 			// aapt resource value: 0x7f020076
-			public const int Profilebig = 2130837622;
+			public const int profile = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int settings = 2130837623;
+			public const int Profilebig = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int splash = 2130837624;
+			public const int right = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int timesheet = 2130837625;
+			public const int settings = 2130837625;
+			
+			// aapt resource value: 0x7f02007a
+			public const int splash = 2130837626;
+			
+			// aapt resource value: 0x7f02007b
+			public const int timesheet = 2130837627;
 			
 			static Drawable()
 			{

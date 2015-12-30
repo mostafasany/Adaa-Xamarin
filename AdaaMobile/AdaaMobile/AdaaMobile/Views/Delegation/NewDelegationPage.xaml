@@ -75,7 +75,7 @@
                            HorizontalTextAlignment="Start"
                            FontSize="Medium"
                            Text="{ext:Translate RuleStatus}" />
-          <Switch Grid.Column="1"
+          <Switch  Grid.Column="1"
                   x:Name="ReturnTodaySwitch" IsToggled="{Binding ReturnToday}"
                   HorizontalOptions="Fill" VerticalOptions="Fill"/>
         </Grid>

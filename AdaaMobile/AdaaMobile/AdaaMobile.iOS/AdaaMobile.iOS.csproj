@@ -101,6 +101,7 @@
       <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
     </Compile>
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
+    <Compile Include="CustomRenderers\ExtendedSwitch\ExtendedSwitchRenderer.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\CustomUICollectionViewDelegateFlowLayout.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListCell.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListDataSource.cs" />
@@ -235,6 +236,10 @@
     <BundleResource Include="Resources\logo-667h%402x.png" />
     <BundleResource Include="Resources\login-736h%403x.png" />
     <BundleResource Include="Resources\logo-736h%403x.png" />
+    <BundleResource Include="Resources\right%402x.png" />
+    <BundleResource Include="Resources\right%403x.png" />
+    <BundleResource Include="Resources\note%402x.png" />
+    <BundleResource Include="Resources\note%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Insights.1.11.2\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\..\packages\Xamarin.Insights.1.11.2\build\Xamarin.iOS10\Xamarin.Insights.targets')" />
@@ -283,4 +288,5 @@
       <InProject>false</InProject>
     </ImageAsset>
   </ItemGroup>
+  <ItemGroup />
 </Project>
