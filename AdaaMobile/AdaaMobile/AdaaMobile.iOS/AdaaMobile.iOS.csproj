@@ -127,6 +127,7 @@
     <Compile Include="CustomRenderers\CustomEntryRenderer.cs" />
     <Compile Include="CustomRenderers\NoLineNavigationRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedEntryRenderer.cs" />
+    <Compile Include="CustomRenderers\NoBackButtonPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdaaMobile\AdaaMobile.csproj">

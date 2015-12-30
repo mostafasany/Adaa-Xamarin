@@ -28,6 +28,7 @@ namespace AdaaMobile.Views.Delegation
 		{
 			base.OnAppearing ();
 			_delegationViewModel.LoadDayPassDataCommand.Execute (null);
+			NavigationPage.SetBackButtonTitle (this, "ba");
 		}
         private void DelegationsList_ItemTapped(object sender, ItemTappedEventArgs e)
         {

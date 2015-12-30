@@ -61,19 +61,21 @@
                   Grid.Row="1"
                   />
 
+                  <Grid Grid.Row="1"  VerticalOptions="Center"
+                          HorizontalOptions="Center"
+                          Grid.RowSpan="2" Padding="0,0,6,0">
     <!--User Circle Profile-->
     <controls:CircleImage HeightRequest="70"
                           WidthRequest="70"
                           BorderThickness="2"
                           BorderColor="{StaticResource YellowAccent}"
-                          Grid.Row="1"
-                          Grid.RowSpan="2"
                           VerticalOptions="Center"
                           HorizontalOptions="Center"
                           Source="{Binding Image}"
                            >
 
     </controls:CircleImage>
+    </Grid>
     <ActivityIndicator  IsRunning="{Binding IsBusy}"
                          HeightRequest="60" WidthRequest="60"
                          Grid.Row="1" Grid.RowSpan="2"
@@ -129,7 +131,7 @@
                                       SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
                                       SvgPath="{Binding IconSource}"
                                       BackgroundColor="Transparent"
-                                      Percentage="0.3"
+                                      Percentage="0.35"
                                       HorizontalOptions="Center" VerticalOptions="Center">
                     <controls:SvgImage.ReplacementColors>
                       <controls:ColorPair OldColor="#FFFFFF" NewColor="{StaticResource YellowAccent}"></controls:ColorPair>

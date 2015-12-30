@@ -10,7 +10,7 @@
 	<RowDefinition Height="Auto"/>
 	<RowDefinition Height="*"/>
 	<RowDefinition Height="Auto"/>
-	<RowDefinition Height="10"/>
+	<RowDefinition Height="25"/>
 	</Grid.RowDefinitions>
 
   <Image Grid.RowSpan="5" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill"  >
