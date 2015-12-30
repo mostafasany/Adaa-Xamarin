@@ -43,12 +43,6 @@ namespace AdaaMobile.Views
             LanguagePicker.Focus();
         }
 
-        //void LanguageButton_Clicked (object sender, EventArgs e)
-        //{
-        //    LanguagePicker.Unfocus();
-        //    LanguagePicker.Focus ();
-        //}
-
 
     }
 }
