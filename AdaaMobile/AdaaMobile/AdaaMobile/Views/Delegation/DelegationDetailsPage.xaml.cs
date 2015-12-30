@@ -17,5 +17,13 @@ namespace AdaaMobile.Views.Delegation
             BindingContext = _delegationDetailsViewModel;
 
         }
+
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			NavigationPage.SetBackButtonTitle (this, "sdfsdf");
+
+			//NavigationPage.SetHasBackButton (this, false);
+		}
     }
 }

@@ -36,16 +36,20 @@ namespace AdaaMobile.iOS
 			Insights.Initialize ("b2655f07a3c842df659dcf2532c519804a88ec7d");
 
 		
+			UINavigationBar.Appearance.BarTintColor = UIColor.White;
+
             return base.FinishedLaunching(app, options);
 
         }
+
+
 
         public AppDelegate()
         {
             //SetLanaguge(new AppSettings().SelectedCultureName);
 			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
-			UIWindow  window = new UIWindow (UIScreen.MainScreen.Bounds);
 
+			UIWindow  window = new UIWindow (UIScreen.MainScreen.Bounds);
 
 
 
@@ -62,13 +66,18 @@ namespace AdaaMobile.iOS
 			}
 
 
+			//NavigationController.NavigationBar.BarStyle = UIKit.UIBarStyle.Black;
+//			window.RootViewController.NavigationItem.BackBarButtonItem = new UIKit.UIBarButtonItem ("", UIKit.UIBarButtonItemStyle.Plain, null);
+//			window.RootViewController.NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
+//
 
-			//			viewController = new StartingLanguageViewcontroller ();
-			//			UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle ("app_bar.png"), UIBarMetrics.Default);
-			//			navigation = new UINavigationController (viewController);
-			//			navigation.NavigationBar.TintColor = UIColor.White;
-			//			navigation.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White}; 
-			//			window.RootViewController = navigation;
+
+						//viewController = new StartingLanguageViewcontroller ();
+						//UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle ("app_bar.png"), UIBarMetrics.Default);
+						//navigation = new UINavigationController (viewController);
+						//navigation.NavigationBar.TintColor = UIColor.White;
+						//navigation.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White}; 
+						//window.RootViewController = navigation;
 
         }
 

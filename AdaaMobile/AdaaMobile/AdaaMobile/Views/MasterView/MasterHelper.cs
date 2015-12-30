@@ -28,6 +28,8 @@ namespace AdaaMobile.Views.MasterView
                         BarTextColor = ActionBarTextColor
                     };
 
+
+
                     ////Hide nav bar in home, to show Welcome message center aligned in all platforms
                     //if (displayPage.GetType() == typeof(HomePage))
                     //{

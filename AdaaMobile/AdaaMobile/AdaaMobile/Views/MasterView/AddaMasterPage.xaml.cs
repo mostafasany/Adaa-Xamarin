@@ -21,7 +21,11 @@ namespace AdaaMobile.Views.MasterView
 
 
         }
-
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			NavigationPage.SetBackButtonTitle (this, "ba");
+		}
         private void SetMenuPage()
         {
             var master = new MasterMenuPage();

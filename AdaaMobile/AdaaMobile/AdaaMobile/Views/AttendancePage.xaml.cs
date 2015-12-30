@@ -88,6 +88,7 @@ namespace AdaaMobile.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+			NavigationPage.SetBackButtonTitle (this, "ba");
             try
             {
                 await _attendanceViewModel.PopulateAttendanceDaysAsync();
