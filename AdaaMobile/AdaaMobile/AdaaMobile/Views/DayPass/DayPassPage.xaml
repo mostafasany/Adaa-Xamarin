@@ -68,6 +68,8 @@
          x:Name="MyRequestsList"
          ItemsSource="{Binding PendingRequests}"
          IsGroupingEnabled="False"
+         HasUnevenRows="False"
+         RowHeight="80"
          SeparatorColor="Transparent"
          BackgroundColor="Transparent"
               >
@@ -75,14 +77,13 @@
           <DataTemplate>
             <ViewCell >
               <ViewCell.View>
-                <Grid  Padding="15,0" >
-
-                  <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="#cc007c85"
-                                         VerticalOptions="Start" HeightRequest="70"
-
+                <Grid  Padding="12,3" >
+                  <controls:ExtendedGrid ColumnSpacing="0" x:Name="ContentGrid"  BackgroundColor="Transparent"
+                                         VerticalOptions="Fill"
                                          CornerRadius="{StaticResource CornerRadius}"
                            >
                     <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="20"/>
                       <ColumnDefinition Width="*"/>
                       <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
@@ -91,26 +92,32 @@
                       <RowDefinition Height="*"/>
                       <RowDefinition Height="Auto"/>
                       <RowDefinition Height="Auto"/>
-                      <RowDefinition Height="2*"/>
+                      <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="1"  Grid.Column="0"
-                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-                           HorizontalTextAlignment="Start"
-                           FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Date}" />
+                    <!--Add background and set background color of Extended Grid To Transparent, 
+                  As there is an issue in rounding backcolor of ExtendedGrid in Android -->
+                    <BoxView BackgroundColor="#cc007c85" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
 
-                    <Label Grid.Row="2"  Grid.Column="0"
+                    <Label Grid.Row="1"  Grid.Column="1"
+                          TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                          HorizontalTextAlignment="Start"
+                          VerticalOptions="Start"
+                          FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Date}" />
+
+                    <Label Grid.Row="2"  Grid.Column="1"
                            TextColor="White" BackgroundColor="Transparent"
                            HorizontalTextAlignment="Start"
-                           FontSize="Small" Text="{Binding Date}" />
+                           VerticalOptions="Start"
+                           FontSize="Small" Text="{Binding ReasonType}" />
+
 
                     <Image
-                                        HeightRequest="10"
-                                        WidthRequest="10"
-                                        Grid.Column="1"
+                                        HeightRequest="15"
+                                        WidthRequest="15"
+                                        Grid.Column="2"
                                         Grid.Row="0" Grid.RowSpan="4"
-                                        HorizontalOptions="Start" VerticalOptions="Center"
-       >
+                                        HorizontalOptions="Start" VerticalOptions="Center">
                       <Image.Source>
                         <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
                       </Image.Source>
@@ -138,20 +145,21 @@
          ItemsSource="{Binding DayPassTasks}"
          IsGroupingEnabled="False"
          SeparatorColor="Transparent"
+         HasUnevenRows="False"
+         RowHeight="80"
          BackgroundColor="Transparent"
               >
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell >
               <ViewCell.View>
-                <Grid  Padding="15,0" >
-
-                  <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="#cc007c85"
-                                         VerticalOptions="Start" HeightRequest="70"
-
+                <Grid  Padding="12,3" >
+                  <controls:ExtendedGrid ColumnSpacing="0" x:Name="ContentGrid"  BackgroundColor="Transparent"
+                                         VerticalOptions="Fill"
                                          CornerRadius="{StaticResource CornerRadius}"
                            >
                     <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="20"/>
                       <ColumnDefinition Width="*"/>
                       <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
@@ -160,26 +168,32 @@
                       <RowDefinition Height="*"/>
                       <RowDefinition Height="Auto"/>
                       <RowDefinition Height="Auto"/>
-                      <RowDefinition Height="2*"/>
+                      <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="1"  Grid.Column="0"
-                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-                           HorizontalTextAlignment="Start"
-                           FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Date}" />
+                    <!--Add background and set background color of Extended Grid To Transparent, 
+                  As there is an issue in rounding backcolor of ExtendedGrid in Android -->
+                    <BoxView BackgroundColor="#cc007c85" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
 
-                    <Label Grid.Row="2"  Grid.Column="0"
+                    <Label Grid.Row="1"  Grid.Column="1"
+                          TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                          HorizontalTextAlignment="Start"
+                          VerticalOptions="Start"
+                          FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Date}" />
+
+                    <Label Grid.Row="2"  Grid.Column="1"
                            TextColor="White" BackgroundColor="Transparent"
                            HorizontalTextAlignment="Start"
+                           VerticalOptions="Start"
                            FontSize="Small" Text="{Binding UserName}" />
 
+
                     <Image
-                                        HeightRequest="10"
-                                        WidthRequest="10"
-                                        Grid.Column="1"
+                                        HeightRequest="15"
+                                        WidthRequest="15"
+                                        Grid.Column="2"
                                         Grid.Row="0" Grid.RowSpan="4"
-                                        HorizontalOptions="Start" VerticalOptions="Center"
-       >
+                                        HorizontalOptions="Start" VerticalOptions="Center">
                       <Image.Source>
                         <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
                       </Image.Source>

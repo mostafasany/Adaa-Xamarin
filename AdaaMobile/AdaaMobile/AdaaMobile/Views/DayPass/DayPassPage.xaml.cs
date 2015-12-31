@@ -37,16 +37,22 @@ namespace AdaaMobile.Views.DayPass
 
         private void MyTasksList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            DayPassRequest request = (e.Item as DayPassRequest);
-            _dayPassViewModel.SelectedRequest = request;
-            this.Navigation.PushAsync(new DayPassRequestDetailsPage(request));
+            //Clear color selection
+            MyTasksList.SelectedItem = null;
+
+            DayPassTask task = (e.Item as DayPassTask);
+            _dayPassViewModel.SelectedTask = task;
+            this.Navigation.PushAsync(new DayPassTaskDetailsPage(task));
         }
 
         private void MyRequestsList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            DayPassTask task = (e.Item as DayPassTask);
-            _dayPassViewModel.SelectedTask = task;
-            this.Navigation.PushAsync(new DayPassTaskDetailsPage(task));
+            //Clear color selection
+            MyRequestsList.SelectedItem = null;
+
+            DayPassRequest request = (e.Item as DayPassRequest);
+            _dayPassViewModel.SelectedRequest = request;
+            this.Navigation.PushAsync(new DayPassRequestDetailsPage(request));
         }
 
         protected override async void OnAppearing()

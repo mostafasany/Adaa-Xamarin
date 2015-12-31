@@ -863,6 +863,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter reason.
+        /// </summary>
+        public static string PleaseEnterReason {
+            get {
+                return ResourceManager.GetString("PleaseEnterReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter User Name.
         /// </summary>
         public static string PleaseenterUserName {

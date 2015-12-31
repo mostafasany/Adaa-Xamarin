@@ -493,4 +493,7 @@
   <data name="Send" xml:space="preserve">
     <value>Send</value>
   </data>
+  <data name="PleaseEnterReason" xml:space="preserve">
+    <value>Please enter reason</value>
+  </data>
 </root>

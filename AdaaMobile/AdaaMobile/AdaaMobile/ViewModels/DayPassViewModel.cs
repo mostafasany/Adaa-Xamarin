@@ -254,7 +254,7 @@ namespace AdaaMobile.ViewModels
                 BusyMessage = AppResources.Loading;
                 if (string.IsNullOrEmpty(Reason))
                 {
-					await _dialogManager.DisplayAlert(AppResources.ApplicationName, "Please enter reason", AppResources.Ok);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseEnterReason, AppResources.Ok);
                 }
                 else
                 {
@@ -266,7 +266,7 @@ namespace AdaaMobile.ViewModels
                         EndTime = EndTimeSpan.ToString(@"hh\:mm"),
                         WillReturn = ReturnToday ? "Yes" : "No",
                         ReasonType = ReasonType,
-                        
+
 
                     };
                     var bodyParameter = new DaypassRequestBParameters()
@@ -279,7 +279,7 @@ namespace AdaaMobile.ViewModels
                     {
                         if (!string.IsNullOrEmpty(response.Result.Message))
                         {
-							await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
+                            await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
                         }
                     }
                     else
@@ -306,15 +306,15 @@ namespace AdaaMobile.ViewModels
 
         public async Task<ResponseWrapper<UserProfile>> LoadProfileAsync(string empId)
         {
-                //Load other profile
-                var parameters = new OtherProfileQParameters()
-                {
-                    Langid = _appSettings.Language,
-                    UserToken = _appSettings.UserToken,
-                    EmpId = empId
-                };
+            //Load other profile
+            var parameters = new OtherProfileQParameters()
+            {
+                Langid = _appSettings.Language,
+                UserToken = _appSettings.UserToken,
+                EmpId = empId
+            };
 
-                return await _dataService.GetOtherUserProfile(parameters);
+            return await _dataService.GetOtherUserProfile(parameters);
         }
         #endregion
     }
