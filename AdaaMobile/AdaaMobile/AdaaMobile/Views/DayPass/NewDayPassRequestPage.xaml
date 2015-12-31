@@ -58,8 +58,8 @@
                Text="Departure time" />
 
                <Image
-                                        HeightRequest="25"
-                                        WidthRequest="25"
+                                        HeightRequest="15"
+                                        WidthRequest="15"
                                         Grid.Column="1"
                                         HorizontalOptions="Start" VerticalOptions="Center">
                       <Image.Source>
