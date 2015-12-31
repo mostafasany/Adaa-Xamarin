@@ -10,24 +10,15 @@ namespace AdaaMobile.Views.DayPass
     public partial class DayPassTaskDetailsPage : ContentPage
     {
         private DayPassTask task;
-        private DayPassViewModel _dayPassViewModel;
+        private TaskDetailsViewmodel _taskDetailsViewmodel;
 
         public DayPassTaskDetailsPage(DayPassTask task)
         {
             InitializeComponent();
             this.task = task;
-            _dayPassViewModel = ViewModels.Locator.Default.DayPassViewModel;
-            BindingContext = _dayPassViewModel;
-            DepartureTimeLabel.Text = task.StartTime;
-           
-            ExpectedReturnTimeLabel.Text = task.EndTime;
-            ReasonTypeLabel.Text = task.ReasonType;
-            
-
-            EmployeeIdLabel.Text = task.UserId;
-            FullNameLabel.Text = task.UserName;
-
-
+            _taskDetailsViewmodel = ViewModels.Locator.Default.TaskDetailsViewmodel;
+            _taskDetailsViewmodel.CurrentTask = task;
+            BindingContext = _taskDetailsViewmodel;
 
         }
 
@@ -37,18 +28,18 @@ namespace AdaaMobile.Views.DayPass
 
             try
             {
-                ResponseWrapper<UserProfile> resposne = await _dayPassViewModel.LoadProfileAsync(task.UserId);
+                ResponseWrapper<UserProfile> resposne = await _taskDetailsViewmodel.LoadProfileAsync(task.UserId);
                 if (resposne.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
                     if (resposne.Result != null)
                     {
-                        DepartmentLabel.Text = resposne.Result.DeptName;
+                        _taskDetailsViewmodel.CurrentTask.Departement = resposne.Result.DeptName;
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                //ignored
             }
         }
 

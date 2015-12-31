@@ -34,7 +34,7 @@ namespace AdaaMobile.Models.Response
                         return string.Format("{0:h\\:mm} hrs", duration);
                     return AppResources.EmptyPlaceHolder;
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
 
                     return AppResources.EmptyPlaceHolder;

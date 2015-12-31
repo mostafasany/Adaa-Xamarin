@@ -129,6 +129,7 @@
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\NewDelegationViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\TaskDetailsViewmodel.cs" />
     <Compile Include="ViewModels\UserAccountServicesViewModel.cs" />
     <Compile Include="Views\Authentication\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
