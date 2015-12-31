@@ -206,7 +206,7 @@
                      Grid.Row="1"/>
                       <StackLayout VerticalOptions="Center"
                                    HorizontalOptions="Center"
-                                   Padding="6,8" Spacing="2"
+                                   Padding="4,4" Spacing="2"
                                    Grid.Row="1">
                         <Label x:Name="DayLabel"
                                BackgroundColor="Transparent"

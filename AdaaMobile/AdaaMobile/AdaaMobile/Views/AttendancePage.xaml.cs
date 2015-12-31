@@ -59,6 +59,8 @@ namespace AdaaMobile.Views
             }
             DayPassBtn.Clicked += DayPassBtn_Clicked;
             DelegationBtn.Clicked += DelegationBtn_Clicked;
+
+
         }
 
         private void DelegationBtn_Clicked(object sender, EventArgs e)
