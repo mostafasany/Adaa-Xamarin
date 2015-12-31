@@ -24,6 +24,11 @@ namespace AdaaMobile.Views.DayPass
 			Title = "New Request";
         }
 
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			NavigationPage.SetBackButtonTitle (this, string.Empty);
+		}
         private void ReasonTypePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             _dayPassViewModel.ReasonType = ReasonTypePicker.SelectedIndex == 0 ? "Work" : "Personal";

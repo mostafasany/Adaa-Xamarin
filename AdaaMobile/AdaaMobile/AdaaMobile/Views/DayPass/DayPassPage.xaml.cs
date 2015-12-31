@@ -58,6 +58,7 @@ namespace AdaaMobile.Views.DayPass
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+			NavigationPage.SetBackButtonTitle (this, string.Empty);
             try
             {
                 _dayPassViewModel.LoadDayPassDataCommand.Execute(null);

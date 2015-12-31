@@ -13,7 +13,7 @@ namespace AdaaMobile.iOS
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
-			//NavigationItem.BackBarButtonItem = new UIKit.UIBarButtonItem ("", UIKit.UIBarButtonItemStyle.Plain, null);
+			NavigationItem.BackBarButtonItem = new UIKit.UIBarButtonItem ("", UIKit.UIBarButtonItemStyle.Plain, null);
 
 			//ViewController.ParentViewController.NavigationItem.SetHidesBackButton (true, false);
 			//ViewController.ParentViewController.NavigationItem.BackBarButtonItem = new UIKit.UIBarButtonItem("", UIKit.UIBarButtonItemStyle.Plain, null);

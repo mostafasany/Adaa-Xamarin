@@ -18,5 +18,11 @@ namespace AdaaMobile.Views.DayPass
             ReasonTypeLabel.Text = request.ReasonType;
 
         }
+
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			NavigationPage.SetBackButtonTitle (this, string.Empty);
+		}
     }
 }
