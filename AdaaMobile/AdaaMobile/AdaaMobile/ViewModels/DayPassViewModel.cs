@@ -104,8 +104,18 @@ namespace AdaaMobile.ViewModels
         public TimeSpan EndTimeSpan
         {
             get { return _endTimeSpan; }
-            set { SetProperty(ref _endTimeSpan, value); }
+            set { 
+				DateTime d = DateTime.Today.Add (value);
+				EndTimeSpanString = d.ToString ("hh:mm tt");
+				SetProperty(ref _endTimeSpan, value); }
         }
+
+		private string _endTimeSpanString;
+		public string EndTimeSpanString
+		{
+			get { return _endTimeSpanString; }
+			set { SetProperty(ref _endTimeSpanString, value); }
+		}
 
         private string _endTime;
         public string EndTime
@@ -144,8 +154,18 @@ namespace AdaaMobile.ViewModels
         public TimeSpan StartTimeSpan
         {
             get { return _startTimeSpan; }
-            set { SetProperty(ref _startTimeSpan, value); }
+            set { 
+				DateTime d = DateTime.Today.Add (value);
+				StartTimeSpanString = d.ToString ("hh:mm tt");
+
+				SetProperty(ref _startTimeSpan, value); }
         }
+		private string _startTimeSpanString;
+		public string StartTimeSpanString
+		{
+			get { return _startTimeSpanString; }
+			set { SetProperty(ref _startTimeSpanString, value); }
+		}
         #endregion
 
         #region Initialization
@@ -158,7 +178,8 @@ namespace AdaaMobile.ViewModels
             _messageResolver = messageResolver;
             LoadDayPassDataCommand = new AsyncExtendedCommand(LoadDayPassDataAsync);
             NewDayPassCommand = new AsyncExtendedCommand(DoNewDayPassCommand);
-
+			StartTimeSpan = new TimeSpan (0, 0, 0);
+			EndTimeSpan = new TimeSpan (0, 0, 0);
         }
 
         #endregion

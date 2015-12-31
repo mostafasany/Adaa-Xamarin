@@ -22,6 +22,22 @@ namespace AdaaMobile.Views.DayPass
             ToolbarItems.Add(
                 new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
 			Title = "New Request";
+			StartTimeBtn.Clicked += StartTimeBtn_Clicked;
+			EndTimeBtn.Clicked += EndTimeBtn_Clicked;
+        }
+
+
+
+        void EndTimeBtn_Clicked (object sender, EventArgs e)
+        {
+			EndTimePicker.Unfocus ();
+			EndTimePicker.Focus ();
+        }
+
+        void StartTimeBtn_Clicked (object sender, EventArgs e)
+        {
+			StartTimePicker.Unfocus ();
+			StartTimePicker.Focus ();
         }
 
 		protected override void OnAppearing ()
