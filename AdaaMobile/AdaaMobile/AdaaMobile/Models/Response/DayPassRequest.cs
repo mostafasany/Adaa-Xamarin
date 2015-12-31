@@ -1,4 +1,7 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Globalization;
+using System.Xml.Serialization;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.Models.Response
 {
@@ -15,6 +18,29 @@ namespace AdaaMobile.Models.Response
 
         [XmlElement("EndTime")]
         public string EndTime { get; set; }
+
+        public string Duration
+        {
+            get
+            {
+                try
+                {
+                    TimeSpan startSpan;
+                    TimeSpan.TryParse(StartTime, CultureInfo.InvariantCulture, out startSpan);
+                    TimeSpan endSpan;
+                    TimeSpan.TryParse(EndTime, CultureInfo.InvariantCulture, out endSpan);
+                    var duration = (endSpan - startSpan);
+                    if (duration.TotalSeconds > 0)
+                        return string.Format("{0:h\\:mm} hrs", duration);
+                    return AppResources.EmptyPlaceHolder;
+                }
+                catch (Exception ex)
+                {
+
+                    return AppResources.EmptyPlaceHolder;
+                }
+            }
+        }
 
         [XmlElement("ReasonType")]
         public string ReasonType { get; set; }

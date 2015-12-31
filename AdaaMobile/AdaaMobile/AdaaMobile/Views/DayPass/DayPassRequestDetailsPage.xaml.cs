@@ -13,9 +13,10 @@ namespace AdaaMobile.Views.DayPass
         {
             InitializeComponent();
             this.request = request;
-            DepartureTimeLabel.Text = request.StartTime;
-            ExpectedReturnTimeLabel.Text = request.EndTime;
-            ReasonTypeLabel.Text = request.ReasonType;
+            this.BindingContext = request;
+            //DepartureTimeLabel.Text = request.StartTime;
+            //ExpectedReturnTimeLabel.Text = request.EndTime;
+            //ReasonTypeLabel.Text = request.ReasonType;
 
         }
     }

@@ -142,6 +142,9 @@
     <Compile Include="Views\DayPass\DayPassTaskDetailsPage.xaml.cs">
       <DependentUpon>DayPassTaskDetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DayPass\RowInfoControl.xaml.cs">
+      <DependentUpon>RowInfoControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Delegation\DelegationDetailsPage.xaml.cs">
       <DependentUpon>DelegationDetailsPage.xaml</DependentUpon>
     </Compile>
@@ -516,6 +519,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Delegation\NewDelegateInfoControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DayPass\RowInfoControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

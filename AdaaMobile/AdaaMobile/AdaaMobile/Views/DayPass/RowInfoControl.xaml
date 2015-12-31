@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:GestureContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+             x:Class="AdaaMobile.Views.DayPass.RowInfoControl"
+             BackgroundColor="Transparent"
+             x:Name="ParentView"
+             >
+  <Grid ColumnSpacing="8" Padding="2,5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    
+    <Label Grid.Row="0"  TextColor="{StaticResource YellowAccent}" FontSize="Small" Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
+    <Label Grid.Row="1"  LineBreakMode="TailTruncation"  TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="{Binding Value,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
+
+    
+  </Grid>
+</controls:GestureContentView>
