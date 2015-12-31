@@ -56,11 +56,12 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<UserAccountServicesViewModel>();
             cb.RegisterType<ChangePasswordViewModel>();
             cb.RegisterType<DirectoryViewModel>();
-			cb.RegisterType<DayPassViewModel>();
-			cb.RegisterType<DelegationViewModel>();
-			cb.RegisterType<DelegationDetailsViewModel>();
+            cb.RegisterType<DayPassViewModel>();
+            cb.RegisterType<DelegationViewModel>();
+            cb.RegisterType<DelegationDetailsViewModel>();
             cb.RegisterType<NewDelegationViewModel>();
-            
+            cb.RegisterType<TaskDetailsViewmodel>();
+
         }
 
 
@@ -142,6 +143,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<NewDelegationViewModel>();
+            }
+        }
+
+        public TaskDetailsViewmodel TaskDetailsViewmodel
+        {
+            get
+            {
+                return Container.Resolve<TaskDetailsViewmodel>();
             }
         }
 
