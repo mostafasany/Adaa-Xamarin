@@ -16,5 +16,11 @@ namespace AdaaMobile.Views.DayPass
             this.BindingContext = request;
 
         }
+
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			NavigationPage.SetBackButtonTitle (this, string.Empty);
+		}
     }
 }

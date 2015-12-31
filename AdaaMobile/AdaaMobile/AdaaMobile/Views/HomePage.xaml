@@ -132,7 +132,8 @@
                                       SvgPath="{Binding IconSource}"
                                       BackgroundColor="Transparent"
                                       Percentage="0.35"
-                                      HorizontalOptions="Center" VerticalOptions="Center">
+                                      HorizontalOptions="Center" VerticalOptions="Center"
+                                      >
                     <controls:SvgImage.ReplacementColors>
                       <controls:ColorPair OldColor="#FFFFFF" NewColor="{StaticResource YellowAccent}"></controls:ColorPair>
                     </controls:SvgImage.ReplacementColors>
