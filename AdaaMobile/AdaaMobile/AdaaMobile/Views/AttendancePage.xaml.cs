@@ -60,7 +60,12 @@ namespace AdaaMobile.Views
             DayPassBtn.Clicked += DayPassBtn_Clicked;
             DelegationBtn.Clicked += DelegationBtn_Clicked;
 
-
+			Action action = () =>
+			{
+				// TODO Add this in phase 2
+			};
+			ToolbarItems.Add(
+				new ToolbarItem("", "subordinate.png", action, ToolbarItemOrder.Primary));
         }
 
         private void DelegationBtn_Clicked(object sender, EventArgs e)

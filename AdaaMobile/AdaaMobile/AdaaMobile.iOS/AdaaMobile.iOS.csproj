@@ -171,6 +171,8 @@
     <BundleResource Include="Resources\Bck.png" />
     <BundleResource Include="Resources\Bck%402x.png" />
     <BundleResource Include="Resources\Profilebig.png" />
+    <BundleResource Include="Resources\subordinate%402x.png" />
+    <BundleResource Include="Resources\subordinate%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
