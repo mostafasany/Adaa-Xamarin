@@ -21,7 +21,7 @@ namespace AdaaMobile.Views.DayPass
             };
             ToolbarItems.Add(
                 new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
-
+			Title = "New Request";
         }
 
         private void ReasonTypePicker_SelectedIndexChanged(object sender, EventArgs e)

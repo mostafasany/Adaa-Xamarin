@@ -79,6 +79,7 @@
           <Label   Grid.Column="0"
                            TextColor="Black" BackgroundColor="Transparent"
                            HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
                            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                            Text="Return today" />
           <Switch Grid.Column="1"
