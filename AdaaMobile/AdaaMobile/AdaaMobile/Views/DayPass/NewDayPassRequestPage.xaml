@@ -45,11 +45,29 @@
 
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0"
+        <Grid Grid.Row="0" HorizontalOptions="Fill"> 
+        <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+                <Label 
+                Grid.Column="0"
                TextColor="Black" BackgroundColor="Transparent"
                HorizontalTextAlignment="Start"
                FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                Text="Departure time" />
+
+               <Image
+                                        HeightRequest="25"
+                                        WidthRequest="25"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start" VerticalOptions="Center">
+                      <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource" iOS="arrow" Android="arrow.png" WinPhone="arrow.png"/>
+                      </Image.Source>
+                      </Image>
+        </Grid>
+
 
         <TimePicker
          Grid.Row="1"

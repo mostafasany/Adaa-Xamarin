@@ -180,6 +180,7 @@
     <AndroidResource Include="Resources\drawable\delegation.png" />
     <AndroidResource Include="Resources\drawable\Profilebig.png" />
     <AndroidResource Include="Resources\drawable\subordinate.png" />
+    <AndroidResource Include="Resources\drawable\arrow.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\HomeItemIcon.png" />
