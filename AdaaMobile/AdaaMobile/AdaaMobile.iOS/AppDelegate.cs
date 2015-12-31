@@ -37,6 +37,7 @@ namespace AdaaMobile.iOS
 
 		
 			UINavigationBar.Appearance.BarTintColor = UIColor.White;
+			UISwitch.Appearance.OnTintColor = UIColor.FromRGBA (0, 124, 133, 255);
 
             return base.FinishedLaunching(app, options);
 

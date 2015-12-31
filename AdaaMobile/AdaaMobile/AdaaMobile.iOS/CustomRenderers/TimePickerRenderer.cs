@@ -15,7 +15,9 @@ namespace AdaaMobile.iOS.CustomRenderers
         protected override void OnElementChanged(ElementChangedEventArgs<TimePicker> e)
         {
             base.OnElementChanged(e);
-            Control.Layer.BorderColor = UIColor.White.CGColor;
+			Control.Layer.BorderColor = UIColor.White.CGColor;
+			Control.Layer.BorderWidth = 0;
+			((UIDatePicker)(Control.InputView)).Layer.BorderWidth = 0;
         }
     }
 }
