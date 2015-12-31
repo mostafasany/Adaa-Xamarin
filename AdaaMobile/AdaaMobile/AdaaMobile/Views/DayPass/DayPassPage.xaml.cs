@@ -25,13 +25,14 @@ namespace AdaaMobile.Views.DayPass
 
             MyRequestsList.ItemTapped += MyRequestsList_ItemTapped;
             MyTasksList.ItemTapped += MyTasksList_ItemTapped;
+            string addIcon = Device.OnPlatform("note", "note.png", "note.png");
 
             Action action = () =>
             {
                 this.Navigation.PushAsync(new NewDayPassRequestPage());
             };
             ToolbarItems.Add(
-                new ToolbarItem("Add", "", action, ToolbarItemOrder.Primary));
+                new ToolbarItem("", addIcon, action, ToolbarItemOrder.Primary));
         }
 
         private void MyTasksList_ItemTapped(object sender, ItemTappedEventArgs e)

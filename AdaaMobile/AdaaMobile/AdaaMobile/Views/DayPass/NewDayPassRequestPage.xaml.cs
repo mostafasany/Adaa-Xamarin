@@ -20,7 +20,7 @@ namespace AdaaMobile.Views.DayPass
                 _dayPassViewModel.NewDayPassCommand.Execute(null);
             };
             ToolbarItems.Add(
-                new ToolbarItem("Send", "", action, ToolbarItemOrder.Primary));
+                new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
 
         }
 
