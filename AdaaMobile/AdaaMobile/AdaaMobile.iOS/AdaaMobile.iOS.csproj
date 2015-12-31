@@ -162,9 +162,6 @@
     <BundleResource Include="Resources\settings.png" />
     <BundleResource Include="Resources\timesheet.png" />
     <BundleResource Include="Resources\attendance_icn.png" />
-    <BundleResource Include="Resources\date.png" />
-    <BundleResource Include="Resources\daypass.png" />
-    <BundleResource Include="Resources\delegation.png" />
     <BundleResource Include="Resources\homeblack.png" />
     <BundleResource Include="Resources\homeblack%402x.png" />
     <BundleResource Include="Resources\homeblack-568h%402x.png" />

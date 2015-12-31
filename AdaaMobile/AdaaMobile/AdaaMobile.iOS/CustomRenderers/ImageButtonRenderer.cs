@@ -123,10 +123,10 @@ namespace AdaaMobile.CustomRenderers
             targetButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Left;
             targetButton.TitleLabel.TextAlignment = UITextAlignment.Left;
 
-			var titleInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*2, 0,  CONTROL_PADDING);
+			var titleInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*2, CONTROL_PADDING,  CONTROL_PADDING);
             targetButton.TitleEdgeInsets = titleInsets;
 
-			var imageInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*2, 0,  CONTROL_PADDING);
+			var imageInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*2, CONTROL_PADDING,  CONTROL_PADDING);
 			targetButton.ImageEdgeInsets = imageInsets;
         }
 
@@ -172,7 +172,7 @@ namespace AdaaMobile.CustomRenderers
             }
             else
             {
-				titleInsets = new UIEdgeInsets(heightRequest +CONTROL_PADDING, Convert.ToInt32(-1 * widthRequest / 2), -1 * heightRequest, Convert.ToInt32(widthRequest / 2)+CONTROL_PADDING);
+				titleInsets = new UIEdgeInsets(heightRequest +CONTROL_PADDING*2, Convert.ToInt32(-1 * widthRequest / 2), -1 * heightRequest, Convert.ToInt32(widthRequest / 2)+CONTROL_PADDING);
 				imageInsets = new UIEdgeInsets(CONTROL_PADDING, titleWidth / 2 , 0, -1 * titleWidth / 2 + CONTROL_PADDING);
             }
 

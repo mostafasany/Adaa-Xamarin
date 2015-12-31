@@ -110,8 +110,8 @@
                 ConverterParameter=d MMM yyyy}"
                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                     Clicked="StartDate_Clicked"
-                    ImageHeightRequest="20"
-                    ImageWidthRequest="20"
+                    ImageHeightRequest="18"
+                    ImageWidthRequest="18"
                     VerticalOptions="End"
                     BackgroundColor="{StaticResource AppBackgroundNormal}"
                     TextColor="White"
@@ -321,11 +321,11 @@
             </controls:ImageButton.HeightRequest>
 
             <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="28"/>
             </controls:ImageButton.ImageHeightRequest>
 
             <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="28"/>
             </controls:ImageButton.ImageWidthRequest>
 
             <controls:ImageButton.Source>
@@ -351,11 +351,11 @@
 
 
             <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="28"/>
             </controls:ImageButton.ImageHeightRequest>
 
             <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="28"/>
             </controls:ImageButton.ImageWidthRequest>
             <controls:ImageButton.Source>
               <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="daypass.png" iOS="daypass"/>
