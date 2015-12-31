@@ -55,6 +55,7 @@
           BackgroundColor="Transparent"
           HorizontalOptions="Start"
           VerticalOptions="Start"
+          HorizontalTextAlignment="Start"
           Text="{ext:Translate ChooseLanguage}"
           FontSize="Medium"
           TextColor="Black"

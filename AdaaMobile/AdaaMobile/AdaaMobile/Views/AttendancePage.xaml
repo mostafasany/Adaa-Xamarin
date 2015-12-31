@@ -185,6 +185,7 @@
                       </Grid.RowDefinitions>
 
                       <Label Grid.Row="0"
+                      VerticalTextAlignment="Center"
                              VerticalOptions="Start"
                              HorizontalTextAlignment="Center"
                              HorizontalOptions="Fill"
