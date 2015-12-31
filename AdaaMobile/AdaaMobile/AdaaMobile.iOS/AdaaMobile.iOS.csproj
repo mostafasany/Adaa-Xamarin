@@ -100,6 +100,7 @@
     <Compile Include="..\AdaaMobile\Controls\ImageButton\ImageButtonRenderer.shared.cs">
       <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
     </Compile>
+    <Compile Include="CustomRenderers\TimePickerRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedSwitch\ExtendedSwitchRenderer.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\CustomUICollectionViewDelegateFlowLayout.cs" />
