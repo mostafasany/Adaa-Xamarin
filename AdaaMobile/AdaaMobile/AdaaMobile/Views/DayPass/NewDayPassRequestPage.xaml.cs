@@ -28,6 +28,7 @@ namespace AdaaMobile.Views.DayPass
             EndTimeBtn.Clicked += EndTimeBtn_Clicked;
             ReasonEditor.Behaviors.Add(new MaxLengthValidator() { MaxLength = 60 });
             ReasonEditor.TextChanged += ReasonEditor_TextChanged;
+			TextLimit.Text = string.Format("{0}/{1}", 0, 60);
         }
 
         private void ReasonEditor_TextChanged(object sender, TextChangedEventArgs e)

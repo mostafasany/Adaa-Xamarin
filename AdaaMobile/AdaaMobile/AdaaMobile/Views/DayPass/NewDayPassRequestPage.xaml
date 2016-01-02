@@ -280,7 +280,7 @@
         <Grid Grid.Row="5" HorizontalOptions="Fill"> 
         <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
                 <Label 
                 Grid.Column="0"
@@ -293,6 +293,7 @@
                   x:Name="TextLimit"
                 Grid.Column="1"
                TextColor="Black" BackgroundColor="Transparent"
+               HorizontalOptions="End"
                HorizontalTextAlignment="End"
                FontSize="{x:Static helpers:FontHelper.MilliFontSize}"/>
         </Grid>
