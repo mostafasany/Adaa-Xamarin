@@ -9,10 +9,6 @@ namespace AdaaMobile.Views.Authentication
         public LoginPage()
         {
             InitializeComponent();
-
-            ImageLogo.HeightRequest = this.Width * 0.37;
-            ImageLogo.WidthRequest = this.Width * 0.6;
-            ImageLogo.
             BindingContext = Locator.Container.Resolve<LoginViewModel>(
                 new TypedParameter(typeof(INavigation), Navigation));
 
