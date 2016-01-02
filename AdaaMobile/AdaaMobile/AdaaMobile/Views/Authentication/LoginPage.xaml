@@ -1,74 +1,90 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" 
+xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
 x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
 >
 
-<Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
-<Grid.RowDefinitions>
-<RowDefinition Height="*"/>
-<!--<RowDefinition Height="Auto"/>-->
-</Grid.RowDefinitions>
-		<Image Grid.RowSpan="1" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
-		 <Image.Source>
-            <OnPlatform x:TypeArguments="ImageSource" WinPhone="login.png" Android="login.png" iOS="login"/>
-          </Image.Source>
-		</Image>
+  <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <!--<RowDefinition Height="Auto"/>-->
+    </Grid.RowDefinitions>
+    <Image Grid.RowSpan="1" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+      <Image.Source>
+        <OnPlatform x:TypeArguments="ImageSource" WinPhone="login.png" Android="login.png" iOS="login"/>
+      </Image.Source>
+    </Image>
 
-		<ScrollView x:Name="MainScrollView" Grid.Row="0">
-	<Grid  Padding="20,5,20,5" VerticalOptions="Fill" >
-		<Grid.RowDefinitions>
-			<RowDefinition Height="*" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="6" />
-			<RowDefinition Height="Auto" />
-      <RowDefinition Height="40" />
-		</Grid.RowDefinitions>
+    <ScrollView x:Name="MainScrollView" Grid.Row="0">
+      <Grid  Padding="20,5,20,5" VerticalOptions="Fill" >
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="6" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <!-- The complex configuration to solve issue in xamarin Image control, 
+             The image doesn't appear sometimes when Aspect is AspectFit and here is no Height
+             The solution makes height = 0.56 of the image width (based on actual logo aspect ratio)
+             0.37= 0.56 * control width= 0.56 * 0.6 * phone width= 0.37 * phone width
+             
+             -->
+       <RelativeLayout Grid.Row="1" HorizontalOptions="Fill"  Padding="0,8,0,45" VerticalOptions="Start" >
+          <Image x:Name="ImageLogo"  Aspect="AspectFit"  VerticalOptions="Start" 
+                   RelativeLayout.WidthConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.6}"
+                   RelativeLayout.XConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.2}"
+                      RelativeLayout.HeightConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.37}">
+                  >
+            
+            <Image.Source>
+              <OnPlatform x:TypeArguments="ImageSource" WinPhone="logo.png" Android="logo.png" iOS="logo"/>
+            </Image.Source>
+          </Image>
+        </RelativeLayout>
 
-		<Grid Grid.Row="1" Padding="20,8,20,45" VerticalOptions="End" >
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			</Grid.RowDefinitions>
-			<Image  HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"  >
-		 <Image.Source>
-            <OnPlatform x:TypeArguments="ImageSource" WinPhone="logo.png" Android="logo.png" iOS="logo"/>
-          </Image.Source>
-		</Image>
-     </Grid>
+        <controls:ExtendedGrid Grid.Row="2"  CornerRadius="3" HorizontalOptions="Fill"
+                           BackgroundColor="White" Padding="8,6,0,6" >
+          <controls:ExtendedGrid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="40" />
 
-		<controls:ExtendedGrid Grid.Row="2"  CornerRadius="3" HorizontalOptions="Fill"
-                       BackgroundColor="White" Padding="8,6,0,6" >
-			<controls:ExtendedGrid.RowDefinitions>
-				<RowDefinition Height="40" />
-				<RowDefinition Height="1" />
-				<RowDefinition Height="40" />
+          </controls:ExtendedGrid.RowDefinitions>
+          <controls:ExtendedEntry  Grid.Row="0" HasBorder="false"
+                                   PlaceholderTextColor="Gray"
+                                   BackgroundColor="White"
+                                   TextColor="{StaticResource AppBackgroundNormal}"
+                                   Placeholder="{ext:Translate UserName}"
+                                   Text="{Binding UserName,Mode=TwoWay}" />
+          <BoxView Grid.Row="1"
+                   HorizontalOptions="Fill"
+                   BackgroundColor="{StaticResource AppBackgroundNormal}" />
+          <controls:ExtendedEntry
+            Grid.Row="2" HasBorder="false"
+            PlaceholderTextColor="Gray"
+            BackgroundColor="White"
+            TextColor="{StaticResource AppBackgroundNormal}"
+            Placeholder="{ext:Translate Password}"
+            Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
+        </controls:ExtendedGrid>
 
-			</controls:ExtendedGrid.RowDefinitions>
-			<controls:ExtendedEntry  Grid.Row="0" HasBorder="false"
-                               PlaceholderTextColor="Gray"   
-                               BackgroundColor="White" 
-                               TextColor="{StaticResource AppBackgroundNormal}"
-                               Placeholder="{ext:Translate UserName}" 
-                               Text="{Binding UserName,Mode=TwoWay}" />
-			<BoxView Grid.Row="1" 
-               HorizontalOptions="Fill"
-               BackgroundColor="{StaticResource AppBackgroundNormal}" />
-			<controls:ExtendedEntry   
-        Grid.Row="2" HasBorder="false" 
-        PlaceholderTextColor="Gray" 
-        BackgroundColor="White" 
-        TextColor="{StaticResource AppBackgroundNormal}" 
-        Placeholder="{ext:Translate Password}" 
-        Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
-		</controls:ExtendedGrid>
+        <Button x:Name="LoginBtn" Grid.Row="4" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+        <ActivityIndicator Grid.Row="5" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 
-    <Button x:Name="LoginBtn" Grid.Row="4" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
-    <ActivityIndicator Grid.Row="5" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-
+      </Grid>
+    </ScrollView>
   </Grid>
-	</ScrollView>
-	</Grid>
 </ContentPage>

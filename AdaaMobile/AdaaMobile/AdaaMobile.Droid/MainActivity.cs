@@ -24,6 +24,7 @@ namespace AdaaMobile.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         public static MainActivity Instance;
+        private static bool IsFormsInitialized;
         protected override void OnCreate(Bundle bundle)
         {
 
@@ -37,6 +38,7 @@ namespace AdaaMobile.Droid
             ImageCircleRenderer.Init();
             ExtendedGridRenderer.Init();
             SvgImageRenderer.Init();
+
             //Create new locator instance.
             var locator = new Locator();
 
