@@ -60,12 +60,12 @@ namespace AdaaMobile.Views
             DayPassBtn.Clicked += DayPassBtn_Clicked;
             DelegationBtn.Clicked += DelegationBtn_Clicked;
 
-			Action action = () =>
-			{
-				// TODO Add this in phase 2
-			};
-			ToolbarItems.Add(
-				new ToolbarItem("", "subordinate.png", action, ToolbarItemOrder.Primary));
+            Action action = () =>
+            {
+                // TODO Add this in phase 2
+            };
+            ToolbarItems.Add(
+                new ToolbarItem("", "subordinate.png", action, ToolbarItemOrder.Primary));
         }
 
         private void DelegationBtn_Clicked(object sender, EventArgs e)
@@ -95,12 +95,15 @@ namespace AdaaMobile.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-			NavigationPage.SetBackButtonTitle (this, "ba");
+            NavigationPage.SetBackButtonTitle(this, "ba");
             try
             {
-                await _attendanceViewModel.PopulateAttendanceDaysAsync();
-                if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
-                    SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count - 1]);
+                if (_attendanceViewModel.CurrentAttendance == null)
+                {
+                    await _attendanceViewModel.PopulateAttendanceDaysAsync();
+                    if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
+                        SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count - 1]);
+                }
             }
             catch
             {

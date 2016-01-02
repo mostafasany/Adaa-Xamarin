@@ -20,6 +20,8 @@ namespace AdaaMobile.ViewModels
     {
 
         #region Fields
+
+        private const int InitialLimitInDays = 7;
         private const int LimitRangeInDays = 1 * 30;
         private const int BottomLimitInDays = 2 * 12 * 30;
         private readonly IDataService _dataService;
@@ -30,7 +32,7 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Properties
-        private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(LimitRangeInDays));
+        private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(InitialLimitInDays));
         /// <summary>
         /// Date of first picker, this date will be used to show the starting range for Attendance and Exceptions.
         /// </summary>
@@ -344,6 +346,11 @@ namespace AdaaMobile.ViewModels
                 {
                     if (response.Result.ExceptionDays != null)
                         DaysList = response.Result.ExceptionDays.Select(ex => (DayWrapper)ExceptionDayWrapper.Wrap(ex)).ToList();
+                    if (DaysList != null && DaysList.Count > 0)
+                    {
+                        SelectedDay = DaysList[DaysList.Count - 1];
+                        SelectedDay.IsSelected = true;
+                    }
                 }
                 else
                 {
