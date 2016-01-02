@@ -22,11 +22,11 @@ namespace AdaaMobile.Views
 
 		void ArabicButton_Clicked1 (object sender, EventArgs e)
 		{
-//			Locator.Default.AppSettings.SelectedCultureName = "ar-EG";
-//
-//			DependencyService.Get<ILocalize>().UpdateCultureInfo("ar-EG");
-//			Navigation.PushModalAsync (new LoginPage ());
-		}
+            Locator.Default.AppSettings.SelectedCultureName = "ar-EG";
+
+            DependencyService.Get<ILocalize>().UpdateCultureInfo("ar-EG");
+            Navigation.PushModalAsync(new LoginPage());
+        }
 
 		void EnglishButton_Clicked (object sender, EventArgs e)
 		{

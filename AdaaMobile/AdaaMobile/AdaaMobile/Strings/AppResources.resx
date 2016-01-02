@@ -388,7 +388,7 @@
     <value>Manager</value>
   </data>
   <data name="NoData" xml:space="preserve">
-    <value>No Data</value>
+    <value>No Data found</value>
   </data>
   <data name="NoInternet" xml:space="preserve">
     <value>No Internet</value>
@@ -495,5 +495,14 @@
   </data>
   <data name="PleaseEnterReason" xml:space="preserve">
     <value>Please enter reason</value>
+  </data>
+  <data name="NewRequest" xml:space="preserve">
+    <value>New Request</value>
+  </data>
+  <data name="PleaseEnterMissingFields" xml:space="preserve">
+    <value>Please enter missing fields</value>
+  </data>
+  <data name="TextLimit" xml:space="preserve">
+    <value>Text limit</value>
   </data>
 </root>

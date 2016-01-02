@@ -17,6 +17,14 @@
     VerticalOptions="Fill"
     Padding="0,20,0,5"
       >
+    <Label
+  x:Name="NoRequestsLabel"
+    Grid.Column="0"
+   TextColor="Black" BackgroundColor="Transparent"
+   HorizontalTextAlignment="Center"
+  IsVisible="{Binding ShowNoDelegations}"
+   FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+   Text="{ext:Translate NoData}"/>
     <ListView
        x:Name="DelegationsList"
        ItemsSource="{Binding Delegations}"

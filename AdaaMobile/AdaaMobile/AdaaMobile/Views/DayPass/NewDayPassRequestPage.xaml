@@ -23,6 +23,7 @@
         >
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
@@ -187,9 +188,8 @@
 
     </Grid>
 
-
     <Grid
-    Grid.Row="1"
+    Grid.Row="2"
     ColumnSpacing="8"  >
       <controls:ExtendedGrid ColumnSpacing="15" 
                        VerticalOptions="Fill" Padding="10,10,10,10"
@@ -200,10 +200,11 @@
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
 
-          <Grid Grid.Row="0" HorizontalOptions="Fill"> 
+        <Grid Grid.Row="0" HorizontalOptions="Fill"> 
         <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
@@ -213,7 +214,7 @@
                TextColor="Black" BackgroundColor="Transparent"
                HorizontalTextAlignment="Start"
                FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-               Text="Reason type"/>
+               Text="{ext:Translate ReasonType}"/>
 
                <Image
                                         HeightRequest="15"
@@ -225,9 +226,6 @@
                       </Image.Source>
                       </Image>
         </Grid>
-
-
-
 
         <Picker x:Name="ReasonTypePicker"   BackgroundColor="Transparent"
             Grid.Row="1"  HorizontalOptions="Fill"
@@ -260,7 +258,6 @@
           HorizontalOptions="Fill"
               />
 
-
         <Label Grid.Row="3"
                TextColor="Gray" BackgroundColor="Transparent"
                HorizontalTextAlignment="Start"
@@ -268,22 +265,48 @@
                Text="Reason" />
 
         <Editor
+          x:Name="ReasonEditor"
           Grid.Row="4"
           HorizontalOptions="Fill"
           VerticalOptions="FillAndExpand"
           BackgroundColor="Transparent"
           TextColor="Black"
-          Text="{Binding Reason}"
+          Text="{Binding Reason}"          
           
           >
 
         </Editor>
+              
+        <Grid Grid.Row="5" HorizontalOptions="Fill"> 
+        <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+                <Label 
+                Grid.Column="0"
+               TextColor="Black" BackgroundColor="Transparent"
+               HorizontalTextAlignment="Start"
+               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+               Text="{ext:Translate TextLimit}"/>
+
+                <Label 
+                  x:Name="TextLimit"
+                Grid.Column="1"
+               TextColor="Black" BackgroundColor="Transparent"
+               HorizontalTextAlignment="End"
+               FontSize="{x:Static helpers:FontHelper.MilliFontSize}"/>
+        </Grid>
+      
       </controls:ExtendedGrid>
 
 
 
     </Grid>
 
+    <ActivityIndicator  IsRunning="{Binding IsBusy}"
+                     HeightRequest="50" WidthRequest="50"
+                     Grid.Row="0" Grid.RowSpan="3"
+                     VerticalOptions="Center" HorizontalOptions="Center"/>
 
   </Grid>
 

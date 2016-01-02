@@ -737,6 +737,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Request.
+        /// </summary>
+        public static string NewRequest {
+            get {
+                return ResourceManager.GetString("NewRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NEW REQUEST.
         /// </summary>
         public static string NewRequestCap {
@@ -746,7 +755,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Data.
+        ///   Looks up a localized string similar to No Data found.
         /// </summary>
         public static string NoData {
             get {
@@ -850,6 +859,15 @@ namespace AdaaMobile.Strings {
         public static string Pending {
             get {
                 return ResourceManager.GetString("Pending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter missing fields.
+        /// </summary>
+        public static string PleaseEnterMissingFields {
+            get {
+                return ResourceManager.GetString("PleaseEnterMissingFields", resourceCulture);
             }
         }
         
@@ -1120,6 +1138,15 @@ namespace AdaaMobile.Strings {
         public static string TaskDetailsCap {
             get {
                 return ResourceManager.GetString("TaskDetailsCap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text limit.
+        /// </summary>
+        public static string TextLimit {
+            get {
+                return ResourceManager.GetString("TextLimit", resourceCulture);
             }
         }
         

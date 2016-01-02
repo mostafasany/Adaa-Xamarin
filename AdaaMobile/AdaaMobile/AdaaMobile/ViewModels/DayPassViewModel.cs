@@ -30,6 +30,9 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Properties
+
+
+
         private bool _isBusy;
         public bool IsBusy
         {
