@@ -12,7 +12,7 @@ namespace AdaaMobile.Views.DayPass
 
         private Button _lastTappedTab;
         private DayPassViewModel _dayPassViewModel;
-
+		private ToolbarItem _addToolBarItem;
         public DayPassPage()
         {
             InitializeComponent();
@@ -31,9 +31,10 @@ namespace AdaaMobile.Views.DayPass
             {
                 this.Navigation.PushAsync(new NewDayPassRequestPage());
             };
-            ToolbarItems.Add(
-                new ToolbarItem("", addIcon, action, ToolbarItemOrder.Primary));
-        }
+			_addToolBarItem = 
+                new ToolbarItem("", addIcon, action, ToolbarItemOrder.Primary);
+			ToolbarItems.Add (_addToolBarItem);
+		}
 
         private void MyTasksList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -108,11 +109,15 @@ namespace AdaaMobile.Views.DayPass
             //Switch to different modes based on tapped button
             if (button == MyRequestsButton)
             {
+				ToolbarItems.Clear ();
+				ToolbarItems.Add (_addToolBarItem);
                 MyRequestsListGrid.IsVisible = true;
                 MyTasksListGrid.IsVisible = false;
             }
             else if (button == MyTasksButton)
             {
+				ToolbarItems.Clear ();
+
                 MyRequestsListGrid.IsVisible = false;
                 MyTasksListGrid.IsVisible = true;
             }
