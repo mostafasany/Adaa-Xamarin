@@ -29,7 +29,8 @@ namespace AdaaMobile
             {
                 MainPage = new Views.ChooseLanguagePage();
             }
-            else if (string.IsNullOrEmpty(settings.UserToken))
+            else
+            if (string.IsNullOrEmpty(settings.UserToken))
             {
                 MainPage = new LoginPage();
             }

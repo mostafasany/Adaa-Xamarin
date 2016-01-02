@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace AdaaMobile.Droid
 {
-    [Activity(Label = "AdaaMobile", Icon = "@drawable/icon"
+    [Activity(Label = "ADAA", Icon = "@drawable/icon"
         , Theme = "@style/Theme.Splash", NoHistory = true, MainLauncher = true)]
     public class SplashActivity : Activity
     {
