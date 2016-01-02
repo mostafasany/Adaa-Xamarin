@@ -83,6 +83,7 @@
     <Compile Include="Helpers\Interfaces\INetworkHelper.cs" />
     <Compile Include="Helpers\IUserSelection.cs" />
     <Compile Include="Helpers\LinkerIncludeFiles.cs" />
+    <Compile Include="Helpers\MaxLengthValidator.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Helpers\SvgAssembly.cs" />

@@ -19,7 +19,7 @@ namespace AdaaMobile.Views.Delegation
             {
                 _newDelegationViewModel.NewDelegationCommand.Execute(null);
             };
-            string sendIcon = Device.OnPlatform("", "right.png", "right.png");
+			string sendIcon = Device.OnPlatform("right.png", "right.png", "right.png");
             ToolbarItems.Add(
                 new ToolbarItem("", sendIcon, action, ToolbarItemOrder.Primary));
 

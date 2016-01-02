@@ -1,6 +1,8 @@
 ﻿using System;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
+using AdaaMobile.Helpers;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.Views.DayPass
 {
@@ -21,30 +23,39 @@ namespace AdaaMobile.Views.DayPass
             };
             ToolbarItems.Add(
                 new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
-			Title = "New Request";
-			StartTimeBtn.Clicked += StartTimeBtn_Clicked;
-			EndTimeBtn.Clicked += EndTimeBtn_Clicked;
+            Title = AppResources.NewRequest;
+            StartTimeBtn.Clicked += StartTimeBtn_Clicked;
+            EndTimeBtn.Clicked += EndTimeBtn_Clicked;
+            ReasonEditor.Behaviors.Add(new MaxLengthValidator() { MaxLength = 60 });
+            ReasonEditor.TextChanged += ReasonEditor_TextChanged;
+			TextLimit.Text = string.Format("{0}/{1}", 0, 60);
         }
 
-
-
-        void EndTimeBtn_Clicked (object sender, EventArgs e)
+        private void ReasonEditor_TextChanged(object sender, TextChangedEventArgs e)
         {
-			EndTimePicker.Unfocus ();
-			EndTimePicker.Focus ();
+            if (!string.IsNullOrEmpty(e.NewTextValue))
+            {
+                TextLimit.Text = string.Format("{0}/{1}", e.NewTextValue.Length, 60);
+            }
         }
 
-        void StartTimeBtn_Clicked (object sender, EventArgs e)
+        void EndTimeBtn_Clicked(object sender, EventArgs e)
         {
-			StartTimePicker.Unfocus ();
-			StartTimePicker.Focus ();
+            EndTimePicker.Unfocus();
+            EndTimePicker.Focus();
         }
 
-		protected override void OnAppearing ()
-		{
-			base.OnAppearing ();
-			NavigationPage.SetBackButtonTitle (this, string.Empty);
-		}
+        void StartTimeBtn_Clicked(object sender, EventArgs e)
+        {
+            StartTimePicker.Unfocus();
+            StartTimePicker.Focus();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            NavigationPage.SetBackButtonTitle(this, string.Empty);
+        }
         private void ReasonTypePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             _dayPassViewModel.ReasonType = ReasonTypePicker.SelectedIndex == 0 ? "Work" : "Personal";

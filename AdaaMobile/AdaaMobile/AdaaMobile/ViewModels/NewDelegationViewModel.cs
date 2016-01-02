@@ -117,7 +117,12 @@ namespace AdaaMobile.ViewModels
         {
             try
             {
-                if (UserDelegate == null || UserSubOrdinate == null) return;
+                if (UserDelegate == null || UserSubOrdinate == null)
+                {
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseEnterMissingFields, AppResources.Ok);
+
+                    return;
+                }
                 NewDelegationCommand.CanExecute = false;
                 IsBusy = true;
                 BusyMessage = AppResources.Loading;
@@ -127,7 +132,7 @@ namespace AdaaMobile.ViewModels
                     Langid = _appSettings.Language,
                     UserToken = _appSettings.UserToken,
                     DelegateID = UserDelegate.UserId,
-                    SubordinateID = UserSubOrdinate.UserId ,
+                    SubordinateID = UserSubOrdinate.UserId,
                 };
 
                 var response = await _dataService.NewDelegationAsync(qParamters);
