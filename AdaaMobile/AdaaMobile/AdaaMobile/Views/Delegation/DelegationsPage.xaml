@@ -17,14 +17,7 @@
     VerticalOptions="Fill"
     Padding="0,20,0,5"
       >
-    <Label
-  x:Name="NoRequestsLabel"
-    Grid.Column="0"
-   TextColor="Black" BackgroundColor="Transparent"
-   HorizontalTextAlignment="Center"
-  IsVisible="{Binding ShowNoDelegations}"
-   FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-   Text="{ext:Translate NoData}"/>
+
     <ListView
        x:Name="DelegationsList"
        ItemsSource="{Binding Delegations}"
@@ -84,6 +77,17 @@
     <ActivityIndicator  IsRunning="{Binding IsBusy}"
                      HeightRequest="50" WidthRequest="50"
                      VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                         <Label
+  x:Name="NoRequestsLabel"
+    Grid.Row="0"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="FillAndExpand"
+   TextColor="Black" BackgroundColor="Transparent"
+   HorizontalTextAlignment="Center"
+  IsVisible="{Binding ShowNoDelegations}"
+   FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+   Text="{ext:Translate NoData}"/>
   </Grid>
 
 </ContentPage>
