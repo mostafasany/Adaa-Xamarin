@@ -25,7 +25,7 @@
       
     <ScrollView   >
       <StackLayout VerticalOptions="End" HorizontalOptions="Fill"  Padding="0,30,0,10">
-        <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill" >
+        <StackLayout x:Name="MenuStack" VerticalOptions="Fill" HorizontalOptions="Fill" >
 
           <StackLayout Spacing="{StaticResource InnerStackSpacing}"
                        Padding="{StaticResource InnerStackPadding}" >

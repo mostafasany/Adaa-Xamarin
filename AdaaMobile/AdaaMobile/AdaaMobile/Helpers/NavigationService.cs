@@ -55,6 +55,7 @@ namespace AdaaMobile.Helpers
             try
             {
                 master.Detail = MasterHelper.CreatePage(pageType);
+                MasterHelper.UpdateSideMenuSelection(pageType);
                 return true;
             }
             catch (Exception)

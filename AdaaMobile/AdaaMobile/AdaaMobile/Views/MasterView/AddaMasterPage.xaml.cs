@@ -1,6 +1,7 @@
 ﻿using System;
 using AdaaMobile.Helpers;
 using AdaaMobile.Models;
+using AdaaMobile.Strings;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
 
@@ -24,7 +25,7 @@ namespace AdaaMobile.Views.MasterView
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			NavigationPage.SetBackButtonTitle (this, "ba");
+			NavigationPage.SetBackButtonTitle (this, "back");
 		}
         private void SetMenuPage()
         {

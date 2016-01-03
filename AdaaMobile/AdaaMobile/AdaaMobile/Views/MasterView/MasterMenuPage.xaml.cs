@@ -19,34 +19,90 @@ namespace AdaaMobile.Views.MasterView
 
             _lastSelectedControl = HomeControl;
             _lastSelectedControl.IsSelected = true;
-			Icon = "menu.png";
+            Icon = "menu.png";
         }
 
         private void SideMenuItemControl_OnTapped(object sender, EventArgs e)
         {
-            
-            //OnOnItemTapped();//This will be used in Master details page to set IsPresented to false
+
             var masterDetailPage = Application.Current.MainPage as MasterDetailPage;
+
+            //Hide Master(Menu) when user clicks
             if (masterDetailPage != null) masterDetailPage.IsPresented = false;
 
             var selectedControl = sender as SideMenuItemControl;
-            
             if (selectedControl == null || !(selectedControl.BindingContext is Type)) return;
-            //AnimateControl(selectedControl);
+
+
             if (!selectedControl.IsPageSupported)
             {
                 return;//Page is not supported in this current release build
             }
-            Type pageType = selectedControl.BindingContext as Type;
 
+            Type pageType = selectedControl.BindingContext as Type;
+            //Update color selection
+            UpdateSelectedMenu(selectedControl);
+
+            //Now navigate to the target page.
+            Locator.Default.NavigationService.SetMasterDetailsPage(pageType);
+        }
+
+        /// <summary>
+        /// This method will loop on all children of Menu stack until it finds
+        /// Side menu control which represents this page type.
+        /// </summary>
+        /// <param name="pageType"></param>
+        /// <returns></returns>
+        public SideMenuItemControl GetSideMenuOfType(Type pageType)
+        {
+            return GetSideMenuOfType(MenuStack, pageType);
+        }
+
+        /// <summary>
+        /// This method will loop on all children of this layout<view> until it finds
+        /// Side menu control which represents this page type.
+        /// </summary>
+        /// <param name="layout"></param>
+        /// <param name="pageType"></param>
+        /// <returns></returns>
+        private SideMenuItemControl GetSideMenuOfType(Layout<View> layout, Type pageType)
+        {
+            foreach (var child in layout.Children)
+            {
+                if (child is SideMenuItemControl)
+                {
+                    if ((Type)child.BindingContext == pageType)
+                        return (SideMenuItemControl)child;
+                }
+                else if (child is Layout<View>)
+                {
+                    var result = GetSideMenuOfType(child as Layout<View>, pageType);
+                    if (result != null) return result;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// This method will find the side menu that represents this page type,
+        /// Then it will select it.
+        /// </summary>
+        /// <param name="pageType"></param>
+        public void UpdateSelectedMenu(Type pageType)
+        {
+            UpdateSelectedMenu(GetSideMenuOfType(MenuStack, pageType));
+        }
+
+        private void UpdateSelectedMenu(SideMenuItemControl selectedControl)
+        {
             //Update selected item color
             if (_lastSelectedControl != null)
                 _lastSelectedControl.IsSelected = false;
             //Update lastSelected item color
-            selectedControl.IsSelected = true;
+            if (selectedControl != null)
+                selectedControl.IsSelected = true;
             //set last selected to item
             _lastSelectedControl = selectedControl;
-            Locator.Default.NavigationService.SetMasterDetailsPage(pageType);
         }
 
         private async void AnimateControl(SideMenuItemControl selectedControl)

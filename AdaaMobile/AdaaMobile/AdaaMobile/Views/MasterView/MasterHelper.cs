@@ -13,6 +13,14 @@ namespace AdaaMobile.Views.MasterView
         private static readonly Color ActionBarBackgroundColor = (Color)App.Current.Resources["AppBackgroundNormal"];
         private static readonly Color ActionBarTextColor = Color.White;
 
+        /// <summary>
+        /// This method will create Details page and wraps it inside Navigation page.
+        /// It's used for Master details page.
+        /// </summary>
+        /// <typeparam name="TPageType"></typeparam>
+        /// <param name="pageType"></param>
+        /// <param name="wrapInNavigation"></param>
+        /// <returns></returns>
         public static Page CreatePage<TPageType>(TPageType pageType, bool wrapInNavigation = true) where TPageType : Type
         {
             try
@@ -45,6 +53,33 @@ namespace AdaaMobile.Views.MasterView
             }
         }
 
+        /// <summary>
+        /// Call this method each time you set Details of MasterDetailsPage, 
+        /// To update side Menu Selection.
+        /// </summary>
+        /// <param name="pageType"></param>
+        public static void UpdateSideMenuSelection(Type pageType)
+        {
+            try
+            {
+                var master = Application.Current.MainPage as MasterDetailPage;
+                if (master == null) return;
+                var menuPage = master.Master as MasterMenuPage;
+                if (menuPage == null) return;
+                menuPage.UpdateSelectedMenu(pageType);
+            }
+            catch (Exception)
+            {
+                //ignored
+            }
+        }
+
+        /// <summary>
+        /// It creates pages manually instead of using reflection, 
+        /// as reflection has some issues in linking iniside Xamarin.
+        /// </summary>
+        /// <param name="pageType"></param>
+        /// <returns></returns>
         private static Page CreateInnerPage(Type pageType)
         {
             if (pageType == typeof(HomePage)) return new HomePage();
@@ -62,8 +97,8 @@ namespace AdaaMobile.Views.MasterView
             if (pageType == typeof(SettingsPage)) return new SettingsPage();
             if (pageType == typeof(SignUpPage)) return new SignUpPage();
             if (pageType == typeof(TimesheetPage)) return new TimesheetPage();
-			if (pageType == typeof(UserServicesPage)) return new UserServicesPage();
-			if (pageType == typeof(ChangePasswordPage)) return new ChangePasswordPage();
+            if (pageType == typeof(UserServicesPage)) return new UserServicesPage();
+            if (pageType == typeof(ChangePasswordPage)) return new ChangePasswordPage();
             return new HomePage();
         }
     }

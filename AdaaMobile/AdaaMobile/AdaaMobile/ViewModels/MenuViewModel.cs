@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AdaaMobile.Common;
 using AdaaMobile.Helpers;
 using AdaaMobile.Models;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.ViewModels
 {
