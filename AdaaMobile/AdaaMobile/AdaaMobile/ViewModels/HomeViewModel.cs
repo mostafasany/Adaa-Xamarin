@@ -88,7 +88,7 @@ namespace AdaaMobile.ViewModels
 
             data.Add(new AdaaPageItem()
             {
-                Title = AppResources.ADAAAttendance,
+					Title = AppResources.Attendance,
                 IconSource = "AdaaMobile.Images.Attendance_icn.svg",
                 TargetType = typeof(AttendancePage),
                 IsEnabled = true
