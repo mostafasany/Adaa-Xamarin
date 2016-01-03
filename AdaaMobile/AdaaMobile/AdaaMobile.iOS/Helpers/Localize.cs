@@ -49,8 +49,12 @@ namespace AdaaMobile.iOS.Helpers
 
 		public void UpdateCultureInfo (string cultureName)
 		{
-			Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);
-			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(cultureName);
+			var iosLocaleAuto = NSLocale.AutoUpdatingCurrentLocale.LocaleIdentifier;
+			var netLocale = cultureName.Replace ("_", "-");
+			var ci = new System.Globalization.CultureInfo (netLocale);
+
+			Thread.CurrentThread.CurrentCulture = ci;
+			Thread.CurrentThread.CurrentUICulture = ci;
 		}
     }
 }

@@ -61,9 +61,16 @@ namespace AdaaMobile.iOS
 			}
 			string selectedCultureNAme = settings.SelectedCultureName;
 			//selectedCultureNAme = "ar-EG";
-			if (string.IsNullOrEmpty (selectedCultureNAme)) {
-				Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo (selectedCultureNAme);
-				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo (selectedCultureNAme);
+			if (!string.IsNullOrEmpty (selectedCultureNAme)) {
+				var iosLocaleAuto = NSLocale.AutoUpdatingCurrentLocale.LocaleIdentifier;
+				var netLocale = selectedCultureNAme.Replace ("_", "-");
+				var ci = new System.Globalization.CultureInfo (netLocale);
+
+				Thread.CurrentThread.CurrentCulture = ci;
+				Thread.CurrentThread.CurrentUICulture = ci;
+
+//				Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo (selectedCultureNAme);
+//				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo (selectedCultureNAme);
 			}
 
 
