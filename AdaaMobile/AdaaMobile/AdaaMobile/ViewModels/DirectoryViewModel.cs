@@ -11,6 +11,7 @@ using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Enums;
 using AdaaMobile.Models.Response;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.ViewModels
 {
@@ -21,6 +22,7 @@ namespace AdaaMobile.ViewModels
 
         #region Fields
         private readonly INavigationService _navigationService;
+        private readonly IRequestMessageResolver _messageResolver;
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
         private Employee[] _allEmployees;
@@ -62,6 +64,14 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _busyMessage, value); }
         }
 
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set { SetProperty(ref _errorMessage, value); }
+        }
+
+
         private ObservableCollection<Grouping<string, Employee>> _groupedEmployees = new ObservableCollection<Grouping<string, Employee>>();
         public ObservableCollection<Grouping<string, Employee>> GroupedEmployees
         {
@@ -78,11 +88,12 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public DirectoryViewModel(IDataService dataService, IAppSettings appSettings, INavigationService navigationService)
+        public DirectoryViewModel(IDataService dataService, IAppSettings appSettings, INavigationService navigationService, IRequestMessageResolver messageResolver)
         {
             _dataService = dataService;
             _appSettings = appSettings;
             _navigationService = navigationService;
+            _messageResolver = messageResolver;
 
             LoadEmployeesCommand = new AsyncExtendedCommand(LoadEmployeesAsync);
 
@@ -101,6 +112,7 @@ namespace AdaaMobile.ViewModels
 
             try
             {
+                ErrorMessage = null;
                 IsBusy = true;
                 LoadEmployeesCommand.CanExecute = false;
                 if (DirectorySourceType == DirectorySourceType.Directory)
@@ -110,11 +122,21 @@ namespace AdaaMobile.ViewModels
                         Langid = _appSettings.Language,
                         UserToken = _appSettings.UserToken
                     });
-                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                     {
-                        _allEmployees = response.Result.Employees;
-
-                        GroupEmployees();
+                        if (response.Result != null && response.Result.Employees != null)
+                        {
+                            _allEmployees = response.Result.Employees;
+                            GroupEmployees();
+                        }
+                        else
+                        {
+                            ErrorMessage = AppResources.NoData;
+                        }
+                    }
+                    else
+                    {
+                        ErrorMessage = _messageResolver.GetMessage(response);
                     }
                 }
                 else
@@ -124,11 +146,21 @@ namespace AdaaMobile.ViewModels
                         Langid = _appSettings.Language,
                         UserToken = _appSettings.UserToken
                     });
-                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                     {
-                        _allEmployees = response.Result.Subordinates;
-
-                        GroupEmployees();
+                        if (response.Result != null && response.Result.Subordinates != null)
+                        {
+                            _allEmployees = response.Result.Subordinates;
+                            GroupEmployees();
+                        }
+                        else
+                        {
+                            ErrorMessage = AppResources.NoData;
+                        }
+                    }
+                    else
+                    {
+                        ErrorMessage = _messageResolver.GetMessage(response);
                     }
                 }
             }
@@ -146,7 +178,7 @@ namespace AdaaMobile.ViewModels
 
         public void GroupEmployees()
         {
-
+            ErrorMessage = null;
             var sorted = from emp in _allEmployees
                          orderby emp.UserName
                          group emp by emp.NameSort into empGroup
@@ -159,21 +191,10 @@ namespace AdaaMobile.ViewModels
             OnPropertyChanged("GroupedEmployees");
         }
 
-        //public async void GetGroupedSubordinates()
-        //{
-        //    var sorted2 = from emp in allSubordinates
-        //                  orderby emp.UserName
-        //                  group emp by emp.NameSort into empGroup
-        //                  select new Grouping<string, DelegateSubordinate>(empGroup.Key, empGroup);
-
-        //    var subordinatesGrouped = new ObservableCollection<Grouping<string, DelegateSubordinate>>(sorted2);
-
-        //    _groupedSubordinates = subordinatesGrouped;
-        //    OnPropertyChanged("GroupedSubordinates");
-        //}
 
         public bool Search(string filter)
         {
+            
             if (_allEmployees == null) return false;
             if (string.IsNullOrWhiteSpace(filter))
             {
@@ -183,13 +204,19 @@ namespace AdaaMobile.ViewModels
             else
             {
                 GroupingEnabled = false;
-                var list = _allEmployees.Where(p => p.UserName.ToLower().Contains(filter.ToLower()));
-
                 _notgroupedEmployees = new ObservableCollection<Employee>();
-                foreach (var item in list.ToList())
+                var list = _allEmployees.Where(p => p.UserName.ToLower().Contains(filter.ToLower())).ToList();
+                if (list.Count == 0)
                 {
-                    _notgroupedEmployees.Add(item);
+                    ErrorMessage = AppResources.NoData;
+                }
+                else {
+                    ErrorMessage = null;
+                    foreach (var item in list)
+                    {
+                        _notgroupedEmployees.Add(item);
 
+                    }
                 }
                 OnPropertyChanged("NotGroupedEmployees");
                 return true;

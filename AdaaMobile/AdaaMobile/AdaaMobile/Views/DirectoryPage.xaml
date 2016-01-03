@@ -8,6 +8,11 @@
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              BackgroundColor="White"
              >
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:BooleanNegateConverter x:Key="BooleanNegateConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
   <Grid Padding="0,0,0,10">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
@@ -23,13 +28,14 @@
       TextColor="Black"
       PlaceholderColor="#FFCCCCCC"
       FontSize="Small"
+      IsEnabled="{Binding IsBusy,Converter={StaticResource BooleanNegateConverter}}"
       Placeholder="{ext:Translate SearchAllContacts}"
       >
     </SearchBar>
 
-    <!--IsGroupingEnabled="True"
-              GroupDisplayBinding="{Binding Key}"
-              GroupShortNameBinding="{Binding Key}"-->
+   <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"
+          Text="{Binding ErrorMessage}" TextColor="Black" BackgroundColor="Transparent"
+          />
     <ListView
     x:Name="EmployeesListView"
       Grid.Row="1"
