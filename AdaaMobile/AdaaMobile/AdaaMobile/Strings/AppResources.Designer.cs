@@ -467,6 +467,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First Location.
+        /// </summary>
+        public static string FirstLocation {
+            get {
+                return ResourceManager.GetString("FirstLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First Seen.
         /// </summary>
         public static string FirstSeen {
@@ -589,6 +598,15 @@ namespace AdaaMobile.Strings {
         public static string LanguageSaved {
             get {
                 return ResourceManager.GetString("LanguageSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Location.
+        /// </summary>
+        public static string LastLocation {
+            get {
+                return ResourceManager.GetString("LastLocation", resourceCulture);
             }
         }
         

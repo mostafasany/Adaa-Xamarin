@@ -511,4 +511,10 @@
   <data name="Personal" xml:space="preserve">
     <value>Personal</value>
   </data>
+  <data name="FirstLocation" xml:space="preserve">
+    <value>First Location</value>
+  </data>
+  <data name="LastLocation" xml:space="preserve">
+    <value>Last Location</value>
+  </data>
 </root>
