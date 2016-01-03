@@ -64,6 +64,7 @@ x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
 
           </controls:ExtendedGrid.RowDefinitions>
           <controls:ExtendedEntry  Grid.Row="0" HasBorder="false"
+                                   HorizontalTextAlignment="Start"
                                    PlaceholderTextColor="Gray"
                                    BackgroundColor="White"
                                    TextColor="{StaticResource AppBackgroundNormal}"
@@ -74,6 +75,7 @@ x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
                    BackgroundColor="{StaticResource AppBackgroundNormal}" />
           <controls:ExtendedEntry
             Grid.Row="2" HasBorder="false"
+            HorizontalTextAlignment="Start"
             PlaceholderTextColor="Gray"
             BackgroundColor="White"
             TextColor="{StaticResource AppBackgroundNormal}"

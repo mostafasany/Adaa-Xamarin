@@ -425,7 +425,7 @@
     <value>الخدمات</value>
   </data>
   <data name="InvalidSessionMessage" xml:space="preserve">
-    <value>خطأ - سيتم تحويلك لصفحة الدخول</value>
+    <value>عذرا- تم خروجك من قبل السيرفر، سيتم تحويلك لصفحة الدخول</value>
   </data>
   <data name="ITServicesDesk" xml:space="preserve">
     <value>خدمات الدعم التقني</value>
@@ -485,7 +485,7 @@
     <value>برجاء ادخال اسم المستخدم و كلمة المرور</value>
   </data>
   <data name="RemoveDelegation" xml:space="preserve">
-    <value>Remove Delegation</value>
+    <value>مسح الانتداب</value>
   </data>
   <data name="SearchAllContacts" xml:space="preserve">
     <value>البحث في جميع الحسابات</value>
@@ -503,6 +503,12 @@
     <value>Please enter missing fields</value>
   </data>
   <data name="TextLimit" xml:space="preserve">
-    <value>Text limit</value>
+    <value>الحد الأقصى</value>
+  </data>
+  <data name="DepartureTime" xml:space="preserve">
+    <value>ميعاد المغادرة</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>شخصي</value>
   </data>
 </root>

@@ -15,6 +15,8 @@ namespace AdaaMobile.Views.DayPass
             InitializeComponent();
             _dayPassViewModel = ViewModels.Locator.Default.DayPassViewModel;
             BindingContext = _dayPassViewModel;
+            ReasonTypePicker.Items.Add(AppResources.Work);
+            ReasonTypePicker.Items.Add(AppResources.Personal);
             ReasonTypeButton.Clicked += ReasonTypeButton_Clicked;
             ReasonTypePicker.SelectedIndexChanged += ReasonTypePicker_SelectedIndexChanged;
             Action action = () =>
@@ -28,7 +30,7 @@ namespace AdaaMobile.Views.DayPass
             EndTimeBtn.Clicked += EndTimeBtn_Clicked;
             ReasonEditor.Behaviors.Add(new MaxLengthValidator() { MaxLength = 60 });
             ReasonEditor.TextChanged += ReasonEditor_TextChanged;
-			TextLimit.Text = string.Format("{0}/{1}", 0, 60);
+            TextLimit.Text = string.Format("{0}/{1}", 0, 60);
         }
 
         private void ReasonEditor_TextChanged(object sender, TextChangedEventArgs e)
