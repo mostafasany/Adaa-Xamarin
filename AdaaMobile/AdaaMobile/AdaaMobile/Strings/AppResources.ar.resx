@@ -425,7 +425,7 @@
     <value>الخدمات</value>
   </data>
   <data name="InvalidSessionMessage" xml:space="preserve">
-    <value>خطأ - سيتم تحويلك لصفحة الدخول</value>
+    <value>عذرا- تم خروجك من قبل السيرفر، سيتم تحويلك لصفحة الدخول</value>
   </data>
   <data name="ITServicesDesk" xml:space="preserve">
     <value>خدمات الدعم التقني</value>
