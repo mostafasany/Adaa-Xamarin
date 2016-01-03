@@ -314,6 +314,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Departure time.
+        /// </summary>
+        public static string DepartureTime {
+            get {
+                return ResourceManager.GetString("DepartureTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deprature Time.
         /// </summary>
         public static string DepratureTime {
@@ -863,6 +872,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Personal.
+        /// </summary>
+        public static string Personal {
+            get {
+                return ResourceManager.GetString("Personal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter missing fields.
         /// </summary>
         public static string PleaseEnterMissingFields {
@@ -1187,7 +1205,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Name.
+        ///   Looks up a localized string similar to UserName.
         /// </summary>
         public static string UserName {
             get {

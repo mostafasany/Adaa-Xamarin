@@ -505,4 +505,10 @@
   <data name="TextLimit" xml:space="preserve">
     <value>Text limit</value>
   </data>
+  <data name="DepartureTime" xml:space="preserve">
+    <value>Departure time</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Personal</value>
+  </data>
 </root>
