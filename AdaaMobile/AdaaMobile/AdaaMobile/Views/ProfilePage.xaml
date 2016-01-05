@@ -53,6 +53,7 @@
                           VerticalOptions="Center"
                           HorizontalOptions="Center"
                           Source="{Binding Image}"
+                          Aspect="Fill"
                            >
     </controls:CircleImage>
 

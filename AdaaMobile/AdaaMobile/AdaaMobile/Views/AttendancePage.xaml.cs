@@ -96,7 +96,7 @@ namespace AdaaMobile.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            NavigationPage.SetBackButtonTitle(this, "ba");
+            NavigationPage.SetBackButtonTitle(this, "");
             try
             {
                 if (_attendanceViewModel.CurrentAttendance == null)
@@ -148,7 +148,7 @@ namespace AdaaMobile.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnTabTapped(object sender, EventArgs e)
+		private async void OnTabTapped(object sender, EventArgs e)
         {
             var button = (Button)sender;
             if (button == _lastTappedTab) return;
@@ -164,7 +164,17 @@ namespace AdaaMobile.Views
             //Switch to different modes based on tapped button
             if (button == AttendanceButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Attendance)
             {
-                _attendanceViewModel.SwitchMode(AttendanceMode.Attendance);
+				await _attendanceViewModel.SwitchMode(AttendanceMode.Attendance);
+				try
+				{
+
+						if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
+							SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count - 1]);
+				}
+				catch
+				{
+					//ignored
+				}
             }
             else if (button == ExceptionsButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Exceptions)
             {

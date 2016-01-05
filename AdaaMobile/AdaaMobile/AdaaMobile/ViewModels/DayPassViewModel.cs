@@ -252,6 +252,7 @@ namespace AdaaMobile.ViewModels
                     }
                     else
                     {
+						DayPassTasks = null;
                         ShowNoTasks = true;
                     }
 

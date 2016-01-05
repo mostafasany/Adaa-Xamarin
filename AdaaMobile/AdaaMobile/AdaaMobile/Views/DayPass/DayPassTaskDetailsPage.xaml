@@ -76,7 +76,7 @@
 
           <controls:ImageButton Grid.Column="0"
                         Text= "{ext:Translate Accept}"
-                   Command="{Binding ApproveCommand}"
+                   x:Name="ApproveBtn"
                    ImageHeightRequest="18"
                    ImageWidthRequest="18"
                   VerticalOptions="FillAndExpand"
@@ -94,9 +94,10 @@
             </controls:ImageButton.Source>
           </controls:ImageButton>
 
-          <controls:ImageButton Grid.Column="1"
+          <controls:ImageButton
+          x:Name="RejectBtn"
+           Grid.Column="1"
                    Text= "{ext:Translate Reject}"
-                   Command="{Binding RejectCommand}"
                    ImageHeightRequest="18"
                    ImageWidthRequest="18"
                    VerticalOptions="FillAndExpand"

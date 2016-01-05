@@ -22,7 +22,18 @@ namespace AdaaMobile.Views.DayPass
             _taskDetailsViewmodel.CurrentTask = task;
             BindingContext = _taskDetailsViewmodel;
             Title = AppResources.TaskDetails;
+			ApproveBtn.Clicked += ApproveBtn_Clicked;
+			RejectBtn.Clicked+= RejectBtn_Clicked;
+        }
 
+        void RejectBtn_Clicked (object sender, EventArgs e)
+        {
+			_taskDetailsViewmodel.RejectCommand.Execute (null);
+        }
+
+        void ApproveBtn_Clicked (object sender, EventArgs e)
+        {
+			_taskDetailsViewmodel.ApproveCommand.Execute (null);
         }
 
         protected override async void OnAppearing()

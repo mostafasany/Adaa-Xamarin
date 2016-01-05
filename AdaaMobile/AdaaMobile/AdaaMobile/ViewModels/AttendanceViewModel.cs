@@ -216,7 +216,7 @@ namespace AdaaMobile.ViewModels
             DaysList = daysList;
         }
 
-        public async void SwitchMode(AttendanceMode mode)
+		public async Task SwitchMode(AttendanceMode mode)
         {
 			if (EndDate >= StartDate && (EndDate - StartDate).Days > LimitRangeInDays ) {
 				await _dialogManager.DisplayAlert (AppResources.ApplicationName, "Please select valid intreval, maximum is one month", AppResources.Ok);

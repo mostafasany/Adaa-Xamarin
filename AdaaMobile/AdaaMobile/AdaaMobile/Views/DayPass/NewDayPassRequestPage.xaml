@@ -17,13 +17,14 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
+  <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill">
   <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
         Padding="10,10,10,20"
         >
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
-      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
     <Grid
@@ -129,7 +130,7 @@
           BackgroundColor="{StaticResource AppBackgroundNormal}"
       HorizontalOptions="Fill"
               />
-        <Grid Grid.Row="5" HorizontalOptions="Fill">
+        <Grid Grid.Row="5" HorizontalOptions="Fill" IsVisible="{Binding ReturnToday}">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
@@ -154,6 +155,7 @@
 
         <controls:ExtendedButton
          x:Name="EndTimeBtn"
+         IsVisible="{Binding ReturnToday}"
          Grid.Row="6"
          BackgroundColor="Transparent"
          HorizontalOptions="Start"
@@ -192,7 +194,7 @@
     </Grid>
 
     <Grid
-    Grid.Row="2"
+    Grid.Row="1"
     ColumnSpacing="8"  >
       <controls:ExtendedGrid ColumnSpacing="15"
                        VerticalOptions="Fill" Padding="10,10,10,10"
@@ -203,7 +205,7 @@
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
-          <RowDefinition Height="*"/>
+          <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
 
@@ -273,12 +275,17 @@
           BackgroundColor="Transparent"
           TextColor="Black"
           Text="{Binding Reason}"
-          MinimumHeightRequest="40"
+          MinimumHeightRequest="140"
           >
 
         </Editor>
 
-        <Grid Grid.Row="5" HorizontalOptions="Fill">
+       
+
+      </controls:ExtendedGrid>
+
+      </Grid>
+       <Grid Grid.Row="2" HorizontalOptions="Fill">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
@@ -299,11 +306,6 @@
          FontSize="{x:Static helpers:FontHelper.MilliFontSize}"/>
         </Grid>
 
-      </controls:ExtendedGrid>
-
-
-
-    </Grid>
 
     <ActivityIndicator  IsRunning="{Binding IsBusy}"
                      HeightRequest="50" WidthRequest="50"
@@ -311,5 +313,5 @@
                      VerticalOptions="Center" HorizontalOptions="Center"/>
 
   </Grid>
-
+  </ScrollView>
 </ContentPage>

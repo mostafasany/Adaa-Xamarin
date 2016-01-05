@@ -128,6 +128,7 @@ namespace AdaaMobile.ViewModels
                         if (!string.IsNullOrEmpty(response.Result.Message))
                         {
                             await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
+							_navigationService.GoBack();
                         }
                     }
                     else
@@ -180,6 +181,7 @@ namespace AdaaMobile.ViewModels
                         if (!string.IsNullOrEmpty(response.Result.Message))
                         {
                             await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
+							_navigationService.GoBack();
                         }
                     }
                     else
