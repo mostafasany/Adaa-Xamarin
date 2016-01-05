@@ -49,7 +49,7 @@
           <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackLayout Grid.Row="0" Padding="17,12,0,0">
+        <StackLayout Grid.Row="0" Padding="0,12,0,0">
           <Label          
           x:Name="LanguageButton"
           BackgroundColor="Transparent"

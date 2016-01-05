@@ -39,6 +39,7 @@
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\ColumnsPanel.cs" />
+    <Compile Include="Controls\ExtendedButton.cs" />
     <Compile Include="Controls\ExtendedGrid.cs" />
     <Compile Include="Controls\ExtendedSwitch.cs" />
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />

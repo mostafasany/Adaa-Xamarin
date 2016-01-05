@@ -65,8 +65,8 @@
                           HorizontalOptions="Center"
                           Grid.RowSpan="2" Padding="0,0,6,0">
     <!--User Circle Profile-->
-    <controls:CircleImage HeightRequest="70"
-                          WidthRequest="70"
+    <controls:CircleImage HeightRequest="74"
+                          WidthRequest="74"
                           BorderThickness="2"
                           BorderColor="{StaticResource YellowAccent}"
                           VerticalOptions="Center"

@@ -1,0 +1,68 @@
+﻿using AdaaMobile.Controls;
+using AdaaMobile.iOS.CustomRenderers;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
+
+[assembly: ExportRenderer(typeof(ExtendedButton), typeof(ExtendedButtonRenderer))]
+
+namespace AdaaMobile.iOS.CustomRenderers
+{
+    public class ExtendedButtonRenderer : ButtonRenderer
+    {
+        /// <summary>
+        /// Called when [element changed].
+        /// </summary>
+        /// <param name="e">The e.</param>
+        protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
+        {
+            base.OnElementChanged(e);
+
+            var element = this.Element;
+
+            if (element == null || this.Control == null)
+            {
+                return;
+            }
+
+            this.Control.VerticalAlignment = this.Element.VerticalContentAlignment.ToContentVerticalAlignment();
+            this.Control.HorizontalAlignment = this.Element.HorizontalContentAlignment.ToContentHorizontalAlignment();
+        }
+
+        /// <summary>
+        /// Handles the <see cref="E:ElementPropertyChanged" /> event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "VerticalContentAlignment":
+                    this.Control.VerticalAlignment = this.Element.VerticalContentAlignment.ToContentVerticalAlignment();
+                    break;
+                case "HorizontalContentAlignment":
+                    this.Control.HorizontalAlignment = this.Element.HorizontalContentAlignment.ToContentHorizontalAlignment();
+                    break;
+                default:
+                    base.OnElementPropertyChanged(sender, e);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Gets the element.
+        /// </summary>
+        /// <value>The element.</value>
+        public new ExtendedButton Element
+        {
+            get
+            {
+                return base.Element as ExtendedButton;
+            }
+        }
+    }
+}

@@ -122,6 +122,8 @@
     <Compile Include="..\AdaaMobile\Controls\ImageButton\ImageButtonRenderer.shared.cs">
       <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
     </Compile>
+    <Compile Include="CustomRenderers\AlignmentExtensions.cs" />
+    <Compile Include="CustomRenderers\ExtendedButtonRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedEntryRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedSwitch\ExtendedSwitchRenderer.cs" />
