@@ -176,6 +176,7 @@
     <BundleResource Include="Resources\subordinate%402x.png" />
     <BundleResource Include="Resources\subordinate%403x.png" />
     <BundleResource Include="Resources\arrow.png" />
+    <BundleResource Include="Resources\chevronblue.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">

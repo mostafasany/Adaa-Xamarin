@@ -25,6 +25,7 @@
        HasUnevenRows="False"
        RowHeight="70"
        SeparatorColor="Transparent"
+       BackgroundColor="Transparent"
               >
       <ListView.ItemTemplate>
         <DataTemplate>
