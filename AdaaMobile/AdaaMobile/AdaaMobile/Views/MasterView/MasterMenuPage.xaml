@@ -7,6 +7,7 @@
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              x:Class="AdaaMobile.Views.MasterView.MasterMenuPage"
              BackgroundColor="{StaticResource SideMenuBackgroundNormal}"
+
     >
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -15,7 +16,7 @@
       <Thickness x:Key="InnerStackPadding" Top="6" Bottom="6"/>
     </ResourceDictionary>
   </ContentPage.Resources>
-  <Grid >
+  <Grid>
     
     <Image  VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="Fill" >
       <Image.Source>
