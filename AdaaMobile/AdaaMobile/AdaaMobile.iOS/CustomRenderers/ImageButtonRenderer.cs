@@ -120,14 +120,16 @@ namespace AdaaMobile.CustomRenderers
         /// <param name="targetButton">The button to align.</param>
 		private static void AlignToLeft(int widthRequest, UIButton targetButton)
         {
-            targetButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Left;
+			targetButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Center;
             targetButton.TitleLabel.TextAlignment = UITextAlignment.Left;
 
-			var titleInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*2, CONTROL_PADDING,  CONTROL_PADDING);
+			var titleInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*3, CONTROL_PADDING,  CONTROL_PADDING*3);
             targetButton.TitleEdgeInsets = titleInsets;
 
-			var imageInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*2, CONTROL_PADDING,  CONTROL_PADDING);
+			var imageInsets = new UIEdgeInsets(CONTROL_PADDING, CONTROL_PADDING*3, CONTROL_PADDING,  CONTROL_PADDING*3);
 			targetButton.ImageEdgeInsets = imageInsets;
+
+	
         }
 
         /// <summary>
