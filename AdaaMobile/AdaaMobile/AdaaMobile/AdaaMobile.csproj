@@ -89,6 +89,7 @@
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Helpers\SvgAssembly.cs" />
     <Compile Include="Helpers\UserSelectionService.cs" />
+    <Compile Include="Models\Request\DaypassApproveBParameters.cs" />
     <Compile Include="Models\Response\DayPassRequest.cs" />
     <Compile Include="Models\Response\DayPassTask.cs" />
     <Compile Include="Models\Response\DelegateSubordinate.cs" />

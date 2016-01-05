@@ -190,9 +190,15 @@ namespace AdaaMobile.DataServices
             return await request.GetAsync<DayPassTasksResponse>(token);
         }
 
-        public async Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync(DaypassApproveQParameters parameters, CancellationToken? token = null)
+        public async Task<ResponseWrapper<DayPassApproveResponse>> DayPassApproveAsync(DaypassApproveQParameters qParameters, DaypassApproveBParameters bParamters, CancellationToken? token = null)
         {
-            throw new NotImplementedException();
+            qParameters.Server = Server;
+            var request = _requestFactory();
+            request.ResultContentType = ContentType.Xml;
+            request.RequestUrl = BaseUrl.AppendQueryString(qParameters);
+
+            var stringContent = new StringContent(bParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
+            return await request.PostAsync<DayPassApproveResponse>(stringContent);
         }
 
 

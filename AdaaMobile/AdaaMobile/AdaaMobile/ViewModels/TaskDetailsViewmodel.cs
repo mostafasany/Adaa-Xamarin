@@ -57,13 +57,18 @@ namespace AdaaMobile.ViewModels
             _navigationService = navigationService;
             _dialogManager = dialogManager;
             _messageResolver = messageResolver;
+            ApproveCommand = new AsyncExtendedCommand(DoApproveCommand);
+            RejectCommand = new AsyncExtendedCommand(DoRejectCommand);
 
         }
+
+
 
         #endregion
 
         #region Commands
-
+        public AsyncExtendedCommand ApproveCommand { get; set; }
+        public AsyncExtendedCommand RejectCommand { get; set; }
         #endregion
 
         #region Methods
@@ -89,6 +94,111 @@ namespace AdaaMobile.ViewModels
             }
             finally
             {
+                IsBusy = false;
+            }
+        }
+
+
+        private async Task DoRejectCommand()
+        {
+            try
+            {
+                ApproveCommand.CanExecute = false;
+                IsBusy = true;
+                BusyMessage = AppResources.Loading;
+
+                {
+                    var qParamters = new DaypassApproveQParameters()
+                    {
+                        Langid = _appSettings.Language,
+                        UserToken = _appSettings.UserToken,
+                        StartTime = CurrentTask.StartTime,
+                        approve = "no",
+                        Date = CurrentTask.Date,
+                        SubID = CurrentTask.UserId
+                    };
+                    var bodyParameter = new DaypassApproveBParameters()
+                    {
+                        comment = ""
+                    };
+                    var response = await _dataService.DayPassApproveAsync(qParamters, bodyParameter);
+
+                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
+                    {
+                        if (!string.IsNullOrEmpty(response.Result.Message))
+                        {
+                            await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
+                        }
+                    }
+                    else
+                    {
+                        string message = _messageResolver.GetMessage(response);
+                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Show error
+#pragma warning disable 4014
+                _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.SomethingErrorHappened, AppResources.Ok);
+#pragma warning restore 4014
+            }
+            finally
+            {
+                ApproveCommand.CanExecute = true;
+                IsBusy = false;
+            }
+        }
+
+        private async Task DoApproveCommand()
+        {
+            try
+            {
+                ApproveCommand.CanExecute = false;
+                IsBusy = true;
+                BusyMessage = AppResources.Loading;
+
+                {
+                    var qParamters = new DaypassApproveQParameters()
+                    {
+                        Langid = _appSettings.Language,
+                        UserToken = _appSettings.UserToken,
+                        StartTime = CurrentTask.StartTime,
+                        approve = "Yes",
+                        Date = CurrentTask.Date,
+                        SubID = CurrentTask.UserId
+                    };
+                    var bodyParameter = new DaypassApproveBParameters()
+                    {
+                        comment = ""
+                    };
+                    var response = await _dataService.DayPassApproveAsync(qParamters, bodyParameter);
+
+                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
+                    {
+                        if (!string.IsNullOrEmpty(response.Result.Message))
+                        {
+                            await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
+                        }
+                    }
+                    else
+                    {
+                        string message = _messageResolver.GetMessage(response);
+                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Show error
+#pragma warning disable 4014
+                _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.SomethingErrorHappened, AppResources.Ok);
+#pragma warning restore 4014
+            }
+            finally
+            {
+                ApproveCommand.CanExecute = true;
                 IsBusy = false;
             }
         }

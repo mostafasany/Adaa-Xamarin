@@ -31,9 +31,9 @@
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
-          <RowDefinition Height="*"/>
+          <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <controls:RoundedBoxView
              BackgroundColor="{StaticResource AppBackgroundNormal}"
              CornerRadius="{StaticResource CornerRadius}"
@@ -47,8 +47,8 @@
           <dayPass:RowInfoControl Title="{ext:Translate EmployeeID}" Value="{Binding UserId}"/>
           <dayPass:RowInfoControl Title="{ext:Translate FullName}" Value="{Binding UserName}"/>
           <dayPass:RowInfoControl Title="{ext:Translate Department}" Value="{Binding Department}"/>
-  </StackLayout>
-        
+        </StackLayout>
+
         <controls:RoundedBoxView
              BackgroundColor="{StaticResource AppBackgroundNormal}"
              CornerRadius="{StaticResource CornerRadius}"
@@ -67,6 +67,52 @@
           <dayPass:RowInfoControl Title="{ext:Translate ReasonType}" Value="{Binding ReasonType}"/>
           <dayPass:RowInfoControl Title="{ext:Translate Reason}" Value="{ext:Translate EmptyPlaceHolder}"/>
         </StackLayout>
+
+        <Grid Grid.Row="2">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <controls:ImageButton Grid.Column="0"
+                        Text= "{ext:Translate Accept}"
+                   Command="{Binding ApproveCommand}"
+                   ImageHeightRequest="18"
+                   ImageWidthRequest="18"
+                  VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="Green"
+                   TextColor="White"
+
+                >
+            <controls:ImageButton.HeightRequest>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36"/>
+            </controls:ImageButton.HeightRequest>
+
+            <controls:ImageButton.Source>
+              <OnPlatform x:TypeArguments="ImageSource" WinPhone="right.png" Android="right.png" iOS="right"/>
+            </controls:ImageButton.Source>
+          </controls:ImageButton>
+
+          <controls:ImageButton Grid.Column="1"
+                   Text= "{ext:Translate Reject}"
+                   Command="{Binding RejectCommand}"
+                   ImageHeightRequest="18"
+                   ImageWidthRequest="18"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="Red"
+                   TextColor="White"
+                >
+            <controls:ImageButton.HeightRequest>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36"/>
+            </controls:ImageButton.HeightRequest>
+
+            <!--<controls:ImageButton.Source>
+              <OnPlatform x:TypeArguments="ImageSource" WinPhone="right.png" Android="right.png" iOS="right"/>
+            </controls:ImageButton.Source>-->
+          </controls:ImageButton>
+        </Grid>
       </Grid>
     </ScrollView>
 
