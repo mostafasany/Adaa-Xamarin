@@ -1,5 +1,6 @@
 ﻿using AdaaMobile.Models;
 using AdaaMobile.Models.Response;
+using AdaaMobile.Strings;
 using Xamarin.Forms;
 
 namespace AdaaMobile.Views.DayPass
@@ -15,13 +16,14 @@ namespace AdaaMobile.Views.DayPass
             NavigationPage.SetBackButtonTitle(this, "");
             this.request = request;
             this.BindingContext = request;
+            Title = AppResources.RequestDetails;
 
         }
 
-		protected override void OnAppearing ()
-		{
-			base.OnAppearing ();
-			NavigationPage.SetBackButtonTitle (this, string.Empty);
-		}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            NavigationPage.SetBackButtonTitle(this, string.Empty);
+        }
     }
 }

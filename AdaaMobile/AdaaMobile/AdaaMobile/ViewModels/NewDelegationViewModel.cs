@@ -23,6 +23,7 @@ namespace AdaaMobile.ViewModels
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
         private readonly UserSelectionService _userSelectionService;
+        private readonly INavigationService _navigationService;
         #endregion
 
         #region Properties
@@ -91,14 +92,14 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public NewDelegationViewModel(IDataService dataService, IDialogManager dialogManager, IAppSettings appSettings, IRequestMessageResolver messageResolver, UserSelectionService userSelectionService)
+        public NewDelegationViewModel(IDataService dataService, IDialogManager dialogManager, INavigationService navigationService, IAppSettings appSettings, IRequestMessageResolver messageResolver, UserSelectionService userSelectionService)
         {
             _dataService = dataService;
             _dialogManager = dialogManager;
             _appSettings = appSettings;
             _messageResolver = messageResolver;
             _userSelectionService = userSelectionService;
-
+            _navigationService = navigationService;
             NewDelegationCommand = new AsyncExtendedCommand(NewDelegateAsync);
             SelectProfileCommand = new AsyncExtendedCommand<string>(SelectProfileAsync);
         }
@@ -142,6 +143,7 @@ namespace AdaaMobile.ViewModels
                     if (!string.IsNullOrEmpty(response.Result.Message))
                     {
                         await _dialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Message, AppResources.Ok);
+                        _navigationService.GoBack();
                     }
                 }
                 else

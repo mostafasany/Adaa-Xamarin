@@ -82,12 +82,12 @@
                          <Label
   x:Name="NoRequestsLabel"
     Grid.Row="0"
-    HorizontalOptions="FillAndExpand"
     VerticalOptions="FillAndExpand"
    TextColor="Black" BackgroundColor="Transparent"
-   HorizontalTextAlignment="Center"
   IsVisible="{Binding ShowNoDelegations}"
-   FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+    FontSize="Small"
+  HorizontalTextAlignment="Center"
+  HorizontalOptions="Center"
    Text="{ext:Translate NoData}"/>
   </Grid>
 

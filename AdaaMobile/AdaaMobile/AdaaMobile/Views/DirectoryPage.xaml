@@ -35,6 +35,9 @@
 
    <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"
           Text="{Binding ErrorMessage}" TextColor="Black" BackgroundColor="Transparent"
+           FontSize="Small"
+  HorizontalTextAlignment="Center"
+
           />
     <ListView
     x:Name="EmployeesListView"

@@ -4,6 +4,7 @@ using AdaaMobile.Models;
 using AdaaMobile.Models.Response;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.Views.DayPass
 {
@@ -20,13 +21,14 @@ namespace AdaaMobile.Views.DayPass
             _taskDetailsViewmodel = ViewModels.Locator.Default.TaskDetailsViewmodel;
             _taskDetailsViewmodel.CurrentTask = task;
             BindingContext = _taskDetailsViewmodel;
+            Title = AppResources.TaskDetails;
 
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-			NavigationPage.SetBackButtonTitle (this, string.Empty);
+            NavigationPage.SetBackButtonTitle(this, string.Empty);
             try
             {
                 ResponseWrapper<UserProfile> resposne = await _taskDetailsViewmodel.LoadProfileAsync(task.UserId);

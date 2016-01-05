@@ -517,4 +517,7 @@
   <data name="LastLocation" xml:space="preserve">
     <value>أخر موقع</value>
   </data>
+  <data name="TaskDetails" xml:space="preserve">
+    <value>تفاصيل المهمة</value>
+  </data>
 </root>

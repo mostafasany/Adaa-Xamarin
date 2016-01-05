@@ -203,7 +203,7 @@
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
@@ -273,7 +273,7 @@
           BackgroundColor="Transparent"
           TextColor="Black"
           Text="{Binding Reason}"
-          
+          MinimumHeightRequest="40"
           >
 
         </Editor>

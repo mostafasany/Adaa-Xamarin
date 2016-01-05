@@ -364,7 +364,7 @@
     <value>Work</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>UserName</value>
+    <value>Username</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -516,5 +516,8 @@
   </data>
   <data name="LastLocation" xml:space="preserve">
     <value>Last Location</value>
+  </data>
+  <data name="TaskDetails" xml:space="preserve">
+    <value>Task details</value>
   </data>
 </root>

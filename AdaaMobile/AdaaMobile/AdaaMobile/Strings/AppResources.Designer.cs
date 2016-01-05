@@ -1169,6 +1169,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Task details.
+        /// </summary>
+        public static string TaskDetails {
+            get {
+                return ResourceManager.GetString("TaskDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TASK DETAILS.
         /// </summary>
         public static string TaskDetailsCap {
@@ -1223,7 +1232,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UserName.
+        ///   Looks up a localized string similar to Username.
         /// </summary>
         public static string UserName {
             get {
