@@ -29,7 +29,7 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
             base.OnElementChanged(e);
             UpdateAlignment();
-            UpdateFont();
+            //UpdateFont();
         }
 
 
