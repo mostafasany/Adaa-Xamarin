@@ -8,6 +8,7 @@ namespace AdaaMobile.Views.Delegation
         public NewDelegateInfoControl()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         #region Title property

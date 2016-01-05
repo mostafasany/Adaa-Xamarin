@@ -12,6 +12,7 @@ namespace AdaaMobile.Views.DayPass
         public DayPassRequestDetailsPage(DayPassRequest request)
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             this.request = request;
             this.BindingContext = request;
 

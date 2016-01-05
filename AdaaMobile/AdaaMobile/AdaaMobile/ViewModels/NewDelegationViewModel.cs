@@ -172,6 +172,11 @@ namespace AdaaMobile.ViewModels
             //Select User.
             var user = await _userSelectionService.SelectUserAsync(delegateType);
             if (user == null) return;
+            if (LoggedUserInfo.CurrentUserProfile != null && user.UserId == LoggedUserInfo.CurrentUserProfile.UserId)
+            {
+
+                return;
+            }
             //Assign to delegate or subordinate
             switch (delegateType)
             {

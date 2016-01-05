@@ -13,6 +13,7 @@ namespace AdaaMobile.Views.DayPass
         public NewDayPassRequestPage()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             _dayPassViewModel = ViewModels.Locator.Default.DayPassViewModel;
             BindingContext = _dayPassViewModel;
             ReasonTypePicker.Items.Add(AppResources.Work);

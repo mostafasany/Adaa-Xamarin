@@ -12,10 +12,11 @@ namespace AdaaMobile.Views.DayPass
 
         private Button _lastTappedTab;
         private DayPassViewModel _dayPassViewModel;
-		private ToolbarItem _addToolBarItem;
+        private ToolbarItem _addToolBarItem;
         public DayPassPage()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             Title = AppResources.DayPass;
             _dayPassViewModel = ViewModels.Locator.Default.DayPassViewModel;
             BindingContext = _dayPassViewModel;
@@ -31,10 +32,10 @@ namespace AdaaMobile.Views.DayPass
             {
                 this.Navigation.PushAsync(new NewDayPassRequestPage());
             };
-			_addToolBarItem = 
+            _addToolBarItem =
                 new ToolbarItem("", addIcon, action, ToolbarItemOrder.Primary);
-			ToolbarItems.Add (_addToolBarItem);
-		}
+            ToolbarItems.Add(_addToolBarItem);
+        }
 
         private void MyTasksList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -59,7 +60,7 @@ namespace AdaaMobile.Views.DayPass
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-			NavigationPage.SetBackButtonTitle (this, string.Empty);
+            NavigationPage.SetBackButtonTitle(this, string.Empty);
             try
             {
                 _dayPassViewModel.LoadDayPassDataCommand.Execute(null);
@@ -109,14 +110,14 @@ namespace AdaaMobile.Views.DayPass
             //Switch to different modes based on tapped button
             if (button == MyRequestsButton)
             {
-				ToolbarItems.Clear ();
-				ToolbarItems.Add (_addToolBarItem);
+                ToolbarItems.Clear();
+                ToolbarItems.Add(_addToolBarItem);
                 MyRequestsListGrid.IsVisible = true;
                 MyTasksListGrid.IsVisible = false;
             }
             else if (button == MyTasksButton)
             {
-				ToolbarItems.Clear ();
+                ToolbarItems.Clear();
 
                 MyRequestsListGrid.IsVisible = false;
                 MyTasksListGrid.IsVisible = true;

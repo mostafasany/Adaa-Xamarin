@@ -11,6 +11,7 @@ namespace AdaaMobile.Views.Delegation
         public DelegationsPage()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             _delegationViewModel = Locator.Default.DelegationViewModel;
             BindingContext = _delegationViewModel;
             Title = AppResources.MyDelegationsCap;
