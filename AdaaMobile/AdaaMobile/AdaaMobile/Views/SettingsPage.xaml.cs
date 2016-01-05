@@ -19,6 +19,7 @@ namespace AdaaMobile.Views
         public SettingsPage()
         {
             InitializeComponent();
+			NavigationPage.SetBackButtonTitle(this, "");
             Title = AppResources.Settings;
 
             _settingsViewModel = Locator.Default.SettingsViewModel;

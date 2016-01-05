@@ -15,7 +15,7 @@ namespace AdaaMobile.Views
         public HomePage()
         {
             InitializeComponent();
-
+			NavigationPage.SetBackButtonTitle(this, "");
             _homeViewModel = Locator.Container.Resolve<HomeViewModel>();
             BindingContext = _homeViewModel;
 

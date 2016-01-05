@@ -10,6 +10,7 @@ namespace AdaaMobile
 		public OracleServicesPage ()
 		{
 			InitializeComponent ();
+			NavigationPage.SetBackButtonTitle(this, "");
 		}
 	}
 }

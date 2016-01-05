@@ -16,6 +16,8 @@ namespace AdaaMobile.Views
         public UserServicesPage()
         {
             InitializeComponent();
+
+			NavigationPage.SetBackButtonTitle(this, "");
             _userServicesViewModel = Locator.Default.UserAccountServicesViewModel;
             BindingContext = _userServicesViewModel;
 

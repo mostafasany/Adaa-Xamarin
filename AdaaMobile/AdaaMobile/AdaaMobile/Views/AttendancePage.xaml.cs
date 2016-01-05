@@ -28,6 +28,7 @@ namespace AdaaMobile.Views
         public AttendancePage()
         {
             InitializeComponent();
+			NavigationPage.SetBackButtonTitle(this, "");
             _attendanceViewModel = Locator.Default.AttendanceViewModel;
             BindingContext = _attendanceViewModel;
 

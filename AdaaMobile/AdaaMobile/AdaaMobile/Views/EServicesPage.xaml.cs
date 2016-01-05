@@ -10,6 +10,7 @@ namespace AdaaMobile
 		public EServicesPage ()
 		{
 			InitializeComponent ();
+			NavigationPage.SetBackButtonTitle(this, "");
 		}
 	}
 }

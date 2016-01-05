@@ -11,7 +11,7 @@ namespace AdaaMobile.Views
         public ChooseLanguagePage()
 		{
             InitializeComponent();
-		
+			NavigationPage.SetBackButtonTitle(this, "");
 			EnglishButton.Clicked += EnglishButton_Clicked;
             ArabicButton.Clicked += ArabicButton_Clicked1; ;
 

@@ -23,6 +23,7 @@ namespace AdaaMobile.Views
         public DirectoryPage(DirectorySourceType directorySourceType, DirectoryAccessType accessType)
         {
             InitializeComponent();
+			NavigationPage.SetBackButtonTitle(this, "");
             Title = AppResources.Directory;
             this._directorySourceType = directorySourceType;
             this._accessType = accessType;

@@ -14,6 +14,7 @@ namespace AdaaMobile.Views
         public ProfilePage()
         {
             InitializeComponent();
+			NavigationPage.SetBackButtonTitle(this, "");
             _profileViewModel = Locator.Default.ProfileViewModel;
             BindingContext = _profileViewModel;
         }
