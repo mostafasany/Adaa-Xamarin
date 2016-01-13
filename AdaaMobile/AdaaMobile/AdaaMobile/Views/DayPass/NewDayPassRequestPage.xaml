@@ -248,7 +248,7 @@
           BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
           HorizontalOptions="Start"
           VerticalOptions="Fill"
-          Text="{Binding ReasonType}"
+          Text="{Binding LocalizedReasonType}"
           TextColor="{StaticResource AppBackgroundNormal}"
           Font="SemiBold"
           HorizontalContentAlignment="Start"
@@ -278,6 +278,7 @@
           BackgroundColor="Transparent"
           TextColor="Black"
           Text="{Binding Reason}"
+          MaxLength="60"
           HeightRequest="140"
           >
 

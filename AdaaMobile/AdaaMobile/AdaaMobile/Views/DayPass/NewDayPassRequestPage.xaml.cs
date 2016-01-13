@@ -14,22 +14,31 @@ namespace AdaaMobile.Views.DayPass
         {
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
+            Title = AppResources.NewRequest;
+
+            //Assign data context
             _dayPassViewModel = Locator.Default.NewDayPassViewModel;
             BindingContext = _dayPassViewModel;
+
+            //Initialize picker and wire events
             ReasonTypePicker.Items.Add(AppResources.Work);
             ReasonTypePicker.Items.Add(AppResources.Personal);
             ReasonTypeButton.Clicked += ReasonTypeButton_Clicked;
             ReasonTypePicker.SelectedIndexChanged += ReasonTypePicker_SelectedIndexChanged;
+
+            //Add submit action
             Action action = () =>
             {
                 _dayPassViewModel.NewDayPassCommand.Execute(null);
             };
             ToolbarItems.Add(
                 new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
-            Title = AppResources.NewRequest;
+            
+
             StartTimeBtn.Clicked += StartTimeBtn_Clicked;
             EndTimeBtn.Clicked += EndTimeBtn_Clicked;
-            ReasonEditor.Behaviors.Add(new MaxLengthValidator() { MaxLength = 60 });
+
+            //ReasonEditor.Behaviors.Add(new MaxLengthValidator() { MaxLength = 60 });
             ReasonEditor.TextChanged += ReasonEditor_TextChanged;
             TextLimit.Text = string.Format("{0}/{1}", 0, 60);
         }
@@ -61,7 +70,16 @@ namespace AdaaMobile.Views.DayPass
         }
         private void ReasonTypePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _dayPassViewModel.ReasonType = ReasonTypePicker.SelectedIndex == 0 ? "Work" : "Personal";
+            if (ReasonTypePicker.SelectedIndex == 0)
+            {
+                _dayPassViewModel.ReasonType = "Work";
+                _dayPassViewModel.LocalizedReasonType = AppResources.Work;
+            }
+            else
+            {
+                _dayPassViewModel.ReasonType = "Personal";
+                _dayPassViewModel.LocalizedReasonType = AppResources.Personal;
+            }
         }
 
 

@@ -104,6 +104,14 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _reasonType, value); }
         }
 
+        private string _localizedReasonType = AppResources.Work;
+        public string LocalizedReasonType
+        {
+            get { return _localizedReasonType; }
+            set { SetProperty(ref _localizedReasonType, value); }
+        }
+
+
         private TimeSpan _startTimeSpan;
         public TimeSpan StartTimeSpan
         {
