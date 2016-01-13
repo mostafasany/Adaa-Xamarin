@@ -40,6 +40,7 @@
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\ColumnsPanel.cs" />
     <Compile Include="Controls\ExtendedButton.cs" />
+    <Compile Include="Controls\ExtendedEditor.cs" />
     <Compile Include="Controls\ExtendedGrid.cs" />
     <Compile Include="Controls\ExtendedSwitch.cs" />
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="ViewModels\DelegationViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\NewDayPassViewModel.cs" />
     <Compile Include="ViewModels\NewDelegationViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\TaskDetailsViewmodel.cs" />

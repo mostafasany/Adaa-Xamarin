@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using AdaaMobile.DataServices;
+﻿using AdaaMobile.DataServices;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Helpers;
 using Autofac;
-using Xamarin.Forms;
 
 namespace AdaaMobile.ViewModels
 {
@@ -57,6 +50,7 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<ChangePasswordViewModel>();
             cb.RegisterType<DirectoryViewModel>();
             cb.RegisterType<DayPassViewModel>();
+            cb.RegisterType<NewDayPassViewModel>();
             cb.RegisterType<DelegationViewModel>();
             cb.RegisterType<DelegationDetailsViewModel>();
             cb.RegisterType<NewDelegationViewModel>();
@@ -119,6 +113,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<DayPassViewModel>();
+            }
+        }
+
+        public NewDayPassViewModel NewDayPassViewModel
+        {
+            get
+            {
+                return Container.Resolve<NewDayPassViewModel>();
             }
         }
 
