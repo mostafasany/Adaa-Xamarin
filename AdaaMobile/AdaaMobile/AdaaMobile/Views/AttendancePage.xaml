@@ -169,9 +169,10 @@
                                        VerticalOptions="Start"
                                        HorizontalOptions="Fill"
                                        
+                                       
               >
             <controls:HorizontalListView.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" Android="64" iOS="62" WinPhone="80"/>
+              <OnPlatform x:TypeArguments="x:Double" Android="62" iOS="62" WinPhone="80"/>
             </controls:HorizontalListView.HeightRequest>
             <controls:HorizontalListView.ItemTemplate>
               <DataTemplate>
