@@ -277,7 +277,7 @@
           VerticalOptions="FillAndExpand"
           BackgroundColor="Transparent"
           TextColor="Black"
-          Text="{Binding Reason}"
+          Text="{Binding Reason,Mode=TwoWay}"
           MaxLength="60"
           HeightRequest="140"
           >

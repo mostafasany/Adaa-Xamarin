@@ -64,16 +64,15 @@
       IsVisible="True"
       BackgroundColor="Transparent"
       >
-      <Label
-        x:Name="NoRequestsLabel"
-    Grid.Column="0"
-   TextColor="Black" BackgroundColor="Transparent"
-        IsVisible="{Binding ShowNoPendingRequests}"
-    FontSize="Small"
-  HorizontalTextAlignment="Center"
-  HorizontalOptions="Center"
-   Text="{ext:Translate NoData}"/>
-
+      <Label  x:Name="NoRequestsLabel"
+                    Grid.Column="0"
+                    TextColor="Black" BackgroundColor="Transparent"
+                    IsVisible="{Binding ShowNoPendingRequests}"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="{ext:Translate NoData}"/>
       <ListView
          x:Name="MyRequestsList"
          ItemsSource="{Binding PendingRequests}"
@@ -150,14 +149,14 @@
   IsVisible="False"
   BackgroundColor="Transparent"
       >
-      <Label
-  x:Name="NoTasksLabel"
-   TextColor="Black" BackgroundColor="Transparent"
-  IsVisible="{Binding ShowNoTasks}"
-   FontSize="Small"
-  HorizontalTextAlignment="Center"
-  HorizontalOptions="Center"
-   Text="{ext:Translate NoData}"/>
+      <Label  x:Name="NoTasksLabel"
+              TextColor="Black" BackgroundColor="Transparent"
+              IsVisible="{Binding ShowNoTasks}"
+              FontSize="Medium"
+              HorizontalTextAlignment="Center"
+              HorizontalOptions="Center"
+              VerticalOptions="Center"
+              Text="{ext:Translate NoData}"/>
       <ListView
          x:Name="MyTasksList"
          ItemsSource="{Binding DayPassTasks}"

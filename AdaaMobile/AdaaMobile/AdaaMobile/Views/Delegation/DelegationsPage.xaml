@@ -79,16 +79,15 @@
                      HeightRequest="50" WidthRequest="50"
                      VerticalOptions="Center" HorizontalOptions="Center"/>
 
-                         <Label
-  x:Name="NoRequestsLabel"
-    Grid.Row="0"
-    VerticalOptions="FillAndExpand"
-   TextColor="Black" BackgroundColor="Transparent"
-  IsVisible="{Binding ShowNoDelegations}"
-    FontSize="Small"
-  HorizontalTextAlignment="Center"
-  HorizontalOptions="Center"
-   Text="{ext:Translate NoData}"/>
+    <Label  x:Name="NoRequestsLabel"
+                   Grid.Row="0"
+                   TextColor="Black" BackgroundColor="Transparent"
+                   IsVisible="{Binding ShowNoDelegations}"
+                   FontSize="Medium"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   Text="{ext:Translate NoData}"/>
   </Grid>
 
 </ContentPage>

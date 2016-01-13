@@ -175,8 +175,7 @@ namespace AdaaMobile.ViewModels
                         EndTime = EndTimeSpan.ToString(@"hh\:mm"),
                         WillReturn = ReturnToday ? "Yes" : "No",
                         ReasonType = ReasonType,
-
-
+                        
                     };
                     var bodyParameter = new DaypassRequestBParameters()
                     {

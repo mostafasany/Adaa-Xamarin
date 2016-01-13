@@ -33,12 +33,14 @@
       >
     </SearchBar>
 
-   <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"
-          Text="{Binding ErrorMessage}" TextColor="Black" BackgroundColor="Transparent"
-           FontSize="Small"
-  HorizontalTextAlignment="Center"
-
-          />
+   <Label Grid.Row="1" 
+          VerticalOptions="Center" 
+          HorizontalOptions="Center"
+          Text="{Binding ErrorMessage}" 
+          TextColor="Black" 
+          BackgroundColor="Transparent"
+          FontSize="Medium"  
+          HorizontalTextAlignment="Center" />
     <ListView
     x:Name="EmployeesListView"
       Grid.Row="1"

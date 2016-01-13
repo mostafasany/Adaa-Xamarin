@@ -60,6 +60,7 @@
       Padding="15"
       VerticalOptions="Start"
           >
+      <!--TODO:Change binding when Back-end adds the missing value-->
       <dayPass:RowInfoControl Title="{ext:Translate Reason}" Value="{ext:Translate EmptyPlaceHolder}"/>
     </StackLayout>
 
