@@ -11,9 +11,11 @@ namespace AdaaMobile.Controls
     {
         #region MaxLength
 
-        public static readonly BindableProperty MaxLengthProperty = BindableProperty.Create<ExtendedEditor, int>(p => p.MaxLength, 1000000);
+        public static readonly BindableProperty MaxLengthProperty = BindableProperty.Create<ExtendedEditor, int>(p => p.MaxLength, default(int));
         /// <summary>
-        /// Default MaxLength is one million
+        /// A positive value will limit the max length allowed in this Editor.
+        /// Non positive values will clear Limit on Length, ex 0,-1...
+        /// Default is 0, which means no Limit.
         /// </summary>
         public int MaxLength
         {
