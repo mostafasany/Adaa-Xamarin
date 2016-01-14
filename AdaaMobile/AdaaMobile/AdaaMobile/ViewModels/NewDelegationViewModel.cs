@@ -176,7 +176,7 @@ namespace AdaaMobile.ViewModels
             if (user == null) return;
             if (LoggedUserInfo.CurrentUserProfile != null && user.UserId == LoggedUserInfo.CurrentUserProfile.UserId)
             {
-
+                await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.YouCantDelegateYourselfMessage, AppResources.Ok);
                 return;
             }
             //Assign to delegate or subordinate

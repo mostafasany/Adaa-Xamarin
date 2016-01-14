@@ -517,4 +517,7 @@
   <data name="AttendanceAndLeave" xml:space="preserve">
     <value>الحضور و الانصراف</value>
   </data>
+  <data name="YouCantDelegateYourselfMessage" xml:space="preserve">
+    <value>لا يمكنك انتداب نفسك</value>
+  </data>
 </root>

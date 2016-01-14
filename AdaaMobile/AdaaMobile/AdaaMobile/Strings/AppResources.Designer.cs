@@ -1266,5 +1266,14 @@ namespace AdaaMobile.Strings {
                 return ResourceManager.GetString("WrongUsernameOrPassword", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can not Delegate yourself.
+        /// </summary>
+        public static string YouCantDelegateYourselfMessage {
+            get {
+                return ResourceManager.GetString("YouCantDelegateYourselfMessage", resourceCulture);
+            }
+        }
     }
 }

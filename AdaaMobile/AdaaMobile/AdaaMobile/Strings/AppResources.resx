@@ -520,4 +520,7 @@
   <data name="AttendanceAndLeave" xml:space="preserve">
     <value>Attendance</value>
   </data>
+  <data name="YouCantDelegateYourselfMessage" xml:space="preserve">
+    <value>You can not Delegate yourself</value>
+  </data>
 </root>
