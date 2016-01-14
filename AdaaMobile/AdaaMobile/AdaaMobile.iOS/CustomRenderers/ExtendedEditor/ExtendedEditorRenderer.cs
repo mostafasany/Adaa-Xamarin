@@ -21,7 +21,7 @@ namespace AdaaMobile.iOS.CustomRenderers.ExtendedEditor
 
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
-            base.OnElementChanged(e);
+         //   base.OnElementChanged(e);
 
             if (Control == null)
             {
@@ -32,6 +32,15 @@ namespace AdaaMobile.iOS.CustomRenderers.ExtendedEditor
             {
                 SetMaxLength(FormsElement.MaxLength);
             }
+			ExtendedControl.Changed += ExtendedControl_Changed;
+			ExtendedControl.Delegate = new CustomUITextViewDelegate (ExtendedControl);
+        }
+
+
+        void ExtendedControl_Changed (object sender, System.EventArgs e)
+        {
+			Element.Text = ExtendedControl.Text;
+
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

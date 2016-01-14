@@ -3,9 +3,11 @@ using UIKit;
 
 namespace AdaaMobile.iOS.CustomRenderers.ExtendedEditor
 {
-    public class ExtendedUITextView : UITextView
+	public class ExtendedUITextView : UITextView
     {
         public nint MaxLength { get; set; }
+
+	
 
         public override bool ShouldChangeTextInRange(UITextRange inRange, string replacementText)
         {
