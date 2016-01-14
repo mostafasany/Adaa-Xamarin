@@ -17,12 +17,13 @@
     </ResourceDictionary>
   </ContentView.Resources>
   <Grid>
-    <Button VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+    <controls:ExtendedButton
+            Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
             Text="" TextColor="Transparent" BackgroundColor="Transparent"
             Clicked="Button_OnClicked"
       >
 
-    </Button>
+    </controls:ExtendedButton>
     <Grid ColumnSpacing="20" x:Name="ContentGrid" InputTransparent="True">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="13"/>

@@ -36,7 +36,8 @@
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
 
-      <Button Text="{ext:Translate MyRequests}"
+      <controls:ExtendedButton
+            Padding="0" Text="{ext:Translate MyRequests}"
           Grid.Column="0"
           BorderColor="#00676e"
           BorderWidth="1"
@@ -46,7 +47,8 @@
 
         />
 
-      <Button Text="{ext:Translate MyTasks}"
+      <controls:ExtendedButton
+            Padding="0" Text="{ext:Translate MyTasks}"
           Grid.Column="1"
           BorderWidth="1"
           BorderRadius="0"

@@ -59,7 +59,8 @@
 
     </Grid>
 
-    <Button
+    <controls:ExtendedButton
+            Padding="0"
       Grid.Row="1"
       Text="{ext:Translate RemoveDelegation}"
       BackgroundColor="#44007c85"
@@ -69,7 +70,7 @@
       Command="{Binding RemoveCommand}"
             >
 
-    </Button>
+    </controls:ExtendedButton>
     
     <ActivityIndicator  IsRunning="{Binding IsBusy}"
                          HeightRequest="50" WidthRequest="50"

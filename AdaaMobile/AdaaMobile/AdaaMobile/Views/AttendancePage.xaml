@@ -45,7 +45,9 @@
             <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
 
-          <Button Text="{ext:Translate Attendance}"
+          <controls:ExtendedButton
+            Padding="0"
+            Text="{ext:Translate Attendance}"
               Grid.Column="0"
               BorderColor="#00676e"
               BorderWidth="1"
@@ -55,7 +57,8 @@
 
         />
 
-          <Button Text="{ext:Translate Exceptions}"
+          <controls:ExtendedButton
+            Padding="0" Text="{ext:Translate Exceptions}"
               Grid.Column="1"
               BorderWidth="1"
               BorderRadius="0"

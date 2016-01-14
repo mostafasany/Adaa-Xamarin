@@ -46,6 +46,10 @@ namespace AdaaMobile.Droid.CustomRenderers
             {
                 UpdateAlignment();
             }
+            if(e.PropertyName == ExtendedButton.PaddingProperty.PropertyName)
+            {
+                UpdatePadding();
+            }
             //else if (e.PropertyName == Xamarin.Forms.Button.FontProperty.PropertyName)
             //{
             //    UpdateFont();
@@ -54,10 +58,22 @@ namespace AdaaMobile.Droid.CustomRenderers
             base.OnElementPropertyChanged(sender, e);
         }
 
+        private void UpdatePadding()
+        {
+            var element = this.Element as ExtendedButton;
+
+            if (element == null || this.Control == null)
+            {
+                return;
+            }
+            var nativeButton = (global::Android.Widget.Button)this.Control;
+            nativeButton.SetPadding((int)element.Padding.Left, (int)element.Padding.Top, (int)element.Padding.Right, (int)element.Padding.Bottom);
+        }
+
      //   /// <summary>
      //   /// Updates the font
      //   /// </summary>
-	    //private void UpdateFont()
+     //private void UpdateFont()
      //   {
      //       Control.Typeface = Element.Font.ToExtendedTypeface(Context);
      //   }
