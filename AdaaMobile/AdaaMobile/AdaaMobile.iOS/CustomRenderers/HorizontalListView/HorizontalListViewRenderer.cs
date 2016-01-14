@@ -46,7 +46,6 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
 
             base.OnElementChanged(e);
 
-            base.OnElementChanged(e);
             if (e.OldElement != null)
             {
                 Unbind(e.OldElement);

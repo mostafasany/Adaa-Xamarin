@@ -14,26 +14,24 @@ namespace AdaaMobile.iOS.CustomRenderers.ExtendedEditor
             get { return Element as Controls.ExtendedEditor; }
         }
 
-        protected virtual ExtendedUITextView ExtendedControl
+        protected virtual ExtendedUiTextView ExtendedControl
         {
-            get { return Control as ExtendedUITextView; }
+            get { return Control as ExtendedUiTextView; }
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
-         //   base.OnElementChanged(e);
-
-            if (Control == null)
+            base.OnElementChanged(e);
+            if (e.OldElement != null)
             {
-                SetNativeControl(new ExtendedUITextView());
+                //ExtendedControl.Changed -= ExtendedControl_Changed;
             }
-
             if (e.NewElement != null)
             {
+                SetNativeControl(new ExtendedUiTextView());
                 SetMaxLength(FormsElement.MaxLength);
+                //ExtendedControl.Changed += ExtendedControl_Changed;
             }
-			ExtendedControl.Changed += ExtendedControl_Changed;
-			ExtendedControl.Delegate = new CustomUITextViewDelegate (ExtendedControl);
         }
 
 
@@ -57,13 +55,13 @@ namespace AdaaMobile.iOS.CustomRenderers.ExtendedEditor
             if (ExtendedControl != null)
             {
                 //TODO:Test change of limits scenario
-                string text = ExtendedControl.Text;
+                string text = Element.Text;
                 if (!string.IsNullOrEmpty(text))
                 {
                     //Trim Text, if the current text is larger than the new limit
                     if (text.Length > maxLength)
                     {
-                        ExtendedControl.Text = text.Substring(0, maxLength);
+                        Element.Text = text.Substring(0, maxLength);
                     }
                 }
 

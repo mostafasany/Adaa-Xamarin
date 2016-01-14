@@ -107,7 +107,6 @@
     <Compile Include="CustomRenderers\TimePickerRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedSwitch\ExtendedSwitchRenderer.cs" />
-    <Compile Include="CustomRenderers\HorizontalListView\CustomUICollectionViewDelegateFlowLayout.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListCell.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListDataSource.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListDelegate.cs" />
