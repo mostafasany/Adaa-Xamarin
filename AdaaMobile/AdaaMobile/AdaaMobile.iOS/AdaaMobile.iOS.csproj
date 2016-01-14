@@ -133,6 +133,7 @@
     <Compile Include="CustomRenderers\NoLineNavigationRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedEntryRenderer.cs" />
     <Compile Include="CustomRenderers\NoBackButtonPageRenderer.cs" />
+    <Compile Include="CustomRenderers\HorizontalListView\CustomUICollectionViewDelegateFlowLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdaaMobile\AdaaMobile.csproj">
