@@ -56,12 +56,16 @@
               >
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
-          <ViewCell Height="25">
-            <StackLayout VerticalOptions="FillAndExpand"
+          <ViewCell >
+            <Grid 
                          Padding="5"
-                         BackgroundColor="#FFCCCCCC">
+                         BackgroundColor="Transparent">
+              <BoxView HeightRequest="35"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Fill"
+                       BackgroundColor="#FFCCCCCC"/>
               <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center"/>
-            </StackLayout>
+            </Grid>
           </ViewCell>
         </DataTemplate>
       </ListView.GroupHeaderTemplate>
