@@ -4,15 +4,12 @@
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              x:Class="AdaaMobile.Views.AttendancePage"
              BackgroundColor="White"
              >
-  <!--<ContentPage.BackgroundImage>
-    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="home-white"/>
-  </ContentPage.BackgroundImage>-->
+
   <ContentPage.Resources>
     <ResourceDictionary>
       <Color x:Key="TabColor">#00676e</Color>

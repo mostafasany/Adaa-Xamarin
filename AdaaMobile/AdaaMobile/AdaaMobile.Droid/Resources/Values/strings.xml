@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string  name="ApplicationName" >ADAA</string>
+  <string  name="Hello" >Hello</string>
+  <!---For NGraphics, reported only by Compile Time C as error-->
+  <string  name="library_name" >NGraphics</string>
+
+</resources>
