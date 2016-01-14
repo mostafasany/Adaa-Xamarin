@@ -15,9 +15,6 @@ namespace AdaaMobile.Views
 			EnglishButton.Clicked += EnglishButton_Clicked;
             ArabicButton.Clicked += ArabicButton_Clicked1; ;
 
-//			Image i;
-//			i.Aspect = 
-
 		}
 
         void ArabicButton_Clicked1(object sender, EventArgs e)

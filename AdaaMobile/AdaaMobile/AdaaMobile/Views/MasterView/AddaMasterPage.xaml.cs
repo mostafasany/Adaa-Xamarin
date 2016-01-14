@@ -25,7 +25,7 @@ namespace AdaaMobile.Views.MasterView
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			NavigationPage.SetBackButtonTitle (this, "back");
+			NavigationPage.SetBackButtonTitle (this, "");
 		}
         private void SetMenuPage()
         {

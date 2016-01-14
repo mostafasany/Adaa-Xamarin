@@ -323,7 +323,7 @@
               Text="{ext:Translate Delegation}"
                 >
             <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="100" iOS="60"/>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="115" iOS="60"/>
             </controls:ImageButton.HeightRequest>
 
             <controls:ImageButton.ImageHeightRequest>
@@ -352,7 +352,7 @@
               Text="{ext:Translate DayPass}">
 
             <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="100" iOS="60"/>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="115" iOS="60"/>
             </controls:ImageButton.HeightRequest>
 
 

@@ -23,15 +23,13 @@ namespace AdaaMobile.Droid
     [Activity(Label = "ADAA", MainLauncher = false,
         Theme = "@style/MyTheme",
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
+    public class MainActivity : FormsAppCompatActivity
     {
         public static MainActivity Instance;
         private static bool IsFormsInitialized;
+
         protected override void OnCreate(Bundle bundle)
         {
-            //For Design Material
-            FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
-            FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
 
             //For Tracking Bugs
             Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
@@ -45,6 +43,10 @@ namespace AdaaMobile.Droid
             Instance = this;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            //For Design Material
+            FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
+            FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
+
             ImageCircleRenderer.Init();
             ExtendedGridRenderer.Init();
             SvgImageRenderer.Init();
@@ -52,8 +54,8 @@ namespace AdaaMobile.Droid
             //Create new locator instance.
             var locator = new Locator();
             UpdateLanguage();
-
             LoadApplication(new App(locator));
+
         }
 
         private void UpdateLanguage()

@@ -27,7 +27,8 @@
     <item name="android:windowNoTitle">true</item>
   </style>
    <style name="MyTheme" parent="MyTheme.Base">
-  </style>
+     <item name="android:windowNoTitle">true</item>
+   </style>
   
   <style name="MyTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@color/primary</item>
