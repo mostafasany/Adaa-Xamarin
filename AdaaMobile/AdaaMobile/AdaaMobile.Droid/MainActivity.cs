@@ -16,6 +16,8 @@ using Android.OS;
 using Java.Lang;
 using Java.Util;
 using Xamarin;
+using Xamarin.Forms.Platform.Android;
+
 namespace AdaaMobile.Droid
 {
     [Activity(Label = "ADAA", MainLauncher = false,
@@ -27,11 +29,19 @@ namespace AdaaMobile.Droid
         private static bool IsFormsInitialized;
         protected override void OnCreate(Bundle bundle)
         {
+            //For Design Material
+            FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
+            FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
 
+            //For Tracking Bugs
             Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
             base.OnCreate(bundle);
+
+            //Limit to only Portrait orientation
             RequestedOrientation = ScreenOrientation.Portrait;
-            ActionBar.SetIcon(new ColorDrawable(Color.Transparent));
+            //ActionBar.SetIcon(new ColorDrawable(Color.Transparent));
+
+            //Work around used to recreate Activity when user change language in Forms at first time
             Instance = this;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
@@ -41,7 +51,13 @@ namespace AdaaMobile.Droid
 
             //Create new locator instance.
             var locator = new Locator();
+            UpdateLanguage();
 
+            LoadApplication(new App(locator));
+        }
+
+        private void UpdateLanguage()
+        {
             IAppSettings settings = new AppSettings();
             if (!string.IsNullOrEmpty(settings.NextSelectedCultureName))
             {
@@ -52,8 +68,6 @@ namespace AdaaMobile.Droid
             string culture = settings.SelectedCultureName;
             //Override system culture
             SetCulture(culture);
-
-            LoadApplication(new App(locator));
         }
 
         protected override void OnDestroy()
