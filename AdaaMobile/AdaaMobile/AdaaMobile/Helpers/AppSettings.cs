@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Refractored.Xam.Settings;
+using Plugin.Settings;
 using Xamarin.Forms;
 
 namespace AdaaMobile.Helpers
