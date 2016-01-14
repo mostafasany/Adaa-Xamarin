@@ -1,15 +1,17 @@
 ﻿using System;
 using Foundation;
 using UIKit;
+using AdaaMobile.Controls;
 
 namespace AdaaMobile.iOS.CustomRenderers.ExtendedEditor
 {
     public class ExtendedUiTextView : UITextView
     {
         private readonly ExtendedUiTextViewDelegate _extendedDelegate;
-        public ExtendedUiTextView()
+
+		public ExtendedUiTextView(AdaaMobile.Controls.ExtendedEditor formsElement)
         {
-            _extendedDelegate = new ExtendedUiTextViewDelegate();
+			_extendedDelegate = new ExtendedUiTextViewDelegate(formsElement);
             Delegate = _extendedDelegate;
         }
 
@@ -22,6 +24,12 @@ namespace AdaaMobile.iOS.CustomRenderers.ExtendedEditor
 
     public class ExtendedUiTextViewDelegate : UITextViewDelegate
     {
+		private AdaaMobile.Controls.ExtendedEditor _formsElement;
+
+		public ExtendedUiTextViewDelegate(AdaaMobile.Controls.ExtendedEditor formsElement){
+			this._formsElement = formsElement;
+		}
+
         public nint MaxLength { get; set; }
 
         public override bool ShouldChangeText(UITextView textView, NSRange range, string replacementText)
@@ -36,6 +44,11 @@ namespace AdaaMobile.iOS.CustomRenderers.ExtendedEditor
             nint selectedLength = range.Length;
             return (textLength + (replacementLength - selectedLength)) <= MaxLength;
         }
+
+		public override void Changed (UITextView textView)
+		{
+			_formsElement.Text = textView.Text;
+		}
 
     }
 }

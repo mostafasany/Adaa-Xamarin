@@ -28,9 +28,9 @@ namespace AdaaMobile.iOS.CustomRenderers.ExtendedEditor
             }
             if (e.NewElement != null)
             {
-                SetNativeControl(new ExtendedUiTextView());
+				SetNativeControl(new ExtendedUiTextView(FormsElement));
                 SetMaxLength(FormsElement.MaxLength);
-                //ExtendedControl.Changed += ExtendedControl_Changed;
+              
             }
         }
 
