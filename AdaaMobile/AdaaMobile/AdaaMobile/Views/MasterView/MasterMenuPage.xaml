@@ -48,7 +48,7 @@
           <StackLayout Spacing="{StaticResource InnerStackSpacing}"
                        Padding="{StaticResource InnerStackPadding}" >
             <masterView:SideMenuItemControl
-                  Svg="AdaaMobile.Images.Attendance_icn.svg"  Title="{ext:Translate Attendance}" Tapped="SideMenuItemControl_OnTapped"
+                  Svg="AdaaMobile.Images.Attendance_icn.svg"  Title="{ext:Translate AttendanceAndLeave}" Tapped="SideMenuItemControl_OnTapped"
                   VerticalOptions="Start" HorizontalOptions="Fill"
                   BindingContext="{x:Type views:AttendancePage}" IsPageSupported="True"/>
 

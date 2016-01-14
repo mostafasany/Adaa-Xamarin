@@ -412,9 +412,6 @@
   <data name="EnterValidPassword" xml:space="preserve">
     <value>Please enter valid password</value>
   </data>
-  <data name="ADAAAttendance" xml:space="preserve">
-    <value>ADAA Attendance</value>
-  </data>
   <data name="ChooseLanguage" xml:space="preserve">
     <value>Change language</value>
   </data>
@@ -519,5 +516,8 @@
   </data>
   <data name="TaskDetails" xml:space="preserve">
     <value>Task details</value>
+  </data>
+  <data name="AttendanceAndLeave" xml:space="preserve">
+    <value>Attendance</value>
   </data>
 </root>

@@ -144,9 +144,6 @@
   <data name="Attendance" xml:space="preserve">
     <value>الحضور</value>
   </data>
-  <data name="Attendance1" xml:space="preserve">
-    <value>الحضور</value>
-  </data>
   <data name="BuisnessCard" xml:space="preserve">
     <value>بطاقة العمل</value>
   </data>
@@ -175,7 +172,7 @@
     <value>اسم الموظف المنتدب</value>
   </data>
   <data name="Delegation" xml:space="preserve">
-    <value>انتداب</value>
+    <value>تفويض الصلاحيات</value>
   </data>
   <data name="DelegationDetailsCap" xml:space="preserve">
     <value>تفاصيل الإنتداب</value>
@@ -412,9 +409,6 @@
   <data name="EnterValidPassword" xml:space="preserve">
     <value>الرجاء ادخال كلمة المرور الصحيحة</value>
   </data>
-  <data name="ADAAAttendance" xml:space="preserve">
-    <value>الغياب</value>
-  </data>
   <data name="ChooseLanguage" xml:space="preserve">
     <value>اختر اللغة</value>
   </data>
@@ -422,7 +416,7 @@
     <value>سجل الموظفين</value>
   </data>
   <data name="EServices" xml:space="preserve">
-    <value>الخدمات</value>
+    <value>الخدمات الالكترونية</value>
   </data>
   <data name="InvalidSessionMessage" xml:space="preserve">
     <value>عذرا- تم خروجك من قبل السيرفر، سيتم تحويلك لصفحة الدخول</value>
@@ -519,5 +513,8 @@
   </data>
   <data name="TaskDetails" xml:space="preserve">
     <value>تفاصيل المهمة</value>
+  </data>
+  <data name="AttendanceAndLeave" xml:space="preserve">
+    <value>الحضور و الانصراف</value>
   </data>
 </root>

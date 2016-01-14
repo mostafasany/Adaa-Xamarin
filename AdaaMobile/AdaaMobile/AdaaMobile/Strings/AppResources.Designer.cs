@@ -71,15 +71,6 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ADAA Attendance.
-        /// </summary>
-        public static string ADAAAttendance {
-            get {
-                return ResourceManager.GetString("ADAAAttendance", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ADAA Timesheet.
         /// </summary>
         public static string AdaaTimesheet {
@@ -166,6 +157,15 @@ namespace AdaaMobile.Strings {
         public static string Attendance {
             get {
                 return ResourceManager.GetString("Attendance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attendance.
+        /// </summary>
+        public static string AttendanceAndLeave {
+            get {
+                return ResourceManager.GetString("AttendanceAndLeave", resourceCulture);
             }
         }
         
