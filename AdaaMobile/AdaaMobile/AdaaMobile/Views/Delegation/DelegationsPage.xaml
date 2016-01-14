@@ -23,6 +23,7 @@
        ItemsSource="{Binding Delegations}"
        IsGroupingEnabled="False"
        HasUnevenRows="False"
+       CachingStrategy="RecycleElement"
        RowHeight="70"
        SeparatorColor="Transparent"
        BackgroundColor="Transparent"

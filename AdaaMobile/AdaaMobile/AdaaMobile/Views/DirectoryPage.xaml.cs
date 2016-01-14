@@ -50,8 +50,6 @@ namespace AdaaMobile.Views
                 }
                 else
                 {
-                   
-
                     this.Navigation.PopAsync();
 					OnUserSelected(emp);
                 }

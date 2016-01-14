@@ -78,6 +78,7 @@
          ItemsSource="{Binding PendingRequests}"
          IsGroupingEnabled="False"
          HasUnevenRows="False"
+         CachingStrategy="RecycleElement"
          RowHeight="80"
          SeparatorColor="Transparent"
          BackgroundColor="Transparent"
@@ -163,6 +164,7 @@
          IsGroupingEnabled="False"
          SeparatorColor="Transparent"
          HasUnevenRows="False"
+         CachingStrategy="RecycleElement"
          RowHeight="80"
          BackgroundColor="Transparent"
               >

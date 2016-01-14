@@ -45,7 +45,9 @@
     x:Name="EmployeesListView"
       Grid.Row="1"
           ItemsSource="{Binding GroupedEmployees}"
-          HasUnevenRows="true"
+          HasUnevenRows="False"
+          RowHeight="50"
+          CachingStrategy="RecycleElement"
           IsGroupingEnabled="{Binding GroupingEnabled}"
           GroupDisplayBinding="{Binding Key}"
           GroupShortNameBinding="{Binding Key}"
@@ -71,7 +73,7 @@
 
               <Grid  Padding="5,3" >
                 <controls:ExtendedGrid ColumnSpacing="8" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="Transparent"
-                               VerticalOptions="Start" HeightRequest="40"
+                               VerticalOptions="Fill" 
                                CornerRadius="{StaticResource CornerRadius}"
                            >
                   <Grid.ColumnDefinitions>
@@ -81,9 +83,9 @@
                   </Grid.ColumnDefinitions>
 
                   <Grid.RowDefinitions>
-                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="6"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="6"/>
                   </Grid.RowDefinitions>
                   <!--Add background and set background color of Extended Grid To Transparent, 
                   As there is an issue in rounding backcolor of ExtendedGrid in Android -->
