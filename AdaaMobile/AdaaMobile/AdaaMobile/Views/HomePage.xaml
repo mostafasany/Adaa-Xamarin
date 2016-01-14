@@ -108,9 +108,9 @@
                                 HorizontalOptions="Fill"
                                 VerticalOptions="Fill" >
                 <controls:ExtendedGrid VerticalOptions="Fill"
-                      HorizontalOptions="Fill"
-                      CornerRadius="3"
-                      BackgroundColor="{StaticResource AppBackgroundNormal}"
+                      HorizontalOptions="Fill"       
+                      CornerRadius="{StaticResource CornerRadius}"
+                      BackgroundColor="Transparent"
                       RelativeLayout.WidthConstraint=
                       "{ConstraintExpression Type=RelativeToParent,
                                         Property=Width,
@@ -119,14 +119,14 @@
                       "{ConstraintExpression Type=RelativeToParent,
                                         Property=Width,
                                         Factor=0.9}">
-                  <!--<controls:RoundedBoxView
+                  <!--Don't remove, Required for Android background, 
+                  As Extended Grid has limitation in Clipping background-->
+                  <controls:RoundedBoxView
                   BackgroundColor="{StaticResource AppBackgroundNormal}"
-                  CornerRadius="3"
+                  CornerRadius="{StaticResource CornerRadius}"
                   VerticalOptions="Fill"
                   HorizontalOptions="Fill"
-                  />-->
-
-
+                  />
                   <controls:SvgImage
                                       SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
                                       SvgPath="{Binding IconSource}"
