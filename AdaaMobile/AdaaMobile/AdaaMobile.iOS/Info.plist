@@ -27,11 +27,11 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.adaa.AdaaMobile</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.11</string>
+	<string>1.0.12</string>
 	<key>CFBundleName</key>
 	<string>ADAA</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.11</string>
+	<string>1.0.12</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ProximaNova-Regular.otf</string>
@@ -42,7 +42,7 @@
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>CFBundleDisplayName</key>
-	<string></string>
+	<string>ADAA</string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
 	<key>XSLaunchImageAssets</key>
