@@ -31,6 +31,9 @@ namespace AdaaMobile.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
+            //For Design Material
+            FormsAppCompatActivity.ToolbarResource = Resource.Layout.mytoolbar;
+            FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
 
             //For Tracking Bugs
             Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
@@ -42,11 +45,9 @@ namespace AdaaMobile.Droid
 
             //Work around used to recreate Activity when user change language in Forms at first time
             Instance = this;
-
+            
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            //For Design Material
-            FormsAppCompatActivity.ToolbarResource = Resource.Layout.mytoolbar;
-            FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
+            
 
             ImageCircleRenderer.Init();
             ExtendedGridRenderer.Init();
@@ -57,14 +58,6 @@ namespace AdaaMobile.Droid
             UpdateLanguage();
             LoadApplication(new App(locator));
 
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-            Toolbar mToolbar = (Toolbar)FindViewById(Resource.Id.toolbar);
-            if (mToolbar != null)
-                mToolbar.SetNavigationIcon(Resource.Drawable.ic_arrow_back_white_24dp);
         }
 
         private void UpdateLanguage()
