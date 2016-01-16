@@ -265,7 +265,7 @@
     <AndroidResource Include="Resources\layout\tabs.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\toolbar.xml" />
+    <AndroidResource Include="Resources\layout\mytoolbar.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\strings.xml" />

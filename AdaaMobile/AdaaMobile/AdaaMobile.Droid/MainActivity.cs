@@ -35,7 +35,7 @@ namespace AdaaMobile.Droid
             //For Tracking Bugs
             Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
             base.OnCreate(bundle);
-            
+
             Toolbar mToolbar = (Toolbar)FindViewById(Resource.Id.toolbar);
             mToolbar.SetNavigationIcon(Resource.Drawable.ic_arrow_back_white_24dp);
             //Limit to only Portrait orientation
@@ -47,7 +47,7 @@ namespace AdaaMobile.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             //For Design Material
-            FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
+            FormsAppCompatActivity.ToolbarResource = Resource.Layout.mytoolbar;
             FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
 
             ImageCircleRenderer.Init();
@@ -59,6 +59,14 @@ namespace AdaaMobile.Droid
             UpdateLanguage();
             LoadApplication(new App(locator));
 
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            Toolbar mToolbar = (Toolbar)FindViewById(Resource.Id.toolbar);
+            if (mToolbar != null)
+                mToolbar.SetNavigationIcon(Resource.Drawable.ic_arrow_back_white_24dp);
         }
 
         private void UpdateLanguage()
