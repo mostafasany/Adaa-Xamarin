@@ -43,6 +43,10 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _startDate, value))
                 {
+					if (_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays) {
+						_endDate = _startDate.AddDays (LimitRangeInDays);
+						OnPropertyChanged ("EndDate");
+					}
 //                    var span = EndDate - StartDate;
 //                    if (span.Days > LimitRangeInDays)
 //                        EndDate = _startDate.Add(TimeSpan.FromDays(LimitRangeInDays));
@@ -62,6 +66,10 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _endDate, value))
                 {
+					if (_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays) {
+						_startDate = _endDate.AddDays (LimitRangeInDays*-1);
+						OnPropertyChanged ("StartDate");
+					}
 //                    var span = EndDate - StartDate;
 //                    if (span.Days > LimitRangeInDays)
 //                        StartDate = _endDate.Subtract(TimeSpan.FromDays(LimitRangeInDays));
@@ -207,6 +215,7 @@ namespace AdaaMobile.ViewModels
                 var endDate = EndDate;
                 while (currentDate <= endDate)
                 {
+				    if(currentDate.DayOfWeek != DayOfWeek.Friday && currentDate.DayOfWeek != DayOfWeek.Saturday)
                     days.Add(new DayWrapper(currentDate));
                     currentDate = currentDate.AddDays(1);
                 }
@@ -219,7 +228,8 @@ namespace AdaaMobile.ViewModels
 		public async Task SwitchMode(AttendanceMode mode)
         {
 			if (EndDate >= StartDate && (EndDate - StartDate).Days > LimitRangeInDays ) {
-				await _dialogManager.DisplayAlert (AppResources.ApplicationName, "Please select valid intreval, maximum is one month", AppResources.Ok);
+				//await _dialogManager.DisplayAlert (AppResources.ApplicationName, "Please select valid intreval, maximum is one month", AppResources.Ok);
+
 				return;
 			}
             //Set current mode, This will trigger changes in Bindings.

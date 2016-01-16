@@ -327,11 +327,11 @@
             </controls:ImageButton.HeightRequest>
 
             <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="28"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
             </controls:ImageButton.ImageHeightRequest>
 
             <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="28"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
             </controls:ImageButton.ImageWidthRequest>
 
             <controls:ImageButton.Source>
@@ -357,11 +357,11 @@
 
 
             <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="28"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
             </controls:ImageButton.ImageHeightRequest>
 
             <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="28"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
             </controls:ImageButton.ImageWidthRequest>
             <controls:ImageButton.Source>
               <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="daypass.png" iOS="daypass"/>

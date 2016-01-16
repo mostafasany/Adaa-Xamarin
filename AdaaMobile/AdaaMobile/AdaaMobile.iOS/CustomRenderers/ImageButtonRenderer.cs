@@ -181,6 +181,8 @@ namespace AdaaMobile.CustomRenderers
 
             targetButton.TitleEdgeInsets = titleInsets;
             targetButton.ImageEdgeInsets = imageInsets;
+			targetButton.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+			targetButton.ImageView.ClipsToBounds = true;
         }
 
         /// <summary>
@@ -236,6 +238,7 @@ namespace AdaaMobile.CustomRenderers
                 {
                     scaled = scaled.Scale(new CGSize(widthRequest, heightRequest));
                 }
+
 
                 if (tintColor != null)
                 {

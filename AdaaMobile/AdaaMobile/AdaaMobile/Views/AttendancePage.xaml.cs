@@ -39,7 +39,7 @@ namespace AdaaMobile.Views
             MinDatePicker.Unfocused += MinDatePicker_Unfocused;
 
             MaxDatePicker.Date = _attendanceViewModel.EndDate;
-            MaxDatePicker.Unfocused += MaxDatePicker_Unfocused;
+			MaxDatePicker.Unfocused += MaxDatePicker_Unfocused;
 
             //Add App bar icon
             //Action action = () => { };
@@ -69,6 +69,19 @@ namespace AdaaMobile.Views
             };
             ToolbarItems.Add(
                 new ToolbarItem("", "subordinate.png", action, ToolbarItemOrder.Primary));
+
+			_attendanceViewModel.PropertyChanged+= _attendanceViewModel_PropertyChanged;
+        }
+
+        void _attendanceViewModel_PropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+			if (e.PropertyName == "EndDate") {
+				MaxDatePicker.Date = _attendanceViewModel.EndDate;
+
+			}
+			else if (e.PropertyName == "StartDate") {
+				MinDatePicker.Date = _attendanceViewModel.StartDate;
+			}
         }
 
         private void DelegationBtn_Clicked(object sender, EventArgs e)
@@ -119,12 +132,14 @@ namespace AdaaMobile.Views
         {
             MaxDatePicker.Unfocus();
             MaxDatePicker.Focus();
+			MaxDatePicker.Date = _attendanceViewModel.EndDate;
         }
 
         private void StartDate_Clicked(object sender, EventArgs e)
         {
             MinDatePicker.Unfocus();
             MinDatePicker.Focus();
+			MinDatePicker.Date = _attendanceViewModel.StartDate;
         }
         #endregion
 
