@@ -19,16 +19,28 @@
           </Image.Source>
 		</Image>
 
-			<Grid Grid.Row="1" Padding="20,8,20,10" VerticalOptions="Fill" >
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			</Grid.RowDefinitions>
-			<Image  HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"  >
-		 <Image.Source>
-            <OnPlatform x:TypeArguments="ImageSource" WinPhone="logo.png" Android="logo.png" iOS="logo"/>
-          </Image.Source>
-		</Image>
-     </Grid>
+
+      <RelativeLayout Grid.Row="1" HorizontalOptions="Fill" Padding="20,8,20,10" VerticalOptions="Start" >
+          <Image x:Name="ImageLogo"  Aspect="AspectFit"  VerticalOptions="Start" 
+                   RelativeLayout.WidthConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.6}"
+                   RelativeLayout.XConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.2}"
+                      RelativeLayout.HeightConstraint=
+                      "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.37}">
+                  >
+            
+            <Image.Source>
+              <OnPlatform x:TypeArguments="ImageSource" WinPhone="logo.png" Android="logo.png" iOS="logo"/>
+            </Image.Source>
+          </Image>
+        </RelativeLayout>
 	<Grid Grid.Row="3" Padding="5,0,5,5">
 	<Grid.ColumnDefinitions>
 	<ColumnDefinition Width="*"  />

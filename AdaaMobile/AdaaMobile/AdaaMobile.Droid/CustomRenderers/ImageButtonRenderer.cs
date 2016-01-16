@@ -99,8 +99,8 @@ namespace AdaaMobile.CustomRenderers
                         Drawable bottom = null;
                         targetButton.CompoundDrawablePadding = Padding;
 
-                        int controlPadding = 1;
-                        targetButton.SetPadding(controlPadding, controlPadding, controlPadding, controlPadding);
+//                        int controlPadding = 1;
+//                        targetButton.SetPadding(controlPadding, controlPadding, controlPadding, controlPadding);
 
                         switch (model.Orientation)
                         {
