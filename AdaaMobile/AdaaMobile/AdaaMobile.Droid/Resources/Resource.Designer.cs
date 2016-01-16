@@ -5139,6 +5139,9 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f080003
 			public const int Widget_MediaRouter_MediaRouteButton = 2131230723;
 			
+			// aapt resource value: 0x7f080147
+			public const int myToolbarStyle = 2131231047;
+			
 			static Style()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
