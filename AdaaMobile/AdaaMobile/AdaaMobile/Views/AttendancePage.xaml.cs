@@ -13,7 +13,7 @@ using Xamarin.Forms.Xaml;
 
 namespace AdaaMobile.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AttendancePage : ContentPage
     {
         private readonly AttendanceViewModel _attendanceViewModel;
