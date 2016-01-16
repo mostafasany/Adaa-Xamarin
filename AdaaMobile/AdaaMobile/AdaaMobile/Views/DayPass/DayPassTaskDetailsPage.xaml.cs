@@ -47,7 +47,7 @@ namespace AdaaMobile.Views.DayPass
                 {
                     if (resposne.Result != null)
                     {
-                        _taskDetailsViewmodel.CurrentTask.Departement = resposne.Result.DeptName;
+						_taskDetailsViewmodel.CurrentTask.Department = resposne.Result.DeptName;
                     }
                 }
             }

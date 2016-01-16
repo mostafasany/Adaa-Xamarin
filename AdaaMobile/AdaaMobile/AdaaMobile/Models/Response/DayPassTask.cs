@@ -57,7 +57,7 @@ namespace AdaaMobile.Models.Response
         /// Will be assigned from another request
         /// </summary>
         private string _departement;
-        public string Departement
+        public string Department
         {
             get { return _departement; }
             set { SetProperty(ref _departement, value); }
