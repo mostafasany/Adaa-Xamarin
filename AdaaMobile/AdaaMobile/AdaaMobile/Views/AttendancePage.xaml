@@ -117,11 +117,11 @@
                 >
 
               <controls:ImageButton.ImageHeightRequest>
-                <OnPlatform x:TypeArguments="x:Double" WinPhone="26" Android="30" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="30" iOS="20"/>
               </controls:ImageButton.ImageHeightRequest>
 
               <controls:ImageButton.ImageWidthRequest>
-                <OnPlatform x:TypeArguments="x:Double" WinPhone="26" Android="30" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="30" iOS="20"/>
               </controls:ImageButton.ImageWidthRequest>
               
               <controls:ImageButton.HeightRequest>
@@ -158,11 +158,11 @@
                       TextColor = "White"
                 >
               <controls:ImageButton.ImageHeightRequest>
-                <OnPlatform x:TypeArguments="x:Double" WinPhone="26" Android="30" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="30" iOS="20"/>
               </controls:ImageButton.ImageHeightRequest>
 
               <controls:ImageButton.ImageWidthRequest>
-                <OnPlatform x:TypeArguments="x:Double" WinPhone="26" Android="30" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="30" iOS="20"/>
               </controls:ImageButton.ImageWidthRequest>
               
               <controls:ImageButton.HeightRequest>
