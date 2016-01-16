@@ -25,6 +25,7 @@ namespace AdaaMobile.Droid
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
+
         public static MainActivity Instance;
         private static bool IsFormsInitialized;
 
@@ -34,7 +35,9 @@ namespace AdaaMobile.Droid
             //For Tracking Bugs
             Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d", this, false);
             base.OnCreate(bundle);
-
+            
+            Toolbar mToolbar = (Toolbar)FindViewById(Resource.Id.toolbar);
+            mToolbar.SetNavigationIcon(Resource.Drawable.ic_arrow_back_white_24dp);
             //Limit to only Portrait orientation
             RequestedOrientation = ScreenOrientation.Portrait;
             //ActionBar.SetIcon(new ColorDrawable(Color.Transparent));

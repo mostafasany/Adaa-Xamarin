@@ -279,7 +279,7 @@
           TextColor="Black"
           Text="{Binding Reason,Mode=TwoWay}"
           MaxLength="60"
-          HeightRequest="160"
+          HeightRequest="110"
           >
 
         </controls:ExtendedEditor>

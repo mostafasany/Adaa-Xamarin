@@ -110,13 +110,20 @@
                 ConverterParameter=d MMM yyyy}"
                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                     Clicked="StartDate_Clicked"
-                    ImageHeightRequest="18"
-                    ImageWidthRequest="18"
                     VerticalOptions="End"
                     BackgroundColor="{StaticResource AppBackgroundNormal}"
                     TextColor="White"
 
                 >
+
+              <controls:ImageButton.ImageHeightRequest>
+                <OnPlatform x:TypeArguments="x:Double" WinPhone="26" Android="30" iOS="20"/>
+              </controls:ImageButton.ImageHeightRequest>
+
+              <controls:ImageButton.ImageWidthRequest>
+                <OnPlatform x:TypeArguments="x:Double" WinPhone="26" Android="30" iOS="20"/>
+              </controls:ImageButton.ImageWidthRequest>
+              
               <controls:ImageButton.HeightRequest>
                 <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36"/>
               </controls:ImageButton.HeightRequest>
@@ -145,13 +152,19 @@
                 Converter={StaticResource DateFormatConverter},
                 ConverterParameter=d MMM yyyy}"
                       Clicked="EndDate_Clicked"
-                      ImageHeightRequest="20"
                       VerticalOptions="End"
-                      ImageWidthRequest="20"
                       FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                       BackgroundColor="{StaticResource AppBackgroundNormal}"
                       TextColor = "White"
                 >
+              <controls:ImageButton.ImageHeightRequest>
+                <OnPlatform x:TypeArguments="x:Double" WinPhone="26" Android="30" iOS="20"/>
+              </controls:ImageButton.ImageHeightRequest>
+
+              <controls:ImageButton.ImageWidthRequest>
+                <OnPlatform x:TypeArguments="x:Double" WinPhone="26" Android="30" iOS="20"/>
+              </controls:ImageButton.ImageWidthRequest>
+              
               <controls:ImageButton.HeightRequest>
                 <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36"/>
               </controls:ImageButton.HeightRequest>

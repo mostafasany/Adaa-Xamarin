@@ -39,27 +39,30 @@ namespace AdaaMobile.CustomRenderers
             base.OnElementChanged(e);
 
             var targetButton = this.Control;
-           
-			if (targetButton == null || e.NewElement == null)
-				return;
 
-            if(this.Element.Font != Font.Default){
-				targetButton.Typeface = e.NewElement.Font.ToExtendedTypeface(Context);
+            if (targetButton == null || e.NewElement == null)
+                return;
+
+            if (this.Element.Font != Font.Default)
+            {
+                targetButton.Typeface = e.NewElement.Font.ToExtendedTypeface(Context);
             }
 
-			if (this.ImageButton.Source != null || this.ImageButton.DisabledSource != null) {
-				await this.SetImageSourceAsync(targetButton, e.NewElement as Controls.ImageButton);
-			}
+            if (this.ImageButton.Source != null || this.ImageButton.DisabledSource != null)
+            {
+                await this.SetImageSourceAsync(targetButton, e.NewElement as Controls.ImageButton);
+            }
         }
 
-		protected override void Dispose (bool disposing)
-		{
-			base.Dispose (disposing);
-			if (disposing && this.Control != null) {
-				this.Control.Dispose ();
-			}
-		}
-			
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            if (disposing && this.Control != null)
+            {
+                this.Control.Dispose();
+            }
+        }
+
 
         /// <summary>
         /// Sets the image source.
@@ -69,9 +72,9 @@ namespace AdaaMobile.CustomRenderers
         /// <returns>A <see cref="Task"/> for the awaited operation.</returns>
         private async Task SetImageSourceAsync(Android.Widget.Button targetButton, Controls.ImageButton model)
         {
-			if (targetButton == null || model == null)
-				return;
-			
+            if (targetButton == null || model == null)
+                return;
+
             const int Padding = 10;
             var source = model.IsEnabled ? model.Source : model.DisabledSource ?? model.Source;
 
@@ -87,32 +90,38 @@ namespace AdaaMobile.CustomRenderers
                         drawable.SetTintMode(PorterDuff.Mode.SrcIn);
                     }
 
-					using (var scaledDrawable = GetScaleDrawable (drawable, GetWidth (model.ImageWidthRequest),
-						                           GetHeight (model.ImageHeightRequest))) {
-						Drawable left = null;
-						Drawable right = null;
-						Drawable top = null;
-						Drawable bottom = null;
-						targetButton.CompoundDrawablePadding = Padding;
-						switch (model.Orientation) {
-						case ImageOrientation.ImageToLeft:
-							targetButton.Gravity = GravityFlags.Left | GravityFlags.CenterVertical;
-							left = scaledDrawable;
-							break;
-						case ImageOrientation.ImageToRight:
-							targetButton.Gravity = GravityFlags.Right | GravityFlags.CenterVertical;
-							right = scaledDrawable;
-							break;
-						case ImageOrientation.ImageOnTop:
-							top = scaledDrawable;
-							break;
-						case ImageOrientation.ImageOnBottom:
-							bottom = scaledDrawable;
-							break;
-						}
+                    using (var scaledDrawable = GetScaleDrawable(drawable, GetWidth(model.ImageWidthRequest),
+                                                   GetHeight(model.ImageHeightRequest)))
+                    {
+                        Drawable left = null;
+                        Drawable right = null;
+                        Drawable top = null;
+                        Drawable bottom = null;
+                        targetButton.CompoundDrawablePadding = Padding;
 
-						targetButton.SetCompoundDrawables (left, top, right, bottom);
-					}
+                        int controlPadding = 1;
+                        targetButton.SetPadding(controlPadding, controlPadding, controlPadding, controlPadding);
+
+                        switch (model.Orientation)
+                        {
+                            case ImageOrientation.ImageToLeft:
+                                targetButton.Gravity = GravityFlags.Left | GravityFlags.CenterVertical;
+                                left = scaledDrawable;
+                                break;
+                            case ImageOrientation.ImageToRight:
+                                targetButton.Gravity = GravityFlags.Right | GravityFlags.CenterVertical;
+                                right = scaledDrawable;
+                                break;
+                            case ImageOrientation.ImageOnTop:
+                                top = scaledDrawable;
+                                break;
+                            case ImageOrientation.ImageOnBottom:
+                                bottom = scaledDrawable;
+                                break;
+                        }
+
+                        targetButton.SetCompoundDrawables(left, top, right, bottom);
+                    }
                 }
             }
         }
@@ -127,8 +136,8 @@ namespace AdaaMobile.CustomRenderers
             var handler = AdaaMobile.CustomRenderers.ImageButtonRenderer.GetHandler(source);
             var returnValue = (Bitmap)null;
 
-			if(handler != null)
-            	returnValue = await handler.LoadImageAsync(source, this.Context);
+            if (handler != null)
+                returnValue = await handler.LoadImageAsync(source, this.Context);
 
             return returnValue;
         }
@@ -142,8 +151,8 @@ namespace AdaaMobile.CustomRenderers
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == Controls.ImageButton.SourceProperty.PropertyName || 
-                e.PropertyName == Controls.ImageButton.DisabledSourceProperty.PropertyName || 
+            if (e.PropertyName == Controls.ImageButton.SourceProperty.PropertyName ||
+                e.PropertyName == Controls.ImageButton.DisabledSourceProperty.PropertyName ||
                 e.PropertyName == VisualElement.IsEnabledProperty.PropertyName ||
                 e.PropertyName == Controls.ImageButton.ImageTintColorProperty.PropertyName ||
                 e.PropertyName == Controls.ImageButton.DisabledImageTintColorProperty.PropertyName)
