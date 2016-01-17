@@ -27,11 +27,11 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.adaa.AdaaMobile</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.13</string>
+	<string>1.0.14</string>
 	<key>CFBundleName</key>
 	<string>ADAA</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.13</string>
+	<string>1.0.14</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ProximaNova-Regular.otf</string>

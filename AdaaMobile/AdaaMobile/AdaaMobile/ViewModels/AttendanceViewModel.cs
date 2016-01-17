@@ -43,7 +43,7 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _startDate, value))
                 {
-					if (_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays) {
+					if ((_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays) || _startDate >= _endDate) {
 						_endDate = _startDate.AddDays (LimitRangeInDays);
 						OnPropertyChanged ("EndDate");
 					}
@@ -66,7 +66,7 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _endDate, value))
                 {
-					if (_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays) {
+					if ((_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays) ) {
 						_startDate = _endDate.AddDays (LimitRangeInDays*-1);
 						OnPropertyChanged ("StartDate");
 					}
