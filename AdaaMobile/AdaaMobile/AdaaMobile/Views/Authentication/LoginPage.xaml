@@ -80,6 +80,7 @@ x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
             XAlign="Start"
             PlaceholderTextColor="Gray"
             BackgroundColor="White"
+            
             TextColor="{StaticResource AppBackgroundNormal}"
             Placeholder="{ext:Translate Password}"
             Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />

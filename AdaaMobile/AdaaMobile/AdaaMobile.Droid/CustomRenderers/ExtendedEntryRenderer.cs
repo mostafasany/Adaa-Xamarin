@@ -42,13 +42,12 @@ namespace AdaaMobile.Droid.CustomRenderers
 
             SetFont(view);
             SetTextAlignment(view);
-            //SetBorder(view);
+            SetHasBorder(view);
             SetPlaceholderTextColor(view);
             SetMaxLength(view);
 
         }
 
-        /// <summary>
 
         /// <summary>
         /// Handles the <see cref="E:ElementPropertyChanged" /> event.
@@ -69,7 +68,7 @@ namespace AdaaMobile.Droid.CustomRenderers
             }
             else if (e.PropertyName == ExtendedEntry.HasBorderProperty.PropertyName)
             {
-                //return;   
+                SetHasBorder(view); 
             }
             else if (e.PropertyName == ExtendedEntry.PlaceholderTextColorProperty.PropertyName)
             {
@@ -82,6 +81,15 @@ namespace AdaaMobile.Droid.CustomRenderers
                 {
                     this.Control.SetBackgroundColor(view.BackgroundColor.ToAndroid());
                 }
+            }
+        }
+
+        private void SetHasBorder(ExtendedEntry entry)
+        {
+            if (!entry.HasBorder)
+            {
+                Control.Background.SetColorFilter(entry.BackgroundColor.ToAndroid(), PorterDuff.Mode.SrcIn);
+                //Control.Background.ClearColorFilter();
             }
         }
 
