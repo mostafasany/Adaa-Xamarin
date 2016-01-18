@@ -234,7 +234,7 @@ namespace AdaaMobile.CustomRenderers
             using (UIImage image = await handler.LoadImageAsync(source))
             {
                 UIImage scaled = image;
-                if (heightRequest > 0 && widthRequest > 0 && (image.Size.Height != heightRequest || image.Size.Width != widthRequest))
+                if (heightRequest > 0 && widthRequest > 0 && (image.Size.Height > heightRequest && image.Size.Width > widthRequest))
                 {
                     scaled = scaled.Scale(new CGSize(widthRequest, heightRequest));
                 }

@@ -180,11 +180,7 @@
     <BundleResource Include="Resources\subordinate%403x.png" />
     <BundleResource Include="Resources\arrow.png" />
     <BundleResource Include="Resources\chevronblue.png" />
-    <BundleResource Include="Resources\delegation.png" />
-    <BundleResource Include="Resources\daypass.png" />
-    <BundleResource Include="Resources\daypass%402x.png" />
     <BundleResource Include="Resources\daypass%403x.png" />
-    <BundleResource Include="Resources\delegation%402x.png" />
     <BundleResource Include="Resources\delegation%403x.png" />
   </ItemGroup>
   <ItemGroup>
