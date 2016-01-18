@@ -335,16 +335,17 @@
               BorderRadius="{StaticResource BorderRadius}"
               Text="{ext:Translate Delegation}"
                 >
-            <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="115" iOS="60"/>
+           <controls:ImageButton.HeightRequest>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="95" iOS="60"/>
             </controls:ImageButton.HeightRequest>
 
+
             <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="65" iOS="30"/>
             </controls:ImageButton.ImageHeightRequest>
 
             <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="65" iOS="30"/>
             </controls:ImageButton.ImageWidthRequest>
 
             <controls:ImageButton.Source>
@@ -365,16 +366,16 @@
               Text="{ext:Translate DayPass}">
 
             <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="115" iOS="60"/>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="95" iOS="60"/>
             </controls:ImageButton.HeightRequest>
 
 
             <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="65" iOS="30"/>
             </controls:ImageButton.ImageHeightRequest>
 
             <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="90" iOS="30"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="65" iOS="30"/>
             </controls:ImageButton.ImageWidthRequest>
             <controls:ImageButton.Source>
               <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="daypass.png" iOS="daypass"/>
