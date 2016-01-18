@@ -4596,11 +4596,11 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f080006
 			public const int CardView_Light = 2131230726;
 			
-			// aapt resource value: 0x7f080145
-			public const int MyTheme = 2131231045;
-			
 			// aapt resource value: 0x7f080146
-			public const int MyTheme_Base = 2131231046;
+			public const int MyTheme = 2131231046;
+			
+			// aapt resource value: 0x7f080147
+			public const int MyTheme_Base = 2131231047;
 			
 			// aapt resource value: 0x7f080016
 			public const int Platform_AppCompat = 2131230742;
@@ -4890,8 +4890,8 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f080001
 			public const int Theme_MediaRouter_Light = 2131230721;
 			
-			// aapt resource value: 0x7f080144
-			public const int Theme_Splash = 2131231044;
+			// aapt resource value: 0x7f080145
+			public const int Theme_Splash = 2131231045;
 			
 			// aapt resource value: 0x7f0800ee
 			public const int ThemeOverlay_AppCompat = 2131230958;
@@ -5139,8 +5139,8 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f080003
 			public const int Widget_MediaRouter_MediaRouteButton = 2131230723;
 			
-			// aapt resource value: 0x7f080147
-			public const int myToolbarStyle = 2131231047;
+			// aapt resource value: 0x7f080144
+			public const int myToolbarStyle = 2131231044;
 			
 			static Style()
 			{

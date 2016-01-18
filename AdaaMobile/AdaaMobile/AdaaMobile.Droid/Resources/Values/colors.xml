@@ -2,7 +2,7 @@
   
   <color name="primary">#007c85</color>
   <!--TODO Change to status bar color-->
-  <color name="primaryDark">#007c85</color>
+  <color name="primaryDark">#006A70</color>
   <color name="accent">#007c85</color>
   <color name="window_background">#F5F5F5</color>
 </resources>
