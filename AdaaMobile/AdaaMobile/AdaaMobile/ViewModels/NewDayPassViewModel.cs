@@ -70,7 +70,7 @@ namespace AdaaMobile.ViewModels
 
 
 
-        private TimeSpan _endTimeSpan;
+		private TimeSpan _endTimeSpan = new TimeSpan(8,0,0);
         public TimeSpan EndTimeSpan
         {
             get { return _endTimeSpan; }
@@ -79,6 +79,7 @@ namespace AdaaMobile.ViewModels
                 DateTime d = DateTime.Today.Add(value);
                 EndTimeSpanString = d.ToString("hh:mm tt");
                 SetProperty(ref _endTimeSpan, value);
+				CalculateDuration ();
             }
         }
 
@@ -112,7 +113,7 @@ namespace AdaaMobile.ViewModels
         }
 
 
-        private TimeSpan _startTimeSpan;
+		private TimeSpan _startTimeSpan = new TimeSpan(8,0,0);
         public TimeSpan StartTimeSpan
         {
             get { return _startTimeSpan; }
@@ -122,6 +123,7 @@ namespace AdaaMobile.ViewModels
                 StartTimeSpanString = d.ToString("hh:mm tt");
 
                 SetProperty(ref _startTimeSpan, value);
+				CalculateDuration ();
             }
         }
         private string _startTimeSpanString;
@@ -157,8 +159,8 @@ namespace AdaaMobile.ViewModels
             _dialogManager = dialogManager;
             _messageResolver = messageResolver;
             NewDayPassCommand = new AsyncExtendedCommand(SubmitRequestAsync);
-            StartTimeSpan = new TimeSpan(0, 0, 0);
-            EndTimeSpan = new TimeSpan(0, 0, 0);
+            StartTimeSpan = new TimeSpan(8, 0, 0);
+            EndTimeSpan = new TimeSpan(8, 0, 0);
         }
 
         #endregion
@@ -253,7 +255,21 @@ namespace AdaaMobile.ViewModels
             {
                 if (StartTimeSpan != null && EndTimeSpan != null && EndTimeSpan >= StartTimeSpan)
                 {
-                    DurationText = (EndTimeSpan - StartTimeSpan).ToString("hh: mm tt");
+					//DateTime d = DateTime.Today.Add((EndTimeSpan - StartTimeSpan));
+					//DurationText = d.ToString(@"hh\:mm");
+
+					TimeSpan d = EndTimeSpan.Subtract(  StartTimeSpan);
+					int totalHours = 0;
+					int totalMinutes = 0;
+					if(d.TotalMinutes >= 60){
+						totalHours = (int)(d.TotalMinutes/60); 
+						totalMinutes = (int)(d.TotalMinutes - (totalHours * 60));
+					}
+					else{
+						totalMinutes = (int)(d.TotalMinutes);
+					}
+						
+					DurationText = string.Format("{0} : {1}", totalHours, totalMinutes);
                 }
                 else
                 {

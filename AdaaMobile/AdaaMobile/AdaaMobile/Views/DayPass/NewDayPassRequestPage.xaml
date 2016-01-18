@@ -193,19 +193,22 @@
 
         <BoxView
     Grid.Row="7"
+    IsVisible="{Binding ReturnToday}"
     HeightRequest="1"
     BackgroundColor="{StaticResource AppBackgroundNormal}"
 HorizontalOptions="Fill"
               />
 
         <Label   Grid.Row="8"
+        IsVisible="{Binding ReturnToday}"
                             TextColor="Black" BackgroundColor="Transparent"
                             HorizontalTextAlignment="Start"
                             VerticalTextAlignment="Center"
                             FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                             Text="{ext:Translate Duration}" />
 
-        <Label   Grid.Row="8"
+        <Label   Grid.Row="9"
+        IsVisible="{Binding ReturnToday}"
                             BackgroundColor="Transparent"
                             HorizontalTextAlignment="Start"
                             VerticalTextAlignment="Center"
