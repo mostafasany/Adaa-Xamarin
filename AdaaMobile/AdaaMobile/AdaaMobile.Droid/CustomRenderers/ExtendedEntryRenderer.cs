@@ -8,6 +8,7 @@ using Android.Text.Method;
 using Android.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using TextAlignment = Android.Views.TextAlignment;
 
 [assembly: ExportRenderer(typeof(ExtendedEntry), typeof(ExtendedEntryRenderer))]
 namespace AdaaMobile.Droid.CustomRenderers
@@ -32,7 +33,7 @@ namespace AdaaMobile.Droid.CustomRenderers
             base.OnElementChanged(e);
 
             var view = (ExtendedEntry)Element;
-            
+
             if (Control != null && e.NewElement != null && e.NewElement.IsPassword)
             {
                 Control.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
@@ -48,7 +49,7 @@ namespace AdaaMobile.Droid.CustomRenderers
         }
 
         /// <summary>
-   
+
         /// <summary>
         /// Handles the <see cref="E:ElementPropertyChanged" /> event.
         /// </summary>
@@ -99,7 +100,15 @@ namespace AdaaMobile.Droid.CustomRenderers
                     Control.Gravity = GravityFlags.End;
                     break;
                 case Xamarin.Forms.TextAlignment.Start:
-                    Control.Gravity = GravityFlags.Start;
+                    var androidLocale = Java.Util.Locale.Default;
+                    if (androidLocale.Language.StartsWith("en"))
+                    {
+                        Control.Gravity = GravityFlags.Start;
+                    }
+                    else
+                    {
+                        Control.Gravity = GravityFlags.Right;
+                    }
                     break;
             }
         }
@@ -110,7 +119,7 @@ namespace AdaaMobile.Droid.CustomRenderers
         /// <param name="view">The view.</param>
         private void SetFont(ExtendedEntry view)
         {
-            if (view.Font != Font.Default) 
+            if (view.Font != Font.Default)
             {
                 Control.TextSize = view.Font.ToScaledPixel();
                 Control.Typeface = view.Font.ToExtendedTypeface(Context);
@@ -125,8 +134,8 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
             if (view.PlaceholderTextColor != Color.Default)
             {
-                Control.SetHintTextColor(view.PlaceholderTextColor.ToAndroid());	
-            }		
+                Control.SetHintTextColor(view.PlaceholderTextColor.ToAndroid());
+            }
         }
 
         /// <summary>
