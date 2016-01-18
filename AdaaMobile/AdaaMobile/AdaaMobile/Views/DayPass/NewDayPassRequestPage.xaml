@@ -52,6 +52,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
 
           </Grid.RowDefinitions>
 
@@ -188,6 +191,28 @@
            Time="{Binding EndTimeSpan}"
                 />
 
+        <BoxView
+    Grid.Row="7"
+    HeightRequest="1"
+    BackgroundColor="{StaticResource AppBackgroundNormal}"
+HorizontalOptions="Fill"
+              />
+
+        <Label   Grid.Row="8"
+                            TextColor="Black" BackgroundColor="Transparent"
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+                            Text="{ext:Translate Duration}" />
+
+        <Label   Grid.Row="8"
+                            BackgroundColor="Transparent"
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+                            TextColor="{StaticResource AppBackgroundNormal}"
+                            Text="{Binding DurationText}" />
+        
         </controls:ExtendedGrid>
 
 

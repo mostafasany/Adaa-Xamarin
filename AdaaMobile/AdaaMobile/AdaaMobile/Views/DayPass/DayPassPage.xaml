@@ -182,6 +182,7 @@
                     <Grid.ColumnDefinitions>
                       <ColumnDefinition Width="20"/>
                       <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="Auto"/>
                       <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
 
@@ -194,7 +195,7 @@
 
                     <!--Add background and set background color of Extended Grid To Transparent, 
                   As there is an issue in rounding backcolor of ExtendedGrid in Android -->
-                    <BoxView BackgroundColor="#cc007c85" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
+                    <BoxView BackgroundColor="#cc007c85" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
 
                     <Label Grid.Row="1"  Grid.Column="1"
                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
@@ -208,11 +209,17 @@
                            VerticalOptions="Start"
                            FontSize="Small" Text="{Binding UserName}" />
 
+                    <Label Grid.Row="1"  Grid.Column="2"
+                          TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
+                          HorizontalTextAlignment="Start"
+                          VerticalOptions="Start"
+                          FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding StartTime}" />
+                    
 
                     <Image
                                         HeightRequest="15"
                                         WidthRequest="15"
-                                        Grid.Column="2"
+                                        Grid.Column="3"
                                         Grid.Row="0" Grid.RowSpan="4"
                                         HorizontalOptions="Start" VerticalOptions="Center">
                       <Image.Source>

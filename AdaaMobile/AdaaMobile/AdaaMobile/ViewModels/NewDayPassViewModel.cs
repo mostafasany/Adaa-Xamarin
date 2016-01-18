@@ -130,6 +130,22 @@ namespace AdaaMobile.ViewModels
             get { return _startTimeSpanString; }
             set { SetProperty(ref _startTimeSpanString, value); }
         }
+
+
+        private string _DurationText = "---";
+        public string DurationText
+        {
+            get
+            {
+
+
+                return _DurationText;
+            }
+            set
+            {
+                SetProperty(ref _DurationText, value);
+            }
+        }
         #endregion
 
         #region Initialization
@@ -175,7 +191,7 @@ namespace AdaaMobile.ViewModels
                         EndTime = EndTimeSpan.ToString(@"hh\:mm"),
                         WillReturn = ReturnToday ? "Yes" : "No",
                         ReasonType = ReasonType,
-                        
+
                     };
                     var bodyParameter = new DaypassRequestBParameters()
                     {
@@ -230,6 +246,25 @@ namespace AdaaMobile.ViewModels
 
             return await _dataService.GetOtherUserProfile(parameters);
         }
-        #endregion
+
+        private void CalculateDuration()
+        {
+            try
+            {
+                if (StartTimeSpan != null && EndTimeSpan != null && EndTimeSpan >= StartTimeSpan)
+                {
+                    DurationText = (EndTimeSpan - StartTimeSpan).ToString("hh: mm tt");
+                }
+                else
+                {
+                    DurationText = "---";
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            #endregion
+        }
     }
-}
+    }
