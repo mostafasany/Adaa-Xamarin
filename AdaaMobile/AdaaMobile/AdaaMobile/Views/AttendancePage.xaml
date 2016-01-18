@@ -110,6 +110,7 @@
                 ConverterParameter=d MMM yyyy}"
                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                     Clicked="StartDate_Clicked"
+                    
                     VerticalOptions="End"
                     BackgroundColor="{StaticResource AppBackgroundNormal}"
                     TextColor="White"

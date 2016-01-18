@@ -104,12 +104,13 @@ namespace AdaaMobile.CustomRenderers
 
                         switch (model.Orientation)
                         {
+                            //Should be left, and Right, modify later, and extend with new orientation options
                             case ImageOrientation.ImageToLeft:
-                                targetButton.Gravity = GravityFlags.Left | GravityFlags.CenterVertical;
+                                targetButton.Gravity = GravityFlags.CenterHorizontal | GravityFlags.CenterVertical;
                                 left = scaledDrawable;
                                 break;
                             case ImageOrientation.ImageToRight:
-                                targetButton.Gravity = GravityFlags.Right | GravityFlags.CenterVertical;
+                                targetButton.Gravity = GravityFlags.CenterHorizontal | GravityFlags.CenterVertical;
                                 right = scaledDrawable;
                                 break;
                             case ImageOrientation.ImageOnTop:

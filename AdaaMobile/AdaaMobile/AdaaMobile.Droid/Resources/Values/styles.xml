@@ -23,7 +23,7 @@
 
   -->
   <style name="myToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-    <item name="navigationIcon">@drawable/ic_arrow_back_white_24dp</item>
+    <!--<item name="navigationIcon">@drawable/ic_arrow_back_white_24dp</item>-->
   </style>
   <style name="Theme.Splash" parent="android:Theme">
     <item name="android:windowBackground">@drawable/splash</item>
