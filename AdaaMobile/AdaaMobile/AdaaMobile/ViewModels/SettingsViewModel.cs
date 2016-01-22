@@ -96,11 +96,11 @@ namespace AdaaMobile.ViewModels
 		public async void UpdateLanguage (int value)
 		{
 			if (value == 0) {
-				_appSettings.SelectedCultureName = "en-US";
+				_appSettings.NextSelectedCultureName = "en-US";
 				SelectedLanguageName = "English";
 
 			} else {
-				_appSettings.SelectedCultureName = "ar-EG";
+				_appSettings.NextSelectedCultureName = "ar-EG";
 				SelectedLanguageName = "العربية";
 			}
 			await _dialogManager.DisplayAlert (AppResources.LanguageSaved,
