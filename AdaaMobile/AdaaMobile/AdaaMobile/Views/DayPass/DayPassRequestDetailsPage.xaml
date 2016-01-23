@@ -16,6 +16,7 @@
   <ContentPage.Resources>
     <ResourceDictionary>
       <Color x:Key="TabColor">#00676e</Color>
+      <Color x:Key="BoxBackgroundColor">#bb007c85</Color>
       <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
     </ResourceDictionary>
   </ContentPage.Resources>
@@ -30,7 +31,7 @@
     </Grid.RowDefinitions>
 
       <controls:RoundedBoxView 
-                BackgroundColor="{StaticResource AppBackgroundNormal}"
+                BackgroundColor="{StaticResource BoxBackgroundColor}"
                 CornerRadius="{StaticResource CornerRadius}"
                 VerticalOptions="Fill"
                 Grid.Row="0"
@@ -49,7 +50,7 @@
         </StackLayout>
 
     <controls:RoundedBoxView
-                BackgroundColor="{StaticResource AppBackgroundNormal}"
+                BackgroundColor="{StaticResource BoxBackgroundColor}"
                 CornerRadius="{StaticResource CornerRadius}"
                 VerticalOptions="Fill"
                 Grid.Row="1"

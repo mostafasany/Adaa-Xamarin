@@ -109,7 +109,7 @@
 
                     <!--Add background and set background color of Extended Grid To Transparent, 
                   As there is an issue in rounding backcolor of ExtendedGrid in Android -->
-                    <BoxView BackgroundColor="#cc007c85" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
+                    <BoxView BackgroundColor="#bb007c85" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
 
                     <Label Grid.Row="1"  Grid.Column="1"
                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
@@ -196,7 +196,7 @@
 
                     <!--Add background and set background color of Extended Grid To Transparent, 
                   As there is an issue in rounding backcolor of ExtendedGrid in Android -->
-                    <BoxView BackgroundColor="#cc007c85" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
+                    <BoxView BackgroundColor="#bb007c85" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
 
                     <Label Grid.Row="1"  Grid.Column="1"
                           TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
