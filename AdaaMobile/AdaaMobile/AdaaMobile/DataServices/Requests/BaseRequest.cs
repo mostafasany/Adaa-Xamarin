@@ -270,7 +270,7 @@ namespace AdaaMobile.DataServices.Requests
                 }
                 else if (ResultContentType == ContentType.Xml)
                 {
-                    //bool isFixed = FixXml(ref stringValue);
+                    bool isFixed = FixXml(ref stringValue);
                     var serializer = new XmlSerializer(typeof(TR));
                     using (var reader = new StringReader(stringValue))
                     {
