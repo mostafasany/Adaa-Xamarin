@@ -309,6 +309,7 @@ namespace AdaaMobile.DataServices.Requests
             if (stringValue.Contains("&"))
             {
                 stringValue = stringValue.Replace("&", "&amp;");
+                //OR &#038;
             }
             return true;
         }
