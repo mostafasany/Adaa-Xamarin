@@ -305,6 +305,10 @@ namespace AdaaMobile.DataServices.Requests
             if (!stringValue.StartsWith("<root>"))
             {
                 stringValue = string.Format("<root>{0}</root>", stringValue);
+            };
+            if (stringValue.Contains("&"))
+            {
+                stringValue = stringValue.Replace("&", "&amp;");
             }
             return true;
         }
