@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -251,7 +252,7 @@ namespace AdaaMobile.DataServices.Requests
             }
         }
 
-        private void ParseResult<TR>(string stringValue, ResponseWrapper<TR> responseWrapper)
+        public void ParseResult<TR>(string stringValue, ResponseWrapper<TR> responseWrapper)
         {
             if (String.IsNullOrWhiteSpace(stringValue))
             {
@@ -306,10 +307,15 @@ namespace AdaaMobile.DataServices.Requests
             {
                 stringValue = string.Format("<root>{0}</root>", stringValue);
             };
-            if (stringValue.Contains("&"))
+
+            if (RequestUrl != null &&
+                (RequestUrl.Contains("getUserProfile") || RequestUrl.Contains("getCurrentUserProfile")))
             {
-                stringValue = stringValue.Replace("&", "&amp;");
-                //OR &#038;
+                if (stringValue.Contains("&"))
+                {
+                    stringValue = stringValue.Replace("&", "&amp;");
+                    //OR &#038;
+                }
             }
             return true;
         }
