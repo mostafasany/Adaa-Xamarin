@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using AdaaMobile.Controls;
 using AdaaMobile.Droid.CustomRenderers;
 using AdaaMobile.Droid.Extensions;
@@ -37,7 +38,7 @@ namespace AdaaMobile.Droid.CustomRenderers
             if (Control != null && e.NewElement != null && e.NewElement.IsPassword)
             {
                 Control.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
-                Control.TransformationMethod = new PasswordTransformationMethod();
+               // Control.TransformationMethod = new PasswordTransformationMethod();
             }
 
             SetFont(view);
@@ -62,13 +63,14 @@ namespace AdaaMobile.Droid.CustomRenderers
             {
                 SetFont(view);
             }
+
             else if (e.PropertyName == ExtendedEntry.XAlignProperty.PropertyName)
             {
                 SetTextAlignment(view);
             }
             else if (e.PropertyName == ExtendedEntry.HasBorderProperty.PropertyName)
             {
-                SetHasBorder(view); 
+                SetHasBorder(view);
             }
             else if (e.PropertyName == ExtendedEntry.PlaceholderTextColorProperty.PropertyName)
             {
@@ -81,6 +83,19 @@ namespace AdaaMobile.Droid.CustomRenderers
                 {
                     this.Control.SetBackgroundColor(view.BackgroundColor.ToAndroid());
                 }
+            }
+        }
+
+        private void IsPasswordFix(ExtendedEntry entry)
+        {
+            if (entry.IsPassword)
+            {
+                Control.InputType = (InputTypes.ClassText | InputTypes.TextVariationPassword);
+            }
+            else
+            {
+
+                Control.InputType = (InputTypes.ClassText);
             }
         }
 
@@ -154,6 +169,8 @@ namespace AdaaMobile.Droid.CustomRenderers
         {
             Control.SetFilters(new IInputFilter[] { new InputFilterLengthFilter(view.MaxLength) });
         }
+
+        
     }
 }
 

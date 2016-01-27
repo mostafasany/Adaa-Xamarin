@@ -520,4 +520,7 @@
   <data name="YouCantDelegateYourselfMessage" xml:space="preserve">
     <value>لا يمكنك انتداب نفسك</value>
   </data>
+  <data name="ShowPassword" xml:space="preserve">
+    <value>إظهار كلمة المرور</value>
+  </data>
 </root>

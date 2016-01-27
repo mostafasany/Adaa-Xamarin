@@ -3,16 +3,19 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Controls
 {
-	
-		/// <summary>
-		/// An extended entry control that allows the Font and text X alignment to be set
-		/// </summary>
-		public class ExtendedEntry : Entry
+
+
+
+    /// <summary>
+    /// An extended entry control that allows the Font and text X alignment to be set
+    /// </summary>
+    public class ExtendedEntry : Entry
 		{
-			/// <summary>
-			/// The font property
-			/// </summary>
-			public static readonly BindableProperty FontProperty =
+
+        /// <summary>
+        /// The font property
+        /// </summary>
+        public static readonly BindableProperty FontProperty =
 				BindableProperty.Create("Font", typeof(Font), typeof(ExtendedEntry), new Font());
 
 			/// <summary>

@@ -3,8 +3,14 @@
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
 xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
+             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
+             x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
 >
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:BooleanNegateConverter x:Key="BooleanNegateConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
 
   <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
     <Grid.RowDefinitions>
@@ -25,6 +31,7 @@ x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
           <RowDefinition Height="6" />
+          <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
           <RowDefinition Height="40" />
         </Grid.RowDefinitions>
@@ -80,14 +87,18 @@ x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
             XAlign="Start"
             PlaceholderTextColor="Gray"
             BackgroundColor="White"
-            
+            x:Name="PasswordEntry"
             TextColor="{StaticResource AppBackgroundNormal}"
             Placeholder="{ext:Translate Password}"
-            Text="{Binding Password,Mode=TwoWay}" IsPassword="true" />
+            Text="{Binding Password,Mode=TwoWay}" IsPassword="True" />
         </controls:ExtendedGrid>
 
-        <Button x:Name="LoginBtn" Grid.Row="4" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
-        <ActivityIndicator Grid.Row="5" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+        <Grid  Grid.Row="4" >
+          <Label VerticalOptions="Center" Text="{ext:Translate ShowPassword}" x:Name="ShowPasswordLabel" HorizontalOptions="Start" />
+          <Switch Toggled="ShowPassword_Toggled" VerticalOptions="Center" HorizontalOptions="End" x:Name="PasswordToggle" IsToggled="False"/>
+        </Grid>
+        <Button x:Name="LoginBtn" Grid.Row="5" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+        <ActivityIndicator Grid.Row="6" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 
       </Grid>
     </ScrollView>

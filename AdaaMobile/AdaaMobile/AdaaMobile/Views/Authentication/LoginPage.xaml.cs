@@ -18,8 +18,17 @@ namespace AdaaMobile.Views.Authentication
                 null
             );
 
+            if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+            {
+                ShowPasswordLabel.HorizontalOptions = LayoutOptions.End;
+                PasswordToggle.HorizontalOptions = LayoutOptions.Start;
+            }
 
+        }
 
+        private void ShowPassword_Toggled(object sender, ToggledEventArgs e)
+        {
+            PasswordEntry.IsPassword = !e.Value;
         }
     }
 }

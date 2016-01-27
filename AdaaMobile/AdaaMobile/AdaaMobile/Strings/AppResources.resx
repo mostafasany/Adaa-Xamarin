@@ -523,4 +523,7 @@
   <data name="YouCantDelegateYourselfMessage" xml:space="preserve">
     <value>You can not Delegate yourself</value>
   </data>
+  <data name="ShowPassword" xml:space="preserve">
+    <value>Show Password</value>
+  </data>
 </root>
