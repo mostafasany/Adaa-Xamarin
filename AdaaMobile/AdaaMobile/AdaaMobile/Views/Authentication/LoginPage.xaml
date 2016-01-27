@@ -4,6 +4,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
 xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
+             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              x:Class="AdaaMobile.Views.Authentication.LoginPage" IsBusy="{Binding IsBusy}"
 >
   <ContentPage.Resources>
@@ -69,6 +70,7 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
             <RowDefinition Height="40" />
             <RowDefinition Height="1" />
             <RowDefinition Height="40" />
+            <RowDefinition Height="Auto" />
 
           </controls:ExtendedGrid.RowDefinitions>
           <controls:ExtendedEntry  Grid.Row="0" HasBorder="false"
@@ -91,12 +93,15 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
             TextColor="{StaticResource AppBackgroundNormal}"
             Placeholder="{ext:Translate Password}"
             Text="{Binding Password,Mode=TwoWay}" IsPassword="True" />
-        </controls:ExtendedGrid>
 
-        <Grid  Grid.Row="4" >
-          <Label VerticalOptions="Center" Text="{ext:Translate ShowPassword}" x:Name="ShowPasswordLabel" HorizontalOptions="Start" />
+            <Grid  Grid.Row="3" >
+          <Label VerticalOptions="Center" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" TextColor="{StaticResource AppBackgroundNormal}"
+          Text="{ext:Translate ShowPassword}" x:Name="ShowPasswordLabel" HorizontalOptions="Start" />
           <Switch Toggled="ShowPassword_Toggled" VerticalOptions="Center" HorizontalOptions="End" x:Name="PasswordToggle" IsToggled="False"/>
         </Grid>
+        </controls:ExtendedGrid>
+
+
         <Button x:Name="LoginBtn" Grid.Row="5" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
         <ActivityIndicator Grid.Row="6" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 
