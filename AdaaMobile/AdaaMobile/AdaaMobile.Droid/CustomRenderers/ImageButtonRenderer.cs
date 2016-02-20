@@ -90,8 +90,8 @@ namespace AdaaMobile.CustomRenderers
                         drawable.SetTintMode(PorterDuff.Mode.SrcIn);
                     }
 
-                    using (var scaledDrawable = GetScaleDrawable(drawable, GetWidth(model.ImageWidthRequest),
-                                                   GetHeight(model.ImageHeightRequest)))
+                    using (var scaledDrawable = GetScaleDrawable(drawable, RequestToPixels(GetWidth(model.ImageWidthRequest)),
+                                                   RequestToPixels(GetHeight(model.ImageHeightRequest))))
                     {
                         Drawable left = null;
                         Drawable right = null;

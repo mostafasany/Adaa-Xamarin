@@ -34,7 +34,7 @@
     <ScrollView Grid.Row="0" VerticalOptions="Fill">
       <StackLayout
         Spacing="0"
-        Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"
+        Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
         BackgroundColor="Transparent"
       >
 
@@ -118,11 +118,11 @@
                 >
 
               <controls:ImageButton.ImageHeightRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="32" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
               </controls:ImageButton.ImageHeightRequest>
 
               <controls:ImageButton.ImageWidthRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="32" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
               </controls:ImageButton.ImageWidthRequest>
               
               <controls:ImageButton.HeightRequest>
@@ -159,11 +159,11 @@
                       TextColor = "White"
                 >
               <controls:ImageButton.ImageHeightRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="32" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
               </controls:ImageButton.ImageHeightRequest>
 
               <controls:ImageButton.ImageWidthRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="32" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
               </controls:ImageButton.ImageWidthRequest>
               
               <controls:ImageButton.HeightRequest>
@@ -176,7 +176,6 @@
           </Grid>
         </Grid>
 
-
         <StackLayout  >
           <controls:HorizontalListView ItemsSource="{Binding DaysList}"
                                        ItemTapped="Day_Tapped"
@@ -186,7 +185,7 @@
                                        
               >
             <controls:HorizontalListView.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" Android="62" iOS="62" WinPhone="80"/>
+              <OnPlatform x:TypeArguments="x:Double" Android="69" iOS="69" WinPhone="80"/>
             </controls:HorizontalListView.HeightRequest>
             <controls:HorizontalListView.ItemTemplate>
               <DataTemplate>
@@ -195,35 +194,43 @@
                     <!--<Label Text="{Binding AbbrWeek}" ></Label>-->
                     <Grid RowSpacing="0"             >
                       <Grid.RowDefinitions>
-                        <RowDefinition  Height="Auto"/>
+                        <RowDefinition  Height="3"/>
+                        <RowDefinition  Height="*"/>
+                        <RowDefinition  Height="3"/>
                         <RowDefinition  Height="Auto"/>
                       </Grid.RowDefinitions>
 
-                      <Label Grid.Row="0"
+                      <BoxView BackgroundColor="{StaticResource YellowAccent}"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Fill"
+                               Grid.Row="0" Grid.RowSpan="3" />
+                             
+                      <Label Grid.Row="1"
                       VerticalTextAlignment="Center"
                              VerticalOptions="Start"
                              HorizontalTextAlignment="Center"
                              HorizontalOptions="Fill"
-                             BackgroundColor="{StaticResource YellowAccent}"
+                             BackgroundColor="Transparent"
                              TextColor="Black"
                              FontSize="Small"
                              Text="{Binding AbbrWeek}"/>
-
+                      
                       <BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
                                x:Name="DayBack"
                                VerticalOptions="Fill"
                                HorizontalOptions="Fill"
-                               Grid.Row="1"/>
-                      <BoxView BackgroundColor="#AAFFFFFF"
-                            
+                               Grid.Row="3" />
+                      
+                      <BoxView BackgroundColor="#AAFFFFFF"                     
                      VerticalOptions="FillAndExpand"
                      HorizontalOptions="End"
                      WidthRequest="1"
-                     Grid.Row="1"/>
+                     Grid.Row="3"/>
+                     
                       <StackLayout VerticalOptions="Center"
                                    HorizontalOptions="Center"
-                                   Padding="4,4,4,2" Spacing="2"
-                                   Grid.Row="1">
+                                   Padding="8,4,8,4" Spacing="2"
+                                   Grid.Row="3">
                         <Label x:Name="DayLabel"
                                BackgroundColor="Transparent"
                                TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}"
@@ -245,6 +252,7 @@
             </controls:HorizontalListView.ItemTemplate>
           </controls:HorizontalListView>
         </StackLayout>
+        
         <Grid  VerticalOptions="FillAndExpand" MinimumHeightRequest="160"  BackgroundColor="{StaticResource AppBackgroundNormal}">
           <!--Attendance Details Grid-->
           <Grid VerticalOptions="FillAndExpand" Padding="25,10"
@@ -337,16 +345,16 @@
               Text="{ext:Translate Delegation}"
                 >
            <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="90" iOS="65"/>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="100" iOS="65"/>
             </controls:ImageButton.HeightRequest>
 
 
             <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="30" iOS="36"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36"/>
             </controls:ImageButton.ImageHeightRequest>
 
             <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="30" iOS="36"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36"/>
             </controls:ImageButton.ImageWidthRequest>
 
             <controls:ImageButton.Source>
@@ -367,16 +375,16 @@
               Text="{ext:Translate DayPass}">
 
             <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="90" iOS="65"/>
+              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="100" iOS="65"/>
             </controls:ImageButton.HeightRequest>
 
 
             <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="30" iOS="36"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36"/>
             </controls:ImageButton.ImageHeightRequest>
 
             <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="30" iOS="36"/>
+              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36"/>
             </controls:ImageButton.ImageWidthRequest>
             <controls:ImageButton.Source>
               <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="daypass.png" iOS="daypass"/>
