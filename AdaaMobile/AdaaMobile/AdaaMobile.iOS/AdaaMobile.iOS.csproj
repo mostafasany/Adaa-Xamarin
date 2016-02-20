@@ -135,6 +135,7 @@
     <Compile Include="CustomRenderers\ExtendedEntryRenderer.cs" />
     <Compile Include="CustomRenderers\NoBackButtonPageRenderer.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\CustomUICollectionViewDelegateFlowLayout.cs" />
+    <Compile Include="Helpers\PhoneService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdaaMobile\AdaaMobile.csproj">
@@ -184,10 +185,6 @@
     <BundleResource Include="Resources\delegation%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\modernhttpclient.2.4.2\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="NGraphics.Custom">
       <HintPath>..\..\packages\NGraphics\NGraphics.Custom.dll</HintPath>
     </Reference>
@@ -227,6 +224,9 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\packages\Xamarin.Forms.2.0.0.6490\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\modernhttpclient.2.4.2\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

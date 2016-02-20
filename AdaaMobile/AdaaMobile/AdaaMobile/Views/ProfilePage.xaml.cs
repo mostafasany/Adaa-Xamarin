@@ -26,6 +26,9 @@ namespace AdaaMobile.Views
 			_profileViewModel = Locator.Default.ProfileViewModel;
 			_profileViewModel.SetOtherUserId (userId);
 			BindingContext = _profileViewModel;
+			var tapRecognizer = new TapGestureRecognizer();
+			tapRecognizer.Tapped += MobileNumber_OnTapped;
+			MobileNumberField.GestureRecognizers.Add (tapRecognizer);
 		}
 
         protected override void OnAppearing()
@@ -36,6 +39,11 @@ namespace AdaaMobile.Views
                 _profileViewModel.LoadCommand.Execute(null);
             }
         }
+
+		private void MobileNumber_OnTapped(object sender, EventArgs e)
+		{
+			DependencyService.Get<IPhoneService> ().DialNumber (_profileViewModel.UserProfile.MobileNum);
+		}
     }
 
 

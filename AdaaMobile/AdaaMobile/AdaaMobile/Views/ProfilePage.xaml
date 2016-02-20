@@ -88,7 +88,12 @@
         <views:ProfilePropertyControl Title="{ext:Translate Department}" Value="{Binding UserProfile.DeptName}"/>
         <views:ProfilePropertyControl Title="{ext:Translate Group}" Value="{Binding UserProfile.GroupName}"/>
         <views:ProfilePropertyControl Title="{ext:Translate OfficeNumber}" Value="{Binding UserProfile.OfficeNum}"/>
-        <views:ProfilePropertyControl Title="{ext:Translate MobileNumber}" Value="{Binding UserProfile.MobileNum}"/>
+        <views:ProfilePropertyControl x:Name="MobileNumberField" Title="{ext:Translate MobileNumber}" Value="{Binding UserProfile.MobileNum}">
+
+<!--        <views:ProfilePropertyControl.GestureRecognizer>
+            <TapGestureRecognizer Tapped="MobileNumber_OnTapped" ></TapGestureRecognizer>
+        </views:ProfilePropertyControl.GestureRecognizer>-->
+        </views:ProfilePropertyControl>
         <views:ProfilePropertyControl Title="{ext:Translate Email}" Value="{Binding UserProfile.Email}"/>
         <views:ProfilePropertyControl Title="{ext:Translate Manager}" Value="{Binding UserProfile.Manager}"/>
       </StackLayout>
