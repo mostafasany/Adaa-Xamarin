@@ -26,6 +26,10 @@ namespace AdaaMobile.Droid
 				instance.StartActivity(new Intent(Intent.ActionDial, uri));
 			}
 		}
+		public void ComposeMail (string recipient, string subject, string messagebody = null, Action<bool> completed = null){
+			
+		}
+
 	}
 }
 

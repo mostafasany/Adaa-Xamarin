@@ -53,9 +53,9 @@ namespace AdaaMobile.Views
 			DependencyService.Get<IPhoneService> ().DialNumber (_profileViewModel.UserProfile.MobileNum);
 		}
 
-		void OfficeNumber_OnTapped (object sender, EventArgs e)
+		private void OfficeNumber_OnTapped (object sender, EventArgs e)
 		{
-			f(_profileViewModel.UserProfile
+			if(_profileViewModel.UserProfile
 				!= null && !string.IsNullOrEmpty( _profileViewModel.UserProfile.OfficeNum ))
 			DependencyService.Get<IPhoneService> ().DialNumber (_profileViewModel.UserProfile.OfficeNum);
 

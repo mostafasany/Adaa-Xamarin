@@ -25,6 +25,10 @@ namespace AdaaMobile.iOS.Helpers
 				return;
 			UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("tel://" + number.Replace (" ", "")));
 		}
+
+		public void ComposeMail (string recipient, string subject, string messagebody = null, Action<bool> completed = null){
+
+		}
 	}
 }
 
