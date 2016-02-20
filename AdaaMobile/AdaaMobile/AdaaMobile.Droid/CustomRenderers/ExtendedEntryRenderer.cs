@@ -35,11 +35,11 @@ namespace AdaaMobile.Droid.CustomRenderers
 
             var view = (ExtendedEntry)Element;
 
-            if (Control != null && e.NewElement != null && e.NewElement.IsPassword)
-            {
-                Control.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
-               // Control.TransformationMethod = new PasswordTransformationMethod();
-            }
+            //if (Control != null && e.NewElement != null && e.NewElement.IsPassword)
+            //{
+            //    Control.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+            //    //Control.TransformationMethod = new PasswordTransformationMethod();
+            //}
 
             SetFont(view);
             SetTextAlignment(view);
@@ -79,6 +79,13 @@ namespace AdaaMobile.Droid.CustomRenderers
             else
             {
                 base.OnElementPropertyChanged(sender, e);
+                if (e.PropertyName == ExtendedEntry.IsPasswordProperty.PropertyName)
+                {
+                    //to fix issue in password hint
+                    if(Element.IsPassword)
+                    Control.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+                }
+                else
                 if (e.PropertyName == VisualElement.BackgroundColorProperty.PropertyName)
                 {
                     this.Control.SetBackgroundColor(view.BackgroundColor.ToAndroid());
@@ -170,7 +177,7 @@ namespace AdaaMobile.Droid.CustomRenderers
             Control.SetFilters(new IInputFilter[] { new InputFilterLengthFilter(view.MaxLength) });
         }
 
-        
+
     }
 }
 

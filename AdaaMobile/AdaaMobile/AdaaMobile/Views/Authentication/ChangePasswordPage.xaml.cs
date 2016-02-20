@@ -48,5 +48,11 @@ namespace AdaaMobile.Views.Authentication
 //					new ToolbarItem(AppResources.Save, "icon.png", action, ToolbarItemOrder.Primary));
 //			}
 		}
+
+        private void ShowPassword_Toggled(object sender, ToggledEventArgs e)
+        {
+            ConfirmPasswordEntry.IsPassword = !e.Value;
+            PasswordEntry.IsPassword = !e.Value;
+        }
     }
 }
