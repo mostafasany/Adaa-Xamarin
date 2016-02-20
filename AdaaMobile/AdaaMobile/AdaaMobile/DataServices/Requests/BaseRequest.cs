@@ -169,7 +169,7 @@ namespace AdaaMobile.DataServices.Requests
                 //create new HttpClientHandler to set DisposeHandler boolean
                 httpClient = HttpMessageHandler != null ?
                       new HttpClient(HttpMessageHandler, DisposeHandler) :
-                      new HttpClient(new ModernHttpClient.NativeMessageHandler(), DisposeHandler);
+					new HttpClient(new ModernHttpClient.NativeMessageHandler(), DisposeHandler);
 
                 if (NoCahce)
                     httpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue() { NoCache = true };
@@ -212,15 +212,15 @@ namespace AdaaMobile.DataServices.Requests
                 else
                     response.ResponseStatus = ResponseStatus.TimeOut;
             }
-            catch (WebException)
+            catch (WebException ex)
             {
                 response.ResponseStatus = ResponseStatus.HttpError;
             }
-            catch (HttpRequestException)
+            catch (HttpRequestException ex)
             {
                 response.ResponseStatus = ResponseStatus.HttpError;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 response.ResponseStatus = ResponseStatus.ClientSideError;
             }
