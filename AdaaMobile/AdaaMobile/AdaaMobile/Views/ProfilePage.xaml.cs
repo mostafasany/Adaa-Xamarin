@@ -29,6 +29,12 @@ namespace AdaaMobile.Views
 			var tapRecognizer = new TapGestureRecognizer();
 			tapRecognizer.Tapped += MobileNumber_OnTapped;
 			MobileNumberField.GestureRecognizers.Add (tapRecognizer);
+
+			var officeNumbertapRecognizer = new TapGestureRecognizer();
+			officeNumbertapRecognizer.Tapped += OfficeNumber_OnTapped;
+			OfficeNumberField.GestureRecognizers.Add (officeNumbertapRecognizer);
+
+
 		}
 
         protected override void OnAppearing()
@@ -42,7 +48,17 @@ namespace AdaaMobile.Views
 
 		private void MobileNumber_OnTapped(object sender, EventArgs e)
 		{
+			if(_profileViewModel.UserProfile
+				!= null && !string.IsNullOrEmpty( _profileViewModel.UserProfile.MobileNum ))
 			DependencyService.Get<IPhoneService> ().DialNumber (_profileViewModel.UserProfile.MobileNum);
+		}
+
+		void OfficeNumber_OnTapped (object sender, EventArgs e)
+		{
+			f(_profileViewModel.UserProfile
+				!= null && !string.IsNullOrEmpty( _profileViewModel.UserProfile.OfficeNum ))
+			DependencyService.Get<IPhoneService> ().DialNumber (_profileViewModel.UserProfile.OfficeNum);
+
 		}
     }
 
