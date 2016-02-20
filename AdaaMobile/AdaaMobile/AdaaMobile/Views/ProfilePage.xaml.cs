@@ -35,6 +35,10 @@ namespace AdaaMobile.Views
 			OfficeNumberField.GestureRecognizers.Add (officeNumbertapRecognizer);
 
 
+			var emailTapapRecognizer = new TapGestureRecognizer();
+			emailTapapRecognizer.Tapped += Email_OnTapped;
+			EmailField.GestureRecognizers.Add (emailTapapRecognizer);
+
 		}
 
         protected override void OnAppearing()
@@ -58,6 +62,14 @@ namespace AdaaMobile.Views
 			if(_profileViewModel.UserProfile
 				!= null && !string.IsNullOrEmpty( _profileViewModel.UserProfile.OfficeNum ))
 			DependencyService.Get<IPhoneService> ().DialNumber (_profileViewModel.UserProfile.OfficeNum);
+
+		}
+
+		private void Email_OnTapped (object sender, EventArgs e)
+		{
+			if(_profileViewModel.UserProfile
+				!= null && !string.IsNullOrEmpty( _profileViewModel.UserProfile.Email ))
+				DependencyService.Get<IPhoneService> ().ComposeMail (_profileViewModel.UserProfile.Email, "Hello");
 
 		}
     }

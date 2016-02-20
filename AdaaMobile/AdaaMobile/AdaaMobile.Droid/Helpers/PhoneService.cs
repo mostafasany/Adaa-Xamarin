@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using AdaaMobile.Droid;
 using Android.Net;
 using Android.Content;
+using System;
 
 [assembly: Dependency(typeof(PhoneService))]
 namespace AdaaMobile.Droid
@@ -27,7 +28,7 @@ namespace AdaaMobile.Droid
 			}
 		}
 		public void ComposeMail (string recipient, string subject, string messagebody = null, Action<bool> completed = null){
-			
+			Device.OpenUri(new System.Uri (string.Format ("mailto:{0}?subject={1}&body=", recipient, subject)));
 		}
 
 	}
