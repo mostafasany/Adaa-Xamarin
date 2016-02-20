@@ -22,6 +22,7 @@ namespace AdaaMobile
             Locator.Default = locator;
 
 
+
             //MainPage = new AddaMasterPage();
             IAppSettings settings = Locator.Default.AppSettings;
 
