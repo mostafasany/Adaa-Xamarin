@@ -282,7 +282,7 @@
     </Compile>
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Controls\ExtendedEntry.cs" />
-    <Compile Include="AppSettings.cs" />
+    <Compile Include="Helpers\AppSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">

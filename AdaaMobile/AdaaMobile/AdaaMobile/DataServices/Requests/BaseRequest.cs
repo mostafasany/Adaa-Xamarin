@@ -169,7 +169,7 @@ namespace AdaaMobile.DataServices.Requests
                 //create new HttpClientHandler to set DisposeHandler boolean
                 httpClient = HttpMessageHandler != null ?
                       new HttpClient(HttpMessageHandler, DisposeHandler) :
-                      new HttpClient(new HttpClientHandler(), DisposeHandler);
+                      new HttpClient(new ModernHttpClient.NativeMessageHandler(), DisposeHandler);
 
                 if (NoCahce)
                     httpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue() { NoCache = true };
