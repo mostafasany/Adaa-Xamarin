@@ -90,7 +90,7 @@ namespace AdaaMobile.ViewModels
             SignUpCommand = new ExtendedCommand(SignUp);
 
 #if DEBUG
-            UserName = "Mobileuser3";
+            UserName = "Mobileuser1";
             Password = "pass-123";
 #endif
         }
