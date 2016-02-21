@@ -17,7 +17,7 @@ namespace AdaaMobile.Models
         {
 
         }
-        protected ExceptionDayWrapper(DateTime dateTime, AttendanceException details) : base(dateTime)
+		protected ExceptionDayWrapper(DateTime dateTime, AttendanceException details) : base(dateTime, false)
         {
             Details = details;
         }

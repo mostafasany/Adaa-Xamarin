@@ -216,12 +216,16 @@ namespace AdaaMobile.ViewModels
                 while (currentDate <= endDate)
                 {
 				    if(currentDate.DayOfWeek != DayOfWeek.Friday && currentDate.DayOfWeek != DayOfWeek.Saturday)
-                    days.Add(new DayWrapper(currentDate));
+							days.Add(new DayWrapper(currentDate, false));
                     currentDate = currentDate.AddDays(1);
                 }
                 return days;
             });
-
+			if (daysList.Count < 5) {
+				for (int i = daysList.Count; i < 5; i++) {
+					daysList.Add(new DayWrapper( new DateTime(0), true));
+				}
+			}
             DaysList = daysList;
         }
 

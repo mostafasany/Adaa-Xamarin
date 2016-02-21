@@ -210,6 +210,7 @@ namespace AdaaMobile.Views
         {
             //Change color states of clicked day
             var newDay = (DayWrapper)e.Item;
+			if(newDay.IsDummy == false)
             SelectDay(newDay);
         }
 
