@@ -58,7 +58,7 @@
 
           </Grid.RowDefinitions>
 
-          <Grid Grid.Row="0" HorizontalOptions="Fill">
+          <Grid Grid.Row="0" HorizontalOptions="Fill" Padding="0,10,0,0">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="*" />
               <ColumnDefinition Width="Auto" />
@@ -81,7 +81,6 @@
             </Image>
           </Grid>
 
-
           <controls:ExtendedButton
            x:Name="StartTimeBtn"
            Grid.Row="1"
@@ -92,6 +91,8 @@
            Text="{Binding StartTimeSpanString}"
            BorderWidth="0"
            BorderRadius="0"
+           Padding="0"
+           VerticalContentAlignment="Start"
            HorizontalContentAlignment="Start"
          >
           </controls:ExtendedButton>
