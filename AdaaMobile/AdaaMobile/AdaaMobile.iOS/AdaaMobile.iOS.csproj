@@ -179,7 +179,6 @@
     <BundleResource Include="Resources\Profilebig.png" />
     <BundleResource Include="Resources\subordinate%402x.png" />
     <BundleResource Include="Resources\subordinate%403x.png" />
-    <BundleResource Include="Resources\arrow.png" />
     <BundleResource Include="Resources\chevronblue.png" />
     <BundleResource Include="Resources\daypass%403x.png" />
     <BundleResource Include="Resources\delegation%403x.png" />

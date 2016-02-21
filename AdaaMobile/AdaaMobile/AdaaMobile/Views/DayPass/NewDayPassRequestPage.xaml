@@ -76,7 +76,7 @@
                                      Grid.Column="1"
                                      HorizontalOptions="Start" VerticalOptions="Center">
               <Image.Source>
-                <OnPlatform x:TypeArguments="ImageSource" iOS="arrow" Android="arrow.png" WinPhone="arrow.png"/>
+                <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png"/>
               </Image.Source>
             </Image>
           </Grid>
@@ -160,7 +160,7 @@
                                      Grid.Column="1"
                                      HorizontalOptions="Start" VerticalOptions="Center">
               <Image.Source>
-                <OnPlatform x:TypeArguments="ImageSource" iOS="arrow" Android="arrow.png" WinPhone="arrow.png"/>
+                <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png"/>
               </Image.Source>
             </Image>
           </Grid>
@@ -258,7 +258,7 @@ HorizontalOptions="Fill"
                                    Grid.Column="1"
                                    HorizontalOptions="Start" VerticalOptions="Center">
             <Image.Source>
-              <OnPlatform x:TypeArguments="ImageSource" iOS="arrow" Android="arrow.png" WinPhone="arrow.png"/>
+              <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png"/>
             </Image.Source>
           </Image>
         </Grid>
