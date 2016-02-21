@@ -175,7 +175,8 @@ namespace AdaaMobile.ViewModels
         {
             if (item == null || item.IsEnabled == false)
                 return;
-            _navigationService.SetMasterDetailsPage(item.TargetType);
+           // _navigationService.SetMasterDetailsPage(item.TargetType);
+			_navigationService.NavigateToPage(item.TargetType);
         }
 
 

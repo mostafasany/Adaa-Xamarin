@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.Views.MasterView;
 using Xamarin.Forms;
+using AdaaMobile.Views;
 
 namespace AdaaMobile.Helpers
 {
@@ -30,8 +31,13 @@ namespace AdaaMobile.Helpers
         {
             try
             {
+				Page displayPage ;
+
+				if (pageType == typeof(DirectoryPage)) 
+					displayPage = 	new DirectoryPage(Enums.DirectorySourceType.Directory, Enums.DirectoryAccessType.Normal);
+				else
+					displayPage  = (Page)Activator.CreateInstance(pageType);
                 //if (Application.Current.MainPage != null && App.Current.MainPage.GetType() == typeof(TPageType)) return false;
-                Page displayPage = (Page)Activator.CreateInstance(pageType);
                 if (Application.Current.MainPage is MasterDetailPage)
                 {
                     (Application.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync(displayPage);
