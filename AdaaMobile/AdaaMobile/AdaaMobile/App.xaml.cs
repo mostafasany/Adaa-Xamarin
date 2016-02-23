@@ -26,8 +26,7 @@ namespace AdaaMobile
             //MainPage = new AddaMasterPage();
             IAppSettings settings = Locator.Default.AppSettings;
 
-			//TODO remove this
-			settings.UserToken = "2015112208415181140";
+
             if (!settings.IsCultureSet)
             {
                 MainPage = new Views.ChooseLanguagePage();

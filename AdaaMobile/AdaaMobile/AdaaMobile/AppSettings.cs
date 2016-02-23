@@ -53,10 +53,7 @@ namespace AdaaMobile.Helpers
 			get
 			{
 				string token = CrossSettings.Current.GetValueOrDefault(UserTokenKey, _userTokenDefault);
-				#if DEBUG
-				if (string.IsNullOrEmpty(token))
-					return "2015112208415181140";
-				#endif
+
 				return token;
 
 			}
