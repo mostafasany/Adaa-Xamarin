@@ -185,7 +185,7 @@
                                        
               >
             <controls:HorizontalListView.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" Android="69" iOS="69" WinPhone="80"/>
+              <OnPlatform x:TypeArguments="x:Double" Android="69" iOS="68" WinPhone="80"/>
             </controls:HorizontalListView.HeightRequest>
             <controls:HorizontalListView.ItemTemplate>
               <DataTemplate>

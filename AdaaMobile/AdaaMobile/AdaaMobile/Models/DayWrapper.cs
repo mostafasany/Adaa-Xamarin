@@ -36,7 +36,7 @@ namespace AdaaMobile.Models
 		public string Day
         {
 			get { if (IsDummy)
-				return "";
+				return " ";
 				return Date.Day.ToString(); }
         }
 
@@ -44,7 +44,7 @@ namespace AdaaMobile.Models
         {
             get { 
 				if (IsDummy)
-					return "";
+					return " ";
 				return Date.ToString("MMM"); }
         }
 
@@ -52,7 +52,7 @@ namespace AdaaMobile.Models
         {
             get { 
 				if (IsDummy)
-					return "";
+					return " ";
 				return Date.ToString("ddd"); }
         }
     }

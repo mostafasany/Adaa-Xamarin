@@ -59,11 +59,11 @@ namespace AdaaMobile.iOS.CustomRenderers.HorizontalListView
 
 				_collectionView.ShowsHorizontalScrollIndicator = false;
                 _collectionView.BackgroundColor = Element.BackgroundColor.ToUIColor();
-				_collectionView.ItemSize = new CoreGraphics.CGSize((float)80, (float)62);
+				_collectionView.ItemSize = new CoreGraphics.CGSize((float)80, (float)68);
 //                _collectionView.ItemSize = new CoreGraphics.CGSize((float)Element.ItemWidth, (float)Element.ItemHeight);
 				_collectionView.RowSpacing = 0;//Todo
 				_collectionView.ColumnSpacing = Element.ColumnSpacing;
-				Element.HeightRequest = 62;
+				Element.HeightRequest = 68;
 				Element.WidthRequest = 80;
                 //Horizontal 
                 UICollectionViewFlowLayout flowLayout = (UICollectionViewFlowLayout)_collectionView.CollectionViewLayout;
