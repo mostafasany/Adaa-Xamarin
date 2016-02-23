@@ -238,7 +238,7 @@
 
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" HorizontalOptions="Fill">
+        <Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
