@@ -183,7 +183,7 @@ namespace AdaaMobile.ViewModels
             //_endDate = DateTime.Now;
             //_startDate = _endDate.Subtract(TimeSpan.FromDays(14));
 
-            SmallestWindowLimit = Xamarin.Forms.Device.OnPlatform(7, 14, 14);
+            SmallestWindowLimit = Xamarin.Forms.Device.OnPlatform(5, 14, 14);
 
             //Initialize commands
             LoadAttendanceCommand = new AsyncExtendedCommand(LoadAttendanceDetailsAsync);
