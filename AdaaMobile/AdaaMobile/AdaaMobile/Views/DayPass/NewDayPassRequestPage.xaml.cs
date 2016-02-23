@@ -23,7 +23,6 @@ namespace AdaaMobile.Views.DayPass
             //Initialize picker and wire events
             ReasonTypePicker.Items.Add(AppResources.Work);
             ReasonTypePicker.Items.Add(AppResources.Personal);
-            ReasonTypeButton.Clicked += ReasonTypeButton_Clicked;
             ReasonTypePicker.SelectedIndexChanged += ReasonTypePicker_SelectedIndexChanged;
 
             //Add submit action
@@ -33,12 +32,7 @@ namespace AdaaMobile.Views.DayPass
             };
             ToolbarItems.Add(
                 new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
-            
 
-            StartTimeBtn.Clicked += StartTimeBtn_Clicked;
-            EndTimeBtn.Clicked += EndTimeBtn_Clicked;
-
-            //ReasonEditor.Behaviors.Add(new MaxLengthValidator() { MaxLength = 60 });
             ReasonEditor.TextChanged += ReasonEditor_TextChanged;
             TextLimit.Text = string.Format("{0}/{1}", 0, 60);
         }
@@ -51,23 +45,30 @@ namespace AdaaMobile.Views.DayPass
             }
         }
 
-        void EndTimeBtn_Clicked(object sender, EventArgs e)
+        private void EndTime_Tapped(object sender, EventArgs e)
         {
             EndTimePicker.Unfocus();
             EndTimePicker.Focus();
         }
 
-        void StartTimeBtn_Clicked(object sender, EventArgs e)
+        private void StartTime_Tapped(object sender, EventArgs e)
         {
             StartTimePicker.Unfocus();
             StartTimePicker.Focus();
         }
 
+        private void ReasonType_Tapped(object sender, EventArgs e)
+        {
+            ReasonTypePicker.Unfocus();
+            ReasonTypePicker.Focus();
+        }
+        
         protected override void OnAppearing()
         {
             base.OnAppearing();
             NavigationPage.SetBackButtonTitle(this, string.Empty);
         }
+
         private void ReasonTypePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ReasonTypePicker.SelectedIndex == 0)
@@ -81,14 +82,5 @@ namespace AdaaMobile.Views.DayPass
                 _dayPassViewModel.LocalizedReasonType = AppResources.Personal;
             }
         }
-
-
-        private void ReasonTypeButton_Clicked(object sender, EventArgs e)
-        {
-            ReasonTypePicker.Unfocus();
-            ReasonTypePicker.Focus();
-        }
-
-
     }
 }

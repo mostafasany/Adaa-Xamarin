@@ -81,21 +81,18 @@
             </Image>
           </Grid>
 
-          <controls:ExtendedButton
-           x:Name="StartTimeBtn"
+          <Label
            Grid.Row="1"
            BackgroundColor="Transparent"
            HorizontalOptions="Start"
            VerticalOptions = "Start"
            TextColor="{StaticResource AppBackgroundNormal}"
            Text="{Binding StartTimeSpanString}"
-           BorderWidth="0"
-           BorderRadius="0"
-           Padding="0"
-           VerticalContentAlignment="Start"
-           HorizontalContentAlignment="Start"
          >
-          </controls:ExtendedButton>
+            <Label.GestureRecognizers>
+              <TapGestureRecognizer Tapped="StartTime_Tapped"/>
+            </Label.GestureRecognizers>
+          </Label>
 
           <TimePicker
            Grid.Row="1"
@@ -108,13 +105,14 @@
            Time="{Binding StartTimeSpan}"
                 />
 
+        <Grid Grid.Row="2" Padding="0,10">
           <BoxView
-            Grid.Row="2"
             HeightRequest="1"
             BackgroundColor="{StaticResource AppBackgroundNormal}"
             HorizontalOptions="Fill"
               />
-
+          </Grid>
+        
           <Grid  Grid.Row="3" HorizontalOptions="Fill"
                     >
             <Grid.ColumnDefinitions>
@@ -136,13 +134,13 @@
             </Switch>
           </Grid>
 
-          <BoxView
-            Grid.Row="4"
+        <Grid Grid.Row="4" Padding="0,10" IsVisible="{Binding ReturnToday}">
+          <BoxView  
             HeightRequest="1"
             BackgroundColor="{StaticResource AppBackgroundNormal}"
-        HorizontalOptions="Fill"
+            HorizontalOptions="Fill"
               />
-
+        </Grid>
           <Grid Grid.Row="5" HorizontalOptions="Fill" IsVisible="{Binding ReturnToday}">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="*" />
@@ -166,8 +164,7 @@
             </Image>
           </Grid>
 
-          <controls:ExtendedButton
-           x:Name="EndTimeBtn"
+          <Label
            IsVisible="{Binding ReturnToday}"
            Grid.Row="6"
            BackgroundColor="Transparent"
@@ -175,11 +172,11 @@
            VerticalOptions = "Start"
            TextColor="{StaticResource AppBackgroundNormal}"
            Text="{Binding EndTimeSpanString}"
-           BorderWidth="0"
-           BorderRadius="0"
-           HorizontalContentAlignment="Start"
          >
-          </controls:ExtendedButton>
+            <Label.GestureRecognizers>
+              <TapGestureRecognizer Tapped="EndTime_Tapped"/>
+            </Label.GestureRecognizers>
+            </Label>
 
           <TimePicker
            Grid.Row="6"
@@ -192,13 +189,13 @@
            Time="{Binding EndTimeSpan}"
                 />
 
-        <BoxView
-    Grid.Row="7"
-    IsVisible="{Binding ReturnToday}"
-    HeightRequest="1"
-    BackgroundColor="{StaticResource AppBackgroundNormal}"
-HorizontalOptions="Fill"
+        <Grid Grid.Row="7" Padding="0,10" IsVisible="{Binding ReturnToday}">
+          <BoxView  
+            HeightRequest="1"
+            BackgroundColor="{StaticResource AppBackgroundNormal}"
+            HorizontalOptions="Fill"
               />
+        </Grid>
 
         <Label   Grid.Row="8"
         IsVisible="{Binding ReturnToday}"
@@ -270,21 +267,19 @@ HorizontalOptions="Fill"
               >
         </Picker>
 
-        <Grid Padding="5,0,0,0" Grid.Row="1" HorizontalOptions="Fill"
-        VerticalOptions="Fill" >
-          <controls:ExtendedButton
-          x:Name="ReasonTypeButton" BackgroundColor="Transparent"
-          BorderWidth="0" BorderColor ="Transparent" BorderRadius="0"
+          <Label
+          BackgroundColor="Transparent"
+          Grid.Row="1"
           HorizontalOptions="Start"
           VerticalOptions="Fill"
           Text="{Binding LocalizedReasonType}"
           TextColor="{StaticResource AppBackgroundNormal}"
-          Font="SemiBold"
-          HorizontalContentAlignment="Start"
-              >
-
-          </controls:ExtendedButton>
-        </Grid>
+          Font="SemiBold" >
+            <Label.GestureRecognizers>
+              <TapGestureRecognizer Tapped="ReasonType_Tapped"/>
+            </Label.GestureRecognizers>
+            
+            </Label>
 
         <BoxView
           Grid.Row="2"
