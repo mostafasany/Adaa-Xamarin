@@ -24,6 +24,7 @@ namespace AdaaMobile.ViewModels
         private const int InitialLimitInDays = 7;
         private const int LimitRangeInDays = 1 * 30;
         private const int BottomLimitInDays = 2 * 12 * 30;
+        private readonly int SmallestWindowLimit ;//items
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
@@ -43,13 +44,14 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _startDate, value))
                 {
-					if ((_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays) || _startDate >= _endDate) {
-						_endDate = _startDate.AddDays (LimitRangeInDays);
-						OnPropertyChanged ("EndDate");
-					}
-//                    var span = EndDate - StartDate;
-//                    if (span.Days > LimitRangeInDays)
-//                        EndDate = _startDate.Add(TimeSpan.FromDays(LimitRangeInDays));
+                    if ((_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays) || _startDate >= _endDate)
+                    {
+                        _endDate = _startDate.AddDays(LimitRangeInDays);
+                        OnPropertyChanged("EndDate");
+                    }
+                    //                    var span = EndDate - StartDate;
+                    //                    if (span.Days > LimitRangeInDays)
+                    //                        EndDate = _startDate.Add(TimeSpan.FromDays(LimitRangeInDays));
                     SwitchMode(AttendanceMode);
                 }
             }
@@ -66,13 +68,14 @@ namespace AdaaMobile.ViewModels
             {
                 if (SetProperty(ref _endDate, value))
                 {
-					if ((_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays) ) {
-						_startDate = _endDate.AddDays (LimitRangeInDays*-1);
-						OnPropertyChanged ("StartDate");
-					}
-//                    var span = EndDate - StartDate;
-//                    if (span.Days > LimitRangeInDays)
-//                        StartDate = _endDate.Subtract(TimeSpan.FromDays(LimitRangeInDays));
+                    if ((_endDate >= _startDate && (_endDate - _startDate).Days > LimitRangeInDays))
+                    {
+                        _startDate = _endDate.AddDays(LimitRangeInDays * -1);
+                        OnPropertyChanged("StartDate");
+                    }
+                    //                    var span = EndDate - StartDate;
+                    //                    if (span.Days > LimitRangeInDays)
+                    //                        StartDate = _endDate.Subtract(TimeSpan.FromDays(LimitRangeInDays));
                     SwitchMode(AttendanceMode);
                 }
             }
@@ -180,6 +183,7 @@ namespace AdaaMobile.ViewModels
             //_endDate = DateTime.Now;
             //_startDate = _endDate.Subtract(TimeSpan.FromDays(14));
 
+            SmallestWindowLimit = Xamarin.Forms.Device.OnPlatform(7, 14, 14);
 
             //Initialize commands
             LoadAttendanceCommand = new AsyncExtendedCommand(LoadAttendanceDetailsAsync);
@@ -187,7 +191,7 @@ namespace AdaaMobile.ViewModels
 
             //Set initial mode to Attendance
             AttendanceMode = AttendanceMode.Attendance;
-            
+
         }
 
         #endregion
@@ -215,27 +219,36 @@ namespace AdaaMobile.ViewModels
                 var endDate = EndDate;
                 while (currentDate <= endDate)
                 {
-				    if(currentDate.DayOfWeek != DayOfWeek.Friday && currentDate.DayOfWeek != DayOfWeek.Saturday)
-							days.Add(new DayWrapper(currentDate, false));
+                    if (currentDate.DayOfWeek != DayOfWeek.Friday && currentDate.DayOfWeek != DayOfWeek.Saturday)
+                        days.Add(new DayWrapper(currentDate, false));
                     currentDate = currentDate.AddDays(1);
                 }
                 return days;
             });
-			if (daysList.Count < 5) {
-				for (int i = daysList.Count; i < 5; i++) {
-					daysList.Add(new DayWrapper( new DateTime(0), true));
-				}
-			}
+
+            FixWindowSize(daysList);
             DaysList = daysList;
         }
 
-		public async Task SwitchMode(AttendanceMode mode)
+        private void FixWindowSize(List<DayWrapper> daysList)
         {
-			if (EndDate >= StartDate && (EndDate - StartDate).Days > LimitRangeInDays ) {
-				//await _dialogManager.DisplayAlert (AppResources.ApplicationName, "Please select valid intreval, maximum is one month", AppResources.Ok);
+            if (daysList.Count < SmallestWindowLimit)
+            {
+                for (int i = daysList.Count; i < SmallestWindowLimit; i++)
+                {
+                    daysList.Add(new DayWrapper(new DateTime(0), true));
+                }
+            }
+        }
 
-				return;
-			}
+        public async Task SwitchMode(AttendanceMode mode)
+        {
+            if (EndDate >= StartDate && (EndDate - StartDate).Days > LimitRangeInDays)
+            {
+                //await _dialogManager.DisplayAlert (AppResources.ApplicationName, "Please select valid intreval, maximum is one month", AppResources.Ok);
+
+                return;
+            }
             //Set current mode, This will trigger changes in Bindings.
             AttendanceMode = mode;
 
@@ -343,6 +356,7 @@ namespace AdaaMobile.ViewModels
                 BusyMessage = AppResources.Loading;
                 ErrorMessage = null;
 
+
                 if (token.IsCancellationRequested) return;
 
                 var paramters = new ExceptionsQParameter()
@@ -359,7 +373,11 @@ namespace AdaaMobile.ViewModels
                 if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
                     if (response.Result.ExceptionDays != null)
-                        DaysList = response.Result.ExceptionDays.Select(ex => (DayWrapper)ExceptionDayWrapper.Wrap(ex)).ToList();
+                    {
+                        var daysList = response.Result.ExceptionDays.Select(ex => (DayWrapper)ExceptionDayWrapper.Wrap(ex)).ToList();
+                        FixWindowSize(daysList);
+                        DaysList = daysList;
+                    }
                     if (DaysList != null && DaysList.Count > 0)
                     {
                         SelectedDay = DaysList[DaysList.Count - 1];

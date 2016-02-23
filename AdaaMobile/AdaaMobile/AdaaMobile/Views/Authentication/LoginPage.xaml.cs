@@ -30,5 +30,13 @@ namespace AdaaMobile.Views.Authentication
         {
             PasswordEntry.IsPassword = !e.Value;
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            //var client = new System.Net.Http.HttpClient(new ModernHttpClient.NativeMessageHandler());
+            //var url = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy?server=adaamobile&url=?funcname=getAllEmployeesList&langid=eng&userToken=2015112823041470554";
+            //var data = await client.GetAsync(new System.Uri(url, System.UriKind.RelativeOrAbsolute));
+        }
     }
 }
