@@ -262,7 +262,10 @@ namespace AdaaMobile.ViewModels
 
             DaysList = null;
 
+           
+
             //Clear current day
+            SelectedDay.IsSelected = false;
             SelectedDay = null;
 
             //Clear current Attendance

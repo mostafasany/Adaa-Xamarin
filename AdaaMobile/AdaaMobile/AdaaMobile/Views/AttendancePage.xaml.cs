@@ -30,7 +30,7 @@ namespace AdaaMobile.Views
         public AttendancePage()
         {
             InitializeComponent();
-			NavigationPage.SetBackButtonTitle(this, "");
+            NavigationPage.SetBackButtonTitle(this, "");
             _attendanceViewModel = Locator.Default.AttendanceViewModel;
             BindingContext = _attendanceViewModel;
 
@@ -39,7 +39,7 @@ namespace AdaaMobile.Views
             MinDatePicker.Unfocused += MinDatePicker_Unfocused;
 
             MaxDatePicker.Date = _attendanceViewModel.EndDate;
-			MaxDatePicker.Unfocused += MaxDatePicker_Unfocused;
+            MaxDatePicker.Unfocused += MaxDatePicker_Unfocused;
 
             //Add App bar icon
             //Action action = () => { };
@@ -70,18 +70,20 @@ namespace AdaaMobile.Views
             ToolbarItems.Add(
                 new ToolbarItem("", "subordinate.png", action, ToolbarItemOrder.Primary));
 
-			_attendanceViewModel.PropertyChanged+= _attendanceViewModel_PropertyChanged;
+            _attendanceViewModel.PropertyChanged += _attendanceViewModel_PropertyChanged;
         }
 
-        void _attendanceViewModel_PropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void _attendanceViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-			if (e.PropertyName == "EndDate") {
-				MaxDatePicker.Date = _attendanceViewModel.EndDate;
+            if (e.PropertyName == "EndDate")
+            {
+                MaxDatePicker.Date = _attendanceViewModel.EndDate;
 
-			}
-			else if (e.PropertyName == "StartDate") {
-				MinDatePicker.Date = _attendanceViewModel.StartDate;
-			}
+            }
+            else if (e.PropertyName == "StartDate")
+            {
+                MinDatePicker.Date = _attendanceViewModel.StartDate;
+            }
         }
 
         private void DelegationBtn_Clicked(object sender, EventArgs e)
@@ -117,8 +119,13 @@ namespace AdaaMobile.Views
                 if (_attendanceViewModel.CurrentAttendance == null)
                 {
                     await _attendanceViewModel.PopulateAttendanceDaysAsync();
+                    //Try to select latest day - Take care for dummy days
                     if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
-                        SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count - 1]);
+                    {
+                        var latestIndex = _attendanceViewModel.DaysList.FindLastIndex(day => !day.IsDummy);
+                        if (latestIndex != -1)
+                            SelectDay(_attendanceViewModel.DaysList[latestIndex]);
+                    }
                 }
             }
             catch
@@ -132,14 +139,14 @@ namespace AdaaMobile.Views
         {
             MaxDatePicker.Unfocus();
             MaxDatePicker.Focus();
-			MaxDatePicker.Date = _attendanceViewModel.EndDate;
+            MaxDatePicker.Date = _attendanceViewModel.EndDate;
         }
 
         private void StartDate_Clicked(object sender, EventArgs e)
         {
             MinDatePicker.Unfocus();
             MinDatePicker.Focus();
-			MinDatePicker.Date = _attendanceViewModel.StartDate;
+            MinDatePicker.Date = _attendanceViewModel.StartDate;
         }
         #endregion
 
@@ -181,17 +188,17 @@ namespace AdaaMobile.Views
             //Switch to different modes based on tapped button
             if (button == AttendanceButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Attendance)
             {
-				await _attendanceViewModel.SwitchMode(AttendanceMode.Attendance);
-				try
-				{
+                await _attendanceViewModel.SwitchMode(AttendanceMode.Attendance);
+                try
+                {
 
-						if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
-							SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count - 1]);
-				}
-				catch
-				{
-					//ignored
-				}
+                    if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
+                        SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count - 1]);
+                }
+                catch
+                {
+                    //ignored
+                }
             }
             else if (button == ExceptionsButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Exceptions)
             {
@@ -210,8 +217,8 @@ namespace AdaaMobile.Views
         {
             //Change color states of clicked day
             var newDay = (DayWrapper)e.Item;
-			if(newDay.IsDummy == false)
-            SelectDay(newDay);
+            if (newDay.IsDummy == false)
+                SelectDay(newDay);
         }
 
         private void SelectDay(DayWrapper newDay)
