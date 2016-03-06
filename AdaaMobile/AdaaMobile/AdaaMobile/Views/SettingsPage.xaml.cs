@@ -27,9 +27,11 @@ namespace AdaaMobile.Views
             //LanguageButton.Clicked+= LanguageButton_Clicked;
             SelectedLanguageNameLabel.Clicked += SelectedLanguageNameLabel_Clicked;
             LanguagePicker.SelectedIndex = _settingsViewModel.SelectedLanguageIndex;
-            LanguagePicker.SelectedIndexChanged += LanguagePicker_SelectedIndexChanged;
-
-			//LanguagePicker.Unfocused+= LanguagePicker_Unfocused;
+			if (Device.OS == TargetPlatform.Android)
+				LanguagePicker.SelectedIndexChanged += LanguagePicker_SelectedIndexChanged;
+			else {
+				LanguagePicker.Unfocused+= LanguagePicker_Unfocused;
+			}
 
         }
 
