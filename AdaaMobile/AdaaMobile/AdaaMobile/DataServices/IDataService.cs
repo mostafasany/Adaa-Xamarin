@@ -54,5 +54,8 @@ namespace AdaaMobile.DataServices
 
 
 
+        //Sprint2
+        Task<ResponseWrapper<GetClientsResponse>> GetClientsAsync(GetClientsQParameters parameters, CancellationToken? token = null);
+
     }
 }

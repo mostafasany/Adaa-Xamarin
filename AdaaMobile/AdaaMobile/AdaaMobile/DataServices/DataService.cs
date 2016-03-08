@@ -21,6 +21,7 @@ namespace AdaaMobile.DataServices
         // private const string BaseUrl = "http://adaa.getsandbox.com";
         private const string BaseUrl = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy";
         private const string Server = "adaamobile";
+        private const string Sprint2Server = "imach";
         private const string ContenTypeKey = "Content-Type";
         private const string XmlContentType = "application/xml";
         private readonly Func<BaseRequest> _requestFactory;
@@ -239,6 +240,22 @@ namespace AdaaMobile.DataServices
             request.RequestUrl = BaseUrl.AppendQueryString(parameters);
             request.ResultContentType = ContentType.Xml;
             return await request.GetAsync<RemoveDelegationsResponse>(token);
+        }
+
+
+
+
+        #endregion
+
+        #region Sprint 2
+
+        public async Task<ResponseWrapper<GetClientsResponse>> GetClientsAsync(GetClientsQParameters parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetClientsResponse>(token);
         }
 
 
