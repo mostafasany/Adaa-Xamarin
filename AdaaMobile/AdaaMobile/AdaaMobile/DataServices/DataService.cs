@@ -258,6 +258,24 @@ namespace AdaaMobile.DataServices
             return await request.GetAsync<GetClientsResponse>(token);
         }
 
+        public async Task<ResponseWrapper<GetCardsResponse>> GetCardsAsync(GetCardsQParameters parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetCardsResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<GetAllRequestsResponse>> GetAllSharepointRequestsAsync(GetAllRequestsQParameters parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetAllRequestsResponse>(token);
+        }
+
 
         #endregion
     }
