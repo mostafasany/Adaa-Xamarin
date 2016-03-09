@@ -7,11 +7,10 @@ using System.Xml.Serialization;
 
 namespace AdaaMobile.Models.Response
 {
-    /// <remarks/>
     [XmlRoot("root")]
-    public class GetClientsResponse
-    {
 
+    public class GetEquipmentsResponse
+    {
         [XmlElement("msg")]
         public string Message { get; set; }
 
@@ -24,5 +23,4 @@ namespace AdaaMobile.Models.Response
             set;
         }
     }
-
 }

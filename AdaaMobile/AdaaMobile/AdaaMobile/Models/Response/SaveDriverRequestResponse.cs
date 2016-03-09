@@ -7,22 +7,12 @@ using System.Xml.Serialization;
 
 namespace AdaaMobile.Models.Response
 {
-    /// <remarks/>
-    [XmlRoot("root")]
-    public class GetClientsResponse
+    public class SaveDriverRequestResponse
     {
-
         [XmlElement("msg")]
         public string Message { get; set; }
 
-
-
-        [XmlElement("Item")]
-        public BaseItem[] item
-        {
-            get;
-            set;
-        }
+        [XmlElement("type")]
+        public string type { get; set; }
     }
-
 }

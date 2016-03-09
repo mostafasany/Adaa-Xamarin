@@ -7,22 +7,20 @@ using System.Xml.Serialization;
 
 namespace AdaaMobile.Models.Response
 {
-    /// <remarks/>
-    [XmlRoot("root")]
-    public class GetClientsResponse
+    public class BaseItem
     {
+        [XmlElement("id")]
+        public string id
+        {
+            get;
+            set;
+        }
 
-        [XmlElement("msg")]
-        public string Message { get; set; }
-
-
-
-        [XmlElement("Item")]
-        public BaseItem[] item
+        [XmlElement("title")]
+        public string title
         {
             get;
             set;
         }
     }
-
 }

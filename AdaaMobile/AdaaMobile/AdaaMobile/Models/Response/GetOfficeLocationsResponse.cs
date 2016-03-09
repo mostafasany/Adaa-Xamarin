@@ -9,7 +9,7 @@ namespace AdaaMobile.Models.Response
 {
     /// <remarks/>
     [XmlRoot("root")]
-    public class GetClientsResponse
+    public class GetOfficeLocationsResponse
     {
 
         [XmlElement("msg")]
@@ -24,5 +24,4 @@ namespace AdaaMobile.Models.Response
             set;
         }
     }
-
 }
