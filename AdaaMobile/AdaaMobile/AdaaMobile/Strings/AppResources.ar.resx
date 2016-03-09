@@ -523,4 +523,10 @@
   <data name="ShowPassword" xml:space="preserve">
     <value>إظهار كلمة المرور</value>
   </data>
+  <data name="RequestDriver" xml:space="preserve">
+    <value>طلب سائق</value>
+  </data>
+  <data name="RequestOfficeMaintenance" xml:space="preserve">
+    <value>طلب تصليح لمكتب</value>
+  </data>
 </root>

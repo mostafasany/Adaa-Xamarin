@@ -1025,6 +1025,24 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request a Driver.
+        /// </summary>
+        public static string RequestDriver {
+            get {
+                return ResourceManager.GetString("RequestDriver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request an Office Maintenance.
+        /// </summary>
+        public static string RequestOfficeMaintenance {
+            get {
+                return ResourceManager.GetString("RequestOfficeMaintenance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request Status.
         /// </summary>
         public static string RequestStatus {

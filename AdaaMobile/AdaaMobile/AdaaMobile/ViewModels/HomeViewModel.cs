@@ -76,7 +76,7 @@ namespace AdaaMobile.ViewModels
             //Default Image for User profile
             Image = new FileImageSource()
             {
-				File = Device.OnPlatform("Profilebig.png", "Profilebig.png", "Profilebig.png")//TODO:Change to actual default file
+                File = Device.OnPlatform("Profilebig.png", "Profilebig.png", "Profilebig.png")//TODO:Change to actual default file
             };
         }
 
@@ -88,7 +88,7 @@ namespace AdaaMobile.ViewModels
 
             data.Add(new AdaaPageItem()
             {
-					Title = AppResources.AttendanceAndLeave,
+                Title = AppResources.AttendanceAndLeave,
                 IconSource = "AdaaMobile.Images.Attendance_icn.svg",
                 TargetType = typeof(AttendancePage),
                 IsEnabled = true
@@ -99,7 +99,7 @@ namespace AdaaMobile.ViewModels
                 Title = AppResources.EmployeeDirectory,
                 IconSource = "AdaaMobile.Images.Directory.svg",
                 TargetType = typeof(DirectoryPage),
-					IsEnabled = true
+                IsEnabled = true
             });
 
             data.Add(new AdaaPageItem()
@@ -107,7 +107,7 @@ namespace AdaaMobile.ViewModels
                 Title = AppResources.EServices,
                 IconSource = "AdaaMobile.Images.E-Services.svg",
                 TargetType = typeof(EServicesPage),
-                IsEnabled = false
+                IsEnabled = true
             });
 
 
@@ -154,7 +154,7 @@ namespace AdaaMobile.ViewModels
             data.Add(new AdaaPageItem()
             {
                 Title = AppResources.UserAccountServices,
-					IconSource = "AdaaMobile.Images.account_services_icn.svg",
+                IconSource = "AdaaMobile.Images.account_services_icn.svg",
                 TargetType = typeof(UserServicesPage),
                 IsEnabled = true
             });
@@ -175,8 +175,8 @@ namespace AdaaMobile.ViewModels
         {
             if (item == null || item.IsEnabled == false)
                 return;
-           // _navigationService.SetMasterDetailsPage(item.TargetType);
-			_navigationService.NavigateToPage(item.TargetType);
+            // _navigationService.SetMasterDetailsPage(item.TargetType);
+            _navigationService.NavigateToPage(item.TargetType);
         }
 
 
@@ -185,40 +185,40 @@ namespace AdaaMobile.ViewModels
             try
             {
                 LoadCommand.CanExecute = false;
-				IsBusy = true;
+                IsBusy = true;
                 //if (LoggedUserInfo.CurrentUserProfile != null && !String.IsNullOrWhiteSpace(LoggedUserInfo.CurrentUserProfile.UserImage64))
                 //{
                 //    Func<Stream> streamFunc = GetStream;
                 //    Image = ImageSource.FromStream(streamFunc);
                 //}
                 //else
-                    var paramters = new CurrentProfileQParameters()
-                    {
-                        Langid = _appSettings.Language,
-                        UserToken = _appSettings.UserToken
-                    };
-                    var result = await _dataService.GetCurrentUserProfile(paramters);
+                var paramters = new CurrentProfileQParameters()
+                {
+                    Langid = _appSettings.Language,
+                    UserToken = _appSettings.UserToken
+                };
+                var result = await _dataService.GetCurrentUserProfile(paramters);
 
-                    if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
+                if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
+                {
+                    LoggedUserInfo.CurrentUserProfile = result.Result;
+                    UserProfile = result.Result;
+                    if (!string.IsNullOrEmpty(result.Result.UserImage64))
                     {
-                        LoggedUserInfo.CurrentUserProfile = result.Result;
-                        UserProfile = result.Result;
-                        if (!string.IsNullOrEmpty(result.Result.UserImage64))
-                        {
-                            Func<Stream> streamFunc = GetStream;
-                            Image = ImageSource.FromStream(streamFunc);
-                        }
+                        Func<Stream> streamFunc = GetStream;
+                        Image = ImageSource.FromStream(streamFunc);
                     }
-                    else
+                }
+                else
+                {
+                    string message = _messageResolver.GetMessage(result);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
+                    if (result.ResponseStatus == ResponseStatus.InvalidToken)
                     {
-                        string message = _messageResolver.GetMessage(result);
-                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
-                        if (result.ResponseStatus == ResponseStatus.InvalidToken)
-                        {
-                            _navigationService.SetAppCurrentPage(typeof(LoginPage));
-                        }
+                        _navigationService.SetAppCurrentPage(typeof(LoginPage));
                     }
-			}
+                }
+            }
             catch (Exception ex)
             {
 

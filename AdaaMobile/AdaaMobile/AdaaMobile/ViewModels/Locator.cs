@@ -55,6 +55,7 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<DelegationDetailsViewModel>();
             cb.RegisterType<NewDelegationViewModel>();
             cb.RegisterType<TaskDetailsViewmodel>();
+            cb.RegisterType<EServicesViewModel>();
 
         }
 
@@ -153,6 +154,15 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<TaskDetailsViewmodel>();
+            }
+        }
+
+
+        public EServicesViewModel EServicesViewModel
+        {
+            get
+            {
+                return Container.Resolve<EServicesViewModel>();
             }
         }
 

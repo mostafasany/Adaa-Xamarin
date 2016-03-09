@@ -526,4 +526,10 @@
   <data name="ShowPassword" xml:space="preserve">
     <value>Show Password</value>
   </data>
+  <data name="RequestDriver" xml:space="preserve">
+    <value>Request a Driver</value>
+  </data>
+  <data name="RequestOfficeMaintenance" xml:space="preserve">
+    <value>Request an Office Maintenance</value>
+  </data>
 </root>
