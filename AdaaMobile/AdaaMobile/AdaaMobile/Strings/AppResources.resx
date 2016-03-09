@@ -532,4 +532,19 @@
   <data name="RequestOfficeMaintenance" xml:space="preserve">
     <value>Request an Office Maintenance</value>
   </data>
+  <data name="Destination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="RequestDateTime" xml:space="preserve">
+    <value>Request Date/Time</value>
+  </data>
+  <data name="RequestType" xml:space="preserve">
+    <value>Request Type</value>
+  </data>
+  <data name="SourceLocation" xml:space="preserve">
+    <value>Source Location</value>
+  </data>
 </root>

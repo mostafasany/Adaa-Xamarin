@@ -529,4 +529,19 @@
   <data name="RequestOfficeMaintenance" xml:space="preserve">
     <value>طلب تصليح لمكتب</value>
   </data>
+  <data name="Destination" xml:space="preserve">
+    <value>الوجهة</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>الأولوية</value>
+  </data>
+  <data name="RequestDateTime" xml:space="preserve">
+    <value>وقت الطلب</value>
+  </data>
+  <data name="RequestType" xml:space="preserve">
+    <value>نوع الطلب</value>
+  </data>
+  <data name="SourceLocation" xml:space="preserve">
+    <value>Source Location</value>
+  </data>
 </root>

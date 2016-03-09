@@ -332,6 +332,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Destination.
+        /// </summary>
+        public static string Destination {
+            get {
+                return ResourceManager.GetString("Destination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Directory.
         /// </summary>
         public static string Directory {
@@ -944,6 +953,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Priority.
+        /// </summary>
+        public static string Priority {
+            get {
+                return ResourceManager.GetString("Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Normal.
         /// </summary>
         public static string PriorityNormal {
@@ -1007,6 +1025,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request Date/Time.
+        /// </summary>
+        public static string RequestDateTime {
+            get {
+                return ResourceManager.GetString("RequestDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request Details.
         /// </summary>
         public static string RequestDetails {
@@ -1048,6 +1075,15 @@ namespace AdaaMobile.Strings {
         public static string RequestStatus {
             get {
                 return ResourceManager.GetString("RequestStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Type.
+        /// </summary>
+        public static string RequestType {
+            get {
+                return ResourceManager.GetString("RequestType", resourceCulture);
             }
         }
         
@@ -1174,6 +1210,15 @@ namespace AdaaMobile.Strings {
         public static string SomethingErrorHappened {
             get {
                 return ResourceManager.GetString("SomethingErrorHappened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source Location.
+        /// </summary>
+        public static string SourceLocation {
+            get {
+                return ResourceManager.GetString("SourceLocation", resourceCulture);
             }
         }
         
