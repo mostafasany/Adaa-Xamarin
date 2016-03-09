@@ -20,6 +20,7 @@ namespace AdaaMobile
             BindingContext = _viewModel;
 
             Title = AppResources.EServices;
+
         }
     }
 }

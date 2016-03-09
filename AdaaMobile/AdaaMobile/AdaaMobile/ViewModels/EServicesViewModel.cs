@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdaaMobile.Common;
 
 namespace AdaaMobile.ViewModels
 {
@@ -29,6 +30,8 @@ namespace AdaaMobile.ViewModels
             _navigationService = navigationService;
             _messageResolver = messageResolver;
             _dialogManager = dialogManager;
+			NavigateToRequestDriverCommand = new ExtendedCommand (DoNavigateToRequestDriverCommand);
+			NavigateToRequestOfficeMaintenanceCommand = new ExtendedCommand (DoNavigateToRequestOfficeMaintenanceCommand);
 
         }
 
@@ -37,9 +40,19 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Commands
+		public ExtendedCommand NavigateToRequestDriverCommand { get; set; }
+		public ExtendedCommand NavigateToRequestOfficeMaintenanceCommand { get; set; }
         #endregion
 
         #region Methods
+		private void DoNavigateToRequestDriverCommand()
+		{
+			_navigationService.NavigateToPage(typeof(RequestDriverPage));
+		}
+				private void DoNavigateToRequestOfficeMaintenanceCommand ()
+		{
+			_navigationService.NavigateToPage(typeof(RequestOfficeMaintenancePage));
+		}
         #endregion
 
     }

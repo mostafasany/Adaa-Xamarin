@@ -305,6 +305,12 @@
     <Compile Include="Controls\ExtendedEntry.cs" />
     <Compile Include="AppSettings.cs" />
     <Compile Include="Helpers\Interfaces\IPhoneService.cs" />
+    <Compile Include="Views\RequestDriverPage.xaml.cs">
+      <DependentUpon>RequestDriverPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestOfficeMaintenancePage.xaml.cs">
+      <DependentUpon>RequestOfficeMaintenancePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
@@ -402,6 +408,12 @@
     <EmbeddedResource Include="Images\Profile.svg" />
     <EmbeddedResource Include="Images\Settings.svg" />
     <EmbeddedResource Include="Images\Timesheet.svg" />
+    <EmbeddedResource Include="Views\RequestDriverPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RequestOfficeMaintenancePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Authentication\LoginPage.xaml">

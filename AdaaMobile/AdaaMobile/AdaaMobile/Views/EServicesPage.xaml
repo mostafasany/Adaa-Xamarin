@@ -30,16 +30,16 @@
 
     
     <masterView:UserServiceItemControl Grid.Row="1"
-                                       Title="{ext:Translate RequestDriver}"
-                                       Message="{Binding PasswordStatus}"
-                                       IndicatorColor="Transperant"
-                                       Command="{Binding  NavigateToChangePasswordCommand}" />
+                                       Title=""
+                                       Message="{ext:Translate RequestDriver}"
+                                       IndicatorColor="Transparent"
+                                       Command="{Binding  NavigateToRequestDriverCommand}" />
     
     <masterView:UserServiceItemControl Grid.Row="2"
-                                       Title="{ext:Translate RequestOfficeMaintenance}"
-                                       Message="{Binding AccountStatus}"
-                                       IndicatorColor="Transperant"
-                                       Command="{Binding  UnlockMyAccountCommand}" />
+                                       Title=""
+                                       Message="{ext:Translate RequestOfficeMaintenance}"
+                                       IndicatorColor="Transparent"
+                                       Command="{Binding  NavigateToRequestOfficeMaintenanceCommand}" />
 
     <ActivityIndicator  IsRunning="{Binding IsBusy}"
                          HeightRequest="60" WidthRequest="60"
