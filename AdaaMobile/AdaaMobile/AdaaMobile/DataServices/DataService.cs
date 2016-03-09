@@ -21,6 +21,7 @@ namespace AdaaMobile.DataServices
         // private const string BaseUrl = "http://adaa.getsandbox.com";
         private const string BaseUrl = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy";
         private const string Server = "adaamobile";
+        private const string Sprint2Server = "imach";
         private const string ContenTypeKey = "Content-Type";
         private const string XmlContentType = "application/xml";
         private readonly Func<BaseRequest> _requestFactory;
@@ -239,6 +240,78 @@ namespace AdaaMobile.DataServices
             request.RequestUrl = BaseUrl.AppendQueryString(parameters);
             request.ResultContentType = ContentType.Xml;
             return await request.GetAsync<RemoveDelegationsResponse>(token);
+        }
+
+
+
+
+        #endregion
+
+        #region Sprint 2
+
+        public async Task<ResponseWrapper<GetClientsResponse>> GetClientsAsync(GetClientsQParameters parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetClientsResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<GetCardsResponse>> GetCardsAsync(GetCardsQParameters parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetCardsResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<GetAllRequestsResponse>> GetAllSharepointRequestsAsync(GetAllRequestsQParameters parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetAllRequestsResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<SaveOfficeMaintenanceResponse>> SaveOfficeMaintenanceAsync(SaveOfficeMaintenanceRequestQParameters qParameters, SaveOfficeMaintenanceRequestBParameters bodyParamters, CancellationToken? token = default(CancellationToken?))
+        {
+            qParameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.ResultContentType = ContentType.Xml;
+            request.RequestUrl = BaseUrl.AppendQueryString(qParameters);
+
+            var stringContent = new StringContent(bodyParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
+            return await request.PostAsync<SaveOfficeMaintenanceResponse>(stringContent);
+        }
+
+        public async Task<ResponseWrapper<GetRoomsResponse>> GetRoomsAsync(GetRoomsQParameters parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetRoomsResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<GetOfficeLocationsResponse>> GetOfficeLocationsAsync(GetOfficeLocationsQParameters parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetOfficeLocationsResponse>(token);
+        }
+
+        public async Task<ResponseWrapper<GetEquipmentsResponse>> GetEquipmentsAsync(GetEquipmentsQParameters parameters, CancellationToken? token = default(CancellationToken?))
+        {
+            parameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
+            request.ResultContentType = ContentType.Xml;
+            return await request.GetAsync<GetEquipmentsResponse>(token);
         }
 
 
