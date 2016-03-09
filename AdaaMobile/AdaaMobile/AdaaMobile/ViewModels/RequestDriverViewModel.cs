@@ -34,6 +34,33 @@ namespace AdaaMobile.ViewModels
             get { return _busyMessage; }
             set { SetProperty(ref _busyMessage, value); }
         }
+		private string _reasonType = "Work";
+		public string ReasonType
+		{
+			get { return _reasonType; }
+			set { SetProperty(ref _reasonType, value); }
+		}
+		private string _localizedReasonType = AppResources.Work;
+		public string LocalizedReasonType
+		{
+			get { return _localizedReasonType; }
+			set { SetProperty(ref _localizedReasonType, value); }
+		}
+
+		private string _Reason = "";
+		public string Reason
+		{
+			get { return _Reason; }
+			set { SetProperty(ref _Reason, value); }
+		}
+
+		private string _AdditionalComments = "";
+		public string AdditionalComments
+		{
+			get { return _AdditionalComments; }
+			set { SetProperty(ref _AdditionalComments, value); }
+		}
+
         #endregion
 
         #region Initialization

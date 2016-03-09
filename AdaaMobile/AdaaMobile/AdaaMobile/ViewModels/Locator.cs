@@ -55,7 +55,10 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<DelegationDetailsViewModel>();
             cb.RegisterType<NewDelegationViewModel>();
             cb.RegisterType<TaskDetailsViewmodel>();
-            cb.RegisterType<EServicesViewModel>();
+			cb.RegisterType<EServicesViewModel>();
+			cb.RegisterType<RequestDriverViewModel>();
+			cb.RegisterType<RequestOfficeMaintenanceViewModel>();
+
 
         }
 
@@ -165,6 +168,23 @@ namespace AdaaMobile.ViewModels
                 return Container.Resolve<EServicesViewModel>();
             }
         }
+
+		public RequestDriverViewModel RequestDriverViewModel
+		{
+			get
+			{
+				return Container.Resolve<RequestDriverViewModel>();
+			}
+		}
+
+		public RequestOfficeMaintenanceViewModel RequestOfficeMaintenanceViewModel
+		{
+			get
+			{
+				return Container.Resolve<RequestOfficeMaintenanceViewModel>();
+			}
+		}
+
 
         public IAppSettings AppSettings
         {

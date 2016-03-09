@@ -56,4 +56,4 @@ namespace AdaaMobile.ViewModels
     #region Methods
     #endregion
 }
-}
+

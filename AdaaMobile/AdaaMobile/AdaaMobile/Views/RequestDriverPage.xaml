@@ -37,9 +37,15 @@
       <controls:ExtendedGrid
                          Grid.Row="0"
                          VerticalOptions="Start"
-                         Padding="10,0,10,0"
+                         Padding="10,5,10,0"
                          BackgroundColor="Transparent">
         <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
@@ -66,7 +72,6 @@
          HorizontalTextAlignment="Start"
          FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
          Text="{ext:Translate ReasonType}"/>
-
           <Image
                                    HeightRequest="15"
                                    WidthRequest="15"
@@ -180,15 +185,15 @@
             </Label.GestureRecognizers>
           </Label>
 
-          <TimePicker
+          <DatePicker
            Grid.Column="0"
-           x:Name="EndTimePicker"
+           x:Name="RequestDatePicker"
            BackgroundColor="Transparent"
            HeightRequest="0"
            WidthRequest= "0"
            IsVisible = "false"
            IsEnabled="true"
-           Time="{Binding EndTimeSpan}"
+           Date="{Binding RequestDate}"
                 />
 
 
@@ -235,10 +240,10 @@
         TextColor="Gray" BackgroundColor="Transparent"
         HorizontalTextAlignment="Start"
         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-        Text="{ext:Translate Reason}"  />
+        Text="{ext:Translate Destination}"  />
 
         <controls:ExtendedEditor
-          x:Name="ReasonEditor"
+          x:Name="DestinationEditor"
           Grid.Row="10"
           HorizontalOptions="Fill"
           VerticalOptions="FillAndExpand"
@@ -265,10 +270,10 @@
         TextColor="Gray" BackgroundColor="Transparent"
         HorizontalTextAlignment="Start"
         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-        Text="{ext:Translate Reason}"  />
+        Text="{ext:Translate SourceLocation}"  />
 
         <controls:ExtendedEditor
-          x:Name="ReasonEditor"
+          x:Name="SourceLocationEditor"
           Grid.Row="13"
           HorizontalOptions="Fill"
           VerticalOptions="FillAndExpand"
@@ -291,7 +296,7 @@
         </Grid>
 
         <!-- Priority picker  -->
-        <Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0">
+        <Grid Grid.Row="15" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
@@ -314,13 +319,13 @@
           </Image>
         </Grid>
         <Picker x:Name="PriorityPicker"   BackgroundColor="Transparent"
-            Grid.Row="1"  HorizontalOptions="Fill"
+            Grid.Row="16"  HorizontalOptions="Fill"
              WidthRequest="0" HeightRequest="0" IsVisible= "false"
               >
         </Picker>
         <Label
         BackgroundColor="Transparent"
-        Grid.Row="1"
+        Grid.Row="16"
         HorizontalOptions="Start"
         VerticalOptions="Fill"
         Text="{Binding SelectedPiorityText}"
