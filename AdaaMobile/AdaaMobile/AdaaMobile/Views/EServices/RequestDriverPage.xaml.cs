@@ -29,6 +29,8 @@ namespace AdaaMobile.Views.EServices
             PriorityPicker.Items.Add(AppResources.Urgent);
             PriorityPicker.SelectedIndexChanged += PriorityPicker_SelectedIndexChanged;
 
+			SourcePicker.SelectedIndexChanged+= SourcePicker_SelectedIndexChanged;
+			DestinationPicker.SelectedIndexChanged += DestinationPicker_SelectedIndexChanged;
             //Add submit action
             Action action = () =>
             {
@@ -37,6 +39,16 @@ namespace AdaaMobile.Views.EServices
             ToolbarItems.Add(
                 new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
 
+        }
+
+        void DestinationPicker_SelectedIndexChanged (object sender, EventArgs e)
+        {
+			_viewModel.SelectedDestinationName = _viewModel.ClientsList [DestinationPicker.SelectedIndex].title;
+        }
+
+        void SourcePicker_SelectedIndexChanged (object sender, EventArgs e)
+        {
+			_viewModel.SelectedSourceName = _viewModel.ClientsList [SourcePicker.SelectedIndex].title;
         }
 
 		protected async override void OnAppearing ()
