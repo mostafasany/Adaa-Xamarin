@@ -216,47 +216,51 @@ namespace AdaaMobile.ViewModels
                 NewDriverRequestCommand.CanExecute = false;
                 IsBusy = true;
                 BusyMessage = AppResources.Loading;
-                //if (string.IsNullOrEmpty(Reason))
-                //{
-                //    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseEnterReason, AppResources.Ok);
-                //}
-                //else
-                //{
-                //    var qParamters = new DaypassRequestQParameters()
-                //    {
-                //        Langid = _appSettings.Language,
-                //        UserToken = _appSettings.UserToken,
-                //        StartTime = StartTimeSpan.ToString(@"hh\:mm"),
-                //        EndTime = EndTimeSpan.ToString(@"hh\:mm"),
-                //        WillReturn = ReturnToday ? "Yes" : "No",
-                //        ReasonType = ReasonType,
+                if (string.IsNullOrEmpty(Reason))
+                {
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PleaseEnterReason, AppResources.Ok);
+                }
+                else
+                {
+				var qParamters = new SaveDriverRequestQParameters()
+                    {
+                        Langid = _appSettings.Language,
+                        UserToken = _appSettings.UserToken,
 
-                //    };
-                //    var bodyParameter = new DaypassRequestBParameters()
-                //    {
-                //        Reason = Reason
-                //    };
-                //    var response = await _dataService.NewDayPassAsync(qParamters, bodyParameter);
 
-                //    if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
-                //    {
-                //        string message = response.Result.Message;
-                //        if (!string.IsNullOrEmpty(message))
-                //        {
-                //            string lowerCaseMessage = message.ToLower();
-                //            await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
-                //            if (lowerCaseMessage.Contains(@"success")
-                //                || lowerCaseMessage.Contains(@"completed")
-                //                || lowerCaseMessage.Contains(@"نجاح"))
-                //                _navigationService.GoBack();
-                //        }
-                //    }
-                //    else
-                //    {
-                //        string message = _messageResolver.GetMessage(response);
-                //        await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
-                //    }
-                //}
+                    };
+
+				var bodyParameter = new SaveDriverRequestBParameters()
+                    {
+					destination = SelectedDestinationName,
+					priority = SelectedPiorityText,
+					reason = Reason,
+					requestcomments = AdditionalComments,
+					requestdate = RequestDate.Add(RequestTimeSpan).ToString(@"yyyy-dd-MM hh:mm:ss"),
+					requesttype = ReasonType,
+					source = SelectedSourceName
+                    };
+					var response = await _dataService.SaveDriverRequestAsync(qParamters, bodyParameter);
+
+                    if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
+                    {
+                        string message = response.Result.Message;
+                        if (!string.IsNullOrEmpty(message))
+                        {
+                            string lowerCaseMessage = message.ToLower();
+                            await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
+                            if (lowerCaseMessage.Contains(@"success")
+                                || lowerCaseMessage.Contains(@"completed")
+                                || lowerCaseMessage.Contains(@"نجاح"))
+                                _navigationService.GoBack();
+                        }
+                    }
+                    else
+                    {
+                        string message = _messageResolver.GetMessage(response);
+                        await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
+                    }
+                }
             }
             catch (Exception ex)
             {
