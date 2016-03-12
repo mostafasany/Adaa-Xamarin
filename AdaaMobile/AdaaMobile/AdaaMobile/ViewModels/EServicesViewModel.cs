@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.Common;
+using AdaaMobile.Models;
+using AdaaMobile.Strings;
+using AdaaMobile.Views.EServices;
 
 namespace AdaaMobile.ViewModels
 {
@@ -20,6 +23,8 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Properties
+
+        public List<AdaaPageItem> PagesList { get; private set; }
         #endregion
 
         #region Initialization
@@ -30,29 +35,29 @@ namespace AdaaMobile.ViewModels
             _navigationService = navigationService;
             _messageResolver = messageResolver;
             _dialogManager = dialogManager;
-			NavigateToRequestDriverCommand = new ExtendedCommand (DoNavigateToRequestDriverCommand);
-			NavigateToRequestOfficeMaintenanceCommand = new ExtendedCommand (DoNavigateToRequestOfficeMaintenanceCommand);
+            PagesList=new List<AdaaPageItem>()
+            {
+                new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
+                new AdaaPageItem() {TargetType = typeof(Views.EServices.RequestDriverPage),Title = AppResources.RequestDriver},
+                new AdaaPageItem() {TargetType = typeof(Views.EServices.RequestOfficeMaintenancePage),Title = AppResources.RequestOfficeMaintenance},
+                new AdaaPageItem() {TargetType = typeof(RequestOfficeServicesPage),Title = AppResources.RequestOfficeService},
 
+            };
+            NavigateToPageCommand = new ExtendedCommand<Type>(NavigateToPage);
         }
-
-
-
         #endregion
 
         #region Commands
-		public ExtendedCommand NavigateToRequestDriverCommand { get; set; }
-		public ExtendedCommand NavigateToRequestOfficeMaintenanceCommand { get; set; }
+        public ExtendedCommand<Type> NavigateToPageCommand { get; set; }
         #endregion
 
         #region Methods
-		private void DoNavigateToRequestDriverCommand()
-		{
-			_navigationService.NavigateToPage(typeof(RequestDriverPage));
-		}
-				private void DoNavigateToRequestOfficeMaintenanceCommand ()
-		{
-			_navigationService.NavigateToPage(typeof(RequestOfficeMaintenancePage));
-		}
+
+        private void NavigateToPage(Type pageType)
+        {
+            _navigationService.NavigateToPage(pageType);
+        }
+
         #endregion
 
     }

@@ -1,11 +1,8 @@
 ﻿using AdaaMobile.Strings;
 using AdaaMobile.ViewModels;
-using System;
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 
-namespace AdaaMobile
+namespace AdaaMobile.Views.EServices
 {
     public partial class EServicesPage : ContentPage
     {

@@ -106,7 +106,7 @@ namespace AdaaMobile.ViewModels
             {
                 Title = AppResources.EServices,
                 IconSource = "AdaaMobile.Images.E-Services.svg",
-                TargetType = typeof(EServicesPage),
+                TargetType = typeof(Views.EServices.EServicesPage),
                 IsEnabled = true
             });
 

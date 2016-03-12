@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using AdaaMobile.Strings;
 using Xamarin.Forms;
-using AdaaMobile.Strings;
 
-namespace AdaaMobile
+namespace AdaaMobile.Views.EServices
 {
 	public partial class RequestOfficeMaintenancePage : ContentPage
 	{

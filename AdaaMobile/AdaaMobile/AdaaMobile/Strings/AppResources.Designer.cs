@@ -1025,6 +1025,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request an Accouncement.
+        /// </summary>
+        public static string RequestAnnouncement {
+            get {
+                return ResourceManager.GetString("RequestAnnouncement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request Date/Time.
         /// </summary>
         public static string RequestDateTime {
@@ -1066,6 +1075,15 @@ namespace AdaaMobile.Strings {
         public static string RequestOfficeMaintenance {
             get {
                 return ResourceManager.GetString("RequestOfficeMaintenance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request an Office Service.
+        /// </summary>
+        public static string RequestOfficeService {
+            get {
+                return ResourceManager.GetString("RequestOfficeService", resourceCulture);
             }
         }
         

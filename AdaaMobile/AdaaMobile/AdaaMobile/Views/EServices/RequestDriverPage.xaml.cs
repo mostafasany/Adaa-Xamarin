@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
 using AdaaMobile.Strings;
 using AdaaMobile.ViewModels;
+using Xamarin.Forms;
 
-namespace AdaaMobile
+namespace AdaaMobile.Views.EServices
 {
 	public partial class RequestDriverPage : ContentPage
 	{

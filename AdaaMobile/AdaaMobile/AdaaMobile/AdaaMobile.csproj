@@ -179,6 +179,12 @@
     <Compile Include="Views\Delegation\DelegationsPage.xaml.cs">
       <DependentUpon>DelegationsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EServices\RequestAnnouncementPage.xaml.cs">
+      <DependentUpon>RequestAnnouncementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EServices\RequestOfficeServicesPage.xaml.cs">
+      <DependentUpon>RequestOfficeServicesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MasterView\MasterHelper.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="MarkupExtensions\TranslateExtension.cs" />
@@ -288,7 +294,7 @@
     <Compile Include="Models\Request\GetAllEmployeesQParameters.cs" />
     <Compile Include="Models\Response\GetAllEmployeesResponse.cs" />
     <Compile Include="Helpers\LoggedUserInfo.cs" />
-    <Compile Include="Views\EServicesPage.xaml.cs">
+    <Compile Include="Views\EServices\EServicesPage.xaml.cs">
       <DependentUpon>EServicesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TimesheetPage.xaml.cs">
@@ -307,10 +313,10 @@
     <Compile Include="Controls\ExtendedEntry.cs" />
     <Compile Include="AppSettings.cs" />
     <Compile Include="Helpers\Interfaces\IPhoneService.cs" />
-    <Compile Include="Views\RequestDriverPage.xaml.cs">
+    <Compile Include="Views\EServices\RequestDriverPage.xaml.cs">
       <DependentUpon>RequestDriverPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RequestOfficeMaintenancePage.xaml.cs">
+    <Compile Include="Views\EServices\RequestOfficeMaintenancePage.xaml.cs">
       <DependentUpon>RequestOfficeMaintenancePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -381,7 +387,7 @@
     <EmbeddedResource Include="Views\SplashPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\EServicesPage.xaml">
+    <EmbeddedResource Include="Views\EServices\EServicesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TimesheetPage.xaml">
@@ -410,10 +416,10 @@
     <EmbeddedResource Include="Images\Profile.svg" />
     <EmbeddedResource Include="Images\Settings.svg" />
     <EmbeddedResource Include="Images\Timesheet.svg" />
-    <EmbeddedResource Include="Views\RequestDriverPage.xaml">
+    <EmbeddedResource Include="Views\EServices\RequestDriverPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\RequestOfficeMaintenancePage.xaml">
+    <EmbeddedResource Include="Views\EServices\RequestOfficeMaintenancePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -572,6 +578,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\DayPass\RowInfoControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EServices\RequestAnnouncementPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EServices\RequestOfficeServicesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

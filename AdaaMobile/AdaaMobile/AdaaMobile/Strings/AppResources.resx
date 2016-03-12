@@ -547,4 +547,10 @@
   <data name="SourceLocation" xml:space="preserve">
     <value>Source Location</value>
   </data>
+  <data name="RequestAnnouncement" xml:space="preserve">
+    <value>Request an Accouncement</value>
+  </data>
+  <data name="RequestOfficeService" xml:space="preserve">
+    <value>Request an Office Service</value>
+  </data>
 </root>
