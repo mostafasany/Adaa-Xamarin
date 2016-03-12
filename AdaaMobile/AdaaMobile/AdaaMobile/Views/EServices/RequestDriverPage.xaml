@@ -178,7 +178,9 @@
        HorizontalOptions="Start"
        VerticalOptions = "Start"
        TextColor="{StaticResource AppBackgroundNormal}"
-       Text="{Binding RequestDatString}"
+       Text="{Binding RequestDate,
+                Converter={StaticResource DateFormatConverter},
+                ConverterParameter=d MMM yyyy}"
          >
             <Label.GestureRecognizers>
               <TapGestureRecognizer Tapped="RequestDate_Tapped"/>
@@ -193,17 +195,19 @@
            WidthRequest= "0"
            IsVisible = "false"
            IsEnabled="true"
-           Date="{Binding RequestDate}"
+           Format="d MMM yyyy"
+           DateSelected="Date_Selected"
+           MinimumDate="{x:Static sys:DateTime.Now}"
                 />
 
 
           <Label
-  Grid.Column="1"
-  BackgroundColor="Transparent"
-  HorizontalOptions="Start"
-  VerticalOptions = "Start"
-  TextColor="{StaticResource AppBackgroundNormal}"
-  Text="{Binding RequestTimeSpanString}"
+          Grid.Column="1"
+          BackgroundColor="Transparent"
+          HorizontalOptions="Start"
+          VerticalOptions = "Start"
+          TextColor="{StaticResource AppBackgroundNormal}"
+          Text="{Binding RequestTimeSpanString}"
          >
             <Label.GestureRecognizers>
               <TapGestureRecognizer Tapped="RequestTimeSpan_Tapped"/>

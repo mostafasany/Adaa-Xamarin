@@ -119,6 +119,11 @@ namespace AdaaMobile.Views.EServices
             }
 
         }
+
+        private void Date_Selected(object sender, DateChangedEventArgs e)
+        {
+            _viewModel.RequestDate = (sender as DatePicker).Date;
+        }
     }
 }
 

@@ -74,8 +74,8 @@ namespace AdaaMobile.ViewModels
 
 
 
-		private List<BaseItem> _ClientsList = new List<BaseItem>();
-		public List<BaseItem> ClientsList
+        private List<BaseItem> _ClientsList = new List<BaseItem>();
+        public List<BaseItem> ClientsList
         {
             get { return _ClientsList; }
             set { SetProperty(ref _ClientsList, value); }
@@ -96,6 +96,33 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _SelectedSourceName, value); }
         }
 
+        private DateTime _RequestDate;
+        public DateTime RequestDate
+        {
+            get { return _RequestDate; }
+            set { SetProperty(ref _RequestDate, value); }
+        }
+
+        private TimeSpan _RequestTimeSpan = new TimeSpan(8, 0, 0);
+        public TimeSpan RequestTimeSpan
+        {
+            get { return _RequestTimeSpan; }
+            set
+            {
+                DateTime d = DateTime.Today.Add(value);
+                RequestTimeSpanString = d.ToString("hh:mm tt");
+                SetProperty(ref _RequestTimeSpan, value);
+            }
+        }
+
+        private string _RequestTimeSpanString;
+        public string RequestTimeSpanString
+        {
+            get { return _RequestTimeSpanString; }
+            set { SetProperty(ref _RequestTimeSpanString, value); }
+        }
+
+
         #endregion
 
         #region Initialization
@@ -108,7 +135,8 @@ namespace AdaaMobile.ViewModels
             _messageResolver = messageResolver;
             NewDriverRequestCommand = new AsyncExtendedCommand(SubmitRequestAsync);
             LoadCommand = new AsyncExtendedCommand(LoadAsync);
-
+            RequestDate = DateTime.Now;
+            RequestTimeSpan = new TimeSpan(8, 0, 0);
         }
 
 
@@ -122,44 +150,45 @@ namespace AdaaMobile.ViewModels
 
         #region Methods
 
-		public async Task GetClients(){
-			try
-			{
-				LoadCommand.CanExecute = false;
-				IsBusy = true;
+        public async Task GetClients()
+        {
+            try
+            {
+                LoadCommand.CanExecute = false;
+                IsBusy = true;
 
-				var paramters = new GetClientsQParameters()
-				{
-					Langid = _appSettings.Language,
-					UserToken = _appSettings.UserToken
-				};
-				var result = await _dataService.GetClientsAsync(paramters);
+                var paramters = new GetClientsQParameters()
+                {
+                    Langid = _appSettings.Language,
+                    UserToken = _appSettings.UserToken
+                };
+                var result = await _dataService.GetClientsAsync(paramters);
 
-				if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
-				{
-					ClientsList = new List<BaseItem>(result.Result.item);
-					if (ClientsList.Count > 0)
-					{
-						SelectedDestinationName = ClientsList[0].title;
-						SelectedSourceName = ClientsList[0].title;
-					}
-				}
-				else
-				{
-					string message = _messageResolver.GetMessage(result);
-					await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
-				}
-			}
-			catch (Exception ex)
-			{
+                if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
+                {
+                    ClientsList = new List<BaseItem>(result.Result.item);
+                    if (ClientsList.Count > 0)
+                    {
+                        SelectedDestinationName = ClientsList[0].title;
+                        SelectedSourceName = ClientsList[0].title;
+                    }
+                }
+                else
+                {
+                    string message = _messageResolver.GetMessage(result);
+                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
+                }
+            }
+            catch (Exception ex)
+            {
 
-			}
-			finally
-			{
-				LoadCommand.CanExecute = true;
-				IsBusy = false;
-			}
-		}
+            }
+            finally
+            {
+                LoadCommand.CanExecute = true;
+                IsBusy = false;
+            }
+        }
         private async Task LoadAsync()
         {
             try
@@ -167,7 +196,7 @@ namespace AdaaMobile.ViewModels
                 LoadCommand.CanExecute = false;
                 IsBusy = true;
 
-				await GetClients();
+                await GetClients();
             }
             catch (Exception ex)
             {
