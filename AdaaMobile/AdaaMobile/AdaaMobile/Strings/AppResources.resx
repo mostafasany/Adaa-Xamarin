@@ -562,4 +562,34 @@
   <data name="Urgent" xml:space="preserve">
     <value>Urgent</value>
   </data>
+  <data name="ChooseOfficeLocation" xml:space="preserve">
+    <value>Please choose office location.</value>
+  </data>
+  <data name="EnterServiceDetails" xml:space="preserve">
+    <value>Please enter service details.</value>
+  </data>
+  <data name="OfficeLocation" xml:space="preserve">
+    <value>Office Location</value>
+  </data>
+  <data name="OfficeMaintenanceCap" xml:space="preserve">
+    <value>OFFICE MAINTENANCE</value>
+  </data>
+  <data name="PriorityMedium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="PriorityUrgent" xml:space="preserve">
+    <value>Urgent</value>
+  </data>
+  <data name="Room" xml:space="preserve">
+    <value>Room</value>
+  </data>
+  <data name="SpecifyEquipments" xml:space="preserve">
+    <value>Please specify equipments.</value>
+  </data>
+  <data name="SpecifyRoom" xml:space="preserve">
+    <value>Please specify which room.</value>
+  </data>
+  <data name="TypeOfEquipment" xml:space="preserve">
+    <value>Type of Equipment</value>
+  </data>
 </root>

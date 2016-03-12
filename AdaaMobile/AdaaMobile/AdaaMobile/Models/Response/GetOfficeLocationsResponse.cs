@@ -18,7 +18,7 @@ namespace AdaaMobile.Models.Response
 
 
         [XmlElement("Item")]
-        public BaseItem[] item
+        public OfficeLocation[] Locations
         {
             get;
             set;

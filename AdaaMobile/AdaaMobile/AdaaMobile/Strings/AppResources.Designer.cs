@@ -260,6 +260,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please choose office location..
+        /// </summary>
+        public static string ChooseOfficeLocation {
+            get {
+                return ResourceManager.GetString("ChooseOfficeLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         public static string ConfirmPassword {
@@ -418,6 +427,15 @@ namespace AdaaMobile.Strings {
         public static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter service details..
+        /// </summary>
+        public static string EnterServiceDetails {
+            get {
+                return ResourceManager.GetString("EnterServiceDetails", resourceCulture);
             }
         }
         
@@ -845,6 +863,24 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Office Location.
+        /// </summary>
+        public static string OfficeLocation {
+            get {
+                return ResourceManager.GetString("OfficeLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OFFICE MAINTENANCE.
+        /// </summary>
+        public static string OfficeMaintenanceCap {
+            get {
+                return ResourceManager.GetString("OfficeMaintenanceCap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Office Number.
         /// </summary>
         public static string OfficeNumber {
@@ -980,11 +1016,29 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Medium.
+        /// </summary>
+        public static string PriorityMedium {
+            get {
+                return ResourceManager.GetString("PriorityMedium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Normal.
         /// </summary>
         public static string PriorityNormal {
             get {
                 return ResourceManager.GetString("PriorityNormal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urgent.
+        /// </summary>
+        public static string PriorityUrgent {
+            get {
+                return ResourceManager.GetString("PriorityUrgent", resourceCulture);
             }
         }
         
@@ -1151,6 +1205,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Room.
+        /// </summary>
+        public static string Room {
+            get {
+                return ResourceManager.GetString("Room", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rule Status.
         /// </summary>
         public static string RuleStatus {
@@ -1259,6 +1322,24 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please specify equipments..
+        /// </summary>
+        public static string SpecifyEquipments {
+            get {
+                return ResourceManager.GetString("SpecifyEquipments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please specify which room..
+        /// </summary>
+        public static string SpecifyRoom {
+            get {
+                return ResourceManager.GetString("SpecifyRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         public static string Submit {
@@ -1300,6 +1381,15 @@ namespace AdaaMobile.Strings {
         public static string TextLimit {
             get {
                 return ResourceManager.GetString("TextLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type of Equipment.
+        /// </summary>
+        public static string TypeOfEquipment {
+            get {
+                return ResourceManager.GetString("TypeOfEquipment", resourceCulture);
             }
         }
         

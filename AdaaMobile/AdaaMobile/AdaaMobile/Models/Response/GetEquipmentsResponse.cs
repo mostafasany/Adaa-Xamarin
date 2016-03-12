@@ -17,7 +17,7 @@ namespace AdaaMobile.Models.Response
 
 
         [XmlElement("Item")]
-        public BaseItem[] item
+        public Equipment[] Equipments
         {
             get;
             set;

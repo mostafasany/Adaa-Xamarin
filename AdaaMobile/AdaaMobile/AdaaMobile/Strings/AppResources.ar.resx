@@ -559,4 +559,34 @@
   <data name="Urgent" xml:space="preserve">
     <value>Urgent</value>
   </data>
+  <data name="ChooseOfficeLocation" xml:space="preserve">
+    <value>الرجاء اختيار موقع المكتب</value>
+  </data>
+  <data name="EnterServiceDetails" xml:space="preserve">
+    <value>يرجى إدخال تفاصيل الخدمة</value>
+  </data>
+  <data name="OfficeLocation" xml:space="preserve">
+    <value>مكان المكتب</value>
+  </data>
+  <data name="OfficeMaintenanceCap" xml:space="preserve">
+    <value>صيانة المكتب</value>
+  </data>
+  <data name="PriorityMedium" xml:space="preserve">
+    <value>متوسط</value>
+  </data>
+  <data name="PriorityUrgent" xml:space="preserve">
+    <value>عاجل</value>
+  </data>
+  <data name="Room" xml:space="preserve">
+    <value>الغرفة</value>
+  </data>
+  <data name="SpecifyEquipments" xml:space="preserve">
+    <value>يرجى تحديد المعدات</value>
+  </data>
+  <data name="SpecifyRoom" xml:space="preserve">
+    <value>يرجى تحديد رقم الغرفة</value>
+  </data>
+  <data name="TypeOfEquipment" xml:space="preserve">
+    <value>نوع المعدات</value>
+  </data>
 </root>

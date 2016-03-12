@@ -89,6 +89,7 @@
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Helpers\SvgAssembly.cs" />
     <Compile Include="Helpers\UserSelectionService.cs" />
+    <Compile Include="Models\MaintenancePriority.cs" />
     <Compile Include="Models\Request\DaypassApproveBParameters.cs" />
     <Compile Include="Models\Request\GetAllRequestsQParameters.cs" />
     <Compile Include="Models\Request\GetCardsQParameters.cs" />
@@ -133,9 +134,12 @@
     <Compile Include="Models\Response\GetOfficeLocationsResponse.cs" />
     <Compile Include="Models\Response\GetRoomsResponse.cs" />
     <Compile Include="Models\Response\NewDelegationResponse.cs" />
+    <Compile Include="Models\Response\Equipment.cs" />
+    <Compile Include="Models\Response\OfficeLocation.cs" />
     <Compile Include="Models\Response\PasswordStatusResponse.cs" />
     <Compile Include="Models\Response\RemoveDelegationsResponse.cs" />
     <Compile Include="Models\Response\Request.cs" />
+    <Compile Include="Models\Response\Room.cs" />
     <Compile Include="Models\Response\SaveDriverRequestResponse.cs" />
     <Compile Include="Models\Response\SaveOfficeMaintenanceResponse.cs" />
     <Compile Include="Models\Response\UnlockAccountResponse.cs" />
@@ -153,6 +157,7 @@
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\NewDayPassViewModel.cs" />
     <Compile Include="ViewModels\NewDelegationViewModel.cs" />
+    <Compile Include="ViewModels\OfficeMaintenanceViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestDriverViewModel.cs" />
     <Compile Include="ViewModels\RequestOfficeMaintenanceViewModel.cs" />
