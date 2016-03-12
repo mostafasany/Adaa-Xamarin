@@ -28,8 +28,7 @@
            x:Name="DelegationsList"
            ItemsSource="{Binding PagesList}"
            IsGroupingEnabled="False"
-           HasUnevenRows="False"
-           RowHeight="70"
+           HasUnevenRows="True"
            SeparatorColor="Transparent"
            BackgroundColor="Transparent"
               Grid.Row="1" 
@@ -40,8 +39,7 @@
           <ViewCell >
             <ViewCell.View>
               <Grid  Padding="12,5" >
-                <masterView:UserServiceItemControl
-                                      Title=""
+                <masterView:EServiceItemControl
                                       Message="{Binding Title}"
                                       IndicatorColor="Transparent"
                                       Command="{Binding  BindingContext.NavigateToPageCommand,Source={x:Reference ParentView}}"

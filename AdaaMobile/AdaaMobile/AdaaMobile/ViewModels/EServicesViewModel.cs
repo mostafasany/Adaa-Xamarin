@@ -38,9 +38,9 @@ namespace AdaaMobile.ViewModels
             _dialogManager = dialogManager;
 			PagesList=new ObservableCollection<AdaaPageItem>()
             {
-                //new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
-                new AdaaPageItem() {TargetType = typeof(Views.EServices.RequestDriverPage),Title = AppResources.RequestDriver},
-                new AdaaPageItem() {TargetType = typeof(Views.EServices.RequestOfficeMaintenancePage),Title = AppResources.RequestOfficeMaintenance},
+                new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
+                new AdaaPageItem() {TargetType = typeof(RequestDriverPage),Title = AppResources.RequestDriver},
+                new AdaaPageItem() {TargetType = typeof(RequestOfficeMaintenancePage),Title = AppResources.RequestOfficeMaintenance},
                 new AdaaPageItem() {TargetType = typeof(RequestOfficeServicesPage),Title = AppResources.RequestOfficeService},
 
             };
