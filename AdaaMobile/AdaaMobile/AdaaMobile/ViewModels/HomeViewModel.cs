@@ -140,7 +140,7 @@ namespace AdaaMobile.ViewModels
                 Title = AppResources.OracleServices,
                 IconSource = "AdaaMobile.Images.Oracle.svg",
                 TargetType = typeof(OracleServicesPage),
-                IsEnabled = false
+                IsEnabled = true
             });
 
             data.Add(new AdaaPageItem()
@@ -175,6 +175,13 @@ namespace AdaaMobile.ViewModels
         {
             if (item == null || item.IsEnabled == false)
                 return;
+            if (item.TargetType == typeof(OracleServicesPage))
+            {
+                //Open the app
+                DependencyService.Get<IPhoneService>().OpenOracleApp();
+
+                return;
+            }
             // _navigationService.SetMasterDetailsPage(item.TargetType);
             _navigationService.NavigateToPage(item.TargetType);
         }
