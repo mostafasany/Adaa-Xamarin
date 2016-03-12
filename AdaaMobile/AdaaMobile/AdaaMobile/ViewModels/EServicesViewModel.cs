@@ -9,6 +9,7 @@ using AdaaMobile.Common;
 using AdaaMobile.Models;
 using AdaaMobile.Strings;
 using AdaaMobile.Views.EServices;
+using System.Collections.ObjectModel;
 
 namespace AdaaMobile.ViewModels
 {
@@ -24,7 +25,7 @@ namespace AdaaMobile.ViewModels
 
         #region Properties
 
-        public List<AdaaPageItem> PagesList { get; private set; }
+		public ObservableCollection<AdaaPageItem> PagesList { get; private set; }
         #endregion
 
         #region Initialization
@@ -35,9 +36,9 @@ namespace AdaaMobile.ViewModels
             _navigationService = navigationService;
             _messageResolver = messageResolver;
             _dialogManager = dialogManager;
-            PagesList=new List<AdaaPageItem>()
+			PagesList=new ObservableCollection<AdaaPageItem>()
             {
-                new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
+                //new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
                 new AdaaPageItem() {TargetType = typeof(Views.EServices.RequestDriverPage),Title = AppResources.RequestDriver},
                 new AdaaPageItem() {TargetType = typeof(Views.EServices.RequestOfficeMaintenancePage),Title = AppResources.RequestOfficeMaintenance},
                 new AdaaPageItem() {TargetType = typeof(RequestOfficeServicesPage),Title = AppResources.RequestOfficeService},
