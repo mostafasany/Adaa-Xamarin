@@ -22,5 +22,10 @@ namespace AdaaMobile.Models.Response
             get;
             set;
         }
+
+		public override string ToString ()
+		{
+			return title;
+		}
     }
 }

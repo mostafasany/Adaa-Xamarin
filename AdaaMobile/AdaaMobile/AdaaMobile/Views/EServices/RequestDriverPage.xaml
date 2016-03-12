@@ -241,7 +241,7 @@
         HorizontalTextAlignment="Start"
         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
         Text="{ext:Translate Destination}"  />
-        <Picker x:Name="DestinationPicker"   BackgroundColor="Transparent" Itemssource="{Binding ClientsList}"
+        <Picker x:Name="DestinationPicker"   BackgroundColor="Transparent" 
                   Grid.Row="10"  HorizontalOptions="Fill"
                    WidthRequest="0" HeightRequest="0" IsVisible= "false"
               >
@@ -277,10 +277,11 @@
         HorizontalTextAlignment="Start"
         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
         Text="{ext:Translate SourceLocation}"  />
-        <Picker x:Name="SourcePicker"   BackgroundColor="Transparent" Itemssource="{Binding ClientsList}"
+        <Picker x:Name="SourcePicker"   BackgroundColor="Transparent" 
                          Grid.Row="13"  HorizontalOptions="Fill"
                           WidthRequest="0" HeightRequest="0" IsVisible= "false"
               >
+
         </Picker>
         <Label
         BackgroundColor="Transparent"

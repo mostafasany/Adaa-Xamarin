@@ -74,12 +74,13 @@ namespace AdaaMobile.ViewModels
 
 
 
-        private ObservableCollection<BaseItem> _ClientsList;
-        public ObservableCollection<BaseItem> ClientsList
+		private List<BaseItem> _ClientsList = new List<BaseItem>();
+		public List<BaseItem> ClientsList
         {
             get { return _ClientsList; }
             set { SetProperty(ref _ClientsList, value); }
         }
+
 
         private string _SelectedDestinationName;
         public string SelectedDestinationName
@@ -121,6 +122,44 @@ namespace AdaaMobile.ViewModels
 
         #region Methods
 
+		public async Task GetClients(){
+			try
+			{
+				LoadCommand.CanExecute = false;
+				IsBusy = true;
+
+				var paramters = new GetClientsQParameters()
+				{
+					Langid = _appSettings.Language,
+					UserToken = _appSettings.UserToken
+				};
+				var result = await _dataService.GetClientsAsync(paramters);
+
+				if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
+				{
+					ClientsList = new List<BaseItem>(result.Result.item);
+					if (ClientsList.Count > 0)
+					{
+						SelectedDestinationName = ClientsList[0].title;
+						SelectedSourceName = ClientsList[0].title;
+					}
+				}
+				else
+				{
+					string message = _messageResolver.GetMessage(result);
+					await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
+				}
+			}
+			catch (Exception ex)
+			{
+
+			}
+			finally
+			{
+				LoadCommand.CanExecute = true;
+				IsBusy = false;
+			}
+		}
         private async Task LoadAsync()
         {
             try
@@ -128,27 +167,7 @@ namespace AdaaMobile.ViewModels
                 LoadCommand.CanExecute = false;
                 IsBusy = true;
 
-                var paramters = new GetClientsQParameters()
-                {
-                    Langid = _appSettings.Language,
-                    UserToken = _appSettings.UserToken
-                };
-                var result = await _dataService.GetClientsAsync(paramters);
-
-                if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
-                {
-                    ClientsList = new ObservableCollection<BaseItem>(result.Result.item);
-                    if (ClientsList.Count > 0)
-                    {
-                        SelectedDestinationName = ClientsList[0].title;
-                        SelectedSourceName = ClientsList[0].title;
-                    }
-                }
-                else
-                {
-                    string message = _messageResolver.GetMessage(result);
-                    await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
-                }
+				await GetClients();
             }
             catch (Exception ex)
             {

@@ -36,7 +36,20 @@ namespace AdaaMobile.Views.EServices
             };
             ToolbarItems.Add(
                 new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
+
         }
+
+		protected async override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			await _viewModel.GetClients();
+			if(_viewModel.ClientsList != null && _viewModel.ClientsList.Count >0){
+			foreach (var item in _viewModel.ClientsList) {
+					SourcePicker.Items.Add(item.title);
+					DestinationPicker.Items.Add(item.title);
+			}
+			}
+		}
 
         private void Priority_Tapped(object sender, EventArgs e)
         {
