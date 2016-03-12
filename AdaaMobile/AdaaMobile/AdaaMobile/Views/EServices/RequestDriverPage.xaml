@@ -241,20 +241,26 @@
         HorizontalTextAlignment="Start"
         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
         Text="{ext:Translate Destination}"  />
+        <Picker x:Name="DestinationPicker"   BackgroundColor="Transparent" Itemssource="{Binding ClientsList}"
+                  Grid.Row="10"  HorizontalOptions="Fill"
+                   WidthRequest="0" HeightRequest="0" IsVisible= "false"
+              >
+        </Picker>
+        <Label
+        BackgroundColor="Transparent"
+        Grid.Row="10"
+        HorizontalOptions="Start"
+        VerticalOptions="Fill"
+        Text="{Binding SelectedDestinationName}"
+        TextColor="{StaticResource AppBackgroundNormal}"
+        Font="SemiBold" >
+          <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Destination_Tapped"/>
+          </Label.GestureRecognizers>
 
-        <controls:ExtendedEditor
-          x:Name="DestinationEditor"
-          Grid.Row="10"
-          HorizontalOptions="Fill"
-          VerticalOptions="FillAndExpand"
-          BackgroundColor="Transparent"
-          TextColor="Black"
-          Text="{Binding Reason,Mode=TwoWay}"
-          MaxLength="60"
-          HeightRequest="90"
-          >
+        </Label>
 
-        </controls:ExtendedEditor>
+
 
         <!-- Separator -->
         <Grid Grid.Row="11" Padding="0,10" IsVisible="{Binding ReturnToday}">
@@ -271,20 +277,26 @@
         HorizontalTextAlignment="Start"
         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
         Text="{ext:Translate SourceLocation}"  />
+        <Picker x:Name="SourcePicker"   BackgroundColor="Transparent" Itemssource="{Binding ClientsList}"
+                         Grid.Row="13"  HorizontalOptions="Fill"
+                          WidthRequest="0" HeightRequest="0" IsVisible= "false"
+              >
+        </Picker>
+        <Label
+        BackgroundColor="Transparent"
+        Grid.Row="13"
+        HorizontalOptions="Start"
+        VerticalOptions="Fill"
+        Text="{Binding SelectedSourceName}"
+        TextColor="{StaticResource AppBackgroundNormal}"
+        Font="SemiBold" >
+          <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="SourceText_Tapped"/>
+          </Label.GestureRecognizers>
 
-        <controls:ExtendedEditor
-          x:Name="SourceLocationEditor"
-          Grid.Row="13"
-          HorizontalOptions="Fill"
-          VerticalOptions="FillAndExpand"
-          BackgroundColor="Transparent"
-          TextColor="Black"
-          Text="{Binding Reason,Mode=TwoWay}"
-          MaxLength="60"
-          HeightRequest="90"
-          >
+        </Label>
 
-        </controls:ExtendedEditor>
+
 
         <!-- Separator -->
         <Grid Grid.Row="14" Padding="0,10" IsVisible="{Binding ReturnToday}">
