@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-             xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
@@ -45,7 +44,7 @@
           </FormattedString>
         </Label.FormattedText>
       </Label>
-      <Label Text="{Binding UserProfile.DisplayName}" Font="Bold" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
+      <Label Text="{Binding UserProfile.DisplayName}" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White">
       </Label>
     </StackLayout>
 
@@ -154,7 +153,7 @@
                   </Grid.GestureRecognizers>
                 </controls:ExtendedGrid >
               </RelativeLayout>
-              <Label Text="{Binding Title}" Font="SemiBold" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" HorizontalOptions="Fill" HorizontalTextAlignment="Center" TextColor="{Binding IsEnabled,Converter={StaticResource ListColorConverter}}">
+              <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" HorizontalOptions="Fill" HorizontalTextAlignment="Center" TextColor="{Binding IsEnabled,Converter={StaticResource ListColorConverter}}">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer Tapped="PageItem_Tapped"/>
                 </Label.GestureRecognizers>
