@@ -61,6 +61,13 @@ namespace AdaaMobile.ViewModels
 			set { SetProperty(ref _AdditionalComments, value); }
 		}
 
+        private string _SelectedPiorityText = AppResources.Normal;
+        public string SelectedPiorityText
+        {
+            get { return _SelectedPiorityText; }
+            set { SetProperty(ref _SelectedPiorityText, value); }
+        }
+        
         #endregion
 
         #region Initialization

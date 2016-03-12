@@ -692,6 +692,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meduim.
+        /// </summary>
+        public static string Meduim {
+            get {
+                return ResourceManager.GetString("Meduim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mobile Number.
         /// </summary>
         public static string MobileNumber {
@@ -805,6 +814,15 @@ namespace AdaaMobile.Strings {
         public static string NoInternet {
             get {
                 return ResourceManager.GetString("NoInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        public static string Normal {
+            get {
+                return ResourceManager.GetString("Normal", resourceCulture);
             }
         }
         
@@ -1309,6 +1327,15 @@ namespace AdaaMobile.Strings {
         public static string UnLockMyAccount {
             get {
                 return ResourceManager.GetString("UnLockMyAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urgent.
+        /// </summary>
+        public static string Urgent {
+            get {
+                return ResourceManager.GetString("Urgent", resourceCulture);
             }
         }
         

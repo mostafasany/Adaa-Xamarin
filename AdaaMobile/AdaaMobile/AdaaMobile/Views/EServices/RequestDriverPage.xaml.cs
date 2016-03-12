@@ -24,8 +24,13 @@ namespace AdaaMobile.Views.EServices
 			ReasonTypePicker.Items.Add(AppResources.Personal);
 			ReasonTypePicker.SelectedIndexChanged += ReasonTypePicker_SelectedIndexChanged;
 
-			//Add submit action
-			Action action = () =>
+            PriorityPicker.Items.Add(AppResources.Normal);
+            PriorityPicker.Items.Add(AppResources.Meduim);
+            PriorityPicker.Items.Add(AppResources.Urgent);
+            PriorityPicker.SelectedIndexChanged += PriorityPicker_SelectedIndexChanged;
+
+            //Add submit action
+            Action action = () =>
 			{
 				_viewModel.NewDriverRequestCommand.Execute(null);
 			};
@@ -70,6 +75,23 @@ namespace AdaaMobile.Views.EServices
 				_viewModel.LocalizedReasonType = AppResources.Personal;
 			}
 		}
-	}
+
+        private void PriorityPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PriorityPicker.SelectedIndex == 0)
+            {
+                _viewModel.SelectedPiorityText = AppResources.Normal;
+            }
+            if (PriorityPicker.SelectedIndex == 1)
+            {
+                _viewModel.SelectedPiorityText = AppResources.Meduim;
+            }
+            if (PriorityPicker.SelectedIndex == 2)
+            {
+                _viewModel.SelectedPiorityText = AppResources.Urgent;
+            }
+
+        }
+    }
 }
 

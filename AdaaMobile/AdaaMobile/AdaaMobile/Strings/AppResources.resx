@@ -553,4 +553,13 @@
   <data name="RequestOfficeService" xml:space="preserve">
     <value>Request an Office Service</value>
   </data>
+  <data name="Meduim" xml:space="preserve">
+    <value>Meduim</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Urgent" xml:space="preserve">
+    <value>Urgent</value>
+  </data>
 </root>
