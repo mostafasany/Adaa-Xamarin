@@ -589,4 +589,7 @@
   <data name="TypeOfEquipment" xml:space="preserve">
     <value>نوع المعدات</value>
   </data>
+  <data name="PressToSelectEquipments" xml:space="preserve">
+    <value>اضغط لاختيار المعدات</value>
+  </data>
 </root>

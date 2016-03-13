@@ -1007,6 +1007,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Press to select equipments.
+        /// </summary>
+        public static string PressToSelectEquipments {
+            get {
+                return ResourceManager.GetString("PressToSelectEquipments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Priority.
         /// </summary>
         public static string Priority {

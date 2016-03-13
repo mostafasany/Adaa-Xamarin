@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Common\AsyncExtendedCommand.cs" />
     <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Controls\BindablePicker.cs" />
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\ColumnsPanel.cs" />
     <Compile Include="Controls\ExtendedButton.cs" />
@@ -160,7 +161,6 @@
     <Compile Include="ViewModels\OfficeMaintenanceViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestDriverViewModel.cs" />
-    <Compile Include="ViewModels\RequestOfficeMaintenanceViewModel.cs" />
     <Compile Include="ViewModels\TaskDetailsViewmodel.cs" />
     <Compile Include="ViewModels\UserAccountServicesViewModel.cs" />
     <Compile Include="Views\Authentication\ChangePasswordPage.xaml.cs">

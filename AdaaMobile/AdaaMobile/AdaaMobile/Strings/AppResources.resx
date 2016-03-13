@@ -592,4 +592,7 @@
   <data name="TypeOfEquipment" xml:space="preserve">
     <value>Type of Equipment</value>
   </data>
+  <data name="PressToSelectEquipments" xml:space="preserve">
+    <value>Press to select equipments</value>
+  </data>
 </root>

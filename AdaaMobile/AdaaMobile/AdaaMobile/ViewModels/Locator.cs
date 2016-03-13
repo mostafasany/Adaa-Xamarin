@@ -57,7 +57,7 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<TaskDetailsViewmodel>();
 			cb.RegisterType<EServicesViewModel>();
 			cb.RegisterType<RequestDriverViewModel>();
-			cb.RegisterType<RequestOfficeMaintenanceViewModel>();
+			cb.RegisterType<OfficeMaintenanceViewModel>();
 
 
         }
@@ -177,11 +177,11 @@ namespace AdaaMobile.ViewModels
 			}
 		}
 
-		public RequestOfficeMaintenanceViewModel RequestOfficeMaintenanceViewModel
-		{
+		public OfficeMaintenanceViewModel OfficeMaintenanceViewModel
+        {
 			get
 			{
-				return Container.Resolve<RequestOfficeMaintenanceViewModel>();
+				return Container.Resolve<OfficeMaintenanceViewModel>();
 			}
 		}
 

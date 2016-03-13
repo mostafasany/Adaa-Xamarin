@@ -48,6 +48,11 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _selectedLocation, value); }
         }
 
+        public string LocationPlaceHolder
+        {
+            get { return SelectedLocation == null ? AppResources.Select : SelectedLocation.Title; }
+        }
+
         private Room[] _rooms;
         public Room[] Rooms
         {
@@ -60,6 +65,11 @@ namespace AdaaMobile.ViewModels
         {
             get { return _selectedRoom; }
             set { SetProperty(ref _selectedRoom, value); }
+        }
+
+        public string RoomPlaceHolder
+        {
+            get { return SelectedRoom == null ? AppResources.Select : SelectedRoom.Title; }
         }
 
         private Equipment[] _equipments;
@@ -88,7 +98,7 @@ namespace AdaaMobile.ViewModels
             get
             {
                 var equipments = Equipments;
-                if (equipments == null || equipments.Length == 0) return "";
+                if (equipments == null || equipments.Length == 0) return AppResources.PressToSelectEquipments;
                 StringBuilder builder = new StringBuilder();
                 foreach (var equipment in equipments)
                 {
@@ -140,14 +150,17 @@ namespace AdaaMobile.ViewModels
 
             Priorities = new MaintenancePriority[]
             {
-                new MaintenancePriority() {Title = AppResources.PriorityNormal,Id = @"Normal"},
-                new MaintenancePriority() {Title = AppResources.PriorityMedium,Id = @"Medium"},
-                new MaintenancePriority() {Title = AppResources.PriorityUrgent,Id = @"Urgent"},
+                new MaintenancePriority() {Title = AppResources.PriorityNormal,Id = @"1"},
+                new MaintenancePriority() {Title = AppResources.PriorityMedium,Id = @"2"},
+                new MaintenancePriority() {Title = AppResources.PriorityUrgent,Id = @"3"},
             };
+
+            SelectedPriority = Priorities[0];
 
             LoadFieldsCommand = new AsyncExtendedCommand(LoadFieldsAsync);
             LoadRoomsCommand = new AsyncExtendedCommand(LoadRoomsAsync);
             SubmitRequestCommand = new AsyncExtendedCommand(SubmitRequestAsync);
+            SelectEquipmentsCommand = new AsyncExtendedCommand(SelectEquipmentsAsync);
         }
 
         #endregion
@@ -157,6 +170,7 @@ namespace AdaaMobile.ViewModels
         public AsyncExtendedCommand LoadFieldsCommand { get; set; }
         public AsyncExtendedCommand LoadRoomsCommand { get; set; }
         public AsyncExtendedCommand SubmitRequestCommand { get; set; }
+        public AsyncExtendedCommand SelectEquipmentsCommand { get; set; }
         #endregion
 
         #region Methods
@@ -249,6 +263,11 @@ namespace AdaaMobile.ViewModels
             return false;
         }
 
+        private async Task SelectEquipmentsAsync()
+        {
+
+        }
+
         private async Task LoadRoomsAsync(CancellationToken token)
         {
             if (SelectedLocation == null) return;
@@ -293,7 +312,7 @@ namespace AdaaMobile.ViewModels
         {
             //Validations
 
-            if (string.IsNullOrWhiteSpace(EquipmentNamesLiteral))
+            if (SelectedEquipments == null || SelectedEquipments.Length == 0)
             {
                 await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.SpecifyEquipments, AppResources.Ok);
                 return;
