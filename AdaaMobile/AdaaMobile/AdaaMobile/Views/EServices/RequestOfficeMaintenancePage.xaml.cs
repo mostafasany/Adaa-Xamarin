@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Views.EServices
 {
-    public partial class RequestOfficeMaintenancePage
+    public partial class RequestOfficeMaintenancePage : ContentPage
     {
         public RequestOfficeMaintenancePage()
         {

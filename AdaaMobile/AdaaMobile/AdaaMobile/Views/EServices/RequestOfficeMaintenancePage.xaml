@@ -4,8 +4,6 @@
              x:Class="AdaaMobile.Views.EServices.RequestOfficeMaintenancePage"
              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
-             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              BackgroundColor="White"
              >
@@ -15,6 +13,7 @@
   
   <ContentPage.Resources>
     <ResourceDictionary>
+      <Thickness x:Key="SeperatorPadding">0,15</Thickness>
     </ResourceDictionary>
   </ContentPage.Resources>
 
@@ -40,9 +39,9 @@
       <controls:ExtendedGrid
                          Grid.Row="0"
                          VerticalOptions="Start"
-                         Padding="10,0"
+                         Padding="10,15"
                          BackgroundColor="Transparent">
-        <Grid.RowDefinitions>
+          <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
@@ -75,10 +74,10 @@
           </Label.GestureRecognizers>
         </Label>
 
-        <Grid Grid.Row="2" Padding="0,10">
+        <Grid Grid.Row="2" Padding="{StaticResource SeperatorPadding}">
           <BoxView
             HeightRequest="1"
-            BackgroundColor="{StaticResource AppBackgroundNormal}"
+            BackgroundColor="{StaticResource AppBackgroundSemi}"
             HorizontalOptions="Fill"
               />
         </Grid>
@@ -116,10 +115,10 @@
          SelectedItem="{Binding SelectedLocation, Mode=TwoWay}"/>
 
         <!--Seperator-->
-        <Grid Grid.Row="5" Padding="0,10">
+        <Grid Grid.Row="5" Padding="{StaticResource SeperatorPadding}">
           <BoxView
             HeightRequest="1"
-            BackgroundColor="{StaticResource AppBackgroundNormal}"
+            BackgroundColor="{StaticResource AppBackgroundSemi}"
             HorizontalOptions="Fill" />
         </Grid>        
 
@@ -165,10 +164,10 @@
         </Grid>
 
         <!--Seperator-->
-        <Grid Grid.Row="7" Padding="0,10">
+        <Grid Grid.Row="7" Padding="{StaticResource SeperatorPadding}">
           <BoxView
             HeightRequest="1"
-            BackgroundColor="{StaticResource AppBackgroundNormal}"
+            BackgroundColor="{StaticResource AppBackgroundSemi}"
             HorizontalOptions="Fill" />
         </Grid>  
 
@@ -234,7 +233,7 @@
                            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                            Text="{ext:Translate ServiceDetails}" />
 
-        <controls:ExtendedEditor
+        <Editor
         HorizontalOptions="Fill"
         VerticalOptions="Start"
         HeightRequest="300"
@@ -266,7 +265,7 @@
                            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                            Text="{ext:Translate AdditionalComments}" />
 
-        <controls:ExtendedEditor
+        <Editor
         HorizontalOptions="Fill"
         VerticalOptions="Start"
         HeightRequest="300"
