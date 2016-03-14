@@ -116,6 +116,7 @@ namespace AdaaMobile.DataServices.Requests
 
                 var stringValue = await postResponse.Content.ReadAsStringAsync();
                 response.StatusCode = postResponse.StatusCode;
+				string s = await content.ReadAsStringAsync();
                 ParseResult(stringValue, response);//parse Result even when there is error
                 if (!postResponse.IsSuccessStatusCode)
                 {

@@ -7,6 +7,8 @@ using System.Xml.Serialization;
 
 namespace AdaaMobile.Models.Response
 {
+	[XmlRoot("root")]
+
     public class SaveOfficeMaintenanceResponse
     {
 
