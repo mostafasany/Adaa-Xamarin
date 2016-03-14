@@ -12,11 +12,19 @@ namespace AdaaMobile.Extensions
     {
         public static string SerializeXml<TR>(this TR obj) where TR : new()
         {
+			XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+			ns.Add("","");
+
             var serializer = new XmlSerializer(typeof(TR));
             using (var writer = new StringWriter())
             {
-                serializer.Serialize(writer, obj);
-                return writer.ToString();
+                serializer.Serialize(writer, obj,  ns);
+				string xmlString = writer.ToString();
+
+				if (xmlString.Contains (@"<?xml version=""1.0"" encoding=""utf-16""?>")) {
+					xmlString = xmlString.Replace(@"<?xml version=""1.0"" encoding=""utf-16""?>","");
+				}
+				return xmlString;
             }
         }
 

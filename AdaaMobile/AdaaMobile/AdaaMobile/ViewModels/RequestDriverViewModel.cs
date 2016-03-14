@@ -236,7 +236,7 @@ namespace AdaaMobile.ViewModels
 						priority = "1",//SelectedPiorityText
 					reason = Reason,
 					requestcomments = AdditionalComments,
-					requestdate = RequestDate.Add(RequestTimeSpan).ToString(@"yyyy-dd-MM hh:mm:ss"),
+					requestdate = RequestDate.Add(RequestTimeSpan).ToString(@"dd/MM/yyyy hh:mm tt"),
 					requesttype = ReasonType,
 					source = SelectedSourceName
 	
