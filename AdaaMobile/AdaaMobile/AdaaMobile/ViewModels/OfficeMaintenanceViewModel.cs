@@ -24,6 +24,8 @@ namespace AdaaMobile.ViewModels
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
         private readonly IDialogManager _dialogManager;
+
+
         #endregion
 
         #region Properties
@@ -33,6 +35,8 @@ namespace AdaaMobile.ViewModels
             get { return _isBusy; }
             set { SetProperty(ref _isBusy, value); }
         }
+
+        public bool IsLoaded { get; set; }
 
         private OfficeLocation[] _locations;
         public OfficeLocation[] Locations
@@ -177,9 +181,19 @@ namespace AdaaMobile.ViewModels
 
         private async Task LoadFieldsAsync(CancellationToken token)
         {
-            bool success = await LoadAllEquipmentsAsync(token);
-            //dont load if the initial request failed
-            if (success) await LoadLocationsAsync(token);
+            try
+            {
+                LoadFieldsCommand.CanExecute = false;
+                bool firstSuccess = await LoadAllEquipmentsAsync(token);
+                bool secondSuccess = false;
+                //dont load if the initial request failed
+                if (firstSuccess) secondSuccess = await LoadLocationsAsync(token);
+                if (firstSuccess && secondSuccess) IsLoaded = true;
+            }
+            finally
+            {
+                LoadFieldsCommand.CanExecute = true;
+            }
         }
 
         private async Task<bool> LoadAllEquipmentsAsync(CancellationToken token)

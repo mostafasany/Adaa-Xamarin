@@ -1277,6 +1277,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service Details.
+        /// </summary>
+        public static string ServiceDetails {
+            get {
+                return ResourceManager.GetString("ServiceDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {

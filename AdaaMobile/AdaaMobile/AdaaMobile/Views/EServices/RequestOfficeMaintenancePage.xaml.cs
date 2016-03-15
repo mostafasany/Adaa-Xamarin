@@ -7,34 +7,25 @@ namespace AdaaMobile.Views.EServices
 {
     public partial class RequestOfficeMaintenancePage : ContentPage
     {
+        OfficeMaintenanceViewModel _viewModel;
+
         public RequestOfficeMaintenancePage()
         {
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
             Title = AppResources.RequestOfficeMaintenance;
 
-            var viewModel = Locator.Default.OfficeMaintenanceViewModel;
-            BindingContext = viewModel;
+            _viewModel = Locator.Default.OfficeMaintenanceViewModel;
+            BindingContext = _viewModel;
 
         }
 
-
-        private void ChooseLocation_Tapped(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-           OfficeLocationPicker.Unfocus();
-           OfficeLocationPicker.Focus();
-        }
+            base.OnAppearing();
+            if (!_viewModel.IsLoaded)
+                _viewModel.LoadFieldsCommand.Execute(null);
 
-        private void ChooseRoom_Tapped(object sender, EventArgs e)
-        {
-            RoomPicker.Unfocus();
-            RoomPicker.Focus();
-        }
-
-        private void ChoosePriority_Tapped(object sender, EventArgs e)
-        {
-            PriorityPicker.Unfocus();
-            PriorityPicker.Focus();
         }
     }
 }

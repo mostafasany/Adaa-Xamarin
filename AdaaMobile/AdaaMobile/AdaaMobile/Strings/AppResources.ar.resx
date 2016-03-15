@@ -592,4 +592,7 @@
   <data name="PressToSelectEquipments" xml:space="preserve">
     <value>اضغط لاختيار المعدات</value>
   </data>
+  <data name="ServiceDetails" xml:space="preserve">
+    <value>تفاصيل الخدمة</value>
+  </data>
 </root>

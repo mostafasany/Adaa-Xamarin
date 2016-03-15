@@ -184,6 +184,9 @@
     <Compile Include="Views\Delegation\DelegationsPage.xaml.cs">
       <DependentUpon>DelegationsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EServices\OfficeMaintenanceFirstPartView.xaml.cs">
+      <DependentUpon>OfficeMaintenanceFirstPartView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EServices\RequestAnnouncementPage.xaml.cs">
       <DependentUpon>RequestAnnouncementPage.xaml</DependentUpon>
     </Compile>
@@ -607,6 +610,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\EServices\EServiceItemControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EServices\OfficeMaintenanceFirstPartView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
