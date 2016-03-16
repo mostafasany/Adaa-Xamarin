@@ -58,11 +58,20 @@ namespace AdaaMobile.ViewModels
 			cb.RegisterType<EServicesViewModel>();
 			cb.RegisterType<RequestDriverViewModel>();
 			cb.RegisterType<OfficeMaintenanceViewModel>();
+			cb.RegisterType<GreetingCardsViewModel>();
 
 
         }
 
 
+
+		public GreetingCardsViewModel GreetingCardsViewModel
+		{
+			get
+			{
+				return Container.Resolve<GreetingCardsViewModel>();
+			}
+		}
 
         public AttendanceViewModel AttendanceViewModel
         {

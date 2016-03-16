@@ -24,8 +24,8 @@ namespace AdaaMobile.Models.Request
         [QueryParameter("userToken")]
         public string UserToken { get; set; }
 
-        [QueryParameter("mid")]
-        public string LocationId { get; set; }
+//        [QueryParameter("mid")]
+//        public string LocationId { get; set; }
 
     }
 }

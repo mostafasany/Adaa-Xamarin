@@ -334,6 +334,7 @@
       <DependentUpon>GreetingCardsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\GreetingCardsViewModel.cs" />
+    <Compile Include="Models\Response\GreetingCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
