@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Views.MasterView
 {
-    public partial class EServiceItemControl : ContentView
+    public partial class EquipmentItemControl : ContentView
     {
-        public EServiceItemControl()
+        public EquipmentItemControl()
         {
             InitializeComponent();
 			if (Device.OS == TargetPlatform.iOS) {
@@ -18,8 +18,8 @@ namespace AdaaMobile.Views.MasterView
         #region Title p
 
 
-        public static readonly BindableProperty TitleProperty = BindableProperty.Create<EServiceItemControl, object>(p => p.Title, default(object));
-
+        public static readonly BindableProperty TitleProperty = BindableProperty.Create<EquipmentItemControl, object>(p => p.Title, default(object));
+        
         public object Title
         {
             get { return (object)GetValue(TitleProperty); }
@@ -27,23 +27,13 @@ namespace AdaaMobile.Views.MasterView
         }
         #endregion
 
-        #region Message p
-        public static readonly BindableProperty MessageProperty = BindableProperty.Create<UserServiceItemControl, string>(p => p.Message, default(string));
+        #region IsSelected
+        public static readonly BindableProperty IsSelectedProperty = BindableProperty.Create<EquipmentItemControl, bool>(p => p.IsSelected, default(bool));
 
-        public string Message
+        public bool IsSelected
         {
-            get { return (string)GetValue(MessageProperty); }
-            set { SetValue(MessageProperty, value); }
-        }
-        #endregion
-
-        #region IndicatorColor
-        public static readonly BindableProperty IndicatorColorProperty = BindableProperty.Create<UserServiceItemControl, Color>(p => p.IndicatorColor, Color.Gray);
-
-        public Color IndicatorColor
-        {
-            get { return (Color)GetValue(IndicatorColorProperty); }
-            set { SetValue(IndicatorColorProperty, value); }
+            get { return (bool)GetValue(IsSelectedProperty); }
+            set { SetValue(IsSelectedProperty, value); }
         }
         #endregion
 

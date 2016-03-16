@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace AdaaMobile.Models.Response
 {
+    
     public class Equipment
     {
         [XmlElement("id")]

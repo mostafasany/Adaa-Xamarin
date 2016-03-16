@@ -1268,6 +1268,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select office location firstly..
+        /// </summary>
+        public static string SelectOfficleLocationFirst {
+            get {
+                return ResourceManager.GetString("SelectOfficleLocationFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT SERVICE.
         /// </summary>
         public static string SelectServiceCap {

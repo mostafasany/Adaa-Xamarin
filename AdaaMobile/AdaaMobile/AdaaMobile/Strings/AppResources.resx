@@ -601,4 +601,7 @@
   <data name="ChooseGreetingCardType" xml:space="preserve">
     <value>Choose Greeting Card Type</value>
   </data>
+  <data name="SelectOfficleLocationFirst" xml:space="preserve">
+    <value>Please select office location firstly.</value>
+  </data>
 </root>

@@ -598,4 +598,7 @@
   <data name="ChooseGreetingCardType" xml:space="preserve">
     <value>اختر كارت تهنئة</value>
   </data>
+  <data name="SelectOfficleLocationFirst" xml:space="preserve">
+    <value>الرجاء تحديد موقع المكتب أولا</value>
+  </data>
 </root>
