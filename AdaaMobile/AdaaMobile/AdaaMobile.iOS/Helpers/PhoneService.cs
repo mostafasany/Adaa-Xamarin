@@ -14,7 +14,7 @@ using MessageUI;
 
 namespace AdaaMobile.iOS.Helpers
 {
-    public class PhoneService : IPhoneService
+	public class PhoneService : IPhoneService
     {
         /// <summary>
         /// Opens native dialog to dial the specified number.
@@ -65,6 +65,26 @@ namespace AdaaMobile.iOS.Helpers
         {
             UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("http://www.xamarin.com"));
         }
+
+
+		public void SavePictureToDisk (string filename, byte[] imageData)
+		{
+			var chartImage = new UIImage(NSData.FromArray(imageData));
+
+			bool foundError = false;
+
+			chartImage.SaveToPhotosAlbum((image, error) =>
+				{
+					//you can retrieve the saved UI Image as well if needed using
+					//var i = image as UIImage;
+					if(error != null)
+					{
+						Console.WriteLine(error.ToString());
+						foundError = true;
+					}
+				});
+		}
     }
+
 }
 

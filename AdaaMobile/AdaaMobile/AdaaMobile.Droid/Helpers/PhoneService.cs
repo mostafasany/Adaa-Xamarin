@@ -13,7 +13,7 @@ using Android.Content.PM;
 [assembly: Dependency(typeof(PhoneService))]
 namespace AdaaMobile.Droid
 {
-    public class PhoneService : IPhoneService
+	public class PhoneService : IPhoneService
     {
         /// <summary>
         /// Opens native dialog to dial the specified number.
@@ -73,6 +73,27 @@ namespace AdaaMobile.Droid
                 MainActivity.Instance.StartActivity(new Intent(Intent.ActionView, Android.Net.Uri.Parse("https://play.google.com/store/apps/details?id=" + packageName)));
             }
         }
+
+		public void SavePictureToDisk (string filename, byte[] imageData)
+		{
+			var dir = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim);
+			var pictures = dir.AbsolutePath;
+			//adding a time stamp time file name to allow saving more than one image... otherwise it overwrites the previous saved image of the same name
+			string name = filename + System.DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".jpg";
+			string filePath = System.IO.Path.Combine(pictures, name);
+			try
+			{
+				System.IO.File.WriteAllBytes(filePath, imageData);
+				//mediascan adds the saved image into the gallery
+				var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
+				mediaScanIntent.SetData(Android.Net.Uri.FromFile(new Java.IO.File(filePath)));
+				Xamarin.Forms.Forms.Context.SendBroadcast(mediaScanIntent);
+			}
+			catch(System.Exception e)
+			{
+				System.Console.WriteLine(e.ToString());
+			}
+		}
     }
 }
 

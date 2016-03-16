@@ -16,6 +16,9 @@ namespace AdaaMobile
         /// Opens oracle app through app package name on Android and store app on iOS
         /// </summary>
         void OpenOracleApp();
+
+		void SavePictureToDisk (string filename, byte[] imageData);
+
 	}
 }
 

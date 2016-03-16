@@ -26,7 +26,6 @@ BackgroundColor="White">
         <RowDefinition Height="8"/>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="8"/>
-        <RowDefinition Height="8"/>
         <RowDefinition Height="Auto"/>
 
       </Grid.RowDefinitions>
@@ -86,7 +85,7 @@ BackgroundColor="White">
         Grid.Row="1"
         HorizontalOptions="Start"
         VerticalOptions="Fill"
-        Text="{Binding SelectedSourceName}"
+        Text="{Binding SelectedCardName}"
         TextColor="{StaticResource AppBackgroundNormal}"
         Font="SemiBold" >
           <Label.GestureRecognizers>
@@ -115,7 +114,7 @@ BackgroundColor="White">
 
         </Grid.RowDefinitions>
 
-            <Image HeightRequest="300"
+            <Image HeightRequest="250"
                           WidthRequest="300"
                           Grid.Row="0"
                           VerticalOptions="Center"
@@ -126,6 +125,39 @@ BackgroundColor="White">
     </Image>
        
       </controls:ExtendedGrid>
+
+
+
+      <controls:ImageButton 
+      				x:Name="SaveCardButton"
+      				Grid.Row="4"
+                    Text="Save Card"
+                    FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+                    Clicked="SaveCard_Clicked"                    
+                    VerticalOptions="End"
+                    BackgroundColor="#FF35A946"
+                    TextColor="White"
+                    HorizontalOptions="Fill"
+                    HeightRequest= "100"
+
+                >
+
+              <controls:ImageButton.ImageHeightRequest>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
+              </controls:ImageButton.ImageHeightRequest>
+
+              <controls:ImageButton.ImageWidthRequest>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
+              </controls:ImageButton.ImageWidthRequest>
+              
+              <controls:ImageButton.HeightRequest>
+                <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36"/>
+              </controls:ImageButton.HeightRequest>
+
+              <controls:ImageButton.Source>
+                <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="date.png" iOS="date"/>
+              </controls:ImageButton.Source>
+            </controls:ImageButton>
 
 
       <ActivityIndicator  IsRunning="{Binding IsBusy}"

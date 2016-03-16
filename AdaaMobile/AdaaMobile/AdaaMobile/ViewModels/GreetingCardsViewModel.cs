@@ -53,6 +53,12 @@ namespace AdaaMobile
 			set { SetProperty(ref _image, value); }
 		}
 
+		private string _SelectedCardName;
+		public string SelectedCardName
+		{
+			get { return _SelectedCardName; }
+			set { SetProperty(ref _SelectedCardName, value); }
+		}
 
 		#endregion
 
@@ -89,6 +95,7 @@ namespace AdaaMobile
 						Id = result.Result.id,
 						Image = result.Result.img
 					});
+					SelectedCardName = result.Result.title;
 					if (!String.IsNullOrWhiteSpace(result.Result.img))
 					{
 						Func<Stream> streamFunc = GetStream;
