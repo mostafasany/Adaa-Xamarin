@@ -598,4 +598,7 @@
   <data name="ServiceDetails" xml:space="preserve">
     <value>Service Details</value>
   </data>
+  <data name="ChooseGreetingCardType" xml:space="preserve">
+    <value>Choose Greeting Card Type</value>
+  </data>
 </root>

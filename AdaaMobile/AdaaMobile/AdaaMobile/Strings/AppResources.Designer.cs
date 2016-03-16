@@ -251,6 +251,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose Greeting Card Type.
+        /// </summary>
+        public static string ChooseGreetingCardType {
+            get {
+                return ResourceManager.GetString("ChooseGreetingCardType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change language.
         /// </summary>
         public static string ChooseLanguage {

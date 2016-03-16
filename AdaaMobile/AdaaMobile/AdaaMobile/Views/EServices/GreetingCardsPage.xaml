@@ -59,7 +59,7 @@ BackgroundColor="White">
          TextColor="Black" BackgroundColor="Transparent"
          HorizontalTextAlignment="Start"
          FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-         Text="{ext:Translate ReasonType}"/>
+         Text="{ext:Translate ChooseGreetingCardType}"/>
           <Image
                                    HeightRequest="15"
                                    WidthRequest="15"
