@@ -13,7 +13,7 @@ namespace AdaaMobile.Views.DayPass
         #region Title property
 
 
-        public static readonly BindableProperty TitleProperty = BindableProperty.Create<ProfilePropertyControl, object>(p => p.Title, default(object));
+        public static readonly BindableProperty TitleProperty = BindableProperty.Create<RowInfoControl, object>(p => p.Title, default(object));
 
         public object Title
         {
@@ -25,7 +25,7 @@ namespace AdaaMobile.Views.DayPass
         #region Value property
 
 
-        public static readonly BindableProperty ValueProperty = BindableProperty.Create<ProfilePropertyControl, object>(p => p.Value, default(object));
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create<RowInfoControl, object>(p => p.Value, default(object));
 
         public object Value
         {

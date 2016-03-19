@@ -18,6 +18,15 @@ namespace AdaaMobile.Views.EServices
             _viewModel = Locator.Default.OfficeMaintenanceViewModel;
             BindingContext = _viewModel;
 
+            //Add submit action
+            Action action = () =>
+            {
+                _viewModel.SubmitRequestCommand.Execute(null);
+            };
+            ToolbarItems.Add(
+                new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
+
+
         }
 
         protected override void OnAppearing()

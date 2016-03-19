@@ -40,6 +40,7 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<NavigationService>();
             cb.Register<INavigationService>(c => c.Resolve<NavigationService>());
             cb.RegisterType<UserSelectionService>();
+            cb.RegisterType<EquipmentsSelectionService>();
             cb.RegisterType<LoginViewModel>();
             cb.RegisterType<HomeViewModel>();
             cb.RegisterType<AttendanceViewModel>();
@@ -59,7 +60,7 @@ namespace AdaaMobile.ViewModels
 			cb.RegisterType<RequestDriverViewModel>();
 			cb.RegisterType<OfficeMaintenanceViewModel>();
 			cb.RegisterType<GreetingCardsViewModel>();
-
+            cb.RegisterType<EquipmentsSelectionViewModel>();
 
         }
 
@@ -195,6 +196,15 @@ namespace AdaaMobile.ViewModels
 		}
 
 
+        public EquipmentsSelectionViewModel EquipmentsSelectionViewModel
+        {
+            get
+            {
+                return Container.Resolve<EquipmentsSelectionViewModel>();
+            }
+        }
+
+
         public IAppSettings AppSettings
         {
             get
@@ -208,6 +218,14 @@ namespace AdaaMobile.ViewModels
             get
             {
                 return Container.Resolve<INavigationService>();
+            }
+        }
+
+        public IDialogManager DialogManager
+        {
+            get
+            {
+                return Container.Resolve<IDialogManager>();
             }
         }
     }

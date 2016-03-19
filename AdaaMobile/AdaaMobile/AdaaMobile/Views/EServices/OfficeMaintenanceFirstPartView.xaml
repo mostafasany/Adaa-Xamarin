@@ -93,7 +93,7 @@
        IsVisible = "false"
        IsEnabled="true"
        ItemsSource="{Binding Locations}"
-       SelectedItem="{Binding SelectedLocation, Mode=TwoWay}"/>
+       SelectedIndexChanged="OfficeLocationPicker_OnSelectedIndexChanged"/>
 
       <!--Seperator-->
       <Grid Grid.Row="5" Padding="{StaticResource SeperatorPadding}">
@@ -141,7 +141,7 @@
          IsVisible = "false"
          IsEnabled="true"
          ItemsSource="{Binding Rooms}"
-         SelectedItem="{Binding SelectedRoom, Mode=TwoWay}"/>
+         SelectedIndexChanged="RoomPicker_OnSelectedIndexChanged"/>
       </Grid>
 
       <!--Seperator-->
@@ -190,7 +190,7 @@
          IsVisible = "false"
          IsEnabled="true"
          ItemsSource="{Binding Priorities}"
-         SelectedItem="{Binding SelectedPriority, Mode=TwoWay}"/>
+         SelectedIndexChanged="PriorityPicker_OnSelectedIndexChanged"/>
       </Grid>
     </controls:ExtendedGrid>
   </Grid>

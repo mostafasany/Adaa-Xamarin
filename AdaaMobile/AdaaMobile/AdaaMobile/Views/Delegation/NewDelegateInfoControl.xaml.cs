@@ -14,7 +14,7 @@ namespace AdaaMobile.Views.Delegation
         #region Title property
 
 
-        public static readonly BindableProperty TitleProperty = BindableProperty.Create<ProfilePropertyControl, object>(p => p.Title, default(object));
+        public static readonly BindableProperty TitleProperty = BindableProperty.Create<NewDelegateInfoControl, object>(p => p.Title, default(object));
 
         public object Title
         {
@@ -26,7 +26,7 @@ namespace AdaaMobile.Views.Delegation
         #region Value property
 
 
-        public static readonly BindableProperty ValueProperty = BindableProperty.Create<ProfilePropertyControl, object>(p => p.Value, default(object));
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create<NewDelegateInfoControl, object>(p => p.Value, default(object));
 
         public object Value
         {

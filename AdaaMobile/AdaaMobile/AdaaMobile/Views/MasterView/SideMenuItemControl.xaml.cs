@@ -22,7 +22,7 @@ namespace AdaaMobile.Views.MasterView
         #region Title p
 
 
-        public static readonly BindableProperty TitleProperty = BindableProperty.Create<ProfilePropertyControl, object>(p => p.Title, default(object));
+        public static readonly BindableProperty TitleProperty = BindableProperty.Create<SideMenuItemControl, object>(p => p.Title, default(object));
 
         public object Title
         {

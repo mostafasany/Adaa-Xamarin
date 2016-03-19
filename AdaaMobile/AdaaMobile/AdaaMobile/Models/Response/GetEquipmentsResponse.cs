@@ -8,7 +8,6 @@ using System.Xml.Serialization;
 namespace AdaaMobile.Models.Response
 {
     [XmlRoot("root")]
-
     public class GetEquipmentsResponse
     {
         [XmlElement("msg")]
@@ -16,7 +15,7 @@ namespace AdaaMobile.Models.Response
 
 
 
-        [XmlElement("Item")]
+        [XmlElement("item")]
         public Equipment[] Equipments
         {
             get;

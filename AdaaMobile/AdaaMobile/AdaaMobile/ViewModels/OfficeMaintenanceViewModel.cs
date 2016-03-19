@@ -24,7 +24,7 @@ namespace AdaaMobile.ViewModels
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
         private readonly IDialogManager _dialogManager;
-
+        private readonly EquipmentsSelectionService _equipmentsSelectionService;
 
         #endregion
 
@@ -49,7 +49,20 @@ namespace AdaaMobile.ViewModels
         public OfficeLocation SelectedLocation
         {
             get { return _selectedLocation; }
-            set { SetProperty(ref _selectedLocation, value); }
+            set {
+                if (SetProperty(ref _selectedLocation, value))
+                {
+                    if (value == null)
+                    {
+                        Rooms = null;
+                        SelectedRoom = null;
+                    }
+                    else
+                    {
+                        LoadRoomsCommand.Execute(null);
+                    }
+                }
+            }
         }
 
         public string LocationPlaceHolder
@@ -83,8 +96,8 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _equipments, value); }
         }
 
-        private Equipment[] _selectedEquipments;
-        public Equipment[] SelectedEquipments
+        private List<Equipment> _selectedEquipments;
+        public List<Equipment> SelectedEquipments
         {
             get { return _selectedEquipments; }
             set
@@ -101,8 +114,8 @@ namespace AdaaMobile.ViewModels
         {
             get
             {
-                var equipments = Equipments;
-                if (equipments == null || equipments.Length == 0) return AppResources.PressToSelectEquipments;
+                var equipments = SelectedEquipments;
+                if (equipments == null || equipments.Count == 0) return AppResources.PressToSelectEquipments;
                 StringBuilder builder = new StringBuilder();
                 foreach (var equipment in equipments)
                 {
@@ -144,13 +157,14 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public OfficeMaintenanceViewModel(INavigationService navigationService, IDataService dataService, IAppSettings appSettings, IRequestMessageResolver messageResolver, IDialogManager dialogManager)
+        public OfficeMaintenanceViewModel(INavigationService navigationService, IDataService dataService, IAppSettings appSettings, IRequestMessageResolver messageResolver, IDialogManager dialogManager, EquipmentsSelectionService equipmentsSelectionService)
         {
             _navigationService = navigationService;
             _dataService = dataService;
             _appSettings = appSettings;
             _messageResolver = messageResolver;
             _dialogManager = dialogManager;
+            _equipmentsSelectionService = equipmentsSelectionService;
 
             Priorities = new MaintenancePriority[]
             {
@@ -242,22 +256,22 @@ namespace AdaaMobile.ViewModels
             try
             {
                 IsBusy = true;
-                var roomsParamters = new GetRoomsQParameters()
+                var locationsParamters = new GetOfficeLocationsQParameters()
                 {
                     Langid = _appSettings.Language,
                     UserToken = _appSettings.UserToken,
 
                 };
-                var roomsResponseWrraper = await _dataService.GetRoomsAsync(roomsParamters, token);
+                var locationsResponseWrraper = await _dataService.GetOfficeLocationsAsync(locationsParamters, token);
                 if (token.IsCancellationRequested) return false;
-                if (roomsResponseWrraper.ResponseStatus == ResponseStatus.SuccessWithResult)
+                if (locationsResponseWrraper.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
-                    Rooms = roomsResponseWrraper.Result.Rooms;
+                    Locations = locationsResponseWrraper.Result.Locations;
                     return true;
                 }
                 else
                 {
-                    string message = _messageResolver.GetMessage(roomsResponseWrraper);
+                    string message = _messageResolver.GetMessage(locationsResponseWrraper);
                     await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
                 }
             }
@@ -279,7 +293,9 @@ namespace AdaaMobile.ViewModels
 
         private async Task SelectEquipmentsAsync()
         {
-
+            if (Equipments == null) return;
+            var selectedEquipments = await _equipmentsSelectionService.SelectEquipmentsAsync(Equipments);
+            SelectedEquipments = selectedEquipments;
         }
 
         private async Task LoadRoomsAsync(CancellationToken token)
@@ -326,7 +342,7 @@ namespace AdaaMobile.ViewModels
         {
             //Validations
 
-            if (SelectedEquipments == null || SelectedEquipments.Length == 0)
+            if (SelectedEquipments == null || SelectedEquipments.Count == 0)
             {
                 await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.SpecifyEquipments, AppResources.Ok);
                 return;
