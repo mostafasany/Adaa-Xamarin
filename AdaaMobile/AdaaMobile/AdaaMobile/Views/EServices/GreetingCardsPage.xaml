@@ -155,7 +155,7 @@ BackgroundColor="White">
               </controls:ImageButton.HeightRequest>
 
               <controls:ImageButton.Source>
-                <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="date.png" iOS="date"/>
+                <OnPlatform x:TypeArguments="ImageSource" WinPhone="check.png" Android="check.png" iOS="check"/>
               </controls:ImageButton.Source>
             </controls:ImageButton>
 

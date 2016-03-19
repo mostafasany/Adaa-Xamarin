@@ -36,7 +36,7 @@ namespace AdaaMobile.Droid
         public void OpenOracleApp()
         {
            // string packageName = "com.mostafa.cairometrobeta";
-            string packageName = "com.adaa.droid";
+            string packageName = "com.ADDOF";
             //Intent intent = new Intent(Intent.ActionMain);
             //intent.SetComponent(new ComponentName("com.mostafa.cairometrobeta", "com.mostafa.cairometrobeta.MainActivity"));
             //StartActivity(intent);
