@@ -61,6 +61,7 @@ namespace AdaaMobile.ViewModels
 			cb.RegisterType<OfficeMaintenanceViewModel>();
 			cb.RegisterType<GreetingCardsViewModel>();
             cb.RegisterType<EquipmentsSelectionViewModel>();
+            cb.RegisterType<MyRequestsViewModel>();
 
         }
 
@@ -179,7 +180,15 @@ namespace AdaaMobile.ViewModels
             }
         }
 
-		public RequestDriverViewModel RequestDriverViewModel
+        public MyRequestsViewModel MyRequestsViewModel
+        {
+            get
+            {
+                return Container.Resolve<MyRequestsViewModel>();
+            }
+        }
+
+        public RequestDriverViewModel RequestDriverViewModel
 		{
 			get
 			{

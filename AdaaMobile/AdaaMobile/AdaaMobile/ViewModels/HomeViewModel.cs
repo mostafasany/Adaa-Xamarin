@@ -124,7 +124,7 @@ namespace AdaaMobile.ViewModels
                 Title = AppResources.MyRequests,
                 IconSource = "AdaaMobile.Images.MyRequests.svg",
                 TargetType = typeof(MyRequestsPage),
-                IsEnabled = false
+                IsEnabled = true
             });
 
             data.Add(new AdaaPageItem()
