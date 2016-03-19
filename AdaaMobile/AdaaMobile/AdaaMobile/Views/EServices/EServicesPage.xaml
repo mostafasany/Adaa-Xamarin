@@ -18,7 +18,7 @@
     </Grid.RowDefinitions>
 
 
-    <Image x:Name="iosBackgroundImage" IsVisible = "false" Grid.RowSpan="4" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
+    <Image x:Name="iosBackgroundImage" IsVisible = "false" Grid.RowSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
       <Image.Source>
         <OnPlatform x:TypeArguments="ImageSource" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
       </Image.Source>
@@ -34,6 +34,7 @@
            BackgroundColor="Transparent"
            Grid.Row="2" 
            ItemSelected="ServicesList_OnItemSelected"
+           VerticalOptions="Fill"
               >
       <ListView.ItemTemplate>
         <DataTemplate>
