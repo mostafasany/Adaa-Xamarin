@@ -12,50 +12,56 @@
     <ResourceDictionary>
     </ResourceDictionary>
   </ContentView.Resources>
-  <Grid  >
-    <controls:ExtendedButton
-             Padding="0" x:Name="MainBtn"  VerticalOptions="Fill"  HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}"
-            Text="" TextColor="Transparent" BackgroundColor="#cc007c85"
-            Clicked="Button_OnClicked">
+  <Grid>
+    <controls:RoundedBoxView
+      VerticalOptions="Fill"
+      HorizontalOptions="Fill"
+      BackgroundColor="{StaticResource AppBackgroundSemi}"
+      CornerRadius="{StaticResource CornerRadius}"
+   />
 
-    </controls:ExtendedButton>
-
-    <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True"
+    <controls:ExtendedGrid Padding="15,0" x:Name="ContentGrid"
                            VerticalOptions="Start" HeightRequest="70"
-
-                           CornerRadius="{StaticResource CornerRadius}" 
-                           >
+                           BackgroundColor="Transparent"
+                         >
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="Item_Tapped"/>
+      </Grid.GestureRecognizers>
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="10"/>
         <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="30"/>
+        <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
+      <Label Grid.Column="0"
+                   TextColor="White" BackgroundColor="Transparent"
+                   HorizontalTextAlignment="Start"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Small" Text="{Binding Title,Source={x:Reference ParentView}}" />
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="*"/>
-      </Grid.RowDefinitions>
+      <Image Grid.Column="1"
+            VerticalOptions="Center"
+            HeightRequest="20"
+            WidthRequest="20"
+           >
+        <Image.Source>
+          <OnPlatform x:TypeArguments="ImageSource" WinPhone="checkborder.png" Android="checkborder.png" iOS="checkborder"/>
+        </Image.Source>
+      <Image.IsVisible>
+        <OnPlatform x:TypeArguments="x:Boolean" WinPhone="True" Android="True" iOS="False"/>
+      </Image.IsVisible>
+      </Image>
 
-      <BoxView Grid.Row="0" Grid.RowSpan="3"
-               Color="{Binding IndicatorColor,Source={x:Reference ParentView}}"
-               Grid.Column="0"
-               VerticalOptions="Fill" HorizontalOptions="Fill"/>
+      <Image Grid.Column="1"
+             HeightRequest="20"
+             WidthRequest="20"
+             VerticalOptions="Center"
+             IsVisible="{Binding IsSelected,Source={x:Reference ParentView}}"
+             >
+        <Image.Source>
+          <OnPlatform x:TypeArguments="ImageSource" WinPhone="check.png" Android="check.png" iOS="check"/>
+        </Image.Source>
+      </Image>
 
-      <Label Grid.Row="1"  Grid.Column="1"
-             TextColor="White" BackgroundColor="Transparent"
-             HorizontalTextAlignment="Start"
-             FontSize="Small" Text="{Binding Title,Source={x:Reference ParentView}}" />
-
-
-      <Switch
-                          
-                          Grid.Column="2"
-                          Grid.Row="0"
-                          Grid.RowSpan="3"
-                          IsToggled="{Binding IsSelected,Mode=TwoWay}"
-                          HorizontalOptions="Start" VerticalOptions="Center"
-      />
     </controls:ExtendedGrid>
   </Grid>
 </ContentView>

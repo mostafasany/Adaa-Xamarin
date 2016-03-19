@@ -38,12 +38,15 @@
     <Compile Include="Common\AsyncExtendedCommand.cs" />
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Controls\BindablePicker.cs" />
+    <Compile Include="Controls\CheckBox.cs" />
+    <Compile Include="Controls\CheckboxCell.cs" />
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\ColumnsPanel.cs" />
     <Compile Include="Controls\ExtendedButton.cs" />
     <Compile Include="Controls\ExtendedEditor.cs" />
     <Compile Include="Controls\ExtendedGrid.cs" />
     <Compile Include="Controls\ExtendedSwitch.cs" />
+    <Compile Include="Controls\ExtendedTextCell.cs" />
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />
     <Compile Include="Controls\GestureContentView.cs" />
     <Compile Include="Controls\HorizontalListView.cs" />
@@ -53,6 +56,7 @@
     <Compile Include="Controls\SvgImage\ColorPair.cs" />
     <Compile Include="Controls\SvgImage\ISvgImageRenderer.cs" />
     <Compile Include="Controls\SvgImage\SvgImage.cs" />
+    <Compile Include="Controls\TextCellDetailLocation.cs" />
     <Compile Include="Converters\BooleanNegateConverter.cs" />
     <Compile Include="Common\ExtendedCommand.cs" />
     <Compile Include="Converters\BoolToColorConverter.cs" />
@@ -462,6 +466,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Images\twitter.svg" />
     <EmbeddedResource Include="Images\chevron.svg" />
+    <Content Include="Images\checkborder.png" />
     <Content Include="Strings\LocalizationNotes.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

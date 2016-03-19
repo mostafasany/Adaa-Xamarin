@@ -130,6 +130,7 @@
       <Link>CustomRenderers\ImageButtonRenderer.shared.cs</Link>
     </Compile>
     <Compile Include="CustomRenderers\AlignmentExtensions.cs" />
+    <Compile Include="CustomRenderers\CheckBox\CheckBoxRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedButtonRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedEditorRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedEntryRenderer.cs" />
@@ -311,6 +312,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\abc_ic_ab_back_mtrl_am_alpha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\checkborder.png" />
   </ItemGroup>
   <Import Project="..\..\packages\Xamarin.Forms.2.1.0.6526\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.1.0.6526\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

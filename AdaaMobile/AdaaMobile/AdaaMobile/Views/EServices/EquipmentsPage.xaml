@@ -13,7 +13,6 @@
   <Grid RowSpacing="15">
     <Grid.RowDefinitions>
       <RowDefinition Height="5"/>
-      <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
@@ -31,8 +30,8 @@
            HasUnevenRows="True"
            SeparatorColor="Transparent"
            BackgroundColor="Transparent"
-              Grid.Row="1" 
-              HorizontalOptions="Fill"
+           Grid.Row="1" 
+           ItemSelected="EquipmentsList_OnItemSelected"
               >
       <ListView.ItemTemplate>
         <DataTemplate>
@@ -56,7 +55,7 @@
 
     <ActivityIndicator  IsRunning="{Binding IsBusy}"
                          HeightRequest="60" WidthRequest="60"
-                         Grid.Row="0" Grid.RowSpan="3"
+                         Grid.Row="0" Grid.RowSpan="2"
                          VerticalOptions="Center" HorizontalOptions="Center"/>
 
 

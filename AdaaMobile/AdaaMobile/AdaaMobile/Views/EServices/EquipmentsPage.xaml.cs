@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.Models.Response;
+using AdaaMobile.Strings;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
 
@@ -14,10 +15,11 @@ namespace AdaaMobile.Views.EServices
         private readonly EquipmentsSelectionViewModel _viewModel;
         public EquipmentsPage(Equipment[] allEquipments, List<Equipment> previousSelection)
         {
-            this._viewModel = Locator.Default.EquipmentsSelectionViewModel;
-            _viewModel.InitializeWrappersList(allEquipments,previousSelection);
-            BindingContext = _viewModel;
             InitializeComponent();
+            Title = AppResources.TypeOfEquipment;
+            this._viewModel = Locator.Default.EquipmentsSelectionViewModel;
+            _viewModel.InitializeWrappersList(allEquipments, previousSelection);
+            BindingContext = _viewModel;
         }
 
         protected override bool OnBackButtonPressed()
@@ -38,6 +40,12 @@ namespace AdaaMobile.Views.EServices
         {
             var handler = EquipmentsSelected;
             if (handler != null) handler?.Invoke(this, e);
+        }
+
+        private void EquipmentsList_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (EquipmentsList.SelectedItem != null)
+                EquipmentsList.SelectedItem = null;
         }
     }
 }

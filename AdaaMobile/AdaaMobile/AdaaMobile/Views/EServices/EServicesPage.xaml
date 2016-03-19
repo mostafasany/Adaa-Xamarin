@@ -25,14 +25,15 @@
     </Image>
 
     <ListView
-           x:Name="DelegationsList"
+           x:Name="ServicesList"
            ItemsSource="{Binding PagesList}"
            IsGroupingEnabled="False"
-           HasUnevenRows="True"
+           HasUnevenRows="False"
+           RowHeight="70"
            SeparatorColor="Transparent"
            BackgroundColor="Transparent"
-              Grid.Row="1" 
-              HorizontalOptions="Fill"
+           Grid.Row="2" 
+           ItemSelected="ServicesList_OnItemSelected"
               >
       <ListView.ItemTemplate>
         <DataTemplate>

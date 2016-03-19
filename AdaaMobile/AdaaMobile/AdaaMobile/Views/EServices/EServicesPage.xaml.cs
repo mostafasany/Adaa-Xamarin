@@ -19,6 +19,12 @@ namespace AdaaMobile.Views.EServices
             Title = AppResources.EServices;
 
         }
+
+        private void ServicesList_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (ServicesList.SelectedItem != null)
+                ServicesList.SelectedItem = null;
+        }
     }
 }
 
