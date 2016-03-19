@@ -24,5 +24,11 @@ namespace AdaaMobile.Views
 
             Title = AppResources.MyRequests;
         }
+
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			_viewModel.LoadDayPassDataCommand.Execute (null);
+		}
     }
 }

@@ -74,12 +74,7 @@
       </ListView>
 
     </Grid>
-    
-    <masterView:UserServiceItemControl Grid.Row="1"
-                                       Title="{ext:Translate ChangeLaptopPass}"
-                                       Message="{Binding PasswordStatus}"
-                                       IndicatorColor="{Binding PasswordColor}"
-                                       Command="{Binding  NavigateToChangePasswordCommand}" />
+
 
     
 
