@@ -12,10 +12,10 @@ namespace AdaaMobile.Views.EServices
     public partial class EquipmentsPage : ContentPage, IEquipmentsSelection
     {
         private readonly EquipmentsSelectionViewModel _viewModel;
-        public EquipmentsPage(Equipment[] allEquipments)
+        public EquipmentsPage(Equipment[] allEquipments, List<Equipment> previousSelection)
         {
             this._viewModel = Locator.Default.EquipmentsSelectionViewModel;
-            _viewModel.InitializeWrappersList(allEquipments);
+            _viewModel.InitializeWrappersList(allEquipments,previousSelection);
             BindingContext = _viewModel;
             InitializeComponent();
         }

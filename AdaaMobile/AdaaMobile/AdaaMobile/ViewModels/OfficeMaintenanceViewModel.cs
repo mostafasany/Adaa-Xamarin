@@ -49,9 +49,11 @@ namespace AdaaMobile.ViewModels
         public OfficeLocation SelectedLocation
         {
             get { return _selectedLocation; }
-            set {
+            set
+            {
                 if (SetProperty(ref _selectedLocation, value))
                 {
+                    OnPropertyChanged("LocationPlaceHolder");
                     if (value == null)
                     {
                         Rooms = null;
@@ -81,7 +83,13 @@ namespace AdaaMobile.ViewModels
         public Room SelectedRoom
         {
             get { return _selectedRoom; }
-            set { SetProperty(ref _selectedRoom, value); }
+            set
+            {
+                if (SetProperty(ref _selectedRoom, value))
+                {
+                    OnPropertyChanged("RoomPlaceHolder");
+                }
+            }
         }
 
         public string RoomPlaceHolder
@@ -294,7 +302,7 @@ namespace AdaaMobile.ViewModels
         private async Task SelectEquipmentsAsync()
         {
             if (Equipments == null) return;
-            var selectedEquipments = await _equipmentsSelectionService.SelectEquipmentsAsync(Equipments);
+            var selectedEquipments = await _equipmentsSelectionService.SelectEquipmentsAsync(Equipments, SelectedEquipments);
             SelectedEquipments = selectedEquipments;
         }
 

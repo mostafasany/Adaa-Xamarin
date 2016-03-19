@@ -12,9 +12,9 @@ namespace AdaaMobile.Helpers
     public class EquipmentsSelectionService
     {
         private TaskCompletionSource<List<Equipment>> _completionSource;
-        public async Task<List<Equipment>> SelectEquipmentsAsync(Equipment[] allEquipments)
+        public async Task<List<Equipment>> SelectEquipmentsAsync(Equipment[] allEquipments,List<Equipment> previousSelction)
         {
-            var page = new EquipmentsPage(allEquipments);
+            var page = new EquipmentsPage(allEquipments,previousSelction);
             _completionSource = new TaskCompletionSource<List<Equipment>>();
 
             //Wire event of Equipment selection

@@ -39,10 +39,14 @@ namespace AdaaMobile.ViewModels
 
         #region Methods
 
-        public void InitializeWrappersList(Equipment[] allEquipments)
+        public void InitializeWrappersList(Equipment[] allEquipments, List<Equipment> previousSelection)
         {
             if (allEquipments == null) EquipmentWrappers = null;
-            EquipmentWrappers = allEquipments.Select(equipment => new EquipmentWrapper(equipment)).ToArray();
+            EquipmentWrappers = allEquipments.
+                Select(equipment => new EquipmentWrapper(equipment)
+                {
+                    IsSelected = previousSelection != null && previousSelection.FirstOrDefault(e => e.Id == equipment.Id) != null
+                }).ToArray();
         }
 
         public List<Equipment> GetSelectedEquipments()
