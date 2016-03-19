@@ -65,7 +65,9 @@
                                         Title="{Binding title}"
                                         Message="{Binding service}"
                                         IndicatorColor="{Binding PasswordColor}"
-                                        Command="{Binding  NavigateToChangePasswordCommand}" />
+                                        Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference MainWindow}}"
+                                        CommandParamter = "{Binding}"      
+                                         />
                 </Grid>
               </ViewCell.View>
             </ViewCell>
@@ -80,7 +82,7 @@
 
     <ActivityIndicator  IsRunning="{Binding IsBusy}"
                          HeightRequest="60" WidthRequest="60"
-                         Grid.Row="0" Grid.RowSpan="4"
+                         Grid.Row="0" Grid.RowSpan="3"
                          VerticalOptions="Center" HorizontalOptions="Center"/>
 
 

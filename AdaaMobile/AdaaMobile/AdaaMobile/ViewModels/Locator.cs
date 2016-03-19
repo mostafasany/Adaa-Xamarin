@@ -61,7 +61,7 @@ namespace AdaaMobile.ViewModels
 			cb.RegisterType<OfficeMaintenanceViewModel>();
 			cb.RegisterType<GreetingCardsViewModel>();
             cb.RegisterType<EquipmentsSelectionViewModel>();
-            cb.RegisterType<MyRequestsViewModel>();
+			cb.RegisterType<MyRequestsViewModel>().SingleInstance();
 
         }
 
