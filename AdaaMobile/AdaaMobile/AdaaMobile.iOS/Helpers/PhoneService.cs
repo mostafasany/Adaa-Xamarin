@@ -63,7 +63,7 @@ namespace AdaaMobile.iOS.Helpers
 
         public void OpenOracleApp()
         {
-            UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("http://www.xamarin.com"));
+            UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("https://itunes.apple.com/us/app/ad-dof/id1032231693?mt=8"));
         }
 
 
