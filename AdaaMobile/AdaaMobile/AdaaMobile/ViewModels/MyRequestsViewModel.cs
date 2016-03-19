@@ -16,6 +16,8 @@ namespace AdaaMobile.ViewModels
     public class MyRequestsViewModel : BindableBase
     {
         #region Fields
+		private readonly INavigationService _navigationService;
+
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
         private readonly IDialogManager _dialogManager;
@@ -37,6 +39,14 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _busyMessage, value); }
         }
 
+		private Request _SelectedRequest;
+		public Request SelectedRequest
+		{
+			get { return _SelectedRequest; }
+			set { SetProperty(ref _SelectedRequest, value); }
+		}
+
+
         private ObservableCollection<Request> _pendingRequests;
         public ObservableCollection<Request> PendingRequests
         {
@@ -54,18 +64,23 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public MyRequestsViewModel(IDataService dataService, IDialogManager dialogManager, IAppSettings appSettings, INavigationService navigationService, IRequestMessageResolver messageResolver)
+
+        public MyRequestsViewModel(IDataService dataService, IDialogManager dialogManager, 
+			IAppSettings appSettings, INavigationService navigationService, IRequestMessageResolver messageResolver)
         {
+			_navigationService = navigationService;
             _dataService = dataService;
             _appSettings = appSettings;
             _dialogManager = dialogManager;
             _messageResolver = messageResolver;
             LoadDayPassDataCommand = new AsyncExtendedCommand(LoadDayPassDataAsync);
+			RequestItemSelectedCommand = new AsyncExtendedCommand<Request> (OpenRequestDetailsPage);
         }
         #endregion
 
         #region Commands
-        public AsyncExtendedCommand LoadDayPassDataCommand { get; set; }
+		public AsyncExtendedCommand LoadDayPassDataCommand { get; set; }
+		public AsyncExtendedCommand<Request> RequestItemSelectedCommand { get; set; }
 
         #endregion
 
@@ -74,10 +89,9 @@ namespace AdaaMobile.ViewModels
         {
             //Pending requests
             try
+
             {
-                IsBusy = true;
-                LoadDayPassDataCommand.CanExecute = false;
-                ShowNoPendingRequests = false;
+				IsBusy = true;
                 var response = await _dataService.GetAllSharepointRequestsAsync(new GetAllRequestsQParameters()
                 {
                     Langid = _appSettings.Language,
@@ -109,6 +123,11 @@ namespace AdaaMobile.ViewModels
 
 
         }
+		private async Task OpenRequestDetailsPage( Request selectedRequest)
+		{
+			SelectedRequest = selectedRequest;
+			_navigationService.NavigateToPage (typeof(SelectedRequestPage));
+		}
 
         #endregion
     }

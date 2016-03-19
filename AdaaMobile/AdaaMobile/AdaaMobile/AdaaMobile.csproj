@@ -345,6 +345,9 @@
     </Compile>
     <Compile Include="ViewModels\GreetingCardsViewModel.cs" />
     <Compile Include="Models\Response\GreetingCard.cs" />
+    <Compile Include="Views\SelectedRequestPage.xaml.cs">
+      <DependentUpon>SelectedRequestPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
@@ -449,6 +452,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EServices\GreetingCardsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SelectedRequestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

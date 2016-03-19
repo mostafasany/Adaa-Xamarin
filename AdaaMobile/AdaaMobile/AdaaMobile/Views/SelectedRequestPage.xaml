@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
+             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
+             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
+             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
+             xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile"
+             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
+x:Class="AdaaMobile.SelectedRequestPage"
+BackgroundColor="White">
+
+
+  <ContentPage.BackgroundImage>
+    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
+  </ContentPage.BackgroundImage>
+
+
+    <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="TabColor">#00676e</Color>
+      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
+        Padding="0,0,0,20"
+        >
+
+    <ScrollView Grid.Row="0" VerticalOptions="Fill">
+      <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
+      Padding="15,20" RowSpacing="10" BindingContext="{Binding SelectedRequest}"
+        >
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <controls:RoundedBoxView
+             BackgroundColor="{StaticResource AppBackgroundNormal}"
+             CornerRadius="{StaticResource CornerRadius}"
+             VerticalOptions="Fill"
+             Grid.Row="0" />
+        <StackLayout
+          Grid.Row="0"
+          Spacing="9"
+          Padding="15"
+          VerticalOptions="Start">
+          <dayPass:RowInfoControl Title="Status" Value="{Binding status}"/>
+
+        </StackLayout>
+
+        <controls:RoundedBoxView
+             BackgroundColor="{StaticResource AppBackgroundNormal}"
+             CornerRadius="{StaticResource CornerRadius}"
+             VerticalOptions="Fill"
+             Grid.Row="1" />
+        <StackLayout
+          Grid.Row="1"
+          Spacing="9"
+          Padding="15"
+          VerticalOptions="Start"
+          >
+          <dayPass:RowInfoControl Title="Title" Value="{Binding title}"/>
+          <dayPass:RowInfoControl x:Name="DateData" Title="Date" Value="{Binding title}"/>
+
+        </StackLayout>
+
+      </Grid>
+    </ScrollView>
+
+    <ActivityIndicator  IsRunning="{Binding IsBusy}"
+                     HeightRequest="50" WidthRequest="50"
+                     VerticalOptions="Center" HorizontalOptions="Center"/>
+  </Grid>
+
+</ContentPage>
