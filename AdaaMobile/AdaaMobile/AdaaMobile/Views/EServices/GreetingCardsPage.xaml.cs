@@ -43,14 +43,14 @@ namespace AdaaMobile
 			SourcePicker.Focus();
 		}
 
-		private void SaveCard_Clicked(object sender, EventArgs e)
+		private async void SaveCard_Clicked(object sender, EventArgs e)
 		{
 			if (_viewModel.CardsList != null && _viewModel.CardsList.Count > 0) {
 				byte[] bytesArray = Convert.FromBase64String (_viewModel.CardsList [0].Image);
 
 				DependencyService.Get<IPhoneService> ().SavePictureToDisk (_viewModel.CardsList [0].Title, bytesArray);
-
-			}
+                await Application.Current.MainPage.DisplayAlert("ADAA", AppResources.CardSavedMessaga, "");
+            }
 		}
 
 

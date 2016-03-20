@@ -607,4 +607,7 @@
   <data name="EnterAdditionalComments" xml:space="preserve">
     <value>Please enter additional comments.</value>
   </data>
+  <data name="CardSavedMessaga" xml:space="preserve">
+    <value>Card has been saved</value>
+  </data>
 </root>

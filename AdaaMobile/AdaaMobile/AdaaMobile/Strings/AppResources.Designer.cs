@@ -197,6 +197,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Card has been saved.
+        /// </summary>
+        public static string CardSavedMessaga {
+            get {
+                return ResourceManager.GetString("CardSavedMessaga", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Certificate.
         /// </summary>
         public static string Certificate {
