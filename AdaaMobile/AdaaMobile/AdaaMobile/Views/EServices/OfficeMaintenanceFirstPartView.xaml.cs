@@ -20,7 +20,20 @@ namespace AdaaMobile.Views.EServices
 
         public OfficeMaintenanceFirstPartView()
         {
-            InitializeComponent();
+            InitializeComponent();  
+        }
+
+
+        //This will be called from view model to update room selection when rooms are selected.
+        private void ReflectRoomSelection()
+        {
+            if (ViewModel.Rooms == null || ViewModel.Rooms.Length == 0 || ViewModel.SelectedRoom == null)
+            {
+                RoomPicker.SelectedIndex = -1;
+                return;
+            }
+
+            RoomPicker.SelectedIndex = Array.IndexOf(ViewModel.Rooms, ViewModel.SelectedRoom);
         }
 
         private void ChooseLocation_Tapped(object sender, EventArgs e)
@@ -60,6 +73,9 @@ namespace AdaaMobile.Views.EServices
             int index = OfficeLocationPicker.SelectedIndex;
             if (list == null || index == -1) return;
             ViewModel.SelectedLocation = list[index];
+
+            //This will be called from view model to update room selection when rooms are selected.
+            ViewModel.ReflectRoomSelection = ReflectRoomSelection;
         }
 
         private void PriorityPicker_OnSelectedIndexChanged(object sender, EventArgs e)

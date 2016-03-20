@@ -11,22 +11,22 @@ namespace AdaaMobile.Models.Request
 	[XmlRoot("root")]
     public class SaveOfficeMaintenanceRequestBParameters
     {
-        [QueryParameter("equipments")]
+        [XmlElement("Equipments")]
         public string Equipments { get; set; }
 
-        [QueryParameter("servicedetails")]
+        [XmlElement("ServiceDetails")]
         public string Servicedetails { get; set; }
 
-        [QueryParameter("location")]
+        [XmlElement("Location")]
         public string Location { get; set; }
 
-        [QueryParameter("room")]
+        [XmlElement("Room")]
         public string Room { get; set; }
 
-        [QueryParameter("priority")]
+        [XmlElement("priority")]
         public string Priority { get; set; }
 
-        [QueryParameter("requestcomments")]
+        [XmlElement("requestcomments")]
         public string Requestcomments { get; set; }
 
     }

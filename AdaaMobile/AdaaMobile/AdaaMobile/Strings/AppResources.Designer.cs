@@ -440,6 +440,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter additional comments..
+        /// </summary>
+        public static string EnterAdditionalComments {
+            get {
+                return ResourceManager.GetString("EnterAdditionalComments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter service details..
         /// </summary>
         public static string EnterServiceDetails {

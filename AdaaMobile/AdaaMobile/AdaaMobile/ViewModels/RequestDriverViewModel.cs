@@ -232,13 +232,13 @@ namespace AdaaMobile.ViewModels
 
 				var bodyParameter = new SaveDriverRequestBParameters()
                     {
-					destination = SelectedDestinationName,
-						priority = "1",//SelectedPiorityText
-					reason = Reason,
-					requestcomments = AdditionalComments,
-					requestdate = RequestDate.Add(RequestTimeSpan).ToString(@"dd/MM/yyyy hh:mm tt"),
-					requesttype = ReasonType,
-					source = SelectedSourceName
+					Destination = SelectedDestinationName,
+						Priority = "1",//SelectedPiorityText
+					Reason = Reason,
+					Requestcomments = AdditionalComments,
+					Requestdate = RequestDate.Add(RequestTimeSpan).ToString(@"dd/MM/yyyy hh:mm tt"),
+					Requesttype = ReasonType,
+					Source = SelectedSourceName
 	
                     };
 					var response = await _dataService.SaveDriverRequestAsync(qParamters, bodyParameter);

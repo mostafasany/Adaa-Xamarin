@@ -601,4 +601,7 @@
   <data name="SelectOfficleLocationFirst" xml:space="preserve">
     <value>الرجاء تحديد موقع المكتب أولا</value>
   </data>
+  <data name="EnterAdditionalComments" xml:space="preserve">
+    <value>برجاء إدخال التعليقات الإضافية</value>
+  </data>
 </root>

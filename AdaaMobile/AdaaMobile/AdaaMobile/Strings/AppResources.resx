@@ -604,4 +604,7 @@
   <data name="SelectOfficleLocationFirst" xml:space="preserve">
     <value>Please select office location firstly.</value>
   </data>
+  <data name="EnterAdditionalComments" xml:space="preserve">
+    <value>Please enter additional comments.</value>
+  </data>
 </root>

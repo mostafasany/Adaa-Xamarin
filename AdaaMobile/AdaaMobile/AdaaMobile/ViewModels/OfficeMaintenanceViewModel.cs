@@ -229,16 +229,16 @@ namespace AdaaMobile.ViewModels
                     Langid = _appSettings.Language,
                     UserToken = _appSettings.UserToken,
                 };
-                var roomsResponseWrraper = await _dataService.GetEquipmentsAsync(equipmentsParamters, token);
+                var equipmentsResponseWrapper = await _dataService.GetEquipmentsAsync(equipmentsParamters, token);
                 if (token.IsCancellationRequested) return false;
-                if (roomsResponseWrraper.ResponseStatus == ResponseStatus.SuccessWithResult)
+                if (equipmentsResponseWrapper.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
-                    Equipments = roomsResponseWrraper.Result.Equipments;
+                    Equipments = equipmentsResponseWrapper.Result.Equipments;
                     return true;
                 }
                 else
                 {
-                    string message = _messageResolver.GetMessage(roomsResponseWrraper);
+                    string message = _messageResolver.GetMessage(equipmentsResponseWrapper);
                     await _dialogManager.DisplayAlert(AppResources.ApplicationName, message, AppResources.Ok);
                 }
 
@@ -323,6 +323,11 @@ namespace AdaaMobile.ViewModels
                 if (roomsResponseWrraper.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
                     Rooms = roomsResponseWrraper.Result.Rooms;
+                    if (Rooms != null && Rooms.Length != 0)
+                    {
+                        SelectedRoom = Rooms[0];
+                        if (ReflectRoomSelection != null) ReflectRoomSelection();
+                    }
                 }
                 else
                 {
@@ -344,6 +349,25 @@ namespace AdaaMobile.ViewModels
                 }
             }
 
+        }
+
+        /// <summary>
+        /// Used by backend
+        /// </summary>
+        /// <returns></returns>
+        private string ConstructEquipmentsForBackend()
+        {
+            if (SelectedEquipments == null) return "";
+            StringBuilder builder=new StringBuilder();
+            foreach (var selectedEquipment in SelectedEquipments)
+            {
+                if (builder.Length != 0)
+                {
+                    builder.Append("%;");
+                }
+                builder.Append(selectedEquipment.Id).Append("#;").Append(selectedEquipment.Title);
+            }
+            return builder.ToString();
         }
 
         private async Task SubmitRequestAsync()
@@ -374,6 +398,12 @@ namespace AdaaMobile.ViewModels
                 return;
             }
 
+            if (AdditionalComments == null)
+            {
+                await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.EnterAdditionalComments, AppResources.Ok);
+                return;
+            }
+
             try
             {
                 SubmitRequestCommand.CanExecute = false;
@@ -387,9 +417,9 @@ namespace AdaaMobile.ViewModels
 
                 var bodyParameters = new SaveOfficeMaintenanceRequestBParameters()
                 {
-                    Equipments = EquipmentNamesLiteral,//TODO:Check request sample
+                    Equipments = ConstructEquipmentsForBackend(),
                     Room = SelectedRoom.Id,
-                    Location = SelectedLocation.Id,
+                    Location = SelectedLocation.Title,
                     Priority = SelectedPriority.Id,
                     Requestcomments = AdditionalComments,
                     Servicedetails = ServiceDetails
@@ -419,6 +449,12 @@ namespace AdaaMobile.ViewModels
             }
 
         }
+
+        #endregion
+
+        #region Delegates
+
+        public Action ReflectRoomSelection;
 
         #endregion
 

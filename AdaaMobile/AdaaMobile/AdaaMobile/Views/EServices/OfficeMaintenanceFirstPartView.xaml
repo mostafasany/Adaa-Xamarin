@@ -50,10 +50,17 @@
        TextColor="{StaticResource AppBackgroundNormal}"
        Text="{Binding EquipmentNamesLiteral}"
          >
-        <Label.GestureRecognizers>
-          <TapGestureRecognizer  Command="{Binding SelectEquipmentsCommand}"/>
-        </Label.GestureRecognizers>
+
       </Label>
+
+      <!--Use Box View to increase touch region as Label touch target is small
+          Using Button instead of label has limitation in controlling 
+          padding which makes it hard to achieve design-->
+      <BoxView Grid.Row="0" Grid.RowSpan="2" BackgroundColor="Transparent">
+        <BoxView.GestureRecognizers>
+          <TapGestureRecognizer  Command="{Binding SelectEquipmentsCommand}"/>
+        </BoxView.GestureRecognizers>
+      </BoxView>
 
       <Grid Grid.Row="2" Padding="{StaticResource SeperatorPadding}">
         <BoxView
@@ -79,10 +86,9 @@
        TextColor="{StaticResource AppBackgroundNormal}"
        Text="{Binding LocationPlaceHolder}"
          >
-        <Label.GestureRecognizers>
-          <TapGestureRecognizer  Tapped="ChooseLocation_Tapped"/>
-        </Label.GestureRecognizers>
       </Label>
+
+
 
       <controls:BindablePicker
        Grid.Row="4"
@@ -94,6 +100,15 @@
        IsEnabled="true"
        ItemsSource="{Binding Locations}"
        SelectedIndexChanged="OfficeLocationPicker_OnSelectedIndexChanged"/>
+
+      <!--Use Box View to increase touch region as Label touch target is small
+          Using Button instead of label has limitation in controlling 
+          padding which makes it hard to achieve design-->
+      <BoxView Grid.Row="3" Grid.RowSpan="2" BackgroundColor="Transparent">
+        <BoxView.GestureRecognizers>
+          <TapGestureRecognizer  Tapped="ChooseLocation_Tapped"/>
+        </BoxView.GestureRecognizers>
+      </BoxView>
 
       <!--Seperator-->
       <Grid Grid.Row="5" Padding="{StaticResource SeperatorPadding}">
@@ -112,6 +127,10 @@
           <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <Grid.GestureRecognizers>
+          <TapGestureRecognizer  Tapped="ChooseRoom_Tapped"/>
+        </Grid.GestureRecognizers>
+
         <Label   Grid.Column="0"
                          TextColor="Black" BackgroundColor="Transparent"
                          HorizontalTextAlignment="Start"
@@ -126,11 +145,7 @@
        VerticalOptions = "Start"
        TextColor="{StaticResource AppBackgroundNormal}"
        Text="{Binding RoomPlaceHolder}"
-         >
-          <Label.GestureRecognizers>
-            <TapGestureRecognizer  Tapped="ChooseRoom_Tapped"/>
-          </Label.GestureRecognizers>
-        </Label>
+         />
 
         <controls:BindablePicker
          Grid.Column="1"
@@ -161,6 +176,10 @@
           <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <Grid.GestureRecognizers>
+          <TapGestureRecognizer  Tapped="ChoosePriority_Tapped"/>
+        </Grid.GestureRecognizers>
+        
         <Label   Grid.Column="0"
                          TextColor="Black" BackgroundColor="Transparent"
                          HorizontalTextAlignment="Start"
@@ -175,11 +194,7 @@
        VerticalOptions = "Start"
        TextColor="{StaticResource AppBackgroundNormal}"
        Text="{Binding SelectedPriority.Title}"
-         >
-          <Label.GestureRecognizers>
-            <TapGestureRecognizer  Tapped="ChoosePriority_Tapped"/>
-          </Label.GestureRecognizers>
-        </Label>
+         />
 
         <controls:BindablePicker
          Grid.Column="1"

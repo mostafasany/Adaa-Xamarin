@@ -12,26 +12,26 @@ namespace AdaaMobile.Models.Request
     public class SaveDriverRequestBParameters
     {
 
-			[QueryParameter("requesttype")]
-			public string requesttype { get; set; }
+			[XmlElement("requesttype")]
+			public string Requesttype { get; set; }
 
-			[QueryParameter("reason")]
-			public string reason { get; set; }
+			[XmlElement("reason")]
+			public string Reason { get; set; }
 
-			[QueryParameter("requestdate")]
-			public string requestdate { get; set; }
+			[XmlElement("requestdate")]
+			public string Requestdate { get; set; }
 
-			[QueryParameter("source")]
-			public string source { get; set; }
+			[XmlElement("source")]
+			public string Source { get; set; }
 
-			[QueryParameter("destination")]
-			public string destination { get; set; }
+			[XmlElement("destination")]
+			public string Destination { get; set; }
 
-			[QueryParameter("priority")]
-			public string priority { get; set; }
+			[XmlElement("priority")]
+			public string Priority { get; set; }
 
-			[QueryParameter("requestcomments")]
-			public string requestcomments { get; set; }
+			[XmlElement("requestcomments")]
+			public string Requestcomments { get; set; }
 
        
     }

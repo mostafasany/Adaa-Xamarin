@@ -282,8 +282,8 @@ namespace AdaaMobile.DataServices
             var request = _requestFactory();
             request.ResultContentType = ContentType.Xml;
             request.RequestUrl = BaseUrl.AppendQueryString(qParameters);
-
-            var stringContent = new StringContent(bodyParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
+            string content = bodyParamters.SerializeXml();
+            var stringContent = new StringContent(content, new UTF8Encoding(), XmlContentType);
             return await request.PostAsync<SaveOfficeMaintenanceResponse>(stringContent);
         }
 
