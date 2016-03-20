@@ -39,7 +39,7 @@ namespace AdaaMobile.Views.EServices
         protected virtual void OnEquipmentsSelected(List<Equipment> e)
         {
             var handler = EquipmentsSelected;
-            if (handler != null) handler?.Invoke(this, e);
+            if (handler != null) handler.Invoke(this, e);
         }
 
         private void EquipmentsList_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
