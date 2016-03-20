@@ -49,7 +49,7 @@ namespace AdaaMobile
 				byte[] bytesArray = Convert.FromBase64String (_viewModel.CardsList [0].Image);
 
 				DependencyService.Get<IPhoneService> ().SavePictureToDisk (_viewModel.CardsList [0].Title, bytesArray);
-                await Application.Current.MainPage.DisplayAlert("ADAA", AppResources.CardSavedMessaga, "");
+                await Application.Current.MainPage.DisplayAlert("ADAA", AppResources.CardSavedMessaga, "OK");
             }
 		}
 
