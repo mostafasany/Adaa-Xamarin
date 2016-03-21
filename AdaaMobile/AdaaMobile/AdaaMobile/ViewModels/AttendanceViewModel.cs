@@ -13,6 +13,7 @@ using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
 using AdaaMobile.Views;
 using AdaaMobile.Views.Authentication;
+using System.Collections.ObjectModel;
 
 namespace AdaaMobile.ViewModels
 {
@@ -24,7 +25,7 @@ namespace AdaaMobile.ViewModels
         private const int InitialLimitInDays = 7;
         private const int LimitRangeInDays = 1 * 30;
         private const int BottomLimitInDays = 2 * 12 * 30;
-        private readonly int SmallestWindowLimit ;//items
+        private readonly int SmallestWindowLimit;//items
         private readonly IDataService _dataService;
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
@@ -33,6 +34,8 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Properties
+        public bool isSubordinateDataShown = false;
+
         private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(InitialLimitInDays));
         /// <summary>
         /// Date of first picker, this date will be used to show the starting range for Attendance and Exceptions.
@@ -169,6 +172,16 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _errorMessage, value); }
         }
 
+
+
+
+        private ObservableCollection<Employee> _SubordinateList;
+        public ObservableCollection<Employee> SubordinateList
+        {
+            get { return _SubordinateList; }
+            set { SetProperty(ref _SubordinateList, value); }
+        }
+
         #endregion
 
         #region Initialization
@@ -262,7 +275,7 @@ namespace AdaaMobile.ViewModels
 
             DaysList = null;
 
-           
+
 
             //Clear current day
             SelectedDay.IsSelected = false;
@@ -417,6 +430,39 @@ namespace AdaaMobile.ViewModels
             }
         }
 
+
+        public async Task<bool> GetSubordinateList()
+        {
+            try
+            {
+                var response = await _dataService.GetDelegationSubordinatesResponseAsync(new delegationSubordinatesQParamters()
+                {
+                    Langid = _appSettings.Language,
+                    UserToken = _appSettings.UserToken
+                });
+                if (response.ResponseStatus == ResponseStatus.SuccessWithResult)
+                {
+                    if (response.Result != null && response.Result.Subordinates != null && response.Result.Subordinates.Length > 0)
+                    {
+                        SubordinateList = new ObservableCollection<Employee>(response.Result.Subordinates);
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
 
         #endregion
 

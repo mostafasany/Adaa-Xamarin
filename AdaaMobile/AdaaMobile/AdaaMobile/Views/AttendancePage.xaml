@@ -329,7 +329,7 @@
                        VerticalOptions="Center" HorizontalOptions="Center"/>
         </Grid>
 
-        <Grid Padding="10" ColumnSpacing="8" >
+        <Grid x:Name="DayPassDelegationGrid" Padding="10" ColumnSpacing="8" >
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>

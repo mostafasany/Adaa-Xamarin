@@ -63,16 +63,32 @@ namespace AdaaMobile.Views
             DayPassBtn.Clicked += DayPassBtn_Clicked;
             DelegationBtn.Clicked += DelegationBtn_Clicked;
 
-            Action action = () =>
-            {
-                // TODO Add this in phase 2
-            };
-            ToolbarItems.Add(
-                new ToolbarItem("", "subordinate.png", action, ToolbarItemOrder.Primary));
+            AddSubToolBarItem();
 
             _attendanceViewModel.PropertyChanged += _attendanceViewModel_PropertyChanged;
         }
 
+
+        private void AddSubToolBarItem()
+        {
+            Action action = () =>
+            {
+                if (_attendanceViewModel.SubordinateList != null)
+                {
+                    _attendanceViewModel.isSubordinateDataShown = true;
+                    DayPassDelegationGrid.IsVisible = false;
+                    ToolbarItems.Clear();
+                }
+
+
+            };
+            ToolbarItems.Add(
+                new ToolbarItem("", "subordinate.png", action, ToolbarItemOrder.Primary));
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return base.OnBackButtonPressed();
+        }
         void _attendanceViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "EndDate")
@@ -126,6 +142,11 @@ namespace AdaaMobile.Views
                         if (latestIndex != -1)
                             SelectDay(_attendanceViewModel.DaysList[latestIndex]);
                     }
+                }
+                if (_attendanceViewModel.SubordinateList == null)
+                {
+                    bool isHaveSubordinates = await _attendanceViewModel.GetSubordinateList();
+
                 }
             }
             catch
