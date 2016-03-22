@@ -455,6 +455,7 @@ namespace AdaaMobile.ViewModels
                     {
                         SubordinateList = new ObservableCollection<Employee>(response.Result.Subordinates);
                         SelectedSub = SubordinateList[0];
+						SelectedSub.IsSelected = true;
                         return true;
                     }
                     else

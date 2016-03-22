@@ -87,6 +87,8 @@ namespace AdaaMobile.Views
             ToolbarItems.Add(
                 new ToolbarItem("", "subordinate.png", action, ToolbarItemOrder.Primary));
         }
+
+
         protected override bool OnBackButtonPressed()
         {
             if (_attendanceViewModel.isSubordinateDataShown)
@@ -249,7 +251,20 @@ namespace AdaaMobile.Views
         {
             //Change color states of clicked day
             var employee = (Employee)e.Item;
+			if (_attendanceViewModel.SelectedSub != null) {
+				_attendanceViewModel.SelectedSub.IsSelected = false;
+			}
             _attendanceViewModel.SelectedSub = employee;
+			_attendanceViewModel.SelectedSub.IsSelected = true;
+			if (_attendanceViewModel.AttendanceMode == AttendanceMode.Attendance)
+			{
+				//Load Attendance details
+				_attendanceViewModel.LoadAttendanceCommand.Execute(null);
+			}
+			else
+			{
+				//Binding is happening through Selected day
+			}
         }
 
         /// <summary>

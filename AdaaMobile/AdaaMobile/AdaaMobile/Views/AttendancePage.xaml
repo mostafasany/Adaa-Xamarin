@@ -409,17 +409,11 @@
               <DataTemplate>
                 <ViewCell>
                   <ViewCell.View>
-                  <Grid RowSpacing="0"       MinimumWidthRequest="200"      >
+                  <Grid RowSpacing="0" Padding="2"  >
                       <Grid.RowDefinitions>
                         <RowDefinition  Height="3"/>
                         <RowDefinition  Height="Auto"/>
                       </Grid.RowDefinitions>
-
-<!--                      <BoxView BackgroundColor="{StaticResource YellowAccent}"
-                               VerticalOptions="Fill"
-                               HorizontalOptions="Fill"
-                               Grid.Row="0" Grid.RowSpan="3" />-->
-                             
                       
                       <BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
                                x:Name="DayBack"
@@ -427,27 +421,22 @@
                                HorizontalOptions="Fill"
                                Grid.Row="1" />
                       
-                      <BoxView BackgroundColor="#AAFFFFFF"                     
+<!--                      <BoxView BackgroundColor="#AAFFFFFF"                     
                      VerticalOptions="Fill"
                      HorizontalOptions="End"
                      WidthRequest="1"
-                     Grid.Row="1"/>
+                     Grid.Row="1"/>-->
                      
                       <StackLayout VerticalOptions="Center"
                                    HorizontalOptions="Center"
-                                   Padding="8,4,8,4" Spacing="2"
+                                   Padding="4,4,4,4" Spacing="0"
                                    Grid.Row="1">
-<!--                        <Label x:Name="DayLabel"
-                               BackgroundColor="Transparent"
-                               TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}"
-                               FontSize="Medium" FontAttributes="Bold"
-                               HorizontalTextAlignment="Center"
-                               Text="{Binding UserName}"/>-->
+
                         <Label
-                             x:Name="MonthLabel"
+
                               BackgroundColor="Transparent"
                              TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}"
-                             FontSize="Small"
+                             FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                              HorizontalTextAlignment="Center"
                              Text="{Binding UserName}"/>
                       </StackLayout>
@@ -457,7 +446,7 @@
                   </DataTemplate>
                   </controls:HorizontalListView.ItemTemplate>
             <controls:HorizontalListView.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" Android="69" iOS="68" WinPhone="80"/>
+              <OnPlatform x:TypeArguments="x:Double" Android="50" iOS="50" WinPhone="80"/>
             </controls:HorizontalListView.HeightRequest>
             </controls:HorizontalListView>
 
