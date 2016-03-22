@@ -60,7 +60,7 @@
           <DataTemplate>
             <ViewCell >
               <ViewCell.View>
-                <Grid  Padding="12,3" >
+                <Grid  Padding="2,3" >
                   <masterView:UserServiceItemControl 
                                         Title="{Binding title}"
                                         Message="{Binding service}"
