@@ -10,6 +10,7 @@ using AdaaMobile.ViewModels;
 using Xamarin.Forms;
 using AdaaMobile.Strings;
 using Xamarin.Forms.Xaml;
+using AdaaMobile.Models.Response;
 
 namespace AdaaMobile.Views
 {
@@ -78,6 +79,7 @@ namespace AdaaMobile.Views
                     _attendanceViewModel.isSubordinateDataShown = true;
                     DayPassDelegationGrid.IsVisible = false;
                     ToolbarItems.Clear();
+					SubordinateListView.IsVisible = true;
                 }
 
 
@@ -228,6 +230,14 @@ namespace AdaaMobile.Views
         }
 
         #endregion
+
+
+		private void Sub_Tapped(object sender, HorizontaListItemTappedEventArgs e)
+		{
+			//Change color states of clicked day
+			var employee = (Employee)e.Item;
+			_attendanceViewModel.SelectedSub = employee;
+		}
 
         /// <summary>
         /// Changes color state and triggers new load of details.

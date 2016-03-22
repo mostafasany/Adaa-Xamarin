@@ -35,7 +35,7 @@ namespace AdaaMobile.ViewModels
 
         #region Properties
         public bool isSubordinateDataShown = false;
-
+		public Employee SelectedSub;
         private DateTime _startDate = DateTime.Now.Subtract(TimeSpan.FromDays(InitialLimitInDays));
         /// <summary>
         /// Date of first picker, this date will be used to show the starting range for Attendance and Exceptions.
@@ -445,6 +445,7 @@ namespace AdaaMobile.ViewModels
                     if (response.Result != null && response.Result.Subordinates != null && response.Result.Subordinates.Length > 0)
                     {
                         SubordinateList = new ObservableCollection<Employee>(response.Result.Subordinates);
+						SelectedSub = SubordinateList[0];
                         return true;
                     }
                     else

@@ -1,10 +1,19 @@
 ﻿using System.Xml.Serialization;
+using AdaaMobile.Common;
 
 namespace AdaaMobile.Models.Response
 {
 
-    public class Employee
+	public class Employee:BindableBase
     {
+
+		private bool _isSelected;
+		public bool IsSelected
+		{
+			get { return _isSelected; }
+			set { SetProperty(ref _isSelected, value); }
+		}
+
 
         [XmlElement("UserName")]
         public string UserName { get; set; }

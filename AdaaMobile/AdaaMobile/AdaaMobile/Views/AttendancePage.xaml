@@ -393,6 +393,74 @@
 
           </controls:ImageButton>
         </Grid>
+
+         <controls:HorizontalListView
+
+          							 x:Name="SubordinateListView"
+          							 IsVisible="false"
+          							 ItemsSource="{Binding SubordinateList}"
+          							 ItemTapped="Sub_Tapped"
+                                       VerticalOptions="Start"
+                                       HorizontalOptions="Fill"
+                                       
+                                       
+              >
+              <controls:HorizontalListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <ViewCell.View>
+                  <Grid RowSpacing="0"       MinimumWidthRequest="200"      >
+                      <Grid.RowDefinitions>
+                        <RowDefinition  Height="3"/>
+                        <RowDefinition  Height="Auto"/>
+                      </Grid.RowDefinitions>
+
+<!--                      <BoxView BackgroundColor="{StaticResource YellowAccent}"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Fill"
+                               Grid.Row="0" Grid.RowSpan="3" />-->
+                             
+                      
+                      <BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
+                               x:Name="DayBack"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Fill"
+                               Grid.Row="1" />
+                      
+                      <BoxView BackgroundColor="#AAFFFFFF"                     
+                     VerticalOptions="Fill"
+                     HorizontalOptions="End"
+                     WidthRequest="1"
+                     Grid.Row="1"/>
+                     
+                      <StackLayout VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Padding="8,4,8,4" Spacing="2"
+                                   Grid.Row="1">
+<!--                        <Label x:Name="DayLabel"
+                               BackgroundColor="Transparent"
+                               TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}"
+                               FontSize="Medium" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               Text="{Binding UserName}"/>-->
+                        <Label
+                             x:Name="MonthLabel"
+                              BackgroundColor="Transparent"
+                             TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}"
+                             FontSize="Small"
+                             HorizontalTextAlignment="Center"
+                             Text="{Binding UserName}"/>
+                      </StackLayout>
+                    </Grid>
+                  </ViewCell.View>
+                  </ViewCell>
+                  </DataTemplate>
+                  </controls:HorizontalListView.ItemTemplate>
+            <controls:HorizontalListView.HeightRequest>
+              <OnPlatform x:TypeArguments="x:Double" Android="69" iOS="68" WinPhone="80"/>
+            </controls:HorizontalListView.HeightRequest>
+            </controls:HorizontalListView>
+
       </StackLayout>
 
     </ScrollView>
