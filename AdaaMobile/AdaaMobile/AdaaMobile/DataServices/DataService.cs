@@ -151,14 +151,6 @@ namespace AdaaMobile.DataServices
             return await request.GetAsync<GetExceptionsRepsonse>(token);
         }
 
-        public async Task<ResponseWrapper<AttendanceException>> GetAttendanceExceptionAsync(ExceptionDetailsQParamters parameters, CancellationToken? token = null)
-        {
-            parameters.Server = Server;
-            var request = _requestFactory();
-            request.RequestUrl = BaseUrl.AppendQueryString(parameters);
-            request.ResultContentType = ContentType.Xml;
-            return await request.GetAsync<AttendanceException>(token);
-        }
         #endregion
 
         #region DayPass
@@ -287,16 +279,16 @@ namespace AdaaMobile.DataServices
             return await request.PostAsync<SaveOfficeMaintenanceResponse>(stringContent);
         }
 
-		public async Task<ResponseWrapper<SaveDriverRequestResponse>> SaveDriverRequestAsync(SaveDriverRequestQParameters qParameters, SaveDriverRequestBParameters bParamters, CancellationToken? token = null)
-		{
-			qParameters.Server = Sprint2Server;
-			var request = _requestFactory();
-			request.ResultContentType = ContentType.Xml;
-			request.RequestUrl = BaseUrl.AppendQueryString(qParameters);
+        public async Task<ResponseWrapper<SaveDriverRequestResponse>> SaveDriverRequestAsync(SaveDriverRequestQParameters qParameters, SaveDriverRequestBParameters bParamters, CancellationToken? token = null)
+        {
+            qParameters.Server = Sprint2Server;
+            var request = _requestFactory();
+            request.ResultContentType = ContentType.Xml;
+            request.RequestUrl = BaseUrl.AppendQueryString(qParameters);
 
-			var stringContent = new StringContent(bParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
-			return await request.PostAsync<SaveDriverRequestResponse>(stringContent);
-		}
+            var stringContent = new StringContent(bParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
+            return await request.PostAsync<SaveDriverRequestResponse>(stringContent);
+        }
 
 
         public async Task<ResponseWrapper<GetRoomsResponse>> GetRoomsAsync(GetRoomsQParameters parameters, CancellationToken? token = default(CancellationToken?))

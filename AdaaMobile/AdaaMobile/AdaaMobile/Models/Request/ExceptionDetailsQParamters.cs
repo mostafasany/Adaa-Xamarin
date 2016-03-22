@@ -23,6 +23,8 @@ namespace AdaaMobile.Models.Request
         [QueryParameter("date", Format = "d_M_yyyy")]
         public DateTime Date { get; set; }
 
+        [QueryParameter("subordinateID", AllowEmpty = true)]
+        public string subordinateID { get; set; }
     }
 }
 

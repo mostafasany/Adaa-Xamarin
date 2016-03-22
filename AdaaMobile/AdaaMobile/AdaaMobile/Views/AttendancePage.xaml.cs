@@ -79,7 +79,7 @@ namespace AdaaMobile.Views
                     _attendanceViewModel.isSubordinateDataShown = true;
                     DayPassDelegationGrid.IsVisible = false;
                     ToolbarItems.Clear();
-					SubordinateListView.IsVisible = true;
+                    SubordinateListView.IsVisible = true;
                 }
 
 
@@ -89,7 +89,20 @@ namespace AdaaMobile.Views
         }
         protected override bool OnBackButtonPressed()
         {
-            return base.OnBackButtonPressed();
+            if (_attendanceViewModel.isSubordinateDataShown)
+            {
+                _attendanceViewModel.isSubordinateDataShown = false;
+                _attendanceViewModel.SelectedSub = null;
+                DayPassDelegationGrid.IsVisible = true;
+                AddSubToolBarItem();
+                SubordinateListView.IsVisible = false;
+
+                return true;
+            }
+            else
+            {
+                return base.OnBackButtonPressed();
+            }
         }
         void _attendanceViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -232,12 +245,12 @@ namespace AdaaMobile.Views
         #endregion
 
 
-		private void Sub_Tapped(object sender, HorizontaListItemTappedEventArgs e)
-		{
-			//Change color states of clicked day
-			var employee = (Employee)e.Item;
-			_attendanceViewModel.SelectedSub = employee;
-		}
+        private void Sub_Tapped(object sender, HorizontaListItemTappedEventArgs e)
+        {
+            //Change color states of clicked day
+            var employee = (Employee)e.Item;
+            _attendanceViewModel.SelectedSub = employee;
+        }
 
         /// <summary>
         /// Changes color state and triggers new load of details.
