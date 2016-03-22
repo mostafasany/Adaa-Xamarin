@@ -23,6 +23,12 @@
       <converters:StringFormatConverter x:Key="StringFormatConverter"/>
       <converters:DateFormatConverter x:Key="DateFormatConverter"/>
       <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
+
+      <converters:BoolToColorConverter x:Key="SubsBackColorConverter"
+       FalseColor="{StaticResource AppBackgroundNormal}"  TrueColor="{StaticResource YellowAccent}"  />
+
+      <converters:BoolToColorConverter x:Key="SubsFrontColorConverter"
+       FalseColor="White"  TrueColor="Black"  />
     </ResourceDictionary>
   </ContentPage.Resources>
 
@@ -329,58 +335,74 @@
                        VerticalOptions="Center" HorizontalOptions="Center"/>
         </Grid>
 
-
-
          <controls:HorizontalListView
 
           							 x:Name="SubordinateListView"
           							 ItemsSource="{Binding SubordinateList}"
           							 ItemTapped="Sub_Tapped"
-                                       VerticalOptions="Start"
-                                       HorizontalOptions="Fill"
-                                       StyleId="Sub"                                     
+                         VerticalOptions="Start"
+                         HorizontalOptions="Fill"
+                         StyleId="Sub"                                     
               >
-              <controls:HorizontalListView.ItemTemplate>
-              <DataTemplate>
-                <ViewCell>
-                  <ViewCell.View>
-                  <controls:ExtendedGrid RowSpacing="0" Padding="6,2,6,6"  VerticalOptions="Fill" >
-                      <Grid.RowDefinitions>
-                        <RowDefinition  Height="3"/>
-                        <RowDefinition  Height="Auto"/>
-                        <RowDefinition  Height="3"/>
-                      </Grid.RowDefinitions>
-
-                      <controls:RoundedBoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
-                               x:Name="DayBack"
-                               VerticalOptions="Fill"
-                               HorizontalOptions="Fill"
-                               Grid.Row="1" />
-                      
-
+           <controls:HorizontalListView.ItemTemplate>
+             <DataTemplate>
+               <ViewCell>
+                 <ViewCell.View>
+                   <Grid RowSpacing="0" Padding="0" ColumnSpacing="0" VerticalOptions="Fill" 
+                                          BackgroundColor="Transparent" 
+                                          >
+                     <Grid.HeightRequest>
+                       <OnPlatform x:TypeArguments="x:Double" Android="80" iOS="68" WinPhone="80"/>
+                     </Grid.HeightRequest>
                      
-                      <controls:ExtendedGrid VerticalOptions="Fill"
-                                   HorizontalOptions="Center"
-                                   Padding="4,6,4,4" 
-                                   BackgroundColor="Transparent"
+                     <Grid.WidthRequest>
+                       <OnPlatform x:TypeArguments="x:Double" Android="100" iOS="68" WinPhone="80"/>
+                     </Grid.WidthRequest>
+                     
+                     <Grid.RowDefinitions>
+                       <RowDefinition  Height="8"/>
+                       <RowDefinition  Height="*"/>
+                       <RowDefinition  Height="8"/>
+                     </Grid.RowDefinitions>
 
-                                   Grid.Row="1">
+                     <Grid.ColumnDefinitions>
+                       <ColumnDefinition  Width="4"/>
+                       <ColumnDefinition  Width="*"/>
+                       <ColumnDefinition  Width="4"/>
+                     </Grid.ColumnDefinitions>
 
-                        <Label
-
-                              BackgroundColor="Transparent"
-                             TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}"
-                             FontSize="Small"
-                             HorizontalTextAlignment="Center"
-                             Text="{Binding UserName}"/>
-                      </controls:ExtendedGrid>
-                    </controls:ExtendedGrid>
-                  </ViewCell.View>
-                  </ViewCell>
-                  </DataTemplate>
-                  </controls:HorizontalListView.ItemTemplate>
+                     <controls:ExtendedGrid 
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       CornerRadius="{StaticResource CornerRadius}"
+                       VerticalOptions="Fill"
+                       HorizontalOptions="Fill"
+                       Padding="0">
+                     <BoxView
+                              BackgroundColor="{Binding IsSelected,Converter={StaticResource SubsBackColorConverter}}"
+                              x:Name="DayBack"
+                              />
+                              
+                     <Grid Padding="7">
+                       <Label
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            BackgroundColor="Transparent"
+                            TextColor="{Binding IsSelected,Converter={StaticResource SubsFrontColorConverter}}"
+                            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="WordWrap"
+                            Text="{Binding UserName}">
+                       </Label>
+                     </Grid>
+                     </controls:ExtendedGrid> 
+                   </Grid>
+                 </ViewCell.View>
+               </ViewCell>
+             </DataTemplate>
+           </controls:HorizontalListView.ItemTemplate>
             <controls:HorizontalListView.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" Android="69" iOS="68" WinPhone="80"/>
+              <OnPlatform x:TypeArguments="x:Double" Android="80" iOS="68" WinPhone="80"/>
             </controls:HorizontalListView.HeightRequest>
             </controls:HorizontalListView>
 

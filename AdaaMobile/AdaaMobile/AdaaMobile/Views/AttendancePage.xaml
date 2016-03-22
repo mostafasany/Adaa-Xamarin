@@ -23,6 +23,7 @@
       <converters:StringFormatConverter x:Key="StringFormatConverter"/>
       <converters:DateFormatConverter x:Key="DateFormatConverter"/>
       <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
+
     </ResourceDictionary>
   </ContentPage.Resources>
 
@@ -393,69 +394,6 @@
 
           </controls:ImageButton>
         </Grid>
-
-         <controls:HorizontalListView
-
-          							 x:Name="SubordinateListView"
-          							 IsVisible="false"
-          							 ItemsSource="{Binding SubordinateList}"
-          							 ItemTapped="Sub_Tapped"
-                                       VerticalOptions="Start"
-                                       HorizontalOptions="Fill"
-                                       ItemWidth="80"
-                                       
-                                       
-              >
-              <controls:HorizontalListView.ItemTemplate>
-              <DataTemplate>
-                <ViewCell>
-                  <ViewCell.View>
-                  <controls:ExtendedGrid RowSpacing="0" Padding="2"  VerticalOptions="Fill" >
-                      <Grid.RowDefinitions>
-                        <RowDefinition  Height="3"/>
-                        <RowDefinition  Height="Auto"/>
-                        <RowDefinition  Height="3"/>
-                      </Grid.RowDefinitions>
-
-<!--                            <controls:RoundedBoxView CornerRadius="{StaticResource CornerRadius}" 
-                            BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}" />-->
-
-                      <controls:RoundedBoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
-                               x:Name="DayBack"
-                               VerticalOptions="Fill"
-                               HorizontalOptions="Fill"
-                               Grid.Row="1" />
-                      
-<!--                      <BoxView BackgroundColor="#AAFFFFFF"                     
-                     VerticalOptions="Fill"
-                     HorizontalOptions="End"
-                     WidthRequest="1"
-                     Grid.Row="1"/>-->
-                     
-                      <controls:ExtendedGrid VerticalOptions="Fill"
-                                   HorizontalOptions="Center"
-                                   Padding="4,4,4,4" 
-                                   BackgroundColor="Transparent"
-                                   Grid.Row="1">
-
-                        <Label
-
-                              BackgroundColor="Transparent"
-                             TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}"
-                             FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                             HorizontalTextAlignment="Center"
-                             Text="{Binding UserName}"/>
-                      </controls:ExtendedGrid>
-                    </controls:ExtendedGrid>
-                  </ViewCell.View>
-                  </ViewCell>
-                  </DataTemplate>
-                  </controls:HorizontalListView.ItemTemplate>
-            <controls:HorizontalListView.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" Android="60" iOS="60" WinPhone="80"/>
-            </controls:HorizontalListView.HeightRequest>
-            </controls:HorizontalListView>
-
       </StackLayout>
 
     </ScrollView>

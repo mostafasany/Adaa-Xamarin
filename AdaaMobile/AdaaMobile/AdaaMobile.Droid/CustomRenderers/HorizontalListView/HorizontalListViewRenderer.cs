@@ -61,11 +61,14 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
                 _recyclerView.SetLayoutManager(_layoutManager);
 
                 _recyclerView.HasFixedSize = Element.HasFixedItemSize;
-
+                if (Element.HasFixedItemSize)
+                {
+                   
+                }
                 _recyclerView.SetAdapter(DataSource);
                 _recyclerView.Background = new ColorDrawable(Element.BackgroundColor.ToAndroid());
                 _recyclerView.LayoutChange += _recyclerView_LayoutChange;
-                
+
                 base.SetNativeControl(_recyclerView);
             }
         }
@@ -100,7 +103,7 @@ namespace AdaaMobile.Droid.CustomRenderers.HorizontalListView
 
         private void _layoutManager_OnMeasuredDimensionChanged(object sender, EventArgs args)
         {
-            
+
         }
 
         /// <summary>
