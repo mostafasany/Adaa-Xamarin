@@ -41,7 +41,6 @@ namespace AdaaMobile.Views
 
             MaxDatePicker.Date = _attendanceViewModel.EndDate;
             MaxDatePicker.Unfocused += MaxDatePicker_Unfocused;
-
             //Add App bar icon
             //Action action = () => { };
             //ToolbarItems.Add(
@@ -77,9 +76,10 @@ namespace AdaaMobile.Views
                 if (_attendanceViewModel.SubordinateList != null)
                 {
                     _attendanceViewModel.isSubordinateDataShown = true;
-                    DayPassDelegationGrid.IsVisible = false;
-                    ToolbarItems.Clear();
-                    SubordinateListView.IsVisible = true;
+                   // DayPassDelegationGrid.IsVisible = false;
+                    //ToolbarItems.Clear();
+                    //SubordinateListView.IsVisible = true;
+					Locator.Default.NavigationService.NavigateToPage(typeof(SubAttendancePage));
                 }
 
 
@@ -89,23 +89,6 @@ namespace AdaaMobile.Views
         }
 
 
-        protected override bool OnBackButtonPressed()
-        {
-            if (_attendanceViewModel.isSubordinateDataShown)
-            {
-                _attendanceViewModel.isSubordinateDataShown = false;
-                _attendanceViewModel.SelectedSub = null;
-                DayPassDelegationGrid.IsVisible = true;
-                AddSubToolBarItem();
-                SubordinateListView.IsVisible = false;
-
-                return true;
-            }
-            else
-            {
-                return base.OnBackButtonPressed();
-            }
-        }
         void _attendanceViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "EndDate")
@@ -165,6 +148,7 @@ namespace AdaaMobile.Views
                     bool isHaveSubordinates = await _attendanceViewModel.GetSubordinateList();
 
                 }
+				_attendanceViewModel.isSubordinateDataShown = false;
             }
             catch
             {

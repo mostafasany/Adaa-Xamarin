@@ -352,6 +352,9 @@
     <Compile Include="Views\SelectedRequestPage.xaml.cs">
       <DependentUpon>SelectedRequestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SubAttendancePage.xaml.cs">
+      <DependentUpon>SubAttendancePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
@@ -460,6 +463,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SelectedRequestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SubAttendancePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
