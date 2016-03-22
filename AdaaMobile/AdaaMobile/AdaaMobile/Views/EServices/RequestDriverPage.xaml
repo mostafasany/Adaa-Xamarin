@@ -47,7 +47,7 @@
       <controls:ExtendedGrid
                          Grid.Row="0"
                          VerticalOptions="Start"
-                         Padding="10,5,10,0"
+                         Padding="10,5,10,8"
                          BackgroundColor="Transparent">
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
