@@ -429,6 +429,7 @@ namespace AdaaMobile.ViewModels
                 if (responseWrapper.ResponseStatus == ResponseStatus.SuccessWithResult)
                 {
                     await _dialogManager.DisplayAlert(AppResources.ApplicationName, responseWrapper.Result.Message, AppResources.Ok);
+					_navigationService.GoBack();
                 }
                 else
                 {

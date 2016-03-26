@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using AdaaMobile.Models.Response;
+using AdaaMobile.Views.EServices;
 
 namespace AdaaMobile.Views
 {
     public partial class MyRequestsPage : ContentPage
     {
         MyRequestsViewModel _viewModel;
+		private ToolbarItem _addToolBarItem;
 
         public MyRequestsPage()
         {
@@ -24,6 +26,17 @@ namespace AdaaMobile.Views
             BindingContext = _viewModel;
 
             Title = AppResources.MyRequests;
+
+			string addIcon = Device.OnPlatform("note", "note.png", "note.png");
+
+			Action action = () =>
+			{
+				this.Navigation.PushAsync(new EServicesPage());
+			};
+			_addToolBarItem =
+				new ToolbarItem("", addIcon, action, ToolbarItemOrder.Primary);
+			ToolbarItems.Add(_addToolBarItem);
+
 			//MyRequestsList.ItemTapped+= MyRequestsList_ItemTapped;
         }
 

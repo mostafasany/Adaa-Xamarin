@@ -415,7 +415,7 @@
       <ActivityIndicator  IsRunning="{Binding IsBusy}"
                        HeightRequest="50" WidthRequest="50"
                        Grid.Row="0" Grid.RowSpan="4"
-                       VerticalOptions="Center" HorizontalOptions="Center"/>
+                       VerticalOptions="Center" HorizontalOptions="Center" Color="{StaticResource AppBackgroundNormal}"/>
 
     </Grid>
   </ScrollView>

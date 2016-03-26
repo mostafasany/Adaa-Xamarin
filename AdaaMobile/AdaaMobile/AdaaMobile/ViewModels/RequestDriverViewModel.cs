@@ -164,7 +164,7 @@ namespace AdaaMobile.ViewModels
                 };
                 var result = await _dataService.GetClientsAsync(paramters);
 
-                if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null)
+				if (result.ResponseStatus == ResponseStatus.SuccessWithResult && result.Result != null && result.Result.item != null)
                 {
                     ClientsList = new List<BaseItem>(result.Result.item);
                     if (ClientsList.Count > 0)

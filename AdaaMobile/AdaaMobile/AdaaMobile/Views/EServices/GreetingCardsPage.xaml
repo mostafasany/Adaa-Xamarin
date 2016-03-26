@@ -66,6 +66,7 @@ BackgroundColor="White">
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
           </Grid.ColumnDefinitions>
+
                     <Grid.GestureRecognizers>
             <TapGestureRecognizer Tapped="SourceText_Tapped"/>
           </Grid.GestureRecognizers>
