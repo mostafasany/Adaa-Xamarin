@@ -66,7 +66,7 @@
             <masterView:SideMenuItemControl
                       Svg="AdaaMobile.Images.MyRequests.svg"  Title="{ext:Translate MyRequests}" Tapped="SideMenuItemControl_OnTapped"
                       VerticalOptions="Start" HorizontalOptions="Fill"
-                      BindingContext="{x:Type views:MyRequestsPage}" />
+                      BindingContext="{x:Type views:MyRequestsPage}"  IsPageSupported="True"/>
 
             <masterView:SideMenuItemControl
                   Svg="AdaaMobile.Images.MyTasks.svg"  Title="{ext:Translate MyTasks}" Tapped="SideMenuItemControl_OnTapped"

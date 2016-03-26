@@ -542,7 +542,7 @@
     <value>نوع الطلب</value>
   </data>
   <data name="SourceLocation" xml:space="preserve">
-    <value>Source Location</value>
+    <value>موقع المصدر</value>
   </data>
   <data name="RequestAnnouncement" xml:space="preserve">
     <value>طلب إعلان</value>
@@ -551,13 +551,13 @@
     <value>طلب خدمة مكتبية</value>
   </data>
   <data name="Meduim" xml:space="preserve">
-    <value>Meduim</value>
+    <value>متوسطة</value>
   </data>
   <data name="Normal" xml:space="preserve">
-    <value>Normal</value>
+    <value>عادية</value>
   </data>
   <data name="Urgent" xml:space="preserve">
-    <value>Urgent</value>
+    <value>طارئة</value>
   </data>
   <data name="ChooseOfficeLocation" xml:space="preserve">
     <value>الرجاء اختيار موقع المكتب</value>
@@ -605,9 +605,15 @@
     <value>برجاء إدخال التعليقات الإضافية</value>
   </data>
   <data name="CardSavedMessaga" xml:space="preserve">
-    <value>Card has been saved</value>
+    <value>تم حفظ بطاقة التحية</value>
   </data>
   <data name="YouHaveNoSubordinates" xml:space="preserve">
     <value>ليس لديك موظفين تابعين لك </value>
+  </data>
+  <data name="MySubAttendance" xml:space="preserve">
+    <value>حضور الموظفين التابعين</value>
+  </data>
+  <data name="SaveCard" xml:space="preserve">
+    <value>حفظ البطاقة</value>
   </data>
 </root>

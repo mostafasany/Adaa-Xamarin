@@ -138,7 +138,7 @@ BackgroundColor="White">
       <controls:ImageButton 
       				x:Name="SaveCardButton"
       				Grid.Row="4"
-                    Text="Save Card"
+                    Text="{ext:Translate SaveCard}"
                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                     Clicked="SaveCard_Clicked"                    
                     VerticalOptions="End"

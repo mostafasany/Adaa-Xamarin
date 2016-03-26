@@ -782,6 +782,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Sub Attendance.
+        /// </summary>
+        public static string MySubAttendance {
+            get {
+                return ResourceManager.GetString("MySubAttendance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MY SUB ATTENDANCE.
         /// </summary>
         public static string MySubAttendanceCap {
@@ -1268,6 +1277,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save Card.
+        /// </summary>
+        public static string SaveCard {
+            get {
+                return ResourceManager.GetString("SaveCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search all contacts.
         /// </summary>
         public static string SearchAllContacts {
@@ -1286,7 +1304,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select office location firstly..
+        ///   Looks up a localized string similar to Please select office location first..
         /// </summary>
         public static string SelectOfficleLocationFirst {
             get {
