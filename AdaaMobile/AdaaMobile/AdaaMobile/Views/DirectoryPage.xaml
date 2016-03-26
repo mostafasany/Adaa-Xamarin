@@ -58,13 +58,13 @@
         <DataTemplate>
           <ViewCell >
             <Grid 
-                         Padding="5,5,5,5"
+                         Padding="8,5,0,5"
                          BackgroundColor="Transparent">
               <BoxView HeightRequest="35"
                        VerticalOptions="Center" 
                        HorizontalOptions="Fill"
                        BackgroundColor="#FFCCCCCC"/>
-              <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center"/>
+              <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Fi/>
             </Grid>
           </ViewCell>
         </DataTemplate>
@@ -75,9 +75,9 @@
           <ViewCell >
             <ViewCell.View>
 
-              <Grid   >
+              <Grid  >
               <Grid.Padding>
-              	<OnPlatform x:TypeArguments="Thickness" iOS="5,3,17,3"  Android="5, 3, 5,3" WinPhone="5,3,5,3"/>
+              	<OnPlatform x:TypeArguments="Thickness" iOS="5,3,24,3"  Android="5, 3, 10,3" WinPhone="5,3,5,3"/>
               </Grid.Padding>
                 <controls:ExtendedGrid ColumnSpacing="8" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="Transparent"
                                VerticalOptions="Fill" 
