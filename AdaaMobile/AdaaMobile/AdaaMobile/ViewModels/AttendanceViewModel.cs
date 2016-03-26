@@ -262,6 +262,9 @@ namespace AdaaMobile.ViewModels
 
                 return;
             }
+			IsBusy = true;
+
+			try{
             //Set current mode, This will trigger changes in Bindings.
             AttendanceMode = mode;
 
@@ -299,7 +302,14 @@ namespace AdaaMobile.ViewModels
             {
                 //Load Exception Details for selected day.
                 LoadExceptionsCommand.Execute(null);
-            }
+				}
+			}
+			catch(Exception ex){
+				
+			}
+			finally{
+				IsBusy = false;
+			}
         }
 
         private async Task LoadAttendanceDetailsAsync(CancellationToken token)
