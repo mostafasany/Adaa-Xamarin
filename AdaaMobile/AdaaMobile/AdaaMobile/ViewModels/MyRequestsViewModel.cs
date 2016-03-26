@@ -92,6 +92,7 @@ namespace AdaaMobile.ViewModels
 
             {
 				IsBusy = true;
+                PendingRequests = null;
                 var response = await _dataService.GetAllSharepointRequestsAsync(new GetAllRequestsQParameters()
                 {
                     Langid = _appSettings.Language,

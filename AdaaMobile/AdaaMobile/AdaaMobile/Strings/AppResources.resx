@@ -602,7 +602,7 @@
     <value>Choose Greeting Card Type</value>
   </data>
   <data name="SelectOfficleLocationFirst" xml:space="preserve">
-    <value>Please select office location firstly.</value>
+    <value>Please select office location first.</value>
   </data>
   <data name="EnterAdditionalComments" xml:space="preserve">
     <value>Please enter additional comments.</value>
@@ -612,5 +612,11 @@
   </data>
   <data name="YouHaveNoSubordinates" xml:space="preserve">
     <value>You have no subordinates</value>
+  </data>
+  <data name="MySubAttendance" xml:space="preserve">
+    <value>My Sub Attendance</value>
+  </data>
+  <data name="SaveCard" xml:space="preserve">
+    <value>Save Card</value>
   </data>
 </root>
