@@ -65,6 +65,7 @@
       Text="{ext:Translate RemoveDelegation}"
       BackgroundColor="#44007c85"
       BorderColor="#7f007c85"
+      BorderWidth="2"
       TextColor="Black"
       FontSize="Medium"
       Command="{Binding RemoveCommand}"

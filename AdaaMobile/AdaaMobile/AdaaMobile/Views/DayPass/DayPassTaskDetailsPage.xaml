@@ -35,7 +35,7 @@
         </Grid.RowDefinitions>
 
         <controls:RoundedBoxView
-             BackgroundColor="{StaticResource AppBackgroundNormal}"
+             BackgroundColor="#bb007c85"
              CornerRadius="{StaticResource CornerRadius}"
              VerticalOptions="Fill"
              Grid.Row="0" />
@@ -50,7 +50,7 @@
         </StackLayout>
 
         <controls:RoundedBoxView
-             BackgroundColor="{StaticResource AppBackgroundNormal}"
+             BackgroundColor="#bb007c85"
              CornerRadius="{StaticResource CornerRadius}"
              VerticalOptions="Fill"
              Grid.Row="1" />
