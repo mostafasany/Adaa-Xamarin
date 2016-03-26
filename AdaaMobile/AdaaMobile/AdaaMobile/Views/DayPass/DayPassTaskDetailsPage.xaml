@@ -81,7 +81,7 @@
                    ImageWidthRequest="18"
                   VerticalOptions="FillAndExpand"
                    HorizontalOptions="FillAndExpand"
-                   BackgroundColor="Green"
+                   BackgroundColor="#35a945"
                    TextColor="White"
 
                 >
@@ -102,7 +102,7 @@
                    ImageWidthRequest="18"
                    VerticalOptions="FillAndExpand"
                    HorizontalOptions="FillAndExpand"
-                   BackgroundColor="Red"
+                   BackgroundColor="#cc241d"
                    TextColor="White"
                 >
             <controls:ImageButton.HeightRequest>

@@ -24,6 +24,7 @@ namespace AdaaMobile.Views.DayPass
             Title = AppResources.TaskDetails;
 			ApproveBtn.Clicked += ApproveBtn_Clicked;
 			RejectBtn.Clicked+= RejectBtn_Clicked;
+
         }
 
         void RejectBtn_Clicked (object sender, EventArgs e)
