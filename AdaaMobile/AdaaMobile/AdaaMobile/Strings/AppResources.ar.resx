@@ -607,4 +607,7 @@
   <data name="CardSavedMessaga" xml:space="preserve">
     <value>Card has been saved</value>
   </data>
+  <data name="YouHaveNoSubordinates" xml:space="preserve">
+    <value>ليس لديك موظفين تابعين لك </value>
+  </data>
 </root>

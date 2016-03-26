@@ -1536,5 +1536,14 @@ namespace AdaaMobile.Strings {
                 return ResourceManager.GetString("YouCantDelegateYourselfMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have no subordinates.
+        /// </summary>
+        public static string YouHaveNoSubordinates {
+            get {
+                return ResourceManager.GetString("YouHaveNoSubordinates", resourceCulture);
+            }
+        }
     }
 }

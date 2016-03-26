@@ -81,6 +81,11 @@ namespace AdaaMobile.Views
                     //SubordinateListView.IsVisible = true;
 					Locator.Default.NavigationService.NavigateToPage(typeof(SubAttendancePage));
                 }
+                else
+                {
+                     Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.YouHaveNoSubordinates, AppResources.Ok);
+
+                }
 
 
             };
