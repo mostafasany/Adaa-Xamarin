@@ -94,7 +94,7 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
             Placeholder="{ext:Translate Password}"
             Text="{Binding Password,Mode=TwoWay}" IsPassword="True" />
 
-            <Grid  Grid.Row="3" Padding="10,0" >
+            <Grid  Grid.Row="3" Padding="0,0" >
           <Label VerticalOptions="Center" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" TextColor="{StaticResource AppBackgroundNormal}"
           Text="{ext:Translate ShowPassword}" x:Name="ShowPasswordLabel" HorizontalOptions="Start" />
           <Switch Toggled="ShowPassword_Toggled" VerticalOptions="Center" HorizontalOptions="End" x:Name="PasswordToggle" IsToggled="False"/>
