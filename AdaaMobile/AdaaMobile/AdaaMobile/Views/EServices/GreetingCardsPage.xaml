@@ -150,11 +150,11 @@ BackgroundColor="White">
                 >
 
               <controls:ImageButton.ImageHeightRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="24"/>
               </controls:ImageButton.ImageHeightRequest>
 
               <controls:ImageButton.ImageWidthRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
+                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="24"/>
               </controls:ImageButton.ImageWidthRequest>
               
               <controls:ImageButton.HeightRequest>
