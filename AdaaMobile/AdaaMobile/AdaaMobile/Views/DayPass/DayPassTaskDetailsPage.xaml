@@ -90,7 +90,7 @@
             </controls:ImageButton.HeightRequest>
 
             <controls:ImageButton.Source>
-              <OnPlatform x:TypeArguments="ImageSource" WinPhone="right.png" Android="right.png" iOS="right"/>
+              <OnPlatform x:TypeArguments="ImageSource" WinPhone="accept.png" Android="accept.png" iOS="accept"/>
             </controls:ImageButton.Source>
           </controls:ImageButton>
 
@@ -109,9 +109,9 @@
               <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="48" iOS="36"/>
             </controls:ImageButton.HeightRequest>
 
-            <!--<controls:ImageButton.Source>
-              <OnPlatform x:TypeArguments="ImageSource" WinPhone="right.png" Android="right.png" iOS="right"/>
-            </controls:ImageButton.Source>-->
+            <controls:ImageButton.Source>
+              <OnPlatform x:TypeArguments="ImageSource" WinPhone="reject.png" Android="reject.png" iOS="reject"/>
+            </controls:ImageButton.Source>
           </controls:ImageButton>
         </Grid>
       </Grid>
