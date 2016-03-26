@@ -45,6 +45,7 @@
     <Compile Include="Controls\ExtendedButton.cs" />
     <Compile Include="Controls\ExtendedEditor.cs" />
     <Compile Include="Controls\ExtendedGrid.cs" />
+    <Compile Include="Controls\ExtendedLabel.cs" />
     <Compile Include="Controls\ExtendedSwitch.cs" />
     <Compile Include="Controls\ExtendedTextCell.cs" />
     <Compile Include="Controls\FlexibleColumnsPanel.cs" />

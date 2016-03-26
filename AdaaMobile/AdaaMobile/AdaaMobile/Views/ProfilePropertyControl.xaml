@@ -3,12 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AdaaMobile.Views.ProfilePropertyControl"
              BackgroundColor="Transparent"
+             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              x:Name="ParentView"
              >
 
   <StackLayout>
     <Label TextColor="#FF1B8991" FontSize="Medium" Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
-    <Label TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="{Binding Value,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
+    
+    <!--<Label TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="{Binding Value,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>-->
+    
+    <controls:ExtendedLabel IsUnderline="{Binding IsUnderLine,Source={x:Reference ParentView}}" TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="{Binding Value,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
 
   </StackLayout>
 </ContentView>

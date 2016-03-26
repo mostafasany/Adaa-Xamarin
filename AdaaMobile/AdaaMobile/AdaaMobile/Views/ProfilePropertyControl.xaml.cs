@@ -38,5 +38,15 @@ namespace AdaaMobile.Views
             set { SetValue(ValueProperty, value); }
         }
         #endregion
+
+        #region Is underline
+        public static readonly BindableProperty IsUnderLineProperty = BindableProperty.Create<ProfilePropertyControl, bool>(p => p.IsUnderLine, false);
+
+        public bool IsUnderLine
+        {
+            get { return (bool)GetValue(IsUnderLineProperty); }
+            set { SetValue(IsUnderLineProperty, value); }
+        }
+        #endregion
     }
 }

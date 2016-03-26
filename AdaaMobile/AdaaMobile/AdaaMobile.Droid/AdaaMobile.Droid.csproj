@@ -135,6 +135,7 @@
     <Compile Include="CustomRenderers\ExtendedEditorRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedEntryRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedGridRenderer.cs" />
+    <Compile Include="CustomRenderers\ExtendedLabelRender.cs" />
     <Compile Include="CustomRenderers\ExtendedSwitch\ExtendedSwitchRenderer.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListLayoutManager.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\HorizontalListViewAdapter.cs" />
