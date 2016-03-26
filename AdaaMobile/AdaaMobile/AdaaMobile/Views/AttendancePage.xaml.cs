@@ -196,6 +196,8 @@ namespace AdaaMobile.Views
         /// <param name="e"></param>
 		private async void OnTabTapped(object sender, EventArgs e)
         {
+			if (_attendanceViewModel.IsBusy)
+				return;
             var button = (Button)sender;
             if (button == _lastTappedTab) return;
             //Change color state of tapped button to Active
