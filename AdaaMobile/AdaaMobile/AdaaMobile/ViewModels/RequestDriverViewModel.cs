@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace AdaaMobile.ViewModels
 {
@@ -236,7 +237,7 @@ namespace AdaaMobile.ViewModels
 						Priority = "1",//SelectedPiorityText
 					Reason = Reason,
 					Requestcomments = AdditionalComments,
-					Requestdate = RequestDate.Add(RequestTimeSpan).ToString(@"dd/MM/yyyy hh:mm tt"),
+						Requestdate = RequestDate.Add(RequestTimeSpan).ToString(@"dd/MM/yyyy hh:mm tt", CultureInfo.InvariantCulture),
 					Requesttype = ReasonType,
 					Source = SelectedSourceName
 	

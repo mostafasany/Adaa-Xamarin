@@ -182,6 +182,7 @@ namespace AdaaMobile.DataServices.Requests
                         httpClient.DefaultRequestHeaders.Add(key, _headersDictionary[key]);
                     }
                 }
+				httpClient.DefaultRequestHeaders.AcceptCharset = null;
 
                 HttpResponseMessage getResponse;
                 if (token == null)
