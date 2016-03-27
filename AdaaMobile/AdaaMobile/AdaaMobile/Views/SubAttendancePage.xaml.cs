@@ -96,6 +96,8 @@ namespace AdaaMobile.Views
             NavigationPage.SetBackButtonTitle(this, "");
             try
             {
+                await _attendanceViewModel.PopulateAttendanceDaysAsync();
+
                 if (_attendanceViewModel.CurrentAttendance == null)
                 {
                     if (_attendanceViewModel.SubordinateList == null)
@@ -103,8 +105,7 @@ namespace AdaaMobile.Views
                         bool isHaveSubordinates = await _attendanceViewModel.GetSubordinateList();
                         _attendanceViewModel.isSubordinateDataShown = true;
                     }
-
-                    await _attendanceViewModel.PopulateAttendanceDaysAsync();
+                    
                     //Try to select latest day - Take care for dummy days
                     if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
                     {
