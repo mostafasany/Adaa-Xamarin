@@ -39,7 +39,7 @@ namespace AdaaMobile.iOS.Helpers
             {
                 if (completed != null)
                     completed(e.Result == MFMailComposeResult.Sent);
-                e.Controller.DismissViewController(true, null);
+               // e.Controller.DismissViewController(true, null);
             };
 
             //			//Adapt this to your app structure
@@ -70,7 +70,7 @@ namespace AdaaMobile.iOS.Helpers
         }
 
 
-        public string SavePictureToDisk(string filename, byte[] imageData)
+		public string SavePictureToDisk(string filename, byte[] imageData,bool addToGallery=true)
         {
             var chartImage = new UIImage(NSData.FromArray(imageData));
 
@@ -90,7 +90,7 @@ namespace AdaaMobile.iOS.Helpers
             return string.Empty;
         }
 
-        public void ComposeMailWithAttachment(string recipient, string subject, byte[] imageData, string messagebody = null)
+		public bool ComposeMailWithAttachment (string recipient, string subject, string fileName,byte[] imageData, string messagebody = null)
         {
             var controller = new MFMailComposeViewController();
             controller.SetToRecipients(new string[] { recipient });
@@ -103,10 +103,13 @@ namespace AdaaMobile.iOS.Helpers
             controller.Finished += (object sender, MFComposeResultEventArgs e) =>
             {
 
-                e.Controller.DismissViewController(true, null);
+               // e.Controller.DismissViewController(true, null);
+
             };
 
             UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(controller, true, null);
+
+			return true;
         }
     }
 
