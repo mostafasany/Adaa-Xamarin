@@ -12,14 +12,14 @@ namespace AdaaMobile
 
 		void ComposeMail (string recipient, string subject, string messagebody = null, Action<bool> completed = null);
 
-		void ComposeMailWithAttachment (string recipient, string subject, byte[] imageData, string messagebody = null);
+		bool ComposeMailWithAttachment (string recipient, string subject, string fileName,byte[] imageData, string messagebody = null);
 
         /// <summary>
         /// Opens oracle app through app package name on Android and store app on iOS
         /// </summary>
         void OpenOracleApp();
 
-		string SavePictureToDisk (string filename, byte[] imageData);
+		string SavePictureToDisk (string filename, byte[] imageData,bool addToGallery=true);
 
 	}
 }

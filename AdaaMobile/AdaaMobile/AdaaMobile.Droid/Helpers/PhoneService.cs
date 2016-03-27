@@ -74,7 +74,7 @@ namespace AdaaMobile.Droid
             }
         }
 
-		public string SavePictureToDisk (string filename, byte[] imageData)
+		public string SavePictureToDisk (string filename, byte[] imageData,bool addToGallery=true)
 		{
 			var dir = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim);
 			var pictures = dir.AbsolutePath;
@@ -84,11 +84,13 @@ namespace AdaaMobile.Droid
 			try
 			{
 				System.IO.File.WriteAllBytes(filePath, imageData);
+                if (addToGallery) { 
 				//mediascan adds the saved image into the gallery
 				var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
 				mediaScanIntent.SetData(Android.Net.Uri.FromFile(new Java.IO.File(filePath)));
 				Xamarin.Forms.Forms.Context.SendBroadcast(mediaScanIntent);
-			    return filePath;
+                }
+                return filePath;
 			}
 			catch(System.Exception e)
 			{
@@ -97,17 +99,19 @@ namespace AdaaMobile.Droid
 			}
 		}
 
-        public void ComposeMailWithAttachment(string recipient, string subject, byte[] imageData, string messagebody = null)
+        public bool ComposeMailWithAttachment(string recipient, string subject,string fileName, byte[] imageData, string messagebody = null)
         {
+            string filePath= SavePictureToDisk(fileName, imageData,true);
+            if (filePath == null) return false;
             Intent emailIntent = new Intent(Intent.ActionSend);
             emailIntent.SetType("application/image");
             emailIntent.PutExtra(Intent.ExtraEmail, new string[] { recipient });
             emailIntent.PutExtra(Intent.ExtraSubject, subject);
             emailIntent.PutExtra(Intent.ExtraText, "Hello, ");
-           // emailIntent.PutExtra(Intent.ExtraStream, Uri.parse("file:///mnt/sdcard/Myimage.jpeg"));
-
+            emailIntent.PutExtra(Intent.ExtraStream, Android.Net.Uri.Parse(filePath));
             var instance = MainActivity.Instance;
-            instance.StartActivity(Intent.CreateChooser(emailIntent, "Send mail..."));
+            instance.StartActivity(Intent.CreateChooser(emailIntent, "Send email"));
+            return true;
         }
     }
 }
