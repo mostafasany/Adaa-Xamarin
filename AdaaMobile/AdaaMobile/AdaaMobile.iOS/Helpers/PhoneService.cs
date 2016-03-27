@@ -70,7 +70,7 @@ namespace AdaaMobile.iOS.Helpers
         }
 
 
-        public void SavePictureToDisk(string filename, byte[] imageData)
+        public string SavePictureToDisk(string filename, byte[] imageData)
         {
             var chartImage = new UIImage(NSData.FromArray(imageData));
 
@@ -86,6 +86,8 @@ namespace AdaaMobile.iOS.Helpers
                         foundError = true;
                     }
                 });
+
+            return string.Empty;
         }
 
         public void ComposeMailWithAttachment(string recipient, string subject, byte[] imageData, string messagebody = null)
@@ -97,7 +99,7 @@ namespace AdaaMobile.iOS.Helpers
                 controller.SetMessageBody(messagebody, false);
             var chartImage = new UIImage(NSData.FromArray(imageData));
 
-            controller.AddAttachmentData(chartImage.AsPNG(), "image/png", "Screenshot.png");
+            controller.AddAttachmentData(chartImage.AsPNG(), "image/png", "Adaa_Greeting_Card.png");
             controller.Finished += (object sender, MFComposeResultEventArgs e) =>
             {
 
