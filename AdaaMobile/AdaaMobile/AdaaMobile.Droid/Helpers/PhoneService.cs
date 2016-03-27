@@ -13,7 +13,7 @@ using Android.Content.PM;
 [assembly: Dependency(typeof(PhoneService))]
 namespace AdaaMobile.Droid
 {
-	public class PhoneService : IPhoneService
+    public class PhoneService : IPhoneService
     {
         /// <summary>
         /// Opens native dialog to dial the specified number.
@@ -35,7 +35,7 @@ namespace AdaaMobile.Droid
 
         public void OpenOracleApp()
         {
-           // string packageName = "com.mostafa.cairometrobeta";
+            // string packageName = "com.mostafa.cairometrobeta";
             string packageName = "com.ADDOF";
             //Intent intent = new Intent(Intent.ActionMain);
             //intent.SetComponent(new ComponentName("com.mostafa.cairometrobeta", "com.mostafa.cairometrobeta.MainActivity"));
@@ -74,41 +74,43 @@ namespace AdaaMobile.Droid
             }
         }
 
-		public string SavePictureToDisk (string filename, byte[] imageData,bool addToGallery=true)
-		{
-			var dir = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim);
-			var pictures = dir.AbsolutePath;
-			//adding a time stamp time file name to allow saving more than one image... otherwise it overwrites the previous saved image of the same name
-		    string name = filename;
-			string filePath = System.IO.Path.Combine(pictures, name);
-			try
-			{
-				System.IO.File.WriteAllBytes(filePath, imageData);
-                if (addToGallery) { 
-				//mediascan adds the saved image into the gallery
-				var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-				mediaScanIntent.SetData(Android.Net.Uri.FromFile(new Java.IO.File(filePath)));
-				Xamarin.Forms.Forms.Context.SendBroadcast(mediaScanIntent);
+        public string SavePictureToDisk(string filename, byte[] imageData, bool addToGallery = true)
+        {
+            var dir = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim);
+            var pictures = dir.AbsolutePath;
+            //adding a time stamp time file name to allow saving more than one image... otherwise it overwrites the previous saved image of the same name
+            string name = filename;
+            string filePath = System.IO.Path.Combine(pictures, name);
+            try
+            {
+                System.IO.File.WriteAllBytes(filePath, imageData);
+                if (addToGallery)
+                {
+                    //mediascan adds the saved image into the gallery
+                    var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
+                    mediaScanIntent.SetData(Android.Net.Uri.FromFile(new Java.IO.File(filePath)));
+                    Xamarin.Forms.Forms.Context.SendBroadcast(mediaScanIntent);
                 }
                 return filePath;
-			}
-			catch(System.Exception e)
-			{
-				System.Console.WriteLine(e.ToString());
-			    return null;
-			}
-		}
+            }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
 
-        public bool ComposeMailWithAttachment(string recipient, string subject,string fileName, byte[] imageData, string messagebody = null)
+        public bool ComposeMailWithAttachment(string recipient, string subject, string fileName, byte[] imageData, string messagebody = null)
         {
-            string filePath= SavePictureToDisk(fileName, imageData,true);
+            string filePath = SavePictureToDisk(fileName, imageData, true);
             if (filePath == null) return false;
+            var imageUri = Android.Net.Uri.Parse("file://" + filePath);
             Intent emailIntent = new Intent(Intent.ActionSend);
             emailIntent.SetType("application/image");
             emailIntent.PutExtra(Intent.ExtraEmail, new string[] { recipient });
             emailIntent.PutExtra(Intent.ExtraSubject, subject);
             emailIntent.PutExtra(Intent.ExtraText, "Hello, ");
-            emailIntent.PutExtra(Intent.ExtraStream, Android.Net.Uri.Parse(filePath));
+            emailIntent.PutExtra(Intent.ExtraStream, imageUri);
             var instance = MainActivity.Instance;
             instance.StartActivity(Intent.CreateChooser(emailIntent, "Send email"));
             return true;
