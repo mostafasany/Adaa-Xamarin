@@ -16,8 +16,8 @@
   <Grid RowSpacing="15">
     <Grid.RowDefinitions>
       <RowDefinition Height="5"/>
-      <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
 
