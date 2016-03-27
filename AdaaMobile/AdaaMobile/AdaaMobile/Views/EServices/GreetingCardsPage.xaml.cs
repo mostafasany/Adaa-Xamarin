@@ -21,7 +21,18 @@ namespace AdaaMobile
 			BindingContext = _viewModel;
 
 			Title = AppResources.GreetingCard;
-		}
+
+            //Add Send via email action
+            Action action = () =>
+            {
+                if (_viewModel.CardsList != null && _viewModel.CardsList.Count > 0) {
+                    byte[] bytesArray = Convert.FromBase64String(_viewModel.CardsList[0].Image);
+                    DependencyService.Get<IPhoneService>().ComposeMailWithAttachment("", _viewModel.CardsList[0].Title, bytesArray);
+                }
+            };
+            ToolbarItems.Add(
+                new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
+        }
 
 		protected async override void OnAppearing ()
 		{

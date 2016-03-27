@@ -87,6 +87,11 @@ namespace AdaaMobile.iOS.Helpers
 					}
 				});
 		}
+
+        public void ComposeMailWithAttachment(string recipient, string subject, byte[] imageData, string messagebody = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

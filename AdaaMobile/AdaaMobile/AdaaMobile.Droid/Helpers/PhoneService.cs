@@ -94,6 +94,19 @@ namespace AdaaMobile.Droid
 				System.Console.WriteLine(e.ToString());
 			}
 		}
+
+        public void ComposeMailWithAttachment(string recipient, string subject, byte[] imageData, string messagebody = null)
+        {
+            Intent emailIntent = new Intent(Intent.ActionSend);
+            emailIntent.SetType("application/image");
+            emailIntent.PutExtra(Intent.ExtraEmail, new string[] { recipient });
+            emailIntent.PutExtra(Intent.ExtraSubject, subject);
+            emailIntent.PutExtra(Intent.ExtraText, "Hello, ");
+           // emailIntent.PutExtra(Intent.ExtraStream, Uri.parse("file:///mnt/sdcard/Myimage.jpeg"));
+
+            var instance = MainActivity.Instance;
+            instance.StartActivity(Intent.CreateChooser(emailIntent, "Send mail..."));
+        }
     }
 }
 
