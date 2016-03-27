@@ -454,6 +454,7 @@ namespace AdaaMobile.ViewModels
         {
             try
             {
+                IsBusy = true;
                 var response = await _dataService.GetDelegationSubordinatesResponseAsync(new delegationSubordinatesQParamters()
                 {
                     Langid = _appSettings.Language,
@@ -465,7 +466,7 @@ namespace AdaaMobile.ViewModels
                     {
                         SubordinateList = new ObservableCollection<Employee>(response.Result.Subordinates);
                         SelectedSub = SubordinateList[0];
-						SelectedSub.IsSelected = true;
+                        SelectedSub.IsSelected = true;
                         return true;
                     }
                     else
@@ -482,6 +483,11 @@ namespace AdaaMobile.ViewModels
             {
 
                 return false;
+
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 

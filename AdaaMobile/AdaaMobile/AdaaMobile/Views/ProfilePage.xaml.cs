@@ -69,8 +69,8 @@ namespace AdaaMobile.Views
 		private void Email_OnTapped (object sender, EventArgs e)
 		{
 			if(_profileViewModel.UserProfile
-				!= null && !string.IsNullOrEmpty( _profileViewModel.UserProfile.Email ))
-				DependencyService.Get<IPhoneService> ().ComposeMail (_profileViewModel.UserProfile.Email, "Hello");
+				!= null && !string.IsNullOrEmpty( _profileViewModel.UserProfile.Email ))              
+            DependencyService.Get<IPhoneService> ().ComposeMail (_profileViewModel.UserProfile.Email, "Hello");
 
 		}
     }
