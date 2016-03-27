@@ -14,7 +14,7 @@ using MessageUI;
 
 namespace AdaaMobile.iOS.Helpers
 {
-	public class PhoneService : IPhoneService
+    public class PhoneService : IPhoneService
     {
         /// <summary>
         /// Opens native dialog to dial the specified number.
@@ -63,34 +63,50 @@ namespace AdaaMobile.iOS.Helpers
 
         public void OpenOracleApp()
         {
-			//UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("https://witunes.apple.com/us/app/ad-dof/id1032231693?mt=8"));
+            //UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("https://witunes.apple.com/us/app/ad-dof/id1032231693?mt=8"));
 
 
-			UIApplication.SharedApplication.OpenUrl(new NSUrl(@"itms-apps://itunes.apple.com/app/id1032231693" ));
+            UIApplication.SharedApplication.OpenUrl(new NSUrl(@"itms-apps://itunes.apple.com/app/id1032231693"));
         }
 
 
-		public void SavePictureToDisk (string filename, byte[] imageData)
-		{
-			var chartImage = new UIImage(NSData.FromArray(imageData));
+        public string SavePictureToDisk(string filename, byte[] imageData)
+        {
+            var chartImage = new UIImage(NSData.FromArray(imageData));
 
-			bool foundError = false;
+            bool foundError = false;
 
-			chartImage.SaveToPhotosAlbum((image, error) =>
-				{
-					//you can retrieve the saved UI Image as well if needed using
-					//var i = image as UIImage;
-					if(error != null)
-					{
-						Console.WriteLine(error.ToString());
-						foundError = true;
-					}
-				});
-		}
+            chartImage.SaveToPhotosAlbum((image, error) =>
+                {
+                    //you can retrieve the saved UI Image as well if needed using
+                    //var i = image as UIImage;
+                    if (error != null)
+                    {
+                        Console.WriteLine(error.ToString());
+                        foundError = true;
+                    }
+                });
+
+            return string.Empty;
+        }
 
         public void ComposeMailWithAttachment(string recipient, string subject, byte[] imageData, string messagebody = null)
         {
-            throw new NotImplementedException();
+            var controller = new MFMailComposeViewController();
+            controller.SetToRecipients(new string[] { recipient });
+            controller.SetSubject(subject);
+            if (!string.IsNullOrEmpty(messagebody))
+                controller.SetMessageBody(messagebody, false);
+            var chartImage = new UIImage(NSData.FromArray(imageData));
+
+            controller.AddAttachmentData(chartImage.AsPNG(), "image/png", "Adaa_Greeting_Card.png");
+            controller.Finished += (object sender, MFComposeResultEventArgs e) =>
+            {
+
+                e.Controller.DismissViewController(true, null);
+            };
+
+            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(controller, true, null);
         }
     }
 
