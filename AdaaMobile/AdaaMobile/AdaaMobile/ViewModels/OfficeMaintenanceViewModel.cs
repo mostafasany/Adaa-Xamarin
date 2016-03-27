@@ -24,7 +24,7 @@ namespace AdaaMobile.ViewModels
         private readonly IAppSettings _appSettings;
         private readonly IRequestMessageResolver _messageResolver;
         private readonly IDialogManager _dialogManager;
-        private readonly EquipmentsSelectionService _equipmentsSelectionService;
+        private readonly Func<EquipmentsSelectionService> _equipmentsSelectionFactory;
 
         #endregion
 
@@ -165,14 +165,15 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Initialization
-        public OfficeMaintenanceViewModel(INavigationService navigationService, IDataService dataService, IAppSettings appSettings, IRequestMessageResolver messageResolver, IDialogManager dialogManager, EquipmentsSelectionService equipmentsSelectionService)
+        public OfficeMaintenanceViewModel(INavigationService navigationService, IDataService dataService, IAppSettings appSettings, IRequestMessageResolver messageResolver, IDialogManager dialogManager, Func<EquipmentsSelectionService> equipmentsSelectionFactory)
         {
             _navigationService = navigationService;
             _dataService = dataService;
             _appSettings = appSettings;
             _messageResolver = messageResolver;
             _dialogManager = dialogManager;
-            _equipmentsSelectionService = equipmentsSelectionService;
+            _equipmentsSelectionFactory = equipmentsSelectionFactory;
+   
 
             Priorities = new MaintenancePriority[]
             {
@@ -302,7 +303,8 @@ namespace AdaaMobile.ViewModels
         private async Task SelectEquipmentsAsync()
         {
             if (Equipments == null) return;
-            var selectedEquipments = await _equipmentsSelectionService.SelectEquipmentsAsync(Equipments, SelectedEquipments);
+            var service = _equipmentsSelectionFactory.Invoke();
+            var selectedEquipments = await service.SelectEquipmentsAsync(Equipments, SelectedEquipments);
             SelectedEquipments = selectedEquipments;
         }
 

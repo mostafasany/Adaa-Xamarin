@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdaaMobile.Constants;
 using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
 using AdaaMobile.ViewModels;
@@ -10,7 +11,7 @@ using Xamarin.Forms;
 
 namespace AdaaMobile.Views.EServices
 {
-    public partial class EquipmentsPage : ContentPage, IEquipmentsSelection
+    public partial class EquipmentsPage : ContentPage
     {
         private readonly EquipmentsSelectionViewModel _viewModel;
         public EquipmentsPage(Equipment[] allEquipments, List<Equipment> previousSelection)
@@ -30,16 +31,8 @@ namespace AdaaMobile.Views.EServices
 
         protected override void OnDisappearing()
         {
-            OnEquipmentsSelected(_viewModel.GetSelectedEquipments());
+            MessagingCenter.Send<object, List<Equipment>>(this, MessagingConstants.SelectedEquipments, _viewModel.GetSelectedEquipments());
             base.OnDisappearing();
-        }
-
-        public event EventHandler<List<Equipment>> EquipmentsSelected;
-
-        protected virtual void OnEquipmentsSelected(List<Equipment> e)
-        {
-            var handler = EquipmentsSelected;
-            if (handler != null) handler.Invoke(this, e);
         }
 
         private void EquipmentsList_OnItemSelected(object sender, SelectedItemChangedEventArgs e)

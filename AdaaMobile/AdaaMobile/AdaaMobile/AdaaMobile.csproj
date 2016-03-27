@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Common\AsyncExtendedCommand.cs" />
     <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Constants\MessagingConstants.cs" />
     <Compile Include="Controls\BindablePicker.cs" />
     <Compile Include="Controls\CheckBox.cs" />
     <Compile Include="Controls\CheckboxCell.cs" />
