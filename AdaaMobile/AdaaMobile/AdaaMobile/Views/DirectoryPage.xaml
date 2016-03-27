@@ -33,14 +33,14 @@
       >
     </SearchBar>
 
-   <Label Grid.Row="1" 
-          VerticalOptions="Center" 
-          HorizontalOptions="Center"
-          Text="{Binding ErrorMessage}" 
-          TextColor="Black" 
-          BackgroundColor="Transparent"
-          FontSize="Medium"  
-          HorizontalTextAlignment="Center" />
+    <Label Grid.Row="1"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           Text="{Binding ErrorMessage}"
+           TextColor="Black"
+           BackgroundColor="Transparent"
+           FontSize="Medium"
+           HorizontalTextAlignment="Center" />
     <ListView
     x:Name="EmployeesListView"
       Grid.Row="1"
@@ -57,15 +57,20 @@
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
           <ViewCell >
-            <Grid 
-                         Padding="8,5,0,5"
+            <Grid Padding="8,5">
+              <controls:RoundedBoxView HeightRequest="35"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Fill"
+                         BackgroundColor="#FFCCCCCC"
+                         CornerRadius="{StaticResource CornerRadius}"                       
+                                                />
+              <Grid
+                         Padding="12,0"
                          BackgroundColor="Transparent">
-              <BoxView HeightRequest="35"
-                       VerticalOptions="Center" 
-                       HorizontalOptions="Fill"
-                       BackgroundColor="#FFCCCCCC"/>
-              <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Fill"/>
-            </Grid>
+                <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Fill"/>
+             
+              </Grid>
+             </Grid>
           </ViewCell>
         </DataTemplate>
       </ListView.GroupHeaderTemplate>
@@ -76,11 +81,11 @@
             <ViewCell.View>
 
               <Grid  >
-              <Grid.Padding>
-              	<OnPlatform x:TypeArguments="Thickness" iOS="5,3,24,3"  Android="5, 3, 10,3" WinPhone="5,3,5,3"/>
-              </Grid.Padding>
+                <Grid.Padding>
+                  <OnPlatform x:TypeArguments="Thickness" iOS="10,3,10,3"  Android="5, 3, 10,3" WinPhone="5,3,5,3"/>
+                </Grid.Padding>
                 <controls:ExtendedGrid ColumnSpacing="8" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="Transparent"
-                               VerticalOptions="Fill" 
+                               VerticalOptions="Fill"
                                CornerRadius="{StaticResource CornerRadius}"
                            >
                   <Grid.ColumnDefinitions>
@@ -122,10 +127,10 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-  
-<ActivityIndicator  IsRunning="{Binding IsBusy}"
-                     HeightRequest="50" WidthRequest="50"
-                     Grid.Row="0" Grid.RowSpan="2"
-                     VerticalOptions="Center" HorizontalOptions="Center"/>
-</Grid>
+
+    <ActivityIndicator  IsRunning="{Binding IsBusy}"
+                         HeightRequest="50" WidthRequest="50"
+                         Grid.Row="0" Grid.RowSpan="2"
+                         VerticalOptions="Center" HorizontalOptions="Center"/>
+  </Grid>
 </ContentPage>
