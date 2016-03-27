@@ -74,12 +74,12 @@ namespace AdaaMobile.Droid
             }
         }
 
-		public void SavePictureToDisk (string filename, byte[] imageData)
+		public string SavePictureToDisk (string filename, byte[] imageData)
 		{
 			var dir = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim);
 			var pictures = dir.AbsolutePath;
 			//adding a time stamp time file name to allow saving more than one image... otherwise it overwrites the previous saved image of the same name
-			string name = filename + System.DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".jpg";
+		    string name = filename;
 			string filePath = System.IO.Path.Combine(pictures, name);
 			try
 			{
@@ -88,10 +88,12 @@ namespace AdaaMobile.Droid
 				var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
 				mediaScanIntent.SetData(Android.Net.Uri.FromFile(new Java.IO.File(filePath)));
 				Xamarin.Forms.Forms.Context.SendBroadcast(mediaScanIntent);
+			    return filePath;
 			}
 			catch(System.Exception e)
 			{
 				System.Console.WriteLine(e.ToString());
+			    return null;
 			}
 		}
 

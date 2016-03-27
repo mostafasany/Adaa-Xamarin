@@ -19,7 +19,7 @@ namespace AdaaMobile
         /// </summary>
         void OpenOracleApp();
 
-		void SavePictureToDisk (string filename, byte[] imageData);
+		string SavePictureToDisk (string filename, byte[] imageData);
 
 	}
 }
