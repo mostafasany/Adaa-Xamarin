@@ -175,7 +175,11 @@ namespace AdaaMobile.ViewModels
         {
             if (item == null || item.IsEnabled == false)
                 return;
-            if (item.TargetType == typeof(OracleServicesPage))
+            try
+            {
+
+                PageClickedCommand.CanExecute = false;
+                if (item.TargetType == typeof(OracleServicesPage))
             {
                 //Open the app
                 DependencyService.Get<IPhoneService>().OpenOracleApp();
@@ -184,6 +188,12 @@ namespace AdaaMobile.ViewModels
             }
             // _navigationService.SetMasterDetailsPage(item.TargetType);
             _navigationService.NavigateToPage(item.TargetType);
+            }
+            finally 
+            {
+
+                PageClickedCommand.CanExecute = true;
+            }
         }
 
 

@@ -353,7 +353,7 @@
     <Compile Include="Views\SubAttendancePage.xaml.cs">
       <DependentUpon>SubAttendancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\GreetingCardsPage.xaml.cs">
+    <Compile Include="Views\EServices\GreetingCardsPage.xaml.cs">
       <DependentUpon>GreetingCardsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -466,7 +466,7 @@
     <EmbeddedResource Include="Views\SubAttendancePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Helpers\GreetingCardsPage.xaml">
+    <EmbeddedResource Include="Views\EServices\GreetingCardsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
