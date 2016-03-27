@@ -141,11 +141,11 @@ BackgroundColor="White">
                     Text="{ext:Translate SaveCard}"
                     FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                     Clicked="SaveCard_Clicked"                    
-                    VerticalOptions="End"
+                    VerticalOptions="Center"
                     BackgroundColor="#FF35A946"
                     TextColor="White"
+                    
                     HorizontalOptions="Fill"
-                    HeightRequest= "100"
 
                 >
 
@@ -169,7 +169,7 @@ BackgroundColor="White">
 
       <ActivityIndicator  IsRunning="{Binding IsBusy}"
                        HeightRequest="50" WidthRequest="50"
-                       Grid.Row="0" Grid.RowSpan="7"
+                       Grid.Row="0" Grid.RowSpan="5"
                        VerticalOptions="Center" HorizontalOptions="Center"/>
 
     </Grid>
