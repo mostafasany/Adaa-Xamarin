@@ -1959,8 +1959,8 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f02007a
 			public const int note = 2130837626;
 			
-			// aapt resource value: 0x7f020085
-			public const int notification_template_icon_bg = 2130837637;
+			// aapt resource value: 0x7f020086
+			public const int notification_template_icon_bg = 2130837638;
 			
 			// aapt resource value: 0x7f02007b
 			public const int profile = 2130837627;
@@ -1969,28 +1969,31 @@ namespace AdaaMobile.Droid
 			public const int Profilebig = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int reject = 2130837629;
+			public const int progress_bar = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int right = 2130837630;
+			public const int reject = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int save = 2130837631;
+			public const int right = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int sent_ico = 2130837632;
+			public const int save = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int settings = 2130837633;
+			public const int sent_ico = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int splash = 2130837634;
+			public const int settings = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int subordinate = 2130837635;
+			public const int splash = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int timesheet = 2130837636;
+			public const int subordinate = 2130837636;
+			
+			// aapt resource value: 0x7f020085
+			public const int timesheet = 2130837637;
 			
 			static Drawable()
 			{
@@ -3158,11 +3161,14 @@ namespace AdaaMobile.Droid
 			// aapt resource value: 0x7f080006
 			public const int CardView_Light = 2131230726;
 			
+			// aapt resource value: 0x7f080147
+			public const int IndeterminateProgress = 2131231047;
+			
 			// aapt resource value: 0x7f080146
 			public const int MyTheme = 2131231046;
 			
-			// aapt resource value: 0x7f080147
-			public const int MyTheme_Base = 2131231047;
+			// aapt resource value: 0x7f080148
+			public const int MyTheme_Base = 2131231048;
 			
 			// aapt resource value: 0x7f080016
 			public const int Platform_AppCompat = 2131230742;

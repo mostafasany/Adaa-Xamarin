@@ -32,6 +32,10 @@
   </style>
    <style name="MyTheme" parent="MyTheme.Base">
      <item name="android:windowNoTitle">true</item>
+     <item name="android:progressBarStyle">@style/IndeterminateProgress</item>
+   </style>
+   <style name="IndeterminateProgress" parent="@android:style/Widget.Holo.Light.ProgressBar">
+     <item name="android:indeterminateDrawable">@drawable/progress_bar</item>
    </style>
   
   <style name="MyTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
