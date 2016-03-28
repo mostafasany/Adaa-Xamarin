@@ -30,39 +30,64 @@
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-
       </Grid.RowDefinitions>
-      <Label
-       Grid.Row="0"
-       TextColor="Black" BackgroundColor="Transparent"
-       HorizontalTextAlignment="Start"
-       FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-       Text="{markupExtensions:Translate TypeOfEquipment}" />
 
-      <Label
-       Grid.Row="1"
-       BackgroundColor="Transparent"
-       HorizontalOptions="Start"
-       VerticalOptions = "Start"
-       TextColor="{StaticResource AppBackgroundNormal}"
-       Text="{Binding EquipmentNamesLiteral}"
+      <!-- Equipments-->
+      <Grid Grid.Row="0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+        <Label
+         Grid.Row="0"
+         Grid.Column="0"
+         TextColor="Black" BackgroundColor="Transparent"
+         HorizontalTextAlignment="Start"
+         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+         Text="{markupExtensions:Translate TypeOfEquipment}" />
+
+        <Label
+         Grid.Row="1"
+         Grid.Column="0"
+         BackgroundColor="Transparent"
+         HorizontalOptions="Start"
+         VerticalOptions = "Start"
+         TextColor="{StaticResource AppBackgroundNormal}"
+         Text="{Binding EquipmentNamesLiteral}"
          >
 
-      </Label>
+        </Label>
 
-      <!--Use Box View to increase touch region as Label touch target is small
+
+        <Image
+                                     HeightRequest="15"
+                                     WidthRequest="15"
+                                     Grid.Column="1"
+                                     Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     HorizontalOptions="Start" VerticalOptions="Center">
+          <Image.Source>
+            <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png"/>
+          </Image.Source>
+        </Image>
+
+        <!--Use Box View to increase touch region as Label touch target is small
           Using Button instead of label has limitation in controlling 
           padding which makes it hard to achieve design-->
-      <BoxView Grid.Row="0" Grid.RowSpan="2" BackgroundColor="Transparent">
-        <BoxView.GestureRecognizers>
-          <TapGestureRecognizer  Command="{Binding SelectEquipmentsCommand}"/>
-        </BoxView.GestureRecognizers>
-      </BoxView>
+        <BoxView Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent">
+          <BoxView.GestureRecognizers>
+            <TapGestureRecognizer  Command="{Binding SelectEquipmentsCommand}"/>
+          </BoxView.GestureRecognizers>
+        </BoxView>
 
-      <Grid Grid.Row="2" Padding="{StaticResource SeperatorPadding}">
+      </Grid>
+
+      <!-- Sperator-->
+      <Grid Grid.Row="1" Padding="{StaticResource SeperatorPadding}">
         <BoxView
           HeightRequest="1"
           BackgroundColor="{StaticResource AppBackgroundSemi}"
@@ -70,48 +95,75 @@
               />
       </Grid>
 
-      <!--Office Locations Label and Picker in two rows-->
-      <Label
-       Grid.Row="3"
-       TextColor="Black" BackgroundColor="Transparent"
-       HorizontalTextAlignment="Start"
-       FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-       Text="{markupExtensions:Translate OfficeLocation}" />
+      <!-- Locations-->
+      <Grid Grid.Row="2">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+        <!--Office Locations Label and Picker in two rows-->
+        <Label
+         Grid.Row="0"
+         Grid.Column="0"
+         TextColor="Black" BackgroundColor="Transparent"
+         HorizontalTextAlignment="Start"
+         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+         Text="{markupExtensions:Translate OfficeLocation}" />
 
-      <Label
-       Grid.Row="4"
-       BackgroundColor="Transparent"
-       HorizontalOptions="Start"
-       VerticalOptions = "Start"
-       TextColor="{StaticResource AppBackgroundNormal}"
-       Text="{Binding LocationPlaceHolder}"
+        <Label
+         Grid.Row="1"
+         Grid.Column="0"
+         BackgroundColor="Transparent"
+         HorizontalOptions="Start"
+         VerticalOptions = "Start"
+         TextColor="{StaticResource AppBackgroundNormal}"
+         Text="{Binding LocationPlaceHolder}"
          >
-      </Label>
+        </Label>
 
 
 
-      <controls:BindablePicker
-       Grid.Row="4"
-       x:Name="OfficeLocationPicker"
-       BackgroundColor="Transparent"
-       HeightRequest="0"
-       WidthRequest= "0"
-       IsVisible = "false"
-       IsEnabled="true"
-       ItemsSource="{Binding Locations}"
-       SelectedIndexChanged="OfficeLocationPicker_OnSelectedIndexChanged"/>
+        <controls:BindablePicker
+         Grid.Row="1"
+         Grid.Column="0"
+         x:Name="OfficeLocationPicker"
+         BackgroundColor="Transparent"
+         HeightRequest="0"
+         WidthRequest= "0"
+         IsVisible = "false"
+         IsEnabled="true"
+         ItemsSource="{Binding Locations}"
+         SelectedIndexChanged="OfficeLocationPicker_OnSelectedIndexChanged"/>
 
-      <!--Use Box View to increase touch region as Label touch target is small
+        <Image
+                                     HeightRequest="15"
+                                     WidthRequest="15"
+                                     Grid.Column="1"
+                                     Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     HorizontalOptions="Start" VerticalOptions="Center">
+          <Image.Source>
+            <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png"/>
+          </Image.Source>
+        </Image>
+
+        <!--Use Box View to increase touch region as Label touch target is small
           Using Button instead of label has limitation in controlling 
           padding which makes it hard to achieve design-->
-      <BoxView Grid.Row="3" Grid.RowSpan="2" BackgroundColor="Transparent">
-        <BoxView.GestureRecognizers>
-          <TapGestureRecognizer  Tapped="ChooseLocation_Tapped"/>
-        </BoxView.GestureRecognizers>
-      </BoxView>
+        <BoxView Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" BackgroundColor="Transparent">
+          <BoxView.GestureRecognizers>
+            <TapGestureRecognizer  Tapped="ChooseLocation_Tapped"/>
+          </BoxView.GestureRecognizers>
+        </BoxView>
 
+      </Grid>
+      
       <!--Seperator-->
-      <Grid Grid.Row="5" Padding="{StaticResource SeperatorPadding}">
+      <Grid Grid.Row="3" Padding="{StaticResource SeperatorPadding}">
         <BoxView
           HeightRequest="1"
           BackgroundColor="{StaticResource AppBackgroundSemi}"
@@ -120,11 +172,12 @@
 
       <!--Row as label on left and 
         the picker hidden with other label over it on the Right-->
-      <Grid  Grid.Row="6" HorizontalOptions="Fill"
+      <Grid  Grid.Row="4" HorizontalOptions="Fill"
                     >
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
 
         <Grid.GestureRecognizers>
@@ -157,10 +210,20 @@
          IsEnabled="true"
          ItemsSource="{Binding Rooms}"
          SelectedIndexChanged="RoomPicker_OnSelectedIndexChanged"/>
+
+        <Image
+                                   HeightRequest="15"
+                                   WidthRequest="15"
+                                   Grid.Column="2"
+                                   HorizontalOptions="Start" VerticalOptions="Center">
+          <Image.Source>
+            <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png"/>
+          </Image.Source>
+        </Image>
       </Grid>
 
       <!--Seperator-->
-      <Grid Grid.Row="7" Padding="{StaticResource SeperatorPadding}">
+      <Grid Grid.Row="5" Padding="{StaticResource SeperatorPadding}">
         <BoxView
           HeightRequest="1"
           BackgroundColor="{StaticResource AppBackgroundSemi}"
@@ -169,17 +232,18 @@
 
       <!--Priority as label on left and 
         the picker hidden with other label over it on the Right-->
-      <Grid  Grid.Row="8" HorizontalOptions="Fill"
+      <Grid  Grid.Row="6" HorizontalOptions="Fill"
                     >
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
 
         <Grid.GestureRecognizers>
           <TapGestureRecognizer  Tapped="ChoosePriority_Tapped"/>
         </Grid.GestureRecognizers>
-        
+
         <Label   Grid.Column="0"
                          TextColor="Black" BackgroundColor="Transparent"
                          HorizontalTextAlignment="Start"
@@ -206,6 +270,16 @@
          IsEnabled="true"
          ItemsSource="{Binding Priorities}"
          SelectedIndexChanged="PriorityPicker_OnSelectedIndexChanged"/>
+
+        <Image
+                                   HeightRequest="15"
+                                   WidthRequest="15"
+                                   Grid.Column="2"
+                                   HorizontalOptions="Start" VerticalOptions="Center">
+          <Image.Source>
+            <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png"/>
+          </Image.Source>
+        </Image>
       </Grid>
     </controls:ExtendedGrid>
   </Grid>
