@@ -268,8 +268,6 @@ namespace AdaaMobile.ViewModels
             //Set current mode, This will trigger changes in Bindings.
             AttendanceMode = mode;
 
-            //Set is busy to false
-            IsBusy = false;
             //Set Busy message to null
             BusyMessage = null;
 
@@ -279,7 +277,7 @@ namespace AdaaMobile.ViewModels
             DaysList = null;
 
 
-
+			if(SelectedDay != null)
             //Clear current day
             SelectedDay.IsSelected = false;
             SelectedDay = null;
@@ -297,6 +295,8 @@ namespace AdaaMobile.ViewModels
             if (mode == AttendanceMode.Attendance)
             {
                 await PopulateAttendanceDaysAsync();
+					IsBusy = false;
+
             }
             else
             {
@@ -308,7 +308,6 @@ namespace AdaaMobile.ViewModels
 				
 			}
 			finally{
-				IsBusy = false;
 			}
         }
 
