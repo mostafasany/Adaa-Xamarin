@@ -214,7 +214,7 @@ namespace AdaaMobile.Views
             }
             else
             {
-                //Binding is happening through Selected day
+				_attendanceViewModel.LoadExceptionsCommand.Execute(null);
             }
         }
 
@@ -246,7 +246,7 @@ namespace AdaaMobile.Views
             }
             else
             {
-                //Binding is happening through Selected day
+				_attendanceViewModel.LoadExceptionsCommand.Execute(null);
             }
         }
 

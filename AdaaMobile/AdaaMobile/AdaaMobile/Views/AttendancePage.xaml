@@ -326,7 +326,7 @@
           </Grid>
          
           <ActivityIndicator  IsRunning="{Binding IsBusy}"
-                       HeightRequest="50" WidthRequest="50"
+                       HeightRequest="60" WidthRequest="60" Color="{StaticResource YellowAccent}"
                        VerticalOptions="Center" HorizontalOptions="Center"/>
         </Grid>
 
