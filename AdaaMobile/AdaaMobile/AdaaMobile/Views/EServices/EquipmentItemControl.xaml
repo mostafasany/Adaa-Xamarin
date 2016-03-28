@@ -21,9 +21,14 @@
    />
 
     <controls:ExtendedGrid Padding="15,0" x:Name="ContentGrid"
-                           VerticalOptions="Start" HeightRequest="70"
+                           VerticalOptions="Start" 
                            BackgroundColor="Transparent"
                          >
+
+                           <controls:ExtendedGrid.HeightRequest>
+            <OnPlatform x:TypeArguments="x:Double" iOS="60" Android="70" />
+        </controls:ExtendedGrid.HeightRequest>
+
       <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="Item_Tapped"/>
       </Grid.GestureRecognizers>
