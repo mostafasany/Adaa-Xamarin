@@ -37,7 +37,7 @@ namespace AdaaMobile.Views.EServices
                 _viewModel.NewDriverRequestCommand.Execute(null);
             };
             ToolbarItems.Add(
-                new ToolbarItem("", Device.OnPlatform("sentico.png", "sent_ico.png", "sent_ico.png"), action, ToolbarItemOrder.Primary));
+				new ToolbarItem("", Device.OnPlatform("right.png", "sent_ico.png", "sent_ico.png"), action, ToolbarItemOrder.Primary));
 
         }
 
