@@ -37,11 +37,20 @@ BackgroundColor="White">
         CornerRadius="{StaticResource CornerRadius}"
         Grid.Row="0"/>
 
+      <controls:ExtendedButton
+        Grid.Row="0" Grid.RowSpan="2"
+        Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+        Text="" TextColor="Transparent" BackgroundColor="Transparent"
+        Clicked="SourceText_OnClicked"
+        IsVisible="{Binding ReturnToday}"
+      >
+      </controls:ExtendedButton>
+      
       <controls:ExtendedGrid
                          Grid.Row="0"
                          VerticalOptions="Start"
                          Padding="10,5,10,5"
-                         BackgroundColor="Transparent">
+                         BackgroundColor="Transparent" InputTransparent="True">
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
@@ -57,12 +66,14 @@ BackgroundColor="White">
        TextColor="Black" BackgroundColor="Transparent"
        HorizontalTextAlignment="Start"
        FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-       Text="{ext:Translate ChooseGreetingCardType}"/>
+       Text="{ext:Translate ChooseGreetingCardType}"
+        InputTransparent="True"/>
 
         <Picker x:Name="SourcePicker"   BackgroundColor="Transparent"
                          Grid.Column="0"  Grid.Row="0"
                          HorizontalOptions="Fill"
-                         WidthRequest="0" HeightRequest="0" IsVisible= "false">
+                         WidthRequest="0" HeightRequest="0" IsVisible= "false"
+                InputTransparent="True">
         </Picker>
 
         <Label
@@ -73,7 +84,8 @@ BackgroundColor="White">
         VerticalOptions="Fill"
         Text="{Binding SelectedCardName}"
         TextColor="{StaticResource AppBackgroundNormal}"
-        Font="SemiBold" >
+        Font="SemiBold"
+        InputTransparent="True">
 
 
         </Label>
@@ -91,9 +103,7 @@ BackgroundColor="White">
           </Image.Source>
         </Image>
 
-        <Grid.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SourceText_Tapped"/>
-        </Grid.GestureRecognizers>
+
       </controls:ExtendedGrid>
 
 

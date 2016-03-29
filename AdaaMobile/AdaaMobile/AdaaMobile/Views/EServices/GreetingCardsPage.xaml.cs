@@ -48,7 +48,14 @@ namespace AdaaMobile
 			//SaveCardButton.IsEnabled = true;
 		}
 
-		private void SourceText_Tapped(object sender, EventArgs e)
+
+        private void SourceText_OnClicked(object sender, EventArgs e)
+        {
+            SourcePicker.Unfocus();
+            SourcePicker.Focus();
+        }
+
+        private void SourceText_Tapped(object sender, EventArgs e)
 		{
 			SourcePicker.Unfocus();
 			SourcePicker.Focus();
