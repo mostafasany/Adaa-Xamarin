@@ -306,7 +306,7 @@
 
         <!-- Source location -->
         <controls:ExtendedButton
-      Grid.Row="9" Grid.RowSpan="2"
+      Grid.Row="12" Grid.RowSpan="2"
       Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
       Text="" TextColor="Transparent" BackgroundColor="Transparent"
       Clicked="SourceText_OnClicked"
@@ -354,7 +354,7 @@
         <!-- Priority picker  -->
 
         <controls:ExtendedButton
-      Grid.Row="9" Grid.RowSpan="2"
+      Grid.Row="15" Grid.RowSpan="2"
       Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
       Text="" TextColor="Transparent" BackgroundColor="Transparent"
       Clicked="Priority_OnClicked"
