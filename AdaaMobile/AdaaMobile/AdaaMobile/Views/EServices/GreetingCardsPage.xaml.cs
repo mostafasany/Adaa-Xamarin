@@ -25,7 +25,7 @@ namespace AdaaMobile
             //Add Send via email action
             Action action = () =>
             {
-                if (_viewModel.CardsList != null && _viewModel.CardsList.Count > 0) {
+				if (_viewModel.CardsList != null && _viewModel.CardsList.Count > 0 && ! string.IsNullOrEmpty(_viewModel.CardsList[0].Image)) {
                     byte[] bytesArray = Convert.FromBase64String(_viewModel.CardsList[0].Image);
                     DependencyService.Get<IPhoneService>().ComposeMailWithAttachment("", _viewModel.CardsList[0].Title, "adaa_greeting_card.jpg", bytesArray);
                 }
@@ -56,7 +56,7 @@ namespace AdaaMobile
 
 		private async void SaveCard_Clicked(object sender, EventArgs e)
 		{
-			if (_viewModel.CardsList != null && _viewModel.CardsList.Count > 0) {
+			if (_viewModel.CardsList != null && _viewModel.CardsList.Count > 0  && ! string.IsNullOrEmpty(_viewModel.CardsList[0].Image) {
 				byte[] bytesArray = Convert.FromBase64String (_viewModel.CardsList [0].Image);
                 string name = _viewModel.CardsList[0].Title + System.DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".jpg";
                 DependencyService.Get<IPhoneService> ().SavePictureToDisk (name, bytesArray);
