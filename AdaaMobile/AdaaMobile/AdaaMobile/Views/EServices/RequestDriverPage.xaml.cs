@@ -63,10 +63,22 @@ namespace AdaaMobile.Views.EServices
 			}
 		}
 
+
+        private void Priority_OnClicked(object sender, EventArgs e)
+        {
+            PriorityPicker.Unfocus();
+            PriorityPicker.Focus();
+        }
         private void Priority_Tapped(object sender, EventArgs e)
         {
             PriorityPicker.Unfocus();
             PriorityPicker.Focus();
+        }
+
+        private void ReasonType_OnClicked(object sender, EventArgs e)
+        {
+            ReasonTypePicker.Unfocus();
+            ReasonTypePicker.Focus();
         }
 
         private void ReasonType_Tapped(object sender, EventArgs e)
@@ -76,13 +88,19 @@ namespace AdaaMobile.Views.EServices
         }
 
 
-        private void SourceText_Tapped(object sender, EventArgs e)
+        private void SourceText_OnClicked(object sender, EventArgs e)
         {
             SourcePicker.Unfocus();
             SourcePicker.Focus();
         }
 
 
+
+        private void Destination_OnClicked(object sender, EventArgs e)
+        {
+            DestinationPicker.Unfocus();
+            DestinationPicker.Focus();
+        }
         private void Destination_Tapped(object sender, EventArgs e)
         {
             DestinationPicker.Unfocus();

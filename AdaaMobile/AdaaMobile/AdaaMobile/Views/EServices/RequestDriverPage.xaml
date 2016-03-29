@@ -71,7 +71,16 @@
         </Grid.RowDefinitions>
 
         <!-- Reason type  -->
-        <Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0">
+        <controls:ExtendedButton
+        Grid.Row="0" Grid.RowSpan="2"
+        Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+        Text="" TextColor="Transparent" BackgroundColor="Transparent"
+        Clicked="ReasonType_OnClicked"
+        IsVisible="{Binding ReturnToday}"
+      >
+        </controls:ExtendedButton>
+        
+        <Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0" InputTransparent="True">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
@@ -95,6 +104,7 @@
         <Picker x:Name="ReasonTypePicker"   BackgroundColor="Transparent"
             Grid.Row="1"  HorizontalOptions="Fill"
              WidthRequest="0" HeightRequest="0" IsVisible= "false"
+                InputTransparent="True"
               >
         </Picker>
         <Label
@@ -104,10 +114,8 @@
         VerticalOptions="Fill"
         Text="{Binding LocalizedReasonType}"
         TextColor="{StaticResource AppBackgroundNormal}"
-        Font="SemiBold" >
-          <Label.GestureRecognizers>
-            <TapGestureRecognizer Tapped="ReasonType_Tapped"/>
-          </Label.GestureRecognizers>
+        Font="SemiBold"
+        InputTransparent="True">
 
         </Label>
 
@@ -176,12 +184,14 @@
             </Image.Source>
           </Image>
         </Grid>
-        <Grid Grid.Row="7" HorizontalOptions="Fill" >
+        
+        <Grid Grid.Row="7" HorizontalOptions="Fill" ColumnSpacing="2" >
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
           </Grid.ColumnDefinitions>
 
+          
           <Label
        Grid.Column="0"
        BackgroundColor="Transparent"
@@ -250,14 +260,25 @@
 
 
         <!-- Destination -->
+        <controls:ExtendedButton
+        Grid.Row="9" Grid.RowSpan="2"
+        Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+        Text="" TextColor="Transparent" BackgroundColor="Transparent"
+        Clicked="Destination_OnClicked"
+        IsVisible="{Binding ReturnToday}"
+      >
+        </controls:ExtendedButton>
+
         <Label Grid.Row="9"
         TextColor="Gray" BackgroundColor="Transparent"
         HorizontalTextAlignment="Start"
         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-        Text="{ext:Translate Destination}"  />
+        Text="{ext:Translate Destination}"
+               InputTransparent="True"/>
         <Picker x:Name="DestinationPicker"   BackgroundColor="Transparent" 
                   Grid.Row="10"  HorizontalOptions="Fill"
                    WidthRequest="0" HeightRequest="0" IsVisible= "false"
+                InputTransparent="True"
               >
         </Picker>
         <Label
@@ -267,10 +288,8 @@
         VerticalOptions="Fill"
         Text="{Binding SelectedDestinationName}"
         TextColor="{StaticResource AppBackgroundNormal}"
-        Font="SemiBold" >
-          <Label.GestureRecognizers>
-            <TapGestureRecognizer Tapped="Destination_Tapped"/>
-          </Label.GestureRecognizers>
+        Font="SemiBold"
+        InputTransparent="True">
 
         </Label>
 
@@ -286,14 +305,25 @@
         </Grid>
 
         <!-- Source location -->
+        <controls:ExtendedButton
+      Grid.Row="12" Grid.RowSpan="2"
+      Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+      Text="" TextColor="Transparent" BackgroundColor="Transparent"
+      Clicked="SourceText_OnClicked"
+      IsVisible="{Binding ReturnToday}"
+      >
+        </controls:ExtendedButton>
+
         <Label Grid.Row="12"
         TextColor="Gray" BackgroundColor="Transparent"
         HorizontalTextAlignment="Start"
         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-        Text="{ext:Translate SourceLocation}"  />
+        Text="{ext:Translate SourceLocation}" 
+               InputTransparent="True"/>
         <Picker x:Name="SourcePicker"   BackgroundColor="Transparent" 
                          Grid.Row="13"  HorizontalOptions="Fill"
                           WidthRequest="0" HeightRequest="0" IsVisible= "false"
+                InputTransparent="True"
               >
 
         </Picker>
@@ -304,10 +334,9 @@
         VerticalOptions="Fill"
         Text="{Binding SelectedSourceName}"
         TextColor="{StaticResource AppBackgroundNormal}"
-        Font="SemiBold" >
-          <Label.GestureRecognizers>
-            <TapGestureRecognizer Tapped="SourceText_Tapped"/>
-          </Label.GestureRecognizers>
+        Font="SemiBold"
+        InputTransparent="True">
+          
 
         </Label>
 
@@ -323,7 +352,16 @@
         </Grid>
 
         <!-- Priority picker  -->
-        <Grid Grid.Row="15" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0">
+
+        <controls:ExtendedButton
+      Grid.Row="15" Grid.RowSpan="2"
+      Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+      Text="" TextColor="Transparent" BackgroundColor="Transparent"
+      Clicked="Priority_OnClicked"
+      IsVisible="{Binding ReturnToday}"
+      >
+        </controls:ExtendedButton>
+        <Grid Grid.Row="15" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0" InputTransparent="True">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
@@ -348,6 +386,7 @@
         <Picker x:Name="PriorityPicker"   BackgroundColor="Transparent"
             Grid.Row="16"  HorizontalOptions="Fill"
              WidthRequest="0" HeightRequest="0" IsVisible= "false"
+                InputTransparent="True"
               >
         </Picker>
         <Label
@@ -357,10 +396,8 @@
         VerticalOptions="Fill"
         Text="{Binding SelectedPiorityText}"
         TextColor="{StaticResource AppBackgroundNormal}"
-        Font="SemiBold" >
-          <Label.GestureRecognizers>
-            <TapGestureRecognizer Tapped="Priority_Tapped"/>
-          </Label.GestureRecognizers>
+        Font="SemiBold"
+        InputTransparent="True">
 
         </Label>
 
