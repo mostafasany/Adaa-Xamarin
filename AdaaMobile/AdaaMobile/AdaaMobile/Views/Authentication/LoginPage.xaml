@@ -64,8 +64,12 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
           </Image>
         </RelativeLayout>
 
-        <controls:ExtendedGrid Grid.Row="2"  CornerRadius="3" HorizontalOptions="Fill"
-                           BackgroundColor="White" Padding="8,6,0,6" >
+        <controls:RoundedBoxView  Grid.Row="2"  CornerRadius="5" 
+                                  HorizontalOptions="Fill" VerticalOptions="Fill"
+                                  BackgroundColor="White"
+                                  />
+        <controls:ExtendedGrid Grid.Row="2"  CornerRadius="5" HorizontalOptions="Fill"
+                           BackgroundColor="Transparent" Padding="8,6,0,6" >
           <controls:ExtendedGrid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="1" />
@@ -94,19 +98,19 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
             Placeholder="{ext:Translate Password}"
             Text="{Binding Password,Mode=TwoWay}" IsPassword="True" />
 
-            <Grid  Grid.Row="3" Padding="0,0" >
-          <Label VerticalOptions="Center" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" TextColor="{StaticResource AppBackgroundNormal}"
-          Text="{ext:Translate ShowPassword}" x:Name="ShowPasswordLabel" HorizontalOptions="Start" />
-          <Switch Toggled="ShowPassword_Toggled" VerticalOptions="Center" HorizontalOptions="End" x:Name="PasswordToggle" IsToggled="False"/>
-        </Grid>
+          <Grid  Grid.Row="3" Padding="0,0" >
+            <Label VerticalOptions="Center" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" TextColor="{StaticResource AppBackgroundNormal}"
+            Text="{ext:Translate ShowPassword}" x:Name="ShowPasswordLabel" HorizontalOptions="Start" />
+            <Switch Toggled="ShowPassword_Toggled" VerticalOptions="Center" HorizontalOptions="End" x:Name="PasswordToggle" IsToggled="False"/>
+          </Grid>
         </controls:ExtendedGrid>
 
 
-        <Button x:Name="LoginBtn" Grid.Row="5" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" >
-        <Button.HeightRequest>
-               <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="60" />
-        </Button.HeightRequest>
-        </Button>
+        <controls:ExtendedButton x:Name="LoginBtn"  Grid.Row="5" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" >
+          <controls:ExtendedButton.HeightRequest>
+            <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="55" />
+          </controls:ExtendedButton.HeightRequest>
+        </controls:ExtendedButton>
         <ActivityIndicator Grid.Row="6" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 
       </Grid>
