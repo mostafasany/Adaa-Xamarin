@@ -238,6 +238,13 @@
 
         </Grid.RowDefinitions>
 
+        <controls:ExtendedButton
+          Grid.Row="0" Grid.RowSpan="2"
+          Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+          Text="" TextColor="Transparent" BackgroundColor="Transparent"
+          Clicked="ReasonType_OnClicked"
+      >
+        </controls:ExtendedButton>
         <Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -275,12 +282,11 @@
           Text="{Binding LocalizedReasonType}"
           TextColor="{StaticResource AppBackgroundNormal}"
           Font="SemiBold" >
-            <Label.GestureRecognizers>
-              <TapGestureRecognizer Tapped="ReasonType_Tapped"/>
-            </Label.GestureRecognizers>
+
             
             </Label>
 
+        
         <BoxView
           Grid.Row="2"
           HeightRequest="1"

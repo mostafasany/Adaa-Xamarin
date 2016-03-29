@@ -37,6 +37,12 @@ namespace AdaaMobile.Views.DayPass
             TextLimit.Text = string.Format("{0}/{1}", 0, 60);
         }
 
+        private void ReasonType_OnClicked(object sender, EventArgs e)
+        {
+            ReasonTypePicker.Unfocus();
+            ReasonTypePicker.Focus();
+        }
+
         private void ReasonEditor_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(e.NewTextValue))
