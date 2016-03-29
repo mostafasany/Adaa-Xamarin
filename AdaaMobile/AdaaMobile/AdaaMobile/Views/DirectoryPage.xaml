@@ -82,7 +82,7 @@
 
               <Grid  >
                 <Grid.Padding>
-                  <OnPlatform x:TypeArguments="Thickness" iOS="10,3,10,3"  Android="5, 3, 10,3" WinPhone="5,3,5,3"/>
+                  <OnPlatform x:TypeArguments="Thickness" iOS="10,3,18,3"  Android="5, 3, 10,3" WinPhone="5,3,5,3"/>
                 </Grid.Padding>
                 <controls:ExtendedGrid ColumnSpacing="8" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="Transparent"
                                VerticalOptions="Fill"

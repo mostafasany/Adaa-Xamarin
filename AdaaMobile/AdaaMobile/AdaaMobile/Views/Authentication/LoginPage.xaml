@@ -102,7 +102,11 @@ xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
         </controls:ExtendedGrid>
 
 
-        <Button x:Name="LoginBtn" Grid.Row="5" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" />
+        <Button x:Name="LoginBtn" Grid.Row="5" Text="{ext:Translate Login}" Command="{Binding LoginCommand}" Style="{StaticResource ButtonDefaultStyle}" >
+        <Button.HeightRequest>
+               <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="60" />
+        </Button.HeightRequest>
+        </Button>
         <ActivityIndicator Grid.Row="6" HeightRequest="40" WidthRequest="40" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 
       </Grid>
