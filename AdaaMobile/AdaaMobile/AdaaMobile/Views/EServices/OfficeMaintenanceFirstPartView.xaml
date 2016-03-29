@@ -17,6 +17,7 @@
           CornerRadius="{StaticResource CornerRadius}"
         />
 
+
     <controls:ExtendedGrid
                          
                        VerticalOptions="Start"
@@ -33,7 +34,15 @@
       </Grid.RowDefinitions>
 
       <!-- Equipments-->
-      <Grid Grid.Row="0">
+
+      <controls:ExtendedButton
+        Grid.Row="0"
+        Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+        Text="" TextColor="Transparent" BackgroundColor="Transparent"
+        Command="{Binding SelectEquipmentsCommand}"
+      />
+
+      <Grid Grid.Row="0" InputTransparent="True">
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
@@ -75,15 +84,6 @@
           </Image.Source>
         </Image>
 
-        <!--Use Box View to increase touch region as Label touch target is small
-          Using Button instead of label has limitation in controlling 
-          padding which makes it hard to achieve design-->
-        <BoxView Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent">
-          <BoxView.GestureRecognizers>
-            <TapGestureRecognizer  Command="{Binding SelectEquipmentsCommand}"/>
-          </BoxView.GestureRecognizers>
-        </BoxView>
-
       </Grid>
 
       <!-- Sperator-->
@@ -95,8 +95,15 @@
               />
       </Grid>
 
+      <controls:ExtendedButton
+       Grid.Row="2"
+       Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+       Text="" TextColor="Transparent" BackgroundColor="Transparent"
+       Clicked="ChooseLocation_Tapped"
+      />
+
       <!-- Locations-->
-      <Grid Grid.Row="2">
+      <Grid Grid.Row="2" InputTransparent="True">
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
@@ -151,17 +158,8 @@
           </Image.Source>
         </Image>
 
-        <!--Use Box View to increase touch region as Label touch target is small
-          Using Button instead of label has limitation in controlling 
-          padding which makes it hard to achieve design-->
-        <BoxView Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" BackgroundColor="Transparent">
-          <BoxView.GestureRecognizers>
-            <TapGestureRecognizer  Tapped="ChooseLocation_Tapped"/>
-          </BoxView.GestureRecognizers>
-        </BoxView>
-
       </Grid>
-      
+
       <!--Seperator-->
       <Grid Grid.Row="3" Padding="{StaticResource SeperatorPadding}">
         <BoxView
@@ -169,20 +167,25 @@
           BackgroundColor="{StaticResource AppBackgroundSemi}"
           HorizontalOptions="Fill" />
       </Grid>
+      
+      <controls:ExtendedButton
+       Grid.Row="4"
+       Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+       Text="" TextColor="Transparent" BackgroundColor="Transparent"
+       Clicked="ChooseRoom_Tapped" 
+      />
 
       <!--Row as label on left and 
         the picker hidden with other label over it on the Right-->
-      <Grid  Grid.Row="4" HorizontalOptions="Fill"
-                    >
+      <Grid  Grid.Row="4"
+             HorizontalOptions="Fill"
+             InputTransparent="True"
+        >
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="Auto"/>
           <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
-
-        <Grid.GestureRecognizers>
-          <TapGestureRecognizer  Tapped="ChooseRoom_Tapped"/>
-        </Grid.GestureRecognizers>
 
         <Label   Grid.Column="0"
                          TextColor="Black" BackgroundColor="Transparent"
@@ -195,7 +198,7 @@
        Grid.Column="1"
        BackgroundColor="Transparent"
        HorizontalOptions="Start"
-       VerticalOptions = "Start"
+       VerticalOptions = "Center"
        TextColor="{StaticResource AppBackgroundNormal}"
        Text="{Binding RoomPlaceHolder}"
          />
@@ -230,19 +233,22 @@
           HorizontalOptions="Fill" />
       </Grid>
 
+      <controls:ExtendedButton
+       Grid.Row="6"
+       Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
+       Text="" TextColor="Transparent" BackgroundColor="Transparent"
+       Clicked="ChoosePriority_Tapped" 
+      />
+         
       <!--Priority as label on left and 
         the picker hidden with other label over it on the Right-->
       <Grid  Grid.Row="6" HorizontalOptions="Fill"
-                    >
+                   InputTransparent="True" >
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="Auto"/>
           <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
-
-        <Grid.GestureRecognizers>
-          <TapGestureRecognizer  Tapped="ChoosePriority_Tapped"/>
-        </Grid.GestureRecognizers>
 
         <Label   Grid.Column="0"
                          TextColor="Black" BackgroundColor="Transparent"
@@ -255,7 +261,7 @@
        Grid.Column="1"
        BackgroundColor="Transparent"
        HorizontalOptions="Start"
-       VerticalOptions = "Start"
+       VerticalOptions = "Center"
        TextColor="{StaticResource AppBackgroundNormal}"
        Text="{Binding SelectedPriority.Title}"
          />
