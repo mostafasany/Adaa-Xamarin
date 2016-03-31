@@ -254,17 +254,26 @@ namespace AdaaMobile.ViewModels
             if (DaysList == null) return;
             var daysList = DaysList;
 
-            //Unselect previous day
-            if(SelectedDay!=null)
-            SelectedDay.IsSelected = true;
-
             //Get first item
             var firstDay = daysList.FirstOrDefault();
-            if (firstDay == null) return;
-            if(firstDay.IsDummy)return;
+            SelecteDay(firstDay);
 
-            firstDay.IsSelected = true;
-            SelectedDay = firstDay;
+        }
+
+        public void SelecteDay(DayWrapper day)
+        {
+            if (day == null) return;
+            if (day.IsDummy) return;
+            if (day == SelectedDay) return;
+
+            //Unselect previous day
+            if (SelectedDay != null)
+                SelectedDay.IsSelected = true;
+
+            //Select day
+
+            day.IsSelected = true;
+            SelectedDay = day;
 
             //Load data for this day
             if (AttendanceMode == AttendanceMode.Attendance)
@@ -275,7 +284,6 @@ namespace AdaaMobile.ViewModels
             {
                 //Do nothing, dayWrapper for exception already has data
             }
-
         }
 
         /// <summary>

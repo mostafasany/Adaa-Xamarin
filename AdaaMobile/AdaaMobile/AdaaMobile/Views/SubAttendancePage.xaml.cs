@@ -105,14 +105,6 @@ namespace AdaaMobile.Views
                         bool isHaveSubordinates = await _attendanceViewModel.GetSubordinateList();
                         _attendanceViewModel.isSubordinateDataShown = true;
                     }
-                    
-                    //Try to select latest day - Take care for dummy days
-                    if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
-                    {
-                        var latestIndex = _attendanceViewModel.DaysList.FindLastIndex(day => !day.IsDummy);
-                        if (latestIndex != -1)
-                            SelectDay(_attendanceViewModel.DaysList[latestIndex]);
-                    }
                 }
 
             }
@@ -177,16 +169,6 @@ namespace AdaaMobile.Views
             if (button == AttendanceButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Attendance)
             {
                 await _attendanceViewModel.SwitchMode(AttendanceMode.Attendance);
-                try
-                {
-
-                    if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
-                        SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count - 1]);
-                }
-                catch
-                {
-                    //ignored
-                }
             }
             else if (button == ExceptionsButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Exceptions)
             {
@@ -228,26 +210,7 @@ namespace AdaaMobile.Views
             //Change color states of clicked day
             var newDay = (DayWrapper)e.Item;
             if (newDay.IsDummy == false)
-                SelectDay(newDay);
-        }
-
-        private void SelectDay(DayWrapper newDay)
-        {
-            newDay.IsSelected = true;
-            var oldDay = _attendanceViewModel.SelectedDay;
-            if (oldDay != null && oldDay != newDay)
-                oldDay.IsSelected = false;
-            _attendanceViewModel.SelectedDay = newDay;
-
-            if (_attendanceViewModel.AttendanceMode == AttendanceMode.Attendance)
-            {
-                //Load Attendance details
-                _attendanceViewModel.LoadAttendanceCommand.Execute(null);
-            }
-            else
-            {
-				_attendanceViewModel.LoadExceptionsCommand.Execute(null);
-            }
+                _attendanceViewModel.SelecteDay(newDay);
         }
 
         private void Date_Selected(object sender, DateChangedEventArgs e)

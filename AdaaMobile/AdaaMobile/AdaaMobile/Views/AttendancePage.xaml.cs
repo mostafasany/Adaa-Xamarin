@@ -233,27 +233,10 @@ namespace AdaaMobile.Views
             //Change color states of clicked day
             var newDay = (DayWrapper)e.Item;
             if (newDay.IsDummy == false)
-                SelectDay(newDay);
+                _attendanceViewModel.SelecteDay(newDay);
         }
 
-        private void SelectDay(DayWrapper newDay)
-        {
-            newDay.IsSelected = true;
-            var oldDay = _attendanceViewModel.SelectedDay;
-            if (oldDay != null && oldDay != newDay)
-                oldDay.IsSelected = false;
-            _attendanceViewModel.SelectedDay = newDay;
-
-            if (_attendanceViewModel.AttendanceMode == AttendanceMode.Attendance)
-            {
-                //Load Attendance details
-                _attendanceViewModel.LoadAttendanceCommand.Execute(null);
-            }
-            else
-            {
-                //Binding is happening through Selected day
-            }
-        }
+        
 
         private void Date_Selected(object sender, DateChangedEventArgs e)
         {
