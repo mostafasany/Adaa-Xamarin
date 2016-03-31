@@ -16,8 +16,10 @@ namespace AdaaMobile.iOS.CustomRenderers
 		protected override void OnElementChanged (ElementChangedEventArgs<Picker> e)
 		{
 			base.OnElementChanged (e);
-			//var x = (Control.InputView as UIPickerView).Model;
+			var x = (Control.InputView as UIPickerView).Model;
 		}
 	}
+
+
 }
 
