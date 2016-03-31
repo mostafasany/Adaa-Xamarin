@@ -429,7 +429,8 @@ namespace AdaaMobile.ViewModels
                 if (token.IsCancellationRequested) return;
 
                 //Show dummy list till the data is loaded
-                FixWindowSize(new List<DayWrapper>());
+                DaysList = new List<DayWrapper>();
+                FixWindowSize(DaysList);
 
                 var paramters = new ExceptionsQParameter()
                 {
