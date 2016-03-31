@@ -24,7 +24,7 @@
   </ContentPage.BackgroundImage>
 
 
-  <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill" IsClippedToBounds="true">
+  <ScrollView x:Name="MScrollView" HorizontalOptions="Fill" VerticalOptions="Fill" IsClippedToBounds="true">
     <!--Outer Layout Grid, has different groups and Progress Ring centered-->
     <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
           Padding="10,10,10,20"
