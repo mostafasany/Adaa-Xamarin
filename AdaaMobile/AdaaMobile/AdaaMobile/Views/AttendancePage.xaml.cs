@@ -140,14 +140,8 @@ namespace AdaaMobile.Views
                 if (_attendanceViewModel.CurrentAttendance == null)
                 {
                     await _attendanceViewModel.PopulateAttendanceDaysAsync();
-                    //Try to select latest day - Take care for dummy days
-                    if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
-                    {
-                        var latestIndex = _attendanceViewModel.DaysList.FindLastIndex(day => !day.IsDummy);
-                        if (latestIndex != -1)
-                            SelectDay(_attendanceViewModel.DaysList[latestIndex]);
-                    }
                 }
+
                 if (_attendanceViewModel.SubordinateList == null)
                 {
                     bool isHaveSubordinates = await _attendanceViewModel.GetSubordinateList();
@@ -218,16 +212,7 @@ namespace AdaaMobile.Views
             if (button == AttendanceButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Attendance)
             {
                 await _attendanceViewModel.SwitchMode(AttendanceMode.Attendance);
-                try
-                {
-
-                    if (_attendanceViewModel.DaysList != null && _attendanceViewModel.DaysList.Count > 0)
-                        SelectDay(_attendanceViewModel.DaysList[_attendanceViewModel.DaysList.Count - 1]);
-                }
-                catch
-                {
-                    //ignored
-                }
+               
             }
             else if (button == ExceptionsButton && _attendanceViewModel.AttendanceMode != AttendanceMode.Exceptions)
             {
@@ -237,26 +222,6 @@ namespace AdaaMobile.Views
 
         #endregion
 
-
-        private void Sub_Tapped(object sender, HorizontaListItemTappedEventArgs e)
-        {
-            //Change color states of clicked day
-            var employee = (Employee)e.Item;
-			if (_attendanceViewModel.SelectedSub != null) {
-				_attendanceViewModel.SelectedSub.IsSelected = false;
-			}
-            _attendanceViewModel.SelectedSub = employee;
-			_attendanceViewModel.SelectedSub.IsSelected = true;
-			if (_attendanceViewModel.AttendanceMode == AttendanceMode.Attendance)
-			{
-				//Load Attendance details
-				_attendanceViewModel.LoadAttendanceCommand.Execute(null);
-			}
-			else
-			{
-				//Binding is happening through Selected day
-			}
-        }
 
         /// <summary>
         /// Changes color state and triggers new load of details.

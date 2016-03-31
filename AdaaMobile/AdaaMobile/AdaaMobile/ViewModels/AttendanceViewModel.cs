@@ -241,8 +241,48 @@ namespace AdaaMobile.ViewModels
 
             FixWindowSize(daysList);
             DaysList = daysList;
+
+            //Select first Day
+            SelectDayAfterRangeLoad();
         }
 
+        /// <summary>
+        /// It's used primary used to selecting day by default when range is loaded.
+        /// </summary>
+        private void SelectDayAfterRangeLoad()
+        {
+            if (DaysList == null) return;
+            var daysList = DaysList;
+
+            //Unselect previous day
+            if(SelectedDay!=null)
+            SelectedDay.IsSelected = true;
+
+            //Get first item
+            var firstDay = daysList.FirstOrDefault();
+            if (firstDay == null) return;
+            if(firstDay.IsDummy)return;
+
+            firstDay.IsSelected = true;
+            SelectedDay = firstDay;
+
+            //Load data for this day
+            if (AttendanceMode == AttendanceMode.Attendance)
+            {
+                LoadAttendanceCommand.Execute(null);
+            }
+            else
+            {
+                //Do nothing, dayWrapper for exception already has data
+            }
+
+        }
+
+        /// <summary>
+        /// Add dummy days to the list to match the minimum required windows limit.
+        /// Mainly UI related.
+        /// </summary>
+        /// <param name="daysList"></param>
         private void FixWindowSize(List<DayWrapper> daysList)
         {
             if (daysList.Count < SmallestWindowLimit)
@@ -386,8 +426,10 @@ namespace AdaaMobile.ViewModels
                 BusyMessage = AppResources.Loading;
                 ErrorMessage = null;
 
-
                 if (token.IsCancellationRequested) return;
+
+                //Show dummy list till the data is loaded
+                FixWindowSize(new List<DayWrapper>());
 
                 var paramters = new ExceptionsQParameter()
                 {
@@ -408,15 +450,13 @@ namespace AdaaMobile.ViewModels
                 {
                     if (response.Result.ExceptionDays != null)
                     {
-                        var daysList = response.Result.ExceptionDays.Select(ex => (DayWrapper)ExceptionDayWrapper.Wrap(ex)).ToList();
+                        var daysList = response.Result.ExceptionDays.Select(ex => (DayWrapper) ExceptionDayWrapper.Wrap(ex)).ToList();
                         FixWindowSize(daysList);
                         DaysList = daysList;
                     }
-                    if (DaysList != null && DaysList.Count > 0)
-                    {
-                        SelectedDay = DaysList[DaysList.Count - 1];
-                        SelectedDay.IsSelected = true;
-                    }
+
+                    //Select first day
+                    SelectDayAfterRangeLoad();
                 }
                 else
                 {
