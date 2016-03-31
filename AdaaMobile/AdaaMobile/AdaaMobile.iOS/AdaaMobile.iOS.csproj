@@ -142,6 +142,7 @@
     <Compile Include="CustomRenderers\NoBackButtonPageRenderer.cs" />
     <Compile Include="CustomRenderers\HorizontalListView\CustomUICollectionViewDelegateFlowLayout.cs" />
     <Compile Include="Helpers\PhoneService.cs" />
+    <Compile Include="CustomRenderers\ExtendedPickerRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdaaMobile\AdaaMobile.csproj">

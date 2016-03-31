@@ -63,7 +63,7 @@ namespace AdaaMobile.Views
             DayPassBtn.Clicked += DayPassBtn_Clicked;
             DelegationBtn.Clicked += DelegationBtn_Clicked;
 
-            AddSubToolBarItem();
+            
 
             _attendanceViewModel.PropertyChanged += _attendanceViewModel_PropertyChanged;
         }
@@ -71,6 +71,9 @@ namespace AdaaMobile.Views
 
         private void AddSubToolBarItem()
         {
+			if (ToolbarItems != null && ToolbarItems.Count > 0)
+				return;
+			
             Action action = () =>
             {
                 if (_attendanceViewModel.SubordinateList != null)
@@ -148,6 +151,8 @@ namespace AdaaMobile.Views
 
                 }
 				_attendanceViewModel.isSubordinateDataShown = false;
+
+				AddSubToolBarItem();
             }
             catch
             {
