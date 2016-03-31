@@ -268,7 +268,7 @@ namespace AdaaMobile.ViewModels
 
             //Unselect previous day
             if (SelectedDay != null)
-                SelectedDay.IsSelected = true;
+                SelectedDay.IsSelected = false;
 
             //Select day
 
