@@ -18,6 +18,7 @@ namespace AdaaMobile.iOS.CustomRenderers
 			Control.Layer.BorderColor = UIColor.White.CGColor;
 			Control.Layer.BorderWidth = 0;
 			((UIDatePicker)(Control.InputView)).Layer.BorderWidth = 0;
+
         }
     }
 }
