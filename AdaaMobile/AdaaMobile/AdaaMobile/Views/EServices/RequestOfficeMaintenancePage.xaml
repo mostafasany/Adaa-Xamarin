@@ -86,7 +86,7 @@
                            FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
                            Text="{ext:Translate AdditionalComments}" />
 
-        <Editor
+        <controls:ExtendedEditor
         HorizontalOptions="Fill"
         VerticalOptions="Start"
         HeightRequest="130"
@@ -94,6 +94,8 @@
         TextColor="Black"
         Text="{Binding AdditionalComments, Mode=TwoWay}"
         FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
+        MaxLength="60"
+
         />
       </StackLayout>
 
