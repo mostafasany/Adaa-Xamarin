@@ -99,7 +99,7 @@ BackgroundColor="White">
                                HorizontalOptions="Start"
                                VerticalOptions="Center">
           <Image.Source>
-            <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png"/>
+            <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="ic_arrow_drop_down_black_24dp.png" WinPhone="chevronblue.png"/>
           </Image.Source>
         </Image>
 

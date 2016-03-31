@@ -57,7 +57,7 @@
                           HorizontalOptions="Start" VerticalOptions="Center"
        >
         <Image.Source>
-          <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
+          <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="" WinPhone="chevron.png"/>
         </Image.Source>
       </Image >
     </controls:ExtendedGrid>
