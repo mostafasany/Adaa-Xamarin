@@ -54,7 +54,10 @@ namespace AdaaMobile.Views.EServices
 		protected async override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			await _viewModel.GetClients();
+		    MScrollView.IsClippedToBounds = true;//to fix issue with header being hidden
+            // when user enter in additional comments in some os versions
+
+            await _viewModel.GetClients();
 			if(_viewModel.ClientsList != null && _viewModel.ClientsList.Count >0){
 			foreach (var item in _viewModel.ClientsList) {
 					SourcePicker.Items.Add(item.title);
