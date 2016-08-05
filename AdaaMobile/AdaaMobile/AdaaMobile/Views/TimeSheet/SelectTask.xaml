@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.Views.EServices.EquipmentsPage" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" x:Name="ParentView">
+	<ContentPage.BackgroundImage>
+		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
+	</ContentPage.BackgroundImage>
+	<Grid RowSpacing="15">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="5" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Image x:Name="iosBackgroundImage" IsVisible="false" Grid.RowSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="Fill">
+			<Image.Source>
+				<OnPlatform x:TypeArguments="ImageSource" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
+			</Image.Source>
+		</Image>
+		<ListView x:Name="EquipmentsList" ItemsSource="{Binding EquipmentWrappers}" IsGroupingEnabled="False" HasUnevenRows="True" SeparatorColor="Transparent" BackgroundColor="Transparent" Grid.Row="1" ItemSelected="EquipmentsList_OnItemSelected">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.View>
+							<Grid Padding="12,5">
+								<masterView:EquipmentItemControl Title="{Binding Equipment.Title}" IsSelected="{Binding IsSelected,Mode=TwoWay}" />
+							</Grid>
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+		<ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center" />
+	</Grid>
+</ContentPage>
