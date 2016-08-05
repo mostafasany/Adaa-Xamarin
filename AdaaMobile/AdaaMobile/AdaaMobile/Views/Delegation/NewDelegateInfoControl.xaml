@@ -27,7 +27,7 @@
                                        HorizontalOptions="Start" VerticalOptions="Center"
        >
       <Image.Source>
-        <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png"/>
+        <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="" WinPhone="chevronblue.png"/>
       </Image.Source>
     </Image >
   </Grid>
