@@ -74,5 +74,9 @@ namespace AdaaMobile.DataServices
 		Task<ResponseWrapper<SaveDriverRequestResponse>> SaveDriverRequestAsync(SaveDriverRequestQParameters qParameters, SaveDriverRequestBParameters bParamters, CancellationToken? token = null);
 
 
+		Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null);
+
+		Task<ResponseWrapper<List<PendingTask>>> GetPendingTaskAsync(CancellationToken? token = null);
+
     }
 }

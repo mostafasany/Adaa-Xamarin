@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace AdaaMobile.ViewModels
 {
@@ -27,6 +28,7 @@ namespace AdaaMobile.ViewModels
         private readonly IAppSettings _appSettings;
         private readonly IDialogManager _dialogManager;
         private readonly IRequestMessageResolver _messageResolver;
+		private static readonly char[] SpecialChars = "!@#$%^&*()".ToCharArray();
         #endregion
 
         #region Properties
@@ -176,6 +178,25 @@ namespace AdaaMobile.ViewModels
         {
             try
             {
+				if(!string.IsNullOrEmpty(Reason))
+					{
+						int indexOf = Reason.IndexOfAny(SpecialChars);
+						if (indexOf != -1)
+						{
+						await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.PassReasonShouldnotContainSpecialCharchters, AppResources.Ok);
+							return;
+						}
+					}
+				
+					
+
+				if (ReturnToday && StartTimeSpan.TotalMinutes >= EndTimeSpan.TotalMinutes) {
+
+					await _dialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.ReturnDateShouldBeGreaterThanDepartureDate, AppResources.Ok);
+					return;
+				}
+
+
                 NewDayPassCommand.CanExecute = false;
                 IsBusy = true;
                 BusyMessage = AppResources.Loading;

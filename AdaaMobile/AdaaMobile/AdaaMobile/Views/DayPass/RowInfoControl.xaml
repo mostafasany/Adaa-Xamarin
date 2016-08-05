@@ -12,8 +12,8 @@
       <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
     
-    <Label Grid.Row="0"  TextColor="{StaticResource YellowAccent}" FontSize="Small" Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
-    <Label Grid.Row="1"  LineBreakMode="TailTruncation"  TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="{Binding Value,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
+    <Label Grid.Row="0" x:Name="lblTitle"  TextColor="{StaticResource YellowAccent}" FontSize="Small" Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
+    <Label Grid.Row="1" x:Name="lblValue" LineBreakMode="TailTruncation"  TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="{Binding Value,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
 
     
   </Grid>

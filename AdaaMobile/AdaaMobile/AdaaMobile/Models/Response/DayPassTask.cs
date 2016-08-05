@@ -30,6 +30,13 @@ namespace AdaaMobile.Models.Response
         [XmlElement("ReasonType")]
         public string ReasonType { get; set; }
 
+		[XmlElement("ReasonText")]
+		public string ReasonText { get; set; }
+
+		[XmlElement("WillReturn")]
+		public string WillReturn { get; set; }
+	
+
         public string Duration
         {
             get

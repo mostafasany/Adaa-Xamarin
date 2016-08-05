@@ -15,17 +15,20 @@ namespace AdaaMobile
 		{
 			InitializeComponent ();
 
-			NavigationPage.SetBackButtonTitle(this, "");
+			NavigationPage.SetBackButtonTitle (this, "");
 
 			_viewModel = Locator.Default.MyRequestsViewModel;
 			BindingContext = _viewModel;
 
 			Title = _viewModel.SelectedRequest.service;
 
-			DateTime date =  DateTime.Parse (_viewModel.SelectedRequest.created);
+			DateTime date = DateTime.Parse (_viewModel.SelectedRequest.created);
 
 			DateData.Value = date.ToString ("d MMM yyyy");
+
 		}
+
+
 	}
 }
 

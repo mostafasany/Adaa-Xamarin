@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using AdaaMobile.Helpers;
+using Newtonsoft.Json;
 
 namespace AdaaMobile.DataServices.Requests
 {
@@ -116,6 +117,7 @@ namespace AdaaMobile.DataServices.Requests
 
                 var stringValue = await postResponse.Content.ReadAsStringAsync();
                 response.StatusCode = postResponse.StatusCode;
+
                 ParseResult(stringValue, response);//parse Result even when there is error
                 if (!postResponse.IsSuccessStatusCode)
                 {
@@ -264,10 +266,9 @@ namespace AdaaMobile.DataServices.Requests
 
                 if (ResultContentType == ContentType.Json)
                 {
-                    //var result = JsonConvert.DeserializeObject<TR>(stringValue);
-                    //responseWrapper.Result = result;
-                    //responseWrapper.ResponseStatus = ResponseStatus.SuccessWithResult;
-                    throw new NotImplementedException();
+                    var result = JsonConvert.DeserializeObject<TR>(stringValue);
+                    responseWrapper.Result = result;
+                    responseWrapper.ResponseStatus = ResponseStatus.SuccessWithResult;
                 }
                 else if (ResultContentType == ContentType.Xml)
                 {
@@ -309,7 +310,8 @@ namespace AdaaMobile.DataServices.Requests
             };
 
             if (RequestUrl != null &&
-                (RequestUrl.Contains("getUserProfile") || RequestUrl.Contains("getCurrentUserProfile")))
+				(RequestUrl.Contains("getUserProfile") || RequestUrl.Contains("getCurrentUserProfile")|| RequestUrl.Contains("getAllEmployeesList"))
+			)
             {
                 if (stringValue.Contains("&"))
                 {

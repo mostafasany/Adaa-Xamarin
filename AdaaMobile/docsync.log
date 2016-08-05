@@ -1,0 +1,20 @@
+Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor Information: 0 : [2016-01-16 15:34:53.3085] Extracting documentation from C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\031-07735-A.dmg to C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\DocSet
+Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor Information: 0 : [2016-01-16 15:34:54.5327] Extracting documentation from  to C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\DocSet
+Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor Information: 0 : [2016-01-16 15:42:29.0065] Extracting documentation from C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\031-07735-A.dmg to C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\DocSet
+Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor Information: 0 : [2016-01-18 09:40:55.2028] Extracting documentation from C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\031-07735-A.dmg to C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\DocSet
+Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor Information: 0 : [2016-01-18 13:25:38.1673] Extracting documentation from C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\031-07735-A.dmg to C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\DocSet
+Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor Information: 0 : [2016-01-18 13:25:38.9553] Extracting documentation from  to C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\DocSet
+Xamarin.VisualStudio.iOS.DocSync.ViewModels.DocumentationProgressViewModel Error: 0 : [2016-01-18 13:25:39.0154] The file name to extract , does not exists
+Xamarin.VisualStudio.iOS.DocSync.DocSyncException: The file name to extract , does not exists
+   at Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor.<DecompressAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor.<ExtractAsync>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Xamarin.VisualStudio.iOS.DocSync.ViewModels.DocumentationProgressViewModel.<ExtractDocumentationAsync>d__1.MoveNext()
+Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor Information: 0 : [2016-01-18 22:05:25.3910] Extracting documentation from C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\031-07735-A.dmg to C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\DocSet
+Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor Information: 0 : [2016-01-23 12:13:50.7141] Extracting documentation from C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\031-07735-A.dmg to C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\DocSet
+Xamarin.VisualStudio.iOS.DocSync.Model.DocumentationExtractor Information: 0 : [2016-01-23 12:13:51.6573] Extracting documentation from  to C:\Users\Mostafa El-Abady\AppData\Local\Temp\Xamarin\DocSet

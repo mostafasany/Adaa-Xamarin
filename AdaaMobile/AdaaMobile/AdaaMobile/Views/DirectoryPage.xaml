@@ -1,136 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AdaaMobile.Views.DirectoryPage"
-             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
-             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-             BackgroundColor="White"
-             >
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <converters:BooleanNegateConverter x:Key="BooleanNegateConverter"/>
-    </ResourceDictionary>
-  </ContentPage.Resources>
-  <Grid Padding="0,0,0,10">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
-
-    <SearchBar
-      x:Name="EmployeeSearchBar"
-      Grid.Row="0"
-      HorizontalOptions="Fill"
-      VerticalOptions="Fill"
-      BackgroundColor="White"
-      TextColor="Black"
-      PlaceholderColor="#FFCCCCCC"
-      FontSize="Small"
-      IsEnabled="{Binding IsBusy,Converter={StaticResource BooleanNegateConverter}}"
-      Placeholder="{ext:Translate SearchAllContacts}"
-      >
-    </SearchBar>
-
-    <Label Grid.Row="1"
-           VerticalOptions="Center"
-           HorizontalOptions="Center"
-           Text="{Binding ErrorMessage}"
-           TextColor="Black"
-           BackgroundColor="Transparent"
-           FontSize="Medium"
-           HorizontalTextAlignment="Center" />
-    <ListView
-    x:Name="EmployeesListView"
-      Grid.Row="1"
-          ItemsSource="{Binding GroupedEmployees}"
-          HasUnevenRows="False"
-          RowHeight="50"
-          CachingStrategy="RecycleElement"
-          IsGroupingEnabled="{Binding GroupingEnabled}"
-          GroupDisplayBinding="{Binding Key}"
-          GroupShortNameBinding="{Binding Key}"
-          SeparatorColor="Transparent"
-          BackgroundColor="Transparent"
-              >
-      <ListView.GroupHeaderTemplate>
-        <DataTemplate>
-          <ViewCell >
-            <Grid Padding="8,5">
-              <controls:RoundedBoxView HeightRequest="35"
-                         VerticalOptions="Center"
-                         HorizontalOptions="Fill"
-                         BackgroundColor="#FFCCCCCC"
-                         CornerRadius="{StaticResource CornerRadius}"                       
-                                                />
-              <Grid
-                         Padding="12,0"
-                         BackgroundColor="Transparent">
-                <Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Fill"/>
-             
-              </Grid>
-             </Grid>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.GroupHeaderTemplate>
-
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell >
-            <ViewCell.View>
-
-              <Grid  >
-                <Grid.Padding>
-                  <OnPlatform x:TypeArguments="Thickness" iOS="10,3,18,3"  Android="5, 3, 10,3" WinPhone="5,3,5,3"/>
-                </Grid.Padding>
-                <controls:ExtendedGrid ColumnSpacing="8" x:Name="ContentGrid" InputTransparent="True" BackgroundColor="Transparent"
-                               VerticalOptions="Fill"
-                               CornerRadius="{StaticResource CornerRadius}"
-                           >
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="30"/>
-                  </Grid.ColumnDefinitions>
-
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="6"/>
-                  </Grid.RowDefinitions>
-                  <!--Add background and set background color of Extended Grid To Transparent, 
-                  As there is an issue in rounding backcolor of ExtendedGrid in Android -->
-                  <BoxView BackgroundColor="#cc007c85" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
-
-                  <Label Grid.Row="1"  Grid.Column="1"
-                         VerticalOptions="Center"
-                         TextColor="White" BackgroundColor="Transparent"
-                         HorizontalTextAlignment="Start"
-                         FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding UserName}" />
-
-                  <Image
-                                      HeightRequest="10"
-                                      WidthRequest="10"
-                                      Grid.Column="2"
-                                      Grid.Row="1"
-                                      HorizontalOptions="Start" VerticalOptions="Center"
-       >
-                    <Image.Source>
-                      <OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png"/>
-                    </Image.Source>
-                  </Image >
-                </controls:ExtendedGrid>
-              </Grid>
-            </ViewCell.View>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-
-    <ActivityIndicator  IsRunning="{Binding IsBusy}"
-                         HeightRequest="50" WidthRequest="50"
-                         Grid.Row="0" Grid.RowSpan="2"
-                         VerticalOptions="Center" HorizontalOptions="Center"/>
-  </Grid>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage x:Name="ParentView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.Views.DirectoryPage" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" BackgroundColor="White" xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:BooleanNegateConverter x:Key="BooleanNegateConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid Padding="0,0,0,10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<SearchBar x:Name="EmployeeSearchBar" HorizontalTextAlignment="Start" Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="White" TextColor="Black" PlaceholderColor="#FFCCCCCC" FontSize="Small" IsEnabled="{Binding IsBusy,Converter={StaticResource BooleanNegateConverter}}" Placeholder="{ext:Translate SearchAllContacts}">
+		</SearchBar>
+		<Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding ErrorMessage}" TextColor="Black" BackgroundColor="Transparent" FontSize="Medium" HorizontalTextAlignment="Center" />
+		<ListView x:Name="EmployeesListView" Grid.Row="1" ItemsSource="{Binding GroupedEmployees}" HasUnevenRows="False" RowHeight="70" CachingStrategy="RecycleElement" IsGroupingEnabled="{Binding GroupingEnabled}" GroupDisplayBinding="{Binding Key}" GroupShortNameBinding="{Binding Key}" SeparatorColor="Transparent"
+			BackgroundColor="Transparent">
+			<ListView.GroupHeaderTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Grid Padding="8,5">
+							<controls:RoundedBoxView HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="#FFCCCCCC" CornerRadius="{StaticResource CornerRadius}" />
+							<Grid Padding="12,0" BackgroundColor="Transparent">
+								<Label Text="{Binding Key}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Fill" />
+							</Grid>
+						</Grid>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.GroupHeaderTemplate>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.View>
+							<Grid Padding="12,5">
+								<masterView:EServiceItemControl 
+								Message="{Binding UserName}" 
+								IndicatorColor="Transparent"
+								Command="{Binding  BindingContext.NavigateToPageCommand,Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
+							</Grid>
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+		<ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="50" WidthRequest="50" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center" />
+	</Grid>
 </ContentPage>

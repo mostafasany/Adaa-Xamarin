@@ -47,7 +47,7 @@
                        Padding="10"
                        BackgroundColor="Transparent">
 
-        <Label   
+        <Label    x:Name="lblServiceDetails"
                            TextColor="Gray" BackgroundColor="Transparent"
                            HorizontalTextAlignment="Start"
                            VerticalTextAlignment="Center"
@@ -79,7 +79,7 @@
                        Padding="10"
                        BackgroundColor="Transparent">
 
-        <Label   
+        <Label   x:Name="lblAdditionalComments"
                            TextColor="Gray" BackgroundColor="Transparent"
                            HorizontalTextAlignment="Start"
                            VerticalTextAlignment="Center"

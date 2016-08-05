@@ -6,122 +6,130 @@ using AdaaMobile.ViewModels;
 
 namespace AdaaMobile.Views.MasterView
 {
-    public partial class UserServiceItemControl : ContentView
-    {
-        public UserServiceItemControl()
-        {
-            InitializeComponent();
-			if (Device.OS == TargetPlatform.iOS) {
-				MainBtn.BorderRadius = 10;
-			}
+	public partial class RequestItemControl : ContentView
+	{
+		public RequestItemControl ()
+		{
+			InitializeComponent ();
+
 			HandleArabicLanguageFlowDirection ();
 
-        }
+		}
 
 
-		void HandleArabicLanguageFlowDirection()
+		void HandleArabicLanguageFlowDirection ()
 		{
-			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
-			{
-				bvIndicator.HorizontalOptions = LayoutOptions.End;
-				Grid.SetColumn (bvIndicator, 2);
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains ("ar")) {
+				
+				imgArrow.HorizontalOptions = LayoutOptions.Start;
+				Grid.SetColumn (imgArrow, 1);
+				imgArrow.RotationY = 180;	
 
-				imgArrow.HorizontalOptions = LayoutOptions.End;
-				Grid.SetColumn(imgArrow, 0);
-				imgArrow.RotationY = 180;
-			
+				lblDate.HorizontalOptions = LayoutOptions.Start;
+				Grid.SetColumn (lblDate, 1);
 
-				lblTitle.HorizontalOptions=LayoutOptions.End;
+				lblTitle.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (lblTitle, 2);
 
-				lblMessages.HorizontalOptions=LayoutOptions.End;
+				lblMessages.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (lblMessages, 2);
 
 			}
 		}
 
-        #region Title p
+		#region Title p
 
 
-        public static readonly BindableProperty TitleProperty = BindableProperty.Create<UserServiceItemControl, object>(
-			p => p.Title, 
-			default(object));
+		public static readonly BindableProperty TitleProperty = BindableProperty.Create<UserServiceItemControl, object> (
+			                                                              p => p.Title, 
+			                                                              default(object));
 
-        public object Title
-        {
-            get { return (object)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
-        }
-        #endregion
+		public object Title {
+			get { return (object)GetValue (TitleProperty); }
+			set { SetValue (TitleProperty, value); }
+		}
+
+		#endregion
 
 
-        #region Message p
-        public static readonly BindableProperty MessageProperty = BindableProperty.Create<UserServiceItemControl, string>(p => p.Message, default(string));
+		#region Message p
 
-        public string Message
-        {
-            get { return (string)GetValue(MessageProperty); }
-            set
-			{ 
-				SetValue(MessageProperty, value); 
+		public static readonly BindableProperty MessageProperty = BindableProperty.Create<UserServiceItemControl, string> (p => p.Message, default(string));
+
+		public string Message {
+			get { return (string)GetValue (MessageProperty); }
+			set { 
+				SetValue (MessageProperty, value); 
 			}
-        }
-        #endregion
+		}
 
-        #region IndicatorColor
-        public static readonly BindableProperty IndicatorColorProperty = BindableProperty.Create<UserServiceItemControl, Color>(p => p.IndicatorColor, Color.Gray);
+		#endregion
 
-        public Color IndicatorColor
-        {
-            get { return (Color)GetValue(IndicatorColorProperty); }
-            set { SetValue(IndicatorColorProperty, value); }
-        }
-        #endregion
+		#region Date p
 
-        #region Tapped Event 
-        public event EventHandler Tapped;
+		public static readonly BindableProperty DateProperty = BindableProperty.Create<RequestItemControl, string> (p => p.Date, default(string));
 
-        protected virtual void OnTapped()
-        {
-            var handler = Tapped;
-            if (handler != null) handler(this, EventArgs.Empty);
-        }
-        #endregion
+		public string Date {
+			get { return (string)GetValue (DateProperty); }
+			set { 
+				SetValue (DateProperty, value); 
+			}
+		}
 
-        #region Command
-        public static readonly BindableProperty CommandProperty = BindableProperty.Create<UserServiceItemControl, ICommand>(p => p.Command, default(ICommand));
+		#endregion
 
-        public ICommand Command
-        {
-            get { return (ICommand)GetValue(CommandProperty); }
-            set { SetValue(CommandProperty, value); }
-        }
-        #endregion
+     
+		#region Command
 
-        #region Command Parameter
-        public static readonly BindableProperty CommandParamterProperty = BindableProperty.Create<UserServiceItemControl, object>(p => p.CommandParamter, default(object));
+		public static readonly BindableProperty CommandProperty = BindableProperty.Create<RequestItemControl, ICommand> (p => p.Command, default(ICommand));
 
-        public object CommandParamter
-        {
-            get { return (object)GetValue(CommandParamterProperty); }
-            set { SetValue(CommandParamterProperty, value); }
-        }
-        #endregion
+		public ICommand Command {
+			get { return (ICommand)GetValue (CommandProperty); }
+			set { SetValue (CommandProperty, value); }
+		}
 
-        /// <summary>
-        /// This will listen for button tapped in the underline button.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_OnClicked(object sender, EventArgs e)
-        {
-            OnTapped();
+		#endregion
 
-            if (Command != null)
-            {
-                if (Command.CanExecute(CommandParamter))
-                {
-                    Command.Execute(CommandParamter);
-                }
-            }
-        }
-    }
+		#region Command Parameter
+
+		public static readonly BindableProperty CommandParamterProperty = BindableProperty.Create<RequestItemControl, object> (p => p.CommandParamter, default(object));
+
+		public object CommandParamter {
+			get { return (object)GetValue (CommandParamterProperty); }
+			set { SetValue (CommandParamterProperty, value); }
+		}
+
+		#endregion
+
+		/// <summary>
+		/// This will listen for button tapped in the underline button.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void Button_OnClicked (object sender, EventArgs e)
+		{
+			OnTapped ();
+
+			if (Command != null) {
+				if (Command.CanExecute (CommandParamter)) {
+					Command.Execute (CommandParamter);
+				}
+			}
+		}
+
+
+		#region Tapped Event
+
+		public event EventHandler Tapped;
+
+		protected virtual void OnTapped ()
+		{
+			var handler = Tapped;
+			if (handler != null)
+				handler (this, EventArgs.Empty);
+		}
+
+		#endregion
+     
+	}
 }

@@ -9,36 +9,34 @@ using AdaaMobile.Strings;
 using AdaaMobile.ViewModels;
 using Xamarin.Forms;
 
-namespace AdaaMobile.Views.EServices
+namespace AdaaMobile.Views.TimeSheet
 {
-    public partial class EquipmentsPage : ContentPage
+	public partial class SelectTask : ContentPage
     {
-        private readonly EquipmentsSelectionViewModel _viewModel;
-        public EquipmentsPage(Equipment[] allEquipments, List<Equipment> previousSelection)
+		private readonly SelectTaskViewModel _viewModel;
+		public SelectTask()
         {
             InitializeComponent();
-            Title = AppResources.TypeOfEquipment;
-            this._viewModel = Locator.Default.EquipmentsSelectionViewModel;
-            _viewModel.InitializeWrappersList(allEquipments, previousSelection);
+            Title = "Tasks";
+			this._viewModel = Locator.Default.SelectTaskViewModel;
             BindingContext = _viewModel;
         }
 
-        protected override bool OnBackButtonPressed()
-        {
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			_viewModel.PageLoadedCommand.Execute (null);
+		}
 
-            return base.OnBackButtonPressed();
-        }
+		protected override void OnDisappearing()
+		{
+			base.OnDisappearing();
+		}
 
-        protected override void OnDisappearing()
-        {
-            MessagingCenter.Send<object, List<Equipment>>(this, MessagingConstants.SelectedEquipments, _viewModel.GetSelectedEquipments());
-            base.OnDisappearing();
-        }
+		private void ItemTapped(object sender, object e)
+		{
+			
+		}
 
-        private void EquipmentsList_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (EquipmentsList.SelectedItem != null)
-                EquipmentsList.SelectedItem = null;
-        }
     }
 }

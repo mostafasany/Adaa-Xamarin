@@ -103,15 +103,7 @@ namespace AdaaMobile.ViewModels
 			SelectedDuration="Selecte Duration";
 			SelectedPendingTaskResult="Selecte  Task Name";
 			SelectedAssignmentResult="Selecte  Assignment";
-			var response = await _dataService.GetPendingTaskAsync (null);
-			if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null) {
-				if (response.Result != null && response.Result.Count > 0) {
-					//Assignment = new ObservableCollection<Assignment> (response.Result);
 
-				} else {
-					
-				}
-			}
 			PopulateAttendanceDaysAsync ();
 		}
 

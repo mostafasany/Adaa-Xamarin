@@ -410,7 +410,7 @@
     <value>Alert</value>
   </data>
   <data name="EnterValidPassword" xml:space="preserve">
-    <value>Please enter valid password</value>
+    <value>Wrong username or password</value>
   </data>
   <data name="ChooseLanguage" xml:space="preserve">
     <value>Change language</value>
@@ -618,5 +618,26 @@
   </data>
   <data name="SaveCard" xml:space="preserve">
     <value>Save Card</value>
+  </data>
+  <data name="PassReasonShouldnotContainSpecialCharchters" xml:space="preserve">
+    <value>Reason should not contain any special characters</value>
+  </data>
+  <data name="ReturnDateShouldBeGreaterThanDepartureDate" xml:space="preserve">
+    <value>Return Date Should be Greater than Departure Date</value>
+  </data>
+  <data name="RequestDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="RequestTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TimeSheet_MyAssignment" xml:space="preserve">
+    <value>My Assignments</value>
+  </data>
+  <data name="TimeSheet_MyPendingTasks" xml:space="preserve">
+    <value>My Pending Taksk</value>
+  </data>
+  <data name="TimeSheet_MyTimeSheet" xml:space="preserve">
+    <value>My Timesheet</value>
   </data>
 </root>

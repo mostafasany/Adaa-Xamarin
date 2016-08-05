@@ -21,7 +21,39 @@ namespace AdaaMobile.Views.EServices
         public OfficeMaintenanceFirstPartView()
         {
             InitializeComponent();  
+			HandleArabicLanguageFlowDirection ();
         }
+
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				//Equipment
+				lblTypeOfEquipment.HorizontalOptions = LayoutOptions.End;
+				lblTypeOfEquipmentResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (imgTypeOfEquipmentResult, 0);
+				imgTypeOfEquipmentResult.RotationY = 180;
+			
+				//Location
+				lblLocation.HorizontalOptions = LayoutOptions.End;
+				lblLocationResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (imgLocation, 0);
+				imgLocation.RotationY = 180;
+
+				//Rooms
+				lblRoom.HorizontalOptions = LayoutOptions.End;
+				lblRoomResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (imgRoom, 0);
+				imgRoom.RotationY = 180;
+
+				//Priority
+				lblPriority.HorizontalOptions = LayoutOptions.End;
+				lblPriorityResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (imgsPriority, 0);
+				imgsPriority.RotationY = 180;
+
+			}
+		}
 
 
         //This will be called from view model to update room selection when rooms are selected.

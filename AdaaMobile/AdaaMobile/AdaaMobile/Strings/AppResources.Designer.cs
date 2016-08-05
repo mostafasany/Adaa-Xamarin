@@ -467,7 +467,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter valid password.
+        ///   Looks up a localized string similar to Wrong username or password.
         /// </summary>
         public static string EnterValidPassword {
             get {
@@ -962,6 +962,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reason should not contain any special characters.
+        /// </summary>
+        public static string PassReasonShouldnotContainSpecialCharchters {
+            get {
+                return ResourceManager.GetString("PassReasonShouldnotContainSpecialCharchters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password should not contain special charachters.
         /// </summary>
         public static string PassShouldnotContainSpecialChars {
@@ -1151,6 +1160,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string RequestDate {
+            get {
+                return ResourceManager.GetString("RequestDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request Date/Time.
         /// </summary>
         public static string RequestDateTime {
@@ -1214,6 +1232,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string RequestTitle {
+            get {
+                return ResourceManager.GetString("RequestTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request Type.
         /// </summary>
         public static string RequestType {
@@ -1237,6 +1264,15 @@ namespace AdaaMobile.Strings {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Date Should be Greater than Departure Date.
+        /// </summary>
+        public static string ReturnDateShouldBeGreaterThanDepartureDate {
+            get {
+                return ResourceManager.GetString("ReturnDateShouldBeGreaterThanDepartureDate", resourceCulture);
             }
         }
         
@@ -1453,6 +1489,33 @@ namespace AdaaMobile.Strings {
         public static string TextLimit {
             get {
                 return ResourceManager.GetString("TextLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Assignments.
+        /// </summary>
+        public static string TimeSheet_MyAssignment {
+            get {
+                return ResourceManager.GetString("TimeSheet_MyAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Pending Taksk.
+        /// </summary>
+        public static string TimeSheet_MyPendingTasks {
+            get {
+                return ResourceManager.GetString("TimeSheet_MyPendingTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Timesheet.
+        /// </summary>
+        public static string TimeSheet_MyTimeSheet {
+            get {
+                return ResourceManager.GetString("TimeSheet_MyTimeSheet", resourceCulture);
             }
         }
         

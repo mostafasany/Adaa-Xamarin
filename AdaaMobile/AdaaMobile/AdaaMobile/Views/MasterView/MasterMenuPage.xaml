@@ -1,104 +1,45 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile"
-             xmlns:views="clr-namespace:AdaaMobile.Views;assembly=AdaaMobile"
-             xmlns:adaaMobile="clr-namespace:AdaaMobile;assembly=AdaaMobile"
-             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.MasterView.MasterMenuPage"
-             BackgroundColor="{StaticResource SideMenuBackgroundNormal}"
-
-    >
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <x:Double x:Key="ExtraSpace">3</x:Double>
-      <x:Double x:Key="InnerStackSpacing">6</x:Double>
-      <Thickness x:Key="InnerStackPadding" Top="6" Bottom="6"/>
-    </ResourceDictionary>
-  </ContentPage.Resources>
-  <Grid>
-    
-    <Image  VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="Fill" >
-      <Image.Source>
-        <OnPlatform x:TypeArguments="ImageSource" WinPhone="" Android="navigationimage.png" iOS="navigation-image.png"/>
-      </Image.Source>
-    </Image>
-      
-    <ScrollView   >
-      <StackLayout VerticalOptions="Center" HorizontalOptions="Fill"  Padding="0,6,0,6">
-        <StackLayout x:Name="MenuStack" VerticalOptions="Fill" HorizontalOptions="Fill" >
-
-          <StackLayout Spacing="{StaticResource InnerStackSpacing}"
-                       Padding="{StaticResource InnerStackPadding}" >
-            <masterView:SideMenuItemControl x:Name="HomeControl"
-            Svg="AdaaMobile.Images.Home.svg"  Title="{ext:Translate Home}" Tapped="SideMenuItemControl_OnTapped"
-           VerticalOptions="Start" HorizontalOptions="Fill"
-           BindingContext="{x:Type views:HomePage}" IsPageSupported="True"/>
-
-            <masterView:SideMenuItemControl
-                  Svg="AdaaMobile.Images.Profile.svg"  Title="{ext:Translate Profile}" Tapped="SideMenuItemControl_OnTapped"
-                  VerticalOptions="Start" HorizontalOptions="Fill"
-                  BindingContext="{x:Type views:ProfilePage}" IsPageSupported="True"/>
-
-          </StackLayout>
-          <BoxView
-                           HorizontalOptions="Fill" VerticalOptions="Start"
-                           HeightRequest="1" Color="White" Opacity="0.5" />
-
-          <StackLayout Spacing="{StaticResource InnerStackSpacing}"
-                       Padding="{StaticResource InnerStackPadding}" >
-            <masterView:SideMenuItemControl
-                  Svg="AdaaMobile.Images.Attendance_icn.svg"  Title="{ext:Translate AttendanceAndLeave}" Tapped="SideMenuItemControl_OnTapped"
-                  VerticalOptions="Start" HorizontalOptions="Fill"
-                  BindingContext="{x:Type views:AttendancePage}" IsPageSupported="True"/>
-
-            <masterView:SideMenuItemControl
-                  Svg="AdaaMobile.Images.Directory.svg"  Title="{ext:Translate Directory}" Tapped="SideMenuItemControl_OnTapped"
-                  VerticalOptions="Start" HorizontalOptions="Fill"
-                  BindingContext="{x:Type views:DirectoryPage}"  IsPageSupported="True"/>
-          </StackLayout>
-          <BoxView
-                           HorizontalOptions="Fill" VerticalOptions="Start"
-                           HeightRequest="1" Color="White" Opacity="0.5" />
-
-          <StackLayout Spacing="{StaticResource InnerStackSpacing}"
-                       Padding="{StaticResource InnerStackPadding}" >
-            <masterView:SideMenuItemControl
-                      Svg="AdaaMobile.Images.MyRequests.svg"  Title="{ext:Translate MyRequests}" Tapped="SideMenuItemControl_OnTapped"
-                      VerticalOptions="Start" HorizontalOptions="Fill"
-                      BindingContext="{x:Type views:MyRequestsPage}"  IsPageSupported="True"/>
-
-            <masterView:SideMenuItemControl
-                  Svg="AdaaMobile.Images.MyTasks.svg"  Title="{ext:Translate MyTasks}" Tapped="SideMenuItemControl_OnTapped"
-                  VerticalOptions="Start" HorizontalOptions="Fill"
-                  BindingContext="{x:Type views:MyTasksPage}" />
-
-          </StackLayout>
-          <BoxView
-                           HorizontalOptions="Fill" VerticalOptions="Start"
-                           HeightRequest="1" Color="White" Opacity="0.5" />
-
-          <StackLayout Spacing="{StaticResource InnerStackSpacing}"
-                       Padding="{StaticResource InnerStackPadding}" >
-            <masterView:SideMenuItemControl
-                     Svg="AdaaMobile.Images.Timesheet.svg"  Title="{ext:Translate AdaaTimesheet}" Tapped="SideMenuItemControl_OnTapped"
-                     VerticalOptions="Start" HorizontalOptions="Fill"
-                     BindingContext="{x:Type adaaMobile:TimesheetPage}" />
-
-          </StackLayout>
-          <BoxView
-                           HorizontalOptions="Fill" VerticalOptions="Start"
-                           HeightRequest="1" Color="White" Opacity="0.5" />
-
-          <StackLayout Spacing="{StaticResource InnerStackSpacing}"
-                       Padding="{StaticResource InnerStackPadding}" >
-            <masterView:SideMenuItemControl
-                      Svg="AdaaMobile.Images.Settings.svg"  Title="{ext:Translate Settings}" Tapped="SideMenuItemControl_OnTapped"
-                      VerticalOptions="Start" HorizontalOptions="Fill"
-                      BindingContext="{x:Type views:SettingsPage}" IsPageSupported="True"/>
-          </StackLayout>
-        </StackLayout>
-      </StackLayout>
-    </ScrollView>
-  </Grid>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" xmlns:views="clr-namespace:AdaaMobile.Views;assembly=AdaaMobile" xmlns:adaaMobile="clr-namespace:AdaaMobile;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" x:Class="AdaaMobile.Views.MasterView.MasterMenuPage" BackgroundColor="{StaticResource SideMenuBackgroundNormal}">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<x:Double x:Key="ExtraSpace">3</x:Double>
+			<x:Double x:Key="InnerStackSpacing">6</x:Double>
+			<Thickness x:Key="InnerStackPadding" Top="6" Bottom="6" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid>
+		<Image VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="Fill">
+			<Image.Source>
+				<OnPlatform x:TypeArguments="ImageSource" WinPhone="" Android="navigationimage.png" iOS="navigation-image.png" />
+			</Image.Source>
+		</Image>
+		<ScrollView>
+			<StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,6,0,6">
+				<StackLayout x:Name="MenuStack" VerticalOptions="Fill" HorizontalOptions="Fill">
+					<StackLayout Spacing="{StaticResource InnerStackSpacing}" Padding="{StaticResource InnerStackPadding}">
+						<masterView:SideMenuItemControl x:Name="HomeControl" Svg="AdaaMobile.Images.Home.svg" Title="{ext:Translate Home}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:HomePage}" IsPageSupported="True" />
+						<masterView:SideMenuItemControl Svg="AdaaMobile.Images.Profile.svg" Title="{ext:Translate Profile}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:ProfilePage}" IsPageSupported="True" />
+					</StackLayout>
+					<BoxView HorizontalOptions="Fill" VerticalOptions="Start" HeightRequest="1" Color="White" Opacity="0.5" />
+					<StackLayout Spacing="{StaticResource InnerStackSpacing}" Padding="{StaticResource InnerStackPadding}">
+						<masterView:SideMenuItemControl Svg="AdaaMobile.Images.Attendance_icn.svg" Title="{ext:Translate AttendanceAndLeave}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:AttendancePage}" IsPageSupported="True" />
+						<masterView:SideMenuItemControl Svg="AdaaMobile.Images.Directory.svg" Title="{ext:Translate Directory}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:DirectoryPage}" IsPageSupported="True" />
+					</StackLayout>
+					<BoxView HorizontalOptions="Fill" VerticalOptions="Start" HeightRequest="1" Color="White" Opacity="0.5" />
+					<StackLayout Spacing="{StaticResource InnerStackSpacing}" Padding="{StaticResource InnerStackPadding}">
+						<masterView:SideMenuItemControl Svg="AdaaMobile.Images.MyRequests.svg" Title="{ext:Translate MyRequests}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:MyRequestsPage}" IsPageSupported="True" />
+						<masterView:SideMenuItemControl Svg="AdaaMobile.Images.MyTasks.svg" Title="{ext:Translate MyTasks}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:MyTasksPage}" />
+					</StackLayout>
+					<BoxView HorizontalOptions="Fill" VerticalOptions="Start" HeightRequest="1" Color="White" Opacity="0.5" />
+					<StackLayout Spacing="{StaticResource InnerStackSpacing}" Padding="{StaticResource InnerStackPadding}">
+						<masterView:SideMenuItemControl Svg="AdaaMobile.Images.Timesheet.svg" Title="{ext:Translate AdaaTimesheet}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type adaaMobile:TimesheetPage}" />
+					</StackLayout>
+					<BoxView HorizontalOptions="Fill" VerticalOptions="Start" HeightRequest="1" Color="White" Opacity="0.5" />
+					<StackLayout Spacing="{StaticResource InnerStackSpacing}" Padding="{StaticResource InnerStackPadding}">
+						<masterView:SideMenuItemControl Svg="AdaaMobile.Images.Settings.svg" Title="{ext:Translate Settings}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:SettingsPage}" IsPageSupported="True" />
+					</StackLayout>
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</Grid>
 </ContentPage>

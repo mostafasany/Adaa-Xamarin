@@ -32,9 +32,17 @@ namespace AdaaMobile.Views
 			else {
 				LanguagePicker.Unfocused+= LanguagePicker_Unfocused;
 			}
-
+			HandleArabicLanguageFlowDirection();
         }
 
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				LanguageButton.HorizontalOptions = LayoutOptions.End;
+				SelectedLanguageNameLabel.HorizontalOptions = LayoutOptions.End;
+			}
+		}
         void LanguagePicker_Unfocused (object sender, FocusEventArgs e)
         {
 			_settingsViewModel.UpdateLanguage(LanguagePicker.SelectedIndex);

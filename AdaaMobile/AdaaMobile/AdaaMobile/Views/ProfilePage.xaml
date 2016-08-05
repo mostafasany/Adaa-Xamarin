@@ -1,103 +1,45 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
-             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             xmlns:views="clr-namespace:AdaaMobile.Views;assembly=AdaaMobile"
-             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
-             Title="{Binding DisplayName}"
-             x:Class="AdaaMobile.Views.ProfilePage">
-
-  <ContentPage.BackgroundImage>
-    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
-  </ContentPage.BackgroundImage>
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <converters:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
-      <converters:VisibleNotEmptyConverter x:Key="TrueWhenNotEmptyConverter"/>
-      <converters:VisibleNotNullConverter x:Key="TrueWhenNotNullConverter"/>
-    </ResourceDictionary>
-  </ContentPage.Resources>
-  <Grid x:Name="HRelativeLayout">
-    <Grid.RowDefinitions>
-      <!--offset-->
-      <RowDefinition Height="30"/>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
-
-
-    <!--Section Background-->
-    <BoxView Grid.Row="0" Grid.RowSpan="2"  BackgroundColor="{StaticResource AppBackgroundNormal}" />
-
-    <!--Seperator under user profile-->
-    <BoxView
-                  HorizontalOptions="Fill"
-                  VerticalOptions="End"
-                  HeightRequest="2"
-                  Color="{StaticResource YellowAccent}"
-                  Grid.Row="1"
-                  />
-
-    <!--User Circle Profile-->
-    <controls:CircleImage HeightRequest="100"
-                          WidthRequest="100"
-                          BorderThickness="5"
-                          BorderColor="{StaticResource YellowAccent}"
-                          Grid.Row="1"
-                          Grid.RowSpan="2"
-                          VerticalOptions="Center"
-                          HorizontalOptions="Center"
-                          Source="{Binding Image}"
-                          Aspect="Fill"
-                           >
-    </controls:CircleImage>
-
-    <!--<Grid Grid.Row="3" HorizontalOptions="Fill" Padding="15"
-          IsVisible="{Binding UserProfile,Converter={StaticResource TrueWhenNotNullConverter}}"
-          >
-      <Button  HorizontalOptions="Fill"
-              VerticalOptions="Start"
-              Text="{ext:Translate UnLockMyAccount}"
-              TextColor="Black"
-              BorderColor="#FF1B8991"
-              BorderRadius="{StaticResource CornerRadius}"
-              BorderWidth="3"
-              BackgroundColor="#7F1B8991"
-              Command="{Binding UnlockMyAccountCommand}"
-              IsVisible="{Binding UserProfileMode,
-            Converter={StaticResource EnumToBoolConverter}
-            ,ConverterParameter=CurrentUser}"
-            />
-    </Grid>-->
-    <ScrollView HorizontalOptions="Fill"
-                VerticalOptions="Fill"
-                Orientation="Vertical"
-                x:Name="PagesScrollView"
-                Grid.Row="4"
-                IsVisible="{Binding UserProfile,Converter={StaticResource TrueWhenNotNullConverter}}"
-                >
-      <StackLayout Spacing="20" Padding="20,0">
-        <views:ProfilePropertyControl Title="{ext:Translate FullName}" Value="{Binding UserProfile.DisplayName}"/>
-        <views:ProfilePropertyControl Title="{ext:Translate EmployeeID}" Value="{Binding UserProfile.UserId}"/>
-        <views:ProfilePropertyControl Title="{ext:Translate JobTitle}" Value="{Binding UserProfile.JobTitle}"/>
-        <views:ProfilePropertyControl Title="{ext:Translate Department}" Value="{Binding UserProfile.DeptName}"/>
-        <views:ProfilePropertyControl Title="{ext:Translate Group}" Value="{Binding UserProfile.GroupName}"/>
-        <views:ProfilePropertyControl x:Name="OfficeNumberField" Title="{ext:Translate OfficeNumber}" Value="{Binding UserProfile.OfficeNum}" />
-        <views:ProfilePropertyControl x:Name="MobileNumberField" Title="{ext:Translate MobileNumber}" Value="{Binding UserProfile.MobileNum}" >
-        </views:ProfilePropertyControl>
-        <views:ProfilePropertyControl x:Name="EmailField" Title="{ext:Translate Email}" Value="{Binding UserProfile.Email}" />
-        <views:ProfilePropertyControl Title="{ext:Translate Manager}" Value="{Binding UserProfile.Manager}"/>
-      </StackLayout>
-    </ScrollView>
-
-    <ActivityIndicator  IsRunning="{Binding IsBusy}"
-                     HeightRequest="50" WidthRequest="50"
-                     Grid.Row="0" Grid.RowSpan="5"
-                     VerticalOptions="Center" HorizontalOptions="Center"/>
-  </Grid>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:views="clr-namespace:AdaaMobile.Views;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" Title="{Binding DisplayName}" x:Class="AdaaMobile.Views.ProfilePage">
+	<ContentPage.BackgroundImage>
+		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
+	</ContentPage.BackgroundImage>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+			<converters:VisibleNotEmptyConverter x:Key="TrueWhenNotEmptyConverter" />
+			<converters:VisibleNotNullConverter x:Key="TrueWhenNotNullConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid x:Name="HRelativeLayout">
+		<Grid.RowDefinitions>
+			<!--offset-->
+			<RowDefinition Height="30" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<!--Section Background-->
+		<BoxView Grid.Row="0" Grid.RowSpan="2" BackgroundColor="{StaticResource AppBackgroundNormal}" />
+		<!--Seperator under user profile-->
+		<BoxView HorizontalOptions="Fill" VerticalOptions="End" HeightRequest="2" Color="{StaticResource YellowAccent}" Grid.Row="1" />
+		<!--User Circle Profile-->
+		<controls:CircleImage HeightRequest="100" WidthRequest="100" BorderThickness="5" BorderColor="{StaticResource YellowAccent}" Grid.Row="1" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Source="{Binding Image}" Aspect="Fill">
+		</controls:CircleImage>
+		<ScrollView HorizontalOptions="Fill" VerticalOptions="Fill" Orientation="Vertical" x:Name="PagesScrollView" Grid.Row="4" IsVisible="{Binding UserProfile,Converter={StaticResource TrueWhenNotNullConverter}}">
+			<StackLayout Spacing="20" Padding="20,0">
+				<views:ProfilePropertyControl Title="{ext:Translate FullName}" Value="{Binding UserProfile.DisplayName}" />
+				<views:ProfilePropertyControl Title="{ext:Translate EmployeeID}" Value="{Binding UserProfile.UserId}" />
+				<views:ProfilePropertyControl Title="{ext:Translate JobTitle}" Value="{Binding UserProfile.JobTitle}" />
+				<views:ProfilePropertyControl Title="{ext:Translate Department}" Value="{Binding UserProfile.DeptName}" />
+				<views:ProfilePropertyControl Title="{ext:Translate Group}" Value="{Binding UserProfile.GroupName}" />
+				<views:ProfilePropertyControl x:Name="OfficeNumberField" Title="{ext:Translate OfficeNumber}" Value="{Binding UserProfile.OfficeNum}" />
+				<views:ProfilePropertyControl x:Name="MobileNumberField" Title="{ext:Translate MobileNumber}" Value="{Binding UserProfile.MobileNum}">
+				</views:ProfilePropertyControl>
+				<views:ProfilePropertyControl x:Name="EmailField" Title="{ext:Translate Email}" Value="{Binding UserProfile.Email}" />
+				<views:ProfilePropertyControl Title="{ext:Translate Manager}" Value="{Binding UserProfile.Manager}" />
+			</StackLayout>
+		</ScrollView>
+		<ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="50" WidthRequest="50" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="Center" HorizontalOptions="Center" />
+	</Grid>
 </ContentPage>

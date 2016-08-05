@@ -1,57 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.MasterView.SideMenuItemControl"
-             BackgroundColor="Transparent"
-             x:Name="ParentView" IsEnabled="True"
-             >
-  <ContentView.Resources>
-    <ResourceDictionary>
-      <converters:BoolToColorConverter x:Key="SelectionColorConverter"
-         FalseColor="Transparent"  TrueColor="#FF8DAFB1"  />
-      <converters:BoolToColorConverter x:Key="ListColorConverter"
-       FalseColor="Gray"  TrueColor="White"  />
-    </ResourceDictionary>
-  </ContentView.Resources>
-  <Grid>
-    <controls:ExtendedButton
-            Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0"
-            Text="" TextColor="Transparent" BackgroundColor="Transparent"
-            Clicked="Button_OnClicked"
-      >
-
-    </controls:ExtendedButton>
-    <Grid ColumnSpacing="20" x:Name="ContentGrid" InputTransparent="True">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="13"/>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
-      <BoxView Color="{Binding IsSelected,Source={x:Reference ParentView}
-         ,Converter={StaticResource SelectionColorConverter}}"
-               Grid.Column="0"
-               VerticalOptions="Fill" HorizontalOptions="Fill"/>
-      <controls:SvgImage
-                          SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}"
-                          SvgPath="{Binding Svg,Source={x:Reference ParentView}}"
-                          BackgroundColor="Transparent"
-                          HeightRequest="24"
-                          WidthRequest="24"
-                          Grid.Column="1"
-                          Percentage="0"
-                          HorizontalOptions="Center" VerticalOptions="Center">
-        <controls:SvgImage.ReplacementColors>
-          <controls:ColorPair OldColor="#FFFFFF" NewColor="{StaticResource YellowAccent}"></controls:ColorPair>
-        </controls:SvgImage.ReplacementColors>
-      </controls:SvgImage>
-      <Label Grid.Column="2" TextColor="{Binding IsPageSupported,Source={x:Reference ParentView}
-         ,Converter={StaticResource ListColorConverter}}" VerticalOptions="Center" VerticalTextAlignment="Center"
-             BackgroundColor="Transparent" FontSize="Small"
-      Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
-
-    </Grid>
-  </Grid>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" x:Class="AdaaMobile.Views.MasterView.SideMenuItemControl" BackgroundColor="Transparent" x:Name="ParentView" IsEnabled="True">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<converters:BoolToColorConverter x:Key="SelectionColorConverter" FalseColor="Transparent" TrueColor="#FF8DAFB1" />
+			<converters:BoolToColorConverter x:Key="ListColorConverter" FalseColor="Gray" TrueColor="White" />
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<Grid>
+		<controls:ExtendedButton Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Transparent" BackgroundColor="Transparent" Clicked="Button_OnClicked">
+		</controls:ExtendedButton>
+		<Grid ColumnSpacing="20" x:Name="ContentGrid" InputTransparent="True">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="13" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<BoxView Color="{Binding IsSelected,Source={x:Reference ParentView}&#xD;&#xA;         ,Converter={StaticResource SelectionColorConverter}}" Grid.Column="0" VerticalOptions="Fill" HorizontalOptions="Fill" />
+			<controls:SvgImage SvgAssembly="{x:Static helpers:SvgAssembly.Pcl}" SvgPath="{Binding Svg,Source={x:Reference ParentView}}" BackgroundColor="Transparent" HeightRequest="24" WidthRequest="24" Grid.Column="1" Percentage="0" HorizontalOptions="Center" VerticalOptions="Center">
+				<controls:SvgImage.ReplacementColors>
+					<controls:ColorPair OldColor="#FFFFFF" NewColor="{StaticResource YellowAccent}">
+					</controls:ColorPair>
+				</controls:SvgImage.ReplacementColors>
+			</controls:SvgImage>
+			<Label Grid.Column="2" TextColor="{Binding IsPageSupported,Source={x:Reference ParentView}&#xD;&#xA;         ,Converter={StaticResource ListColorConverter}}" VerticalOptions="Center" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="Small" Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start" />
+		</Grid>
+	</Grid>
 </ContentView>

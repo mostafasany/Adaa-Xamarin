@@ -1,402 +1,206 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
-             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
-             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.AttendancePage"
-             BackgroundColor="White"
-             >
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:sys="clr-namespace:System;assembly=System.Runtime" 
+xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" 
+xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" 
+xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" 
+xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" x:Class="AdaaMobile.Views.AttendancePage" BackgroundColor="White">
+	<ContentPage.Resources>
 
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <Color x:Key="TabColor">#00676e</Color>
-      <converters:BoolToColorConverter x:Key="DayColorConverter"
-       FalseColor="Black"  TrueColor="{StaticResource YellowAccent}"  />
-      <converters:BoolToColorConverter x:Key="MonthColorConverter"
-       FalseColor="Black"  TrueColor="White"  />
-      <converters:BoolToColorConverter x:Key="DayBackColorConverter"
-       FalseColor="#FFB4D7DB"  TrueColor="{StaticResource AppBackgroundNormal}"  />
-      <converters:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
-      <converters:StringFormatConverter x:Key="StringFormatConverter"/>
-      <converters:DateFormatConverter x:Key="DateFormatConverter"/>
-      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
-
-    </ResourceDictionary>
-  </ContentPage.Resources>
-
-  <Grid HorizontalOptions="Fill" VerticalOptions="Fill" >
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
-
-    <ScrollView Grid.Row="0" VerticalOptions="Fill">
-      <StackLayout
-        Spacing="0"
-        Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill"
-        BackgroundColor="Transparent"
-      >
-
-        <!--Top buttons Attendance and Exceptions-->
-        <Grid ColumnSpacing="0"  >
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-          </Grid.ColumnDefinitions>
-
-          <controls:ExtendedButton
-            Padding="0"
-            Text="{ext:Translate Attendance}"
-              Grid.Column="0"
-              BorderColor="#00676e"
-              BorderWidth="1"
-              BorderRadius="0"
-              x:Name="AttendanceButton"
-              Clicked="OnTabTapped"
-
-        />
-
-          <controls:ExtendedButton
-            Padding="0" Text="{ext:Translate Exceptions}"
-              Grid.Column="1"
-              BorderWidth="1"
-              BorderRadius="0"
-              BorderColor="#00676e"
-              x:Name="ExceptionsButton"
-              Clicked="OnTabTapped"/>
-        </Grid>
-
-
-        <Grid HeightRequest="180" HorizontalOptions="Fill">
-          <!--<Grid.ColumnDefinitions>
-            --><!--<ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0"/>--><!--
-
-          </Grid.ColumnDefinitions>-->
-          <Image   HorizontalOptions="Fill" VerticalOptions="Fill"  Aspect="Fill" >
-            <Image.Source>
-              <OnPlatform x:TypeArguments="ImageSource" WinPhone="attendance.png" Android="attendance.png" iOS="attendance"/>
-            </Image.Source>
-          </Image>
-
-          <!--Date Pickers-->
-          <Grid BackgroundColor="Transparent" 
-                VerticalOptions="Fill"
-                HorizontalOptions="Fill"
-                Padding="10" ColumnSpacing="10" >
-
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*"/>
-              <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <!--DatePicker isn't customizable, So Hide it and put cutomizable 
+		<ResourceDictionary>
+			<Color x:Key="TabColor">#00676e</Color>
+			<converters:BoolToColorConverter x:Key="DayColorConverter" FalseColor="Black" TrueColor="{StaticResource YellowAccent}" />
+			<converters:BoolToColorConverter x:Key="MonthColorConverter" FalseColor="Black" TrueColor="White" />
+			<converters:BoolToColorConverter x:Key="DayBackColorConverter" FalseColor="#FFB4D7DB" TrueColor="{StaticResource AppBackgroundNormal}" />
+			<converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+			<converters:StringFormatConverter x:Key="StringFormatConverter" />
+			<converters:DateFormatConverter x:Key="DateFormatConverter" />
+			<converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ScrollView Grid.Row="0" VerticalOptions="Fill">
+		<StackLayout Spacing="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent">
+			<!--Top buttons Attendance and Exceptions-->
+			<Grid ColumnSpacing="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<controls:ExtendedButton Text="{ext:Translate Attendance}" Grid.Column="0" BorderColor="#00676e" BorderWidth="1" BorderRadius="0" x:Name="AttendanceButton" Clicked="OnTabTapped" />
+				<controls:ExtendedButton Text="{ext:Translate Exceptions}" Grid.Column="1" BorderWidth="1" BorderRadius="0" BorderColor="#00676e" x:Name="ExceptionsButton" Clicked="OnTabTapped" />
+			</Grid>
+			<Grid HeightRequest="180" HorizontalOptions="Fill">
+				<Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="Fill">
+					<Image.Source>
+						<OnPlatform x:TypeArguments="ImageSource" WinPhone="attendance.png" Android="attendance.png" iOS="attendance" />
+					</Image.Source>
+				</Image>
+				<!--Date Pickers-->
+				<Grid BackgroundColor="Transparent" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="10" ColumnSpacing="10">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<!--DatePicker isn't customizable, So Hide it and put cutomizable 
         button that triggers Date picker with it's specification-->
-            <DatePicker
-                Grid.Column="0"
-                WidthRequest="0" HeightRequest="0"
-                HorizontalOptions="Start"
-                x:Name="MinDatePicker"
-                Format="d MMM yyyy"
-                MinimumDate="{Binding MinimumDate}"
-                DateSelected="Date_Selected"
-                MaximumDate="{x:Static sys:DateTime.Now}"
-                VerticalOptions="End"
-            />
-
-            <controls:ImageButton Grid.Column="0"
-                    Text="{Binding StartDate,
-                Converter={StaticResource DateFormatConverter},
-                ConverterParameter=d MMM yyyy}"
-                    FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                    Clicked="StartDate_Clicked"
-                    
-                    VerticalOptions="End"
-                    BackgroundColor="{StaticResource AppBackgroundNormal}"
-                    TextColor="White"
-
-                >
-
-              <controls:ImageButton.ImageHeightRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
-              </controls:ImageButton.ImageHeightRequest>
-
-              <controls:ImageButton.ImageWidthRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
-              </controls:ImageButton.ImageWidthRequest>
-              
-              <controls:ImageButton.HeightRequest>
-                <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36"/>
-              </controls:ImageButton.HeightRequest>
-
-              <controls:ImageButton.Source>
-                <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="date.png" iOS="date"/>
-              </controls:ImageButton.Source>
-            </controls:ImageButton>
-
-            <!--DatePicker isn't customizable, So Hide it and put cutomizable 
+					<DatePicker Grid.Column="0" WidthRequest="0" HeightRequest="0" HorizontalOptions="Start" x:Name="MinDatePicker" Format="d MMM yyyy" MinimumDate="{Binding MinimumDate}" DateSelected="Date_Selected" MaximumDate="{x:Static sys:DateTime.Now}" VerticalOptions="End" />
+					<controls:ImageButton Grid.Column="0" Text="{Binding StartDate,&#xD;&#xA;                Converter={StaticResource DateFormatConverter},&#xD;&#xA;                ConverterParameter=d MMM yyyy}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Clicked="StartDate_Clicked" VerticalOptions="End" BackgroundColor="{StaticResource AppBackgroundNormal}" TextColor="White">
+						<controls:ImageButton.ImageHeightRequest>
+							<OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20" />
+						</controls:ImageButton.ImageHeightRequest>
+						<controls:ImageButton.ImageWidthRequest>
+							<OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20" />
+						</controls:ImageButton.ImageWidthRequest>
+						<controls:ImageButton.HeightRequest>
+							<OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36" />
+						</controls:ImageButton.HeightRequest>
+						<controls:ImageButton.Source>
+							<OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="date.png" iOS="date" />
+						</controls:ImageButton.Source>
+					</controls:ImageButton>
+					<!--DatePicker isn't customizable, So Hide it and put cutomizable 
         button that triggers Date picker with it's specification-->
-            <DatePicker
-                Grid.Column="1"
-                x:Name="MaxDatePicker"
-                Format="d MMM yyyy"
-                HorizontalOptions="Start"
-                WidthRequest="0" HeightRequest="0"
-                MinimumDate="{Binding StartDate}"
-                MaximumDate="{x:Static sys:DateTime.Now}"
-                DateSelected="Date_Selected"
-                VerticalOptions="End"
-             
-                    />
-            <controls:ImageButton Grid.Column="1"
-                      Text="{Binding EndDate,
-                Converter={StaticResource DateFormatConverter},
-                ConverterParameter=d MMM yyyy}"
-                      Clicked="EndDate_Clicked"
-                      VerticalOptions="End"
-                      FontSize="{x:Static helpers:FontHelper.MilliFontSize}"
-                      BackgroundColor="{StaticResource AppBackgroundNormal}"
-                      TextColor = "White"
-                >
-              <controls:ImageButton.ImageHeightRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
-              </controls:ImageButton.ImageHeightRequest>
-
-              <controls:ImageButton.ImageWidthRequest>
-                <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20"/>
-              </controls:ImageButton.ImageWidthRequest>
-              
-              <controls:ImageButton.HeightRequest>
-                <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36"/>
-              </controls:ImageButton.HeightRequest>
-              <controls:ImageButton.Source>
-                <OnPlatform x:TypeArguments="ImageSource" WinPhone="date.png" Android="date.png" iOS="date"/>
-              </controls:ImageButton.Source>
-            </controls:ImageButton>
-          </Grid>
-        </Grid>
-
-        <StackLayout  >
-          <controls:HorizontalListView ItemsSource="{Binding DaysList}"
-                                       ItemTapped="Day_Tapped"
-                                       VerticalOptions="Start"
-                                       HorizontalOptions="Fill"
-                                       
-                                       
-              >
-            <controls:HorizontalListView.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" Android="69" iOS="68" WinPhone="80"/>
-            </controls:HorizontalListView.HeightRequest>
-            <controls:HorizontalListView.ItemTemplate>
-              <DataTemplate>
-                <ViewCell>
-                  <ViewCell.View>
-                    <!--<Label Text="{Binding AbbrWeek}" ></Label>-->
-                    <Grid RowSpacing="0"             >
-                      <Grid.RowDefinitions>
-                        <RowDefinition  Height="3"/>
-                        <RowDefinition  Height="*"/>
-                        <RowDefinition  Height="3"/>
-                        <RowDefinition  Height="Auto"/>
-                      </Grid.RowDefinitions>
-
-                      <BoxView BackgroundColor="{StaticResource YellowAccent}"
-                               VerticalOptions="Fill"
-                               HorizontalOptions="Fill"
-                               Grid.Row="0" Grid.RowSpan="3" />
-                             
-                      <Label Grid.Row="1"
-                      VerticalTextAlignment="Center"
-                             VerticalOptions="Start"
-                             HorizontalTextAlignment="Center"
-                             HorizontalOptions="Fill"
-                             BackgroundColor="Transparent"
-                             TextColor="Black"
-                             FontSize="Small"
-                             Text="{Binding AbbrWeek}"/>
-                      
-                      <BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}"
-                               x:Name="DayBack"
-                               VerticalOptions="Fill"
-                               HorizontalOptions="Fill"
-                               Grid.Row="3" />
-                      
-                      <BoxView BackgroundColor="#AAFFFFFF"                     
-                     VerticalOptions="Fill"
-                     HorizontalOptions="End"
-                     WidthRequest="1"
-                     Grid.Row="3"/>
-                     
-                      <StackLayout VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   Padding="8,4,8,4" Spacing="2"
-                                   Grid.Row="3">
-                        <Label x:Name="DayLabel"
-                               BackgroundColor="Transparent"
-                               TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}"
-                               FontSize="Medium" FontAttributes="Bold"
-                               HorizontalTextAlignment="Center"
-                               Text="{Binding Day}"/>
-                        <Label
-                             x:Name="MonthLabel"
-                              BackgroundColor="Transparent"
-                             TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}"
-                             FontSize="Small"
-                             HorizontalTextAlignment="Center"
-                             Text="{Binding AbbrMonth}"/>
-                      </StackLayout>
-                    </Grid>
-                  </ViewCell.View>
-                </ViewCell>
-              </DataTemplate>
-            </controls:HorizontalListView.ItemTemplate>
-          </controls:HorizontalListView>
-        </StackLayout>
-        
-        <Grid  VerticalOptions="FillAndExpand" MinimumHeightRequest="180"   BackgroundColor="{StaticResource AppBackgroundNormal}">
-          <!--Attendance Details Grid-->
-          <Grid VerticalOptions="Start" Padding="25,10"
-                IsVisible="{Binding AttendanceMode,
-              Converter={StaticResource EnumToBoolConverter},ConverterParameter=Attendance}"
-          >
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="2*"/>
-              <ColumnDefinition Width="2*"/>
-              <ColumnDefinition Width="1.4*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="30"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label FontSize="Small" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate FirstLocation}" Grid.Column="0" Grid.ColumnSpan="1"/>
-            <Label FontSize="Small" TextColor="White" Text="{Binding CurrentAttendance.FirstSeenLoc}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" HorizontalTextAlignment="Start"/>
-
-            <Label FontSize="Small" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate LastLocation}" Grid.Column="1" Grid.ColumnSpan="2"/>
-            <Label FontSize="Small" TextColor="White" Text="{Binding CurrentAttendance.LastSeenLoc}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-            
-            <!--Seperator-->
-            <BoxView HeightRequest="1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-                     VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="White"/>
-            <!--Headers -->
-            <Label FontSize="Small" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate FirstSeen}" Grid.Column="0" Grid.Row="3"/>
-            <Label FontSize="Small" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate LastSeen}" Grid.Column="1" Grid.Row="3" />
-            <Label FontSize="Small" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Duration}" Grid.Column="2" Grid.Row="3"/>
-            <!--Values-->
-            <Label FontSize="Small" TextColor="White" Text="{Binding CurrentAttendance.FirstSeen}" Grid.Column="0" Grid.Row="4"/>
-            <Label FontSize="Small" TextColor="White" Text="{Binding CurrentAttendance.LastSeen}" Grid.Column="1" Grid.Row="4" />
-            <Label FontSize="Small" TextColor="White" Text="{Binding CurrentAttendance.Duration}" Grid.Column="2" Grid.Row="4"/>
-
-          </Grid>
-
-          <!--Exception Details Grid-->
-          <Grid VerticalOptions="Start" Padding="25,10"
-                IsVisible="{Binding AttendanceMode,
-              Converter={StaticResource EnumToBoolConverter},ConverterParameter=Exceptions}"
-          >
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="2*"/>
-              <ColumnDefinition Width="2*"/>
-              <ColumnDefinition Width="1.4*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="30"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label FontSize="Small" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Location}" Grid.Column="0" Grid.ColumnSpan="3"/>
-            <Label FontSize="Small" TextColor="White" Text="{Binding SelectedDay.Details.FirstSeenLoc}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" HorizontalTextAlignment="Start"/>
-            <!--Seperator-->
-            <BoxView HeightRequest="1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-                     VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="White"/>
-            <!--Headers -->
-            <Label FontSize="Small" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Late}" Grid.Column="0" Grid.Row="3"/>
-            <Label FontSize="Small" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Remaining}" Grid.Column="1" Grid.Row="3" />
-            <Label FontSize="Small" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Duration}" Grid.Column="2" Grid.Row="3"/>
-            <!--Values-->
-            <Label FontSize="Small" TextColor="White" Text="{Binding SelectedDay.Details.Late}" Grid.Column="0" Grid.Row="4"/>
-            <Label FontSize="Small" TextColor="White" Text="{Binding SelectedDay.Details.Remaining}" Grid.Column="1" Grid.Row="4" />
-            <Label FontSize="Small" TextColor="White" Text="{Binding SelectedDay.Details.Duration}" Grid.Column="2" Grid.Row="4"/>
-
-          </Grid>
-         
-          <ActivityIndicator  IsRunning="{Binding IsBusy}"
-                       HeightRequest="60" WidthRequest="60" Color="{StaticResource YellowAccent}"
-                       VerticalOptions="Center" HorizontalOptions="Center"/>
-        </Grid>
-
-        <Grid x:Name="DayPassDelegationGrid" Padding="10" ColumnSpacing="8" >
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-          </Grid.ColumnDefinitions>
-
-          <controls:ImageButton
-            x:Name="DelegationBtn"
-              Grid.Column="0"
-              HorizontalOptions="Fill"
-              BackgroundColor="{StaticResource YellowAccent}"
-              Orientation="ImageOnTop"
-              TextColor="Black"
-              BorderRadius="{StaticResource BorderRadius}"
-              Text="{ext:Translate Delegation}"
-                >
-           <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="100" iOS="65"/>
-            </controls:ImageButton.HeightRequest>
-
-
-            <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36"/>
-            </controls:ImageButton.ImageHeightRequest>
-
-            <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36"/>
-            </controls:ImageButton.ImageWidthRequest>
-
-            <controls:ImageButton.Source>
-              <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="delegation.png" iOS="delegation"/>
-            </controls:ImageButton.Source>
-
-          </controls:ImageButton>
-
-          <controls:ImageButton
-            x:Name="DayPassBtn"
-              Grid.Column="1"
-              HorizontalOptions="Fill"
-              VerticalOptions="Start"
-              BackgroundColor="{StaticResource YellowAccent}"
-              Orientation="ImageOnTop"
-              TextColor="Black"
-              BorderRadius="{StaticResource BorderRadius}"
-              Text="{ext:Translate DayPass}">
-
-            <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="100" iOS="65"/>
-            </controls:ImageButton.HeightRequest>
-
-
-            <controls:ImageButton.ImageHeightRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36"/>
-            </controls:ImageButton.ImageHeightRequest>
-
-            <controls:ImageButton.ImageWidthRequest>
-              <OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36"/>
-            </controls:ImageButton.ImageWidthRequest>
-            <controls:ImageButton.Source>
-              <OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="daypass.png" iOS="daypass"/>
-            </controls:ImageButton.Source>
-
-          </controls:ImageButton>
-        </Grid>
-      </StackLayout>
-
-    </ScrollView>
-  </Grid>
-
+					<DatePicker Grid.Column="1" x:Name="MaxDatePicker" Format="d MMM yyyy" HorizontalOptions="Start" WidthRequest="0" HeightRequest="0" MinimumDate="{Binding StartDate}" MaximumDate="{x:Static sys:DateTime.Now}" DateSelected="Date_Selected" VerticalOptions="End" />
+					<controls:ImageButton Grid.Column="1" Text="{Binding EndDate,&#xD;&#xA;                Converter={StaticResource DateFormatConverter},&#xD;&#xA;                ConverterParameter=d MMM yyyy}" Clicked="EndDate_Clicked" VerticalOptions="End" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" BackgroundColor="{StaticResource AppBackgroundNormal}" TextColor="White">
+						<controls:ImageButton.ImageHeightRequest>
+							<OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20" />
+						</controls:ImageButton.ImageHeightRequest>
+						<controls:ImageButton.ImageWidthRequest>
+							<OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="20" />
+						</controls:ImageButton.ImageWidthRequest>
+						<controls:ImageButton.HeightRequest>
+							<OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="40" iOS="36" />
+						</controls:ImageButton.HeightRequest>
+						<controls:ImageButton.Source>
+							<OnPlatform x:TypeArguments="ImageSource" WinPhone="date.png" Android="date.png" iOS="date" />
+						</controls:ImageButton.Source>
+					</controls:ImageButton>
+				</Grid>
+			</Grid>
+			<controls:HorizontalListView ItemsSource="{Binding DaysList}" ItemTapped="Day_Tapped" VerticalOptions="Start" HorizontalOptions="Fill">
+				<controls:HorizontalListView.HeightRequest>
+					<OnPlatform x:TypeArguments="x:Double" Android="69" iOS="68" WinPhone="80" />
+				</controls:HorizontalListView.HeightRequest>
+				<controls:HorizontalListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.View>
+								<!--<Label Text="{Binding AbbrWeek}" ></Label>-->
+								<Grid RowSpacing="0">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="3" />
+										<RowDefinition Height="*" />
+										<RowDefinition Height="3" />
+										<RowDefinition Height="Auto" />
+									</Grid.RowDefinitions>
+									<BoxView BackgroundColor="{StaticResource YellowAccent}" VerticalOptions="Fill" HorizontalOptions="Fill" Grid.Row="0" Grid.RowSpan="3" />
+									<Label Grid.Row="1" VerticalTextAlignment="Center" VerticalOptions="Start" HorizontalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black" FontSize="Small" Text="{Binding AbbrWeek}" />
+									<BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}" x:Name="DayBack" VerticalOptions="Fill" HorizontalOptions="Fill" Grid.Row="3" />
+									<BoxView BackgroundColor="#AAFFFFFF" VerticalOptions="Fill" HorizontalOptions="End" WidthRequest="1" Grid.Row="3" />
+									<StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="8,4,8,4" Spacing="2" Grid.Row="3">
+										<Label x:Name="DayLabel" BackgroundColor="Transparent" TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding Day}" />
+										<Label x:Name="MonthLabel" BackgroundColor="Transparent" TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}" FontSize="Small" HorizontalTextAlignment="Center" Text="{Binding AbbrMonth}" />
+									</StackLayout>
+								</Grid>
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</controls:HorizontalListView.ItemTemplate>
+			</controls:HorizontalListView>
+			<Grid VerticalOptions="FillAndExpand" MinimumHeightRequest="180" BackgroundColor="{StaticResource AppBackgroundNormal}">
+				<!--Attendance Details Grid-->
+				<Grid VerticalOptions="Start" Padding="25,10" IsVisible="{Binding AttendanceMode,&#xD;&#xA;              Converter={StaticResource EnumToBoolConverter},ConverterParameter=Attendance}">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="2*" />
+						<ColumnDefinition Width="2*" />
+						<ColumnDefinition Width="1.4*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="30" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Label FontSize="Small" x:Name="lblFirstLLoc" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate FirstLocation}" Grid.Column="0" Grid.ColumnSpan="1" />
+					<Label FontSize="Small" x:Name="lblFirstSeenLocResult" TextColor="White" Text="{Binding CurrentAttendance.FirstSeenLoc}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" HorizontalTextAlignment="Start" />
+					<Label FontSize="Small" x:Name="lblLastSeenLoc" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate LastLocation}" Grid.Column="1" Grid.ColumnSpan="2" />
+					<Label FontSize="Small" x:Name="lblLastSeenLocResult" TextColor="White" Text="{Binding CurrentAttendance.LastSeenLoc}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" />
+					<!--Seperator-->
+					<BoxView HeightRequest="1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="White" />
+					<!--Headers -->
+					<Label FontSize="Small" x:Name="lblFirstSeen" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate FirstSeen}" Grid.Column="0" Grid.Row="3" />
+					<Label FontSize="Small" x:Name="lblLastSeen" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate LastSeen}" Grid.Column="1" Grid.Row="3" />
+					<Label FontSize="Small" x:Name="lblDurtation" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Duration}" Grid.Column="2" Grid.Row="3" />
+					<!--Values-->
+					<Label FontSize="Small" x:Name="lblFirstSeenResult" TextColor="White" Text="{Binding CurrentAttendance.FirstSeen}" Grid.Column="0" Grid.Row="4" />
+					<Label FontSize="Small" x:Name="lblLastSeenResult" TextColor="White" Text="{Binding CurrentAttendance.LastSeen}" Grid.Column="1" Grid.Row="4" />
+					<Label FontSize="Small" x:Name="lblDurtationResult" TextColor="White" Text="{Binding CurrentAttendance.Duration}" Grid.Column="2" Grid.Row="4" />
+				</Grid>
+				<!--Exception Details Grid-->
+				<Grid VerticalOptions="Start" Padding="25,10" IsVisible="{Binding AttendanceMode,&#xD;&#xA;              Converter={StaticResource EnumToBoolConverter},ConverterParameter=Exceptions}">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="2*" />
+						<ColumnDefinition Width="2*" />
+						<ColumnDefinition Width="1.4*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="30" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Label FontSize="Small" x:Name="lblExcepFirsSeenLoc" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Location}" Grid.Column="0" Grid.ColumnSpan="3" />
+					<Label FontSize="Small" x:Name="lblExcepFirsSeenLocResult" TextColor="White" Text="{Binding SelectedDay.Details.FirstSeenLoc}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" HorizontalTextAlignment="Start" />
+					<!--Seperator-->
+					<BoxView HeightRequest="1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="White" />
+					<!--Headers -->
+					<Label FontSize="Small" x:Name="lblExcepLate" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Late}" Grid.Column="0" Grid.Row="3" />
+					<Label FontSize="Small" x:Name="lblExcepRemaining" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Remaining}" Grid.Column="1" Grid.Row="3" />
+					<Label FontSize="Small" x:Name="lblExcepDuration" TextColor="{StaticResource YellowAccent}" Text="{ext:Translate Duration}" Grid.Column="2" Grid.Row="3" />
+					<!--Values-->
+					<Label FontSize="Small" x:Name="lblExcepLateResult" TextColor="White" Text="{Binding SelectedDay.Details.Late}" Grid.Column="0" Grid.Row="4" />
+					<Label FontSize="Small" x:Name="lblExcepRemainingResult" TextColor="White" Text="{Binding SelectedDay.Details.Remaining}" Grid.Column="1" Grid.Row="4" />
+					<Label FontSize="Small" x:Name="lblExcepDurationResult" TextColor="White" Text="{Binding SelectedDay.Details.Duration}" Grid.Column="2" Grid.Row="4" />
+				</Grid>
+				<ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60" Color="{StaticResource YellowAccent}" VerticalOptions="Center" HorizontalOptions="Center" />
+			</Grid>
+			<Grid x:Name="DayPassDelegationGrid" Padding="10" ColumnSpacing="8">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<controls:ImageButton x:Name="DelegationBtn" Grid.Column="0" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}" Orientation="ImageOnTop" TextColor="Black" BorderRadius="{StaticResource BorderRadius}" Text="{ext:Translate Delegation}">
+					<controls:ImageButton.HeightRequest>
+						<OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="100" iOS="65" />
+					</controls:ImageButton.HeightRequest>
+					<controls:ImageButton.ImageHeightRequest>
+						<OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36" />
+					</controls:ImageButton.ImageHeightRequest>
+					<controls:ImageButton.ImageWidthRequest>
+						<OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36" />
+					</controls:ImageButton.ImageWidthRequest>
+					<controls:ImageButton.Source>
+						<OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="delegation.png" iOS="delegation" />
+					</controls:ImageButton.Source>
+				</controls:ImageButton>
+				<controls:ImageButton x:Name="DayPassBtn" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Start" BackgroundColor="{StaticResource YellowAccent}" Orientation="ImageOnTop" TextColor="Black" BorderRadius="{StaticResource BorderRadius}" Text="{ext:Translate DayPass}">
+					<controls:ImageButton.HeightRequest>
+						<OnPlatform x:TypeArguments="x:Double" WinPhone="90" Android="100" iOS="65" />
+					</controls:ImageButton.HeightRequest>
+					<controls:ImageButton.ImageHeightRequest>
+						<OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36" />
+					</controls:ImageButton.ImageHeightRequest>
+					<controls:ImageButton.ImageWidthRequest>
+						<OnPlatform x:TypeArguments="x:Int32" WinPhone="90" Android="40" iOS="36" />
+					</controls:ImageButton.ImageWidthRequest>
+					<controls:ImageButton.Source>
+						<OnPlatform x:TypeArguments="ImageSource" WinPhone="icon.png" Android="daypass.png" iOS="daypass" />
+					</controls:ImageButton.Source>
+				</controls:ImageButton>
+			</Grid>
+		</StackLayout>
+	</ScrollView>
 </ContentPage>

@@ -6,11 +6,18 @@
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
              xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
              xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile"
+              xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
              x:Name="MainWindow"
              x:Class="AdaaMobile.Views.UserServicesPage">
   <ContentPage.BackgroundImage>
     <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
   </ContentPage.BackgroundImage>
+   <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:BooleanToOpacityConverter x:Key="BooleanToOpacityConverter"/>
+
+    </ResourceDictionary>
+  </ContentPage.Resources>
   <Grid RowSpacing="15">
     <Grid.RowDefinitions>
       <RowDefinition Height="5"/>
@@ -32,7 +39,8 @@
                                        Message="{Binding PasswordStatus}"
                                        IndicatorColor="{Binding PasswordColor}"
                                        Command="{Binding  NavigateToChangePasswordCommand}" />
-    <masterView:UserServiceItemControl Grid.Row="2"
+    <masterView:UserServiceItemControl Grid.Row="2" 
+   									   Opacity="{Binding IsAccountLocked,Converter={StaticResource BooleanToOpacityConverter}}"
                                        Title="{ext:Translate UnlockLaptopAccount}"
                                        Message="{Binding AccountStatus}"
                                        IndicatorColor="{Binding AccountColor}"

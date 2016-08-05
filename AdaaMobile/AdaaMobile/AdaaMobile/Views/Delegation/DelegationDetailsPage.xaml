@@ -1,81 +1,27 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                            xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-                          xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-
-             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
-             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
-             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.Delegation.DelegationDetailsPage">
-  <ContentPage.BackgroundImage>
-    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
-  </ContentPage.BackgroundImage>
-
-  <Grid
-    HorizontalOptions="Fill"
-    VerticalOptions="Fill"
-    Padding="12,20"
-    >
-    <Grid.RowDefinitions >
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-
-    <controls:RoundedBoxView BackgroundColor="#cc007c85" CornerRadius="{StaticResource CornerRadius}" />
-    <Grid Grid.Row="0" ColumnSpacing="15" x:Name="ContentGrid"  
-          Padding="20,15" VerticalOptions="Fill"
-                           >
-
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="10"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-      </Grid.RowDefinitions>
-      <Label Grid.Row="0" Text="{ext:Translate DelegateName}"
-             TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-             HorizontalTextAlignment="Start"
-             FontSize="{x:Static helpers:FontHelper.MilliFontSize}" 
-             />
-
-      <Label Grid.Row="1"  Text="{Binding Delegation.DelegateName}"
-             TextColor="White" BackgroundColor="Transparent"
-             HorizontalTextAlignment="Start"
-             FontSize="Small"  />
-
-
-      <Label Grid.Row="3" Text="{ext:Translate SubOrdinate}"
-             TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent"
-             HorizontalTextAlignment="Start"
-             FontSize="{x:Static helpers:FontHelper.MilliFontSize}"  />
-
-      <Label Grid.Row="4"  Text="{Binding Delegation.SubordinateName}"
-             TextColor="White" BackgroundColor="Transparent"
-             HorizontalTextAlignment="Start"
-             FontSize="Small"  />
-
-    </Grid>
-
-    <controls:ExtendedButton
-            Padding="0"
-      Grid.Row="1"
-      Text="{ext:Translate RemoveDelegation}"
-      BackgroundColor="#44007c85"
-      BorderColor="#7f007c85"
-      BorderWidth="2"
-      TextColor="Black"
-      FontSize="Medium"
-      Command="{Binding RemoveCommand}"
-            >
-
-    </controls:ExtendedButton>
-    
-    <ActivityIndicator  IsRunning="{Binding IsBusy}"
-                         HeightRequest="50" WidthRequest="50"
-                         Grid.Row="2" 
-                         VerticalOptions="Center" HorizontalOptions="Center"/>
-  </Grid>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" x:Class="AdaaMobile.Views.Delegation.DelegationDetailsPage">
+	<ContentPage.BackgroundImage>
+		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
+	</ContentPage.BackgroundImage>
+	<Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="12,20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<controls:RoundedBoxView BackgroundColor="#cc007c85" CornerRadius="{StaticResource CornerRadius}" />
+		<Grid Grid.Row="0" ColumnSpacing="15" x:Name="ContentGrid" Padding="20,15" VerticalOptions="Fill">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="10" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<dayPass:RowInfoControl Title="{ext:Translate DelegateName}" Value="{Binding Delegation.DelegateName}" />
+			<dayPass:RowInfoControl Grid.Row="2" Title="{ext:Translate SubOrdinate}" Value="{Binding Delegation.SubordinateName}" />
+		</Grid>
+		<controls:ExtendedButton Padding="0" Grid.Row="1" Text="{ext:Translate RemoveDelegation}" BackgroundColor="#44007c85" BorderColor="#7f007c85" BorderWidth="2" TextColor="Black" FontSize="Medium" Command="{Binding RemoveCommand}">
+		</controls:ExtendedButton>
+		<ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="50" WidthRequest="50" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" />
+	</Grid>
 </ContentPage>

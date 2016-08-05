@@ -357,6 +357,21 @@
     <Compile Include="Views\EServices\GreetingCardsPage.xaml.cs">
       <DependentUpon>GreetingCardsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BooleanToOpacityConverter.cs" />
+    <Compile Include="Views\DayPass\RequestItemControl.xaml.cs">
+      <DependentUpon>RequestItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\TimeSheetViewModel.cs" />
+    <Compile Include="Models\Response\Assignment.cs" />
+    <Compile Include="Views\TimeSheet\MyTimesheetPage.xaml.cs">
+      <DependentUpon>MyTimesheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Response\PendingTask.cs" />
+    <Compile Include="Views\TimeSheet\SelectTask.cs">
+      <DependentUpon>SelectTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SelectTaskViewModel.cs" />
+    <Compile Include="ViewModels\MyTimeSheetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
@@ -397,6 +412,9 @@
       <HintPath>..\..\packages\Xamarin.Forms.2.1.0.6526\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.XmlSerializer" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -470,6 +488,17 @@
     <EmbeddedResource Include="Views\EServices\GreetingCardsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\DayPass\RequestItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TimeSheet\MyTimesheetPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TimeSheet\SelectTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Authentication\LoginPage.xaml">
@@ -534,6 +563,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mock\" />
+    <Folder Include="Views\TimeSheet\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Authentication\SignUpPage.xaml">

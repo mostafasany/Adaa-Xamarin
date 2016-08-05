@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Xamarin.Forms;
 
 namespace AdaaMobile.Models.Response
 {
@@ -43,6 +44,24 @@ namespace AdaaMobile.Models.Response
             get;
             set;
         }
+
+	
+		public Color statusColor
+		{
+			get {
+				if (status == "In Progress" || status=="قيد الإنشاء") {
+					return Color.Gray;
+				}
+				else if (status == "Approved" || status=="موافق عليها") {
+					return Color.Green;
+				}
+				else {
+					return Color.Red;
+				}
+
+			}
+
+		}
 
         [XmlElement("url")]
         public string url

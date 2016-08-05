@@ -32,7 +32,22 @@ namespace AdaaMobile
             };
             ToolbarItems.Add(
                 new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
+
+			HandleArabicLanguageFlowDirection ();
         }
+
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				//Choose GreetinCard
+				lblChooseGreetinCard.HorizontalOptions = LayoutOptions.End;
+				lblChooseGreetinCardResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (imgChooseGreetinCard, 0);
+				imgChooseGreetinCard.RotationY = 180;
+
+			}
+		}
 
 		protected override async void OnAppearing ()
 		{

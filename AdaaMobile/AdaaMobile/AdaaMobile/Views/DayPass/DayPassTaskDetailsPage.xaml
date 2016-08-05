@@ -1,125 +1,61 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
-             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
-             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile"
-             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.DayPass.DayPassTaskDetailsPage"
-             BackgroundColor="White">
-  <ContentPage.BackgroundImage>
-    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
-  </ContentPage.BackgroundImage>
-
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <Color x:Key="TabColor">#00676e</Color>
-      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
-    </ResourceDictionary>
-  </ContentPage.Resources>
-
-  <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
-        Padding="0,0,0,20"
-        >
-
-    <ScrollView Grid.Row="0" VerticalOptions="Fill">
-      <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
-      Padding="15,20" RowSpacing="10" BindingContext="{Binding CurrentTask}"
-        >
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <controls:RoundedBoxView
-             BackgroundColor="#bb007c85"
-             CornerRadius="{StaticResource CornerRadius}"
-             VerticalOptions="Fill"
-             Grid.Row="0" />
-        <StackLayout
-          Grid.Row="0"
-          Spacing="9"
-          Padding="15"
-          VerticalOptions="Start">
-          <dayPass:RowInfoControl Title="{ext:Translate EmployeeID}" Value="{Binding UserId}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate FullName}" Value="{Binding UserName}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate Department}" Value="{Binding Department}"/>
-        </StackLayout>
-
-        <controls:RoundedBoxView
-             BackgroundColor="#bb007c85"
-             CornerRadius="{StaticResource CornerRadius}"
-             VerticalOptions="Fill"
-             Grid.Row="1" />
-        <StackLayout
-          Grid.Row="1"
-          Spacing="9"
-          Padding="15"
-          VerticalOptions="Start"
-          >
-          <dayPass:RowInfoControl Title="{ext:Translate DepratureTime}" Value="{Binding StartTime}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate ReturnToday}" Value="{ext:Translate EmptyPlaceHolder}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate ExpectedReturnTime}" Value="{Binding EndTime}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate Duration}" Value="{Binding Duration}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate ReasonType}" Value="{Binding ReasonType}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate Reason}" Value="{ext:Translate EmptyPlaceHolder}"/>
-        </StackLayout>
-
-        <Grid Grid.Row="2">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-          </Grid.ColumnDefinitions>
-
-          <controls:ImageButton Grid.Column="0"
-                        Text= "{ext:Translate Accept}"
-                   x:Name="ApproveBtn"
-                   ImageHeightRequest="18"
-                   ImageWidthRequest="18"
-                  VerticalOptions="FillAndExpand"
-                   HorizontalOptions="FillAndExpand"
-                   BackgroundColor="#35a945"
-                   TextColor="White"
-
-                >
-            <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="48" iOS="36"/>
-            </controls:ImageButton.HeightRequest>
-
-            <controls:ImageButton.Source>
-              <OnPlatform x:TypeArguments="ImageSource" WinPhone="accept.png" Android="accept.png" iOS="accept"/>
-            </controls:ImageButton.Source>
-          </controls:ImageButton>
-
-          <controls:ImageButton
-          x:Name="RejectBtn"
-           Grid.Column="1"
-                   Text= "{ext:Translate Reject}"
-                   ImageHeightRequest="18"
-                   ImageWidthRequest="18"
-                   VerticalOptions="FillAndExpand"
-                   HorizontalOptions="FillAndExpand"
-                   BackgroundColor="#cc241d"
-                   TextColor="White"
-                >
-            <controls:ImageButton.HeightRequest>
-              <OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="48" iOS="36"/>
-            </controls:ImageButton.HeightRequest>
-
-            <controls:ImageButton.Source>
-              <OnPlatform x:TypeArguments="ImageSource" WinPhone="reject.png" Android="reject.png" iOS="reject"/>
-            </controls:ImageButton.Source>
-          </controls:ImageButton>
-        </Grid>
-      </Grid>
-    </ScrollView>
-
-    <ActivityIndicator  IsRunning="{Binding IsBusy}"
-                     HeightRequest="50" WidthRequest="50"
-                     VerticalOptions="Center" HorizontalOptions="Center"/>
-  </Grid>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" x:Class="AdaaMobile.Views.DayPass.DayPassTaskDetailsPage" BackgroundColor="White">
+	<ContentPage.BackgroundImage>
+		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
+	</ContentPage.BackgroundImage>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Color x:Key="TabColor">#00676e</Color>
+			<converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="0,0,0,20">
+		<ScrollView Grid.Row="0" VerticalOptions="Fill">
+			<Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="15,20" RowSpacing="10" BindingContext="{Binding CurrentTask}">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<controls:RoundedBoxView BackgroundColor="#bb007c85" CornerRadius="{StaticResource CornerRadius}" VerticalOptions="Fill" Grid.Row="0" />
+				<StackLayout Grid.Row="0" Spacing="9" Padding="15" VerticalOptions="Start">
+					<dayPass:RowInfoControl Title="{ext:Translate EmployeeID}" Value="{Binding UserId}" />
+					<dayPass:RowInfoControl Title="{ext:Translate FullName}" Value="{Binding UserName}" />
+					<dayPass:RowInfoControl Title="{ext:Translate Department}" Value="{Binding Department}" />
+				</StackLayout>
+				<controls:RoundedBoxView BackgroundColor="#bb007c85" CornerRadius="{StaticResource CornerRadius}" VerticalOptions="Fill" Grid.Row="1" />
+				<StackLayout Grid.Row="1" Spacing="9" Padding="15" VerticalOptions="Start">
+					<dayPass:RowInfoControl Title="{ext:Translate DepratureTime}" Value="{Binding StartTime}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ReturnToday}" Value="{Binding WillReturn}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ExpectedReturnTime}" Value="{Binding EndTime}" />
+					<dayPass:RowInfoControl Title="{ext:Translate Duration}" Value="{Binding Duration}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ReasonType}" Value="{Binding ReasonType}" />
+					<dayPass:RowInfoControl Title="{ext:Translate Reason}" Value="{Binding ReasonText}" />
+				</StackLayout>
+				<Grid Grid.Row="2">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<controls:ImageButton Grid.Column="0" Text="{ext:Translate Accept}" x:Name="ApproveBtn" ImageHeightRequest="18" ImageWidthRequest="18" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#35a945" TextColor="White">
+						<controls:ImageButton.HeightRequest>
+							<OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="48" iOS="36" />
+						</controls:ImageButton.HeightRequest>
+						<controls:ImageButton.Source>
+							<OnPlatform x:TypeArguments="ImageSource" WinPhone="accept.png" Android="accept.png" iOS="accept" />
+						</controls:ImageButton.Source>
+					</controls:ImageButton>
+					<controls:ImageButton x:Name="RejectBtn" Grid.Column="1" Text="{ext:Translate Reject}" ImageHeightRequest="18" ImageWidthRequest="18" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#cc241d" TextColor="White">
+						<controls:ImageButton.HeightRequest>
+							<OnPlatform x:TypeArguments="x:Double" WinPhone="40" Android="48" iOS="36" />
+						</controls:ImageButton.HeightRequest>
+						<controls:ImageButton.Source>
+							<OnPlatform x:TypeArguments="ImageSource" WinPhone="reject.png" Android="reject.png" iOS="reject" />
+						</controls:ImageButton.Source>
+					</controls:ImageButton>
+				</Grid>
+			</Grid>
+		</ScrollView>
+		<ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" />
+	</Grid>
 </ContentPage>

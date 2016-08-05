@@ -44,7 +44,18 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _accountStatus, value); }
         }
 
+		private bool _isAccountLocked;
+		public bool IsAccountLocked
+		{
+			get { return _isAccountLocked; }
+			set 
+			{ 
+				SetProperty(ref _isAccountLocked, value);
 
+
+			}
+		}
+			
 
         private Color _accountColor;
 
@@ -110,9 +121,16 @@ namespace AdaaMobile.ViewModels
 
         private void SetAccountColor(string message)
         {
-            if (string.IsNullOrWhiteSpace(message)) AccountColor = _unResolvedColor;
-            else if (message.Equals("Account Locked", StringComparison.OrdinalIgnoreCase)) AccountColor = _inValidColor;
-            else AccountColor = _validColor;
+			if (string.IsNullOrWhiteSpace (message)) {
+				AccountColor = _unResolvedColor;
+				IsAccountLocked = false;
+			} else if (message.Equals ("Account Locked", StringComparison.OrdinalIgnoreCase)) {
+				AccountColor = _inValidColor;
+				IsAccountLocked = true;
+			} else {
+				AccountColor = _validColor;
+				IsAccountLocked = false;
+			}
         }
 
         private void DoNavigateToChangePassword()
@@ -124,6 +142,10 @@ namespace AdaaMobile.ViewModels
         {
             try
             {
+				if(!IsAccountLocked)
+				{
+					return;
+				}
                 UnlockMyAccountCommand.CanExecute = false;
                 IsBusy = true;
                 var parameters = new UnlockAccountQParameters()

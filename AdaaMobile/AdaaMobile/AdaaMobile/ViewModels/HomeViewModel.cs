@@ -116,7 +116,7 @@ namespace AdaaMobile.ViewModels
                 Title = AppResources.AdaaTimesheet,
                 IconSource = "AdaaMobile.Images.Timesheet.svg",
                 TargetType = typeof(TimesheetPage),
-                IsEnabled = false
+					IsEnabled = true
             });
 
             data.Add(new AdaaPageItem()

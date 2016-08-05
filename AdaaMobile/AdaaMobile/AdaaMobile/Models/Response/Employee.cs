@@ -5,7 +5,7 @@ namespace AdaaMobile.Models.Response
 {
 
 	public class Employee:BindableBase
-    {
+	{
 
 		private bool _isSelected;
 		public bool IsSelected
@@ -15,19 +15,30 @@ namespace AdaaMobile.Models.Response
 		}
 
 
-        [XmlElement("UserName")]
-        public string UserName { get; set; }
+		[XmlElement("UserName")]
+		public string UserName { get; set; }
 
-        [XmlElement("UserID")]
-        public string UserId { get; set; }
+		[XmlElement("UserID")]
+		public string UserId { get; set; }
 
+		[XmlElement("DeptName")]
+		public string DeptName { get; set; }
 
-        public string NameSort
-        {
-            get
-            {
+		[XmlElement("GroupName")]
+		public string GroupName { get; set; }
+
+		[XmlElement("OfficeNum")]
+		public string OfficeNum { get; set; }
+
+		[XmlElement("MobileNum")]
+		public string MobileNum { get; set; }
+
+		public string NameSort
+		{
+			get
+			{
 				if (string.IsNullOrWhiteSpace(UserName) || UserName.Length == 0) return "A"; return UserName[0].ToString().ToUpper();
-            }
-        }
-    }
+			}
+		}
+	}
 }

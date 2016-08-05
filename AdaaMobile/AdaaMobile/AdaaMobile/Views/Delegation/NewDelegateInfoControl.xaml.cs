@@ -1,5 +1,6 @@
 ﻿using AdaaMobile.Controls;
 using Xamarin.Forms;
+using AdaaMobile.ViewModels;
 
 namespace AdaaMobile.Views.Delegation
 {
@@ -9,7 +10,23 @@ namespace AdaaMobile.Views.Delegation
         {
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
+			HandleArabicLanguageFlowDirection ();
         }
+
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				lblTitle.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (lblTitle, 1);
+				lblValue.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (lblValue, 1);
+
+				imgValue.HorizontalOptions = LayoutOptions.Start;
+				Grid.SetColumn (imgValue, 0);
+				imgValue.RotationY = 180;
+			}
+		}
 
         #region Title property
 

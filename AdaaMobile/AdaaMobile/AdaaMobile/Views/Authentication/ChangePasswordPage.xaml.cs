@@ -21,7 +21,7 @@ namespace AdaaMobile.Views.Authentication
                 _changePasswordModel.ChangePasswordCommand.Execute(null);
             };
             ToolbarItems.Add(
-				new ToolbarItem(AppResources.Save, "", action, ToolbarItemOrder.Primary));
+			new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
 			
             //Work-around for iOS for cut-images
             if (Device.OS == TargetPlatform.iOS)
@@ -33,7 +33,22 @@ namespace AdaaMobile.Views.Authentication
                 iosBackgroundImage.IsVisible = false;
             }
 
+			HandleArabicLanguageFlowDirection ();
+
         }
+
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				ShowPasswordLabel.HorizontalOptions = LayoutOptions.End;
+				PasswordToggle.HorizontalOptions = LayoutOptions.Start;
+				lblNewPassword.HorizontalOptions = LayoutOptions.End;
+				lblConfirmNewPassword.HorizontalOptions = LayoutOptions.End;
+				PasswordEntry.HorizontalOptions = LayoutOptions.End;
+				ConfirmPasswordEntry.HorizontalOptions = LayoutOptions.End;
+			}
+		}
 
 		protected override void OnAppearing ()
 		{

@@ -20,6 +20,7 @@ namespace AdaaMobile.DataServices
     {
         // private const string BaseUrl = "http://adaa.getsandbox.com";
         private const string BaseUrl = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy";
+		private const string TimeSheetBaseUrl = "http://adaatime.linkdev.com/api/MobileServices/";
         private const string Server = "adaamobile";
         private const string Sprint2Server = "imach";
         private const string ContenTypeKey = "Content-Type";
@@ -31,7 +32,21 @@ namespace AdaaMobile.DataServices
             _requestFactory = requestFactory;
             _appSettings = appSettings;
         }
+		public async  Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null)
+		{
+			var request = _requestFactory();
+			request.RequestUrl=TimeSheetBaseUrl+"GetFilteredAssignments?encryptedUserName=IR3aBpmwPVrlqZu5C/lQpg==";
+			request.ResultContentType = ContentType.Xml;
+			return await request.GetAsync<List<Assignment>>(token);
+		}
 
+		public async Task<ResponseWrapper<List<PendingTask>>> GetPendingTaskAsync(CancellationToken? token = null)
+		{
+			var request = _requestFactory();
+			request.RequestUrl=TimeSheetBaseUrl+"GetUserTasks?encryptedUserName=IR3aBpmwPVrlqZu5C/lQpg==";
+			request.ResultContentType = ContentType.Json;
+			return await request.GetAsync<List<PendingTask>>(token);
+		}
 
         #region Accounts module
 
@@ -83,7 +98,8 @@ namespace AdaaMobile.DataServices
                 Password = password
             };
             var stringContent = new StringContent(loginParamters.SerializeXml(), new UTF8Encoding(), XmlContentType);
-            return await request.PostAsync<LoginResponse>(stringContent);
+			var response= await request.PostAsync<LoginResponse>(stringContent);
+			return response;
         }
 
         public async Task<ResponseWrapper<ChangePasswordResponse>> ChangePasswordAsync(string password, ChangePasswordQParameters paramters, CancellationToken? token = default(CancellationToken?))

@@ -26,8 +26,23 @@ namespace AdaaMobile.Views.EServices
             ToolbarItems.Add(
                 new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
 
+			HandleArabicLanguageFlowDirection ();
 
         }
+
+
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				//Service Details
+				lblServiceDetails.HorizontalOptions = LayoutOptions.End;
+
+				//Additional Comments
+				lblAdditionalComments.HorizontalOptions = LayoutOptions.End;
+
+			}
+		}
 
         protected override void OnAppearing()
         {

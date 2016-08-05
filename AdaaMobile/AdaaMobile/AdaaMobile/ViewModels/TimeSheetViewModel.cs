@@ -13,16 +13,12 @@ using System.Collections.ObjectModel;
 
 namespace AdaaMobile.ViewModels
 {
-	public class EServicesViewModel
+	public class TimeSheetViewModel
 	{
 		#region Fields
 
 		private readonly INavigationService _navigationService;
-		private readonly IDataService _dataService;
-		private readonly IAppSettings _appSettings;
-		private readonly IRequestMessageResolver _messageResolver;
-		private readonly IDialogManager _dialogManager;
-
+	
 		#endregion
 
 		#region Properties
@@ -33,24 +29,13 @@ namespace AdaaMobile.ViewModels
 
 		#region Initialization
 
-		public EServicesViewModel (IDataService dataService, IAppSettings appSettings, INavigationService navigationService, IRequestMessageResolver messageResolver, IDialogManager dialogManager)
+		public TimeSheetViewModel (INavigationService navigationService)
 		{
-			_dataService = dataService;
-			_appSettings = appSettings;
 			_navigationService = navigationService;
-			_messageResolver = messageResolver;
-			_dialogManager = dialogManager;
 			PagesList = new ObservableCollection<AdaaPageItem> () {
-				// new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
-				// new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
-				new AdaaPageItem () { TargetType = typeof(RequestDriverPage), Title = AppResources.RequestDriver },
-				new AdaaPageItem () {
-					TargetType = typeof(RequestOfficeMaintenancePage),
-					Title = AppResources.RequestOfficeMaintenance
-				},
-				// new AdaaPageItem() {TargetType = typeof(RequestOfficeServicesPage),Title = AppResources.RequestOfficeService},
+				new AdaaPageItem () { TargetType = typeof(MyTimesheetPage), Title = AppResources.RequestDriver },
+				new AdaaPageItem () {TargetType = typeof(RequestOfficeMaintenancePage),Title = AppResources.RequestOfficeMaintenance},
 				new AdaaPageItem (){ TargetType = typeof(GreetingCardsPage), Title = AppResources.GreetingCard }
-
 			};
 			NavigateToPageCommand = new ExtendedCommand<Type> (NavigateToPage);
 		}

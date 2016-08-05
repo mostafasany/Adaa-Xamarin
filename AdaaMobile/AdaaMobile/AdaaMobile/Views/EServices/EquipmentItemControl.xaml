@@ -1,72 +1,36 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.MasterView.EquipmentItemControl"
-             BackgroundColor="Transparent"
-             x:Name="ParentView" IsEnabled="True"
-             >
-  <ContentView.Resources>
-    <ResourceDictionary>
-    </ResourceDictionary>
-  </ContentView.Resources>
-  <Grid>
-    <controls:RoundedBoxView
-      VerticalOptions="Fill"
-      HorizontalOptions="Fill"
-      BackgroundColor="{StaticResource AppBackgroundSemi}"
-      CornerRadius="{StaticResource CornerRadius}"
-   />
-
-    <controls:ExtendedGrid Padding="15,0" x:Name="ContentGrid"
-                           VerticalOptions="Start" 
-                           BackgroundColor="Transparent"
-                         >
-
-                           <controls:ExtendedGrid.HeightRequest>
-            <OnPlatform x:TypeArguments="x:Double" iOS="60" Android="70" />
-        </controls:ExtendedGrid.HeightRequest>
-
-      <Grid.GestureRecognizers>
-        <TapGestureRecognizer Tapped="Item_Tapped"/>
-      </Grid.GestureRecognizers>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="Auto"/>
-      </Grid.ColumnDefinitions>
-      <Label Grid.Column="0"
-                   TextColor="White" BackgroundColor="Transparent"
-                   HorizontalTextAlignment="Start"
-                   VerticalOptions="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Small" Text="{Binding Title,Source={x:Reference ParentView}}" />
-
-      <Image Grid.Column="1"
-            VerticalOptions="Center"
-            HeightRequest="20"
-            WidthRequest="20"
-           >
-        <Image.Source>
-          <OnPlatform x:TypeArguments="ImageSource" WinPhone="checkborder.png" Android="checkborder.png" iOS="checkborder"/>
-        </Image.Source>
-      <Image.IsVisible>
-        <OnPlatform x:TypeArguments="x:Boolean" WinPhone="True" Android="True" iOS="False"/>
-      </Image.IsVisible>
-      </Image>
-
-      <Image Grid.Column="1"
-             HeightRequest="20"
-             WidthRequest="20"
-             VerticalOptions="Center"
-             IsVisible="{Binding IsSelected,Source={x:Reference ParentView}}"
-             >
-        <Image.Source>
-          <OnPlatform x:TypeArguments="ImageSource" WinPhone="check.png" Android="check.png" iOS="check"/>
-        </Image.Source>
-      </Image>
-
-    </controls:ExtendedGrid>
-  </Grid>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" x:Class="AdaaMobile.Views.MasterView.EquipmentItemControl" BackgroundColor="Transparent" x:Name="ParentView" IsEnabled="True">
+	<ContentView.Resources>
+		<ResourceDictionary>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<Grid>
+		<controls:RoundedBoxView VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="{StaticResource AppBackgroundSemi}" CornerRadius="{StaticResource CornerRadius}" />
+		<controls:ExtendedGrid Padding="15,0" x:Name="ContentGrid" VerticalOptions="Start" BackgroundColor="Transparent">
+			<controls:ExtendedGrid.HeightRequest>
+				<OnPlatform x:TypeArguments="x:Double" iOS="60" Android="70" />
+			</controls:ExtendedGrid.HeightRequest>
+			<Grid.GestureRecognizers>
+				<TapGestureRecognizer Tapped="Item_Tapped" />
+			</Grid.GestureRecognizers>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<Label Grid.Column="0" TextColor="White" BackgroundColor="Transparent" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" FontSize="Small" Text="{Binding Title,Source={x:Reference ParentView}}" />
+			<Image Grid.Column="1" VerticalOptions="Center" HeightRequest="20" WidthRequest="20">
+				<Image.Source>
+					<OnPlatform x:TypeArguments="ImageSource" WinPhone="checkborder.png" Android="checkborder.png" iOS="checkborder" />
+				</Image.Source>
+				<Image.IsVisible>
+					<OnPlatform x:TypeArguments="x:Boolean" WinPhone="True" Android="True" iOS="False" />
+				</Image.IsVisible>
+			</Image>
+			<Image Grid.Column="1" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" IsVisible="{Binding IsSelected,Source={x:Reference ParentView}}">
+				<Image.Source>
+					<OnPlatform x:TypeArguments="ImageSource" WinPhone="check.png" Android="check.png" iOS="check" />
+				</Image.Source>
+			</Image>
+		</controls:ExtendedGrid>
+	</Grid>
 </ContentView>

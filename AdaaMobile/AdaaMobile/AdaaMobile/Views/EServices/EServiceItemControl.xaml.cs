@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Windows.Input;
 using Xamarin.Forms;
+using AdaaMobile.ViewModels;
 
 namespace AdaaMobile.Views.MasterView
 {
@@ -13,7 +14,25 @@ namespace AdaaMobile.Views.MasterView
 			if (Device.OS == TargetPlatform.iOS) {
 				MainBtn.BorderRadius = 10;
 			}
+
+			HandleArabicLanguageFlowDirection ();
         }
+
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				//Message
+				lblMessage.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn(imgMessage, 1);
+
+				imgMessage.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (imgMessage, 0);
+				imgMessage.RotationY = 180;
+
+			}
+		}
+
 
         #region Title p
 

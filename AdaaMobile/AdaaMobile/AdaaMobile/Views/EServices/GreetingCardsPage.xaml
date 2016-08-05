@@ -61,7 +61,7 @@ BackgroundColor="White">
         </Grid.ColumnDefinitions>
 
 
-        <Label
+        <Label x:Name="lblChooseGreetinCard"
         Grid.Row="0"
        TextColor="Black" BackgroundColor="Transparent"
        HorizontalTextAlignment="Start"
@@ -76,7 +76,7 @@ BackgroundColor="White">
                 InputTransparent="True">
         </Picker>
 
-        <Label
+        <Label x:Name="lblChooseGreetinCardResult"
         BackgroundColor="Transparent"
         Grid.Column="0"
         Grid.Row="1"
@@ -90,7 +90,7 @@ BackgroundColor="White">
 
         </Label>
 
-        <Image
+        <Image x:Name="imgChooseGreetinCard"
                                HeightRequest="15"
                                WidthRequest="15"
                                Grid.Column="1"

@@ -35,8 +35,46 @@ namespace AdaaMobile.Views.DayPass
 
             ReasonEditor.TextChanged += ReasonEditor_TextChanged;
             TextLimit.Text = string.Format("{0}/{1}", 0, 60);
+
+			HandleArabicLanguageFlowDirection();
         }
 
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				lblDepartureTime.HorizontalOptions = LayoutOptions.End;
+				lblDepartureTimeResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (imgDepartureTime, 0);
+				imgDepartureTime.RotationY = 180;
+
+				lblReturnToday.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (lblReturnToday, 1);
+				Grid.SetColumn (ReturnTodaySwitch, 0);
+
+				lblExpectedReturnTime.HorizontalOptions = LayoutOptions.End;
+				lblExpectedReturnTimeResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (imgExpectedReturnTime, 0);
+				imgExpectedReturnTime.RotationY = 180;
+
+				lblDuration.HorizontalOptions = LayoutOptions.End;
+				lblDurationResult.HorizontalOptions = LayoutOptions.End;
+
+				lblReasonType.HorizontalOptions = LayoutOptions.End;
+				lblReasonTypeResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (imgReasonType, 0);
+				imgReasonType.RotationY = 180;
+
+				lblReason.HorizontalOptions = LayoutOptions.End;
+
+
+				Grid.SetColumn (lblTextLimitText, 1);
+				lblTextLimitText.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn (TextLimit, 0);
+				TextLimit.HorizontalOptions = LayoutOptions.Start;
+			
+			}
+		}
 
         private void EndTime_OnClicked(object sender, EventArgs e)
         {

@@ -13,10 +13,13 @@ namespace AdaaMobile.Views.DayPass
         private DayPassTask task;
         private TaskDetailsViewmodel _taskDetailsViewmodel;
 
-        public DayPassTaskDetailsPage(DayPassTask task)
+        public DayPassTaskDetailsPage()
         {
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
+			var _viewModel = Locator.Default.DayPassViewModel;
+			var task=_viewModel.SelectedTask;
+
             this.task = task;
             _taskDetailsViewmodel = ViewModels.Locator.Default.TaskDetailsViewmodel;
             _taskDetailsViewmodel.CurrentTask = task;

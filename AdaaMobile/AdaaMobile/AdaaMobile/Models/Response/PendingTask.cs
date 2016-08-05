@@ -4,17 +4,13 @@ namespace AdaaMobile.Models.Response
 {
 
     [System.Xml.Serialization.XmlRoot(ElementName = "root", Namespace = "", IsNullable = false)]
-    public partial class Task
+	public partial class PendingTask
     {
-        [XmlElement("ID")]
         public string Id { get; set; }
 
-		[XmlElement("ProcedureName")]
-		public string Name { get; set; }
+		public string ProcedureName { get; set; }
 
-		[XmlElement("TaskFullURL")]
-        public string URL { get; set; }
-       
+		public string TaskFullURL { get; set; }
     }
 
 

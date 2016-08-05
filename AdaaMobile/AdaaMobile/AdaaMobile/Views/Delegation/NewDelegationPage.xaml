@@ -70,7 +70,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto"/>
           </Grid.ColumnDefinitions>
-          <Label   Grid.Column="0"
+          <Label   Grid.Column="0" x:Name="lblRuleStatus"
                            TextColor="Black" BackgroundColor="Transparent"
                            HorizontalTextAlignment="Start"
                            FontSize="Medium"

@@ -1,5 +1,6 @@
 ﻿using AdaaMobile.Controls;
 using Xamarin.Forms;
+using AdaaMobile.ViewModels;
 
 namespace AdaaMobile.Views.DayPass
 {
@@ -8,7 +9,18 @@ namespace AdaaMobile.Views.DayPass
         public RowInfoControl()
         {
             InitializeComponent();
+			HandleArabicLanguageFlowDirection ();
         }
+
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				lblTitle.HorizontalOptions = LayoutOptions.End;
+				lblValue.HorizontalOptions=LayoutOptions.End;
+
+			}
+		}
 
         #region Title property
 

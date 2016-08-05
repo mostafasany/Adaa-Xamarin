@@ -130,7 +130,18 @@ namespace AdaaMobile.ViewModels
                     UserProfile = resposne.Result;
                     if (UserProfile != null)
                     {
-                        DisplayName = UserProfile.DisplayName;
+						UserProfile.MobileNum=string.IsNullOrEmpty(UserProfile.MobileNum)||UserProfile.MobileNum=="null"?"":UserProfile.MobileNum;
+						UserProfile.OfficeNum=string.IsNullOrEmpty(UserProfile.OfficeNum) ||UserProfile.OfficeNum=="null" ?"":UserProfile.OfficeNum;
+						UserProfile.Manager=string.IsNullOrEmpty(UserProfile.Manager) ||UserProfile.Manager=="null" ?"":UserProfile.Manager;
+						UserProfile.Email=string.IsNullOrEmpty(UserProfile.Email) ||UserProfile.Email=="null" ?"":UserProfile.Email;
+						UserProfile.DeptName=string.IsNullOrEmpty(UserProfile.DeptName) ||UserProfile.DeptName=="null" ?"":UserProfile.DeptName;
+						UserProfile.GroupName=string.IsNullOrEmpty(UserProfile.GroupName) ||UserProfile.GroupName=="null" ?"":UserProfile.GroupName;
+						UserProfile.JobTitle=string.IsNullOrEmpty(UserProfile.JobTitle) ||UserProfile.JobTitle=="null" ?"":UserProfile.JobTitle;
+						UserProfile.Manager=string.IsNullOrEmpty(UserProfile.Manager) ||UserProfile.Manager=="null" ?"":UserProfile.Manager;
+						UserProfile.Message=string.IsNullOrEmpty(UserProfile.Message) ||UserProfile.Message=="null" ?"":UserProfile.Message;
+						UserProfile.DisplayName=string.IsNullOrEmpty(UserProfile.DisplayName) ||UserProfile.DisplayName=="null" ?"":UserProfile.DisplayName;
+						UserProfile.UserId=string.IsNullOrEmpty(UserProfile.UserId) ||UserProfile.UserId=="null" ?"":UserProfile.UserId;
+						DisplayName = UserProfile.DisplayName;
                         if (!String.IsNullOrWhiteSpace(UserProfile.UserImage64))
                         {
                             Func<Stream> streamFunc = GetStream;

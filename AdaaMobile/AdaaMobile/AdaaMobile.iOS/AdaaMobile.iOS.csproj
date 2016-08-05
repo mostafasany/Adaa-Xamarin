@@ -64,7 +64,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>e46706a7-c2c0-467b-8b68-f73877730323</CodesignProvision>
+    <CodesignProvision>d7d1fca7-efcf-4b5e-98c0-c79eed002f6c</CodesignProvision>
     <IpaPackageName>
     </IpaPackageName>
     <MtouchLink>None</MtouchLink>
@@ -234,6 +234,9 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\packages\Xamarin.Forms.2.1.0.6526\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

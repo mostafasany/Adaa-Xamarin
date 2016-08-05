@@ -407,7 +407,7 @@
     <value>تنبيه</value>
   </data>
   <data name="EnterValidPassword" xml:space="preserve">
-    <value>الرجاء ادخال كلمة المرور الصحيحة</value>
+    <value>اسم المستخدم او كلمة المرور خاطئة</value>
   </data>
   <data name="ChooseLanguage" xml:space="preserve">
     <value>اختر اللغة</value>
@@ -615,5 +615,26 @@
   </data>
   <data name="SaveCard" xml:space="preserve">
     <value>حفظ البطاقة</value>
+  </data>
+  <data name="PassReasonShouldnotContainSpecialCharchters" xml:space="preserve">
+    <value>يجب أن لا يحتوي السبب على  أي أحرف خاصة</value>
+  </data>
+  <data name="ReturnDateShouldBeGreaterThanDepartureDate" xml:space="preserve">
+    <value>تاريخ  التسجيل يجب أن يكون أكبر من تاريخ المغادرة</value>
+  </data>
+  <data name="RequestDate" xml:space="preserve">
+    <value>التاريخ </value>
+  </data>
+  <data name="RequestTitle" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="TimeSheet_MyAssignment" xml:space="preserve">
+    <value>مهامي</value>
+  </data>
+  <data name="TimeSheet_MyPendingTasks" xml:space="preserve">
+    <value>قيد العمل</value>
+  </data>
+  <data name="TimeSheet_MyTimeSheet" xml:space="preserve">
+    <value>الجدول الزمني</value>
   </data>
 </root>

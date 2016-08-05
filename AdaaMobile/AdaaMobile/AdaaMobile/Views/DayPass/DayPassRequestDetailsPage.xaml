@@ -1,70 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-             xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
-             xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
-             xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile"
-             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile"
-             x:Class="AdaaMobile.Views.DayPass.DayPassRequestDetailsPage"
-             BackgroundColor="White">
-  <ContentPage.BackgroundImage>
-    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite"/>
-  </ContentPage.BackgroundImage>
-
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <Color x:Key="TabColor">#00676e</Color>
-      <Color x:Key="BoxBackgroundColor">#bb007c85</Color>
-      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter"/>
-    </ResourceDictionary>
-  </ContentPage.Resources>
-
-  <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
-        Padding="15,20" ColumnSpacing="10"
-        >
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
-
-      <controls:RoundedBoxView 
-                BackgroundColor="{StaticResource BoxBackgroundColor}"
-                CornerRadius="{StaticResource CornerRadius}"
-                VerticalOptions="Fill"
-                Grid.Row="0"
-                />
-        <StackLayout
-          Grid.Row="0"
-          Spacing="12"
-          Padding="15"
-          VerticalOptions="Start"
-          >
-          <dayPass:RowInfoControl Title="{ext:Translate DepratureTime}" Value="{Binding StartTime}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate ReturnToday}" Value="{ext:Translate EmptyPlaceHolder}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate ExpectedReturnTime}" Value="{Binding EndTime}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate Duration}" Value="{Binding Duration}"/>
-          <dayPass:RowInfoControl Title="{ext:Translate ReasonType}" Value="{Binding ReasonType}"/>
-        </StackLayout>
-
-    <controls:RoundedBoxView
-                BackgroundColor="{StaticResource BoxBackgroundColor}"
-                CornerRadius="{StaticResource CornerRadius}"
-                VerticalOptions="Fill"
-                Grid.Row="1"
-                />
-    <StackLayout
-      Grid.Row="1"
-      Spacing="12"
-      Padding="15"
-      VerticalOptions="Start"
-          >
-      <!--TODO:Change binding when Back-end adds the missing value-->
-      <dayPass:RowInfoControl Title="{ext:Translate Reason}" Value="{ext:Translate EmptyPlaceHolder}"/>
-    </StackLayout>
-
-  </Grid>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" x:Class="AdaaMobile.Views.DayPass.DayPassRequestDetailsPage" BackgroundColor="White">
+	<ContentPage.BackgroundImage>
+		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
+	</ContentPage.BackgroundImage>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Color x:Key="TabColor">#00676e</Color>
+			<Color x:Key="BoxBackgroundColor">#bb007c85</Color>
+			<converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="15,20" ColumnSpacing="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<controls:RoundedBoxView BackgroundColor="{StaticResource BoxBackgroundColor}" CornerRadius="{StaticResource CornerRadius}" VerticalOptions="Fill" Grid.Row="0" />
+		<StackLayout Grid.Row="0" Spacing="12" Padding="15" VerticalOptions="Start">
+			<dayPass:RowInfoControl Title="{ext:Translate DepratureTime}" Value="{Binding StartTime}" />
+			<dayPass:RowInfoControl Title="{ext:Translate ReturnToday}" Value="{Binding WillReturn}" />
+			<dayPass:RowInfoControl Title="{ext:Translate ExpectedReturnTime}" Value="{Binding EndTime}" />
+			<dayPass:RowInfoControl Title="{ext:Translate Duration}" Value="{Binding Duration}" />
+			<dayPass:RowInfoControl Title="{ext:Translate ReasonType}" Value="{Binding ReasonType}" />
+		</StackLayout>
+		<controls:RoundedBoxView BackgroundColor="{StaticResource BoxBackgroundColor}" CornerRadius="{StaticResource CornerRadius}" VerticalOptions="Fill" Grid.Row="1" />
+		<StackLayout Grid.Row="1" Spacing="12" Padding="15" VerticalOptions="Start">
+			<!--TODO:Change binding when Back-end adds the missing value-->
+			<dayPass:RowInfoControl Title="{ext:Translate Reason}" Value="{Binding ReasonText}" />
+		</StackLayout>
+	</Grid>
 </ContentPage>

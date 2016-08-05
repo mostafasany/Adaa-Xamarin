@@ -13,55 +13,64 @@ using System.Collections.ObjectModel;
 
 namespace AdaaMobile.ViewModels
 {
-    public class EServicesViewModel
-    {
-        #region Fields
-        private readonly INavigationService _navigationService;
-        private readonly IDataService _dataService;
-        private readonly IAppSettings _appSettings;
-        private readonly IRequestMessageResolver _messageResolver;
-        private readonly IDialogManager _dialogManager;
-        #endregion
+	public class EServicesViewModel
+	{
+		#region Fields
 
-        #region Properties
+		private readonly INavigationService _navigationService;
+		private readonly IDataService _dataService;
+		private readonly IAppSettings _appSettings;
+		private readonly IRequestMessageResolver _messageResolver;
+		private readonly IDialogManager _dialogManager;
+
+		#endregion
+
+		#region Properties
 
 		public ObservableCollection<AdaaPageItem> PagesList { get; private set; }
-        #endregion
 
-        #region Initialization
-        public EServicesViewModel(IDataService dataService, IAppSettings appSettings, INavigationService navigationService, IRequestMessageResolver messageResolver, IDialogManager dialogManager)
-        {
-            _dataService = dataService;
-            _appSettings = appSettings;
-            _navigationService = navigationService;
-            _messageResolver = messageResolver;
-            _dialogManager = dialogManager;
-			PagesList=new ObservableCollection<AdaaPageItem>()
-            {
-               // new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
-               // new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
-                new AdaaPageItem() {TargetType = typeof(RequestDriverPage),Title = AppResources.RequestDriver},
-                new AdaaPageItem() {TargetType = typeof(RequestOfficeMaintenancePage),Title = AppResources.RequestOfficeMaintenance},
-               // new AdaaPageItem() {TargetType = typeof(RequestOfficeServicesPage),Title = AppResources.RequestOfficeService},
-				new AdaaPageItem(){ TargetType = typeof(GreetingCardsPage), Title = AppResources.GreetingCard }
+		#endregion
 
-            };
-            NavigateToPageCommand = new ExtendedCommand<Type>(NavigateToPage);
-        }
-        #endregion
+		#region Initialization
 
-        #region Commands
-        public ExtendedCommand<Type> NavigateToPageCommand { get; set; }
-        #endregion
+		public EServicesViewModel (IDataService dataService, IAppSettings appSettings, INavigationService navigationService, IRequestMessageResolver messageResolver, IDialogManager dialogManager)
+		{
+			_dataService = dataService;
+			_appSettings = appSettings;
+			_navigationService = navigationService;
+			_messageResolver = messageResolver;
+			_dialogManager = dialogManager;
+			PagesList = new ObservableCollection<AdaaPageItem> () {
+				// new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
+				// new AdaaPageItem() {TargetType = typeof(RequestAnnouncementPage),Title = AppResources.RequestAnnouncement},
+				new AdaaPageItem () { TargetType = typeof(RequestDriverPage), Title = AppResources.RequestDriver },
+				new AdaaPageItem () {
+					TargetType = typeof(RequestOfficeMaintenancePage),
+					Title = AppResources.RequestOfficeMaintenance
+				},
+				// new AdaaPageItem() {TargetType = typeof(RequestOfficeServicesPage),Title = AppResources.RequestOfficeService},
+				new AdaaPageItem (){ TargetType = typeof(GreetingCardsPage), Title = AppResources.GreetingCard }
 
-        #region Methods
+			};
+			NavigateToPageCommand = new ExtendedCommand<Type> (NavigateToPage);
+		}
 
-        private void NavigateToPage(Type pageType)
-        {
-            _navigationService.NavigateToPage(pageType);
-        }
+		#endregion
 
-        #endregion
+		#region Commands
 
-    }
+		public ExtendedCommand<Type> NavigateToPageCommand { get; set; }
+
+		#endregion
+
+		#region Methods
+
+		private void NavigateToPage (Type pageType)
+		{
+			_navigationService.NavigateToPage (pageType);
+		}
+
+		#endregion
+
+	}
 }

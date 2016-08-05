@@ -16,10 +16,10 @@
       <ColumnDefinition Width="Auto"/>
     </Grid.ColumnDefinitions>
     
-    <Label Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Medium" Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
-    <Label Grid.Row="1" Grid.Column="0" LineBreakMode="TailTruncation"  TextColor="#FF017C82" FontSize="Medium" FontAttributes="Bold" Text="{Binding Value,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
+    <Label x:Name="lblTitle" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Medium" Text="{Binding Title,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
+    <Label x:Name="lblValue" Grid.Row="1" Grid.Column="0" LineBreakMode="TailTruncation"  TextColor="#FF017C82" FontSize="Medium" FontAttributes="Bold" Text="{Binding Value,Source={x:Reference ParentView}}" HorizontalTextAlignment="Start"/>
 
-    <Image
+    <Image x:Name="imgValue"
                                        HeightRequest="15"
                                        WidthRequest="15"
                                        Grid.Column="1"

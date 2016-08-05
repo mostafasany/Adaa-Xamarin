@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.Views.EServices.EquipmentsPage" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" x:Name="ParentView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="AdaaMobile.Views.TimeSheet.SelectTask" 
+xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" 
+xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile"
+ x:Name="ParentView">
 	<ContentPage.BackgroundImage>
 		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 	</ContentPage.BackgroundImage>
@@ -13,13 +18,13 @@
 				<OnPlatform x:TypeArguments="ImageSource" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 			</Image.Source>
 		</Image>
-		<ListView x:Name="EquipmentsList" ItemsSource="{Binding EquipmentWrappers}" IsGroupingEnabled="False" HasUnevenRows="True" SeparatorColor="Transparent" BackgroundColor="Transparent" Grid.Row="1" ItemSelected="EquipmentsList_OnItemSelected">
+		<ListView ItemTapped="ItemTapped" ItemsSource="{Binding PendingTask}"  SeparatorColor="Transparent" BackgroundColor="Transparent" Grid.Row="1">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
 						<ViewCell.View>
 							<Grid Padding="12,5">
-								<masterView:EquipmentItemControl Title="{Binding Equipment.Title}" IsSelected="{Binding IsSelected,Mode=TwoWay}" />
+								<masterView:EquipmentItemControl Title="{Binding ProcedureName}" />
 							</Grid>
 						</ViewCell.View>
 					</ViewCell>

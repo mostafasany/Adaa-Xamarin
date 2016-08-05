@@ -20,6 +20,8 @@ namespace AdaaMobile.Views.EServices
 
         }
 
+
+
         private void ServicesList_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (ServicesList.SelectedItem != null)
