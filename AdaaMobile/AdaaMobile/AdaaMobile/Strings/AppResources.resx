@@ -679,4 +679,10 @@
   <data name="TimeSheet_ViewTodaysTask" xml:space="preserve">
     <value>View Todays Task</value>
   </data>
+  <data name="TimeSheet_LoginHours" xml:space="preserve">
+    <value>Logged in Hours</value>
+  </data>
+  <data name="TimeSheet_RemainingHours" xml:space="preserve">
+    <value>Remaining Hours</value>
+  </data>
 </root>

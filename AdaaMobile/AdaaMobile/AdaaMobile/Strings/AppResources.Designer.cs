@@ -1538,6 +1538,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logged in Hours.
+        /// </summary>
+        public static string TimeSheet_LoginHours {
+            get {
+                return ResourceManager.GetString("TimeSheet_LoginHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Assignments.
         /// </summary>
         public static string TimeSheet_MyAssignment {
@@ -1579,6 +1588,15 @@ namespace AdaaMobile.Strings {
         public static string TimeSheet_ReferenceName {
             get {
                 return ResourceManager.GetString("TimeSheet_ReferenceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remaining Hours.
+        /// </summary>
+        public static string TimeSheet_RemainingHours {
+            get {
+                return ResourceManager.GetString("TimeSheet_RemainingHours", resourceCulture);
             }
         }
         

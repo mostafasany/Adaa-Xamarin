@@ -2,6 +2,6 @@
 {
     public class Week
     {
-        public string Weeka { get; set; }
+        public string WeekText { get; set; }
     }
 }
