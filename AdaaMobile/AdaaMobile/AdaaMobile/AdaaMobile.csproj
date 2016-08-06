@@ -386,7 +386,7 @@
     <Compile Include="Views\TimeSheet\SelectedAssimentsPage.xaml.cs">
       <DependentUpon>SelectedAssimentsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TimeSheet\MyTimesheetPage.xaml %28copy%29.cs">
+    <Compile Include="Views\TimeSheet\AddTask.xaml.cs">
       <DependentUpon>AddTask.xaml</DependentUpon>
     </Compile>
   </ItemGroup>

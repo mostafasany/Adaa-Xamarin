@@ -1,112 +1,107 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
- xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
- x:Class="AdaaMobile.AddTask" 
- xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" 
- xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" 
- xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" 
- xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" 
- xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" 
- x:Name="ParentView">
- 	<ContentPage.BackgroundImage>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.AddTask" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" x:Name="ParentView">
+	<ContentPage.BackgroundImage>
 		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 	</ContentPage.BackgroundImage>
- <Grid HorizontalOptions="Fill" VerticalOptions="Fill" MinimumHeightRequest="100" BackgroundColor="White">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-					</Grid.RowDefinitions>
-					<controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,15,10,8" BackgroundColor="White">
-						<Grid.RowDefinitions>
-							<RowDefinition Height="Auto" />
-							<RowDefinition Height="Auto" />
-							<RowDefinition Height="Auto" />
-						</Grid.RowDefinitions>
-						<controls:ExtendedButton Grid.Row="0" Grid.RowSpan="2" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Transparent" BackgroundColor="Transparent" Clicked="Duration_OnClicked">
-						</controls:ExtendedButton>
-						<Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0" InputTransparent="True">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="Auto" />
-							</Grid.ColumnDefinitions>
-							<Label x:Name="lblAssignment" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="Duration" />
-							<Image x:Name="imageAssignmentType" HeightRequest="15" WidthRequest="15" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
-								<Image.Source>
-									<OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
-								</Image.Source>
-							</Image>
-						</Grid>
-						<Picker x:Name="AssignmentPicker" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Fill" WidthRequest="0" HeightRequest="0" IsVisible="false" InputTransparent="True">
-						</Picker>
-						<Label x:Name="lblAssignmentResult" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Fill" Text="{Binding SelectedAssignmentResult }" TextColor="{StaticResource AppBackgroundNormal}" Font="SemiBold" InputTransparent="True">
-						</Label>
-						<!-- Separator -->
-						<Grid Grid.Row="2">
-							<BoxView HeightRequest="1" BackgroundColor="{StaticResource AppBackgroundSemi}" HorizontalOptions="Fill" />
-						</Grid>
-					</controls:ExtendedGrid>
-					<controls:ExtendedGrid Grid.Row="1" VerticalOptions="Start" Padding="10,5,10,8" BackgroundColor="White">
-						<Grid.RowDefinitions>
-							<RowDefinition Height="Auto" />
-							<RowDefinition Height="Auto" />
-							<RowDefinition Height="Auto" />
-						</Grid.RowDefinitions>
-						<controls:ExtendedButton Grid.Row="0" Grid.RowSpan="2" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Transparent" BackgroundColor="Transparent" Clicked="SelectTask_OnClicked">
-						</controls:ExtendedButton>
-						<Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0" InputTransparent="True">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="Auto" />
-							</Grid.ColumnDefinitions>
-							<Label x:Name="lblTask" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="Task Name" />
-							<Image x:Name="imageTask" HeightRequest="15" WidthRequest="15" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
-								<Image.Source>
-									<OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
-								</Image.Source>
-							</Image>
-						</Grid>
-						<Picker x:Name="TaskPicker" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Fill" WidthRequest="0" HeightRequest="0" IsVisible="false" InputTransparent="True">
-						</Picker>
-						<Label x:Name="lblTaskResult" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Fill" Text="{Binding SelectedPendingTaskResult }" TextColor="{StaticResource AppBackgroundNormal}" Font="SemiBold" InputTransparent="True">
-						</Label>
-						<!-- Separator -->
-						<Grid Grid.Row="2">
-							<BoxView HeightRequest="1" BackgroundColor="{StaticResource AppBackgroundSemi}" HorizontalOptions="Fill" />
-						</Grid>
-					</controls:ExtendedGrid>
-					<controls:ExtendedGrid Grid.Row="2" VerticalOptions="Start" Padding="10,5,0,8" BackgroundColor="White">
-						<Grid.RowDefinitions>
-							<RowDefinition Height="Auto" />
-							<RowDefinition Height="Auto" />
-							<RowDefinition Height="Auto" />
-						</Grid.RowDefinitions>
-						<controls:ExtendedButton Grid.Row="0" Grid.RowSpan="2" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Transparent" BackgroundColor="Transparent" Clicked="Duration_OnClicked">
-						</controls:ExtendedButton>
-						<Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0" InputTransparent="True">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="Auto" />
-							</Grid.ColumnDefinitions>
-							<Label x:Name="lblReasonType" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="Duration" />
-							<Image x:Name="imageReasonType" HeightRequest="15" WidthRequest="15" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
-								<Image.Source>
-									<OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
-								</Image.Source>
-							</Image>
-						</Grid>
-						<Picker x:Name="DurationPicker" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Fill" WidthRequest="0" HeightRequest="0" IsVisible="false" InputTransparent="True">
-						</Picker>
-						<Label x:Name="lblReasonTypeResult" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Fill" Text="{Binding SelectedDuration }" TextColor="{StaticResource AppBackgroundNormal}" Font="SemiBold" InputTransparent="True">
-						</Label>
-						<!-- Separator -->
-						<Grid Grid.Row="2">
-							<BoxView HeightRequest="1" BackgroundColor="{StaticResource AppBackgroundSemi}" HorizontalOptions="Fill" />
-						</Grid>
-					</controls:ExtendedGrid>
-				<controls:RoundedBoxView BackgroundColor="#22007c85" VerticalOptions="Fill" CornerRadius="{StaticResource CornerRadius}" Grid.Row="2" />
-			<controls:ExtendedGrid Grid.Row="3" VerticalOptions="StartAndExpand" Padding="10,10,10,10" BackgroundColor="Transparent">
+	<StackLayout>
+		<Grid HorizontalOptions="Fill" VerticalOptions="Fill" MinimumHeightRequest="100">
+			<controls:RoundedBoxView BackgroundColor="#22007c85" VerticalOptions="Fill" CornerRadius="{StaticResource CornerRadius}" />
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,15,10,8" BackgroundColor="White">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<controls:ExtendedButton Grid.Row="0" Grid.RowSpan="2" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Transparent" BackgroundColor="Transparent" Clicked="Duration_OnClicked">
+				</controls:ExtendedButton>
+				<Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0" InputTransparent="True">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					<Label x:Name="lblAssignment" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="Duration" />
+					<Image x:Name="imageAssignmentType" HeightRequest="15" WidthRequest="15" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+						<Image.Source>
+							<OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
+						</Image.Source>
+					</Image>
+				</Grid>
+				<Picker x:Name="AssignmentPicker" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Fill" WidthRequest="0" HeightRequest="0" IsVisible="false" InputTransparent="True">
+				</Picker>
+				<Label x:Name="lblAssignmentResult" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Fill" Text="{Binding SelectedAssignmentResult }" TextColor="{StaticResource AppBackgroundNormal}" Font="SemiBold" InputTransparent="True">
+				</Label>
+				<!-- Separator -->
+				<Grid Grid.Row="2">
+					<BoxView HeightRequest="1" BackgroundColor="{StaticResource AppBackgroundSemi}" HorizontalOptions="Fill" />
+				</Grid>
+			</controls:ExtendedGrid>
+			<controls:ExtendedGrid Grid.Row="1" VerticalOptions="Start" Padding="10,5,10,8" BackgroundColor="White">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<controls:ExtendedButton Grid.Row="0" Grid.RowSpan="2" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Transparent" BackgroundColor="Transparent" Clicked="SelectTask_OnClicked">
+				</controls:ExtendedButton>
+				<Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0" InputTransparent="True">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					<Label x:Name="lblTask" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="Task Name" />
+					<Image x:Name="imageTask" HeightRequest="15" WidthRequest="15" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+						<Image.Source>
+							<OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
+						</Image.Source>
+					</Image>
+				</Grid>
+				<Picker x:Name="TaskPicker" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Fill" WidthRequest="0" HeightRequest="0" IsVisible="false" InputTransparent="True">
+				</Picker>
+				<Label x:Name="lblTaskResult" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Fill" Text="{Binding SelectedPendingTaskResult }" TextColor="{StaticResource AppBackgroundNormal}" Font="SemiBold" InputTransparent="True">
+				</Label>
+				<!-- Separator -->
+				<Grid Grid.Row="2">
+					<BoxView HeightRequest="1" BackgroundColor="{StaticResource AppBackgroundSemi}" HorizontalOptions="Fill" />
+				</Grid>
+			</controls:ExtendedGrid>
+			<controls:ExtendedGrid Grid.Row="2" VerticalOptions="Start" Padding="10,5,0,8" BackgroundColor="White">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<controls:ExtendedButton Grid.Row="0" Grid.RowSpan="2" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Transparent" BackgroundColor="Transparent" Clicked="Duration_OnClicked">
+				</controls:ExtendedButton>
+				<Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0" InputTransparent="True">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					<Label x:Name="lblReasonType" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="Duration" />
+					<Image x:Name="imageReasonType" HeightRequest="15" WidthRequest="15" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+						<Image.Source>
+							<OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
+						</Image.Source>
+					</Image>
+				</Grid>
+				<Picker x:Name="DurationPicker" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Fill" WidthRequest="0" HeightRequest="0" IsVisible="false" InputTransparent="True">
+				</Picker>
+				<Label x:Name="lblReasonTypeResult" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Fill" Text="{Binding SelectedDuration }" TextColor="{StaticResource AppBackgroundNormal}" Font="SemiBold" InputTransparent="True">
+				</Label>
+				<!-- Separator -->
+				<Grid Grid.Row="2">
+					<BoxView HeightRequest="1" BackgroundColor="{StaticResource AppBackgroundSemi}" HorizontalOptions="Fill" />
+				</Grid>
+			</controls:ExtendedGrid>
+		</Grid>
+		<Grid HorizontalOptions="Fill" VerticalOptions="Fill" MinimumHeightRequest="100">
+			<controls:RoundedBoxView BackgroundColor="#22007c85" VerticalOptions="Fill" CornerRadius="{StaticResource CornerRadius}" />
+			<controls:ExtendedGrid VerticalOptions="StartAndExpand" Padding="10,10,10,10" BackgroundColor="Transparent">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
@@ -115,5 +110,6 @@
 				<controls:ExtendedEditor x:Name="AdditionalCommentsEditor" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="Black" Text="{Binding AdditionalComments,Mode=TwoWay}" MaxLength="60" HeightRequest="90">
 				</controls:ExtendedEditor>
 			</controls:ExtendedGrid>
-				</Grid>
+		</Grid>
+	</StackLayout>
 </ContentPage>

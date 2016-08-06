@@ -9,10 +9,10 @@ using AdaaMobile.Views.TimeSheet;
 namespace AdaaMobile
 {
 
-	public partial class MyTimesheetPage : ContentPage
+	public partial class AddTask : ContentPage
 	{
 		private readonly MyTimeSheetViewModel _viewModel;
-		public MyTimesheetPage ()
+		public AddTask ()
 		{
 			InitializeComponent ();
 			NavigationPage.SetBackButtonTitle(this, "");

@@ -28,7 +28,7 @@
             <ViewCell>
               <ViewCell.View>
                 <Grid Padding="2,3">
-                  <masterView:RequestItemControl Title="{Binding Id}" Message="{Binding ProcedureName}"  Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference MainWindow}}" CommandParamter="{Binding}" />
+                  <masterView:RequestItemControl Title="{Binding IdWithReference}" Message="{Binding ProcedureName}"  Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference MainWindow}}" CommandParamter="{Binding}" />
                 </Grid>
               </ViewCell.View>
             </ViewCell>
