@@ -105,7 +105,7 @@ namespace AdaaMobile.ViewModels
 		private async Task OpenRequestDetailsPage (Assignment assigmnet)
 		{
 			SelectedAssignment = assigmnet;
-			_navigationService.NavigateToPage (typeof(SelectedRequestPage));
+			_navigationService.NavigateToPage (typeof(SelectedAssimentsPage));
 		}
 
 		#endregion
