@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdaaMobile.Common;
 using AdaaMobile.Models;
+using AdaaMobile.Models.Response;
 
 namespace AdaaMobile.ViewModels
 {
@@ -19,6 +20,14 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Properties
+
+        private PendingTask _SelectedTask;
+
+        public PendingTask SelectedTask
+        {
+            get { return _SelectedTask; }
+            set { SetProperty(ref _SelectedTask, value); }
+        }
 
 
         private List<DayWrapper> _daysList;
