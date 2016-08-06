@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AdaaMobile.Common;
 using AdaaMobile.Models.Response;
 using AdaaMobile.DataServices.Requests;
+using Xamarin.Forms;
 
 namespace AdaaMobile.ViewModels
 {
@@ -129,6 +130,7 @@ namespace AdaaMobile.ViewModels
         private async Task OpenTaskWebView()
         {
             var selectedtask = SelectedPendingTask;
+            Device.OpenUri(new Uri(selectedtask.TaskFullURL, UriKind.Absolute);
         }
 
         #endregion

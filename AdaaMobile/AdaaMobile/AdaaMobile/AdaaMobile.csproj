@@ -110,6 +110,7 @@
     <Compile Include="Models\Request\SaveDriverRequestQParameters.cs" />
     <Compile Include="Models\Request\SaveOfficeMaintenanceRequestBParameters.cs" />
     <Compile Include="Models\Request\SaveOfficeMaintenanceRequestQParameters.cs" />
+    <Compile Include="Models\Response\AttendanceTask.cs" />
     <Compile Include="Models\Response\BaseItem.cs" />
     <Compile Include="Models\Response\DayPassRequest.cs" />
     <Compile Include="Models\Response\DayPassTask.cs" />
