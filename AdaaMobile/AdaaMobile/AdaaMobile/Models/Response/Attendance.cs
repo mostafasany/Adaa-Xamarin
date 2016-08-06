@@ -8,7 +8,7 @@ namespace AdaaMobile.Models.Response
 	[System.Xml.Serialization.XmlRoot (ElementName = "root", Namespace = "", IsNullable = false)]
 	public partial class Assignment
 	{
-		public string Id { get; set; }
+		public int Id { get; set; }
 
 		public string Title { get; set; }
 
@@ -37,7 +37,10 @@ namespace AdaaMobile.Models.Response
 		public string AssignmentStatusNameEN { get; set; }
 
 
-
+		public override string ToString ()
+		{
+			return Title;
+		}
 	}
 
 

@@ -77,6 +77,8 @@ namespace AdaaMobile.DataServices
 		Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null);
 
 		Task<ResponseWrapper<List<PendingTask>>> GetPendingTaskAsync(CancellationToken? token = null);
+	
+		Task<ResponseWrapper<List<AttendanceTask>>> GetTaskByAssignment(int assginmentID,CancellationToken? token = null);
 
     }
 }

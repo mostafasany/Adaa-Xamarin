@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using AdaaMobile.ViewModels;
+using System;
 
 namespace AdaaMobile
 {
@@ -18,9 +19,12 @@ namespace AdaaMobile
 
 			Title = _viewModel.SelectedPendingTask.ProcedureName;
 
-
 		}
 
+		public void OpenTask_Clicked(object sender,EventArgs args)
+		{
+			_viewModel.OpenTaskCommand.Execute (null);
+		}
 
 	}
 }

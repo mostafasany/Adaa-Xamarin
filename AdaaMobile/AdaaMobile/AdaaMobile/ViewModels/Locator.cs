@@ -234,5 +234,10 @@ namespace AdaaMobile.ViewModels
 				return Container.Resolve<IDialogManager> ();
 			}
 		}
+		public IDataService DataService {
+			get {
+				return Container.Resolve<IDataService> ();
+			}
+		}
 	}
 }
