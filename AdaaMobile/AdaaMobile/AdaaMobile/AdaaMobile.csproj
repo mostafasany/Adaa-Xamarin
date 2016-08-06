@@ -291,6 +291,9 @@
     <Compile Include="Views\TimeSheet\MyAssigmnetsPage.xaml.cs">
       <DependentUpon>MyAssigmnetsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TimeSheet\SelectedPendingTaskPage.xaml.cs">
+      <DependentUpon>SelectedPendingTaskPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserServiceItemControl.xaml.cs">
       <DependentUpon>UserServiceItemControl.xaml</DependentUpon>
     </Compile>
@@ -720,6 +723,13 @@
     <EmbeddedResource Include="Views\TimeSheet\MyAssigmnetsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TimeSheet\SelectedPendingTaskPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>
+      </SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

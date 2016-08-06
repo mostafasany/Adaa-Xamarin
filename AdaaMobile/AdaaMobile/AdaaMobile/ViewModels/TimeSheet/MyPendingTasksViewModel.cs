@@ -120,7 +120,7 @@ namespace AdaaMobile.ViewModels
         private async Task OpenRequestDetailsPage(PendingTask pendingTask)
         {
             SelectedPendingTask = pendingTask;
-            //_navigationService.NavigateToPage(typeof(SelectedRequestPage));
+            _navigationService.NavigateToPage(typeof(SelectedPendingTaskPage));
         }
 
         #endregion
