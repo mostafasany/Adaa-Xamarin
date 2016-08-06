@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
              xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions" 
              xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" x:Name="MainWindow" x:Class="AdaaMobile.Views.MyAssigmnetsPage">
+             xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" 
+             xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" x:Name="MainWindow" x:Class="AdaaMobile.Views.MyAssigmnetsPage">
 	<ContentPage.BackgroundImage>
 		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 	</ContentPage.BackgroundImage>
@@ -18,14 +19,14 @@
 			</Image.Source>
 		</Image>
 		<Grid x:Name="MyRequestsListGrid" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True" BackgroundColor="Transparent">
-			<Label x:Name="NoRequestsLabel" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding ShowNoPendingRequests}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
-			<ListView x:Name="MyRequestsList" ItemsSource="{Binding PendingRequests}" IsGroupingEnabled="False" HasUnevenRows="False" CachingStrategy="RecycleElement" RowHeight="70" SeparatorColor="Transparent" BackgroundColor="Transparent">
+			<Label x:Name="NoRequestsLabel" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoAssignments}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
+			<ListView x:Name="MyRequestsList" ItemsSource="{Binding Assignment}" IsGroupingEnabled="False" HasUnevenRows="False" CachingStrategy="RecycleElement" RowHeight="70" SeparatorColor="Transparent" BackgroundColor="Transparent">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>
 							<ViewCell.View>
 								<Grid Padding="2,3">
-									<masterView:UserServiceItemControl Title="{Binding Status}" Message="{Binding Title}" IndicatorColor="{Binding statusColor}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference MainWindow}}" CommandParamter="{Binding}" />
+									<masterView:RequestItemControl Title="{Binding AssignmentStatusCode}" Message="{Binding Title}" Date="{Binding Year}"  Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference MainWindow}}" CommandParamter="{Binding}" />
 								</Grid>
 							</ViewCell.View>
 						</ViewCell>

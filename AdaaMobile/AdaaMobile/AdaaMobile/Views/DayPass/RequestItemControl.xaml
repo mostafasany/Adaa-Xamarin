@@ -21,7 +21,7 @@
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			<Label x:Name="lblTitle" Grid.Row="1" Grid.Column="1" TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Title,Source={x:Reference ParentView}}" />
-			<Label x:Name="lblMessages" Grid.Row="2" Grid.Column="1" TextColor="White" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
+			<Label x:Name="lblMessages" LineBreakMode="TailTruncation"  Grid.Row="2" Grid.Column="1" TextColor="White" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
 
 			<Label Grid.Row="1" Grid.Column="2" x:Name="lblDate" TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent" HorizontalTextAlignment="Start" VerticalOptions="Center" FontSize="Small" Text="{Binding Date,Source={x:Reference ParentView}}" />
 			<Image Grid.Row="2" Grid.Column="2"  x:Name="imgArrow" HeightRequest="10" WidthRequest="10" HorizontalOptions="End" VerticalOptions="Center">

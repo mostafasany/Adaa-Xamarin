@@ -9,106 +9,106 @@ using AdaaMobile.DataServices.Requests;
 
 namespace AdaaMobile.ViewModels
 {
-    public class MyAssigmentsViewModel : BindableBase
-    {
-        #region Fields
+	public class MyAssigmentsViewModel : BindableBase
+	{
+		#region Fields
 
-        private readonly INavigationService _navigationService;
-        private readonly IDataService _dataService;
+		private readonly INavigationService _navigationService;
+		private readonly IDataService _dataService;
 
-        #endregion
+		#endregion
 
-        #region Properties
+		#region Properties
 
-        private List<Assignment> _Assignment;
+		private List<Assignment> _Assignment;
 
-        public List<Assignment> Assignment
-        {
-            get { return _Assignment; }
-            set { SetProperty(ref _Assignment, value); }
-        }
+		public List<Assignment> Assignment {
+			get { return _Assignment; }
+			set { SetProperty (ref _Assignment, value); OnPropertyChanged ("NoAssignments");}
+		}
 
-        private Assignment _SelectedAssignment;
+		private Assignment _SelectedAssignment;
 
-        public Assignment SelectedAssignment
-        {
-            get { return _SelectedAssignment; }
-            set { SetProperty(ref _SelectedAssignment, value); }
-        }
+		public Assignment SelectedAssignment {
+			get { return _SelectedAssignment; }
+			set { SetProperty (ref _SelectedAssignment, value); }
+		}
 
-        private bool _IsBusy;
-
-        public bool IsBusy
-        {
-            get { return _IsBusy; }
-            set
-            {
-                SetProperty(ref _IsBusy, value);
-            }
-        }
+		public bool NoAssignments {
+			get 
+			{
+				if (Assignment != null && Assignment.Count > 0) {
+					return false;
+				} else {
+					return true;
+				}
+			}
 
 
-        #endregion
+		}
 
-        #region Initialization
+		private bool _IsBusy;
 
-        public MyAssigmentsViewModel(INavigationService navigationService, IDataService dataservice)
-        {
-            _navigationService = navigationService;
-            _dataService = dataservice;
-            PageLoadedCommand = new AsyncExtendedCommand(Loaded);
-            RequestItemSelectedCommand = new AsyncExtendedCommand<Assignment>(OpenRequestDetailsPage);
-        }
+		public bool IsBusy {
+			get { return _IsBusy; }
+			set {
+				SetProperty (ref _IsBusy, value);
+			}
+		}
 
-        #endregion
 
-        #region Commands
+		#endregion
 
-        public AsyncExtendedCommand PageLoadedCommand { get; set; }
+		#region Initialization
 
-        public AsyncExtendedCommand<Assignment> RequestItemSelectedCommand { get; set; }
+		public MyAssigmentsViewModel (INavigationService navigationService, IDataService dataservice)
+		{
+			_navigationService = navigationService;
+			_dataService = dataservice;
+			PageLoadedCommand = new AsyncExtendedCommand (Loaded);
+			RequestItemSelectedCommand = new AsyncExtendedCommand<Assignment> (OpenRequestDetailsPage);
+		}
 
-        #endregion
+		#endregion
 
-        #region Methods
+		#region Commands
 
-        private async Task Loaded()
-        {
-            try
-            {
-                IsBusy = true;
-                var response = await _dataService.GetAssignmentAsync(null);
-                if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
-                {
-                    if (response.Result != null && response.Result.Count > 0)
-                    {
-                        Assignment = response.Result;
-                    }
-                    else
-                    {
+		public AsyncExtendedCommand PageLoadedCommand { get; set; }
 
-                    }
-                }
+		public AsyncExtendedCommand<Assignment> RequestItemSelectedCommand { get; set; }
 
-            }
-            catch (Exception ex)
-            {
+		#endregion
 
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+		#region Methods
 
-        }
+		private async Task Loaded ()
+		{
+			try {
+				IsBusy = true;
+				var response = await _dataService.GetAssignmentAsync (null);
+				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null) {
+					if (response.Result != null && response.Result.Count > 0) {
+						Assignment = response.Result;
+					} else {
 
-        private async Task OpenRequestDetailsPage(Assignment assigmnet)
-        {
-            SelectedAssignment = assigmnet;
-            _navigationService.NavigateToPage(typeof(SelectedRequestPage));
-        }
+					}
+				}
 
-        #endregion
+			} catch (Exception ex) {
 
-    }
+			} finally {
+				IsBusy = false;
+			}
+
+		}
+
+		private async Task OpenRequestDetailsPage (Assignment assigmnet)
+		{
+			SelectedAssignment = assigmnet;
+			_navigationService.NavigateToPage (typeof(SelectedRequestPage));
+		}
+
+		#endregion
+
+	}
 }
