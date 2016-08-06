@@ -667,4 +667,16 @@
   <data name="TimeSheet_TaskName" xml:space="preserve">
     <value>Task Name</value>
   </data>
+  <data name="TimeSheet_AddNewTask" xml:space="preserve">
+    <value>Add New Task</value>
+  </data>
+  <data name="TimeSheet_OpenTask" xml:space="preserve">
+    <value>Open Task</value>
+  </data>
+  <data name="TimeSheet_RemoveTask" xml:space="preserve">
+    <value>Remove Task</value>
+  </data>
+  <data name="TimeSheet_ViewTodaysTask" xml:space="preserve">
+    <value>View Todays Task</value>
+  </data>
 </root>

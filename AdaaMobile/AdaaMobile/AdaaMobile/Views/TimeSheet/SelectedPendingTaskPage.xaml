@@ -30,6 +30,10 @@
 					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_Status}"  Value="{Binding StatusName}" />
 					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_TaskDate}" Value="{Binding TaskDateFormated}" />
 				</StackLayout>
+
+        <controls:ExtendedButton HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" Command="{Binding OpenTaskCommand}" BorderRadius="0" Text="{ext:Translate TimeSheet_OpenTask}" BackgroundColor="{StaticResource AppBackgroundNormal}" TextColor="White">
+        </controls:ExtendedButton>
+        
 			</Grid>
 		</ScrollView>
 	</Grid>

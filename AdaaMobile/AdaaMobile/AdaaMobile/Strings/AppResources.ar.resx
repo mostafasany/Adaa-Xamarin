@@ -664,4 +664,16 @@
   <data name="TimeSheet_TaskName" xml:space="preserve">
     <value>اسم المهمة</value>
   </data>
+  <data name="TimeSheet_AddNewTask" xml:space="preserve">
+    <value>إضافة مهمة جديدة</value>
+  </data>
+  <data name="TimeSheet_ViewTodaysTask" xml:space="preserve">
+    <value>المهام مشاركات اليوم</value>
+  </data>
+  <data name="TimeSheet_OpenTask" xml:space="preserve">
+    <value>فتح العمل</value>
+  </data>
+  <data name="TimeSheet_RemoveTask" xml:space="preserve">
+    <value>إزالة العمل</value>
+  </data>
 </root>

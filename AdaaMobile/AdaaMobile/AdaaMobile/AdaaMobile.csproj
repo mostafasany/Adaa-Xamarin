@@ -336,7 +336,7 @@
     <Compile Include="Views\EServices\EServicesPage.xaml.cs">
       <DependentUpon>EServicesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TimesheetPage.xaml.cs">
+    <Compile Include="Views\TimeSheet\TimesheetPage.xaml.cs">
       <DependentUpon>TimesheetPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OracleServicesPage.xaml.cs">
@@ -461,7 +461,7 @@
     <EmbeddedResource Include="Views\EServices\EServicesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TimesheetPage.xaml">
+    <EmbeddedResource Include="Views\TimeSheet\TimesheetPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\OracleServicesPage.xaml">

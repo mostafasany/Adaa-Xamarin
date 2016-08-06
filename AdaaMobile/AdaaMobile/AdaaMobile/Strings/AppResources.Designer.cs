@@ -1502,6 +1502,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Task.
+        /// </summary>
+        public static string TimeSheet_AddNewTask {
+            get {
+                return ResourceManager.GetString("TimeSheet_AddNewTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assigment Name / Task.
         /// </summary>
         public static string TimeSheet_AssigmentName {
@@ -1556,11 +1565,29 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Task.
+        /// </summary>
+        public static string TimeSheet_OpenTask {
+            get {
+                return ResourceManager.GetString("TimeSheet_OpenTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reference Number.
         /// </summary>
         public static string TimeSheet_ReferenceName {
             get {
                 return ResourceManager.GetString("TimeSheet_ReferenceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Task.
+        /// </summary>
+        public static string TimeSheet_RemoveTask {
+            get {
+                return ResourceManager.GetString("TimeSheet_RemoveTask", resourceCulture);
             }
         }
         
@@ -1597,6 +1624,15 @@ namespace AdaaMobile.Strings {
         public static string TimeSheet_TaskName {
             get {
                 return ResourceManager.GetString("TimeSheet_TaskName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Todays Task.
+        /// </summary>
+        public static string TimeSheet_ViewTodaysTask {
+            get {
+                return ResourceManager.GetString("TimeSheet_ViewTodaysTask", resourceCulture);
             }
         }
         
