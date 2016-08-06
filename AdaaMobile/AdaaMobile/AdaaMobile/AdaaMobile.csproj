@@ -380,6 +380,9 @@
     </Compile>
     <Compile Include="ViewModels\SelectTaskViewModel.cs" />
     <Compile Include="ViewModels\MyTimeSheetViewModel.cs" />
+    <Compile Include="Views\TimeSheet\SelectedAssimentsPage.xaml.cs">
+      <DependentUpon>SelectedAssimentsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
@@ -505,6 +508,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TimeSheet\SelectTask.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TimeSheet\SelectedAssimentsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
