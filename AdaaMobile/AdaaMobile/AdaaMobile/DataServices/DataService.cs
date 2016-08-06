@@ -33,12 +33,12 @@ namespace AdaaMobile.DataServices
         }
 
 
-        public async Task<ResponseWrapper<List<TimeSheet>>> GetTimeSheet(int year, int week, CancellationToken? token = null)
+        public async Task<ResponseWrapper<TimeSheet>> GetTimeSheet(int year, int week, CancellationToken? token = null)
         {
             var request = _requestFactory();
             request.RequestUrl = TimeSheetBaseUrl + string.Format("GetTimeSheet?encryptedUserName={0}&weekNo={1}&year={2}", "mhibnQQwVQQJ3d8gmlnKJg==", week, year);
             request.ResultContentType = ContentType.Json;
-            return await request.GetAsync<List<TimeSheet>>(token);
+            return await request.GetAsync<TimeSheet>(token);
         }
 
         public async Task<ResponseWrapper<List<Week>>> GetWeeksPerYearAsync(int year, CancellationToken? token = null)

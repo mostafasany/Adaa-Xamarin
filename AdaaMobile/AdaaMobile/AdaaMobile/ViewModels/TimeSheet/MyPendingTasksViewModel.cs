@@ -130,8 +130,8 @@ namespace AdaaMobile.ViewModels
         private async Task OpenTaskWebView()
         {
             var selectedtask = SelectedPendingTask;
-			//Device.OpenUri(new Uri(selectedtask.TaskFullURL, UriKind.Absolute));
-			Device.OpenUri(new Uri("http://www.google.com", UriKind.Absolute));
+			var fullURL = "http://adaatime.linkdev.com" + selectedtask.TaskFullURL;
+			Device.OpenUri(new Uri(fullURL, UriKind.Absolute));
         }
 
         #endregion

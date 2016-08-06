@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AdaaMobile.Common;
 using AdaaMobile.Models;
 using AdaaMobile.Models.Response;
+using System.Collections.ObjectModel;
 
 namespace AdaaMobile.ViewModels
 {
@@ -64,13 +65,21 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _selectedDay, value); }
         }
 
-        private List<TimeSheet> _TimeSheetList;
+		private TimeSheet _TimeSheetItem;
 
-        public List<TimeSheet> TimeSheetList
+		public TimeSheet TimeSheetItem
         {
-            get { return _TimeSheetList; }
-            set { SetProperty(ref _TimeSheetList, value); }
+			get { return _TimeSheetItem; }
+			set { SetProperty(ref _TimeSheetItem, value); }
         }
+
+		private ObservableCollection<Grouping<string, TimeSheetDetails>> _GroupedTimeSheet;
+
+		public ObservableCollection<Grouping<string, TimeSheetDetails>> GroupedTimeSheet
+		{
+			get { return _GroupedTimeSheet; }
+			set { SetProperty(ref _GroupedTimeSheet, value); }
+		}
 
         #endregion
 
@@ -82,6 +91,7 @@ namespace AdaaMobile.ViewModels
             _dataService = dataservice;
             PageLoadedCommand = new AsyncExtendedCommand(Loaded);
             AddNewTaskCommand = new AsyncExtendedCommand(AddNewTask);
+			RequestItemSelectedCommand = new AsyncExtendedCommand<TimeSheetDetails> (OpenRequestDetailsPage);
             SmallestWindowLimit = Xamarin.Forms.Device.OnPlatform(5, 14, 14);
         }
 
@@ -91,10 +101,16 @@ namespace AdaaMobile.ViewModels
 
         public AsyncExtendedCommand PageLoadedCommand { get; set; }
         public AsyncExtendedCommand AddNewTaskCommand { get; set; }
-
+		public AsyncExtendedCommand<TimeSheetDetails> RequestItemSelectedCommand { get; set; }
         #endregion
 
         #region Methods
+
+		private async Task OpenRequestDetailsPage(TimeSheetDetails pendingTask)
+		{
+			//SelectedPendingTask = pendingTask;
+			//_navigationService.NavigateToPage(typeof(SelectedPendingTaskPage));
+		}
 
         private async Task AddNewTask()
         {
@@ -124,7 +140,15 @@ namespace AdaaMobile.ViewModels
             var response = await _dataService.GetTimeSheet(2016, 23, null);
             if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-                TimeSheetList = response.Result;
+                TimeSheetItem = response.Result;
+
+				var sorted = from emp in TimeSheetItem.TimeSheetRecords
+					orderby emp.TaskID
+					group emp by emp.AssignmentID into empGroup
+					select new Grouping<string, TimeSheetDetails> (empGroup.Key, empGroup);
+
+				GroupedTimeSheet = new ObservableCollection<Grouping<string, TimeSheetDetails>> (sorted);
+				
             }
         }
         /// <summary>

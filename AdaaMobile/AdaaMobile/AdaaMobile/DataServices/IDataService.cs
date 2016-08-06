@@ -78,7 +78,7 @@ namespace AdaaMobile.DataServices
 
         Task<ResponseWrapper<List<Week>>> GetWeeksPerYearAsync(int year, CancellationToken? token = null);
 
-        Task<ResponseWrapper<List<TimeSheet>>> GetTimeSheet(int year, int week, CancellationToken? token = null);
+        Task<ResponseWrapper<TimeSheet>> GetTimeSheet(int year, int week, CancellationToken? token = null);
 
     }
 }

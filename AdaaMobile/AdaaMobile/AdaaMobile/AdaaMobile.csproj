@@ -398,6 +398,9 @@
     <Compile Include="Views\TimeSheet\TaskDetails.xaml.cs">
       <DependentUpon>TaskDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TimeSheet\TimeSheetRecordItem.xaml.cs">
+      <DependentUpon>TimeSheetRecordItem.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
@@ -535,6 +538,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TimeSheet\TaskDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TimeSheet\TimeSheetRecordItem.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

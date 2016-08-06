@@ -63,7 +63,7 @@ namespace AdaaMobile.ViewModels
 			cb.RegisterType<EquipmentsSelectionViewModel> ();
 			cb.RegisterType<MyRequestsViewModel> ().SingleInstance ();
 			cb.RegisterType<TimeSheetViewModel> ();
-			cb.RegisterType<MyTimeSheetViewModel> ();
+			cb.RegisterType<MyTimeSheetViewModel> ().SingleInstance ();
 			cb.RegisterType<SelectTaskViewModel> ().SingleInstance ();
             cb.RegisterType<MyPendingTasksViewModel>().SingleInstance();
 			cb.RegisterType<MyAssigmentsViewModel>().SingleInstance ();
