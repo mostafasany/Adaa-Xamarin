@@ -36,7 +36,7 @@ namespace AdaaMobile.DataServices
 		{
 			var request = _requestFactory();
 			request.RequestUrl=TimeSheetBaseUrl+"GetFilteredAssignments?encryptedUserName=IR3aBpmwPVrlqZu5C/lQpg==";
-			request.ResultContentType = ContentType.Xml;
+			request.ResultContentType = ContentType.Json;
 			return await request.GetAsync<List<Assignment>>(token);
 		}
 
