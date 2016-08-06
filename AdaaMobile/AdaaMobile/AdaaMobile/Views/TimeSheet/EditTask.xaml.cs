@@ -34,6 +34,7 @@ namespace AdaaMobile
 			LoadDuration ();
 			DurationPicker.SelectedIndexChanged += DurationPicker_SelectionIndexChanged;
 		}
+
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
@@ -43,15 +44,23 @@ namespace AdaaMobile
 
 		private async void EditSelectedTask ()
 		{
-			var duration = lblDurationResult.Text;
-			var comment = AdditionalCommentsEditor.Text;
-//			var selectedTaskID = _viewModel.SelectedTask.Id;
+			string duration, comment, selectedTaskID;
+			if (!string.IsNullOrEmpty (lblDurationResult.Text)) {
+				duration = lblDurationResult.Text;
+			}
+			if (!string.IsNullOrEmpty (AdditionalCommentsEditor.Text)) {
+				comment = AdditionalCommentsEditor.Text;
+			}
+			if (_viewModel.SelectedTask != null) {
+				selectedTaskID = _viewModel.SelectedTask.Id;
+			}
 		}
 
 
 		private void LoadDuration ()
 		{
 			DurationPicker.Items.Clear ();
+			lblDurationResult.Text = "Select Duration";
 			for (int i = 0; i < 24; i++) {
 				string value = i.ToString () + ":00";
 				DurationPicker.Items.Add (value);

@@ -75,7 +75,7 @@ namespace AdaaMobile.ViewModels
 
         private async Task AddNewTask()
         {
-			_navigationService.NavigateToPage(typeof(EditTask));
+			_navigationService.NavigateToPage(typeof(AddTask));
         }
         private async Task Loaded()
         {

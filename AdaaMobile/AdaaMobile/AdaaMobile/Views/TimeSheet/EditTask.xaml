@@ -37,7 +37,7 @@
         </Grid>
 
         <Label Grid.Row="3" x:Name="lblAdditionalComments" TextColor="Gray" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate AdditionalComments}" />
-        <controls:ExtendedEditor x:Name="AdditionalCommentsEditor" Grid.Row="4" HorizontalOptions="Fill"  BackgroundColor="Transparent" TextColor="Black" Text="{Binding AdditionalComments,Mode=TwoWay}" MaxLength="60" HeightRequest="20">
+        <controls:ExtendedEditor x:Name="AdditionalCommentsEditor" Grid.Row="4" HorizontalOptions="Fill"  BackgroundColor="Transparent" TextColor="Black"  MaxLength="60" HeightRequest="60">
         </controls:ExtendedEditor>
       </controls:ExtendedGrid>
 
