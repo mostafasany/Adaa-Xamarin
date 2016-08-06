@@ -643,4 +643,28 @@
   <data name="TimeSheet_ADAATimeSheet" xml:space="preserve">
     <value>ADAA Time Sheet</value>
   </data>
+  <data name="TimeSheet_AssigmentName" xml:space="preserve">
+    <value>Assigment Name / Task</value>
+  </data>
+  <data name="TimeSheet_AssihmentDate" xml:space="preserve">
+    <value>Assigment Date</value>
+  </data>
+  <data name="TimeSheet_EndDate" xml:space="preserve">
+    <value>EndDate</value>
+  </data>
+  <data name="TimeSheet_ReferenceName" xml:space="preserve">
+    <value>Reference Number</value>
+  </data>
+  <data name="TimeSheet_StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="TimeSheet_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TimeSheet_TaskDate" xml:space="preserve">
+    <value>Task Date</value>
+  </data>
+  <data name="TimeSheet_TaskName" xml:space="preserve">
+    <value>Task Name</value>
+  </data>
 </root>

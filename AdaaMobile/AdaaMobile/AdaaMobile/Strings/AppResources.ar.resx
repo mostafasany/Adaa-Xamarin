@@ -640,4 +640,28 @@
   <data name="TimeSheet_ADAATimeSheet" xml:space="preserve">
     <value>ADAA Time Sheet</value>
   </data>
+  <data name="TimeSheet_AssigmentDate" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="TimeSheet_AssigmentName" xml:space="preserve">
+    <value>اسم الواجب</value>
+  </data>
+  <data name="TimeSheet_EndDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="TimeSheet_ReferenceName" xml:space="preserve">
+    <value>الرقم المرجعي</value>
+  </data>
+  <data name="TimeSheet_StartDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="TimeSheet_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="TimeSheet_TaskDate" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="TimeSheet_TaskName" xml:space="preserve">
+    <value>اسم المهمة</value>
+  </data>
 </root>

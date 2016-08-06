@@ -1502,6 +1502,33 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assigment Name / Task.
+        /// </summary>
+        public static string TimeSheet_AssigmentName {
+            get {
+                return ResourceManager.GetString("TimeSheet_AssigmentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assigment Date.
+        /// </summary>
+        public static string TimeSheet_AssihmentDate {
+            get {
+                return ResourceManager.GetString("TimeSheet_AssihmentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EndDate.
+        /// </summary>
+        public static string TimeSheet_EndDate {
+            get {
+                return ResourceManager.GetString("TimeSheet_EndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Assignments.
         /// </summary>
         public static string TimeSheet_MyAssignment {
@@ -1525,6 +1552,51 @@ namespace AdaaMobile.Strings {
         public static string TimeSheet_MyTimeSheet {
             get {
                 return ResourceManager.GetString("TimeSheet_MyTimeSheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reference Number.
+        /// </summary>
+        public static string TimeSheet_ReferenceName {
+            get {
+                return ResourceManager.GetString("TimeSheet_ReferenceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Date.
+        /// </summary>
+        public static string TimeSheet_StartDate {
+            get {
+                return ResourceManager.GetString("TimeSheet_StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string TimeSheet_Status {
+            get {
+                return ResourceManager.GetString("TimeSheet_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Date.
+        /// </summary>
+        public static string TimeSheet_TaskDate {
+            get {
+                return ResourceManager.GetString("TimeSheet_TaskDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string TimeSheet_TaskName {
+            get {
+                return ResourceManager.GetString("TimeSheet_TaskName", resourceCulture);
             }
         }
         

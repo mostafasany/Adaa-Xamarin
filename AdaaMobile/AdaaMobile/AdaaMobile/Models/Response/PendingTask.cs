@@ -20,7 +20,7 @@ namespace AdaaMobile.Models.Response
         public string ProcedureName { get; set; }
 
         public DateTime TaskDate { get; set; }
-        public string TaskDateFormated { get { return TaskDate.Date.ToString(); } }
+        public string TaskDateFormated { get { return TaskDate.Date.ToString("yyyy MMMMM dd"); } }
 
         public string TaskFullURL { get; set; }
 
