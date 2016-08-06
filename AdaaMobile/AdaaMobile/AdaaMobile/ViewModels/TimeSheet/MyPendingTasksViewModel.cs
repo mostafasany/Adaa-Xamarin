@@ -25,7 +25,22 @@ namespace AdaaMobile.ViewModels
         public List<PendingTask> PendingTask
         {
             get { return _PendingTask; }
-            set { SetProperty(ref _PendingTask, value); }
+            set { SetProperty(ref _PendingTask, value); OnPropertyChanged("NoPendingTasks"); }
+        }
+
+        public bool NoPendingTasks
+        {
+            get
+            {
+                if (PendingTask != null && PendingTask.Count > 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         private PendingTask _SelectedPendingTask;
