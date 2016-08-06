@@ -3,7 +3,6 @@ using System;
 using AdaaMobile.Common;
 using AdaaMobile.Models;
 using AdaaMobile.Strings;
-using AdaaMobile.Views.EServices;
 using System.Collections.ObjectModel;
 using AdaaMobile.Views;
 
@@ -30,7 +29,7 @@ namespace AdaaMobile.ViewModels
 			_navigationService = navigationService;
 			PagesList = new ObservableCollection<AdaaPageItem> () {
 				new AdaaPageItem () { TargetType = typeof(MyTimesheetPage), Title = AppResources.TimeSheet_MyTimeSheet },
-				new AdaaPageItem () {TargetType = typeof(RequestOfficeMaintenancePage),Title = AppResources.TimeSheet_MyAssignment},
+				new AdaaPageItem () {TargetType = typeof(MyAssigmnetsPage),Title = AppResources.TimeSheet_MyAssignment},
 				new AdaaPageItem (){ TargetType = typeof(MyPendingTasks), Title = AppResources.TimeSheet_MyPendingTasks }
 			};
 			NavigateToPageCommand = new ExtendedCommand<Type> (NavigateToPage);
