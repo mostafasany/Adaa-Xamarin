@@ -24,7 +24,12 @@ namespace AdaaMobile
 
 			Title = AppResources.EServices;
 
-		
+			//Add submit action
+			Action action = () => {
+				EditSelectedTask ();
+			};
+			ToolbarItems.Add (
+				new ToolbarItem ("", "right.png", action, ToolbarItemOrder.Primary));
 
 			LoadDuration ();
 			DurationPicker.SelectedIndexChanged += DurationPicker_SelectionIndexChanged;
@@ -36,7 +41,12 @@ namespace AdaaMobile
 		}
 
 
-
+		private async void EditSelectedTask ()
+		{
+			var duration = lblDurationResult.Text;
+			var comment = AdditionalCommentsEditor.Text;
+//			var selectedTaskID = _viewModel.SelectedTask.Id;
+		}
 
 
 		private void LoadDuration ()
