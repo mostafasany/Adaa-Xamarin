@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using AdaaMobile.ViewModels;
 using AdaaMobile.Strings;
 
@@ -18,7 +15,7 @@ namespace AdaaMobile
 			_viewModel = Locator.Default.TimeSheetViewModel;
 			BindingContext = _viewModel;
 
-			Title = AppResources.EServices;
+			Title = AppResources.TimeSheet_ADAATimeSheet;
 		}
 
 		private void ServicesList_OnItemSelected(object sender, SelectedItemChangedEventArgs e)

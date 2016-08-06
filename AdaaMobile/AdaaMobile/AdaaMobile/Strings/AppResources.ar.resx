@@ -637,4 +637,7 @@
   <data name="TimeSheet_MyTimeSheet" xml:space="preserve">
     <value>الجدول الزمني</value>
   </data>
+  <data name="TimeSheet_ADAATimeSheet" xml:space="preserve">
+    <value>ADAA Time Sheet</value>
+  </data>
 </root>

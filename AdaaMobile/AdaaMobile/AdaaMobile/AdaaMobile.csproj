@@ -171,6 +171,8 @@
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestDriverViewModel.cs" />
     <Compile Include="ViewModels\TaskDetailsViewmodel.cs" />
+    <Compile Include="ViewModels\TimeSheet\MyPendingTasksViewModel.cs" />
+    <Compile Include="ViewModels\TimeSheet\TimeSheetViewModel.cs" />
     <Compile Include="ViewModels\UserAccountServicesViewModel.cs" />
     <Compile Include="Views\Authentication\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
@@ -282,6 +284,9 @@
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TimeSheet\MyPendingTasks.xaml.cs">
+      <DependentUpon>MyPendingTasks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserServiceItemControl.xaml.cs">
       <DependentUpon>UserServiceItemControl.xaml</DependentUpon>
     </Compile>
@@ -361,7 +366,6 @@
     <Compile Include="Views\DayPass\RequestItemControl.xaml.cs">
       <DependentUpon>RequestItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\TimeSheetViewModel.cs" />
     <Compile Include="Models\Response\Assignment.cs" />
     <Compile Include="Views\TimeSheet\MyTimesheetPage.xaml.cs">
       <DependentUpon>MyTimesheetPage.xaml</DependentUpon>
@@ -563,7 +567,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mock\" />
-    <Folder Include="Views\TimeSheet\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Authentication\SignUpPage.xaml">
@@ -693,6 +696,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\EServices\EquipmentItemControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TimeSheet\MyPendingTasks.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

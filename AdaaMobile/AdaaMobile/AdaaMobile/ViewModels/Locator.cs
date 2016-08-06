@@ -65,9 +65,18 @@ namespace AdaaMobile.ViewModels
 			cb.RegisterType<TimeSheetViewModel> ();
 			cb.RegisterType<MyTimeSheetViewModel> ();
 			cb.RegisterType<SelectTaskViewModel> ().SingleInstance ();
-		}
+            cb.RegisterType<MyPendingTasksViewModel>();
+        }
 
-		public SelectTaskViewModel SelectTaskViewModel {
+        public MyPendingTasksViewModel MyPendingTasksViewModel
+        {
+            get
+            {
+                return Container.Resolve<MyPendingTasksViewModel>();
+            }
+        }
+
+        public SelectTaskViewModel SelectTaskViewModel {
 			get {
 				return Container.Resolve<SelectTaskViewModel> ();
 			}

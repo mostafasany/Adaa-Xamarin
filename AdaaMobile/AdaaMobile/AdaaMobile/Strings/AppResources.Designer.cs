@@ -1493,6 +1493,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ADAA Time Sheet.
+        /// </summary>
+        public static string TimeSheet_ADAATimeSheet {
+            get {
+                return ResourceManager.GetString("TimeSheet_ADAATimeSheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Assignments.
         /// </summary>
         public static string TimeSheet_MyAssignment {

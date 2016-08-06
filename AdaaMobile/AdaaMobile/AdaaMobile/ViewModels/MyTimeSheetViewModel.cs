@@ -3,15 +3,11 @@ using AdaaMobile.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AdaaMobile.Common;
 using AdaaMobile.Models;
-using AdaaMobile.Strings;
-using AdaaMobile.Views.EServices;
 using System.Collections.ObjectModel;
 using AdaaMobile.Models.Response;
-using AdaaMobile.DataServices.Requests;
 
 namespace AdaaMobile.ViewModels
 {
