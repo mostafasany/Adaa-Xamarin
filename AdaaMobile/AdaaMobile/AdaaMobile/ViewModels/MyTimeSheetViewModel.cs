@@ -38,6 +38,21 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _daysList, value); }
         }
 
+        private List<Week> _WeekList;
+        public List<Week> WeekList
+        {
+            get { return _WeekList; }
+            set { SetProperty(ref _WeekList, value); }
+        }
+
+        private Week _SelectedWeek;
+
+        public Week SelectedWeek
+        {
+            get { return _SelectedWeek; }
+            set { SetProperty(ref _SelectedWeek, value); }
+        }
+
         private DayWrapper _selectedDay;
 
         /// <summary>
@@ -47,6 +62,14 @@ namespace AdaaMobile.ViewModels
         {
             get { return _selectedDay; }
             set { SetProperty(ref _selectedDay, value); }
+        }
+
+        private List<TimeSheet> _TimeSheetList;
+
+        public List<TimeSheet> TimeSheetList
+        {
+            get { return _TimeSheetList; }
+            set { SetProperty(ref _TimeSheetList, value); }
         }
 
         #endregion
@@ -79,9 +102,31 @@ namespace AdaaMobile.ViewModels
         }
         private async Task Loaded()
         {
+            LoadWeeks();
+
             PopulateAttendanceDaysAsync();
+
+            LoadTimeSheet();
         }
 
+        public async Task LoadWeeks()
+        {
+            var response = await _dataService.GetWeeksPerYearAsync(2016, null);
+            if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
+            {
+                WeekList = response.Result;
+                SelectedWeek = WeekList[0];
+            }
+        }
+
+        public async Task LoadTimeSheet()
+        {
+            var response = await _dataService.GetTimeSheet(2016, 23, null);
+            if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
+            {
+                TimeSheetList = response.Result;
+            }
+        }
         /// <summary>
         /// This is used to populate days list with the specified list.
         /// Be Aware this is used only With Attendance Mode.

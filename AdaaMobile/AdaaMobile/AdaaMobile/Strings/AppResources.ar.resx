@@ -676,4 +676,10 @@
   <data name="TimeSheet_RemoveTask" xml:space="preserve">
     <value>إزالة العمل</value>
   </data>
+  <data name="TimeSheet_LoginHours" xml:space="preserve">
+    <value>تسجيل في ساعات</value>
+  </data>
+  <data name="TimeSheet_RemainingHours" xml:space="preserve">
+    <value>تبقى ساعات</value>
+  </data>
 </root>
