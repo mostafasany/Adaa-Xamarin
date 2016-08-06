@@ -81,6 +81,7 @@ namespace AdaaMobile.ViewModels
 			_navigationService = navigationService;
 			_dataService = dataservice;
 			PageLoadedCommand = new AsyncExtendedCommand (Loaded);
+			AddNewTaskCommand = new AsyncExtendedCommand (AddNewTask);
 			SmallestWindowLimit = Xamarin.Forms.Device.OnPlatform (5, 14, 14);
 		}
 
@@ -89,11 +90,16 @@ namespace AdaaMobile.ViewModels
 		#region Commands
 
 		public AsyncExtendedCommand PageLoadedCommand { get; set; }
+		public AsyncExtendedCommand AddNewTaskCommand { get; set; }
 
 		#endregion
 
 		#region Methods
 
+		private async Task AddNewTask ()
+		{
+			_navigationService.NavigateToPage (typeof(AddTask));
+		}
 		private async Task Loaded ()
 		{
 			SelectedDuration="Selecte Duration";

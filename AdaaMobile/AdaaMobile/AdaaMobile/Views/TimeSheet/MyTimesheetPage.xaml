@@ -159,8 +159,7 @@
 							<BoxView HeightRequest="1" BackgroundColor="{StaticResource AppBackgroundSemi}" HorizontalOptions="Fill" />
 						</Grid>
 					</controls:ExtendedGrid>
-					<Button Grid.Row="3" HeightRequest="40" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="Add Task" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
-					</Button>
+
 				</Grid>
 			</Grid>
 			<Grid HeightRequest="60" Padding="20,0,10,0" BackgroundColor="#6cb3b8">
@@ -180,7 +179,7 @@
 				</StackLayout>
 			</Grid>
 			<Grid BackgroundColor="White" HeightRequest="400" Padding="10,10,10,0">
-				<controls:ExtendedButton HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" BorderRadius="0" Text="View Todays Tasks" BackgroundColor="{StaticResource AppBackgroundNormal}" TextColor="White">
+				<controls:ExtendedButton HeightRequest="40" Command="{Binding AddNewTaskCommand}" VerticalOptions="Start" HorizontalOptions="Fill" BorderRadius="0" Text="Add New Task" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">>
 				</controls:ExtendedButton>
 			</Grid>
 		</StackLayout>
