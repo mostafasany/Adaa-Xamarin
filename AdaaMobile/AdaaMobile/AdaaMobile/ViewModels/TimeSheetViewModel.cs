@@ -33,9 +33,9 @@ namespace AdaaMobile.ViewModels
 		{
 			_navigationService = navigationService;
 			PagesList = new ObservableCollection<AdaaPageItem> () {
-				new AdaaPageItem () { TargetType = typeof(MyTimesheetPage), Title = AppResources.RequestDriver },
-				new AdaaPageItem () {TargetType = typeof(RequestOfficeMaintenancePage),Title = AppResources.RequestOfficeMaintenance},
-				new AdaaPageItem (){ TargetType = typeof(GreetingCardsPage), Title = AppResources.GreetingCard }
+				new AdaaPageItem () { TargetType = typeof(MyTimesheetPage), Title = AppResources.TimeSheet_MyTimeSheet },
+				new AdaaPageItem () {TargetType = typeof(RequestOfficeMaintenancePage),Title = AppResources.TimeSheet_MyAssignment},
+				new AdaaPageItem (){ TargetType = typeof(GreetingCardsPage), Title = AppResources.TimeSheet_MyPendingTasks }
 			};
 			NavigateToPageCommand = new ExtendedCommand<Type> (NavigateToPage);
 		}
