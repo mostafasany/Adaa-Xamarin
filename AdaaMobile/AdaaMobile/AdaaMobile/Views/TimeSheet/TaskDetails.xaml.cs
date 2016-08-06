@@ -18,7 +18,7 @@ namespace AdaaMobile
 
 			NavigationPage.SetBackButtonTitle (this, "");
 
-			_viewModel = Locator.Default.MyAssigmentsViewModel;
+			_viewModel = Locator.Default.MyTimeSheetViewModel;
 			BindingContext = _viewModel.SelectedTask;
 
 			Title = _viewModel.SelectedTask.ProcedureName;
