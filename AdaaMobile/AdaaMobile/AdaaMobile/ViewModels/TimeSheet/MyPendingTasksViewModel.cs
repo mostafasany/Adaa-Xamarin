@@ -73,6 +73,7 @@ namespace AdaaMobile.ViewModels
             _dataService = dataservice;
             PageLoadedCommand = new AsyncExtendedCommand(Loaded);
             RequestItemSelectedCommand = new AsyncExtendedCommand<PendingTask>(OpenRequestDetailsPage);
+            OpenTaskCommand = new AsyncExtendedCommand(OpenTaskWebView);
         }
 
         #endregion
@@ -82,6 +83,8 @@ namespace AdaaMobile.ViewModels
         public AsyncExtendedCommand PageLoadedCommand { get; set; }
 
         public AsyncExtendedCommand<PendingTask> RequestItemSelectedCommand { get; set; }
+
+        public AsyncExtendedCommand OpenTaskCommand { get; set; }
 
         #endregion
 
@@ -121,6 +124,11 @@ namespace AdaaMobile.ViewModels
         {
             SelectedPendingTask = pendingTask;
             _navigationService.NavigateToPage(typeof(SelectedPendingTaskPage));
+        }
+
+        private async Task OpenTaskWebView()
+        {
+            var selectedtask = SelectedPendingTask;
         }
 
         #endregion
