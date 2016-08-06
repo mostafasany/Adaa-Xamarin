@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AdaaMobile.DataServices.Requests;
-using AdaaMobile.Models;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
 
@@ -79,6 +75,8 @@ namespace AdaaMobile.DataServices
 		Task<ResponseWrapper<List<PendingTask>>> GetPendingTaskAsync(CancellationToken? token = null);
 	
 		Task<ResponseWrapper<List<AttendanceTask>>> GetTaskByAssignment(int assginmentID,CancellationToken? token = null);
+
+        Task<ResponseWrapper<List<Week>>> GetWeeksPerYearAsync(int year, CancellationToken? token = null);
 
     }
 }
