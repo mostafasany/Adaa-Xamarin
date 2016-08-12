@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AdaaMobile.Models.Response
 {
@@ -10,7 +11,7 @@ namespace AdaaMobile.Models.Response
 
 	public class TimeSheetDetails
 	{
-		public object EmpWorkingHours{ get; set; }
+		public DateTime AssignmentDate { get; set; }
 		public string TaskID { get; set; }
 		public string AssignmentID { get; set; }
 		public string TaskTitle { get; set; }

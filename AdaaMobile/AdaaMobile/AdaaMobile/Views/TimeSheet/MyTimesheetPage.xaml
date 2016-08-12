@@ -43,7 +43,7 @@
         </Image>
       </Grid>
 
-      <controls:HorizontalListView ItemsSource="{Binding DaysList}" VerticalOptions="Start" HorizontalOptions="Fill">
+      <controls:HorizontalListView ItemsSource="{Binding DaysList}" ItemTapped="Day_Tapped" VerticalOptions="Start" HorizontalOptions="Fill">
         <controls:HorizontalListView.HeightRequest>
           <OnPlatform x:TypeArguments="x:Double" Android="69" iOS="68" WinPhone="80" />
         </controls:HorizontalListView.HeightRequest>

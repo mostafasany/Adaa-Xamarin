@@ -11,7 +11,6 @@ using AdaaMobile.Models;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
 using AdaaMobile.Strings;
-using AdaaMobile.Views;
 using AdaaMobile.Views.Authentication;
 using System.Collections.ObjectModel;
 

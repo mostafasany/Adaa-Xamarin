@@ -1,6 +1,9 @@
 ﻿using Xamarin.Forms;
 using AdaaMobile.ViewModels;
 using AdaaMobile.Strings;
+using AdaaMobile.Controls;
+using AdaaMobile.Models;
+
 namespace AdaaMobile
 {
 
@@ -22,6 +25,14 @@ namespace AdaaMobile
         {
             base.OnAppearing();
             _viewModel.PageLoadedCommand.Execute(null);
+        }
+
+        private void Day_Tapped(object sender, HorizontaListItemTappedEventArgs e)
+        {
+            //Change color states of clicked day
+            var newDay = (DayWrapper)e.Item;
+            if (newDay.IsDummy == false)
+                _viewModel.SelecteDay(newDay);
         }
     }
 }

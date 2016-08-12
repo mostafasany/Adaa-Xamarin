@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AdaaMobile.Common;
 
 namespace AdaaMobile.Models
 {
-    public class DayWrapper:BindableBase
+    public class DayWrapper : BindableBase
     {
         public DateTime Date { get; set; }
 
-		public bool IsDummy { get; set; }
+        public bool IsDummy { get; set; }
 
         private bool _isSelected;
         public bool IsSelected
@@ -27,33 +23,40 @@ namespace AdaaMobile.Models
         }
 
 
-		public DayWrapper(DateTime date, bool isDummy)
+        public DayWrapper(DateTime date, bool isDummy)
         {
             Date = date;
-			IsDummy = isDummy;
+            IsDummy = isDummy;
         }
 
-		public string Day
+        public string Day
         {
-			get { if (IsDummy)
-				return " ";
-				return Date.Day.ToString(); }
+            get
+            {
+                if (IsDummy)
+                    return " ";
+                return Date.Day.ToString();
+            }
         }
 
         public string AbbrMonth
         {
-            get { 
-				if (IsDummy)
-					return " ";
-				return Date.ToString("MMM"); }
+            get
+            {
+                if (IsDummy)
+                    return " ";
+                return Date.ToString("MMM");
+            }
         }
 
         public string AbbrWeek
         {
-            get { 
-				if (IsDummy)
-					return " ";
-				return Date.ToString("ddd"); }
+            get
+            {
+                if (IsDummy)
+                    return " ";
+                return Date.ToString("ddd");
+            }
         }
     }
 }

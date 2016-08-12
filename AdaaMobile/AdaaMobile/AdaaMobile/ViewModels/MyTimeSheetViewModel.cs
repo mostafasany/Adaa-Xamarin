@@ -8,6 +8,7 @@ using AdaaMobile.Common;
 using AdaaMobile.Models;
 using AdaaMobile.Models.Response;
 using System.Collections.ObjectModel;
+using AdaaMobile.DataServices.Requests;
 
 namespace AdaaMobile.ViewModels
 {
@@ -18,6 +19,7 @@ namespace AdaaMobile.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IDataService _dataService;
         private readonly int SmallestWindowLimit;
+        private ResponseWrapper<TimeSheet> timeSheetResponse;
         #endregion
 
         #region Properties
@@ -123,10 +125,10 @@ namespace AdaaMobile.ViewModels
 
         private async Task OpenRequestDetailsPage(object projectTask)
         {
-            if(projectTask is ProjectTask)
+            if (projectTask is ProjectTask)
             {
                 SelectedProjectTask = projectTask as ProjectTask;
-                if(SelectedProjectTask.CanEdit)
+                if (SelectedProjectTask.CanEdit)
                 {
                     _navigationService.NavigateToPage(typeof(EditTask));
                 }
@@ -136,7 +138,7 @@ namespace AdaaMobile.ViewModels
                     //_navigationService.NavigateToPage(typeof(EditTask));
                 }
             }
-         
+
         }
 
         private async Task AddNewTask()
@@ -156,24 +158,19 @@ namespace AdaaMobile.ViewModels
 
         public async Task LoadTimeSheet()
         {
-            var response = await _dataService.GetTimeSheet(2016, 33, null);
-            if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
+            timeSheetResponse = await _dataService.GetTimeSheet(2016, 33, null);
+            if (timeSheetResponse != null && timeSheetResponse.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-                TimeSheetFormated = FormatTimeSheet(response.Result);
-                GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
-                foreach (var item in TimeSheetFormated.Projects)
-                {
-                    GroupedTimeSheet.Add(new Grouping<Project, ProjectTask>(item, item.Tasks));
-                }
+                FormatTimeSheet(timeSheetResponse.Result, SelectedDay.Date);
             }
         }
 
-        private TimeSheetFormated FormatTimeSheet(TimeSheet timeSheet)
+        private void FormatTimeSheet(TimeSheet timeSheet, DateTime selectedWeekDate)
         {
-            var formatedTimeSheet = new TimeSheetFormated();
-            formatedTimeSheet.Projects = new List<Project>();
-
-            var allProjects = timeSheet.TimeSheetRecords.Where(a => string.IsNullOrEmpty(a.SubTaskTo));
+            TimeSheetFormated = new TimeSheetFormated();
+            TimeSheetFormated.Projects = new List<Project>();
+            var currentDayTimeSheet= timeSheet.TimeSheetRecords.Where(a => a.AssignmentDate.Date== selectedWeekDate);
+            var allProjects = currentDayTimeSheet.Where(a => string.IsNullOrEmpty(a.SubTaskTo));
 
             foreach (var project in allProjects)
             {
@@ -183,7 +180,7 @@ namespace AdaaMobile.ViewModels
                     Name = project.TaskTitle,
                     Tasks = new List<ProjectTask>(),
                 };
-                var projectTasks = timeSheet.TimeSheetRecords.Where(a => a.AssignmentID == newProject.Id && !string.IsNullOrEmpty(a.SubTaskTo));
+                var projectTasks = currentDayTimeSheet.Where(a => a.AssignmentID == newProject.Id && !string.IsNullOrEmpty(a.SubTaskTo));
                 foreach (var task in projectTasks)
                 {
                     var dayOfWeek = new DateTime().ToString("dddd");
@@ -200,15 +197,20 @@ namespace AdaaMobile.ViewModels
                 if (newProject.Tasks != null && newProject.Tasks.Count > 0)
                 {
                     newProject.TotalHours = newProject.Tasks.Sum(a => a.Day.Hours);
-                    formatedTimeSheet.Projects.Add(newProject);
+                    TimeSheetFormated.Projects.Add(newProject);
                 }
             }
-            if (formatedTimeSheet.Projects != null && formatedTimeSheet.Projects.Count > 0)
+            if (TimeSheetFormated.Projects != null && TimeSheetFormated.Projects.Count > 0)
             {
-                formatedTimeSheet.LoggedInHours = formatedTimeSheet.Projects.Sum(a => a.TotalHours);
-                formatedTimeSheet.RemainingHours = 8 - formatedTimeSheet.LoggedInHours;
+                TimeSheetFormated.LoggedInHours = TimeSheetFormated.Projects.Sum(a => a.TotalHours);
+                TimeSheetFormated.RemainingHours = 8 - TimeSheetFormated.LoggedInHours;
             }
-            return formatedTimeSheet;
+
+            GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
+            foreach (var item in TimeSheetFormated.Projects)
+            {
+                GroupedTimeSheet.Add(new Grouping<Project, ProjectTask>(item, item.Tasks));
+            }
         }
 
         DayWithLoggedInHours GetProjectTaskDuration(TimeSheetDetails task)
@@ -343,6 +345,8 @@ namespace AdaaMobile.ViewModels
             day.IsSelected = true;
             SelectedDay = day;
 
+            if (SelectedDay != null)
+                FormatTimeSheet(timeSheetResponse.Result, SelectedDay.Date);
 
         }
 
