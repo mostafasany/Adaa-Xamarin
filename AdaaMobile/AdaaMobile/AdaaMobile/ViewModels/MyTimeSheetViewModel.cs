@@ -147,6 +147,7 @@ namespace AdaaMobile.ViewModels
             if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
                 TimeSheetFormated = FormatTimeSheet(response.Result);
+                GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
                 foreach (var item in TimeSheetFormated.Projects)
                 {
                     GroupedTimeSheet.Add(new Grouping<Project, ProjectTask>(item, item.Tasks));
