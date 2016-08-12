@@ -79,9 +79,9 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _SelectedProjectTask, value); }
         }
 
-        private ObservableCollection<Grouping<string, TimeSheetDetails>> _GroupedTimeSheet;
+        private ObservableCollection<Grouping<Project, ProjectTask>> _GroupedTimeSheet;
 
-        public ObservableCollection<Grouping<string, TimeSheetDetails>> GroupedTimeSheet
+        public ObservableCollection<Grouping<Project, ProjectTask>> GroupedTimeSheet
         {
             get { return _GroupedTimeSheet; }
             set { SetProperty(ref _GroupedTimeSheet, value); }
@@ -143,20 +143,20 @@ namespace AdaaMobile.ViewModels
 
         public async Task LoadTimeSheet()
         {
-            var response = await _dataService.GetTimeSheet(2016, 23, null);
+            var response = await _dataService.GetTimeSheet(2016, 33, null);
             if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
                 TimeSheetFormated = FormatTimeSheet(response.Result);
+                foreach (var item in TimeSheetFormated.Projects)
+                {
+                    GroupedTimeSheet.Add(new Grouping<Project, ProjectTask>(item, item.Tasks));
+                }
+                //TimeSheet _TimeSheetItem = response.Result;
+                //var sorted = from emp in TimeSheetFormated.Projects
+                //             group emp by emp.Tasks into empGroup
+                //             select new Grouping<Project, List<ProjectTask>>(null, empGroup.ToList());
 
-                TimeSheet _TimeSheetItem = response.Result;
-
-
-                var sorted = from emp in _TimeSheetItem.TimeSheetRecords
-                             orderby emp.TaskID
-                             group emp by emp.AssignmentID into empGroup
-                             select new Grouping<string, TimeSheetDetails>(empGroup.Key, empGroup);
-
-                GroupedTimeSheet = new ObservableCollection<Grouping<string, TimeSheetDetails>>(sorted);
+                //GroupedTimeSheet = new ObservableCollection<Grouping<string, TimeSheetDetails>>(sorted);
 
             }
         }
@@ -173,20 +173,24 @@ namespace AdaaMobile.ViewModels
                 var newProject = new Project
                 {
                     Id = project.AssignmentID,
-                    Name = project.TaskTitle
+                    Name = project.TaskTitle,
+                    Tasks = new List<ProjectTask>(),
                 };
                 var projectTasks = timeSheet.TimeSheetRecords.Where(a => a.AssignmentID == newProject.Id);
                 foreach (var task in projectTasks)
                 {
+                    var dayOfWeek = new DateTime().ToString("dddd");
+                    var day = GetProjectTaskDuration(task);
                     var newTask = new ProjectTask
                     {
                         Id = task.TaskID,
                         Name = task.TaskTitle,
-                        CanEdit = true,
-                        Day = GetProjectTaskDuration(task),
+                        CanEdit = dayOfWeek == day.DayName,
+                        Day = day,
                     };
                     newProject.Tasks.Add(newTask);
                 }
+                newProject.TotalHours = newProject.Tasks.Sum(a => a.Day.Hours);
                 formatedTimeSheet.Projects.Add(newProject);
             }
             return formatedTimeSheet;

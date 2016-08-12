@@ -89,8 +89,8 @@
 									<ColumnDefinition Width="*" />
 								</Grid.ColumnDefinitions>
 
-								<Label FontSize="12" Text="{Binding Key}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
-								<Label FontSize="12" Text="{Binding Key}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
+								<Label FontSize="12" Text="{Binding Name}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+								<Label FontSize="12" Text="{Binding TotalHours}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
 							</Grid>
 						</ViewCell>
 					</DataTemplate>
@@ -100,7 +100,7 @@
 						<ViewCell>
 							<ViewCell.View>
 								<Grid Padding="2,3">
-									<masterView:TimeSheetRecordItem EditVisible="false" Title="{Binding TaskTitle}" Message="{Binding ActualWork}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
+									<masterView:TimeSheetRecordItem EditVisible="false" Title="{Binding Name}" Message="{Binding Day.Hours}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
 								</Grid>
 							</ViewCell.View>
 						</ViewCell>
