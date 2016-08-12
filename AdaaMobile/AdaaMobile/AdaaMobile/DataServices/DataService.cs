@@ -11,6 +11,7 @@ using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
 using QueryExtensions;
 using AdaaMobile.ViewModels;
+using Newtonsoft.Json;
 
 namespace AdaaMobile.DataServices
 {
@@ -32,6 +33,15 @@ namespace AdaaMobile.DataServices
             _appSettings = appSettings;
         }
 
+        public async Task<ResponseWrapper<bool>> SubmitTimeSheet(int year, int week, string userName, TimeSheetListRequest bodyParamters, CancellationToken? token = null)
+        {
+            var request = _requestFactory();
+            request.ResultContentType = ContentType.Json;
+            request.RequestUrl = TimeSheetBaseUrl + string.Format("SaveTimeSheet?encryptedUserName={0}&currentWeek={1}&year={2}", "mhibnQQwVQQJ3d8gmlnKJg==", week, year);
+            var result = JsonConvert.SerializeObject(bodyParamters);
+            var stringContent = new StringContent(result);
+            return await request.PostAsync<bool>(stringContent);
+        }
 
         public async Task<ResponseWrapper<TimeSheet>> GetTimeSheet(int year, int week, CancellationToken? token = null)
         {

@@ -65,21 +65,27 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _selectedDay, value); }
         }
 
-		private TimeSheet _TimeSheetItem;
-
-		public TimeSheet TimeSheetItem
+        private TimeSheetFormated _TimeSheetFormated;
+        public TimeSheetFormated TimeSheetFormated
         {
-			get { return _TimeSheetItem; }
-			set { SetProperty(ref _TimeSheetItem, value); }
+            get { return _TimeSheetFormated; }
+            set { SetProperty(ref _TimeSheetFormated, value); }
         }
 
-		private ObservableCollection<Grouping<string, TimeSheetDetails>> _GroupedTimeSheet;
+        private ProjectTask _SelectedProjectTask;
+        public ProjectTask SelectedProjectTask
+        {
+            get { return _SelectedProjectTask; }
+            set { SetProperty(ref _SelectedProjectTask, value); }
+        }
 
-		public ObservableCollection<Grouping<string, TimeSheetDetails>> GroupedTimeSheet
-		{
-			get { return _GroupedTimeSheet; }
-			set { SetProperty(ref _GroupedTimeSheet, value); }
-		}
+        private ObservableCollection<Grouping<string, TimeSheetDetails>> _GroupedTimeSheet;
+
+        public ObservableCollection<Grouping<string, TimeSheetDetails>> GroupedTimeSheet
+        {
+            get { return _GroupedTimeSheet; }
+            set { SetProperty(ref _GroupedTimeSheet, value); }
+        }
 
         #endregion
 
@@ -91,7 +97,7 @@ namespace AdaaMobile.ViewModels
             _dataService = dataservice;
             PageLoadedCommand = new AsyncExtendedCommand(Loaded);
             AddNewTaskCommand = new AsyncExtendedCommand(AddNewTask);
-			RequestItemSelectedCommand = new AsyncExtendedCommand<TimeSheetDetails> (OpenRequestDetailsPage);
+            RequestItemSelectedCommand = new AsyncExtendedCommand<TimeSheetDetails>(OpenRequestDetailsPage);
             SmallestWindowLimit = Xamarin.Forms.Device.OnPlatform(5, 14, 14);
         }
 
@@ -101,20 +107,20 @@ namespace AdaaMobile.ViewModels
 
         public AsyncExtendedCommand PageLoadedCommand { get; set; }
         public AsyncExtendedCommand AddNewTaskCommand { get; set; }
-		public AsyncExtendedCommand<TimeSheetDetails> RequestItemSelectedCommand { get; set; }
+        public AsyncExtendedCommand<TimeSheetDetails> RequestItemSelectedCommand { get; set; }
         #endregion
 
         #region Methods
 
-		private async Task OpenRequestDetailsPage(TimeSheetDetails pendingTask)
-		{
-			//SelectedPendingTask = pendingTask;
-			//_navigationService.NavigateToPage(typeof(SelectedPendingTaskPage));
-		}
+        private async Task OpenRequestDetailsPage(TimeSheetDetails pendingTask)
+        {
+            //SelectedPendingTask = pendingTask;
+            //_navigationService.NavigateToPage(typeof(SelectedPendingTaskPage));
+        }
 
         private async Task AddNewTask()
         {
-			_navigationService.NavigateToPage(typeof(AddTask));
+            _navigationService.NavigateToPage(typeof(AddTask));
         }
         private async Task Loaded()
         {
@@ -140,15 +146,15 @@ namespace AdaaMobile.ViewModels
             var response = await _dataService.GetTimeSheet(2016, 23, null);
             if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-                TimeSheetItem = response.Result;
+                TimeSheet _TimeSheetItem = response.Result;
 
-				var sorted = from emp in TimeSheetItem.TimeSheetRecords
-					orderby emp.TaskID
-					group emp by emp.AssignmentID into empGroup
-					select new Grouping<string, TimeSheetDetails> (empGroup.Key, empGroup);
+                var sorted = from emp in _TimeSheetItem.TimeSheetRecords
+                             orderby emp.TaskID
+                             group emp by emp.AssignmentID into empGroup
+                             select new Grouping<string, TimeSheetDetails>(empGroup.Key, empGroup);
 
-				GroupedTimeSheet = new ObservableCollection<Grouping<string, TimeSheetDetails>> (sorted);
-				
+                GroupedTimeSheet = new ObservableCollection<Grouping<string, TimeSheetDetails>>(sorted);
+
             }
         }
         /// <summary>

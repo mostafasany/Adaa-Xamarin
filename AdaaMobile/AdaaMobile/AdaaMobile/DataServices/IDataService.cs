@@ -70,7 +70,11 @@ namespace AdaaMobile.DataServices
 		Task<ResponseWrapper<SaveDriverRequestResponse>> SaveDriverRequestAsync(SaveDriverRequestQParameters qParameters, SaveDriverRequestBParameters bParamters, CancellationToken? token = null);
 
 
-		Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null);
+        #region TimeSheet
+
+        Task<ResponseWrapper<bool>> SubmitTimeSheet(int year, int week, string userName, TimeSheetListRequest bodyParamters, CancellationToken? token = null);
+
+        Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null);
 
 		Task<ResponseWrapper<List<PendingTask>>> GetPendingTaskAsync(CancellationToken? token = null);
 	
@@ -80,5 +84,6 @@ namespace AdaaMobile.DataServices
 
         Task<ResponseWrapper<TimeSheet>> GetTimeSheet(int year, int week, CancellationToken? token = null);
 
+        #endregion
     }
 }

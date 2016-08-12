@@ -97,8 +97,11 @@
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Helpers\SvgAssembly.cs" />
     <Compile Include="Helpers\UserSelectionService.cs" />
+    <Compile Include="Models\TimeSheetFormated.cs" />
     <Compile Include="Models\EquipmentWrapper.cs" />
     <Compile Include="Models\MaintenancePriority.cs" />
+    <Compile Include="Models\Request\TimeSheetListRequest.cs" />
+    <Compile Include="Models\Request\TimeSheetRequest.cs" />
     <Compile Include="Models\Request\DaypassApproveBParameters.cs" />
     <Compile Include="Models\Request\GetAllRequestsQParameters.cs" />
     <Compile Include="Models\Request\GetCardsQParameters.cs" />
