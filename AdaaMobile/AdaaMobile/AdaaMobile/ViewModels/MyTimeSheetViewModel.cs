@@ -190,8 +190,12 @@ namespace AdaaMobile.ViewModels
                     };
                     newProject.Tasks.Add(newTask);
                 }
-                newProject.TotalHours = newProject.Tasks.Sum(a => a.Day.Hours);
-                formatedTimeSheet.Projects.Add(newProject);
+                if (newProject.Tasks != null && newProject.Tasks.Count > 0)
+                {
+                    newProject.TotalHours = newProject.Tasks.Sum(a => a.Day.Hours);
+                    formatedTimeSheet.Projects.Add(newProject);
+                }
+
             }
             return formatedTimeSheet;
         }
