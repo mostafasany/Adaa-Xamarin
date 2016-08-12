@@ -176,7 +176,7 @@ namespace AdaaMobile.ViewModels
                     Name = project.TaskTitle,
                     Tasks = new List<ProjectTask>(),
                 };
-                var projectTasks = timeSheet.TimeSheetRecords.Where(a => a.AssignmentID == newProject.Id);
+                var projectTasks = timeSheet.TimeSheetRecords.Where(a => a.AssignmentID == newProject.Id && !string.IsNullOrEmpty(a.SubTaskTo));
                 foreach (var task in projectTasks)
                 {
                     var dayOfWeek = new DateTime().ToString("dddd");
@@ -185,7 +185,7 @@ namespace AdaaMobile.ViewModels
                     {
                         Id = task.TaskID,
                         Name = task.TaskTitle,
-                        CanEdit = dayOfWeek == day.DayName,
+                        CanEdit = dayOfWeek == (day != null ? day.DayName : ""),
                         Day = day,
                     };
                     newProject.Tasks.Add(newTask);
