@@ -146,7 +146,10 @@ namespace AdaaMobile.ViewModels
             var response = await _dataService.GetTimeSheet(2016, 23, null);
             if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
+                TimeSheetFormated = FormatTimeSheet(response.Result);
+
                 TimeSheet _TimeSheetItem = response.Result;
+
 
                 var sorted = from emp in _TimeSheetItem.TimeSheetRecords
                              orderby emp.TaskID
@@ -156,6 +159,78 @@ namespace AdaaMobile.ViewModels
                 GroupedTimeSheet = new ObservableCollection<Grouping<string, TimeSheetDetails>>(sorted);
 
             }
+        }
+
+        private TimeSheetFormated FormatTimeSheet(TimeSheet timeSheet)
+        {
+            var formatedTimeSheet = new TimeSheetFormated();
+            formatedTimeSheet.Projects = new List<Project>();
+
+            var allProjects = timeSheet.TimeSheetRecords.Where(a => string.IsNullOrEmpty(a.SubTaskTo));
+
+            foreach (var project in allProjects)
+            {
+                var newProject = new Project
+                {
+                    Id = project.AssignmentID,
+                    Name = project.TaskTitle
+                };
+                var projectTasks = timeSheet.TimeSheetRecords.Where(a => a.AssignmentID == newProject.Id);
+                foreach (var task in projectTasks)
+                {
+                    var newTask = new ProjectTask
+                    {
+                        Id = task.TaskID,
+                        Name = task.TaskTitle,
+                        CanEdit = true,
+                        Day = GetProjectTaskDuration(task),
+                    };
+                    newProject.Tasks.Add(newTask);
+                }
+                formatedTimeSheet.Projects.Add(newProject);
+            }
+            return formatedTimeSheet;
+        }
+
+        DayWithLoggedInHours GetProjectTaskDuration(TimeSheetDetails task)
+        {
+            if (String.IsNullOrEmpty(task.Sunday))
+            {
+                if (String.IsNullOrEmpty(task.Monday))
+                {
+                    if (String.IsNullOrEmpty(task.Tuesday))
+                    {
+                        if (String.IsNullOrEmpty(task.Wednesday))
+                        {
+                            if (String.IsNullOrEmpty(task.Thursday))
+                            {
+                                return null;
+                            }
+                            else
+                            {
+                                return new DayWithLoggedInHours { Hours = double.Parse(task.Thursday), DayName = "Thursday", Comment = task.ThursdayComment };
+                            }
+                        }
+                        else
+                        {
+                            return new DayWithLoggedInHours { Hours = double.Parse(task.Wednesday), DayName = "Wednesday", Comment = task.WednesdayComment };
+                        }
+                    }
+                    else
+                    {
+                        return new DayWithLoggedInHours { Hours = double.Parse(task.Tuesday), DayName = "Tuesday", Comment = task.TuesdayComment };
+                    }
+                }
+                else
+                {
+                    return new DayWithLoggedInHours { Hours = double.Parse(task.Monday), DayName = "Monday", Comment = task.MondayComment };
+                }
+            }
+            else
+            {
+                return new DayWithLoggedInHours { Hours = double.Parse(task.Sunday), DayName = "Sunday", Comment = task.SundayComment };
+            }
+
         }
         /// <summary>
         /// This is used to populate days list with the specified list.

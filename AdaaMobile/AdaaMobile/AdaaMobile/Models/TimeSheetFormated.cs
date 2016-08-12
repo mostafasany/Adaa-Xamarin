@@ -14,7 +14,7 @@ namespace AdaaMobile.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string TotalHours { get; set; }
+        public double TotalHours { get; set; }
         public List<ProjectTask> Tasks { get; set; }
 
     }
@@ -22,7 +22,14 @@ namespace AdaaMobile.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Hour { get; set; }
+        public DayWithLoggedInHours Day { get; set; }
         public bool CanEdit { get; set; }
+    }
+
+    public class DayWithLoggedInHours
+    {
+        public double Hours { get; set; }
+        public string DayName { get; set; }
+        public string Comment { get; set; }
     }
 }
