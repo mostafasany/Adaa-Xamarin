@@ -97,7 +97,7 @@ namespace AdaaMobile.ViewModels
             _dataService = dataservice;
             PageLoadedCommand = new AsyncExtendedCommand(Loaded);
             AddNewTaskCommand = new AsyncExtendedCommand(AddNewTask);
-            RequestItemSelectedCommand = new AsyncExtendedCommand<TimeSheetDetails>(OpenRequestDetailsPage);
+            RequestItemSelectedCommand = new AsyncExtendedCommand<object>(OpenRequestDetailsPage);
             SmallestWindowLimit = Xamarin.Forms.Device.OnPlatform(5, 14, 14);
         }
 
@@ -107,12 +107,12 @@ namespace AdaaMobile.ViewModels
 
         public AsyncExtendedCommand PageLoadedCommand { get; set; }
         public AsyncExtendedCommand AddNewTaskCommand { get; set; }
-        public AsyncExtendedCommand<TimeSheetDetails> RequestItemSelectedCommand { get; set; }
+        public AsyncExtendedCommand<object> RequestItemSelectedCommand { get; set; }
         #endregion
 
         #region Methods
 
-        private async Task OpenRequestDetailsPage(TimeSheetDetails pendingTask)
+        private async Task OpenRequestDetailsPage(object pendingTask)
         {
             //SelectedPendingTask = pendingTask;
             //_navigationService.NavigateToPage(typeof(SelectedPendingTaskPage));
