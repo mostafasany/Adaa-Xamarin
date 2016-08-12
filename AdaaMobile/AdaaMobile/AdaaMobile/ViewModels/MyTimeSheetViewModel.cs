@@ -112,16 +112,6 @@ namespace AdaaMobile.ViewModels
 
         #region Methods
 
-        private async Task OpenRequestDetailsPage(object pendingTask)
-        {
-            //SelectedPendingTask = pendingTask;
-            //_navigationService.NavigateToPage(typeof(SelectedPendingTaskPage));
-        }
-
-        private async Task AddNewTask()
-        {
-            _navigationService.NavigateToPage(typeof(AddTask));
-        }
         private async Task Loaded()
         {
             LoadWeeks();
@@ -129,6 +119,29 @@ namespace AdaaMobile.ViewModels
             PopulateAttendanceDaysAsync();
 
             LoadTimeSheet();
+        }
+
+        private async Task OpenRequestDetailsPage(object projectTask)
+        {
+            if(projectTask is ProjectTask)
+            {
+                SelectedProjectTask = projectTask as ProjectTask;
+                if(SelectedProjectTask.CanEdit)
+                {
+                    _navigationService.NavigateToPage(typeof(EditTask));
+                }
+                else
+                {
+                    //Should Go to Task Details Page
+                    //_navigationService.NavigateToPage(typeof(EditTask));
+                }
+            }
+         
+        }
+
+        private async Task AddNewTask()
+        {
+            _navigationService.NavigateToPage(typeof(AddTask));
         }
 
         public async Task LoadWeeks()
@@ -152,13 +165,6 @@ namespace AdaaMobile.ViewModels
                 {
                     GroupedTimeSheet.Add(new Grouping<Project, ProjectTask>(item, item.Tasks));
                 }
-                //TimeSheet _TimeSheetItem = response.Result;
-                //var sorted = from emp in TimeSheetFormated.Projects
-                //             group emp by emp.Tasks into empGroup
-                //             select new Grouping<Project, List<ProjectTask>>(null, empGroup.ToList());
-
-                //GroupedTimeSheet = new ObservableCollection<Grouping<string, TimeSheetDetails>>(sorted);
-
             }
         }
 
@@ -196,7 +202,11 @@ namespace AdaaMobile.ViewModels
                     newProject.TotalHours = newProject.Tasks.Sum(a => a.Day.Hours);
                     formatedTimeSheet.Projects.Add(newProject);
                 }
-
+            }
+            if (formatedTimeSheet.Projects != null && formatedTimeSheet.Projects.Count > 0)
+            {
+                formatedTimeSheet.LoggedInHours = formatedTimeSheet.Projects.Sum(a => a.TotalHours);
+                formatedTimeSheet.RemainingHours = 8 - formatedTimeSheet.LoggedInHours;
             }
             return formatedTimeSheet;
         }
@@ -241,11 +251,7 @@ namespace AdaaMobile.ViewModels
             }
 
         }
-        /// <summary>
-        /// This is used to populate days list with the specified list.
-        /// Be Aware this is used only With Attendance Mode.
-        /// Use LoadExceptions with Exceptions Mode
-        /// </summary>
+
         public async Task PopulateAttendanceDaysAsync()
         {
             //Create new Days List on background task.
@@ -277,11 +283,6 @@ namespace AdaaMobile.ViewModels
             SelectDayAfterRangeLoad();
         }
 
-        /// <summary>
-        /// Add dummy days to the list to match the minimum required windows limit.
-        /// Mainly UI related.
-        /// </summary>
-        /// <param name="daysList"></param>
         private void FixWindowSize(List<DayWrapper> daysList)
         {
             if (daysList.Count < SmallestWindowLimit)
@@ -293,9 +294,6 @@ namespace AdaaMobile.ViewModels
             }
         }
 
-        /// <summary>
-        /// It's used primary used to selecting day by default when range is loaded.
-        /// </summary>
         private void SelectDayAfterRangeLoad()
         {
             if (DaysList == null)
@@ -347,6 +345,7 @@ namespace AdaaMobile.ViewModels
 
 
         }
+
         #endregion
 
     }

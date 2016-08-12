@@ -4,8 +4,8 @@ namespace AdaaMobile.Models
 {
     public class TimeSheetFormated
     {
-        public string LoggedInHours { get; set; }
-        public string RemainingHours { get; set; }
+        public double LoggedInHours { get; set; }
+        public double RemainingHours { get; set; }
         public List<Project> Projects { get; set; }
 
     }
@@ -16,6 +16,10 @@ namespace AdaaMobile.Models
         public string Name { get; set; }
         public double TotalHours { get; set; }
         public List<ProjectTask> Tasks { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
 
     }
     public class ProjectTask
