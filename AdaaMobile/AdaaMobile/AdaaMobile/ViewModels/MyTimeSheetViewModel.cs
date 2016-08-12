@@ -169,7 +169,7 @@ namespace AdaaMobile.ViewModels
         {
             TimeSheetFormated = new TimeSheetFormated();
             TimeSheetFormated.Projects = new List<Project>();
-            var currentDayTimeSheet= timeSheet.TimeSheetRecords.Where(a => a.AssignmentDate.Date== selectedWeekDate);
+			var currentDayTimeSheet= timeSheet.TimeSheetRecords.Where(a => a.AssignmentDate== selectedWeekDate.ToString());
             var allProjects = currentDayTimeSheet.Where(a => string.IsNullOrEmpty(a.SubTaskTo));
 
             foreach (var project in allProjects)
@@ -291,7 +291,7 @@ namespace AdaaMobile.ViewModels
             {
                 for (int i = daysList.Count; i < SmallestWindowLimit; i++)
                 {
-                    daysList.Add(new DayWrapper(new DateTime(0), true));
+                    daysList.Add(new DayWrapper(new DateTime(), true));
                 }
             }
         }
