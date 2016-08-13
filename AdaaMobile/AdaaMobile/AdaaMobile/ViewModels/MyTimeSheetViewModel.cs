@@ -346,6 +346,7 @@ namespace AdaaMobile.ViewModels
                         Name = task.TaskTitle,
                         CanEdit = dayOfWeek == (day != null ? day.DayName : ""),
                         Day = day,
+                        AssigmentId = project.AssignmentID,
                         AssigmentName = project.TaskTitle,
                     };
                     newProject.Tasks.Add(newTask);

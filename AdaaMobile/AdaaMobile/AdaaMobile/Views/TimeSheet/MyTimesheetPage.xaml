@@ -87,12 +87,12 @@
       </Grid.ColumnDefinitions>
       <StackLayout Padding="0,10,0,0" Grid.Column="0" Orientation="Vertical" BackgroundColor="{StaticResource AppBackgroundNormal}" HorizontalOptions="Fill">
         <Label HorizontalOptions="Center" FontSize="14" VerticalOptions="Center" Text="{ext:Translate TimeSheet_LoginHours}" TextColor="White" InputTransparent="True" />
-        <Label HorizontalOptions="Center" FontSize="12" VerticalOptions="Center" Text="{Binding TimeSheetFormated.LoggedInHours }" TextColor="{StaticResource YellowAccent}" InputTransparent="True" />
+        <Label HorizontalOptions="Center" FontSize="12" VerticalOptions="Center" Text="{Binding TimeSheetFormated.LoggedInHoursFormated }" TextColor="{StaticResource YellowAccent}" InputTransparent="True" />
       </StackLayout>
       <StackLayout Grid.Column="1" HeightRequest="2" WidthRequest="1" BackgroundColor="White" />
       <StackLayout Grid.Column="2" Orientation="Vertical" Padding="5,10,0,0" BackgroundColor="{StaticResource AppBackgroundNormal}" HorizontalOptions="Fill">
         <Label HorizontalOptions="Center" FontSize="14" VerticalOptions="Center" Text="{ext:Translate TimeSheet_RemainingHours}" TextColor="White" InputTransparent="True" />
-        <Label HorizontalOptions="Center" FontSize="12" VerticalOptions="Center" Text="{Binding TimeSheetFormated.RemainingHours}" TextColor="{StaticResource YellowAccent}" InputTransparent="True" />
+        <Label HorizontalOptions="Center" FontSize="12" VerticalOptions="Center" Text="{Binding TimeSheetFormated.RemainingHoursFormated}" TextColor="{StaticResource YellowAccent}" InputTransparent="True" />
       </StackLayout>
     </Grid>
 

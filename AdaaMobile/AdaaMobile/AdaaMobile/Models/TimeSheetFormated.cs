@@ -5,7 +5,9 @@ namespace AdaaMobile.Models
     public class TimeSheetFormated
     {
         public double LoggedInHours { get; set; }
+        public string LoggedInHoursFormated { get { return LoggedInHours.ToString() + " H"; } }
         public double RemainingHours { get; set; }
+        public string RemainingHoursFormated { get { return RemainingHours.ToString() + " H"; } }
         public List<Project> Projects { get; set; }
 
     }
@@ -23,10 +25,12 @@ namespace AdaaMobile.Models
         }
 
     }
+
     public class ProjectTask
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public string AssigmentId { get; set; }
         public string AssigmentName { get; set; }
         public DayWithLoggedInHours Day { get; set; }
         public bool CanEdit { get; set; }
