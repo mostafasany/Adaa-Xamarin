@@ -12,7 +12,7 @@ namespace AdaaMobile
     public partial class EditTask : ContentPage
     {
         private readonly MyTimeSheetViewModel _viewModel;
-        private readonly IDataService _dataService;
+    
 
         public EditTask()
         {
@@ -97,7 +97,8 @@ namespace AdaaMobile
             }
 
             timeSheetList.Add(timeSheetDetails);
-            await _dataService.SubmitTimeSheet(DateTime.Now.Year, Convert.ToInt32(_viewModel.SelectedWeek.WeekText), "", timeSheetRequest, null);
+			timeSheetRequest.data = timeSheetList;
+			var status=await Locator.Default.DataService.SubmitTimeSheet(DateTime.Now.Year, _viewModel.SelectedWeek.WeekNumber, "", timeSheetRequest, null);
 
         }
 

@@ -12,7 +12,6 @@ namespace AdaaMobile
 
     public partial class AddTask : ContentPage
     {
-        private readonly IDataService _dataService;
         private readonly MyTimeSheetViewModel _viewModel;
         List<Assignment> assigmnets;
         List<AttendanceTask> tasks;
@@ -44,7 +43,7 @@ namespace AdaaMobile
         }
 
 
-        private void AddNewTask()
+        private async void AddNewTask()
         {
             int assignId = assigmnets[AssignmentPicker.SelectedIndex].Id;
             int taskId = tasks[TaskPicker.SelectedIndex].ID;
@@ -85,7 +84,8 @@ namespace AdaaMobile
             }
 
             timeSheetList.Add(timeSheetDetails);
-            _dataService.SubmitTimeSheet(DateTime.Now.Year, Convert.ToInt32(_viewModel.SelectedWeek.WeekText), "", timeSheetRequest, null);
+			timeSheetRequest.data = timeSheetList;
+			var status=await Locator.Default.DataService.SubmitTimeSheet(DateTime.Now.Year, _viewModel.SelectedWeek.WeekNumber, "", timeSheetRequest, null);
         }
         private async void LoadAssigments()
         {
