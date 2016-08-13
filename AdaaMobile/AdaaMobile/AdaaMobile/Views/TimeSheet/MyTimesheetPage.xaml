@@ -98,8 +98,7 @@
 
     <Label Grid.Row="3" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoProjects}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
 
-    <ListView ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true"
-    GroupDisplayBinding="Name" CachingStrategy="RecycleElement" RowHeight="40" SeparatorColor="Transparent" BackgroundColor="White" Grid.Row="3">
+    <ListView ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true" CachingStrategy="RecycleElement" RowHeight="40" SeparatorColor="Transparent" BackgroundColor="White" Grid.Row="3">
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
           <ViewCell>
