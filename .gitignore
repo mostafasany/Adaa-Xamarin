@@ -31,3 +31,11 @@
 *.userprefs
 /AdaaMobile/_ReSharper.Caches/ReSharperPlatformVs144.AdaaMobile
 /AdaaMobile/_ReSharper.Caches/ReSharperPlatformVs145.AdaaMobile
+
+*.mdb
+
+*.dll
+
+AdaaMobile/AdaaMobile/AdaaMobile.iOS/bin/iPhoneSimulator/Debug/AdaaMobile.dll
+
+AdaaMobile/AdaaMobile/AdaaMobile.iOS/bin/iPhoneSimulator/Debug/AdaaMobile.dll.mdb
