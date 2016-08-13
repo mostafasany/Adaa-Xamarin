@@ -25,7 +25,6 @@ namespace AdaaMobile.ViewModels
         #region Properties
 
         private bool _IsBusy;
-
         public bool IsBusy
         {
             get { return _IsBusy; }
@@ -35,17 +34,7 @@ namespace AdaaMobile.ViewModels
             }
         }
 
-        private PendingTask _SelectedTask;
-
-        public PendingTask SelectedTask
-        {
-            get { return _SelectedTask; }
-            set { SetProperty(ref _SelectedTask, value); }
-        }
-
-
         private List<DayWrapper> _daysList;
-
         public List<DayWrapper> DaysList
         {
             get { return _daysList; }
@@ -60,7 +49,6 @@ namespace AdaaMobile.ViewModels
         }
 
         private Week _SelectedWeek;
-
         public Week SelectedWeek
         {
             get { return _SelectedWeek; }
@@ -68,10 +56,6 @@ namespace AdaaMobile.ViewModels
         }
 
         private DayWrapper _selectedDay;
-
-        /// <summary>
-        /// This is the selected day.
-        /// </summary>
         public DayWrapper SelectedDay
         {
             get { return _selectedDay; }
@@ -93,7 +77,6 @@ namespace AdaaMobile.ViewModels
         }
 
         private ObservableCollection<Grouping<Project, ProjectTask>> _GroupedTimeSheet;
-
         public ObservableCollection<Grouping<Project, ProjectTask>> GroupedTimeSheet
         {
             get { return _GroupedTimeSheet; }
@@ -117,7 +100,6 @@ namespace AdaaMobile.ViewModels
         #endregion
 
         #region Commands
-
         public AsyncExtendedCommand PageLoadedCommand { get; set; }
         public AsyncExtendedCommand AddNewTaskCommand { get; set; }
         public AsyncExtendedCommand<ProjectTask> RequestItemSelectedCommand { get; set; }
@@ -139,7 +121,6 @@ namespace AdaaMobile.ViewModels
             }
             catch (Exception ex)
             {
-
             }
             finally
             {
@@ -159,8 +140,7 @@ namespace AdaaMobile.ViewModels
                 }
                 else
                 {
-                    //Should Go to Task Details Page
-                    //_navigationService.NavigateToPage(typeof(EditTask));
+                    _navigationService.NavigateToPage(typeof(TaskDetails));
                 }
             }
 
@@ -170,6 +150,8 @@ namespace AdaaMobile.ViewModels
         {
             _navigationService.NavigateToPage(typeof(AddTask));
         }
+
+        #region Weeks
 
         public async Task LoadWeeks()
         {
@@ -194,6 +176,119 @@ namespace AdaaMobile.ViewModels
             //    SelectedWeek = WeekList[0];
             //}
         }
+
+        #endregion
+
+        #region WeekDays
+
+        public async Task PopulateAttendanceDaysAsync()
+        {
+            //Create new Days List on background task.
+            List<DayWrapper> daysList = await Task.Run(() =>
+            {
+                var days = new List<DayWrapper>();
+                var currentDate = SelectedWeek.WeekStart;
+                var endDate = SelectedWeek.WeekEnd;
+                while (currentDate <= endDate)
+                {
+                    if (currentDate.DayOfWeek != DayOfWeek.Friday && currentDate.DayOfWeek != DayOfWeek.Saturday)
+                        days.Add(new DayWrapper(currentDate, false));
+                    currentDate = currentDate.AddDays(1);
+                }
+                return days;
+            });
+
+            if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+            {
+                daysList.Reverse();
+            }
+
+            FixWindowSize(daysList);
+
+
+            DaysList = daysList;
+            SelectedDay = DaysList[0];
+
+            //Select first Day
+            SelectDayAfterRangeLoad();
+        }
+
+        private void FixWindowSize(List<DayWrapper> daysList)
+        {
+            if (daysList.Count < SmallestWindowLimit)
+            {
+                for (int i = daysList.Count; i < SmallestWindowLimit; i++)
+                {
+                    daysList.Add(new DayWrapper(new DateTime(), true));
+                }
+            }
+        }
+
+        private void SelectDayAfterRangeLoad()
+        {
+            if (DaysList == null)
+                return;
+            var daysList = DaysList;
+
+            var nowDate = DateTime.Now;
+            var currentDay = daysList.FirstOrDefault(a => a.Date.Date == nowDate.Date);
+            if (currentDay != null)
+            {
+                SelecteDay(currentDay);
+            }
+            else
+            {
+
+                if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+                {
+                    //Get first item
+                    var firstDay = daysList.LastOrDefault();
+                    SelecteDay(firstDay);
+                }
+                else
+                {
+                    //Get first item
+                    var firstDay = daysList.FirstOrDefault();
+                    SelecteDay(firstDay);
+                }
+
+            }
+        }
+
+        public void SelecteDay(DayWrapper day)
+        {
+            if (day == null)
+                return;
+            if (day.IsDummy)
+                return;
+            if (day == SelectedDay)
+                return;
+
+            //Unselect previous day
+            if (SelectedDay != null)
+                SelectedDay.IsSelected = false;
+
+            //Select day
+
+            day.IsSelected = true;
+            SelectedDay = day;
+
+            if (SelectedDay != null)
+                FormatTimeSheet(timeSheetResponse.Result, SelectedDay.Date);
+
+        }
+
+        public void GetNextDay()
+        {
+        }
+
+        public void GetPreviousDay()
+        {
+        }
+
+        #endregion
+
+        #region TimeSheet
 
         public async Task LoadTimeSheet()
         {
@@ -296,102 +391,7 @@ namespace AdaaMobile.ViewModels
 
         }
 
-        public async Task PopulateAttendanceDaysAsync()
-        {
-            //Create new Days List on background task.
-            List<DayWrapper> daysList = await Task.Run(() =>
-            {
-                var days = new List<DayWrapper>();
-                var currentDate = SelectedWeek.WeekStart;
-                var endDate = SelectedWeek.WeekEnd;
-                while (currentDate <= endDate)
-                {
-                    if (currentDate.DayOfWeek != DayOfWeek.Friday && currentDate.DayOfWeek != DayOfWeek.Saturday)
-                        days.Add(new DayWrapper(currentDate, false));
-                    currentDate = currentDate.AddDays(1);
-                }
-                return days;
-            });
-
-            if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
-            {
-                daysList.Reverse();
-            }
-
-            FixWindowSize(daysList);
-
-
-            DaysList = daysList;
-            SelectedDay = DaysList[0];
-
-            //Select first Day
-            SelectDayAfterRangeLoad();
-        }
-
-        private void FixWindowSize(List<DayWrapper> daysList)
-        {
-            if (daysList.Count < SmallestWindowLimit)
-            {
-                for (int i = daysList.Count; i < SmallestWindowLimit; i++)
-                {
-                    daysList.Add(new DayWrapper(new DateTime(), true));
-                }
-            }
-        }
-
-        private void SelectDayAfterRangeLoad()
-        {
-            if (DaysList == null)
-                return;
-            var daysList = DaysList;
-
-            var nowDate = DateTime.Now;
-            var currentDay = daysList.FirstOrDefault(a => a.Date.Date == nowDate.Date);
-            if (currentDay != null)
-            {
-                SelecteDay(currentDay);
-            }
-            else
-            {
-
-                if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
-                {
-                    //Get first item
-                    var firstDay = daysList.LastOrDefault();
-                    SelecteDay(firstDay);
-                }
-                else
-                {
-                    //Get first item
-                    var firstDay = daysList.FirstOrDefault();
-                    SelecteDay(firstDay);
-                }
-
-            }
-        }
-
-        public void SelecteDay(DayWrapper day)
-        {
-            if (day == null)
-                return;
-            if (day.IsDummy)
-                return;
-            if (day == SelectedDay)
-                return;
-
-            //Unselect previous day
-            if (SelectedDay != null)
-                SelectedDay.IsSelected = false;
-
-            //Select day
-
-            day.IsSelected = true;
-            SelectedDay = day;
-
-            if (SelectedDay != null)
-                FormatTimeSheet(timeSheetResponse.Result, SelectedDay.Date);
-
-        }
+        #endregion
 
         #endregion
 
