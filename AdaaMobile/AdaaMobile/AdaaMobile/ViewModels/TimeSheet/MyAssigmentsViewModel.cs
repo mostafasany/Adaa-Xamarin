@@ -43,8 +43,6 @@ namespace AdaaMobile.ViewModels
 					return true;
 				}
 			}
-
-
 		}
 
 		private bool _IsBusy;

@@ -23,7 +23,7 @@
       <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
 
-    <ActivityIndicator BackgroundColor="Blue" IsRunning="true" HeightRequest="60" WidthRequest="60"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" />
+    <ActivityIndicator  IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" />
 
     <Grid BackgroundColor="#6cb3b8" HeightRequest="30" Grid.Row="0">
       <Grid.ColumnDefinitions>
@@ -96,7 +96,8 @@
       </StackLayout>
     </Grid>
 
-    <!--<ScrollView Grid.Row="0" VerticalOptions="Fill" BackgroundColor="{StaticResource AppBackgroundNormal}">-->
+    <Label Grid.Row="3" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoProjects}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
+
     <ListView ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true" CachingStrategy="RecycleElement" RowHeight="40" SeparatorColor="Transparent" BackgroundColor="White" Grid.Row="3">
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
@@ -124,10 +125,10 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-    <!--</ScrollView>-->
 
     <controls:ExtendedButton Grid.Row="4" HeightRequest="40" Command="{Binding AddNewTaskCommand}" VerticalOptions="Start" HorizontalOptions="Fill" BorderRadius="0" Text="Add New Task" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
     </controls:ExtendedButton>
+
   </Grid>
 
 </ContentPage>

@@ -80,7 +80,22 @@ namespace AdaaMobile.ViewModels
         public ObservableCollection<Grouping<Project, ProjectTask>> GroupedTimeSheet
         {
             get { return _GroupedTimeSheet; }
-            set { SetProperty(ref _GroupedTimeSheet, value); }
+            set { SetProperty(ref _GroupedTimeSheet, value); OnPropertyChanged("NoProjects"); }
+        }
+
+        public bool NoProjects
+        {
+            get
+            {
+                if (GroupedTimeSheet != null && GroupedTimeSheet.Count > 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         #endregion
