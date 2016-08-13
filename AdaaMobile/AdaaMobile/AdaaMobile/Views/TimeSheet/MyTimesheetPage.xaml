@@ -13,7 +13,7 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <Grid Spacing="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent">
+  <Grid  BackgroundColor="Transparent">
 
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
@@ -23,7 +23,7 @@
       <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
 
-    <ActivityIndicator IsRunning="true" HeightRequest="60" WidthRequest="60"  VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="5" />
+    <ActivityIndicator BackgroundColor="Blue" IsRunning="true" HeightRequest="60" WidthRequest="60"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" />
 
     <Grid BackgroundColor="#6cb3b8" HeightRequest="30" Grid.Row="0">
       <Grid.ColumnDefinitions>
