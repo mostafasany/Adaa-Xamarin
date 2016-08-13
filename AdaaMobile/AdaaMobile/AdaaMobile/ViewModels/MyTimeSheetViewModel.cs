@@ -148,12 +148,24 @@ namespace AdaaMobile.ViewModels
 
         public async Task LoadWeeks()
         {
-            var response = await _dataService.GetWeeksPerYearAsync(2016, null);
-            if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
-            {
-                WeekList = response.Result;
-                SelectedWeek = WeekList[0];
-            }
+            List<Week> dummyWeeks = new List<Week>();
+            dummyWeeks.Add(new Week { WeekText = "Week1: 03-01-2016 To 09-01-2016" });
+            dummyWeeks.Add(new Week { WeekText = "Week2: 10-01-2016 To 16-01-2016" });
+            dummyWeeks.Add(new Week { WeekText = "Week3: 17-01-2016 To 23-01-2016" });
+            dummyWeeks.Add(new Week { WeekText = "Week4: 24-01-2016 To 30-01-2016" });
+            dummyWeeks.Add(new Week { WeekText = "Week5: 31-01-2016 To 06-02-2016" });
+            dummyWeeks.Add(new Week { WeekText = "Week6: 07-02-2016 To 13-02-2016" });
+            dummyWeeks.Add(new Week { WeekText = "Week7: 14-02-2016 To 20-02-2016" });
+            dummyWeeks.Add(new Week { WeekText = "Week8: 21-02-2016 To 27-02-2016" });
+            dummyWeeks.Add(new Week { WeekText = "Week9: 28-02-2016 To 05-03-2016" });
+            WeekList = dummyWeeks;
+            SelectedWeek = WeekList[0];
+            //var response = await _dataService.GetWeeksPerYearAsync(2016, null);
+            //if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
+            //{
+            //    WeekList = response.Result;
+            //    SelectedWeek = WeekList[0];
+            //}
         }
 
         public async Task LoadTimeSheet()
@@ -169,7 +181,7 @@ namespace AdaaMobile.ViewModels
         {
             TimeSheetFormated = new TimeSheetFormated();
             TimeSheetFormated.Projects = new List<Project>();
-			var currentDayTimeSheet= timeSheet.TimeSheetRecords.Where(a => a.AssignmentDate== selectedWeekDate.ToString());
+            var currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a => a.AssignmentDate == selectedWeekDate.ToString());
             var allProjects = currentDayTimeSheet.Where(a => string.IsNullOrEmpty(a.SubTaskTo));
 
             foreach (var project in allProjects)
@@ -260,8 +272,8 @@ namespace AdaaMobile.ViewModels
             List<DayWrapper> daysList = await Task.Run(() =>
             {
                 var days = new List<DayWrapper>();
-                var currentDate = new DateTime();
-                var endDate = new DateTime().AddDays(7);
+                var currentDate = SelectedWeek.WeekStart;
+                var endDate = SelectedWeek.WeekEnd;
                 while (currentDate <= endDate)
                 {
                     if (currentDate.DayOfWeek != DayOfWeek.Friday && currentDate.DayOfWeek != DayOfWeek.Saturday)
