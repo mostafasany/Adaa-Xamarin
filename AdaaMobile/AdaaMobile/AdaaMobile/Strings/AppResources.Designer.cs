@@ -1511,20 +1511,20 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assigment Date.
+        /// </summary>
+        public static string TimeSheet_AssigmentDate {
+            get {
+                return ResourceManager.GetString("TimeSheet_AssigmentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assigment Name / Task.
         /// </summary>
         public static string TimeSheet_AssigmentName {
             get {
                 return ResourceManager.GetString("TimeSheet_AssigmentName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assigment Date.
-        /// </summary>
-        public static string TimeSheet_AssihmentDate {
-            get {
-                return ResourceManager.GetString("TimeSheet_AssihmentDate", resourceCulture);
             }
         }
         
