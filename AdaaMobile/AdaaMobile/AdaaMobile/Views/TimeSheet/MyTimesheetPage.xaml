@@ -102,13 +102,13 @@
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
           <ViewCell>
-            <Grid Padding="4,3" BackgroundColor="Gray" HeightRequest="10">
+            <Grid Padding="4,3" HeightRequest="10">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
               </Grid.ColumnDefinitions>
               <Label FontSize="12" Text="{Binding Name}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
-              <Label FontSize="12" Text="{Binding TotalHours}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
+              <Label FontSize="12" Text="{Binding TotalHoursFormated}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
             </Grid>
           </ViewCell>
         </DataTemplate>
@@ -118,7 +118,7 @@
           <ViewCell>
             <ViewCell.View>
               <Grid Padding="2,3">
-                <masterView:TimeSheetRecordItem EditVisible="{Binding CanEdit}" Title="{Binding Name}" Message="{Binding Day.Hours}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
+                <masterView:TimeSheetRecordItem EditVisible="{Binding CanEdit}" Title="{Binding Name}" Message="{Binding Day.HoursFormated}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
               </Grid>
             </ViewCell.View>
           </ViewCell>

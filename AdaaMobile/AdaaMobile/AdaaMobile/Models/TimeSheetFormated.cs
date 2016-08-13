@@ -15,6 +15,7 @@ namespace AdaaMobile.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public double TotalHours { get; set; }
+        public string TotalHoursFormated { get { return TotalHours.ToString() + " H"; } }
         public List<ProjectTask> Tasks { get; set; }
         public override string ToString()
         {
@@ -34,6 +35,7 @@ namespace AdaaMobile.Models
     public class DayWithLoggedInHours
     {
         public double Hours { get; set; }
+        public string HoursFormated { get { return Hours.ToString() + " H"; } }
         public string DayName { get; set; }
         public string Comment { get; set; }
     }
