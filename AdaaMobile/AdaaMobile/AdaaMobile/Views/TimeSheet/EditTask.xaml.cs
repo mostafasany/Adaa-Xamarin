@@ -2,6 +2,9 @@
 using Xamarin.Forms;
 using AdaaMobile.ViewModels;
 using AdaaMobile.Strings;
+using AdaaMobile.Models.Request;
+using System.Collections.Generic;
+using AdaaMobile.DataServices;
 
 namespace AdaaMobile
 {
@@ -9,8 +12,9 @@ namespace AdaaMobile
     public partial class EditTask : ContentPage
     {
         private readonly MyTimeSheetViewModel _viewModel;
+		private readonly IDataService _dataService;
 
-        public EditTask()
+		public EditTask()
         {
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
@@ -41,8 +45,15 @@ namespace AdaaMobile
 
         private async void EditSelectedTask()
         {
-            string duration, comment, selectedTaskID;
-            if (!string.IsNullOrEmpty(lblDurationResult.Text))
+            string duration, comment;
+			int taskId, assignId;
+			TimeSheetListRequest timeSheetRequest = new TimeSheetListRequest();
+			TimeSheetRequest timeSheetDetails = new TimeSheetRequest();
+			List<TimeSheetRequest> timeSheetList = new List<TimeSheetRequest>();
+			string day = _viewModel.SelectedProjectTask.Day.DayName;
+
+
+			if (!string.IsNullOrEmpty(lblDurationResult.Text))
             {
                 duration = lblDurationResult.Text;
             }
@@ -52,8 +63,42 @@ namespace AdaaMobile
             }
             if (_viewModel.SelectedProjectTask != null)
             {
-                selectedTaskID = _viewModel.SelectedProjectTask.Id;
-            }
+				taskId = Convert.ToInt32(_viewModel.SelectedProjectTask.Id);
+				assignId = Convert.ToInt32(_viewModel.SelectedProjectTask.AssigmentId);
+
+				if (day == "Sunday")
+				{
+					timeSheetDetails.Sunday = duration;
+					timeSheetDetails.SundayComment = comment;
+				}
+				else if (day == "Monday")
+				{
+					timeSheetDetails.Monday = duration;
+					timeSheetDetails.MondayComment = comment;
+
+				}
+				else if (day == "Tuesday")
+				{
+					timeSheetDetails.Tuesday = duration;
+					timeSheetDetails.TuesdayComment = comment;
+				}
+				else if (day == "Wednesday")
+				{
+					timeSheetDetails.Wednesday = duration;
+					timeSheetDetails.WednesdayComment = comment;
+				}
+				else if (day == "Thursday")
+				{
+					timeSheetDetails.Thursday = duration;
+					timeSheetDetails.ThursdayComment = comment;
+				}
+				timeSheetDetails.AssignmentID = assignId;
+				timeSheetDetails.TaskID = taskId;
+			}
+
+			timeSheetList.Add(timeSheetDetails);
+			await	_dataService.SubmitTimeSheet(DateTime.Now.Year, Convert.ToInt32(_viewModel.SelectedWeek.WeekText), "", timeSheetRequest, null);
+
         }
 
 

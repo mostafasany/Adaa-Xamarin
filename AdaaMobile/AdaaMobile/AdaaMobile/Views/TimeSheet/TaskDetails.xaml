@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
- xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-  xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" 
-  xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
-   xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
-    xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-     xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile"
-      xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" 
-      x:Class="AdaaMobile.TaskDetails" BackgroundColor="White">
-<ContentPage.BackgroundImage>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" x:Class="AdaaMobile.TaskDetails" BackgroundColor="White">
+	<ContentPage.BackgroundImage>
 		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 	</ContentPage.BackgroundImage>
 	<ContentPage.Resources>
@@ -23,7 +15,6 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="8" />
-					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 				<controls:RoundedBoxView BackgroundColor="{StaticResource AppBackgroundNormal}" CornerRadius="{StaticResource CornerRadius}" VerticalOptions="Fill" Grid.Row="0" />
 				<StackLayout Grid.Row="0" Spacing="9" Padding="15" VerticalOptions="Start">
@@ -32,8 +23,6 @@
 					<dayPass:RowInfoControl Title="Duration" Value="{Binding Day.Hours}" />
 					<dayPass:RowInfoControl Title="Comment" Value="{Binding Day.Comment}" />
 				</StackLayout>
-				<controls:ExtendedButton Clicked="OpenTask_Clicked" Grid.Row="2" MinimumHeightRequest="60" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="#22007c85"  BorderRadius="0" Text="{ext:Translate TimeSheet_OpenTask}"  TextColor="White">
-				</controls:ExtendedButton>
 			</Grid>
 		</ScrollView>
 	</Grid>
