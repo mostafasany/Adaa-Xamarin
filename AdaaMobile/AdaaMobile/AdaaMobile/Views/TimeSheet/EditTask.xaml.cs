@@ -12,9 +12,9 @@ namespace AdaaMobile
     public partial class EditTask : ContentPage
     {
         private readonly MyTimeSheetViewModel _viewModel;
-		private readonly IDataService _dataService;
+        private readonly IDataService _dataService;
 
-		public EditTask()
+        public EditTask()
         {
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
@@ -45,15 +45,15 @@ namespace AdaaMobile
 
         private async void EditSelectedTask()
         {
-            string duration, comment;
-			int taskId, assignId;
-			TimeSheetListRequest timeSheetRequest = new TimeSheetListRequest();
-			TimeSheetRequest timeSheetDetails = new TimeSheetRequest();
-			List<TimeSheetRequest> timeSheetList = new List<TimeSheetRequest>();
-			string day = _viewModel.SelectedProjectTask.Day.DayName;
+            string duration = "", comment = "";
+            int taskId, assignId;
+            TimeSheetListRequest timeSheetRequest = new TimeSheetListRequest();
+            TimeSheetRequest timeSheetDetails = new TimeSheetRequest();
+            List<TimeSheetRequest> timeSheetList = new List<TimeSheetRequest>();
+            string day = _viewModel.SelectedProjectTask.Day.DayName;
 
 
-			if (!string.IsNullOrEmpty(lblDurationResult.Text))
+            if (!string.IsNullOrEmpty(lblDurationResult.Text))
             {
                 duration = lblDurationResult.Text;
             }
@@ -63,41 +63,41 @@ namespace AdaaMobile
             }
             if (_viewModel.SelectedProjectTask != null)
             {
-				taskId = Convert.ToInt32(_viewModel.SelectedProjectTask.Id);
-				assignId = Convert.ToInt32(_viewModel.SelectedProjectTask.AssigmentId);
+                taskId = Convert.ToInt32(_viewModel.SelectedProjectTask.Id);
+                assignId = Convert.ToInt32(_viewModel.SelectedProjectTask.AssigmentId);
 
-				if (day == "Sunday")
-				{
-					timeSheetDetails.Sunday = duration;
-					timeSheetDetails.SundayComment = comment;
-				}
-				else if (day == "Monday")
-				{
-					timeSheetDetails.Monday = duration;
-					timeSheetDetails.MondayComment = comment;
+                if (day == "Sunday")
+                {
+                    timeSheetDetails.Sunday = duration;
+                    timeSheetDetails.SundayComment = comment;
+                }
+                else if (day == "Monday")
+                {
+                    timeSheetDetails.Monday = duration;
+                    timeSheetDetails.MondayComment = comment;
 
-				}
-				else if (day == "Tuesday")
-				{
-					timeSheetDetails.Tuesday = duration;
-					timeSheetDetails.TuesdayComment = comment;
-				}
-				else if (day == "Wednesday")
-				{
-					timeSheetDetails.Wednesday = duration;
-					timeSheetDetails.WednesdayComment = comment;
-				}
-				else if (day == "Thursday")
-				{
-					timeSheetDetails.Thursday = duration;
-					timeSheetDetails.ThursdayComment = comment;
-				}
-				timeSheetDetails.AssignmentID = assignId;
-				timeSheetDetails.TaskID = taskId;
-			}
+                }
+                else if (day == "Tuesday")
+                {
+                    timeSheetDetails.Tuesday = duration;
+                    timeSheetDetails.TuesdayComment = comment;
+                }
+                else if (day == "Wednesday")
+                {
+                    timeSheetDetails.Wednesday = duration;
+                    timeSheetDetails.WednesdayComment = comment;
+                }
+                else if (day == "Thursday")
+                {
+                    timeSheetDetails.Thursday = duration;
+                    timeSheetDetails.ThursdayComment = comment;
+                }
+                timeSheetDetails.AssignmentID = assignId;
+                timeSheetDetails.TaskID = taskId;
+            }
 
-			timeSheetList.Add(timeSheetDetails);
-			await	_dataService.SubmitTimeSheet(DateTime.Now.Year, Convert.ToInt32(_viewModel.SelectedWeek.WeekText), "", timeSheetRequest, null);
+            timeSheetList.Add(timeSheetDetails);
+            await _dataService.SubmitTimeSheet(DateTime.Now.Year, Convert.ToInt32(_viewModel.SelectedWeek.WeekText), "", timeSheetRequest, null);
 
         }
 
@@ -108,9 +108,9 @@ namespace AdaaMobile
             lblDurationResult.Text = "Select Duration";
             for (int i = 0; i < 24; i++)
             {
-                string value = i.ToString() + ":00";
+                string value = i.ToString() + ":00 H";
                 DurationPicker.Items.Add(value);
-                value = i.ToString() + ":30";
+                value = i.ToString() + ":30 H";
                 DurationPicker.Items.Add(value);
             }
             DurationPicker.SelectedIndexChanged += DurationPicker_SelectionIndexChanged;
