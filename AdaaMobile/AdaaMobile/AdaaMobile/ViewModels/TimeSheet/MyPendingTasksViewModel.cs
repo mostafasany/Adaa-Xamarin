@@ -130,8 +130,9 @@ namespace AdaaMobile.ViewModels
         private async Task OpenTaskWebView()
         {
             var selectedtask = SelectedPendingTask;
-			var fullURL = "http://adaatime.linkdev.com" + selectedtask.TaskFullURL;
-			Device.OpenUri(new Uri(fullURL, UriKind.Absolute));
+            //var fullURL = string.Format("http://adaatime.linkdev.com/Account/Login?encryptedUserName=IR3aBpmwPVrlqZu5C/lQpg==&action=/PlannedLeaves/Index/?TaskID=3033");
+            var fullURL = string.Format("http://adaatime.linkdev.com/Account/Login?encryptedUserName={0}&action={1}?TaskID={2}", "IR3aBpmwPVrlqZu5C/lQpg==", selectedtask.TaskFullURL, selectedtask.Id);
+            Device.OpenUri(new Uri(fullURL, UriKind.Absolute));
         }
 
         #endregion

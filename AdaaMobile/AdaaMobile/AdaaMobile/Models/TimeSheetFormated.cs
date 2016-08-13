@@ -26,6 +26,7 @@ namespace AdaaMobile.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public string AssigmentName { get; set; }
         public DayWithLoggedInHours Day { get; set; }
         public bool CanEdit { get; set; }
     }
