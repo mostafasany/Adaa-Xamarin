@@ -280,10 +280,14 @@ namespace AdaaMobile.ViewModels
 
         public void GetNextDay()
         {
+            var indexOfCurrentDay = DaysList.IndexOf(SelectedDay);
+            SelectedDay = DaysList[++indexOfCurrentDay];
         }
 
         public void GetPreviousDay()
         {
+            var indexOfCurrentDay = DaysList.IndexOf(SelectedDay);
+            SelectedDay = DaysList[--indexOfCurrentDay];
         }
 
         #endregion
