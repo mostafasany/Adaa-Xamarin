@@ -646,7 +646,7 @@
   <data name="TimeSheet_AssigmentName" xml:space="preserve">
     <value>Assigment Name / Task</value>
   </data>
-  <data name="TimeSheet_AssihmentDate" xml:space="preserve">
+  <data name="TimeSheet_AssigmentDate" xml:space="preserve">
     <value>Assigment Date</value>
   </data>
   <data name="TimeSheet_EndDate" xml:space="preserve">
