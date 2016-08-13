@@ -13,7 +13,7 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <Grid  BackgroundColor="Transparent">
+  <Grid  BackgroundColor="White">
 
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
