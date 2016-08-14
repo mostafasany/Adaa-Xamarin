@@ -706,4 +706,19 @@
   <data name="TimeSheet_SelectTask" xml:space="preserve">
     <value>Select Task</value>
   </data>
+  <data name="TimeSheet_EnterAssigmnet" xml:space="preserve">
+    <value>Please Choose Assigment</value>
+  </data>
+  <data name="TimeSheet_EnterComment" xml:space="preserve">
+    <value>Please Choose Comment</value>
+  </data>
+  <data name="TimeSheet_EnterDuration" xml:space="preserve">
+    <value>Please Enter Duration</value>
+  </data>
+  <data name="TimeSheet_EnterTask" xml:space="preserve">
+    <value>Please Choose Task</value>
+  </data>
+  <data name="TimeSheet_ErrorHappened" xml:space="preserve">
+    <value>Error Happened</value>
+  </data>
 </root>

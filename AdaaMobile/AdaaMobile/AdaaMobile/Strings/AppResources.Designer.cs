@@ -1565,6 +1565,51 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Choose Assigment.
+        /// </summary>
+        public static string TimeSheet_EnterAssigmnet {
+            get {
+                return ResourceManager.GetString("TimeSheet_EnterAssigmnet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Choose Comment.
+        /// </summary>
+        public static string TimeSheet_EnterComment {
+            get {
+                return ResourceManager.GetString("TimeSheet_EnterComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter Duration.
+        /// </summary>
+        public static string TimeSheet_EnterDuration {
+            get {
+                return ResourceManager.GetString("TimeSheet_EnterDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Choose Task.
+        /// </summary>
+        public static string TimeSheet_EnterTask {
+            get {
+                return ResourceManager.GetString("TimeSheet_EnterTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error Happened.
+        /// </summary>
+        public static string TimeSheet_ErrorHappened {
+            get {
+                return ResourceManager.GetString("TimeSheet_ErrorHappened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logged in Hours.
         /// </summary>
         public static string TimeSheet_LoginHours {

@@ -703,4 +703,19 @@
   <data name="TimeSheet_SelectTask" xml:space="preserve">
     <value>حدد المهام</value>
   </data>
+  <data name="TimeSheet_EnterAssigmnet" xml:space="preserve">
+    <value>يرجى اختيار تعيين</value>
+  </data>
+  <data name="TimeSheet_EnterComment" xml:space="preserve">
+    <value>يرجى اختيار تعليق</value>
+  </data>
+  <data name="TimeSheet_EnterDuration" xml:space="preserve">
+    <value>الرجاء إدخال مدة</value>
+  </data>
+  <data name="TimeSheet_EnterTask" xml:space="preserve">
+    <value>يرجى اختيار العمل</value>
+  </data>
+  <data name="TimeSheet_ErrorHappened" xml:space="preserve">
+    <value>حدث خطأ</value>
+  </data>
 </root>
