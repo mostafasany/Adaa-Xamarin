@@ -129,9 +129,11 @@ namespace AdaaMobile.ViewModels
 
         private async Task OpenTaskWebView()
         {
+            var encryptedUserName = Locator.Default.DataService.EncryptString(LoggedUserInfo.CurrentUserProfile.DisplayName);
+
             var selectedtask = SelectedPendingTask;
             //var fullURL = string.Format("http://adaatime.linkdev.com/Account/Login?encryptedUserName=IR3aBpmwPVrlqZu5C/lQpg==&action=/PlannedLeaves/Index/?TaskID=3033");
-            var fullURL = string.Format("http://adaatime.linkdev.com/Account/Login?encryptedUserName={0}&action={1}", "IR3aBpmwPVrlqZu5C/lQpg==", selectedtask.TaskFullURL);
+            var fullURL = string.Format("http://adaatime.linkdev.com/Account/Login?encryptedUserName={0}&action={1}", encryptedUserName, selectedtask.TaskFullURL);
             Device.OpenUri(new Uri(fullURL, UriKind.Absolute));
         }
 

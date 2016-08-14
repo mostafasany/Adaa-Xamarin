@@ -127,9 +127,12 @@
       </ListView.ItemTemplate>
     </ListView>
 
-    <controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Text="{ext:Translate TimeSheet_AddNewTask}"  Grid.Row="4" MinimumHeightRequest="60" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}"  BorderRadius="0" TextColor="Black">
-    </controls:ExtendedButton>
+    <Grid HorizontalOptions="Fill"   Grid.Row="4" VerticalOptions="Fill" Padding="15,20" RowSpacing="10">
 
+      <controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Text="{ext:Translate TimeSheet_AddNewTask}" MinimumHeightRequest="60" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}"  BorderRadius="0" TextColor="Black">
+      </controls:ExtendedButton>
+    
+    </Grid>
     <!--<controls:ExtendedButton Grid.Row="4" HeightRequest="50" Command="{Binding AddNewTaskCommand}" VerticalOptions="Start" HorizontalOptions="Fill" BorderRadius="0" Text="Add New Task" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
     </controls:ExtendedButton>-->
 

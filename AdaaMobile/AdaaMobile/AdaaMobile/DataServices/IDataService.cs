@@ -9,6 +9,8 @@ namespace AdaaMobile.DataServices
 {
     public interface IDataService
     {
+        string EncryptString(string toEncrypt);
+
         //Accounts module
         Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password);
         Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentProfileQParameters paramters, CancellationToken? token = null);
