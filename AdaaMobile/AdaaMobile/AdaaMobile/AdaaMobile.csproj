@@ -388,7 +388,7 @@
       <DependentUpon>SelectTask.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\SelectTaskViewModel.cs" />
-    <Compile Include="ViewModels\MyTimeSheetViewModel.cs" />
+    <Compile Include="ViewModels\TimeSheet\MyTimeSheetViewModel.cs" />
     <Compile Include="Views\TimeSheet\SelectedAssimentsPage.xaml.cs">
       <DependentUpon>SelectedAssimentsPage.xaml</DependentUpon>
     </Compile>
