@@ -6,7 +6,6 @@ using AdaaMobile.Models;
 
 namespace AdaaMobile
 {
-
     public partial class MyTimesheetPage : ContentPage
     {
         private readonly MyTimeSheetViewModel _viewModel;

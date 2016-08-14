@@ -14,7 +14,7 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <Grid  BackgroundColor="White" Padding="0,0,0,20">
+  <!--<Grid  BackgroundColor="White" Padding="0,0,0,20">
 
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
@@ -22,11 +22,13 @@
       <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
       <RowDefinition Height="Auto" />
-    </Grid.RowDefinitions>
+    </Grid.RowDefinitions>-->
 
-    <ActivityIndicator  IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" />
+  <ActivityIndicator  IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60"  VerticalOptions="Center" HorizontalOptions="Center" />
+  
+  <StackLayout Spacing="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent">
 
-    <Grid BackgroundColor="#6cb3b8" HeightRequest="30" Grid.Row="0">
+    <Grid BackgroundColor="#6cb3b8" HeightRequest="60" Grid.Row="0">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
@@ -97,45 +99,52 @@
       </StackLayout>
     </Grid>
 
-    <Label Grid.Row="3" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoProjects}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
+    <ScrollView VerticalOptions="Fill">
 
-    <ListView ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true" CachingStrategy="RecycleElement" RowHeight="40" SeparatorColor="Transparent" BackgroundColor="White" Grid.Row="3">
-      <ListView.GroupHeaderTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <Grid Padding="4,3" HeightRequest="10" BackgroundColor="#D1D1D1">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-              </Grid.ColumnDefinitions>
-              <Label FontSize="12" Text="{Binding Name}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
-              <Label FontSize="12" Text="{Binding TotalHoursFormated}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
-            </Grid>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.GroupHeaderTemplate>
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <ViewCell.View>
-              <Grid Padding="2,3">
-                <masterView:TimeSheetRecordItem EditVisible="{Binding CanEdit}" Title="{Binding Name}" Message="{Binding Day.HoursFormated}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
+      <Label Grid.Row="3" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoProjects}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
+      
+      <ListView ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true" CachingStrategy="RecycleElement" RowHeight="40" SeparatorColor="Transparent" BackgroundColor="White" Grid.Row="3">
+        <ListView.GroupHeaderTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid Padding="4,3" HeightRequest="10" BackgroundColor="#D1D1D1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label FontSize="12" Text="{Binding Name}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+                <Label FontSize="12" Text="{Binding TotalHoursFormated}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
               </Grid>
-            </ViewCell.View>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-
-    <Grid HorizontalOptions="Fill"   Grid.Row="4" VerticalOptions="Fill" Padding="15,20" RowSpacing="10">
-
-      <controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Text="{ext:Translate TimeSheet_AddNewTask}" MinimumHeightRequest="60" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}"  BorderRadius="0" TextColor="Black">
-      </controls:ExtendedButton>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.GroupHeaderTemplate>
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <Grid Padding="2,3">
+                  <masterView:TimeSheetRecordItem EditVisible="{Binding CanEdit}" Title="{Binding Name}" Message="{Binding Day.HoursFormated}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
+                </Grid>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
     
+    </ScrollView>
+
+    <Grid HorizontalOptions="Fill"   Grid.Row="4" VerticalOptions="Fill" Padding="15,20">
+
+      <controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Text="{ext:Translate TimeSheet_AddNewTask}" MinimumHeightRequest="60" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
+      </controls:ExtendedButton>
+
     </Grid>
+
     <!--<controls:ExtendedButton Grid.Row="4" HeightRequest="50" Command="{Binding AddNewTaskCommand}" VerticalOptions="Start" HorizontalOptions="Fill" BorderRadius="0" Text="Add New Task" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
     </controls:ExtendedButton>-->
 
-  </Grid>
+  </StackLayout>
+
+  <!--</Grid>-->
 
 </ContentPage>

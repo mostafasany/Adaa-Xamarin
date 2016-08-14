@@ -190,10 +190,10 @@ namespace AdaaMobile.ViewModels
 
         public async Task LoadWeeks()
         {
-            List<Week> dummyWeeks = new List<Week>();
-            dummyWeeks.Add(new Week { WeekText = "Week22: 05-30-2016 To 06-05-2016", WeekNumber = 22, WeekStart = DateTime.Parse("05-30-2016"), WeekEnd = DateTime.Parse("06-05-2016") });
-            dummyWeeks.Add(new Week { WeekText = "Week33: 08-15-2016 To 08-21-2016", WeekNumber = 33, WeekStart = DateTime.Parse("08-15-2016"), WeekEnd = DateTime.Parse("08-21-2016") });
-            dummyWeeks.Add(new Week { WeekText = "Week34: 08-22-2016 To 08-28-2016", WeekNumber = 34, WeekStart = DateTime.Parse("08-22-2016"), WeekEnd = DateTime.Parse("08-28-2016") });
+            //List<Week> dummyWeeks = new List<Week>();
+            //dummyWeeks.Add(new Week { WeekText = "Week22: 05-30-2016 To 06-05-2016", WeekNumber = 22, WeekStart = DateTime.Parse("05-30-2016"), WeekEnd = DateTime.Parse("06-05-2016") });
+            //dummyWeeks.Add(new Week { WeekText = "Week33: 08-15-2016 To 08-21-2016", WeekNumber = 33, WeekStart = DateTime.Parse("08-15-2016"), WeekEnd = DateTime.Parse("08-21-2016") });
+            //dummyWeeks.Add(new Week { WeekText = "Week34: 08-22-2016 To 08-28-2016", WeekNumber = 34, WeekStart = DateTime.Parse("08-22-2016"), WeekEnd = DateTime.Parse("08-28-2016") });
             ////dummyWeeks.Add(new Week { WeekText = "Week3: 17-01-2016 To 23-01-2016", WeekNumber = 3, WeekStart = DateTime.Parse("17-01-2016"), WeekEnd = DateTime.Parse("23-01-2016") });
             //dummyWeeks.Add(new Week { WeekText = "Week4: 24-01-2016 To 30-01-2016", WeekNumber = 4, WeekStart = DateTime.Parse("24-01-2016"), WeekEnd = DateTime.Parse("30-01-2016") });
             //dummyWeeks.Add(new Week { WeekText = "Week5: 31-01-2016 To 06-02-2016", WeekNumber = 5, WeekStart = DateTime.Parse("31-01-2016"), WeekEnd = DateTime.Parse("06-02-2016") });
@@ -201,15 +201,15 @@ namespace AdaaMobile.ViewModels
             //dummyWeeks.Add(new Week { WeekText = "Week7: 14-02-2016 To 20-02-2016", WeekNumber = 7, WeekStart = DateTime.Parse("14-02-2016"), WeekEnd = DateTime.Parse("20-02-2016") });
             //dummyWeeks.Add(new Week { WeekText = "Week8: 21-02-2016 To 27-02-2016", WeekNumber = 8, WeekStart = DateTime.Parse("21-02-2016"), WeekEnd = DateTime.Parse("27-02-2016") });
             //dummyWeeks.Add(new Week { WeekText = "Week9: 28-02-2016 To 05-03-2016", WeekNumber = 9, WeekStart = DateTime.Parse("28-02-2016"), WeekEnd = DateTime.Parse("05-03-2016") });
-            WeekList = dummyWeeks;
-            SelectedWeek = WeekList[0];
+            //WeekList = dummyWeeks;
+            //SelectedWeek = WeekList[0];
 
-            //var response = await _dataService.GetWeeksPerYearAsync(2016, null);
-            //if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
-            //{
-            //    WeekList = response.Result;
-            //    SelectedWeek = WeekList[0];
-            //}
+            var response = await _dataService.GetWeeksPerYearAsync(2016, null);
+            if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
+            {
+                WeekList = response.Result;
+                SelectedWeek = WeekList[0];
+            }
         }
 
         #endregion
