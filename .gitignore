@@ -39,3 +39,9 @@
 AdaaMobile/AdaaMobile/AdaaMobile.iOS/bin/iPhoneSimulator/Debug/AdaaMobile.dll
 
 AdaaMobile/AdaaMobile/AdaaMobile.iOS/bin/iPhoneSimulator/Debug/AdaaMobile.dll.mdb
+
+*.exe
+
+*.mdb
+
+*.dll

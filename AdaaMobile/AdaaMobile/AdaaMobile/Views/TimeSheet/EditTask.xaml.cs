@@ -53,15 +53,25 @@ namespace AdaaMobile
             string day = _viewModel.SelectedProjectTask.Day.DayName;
 
 
-            if (!string.IsNullOrEmpty(lblDurationResult.Text))
+			if (!string.IsNullOrEmpty(lblDurationResult.Text) || lblDuration.Text == AppResources.TimeSheet_Duration)
             {
                 duration = lblDurationResult.Text;
-            }
-            if (!string.IsNullOrEmpty(AdditionalCommentsEditor.Text))
+			}else
+			{
+				await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.TimeSheet_EnterDuration, AppResources.Ok);
+				return;
+
+			}
+			if (!string.IsNullOrEmpty(AdditionalCommentsEditor.Text))
             {
                 comment = AdditionalCommentsEditor.Text;
-            }
-            if (_viewModel.SelectedProjectTask != null)
+			}else
+			{
+				await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.TimeSheet_EnterComment, AppResources.Ok);
+				return;
+
+			}
+			if (_viewModel.SelectedProjectTask != null)
             {
                 taskId = Convert.ToInt32(_viewModel.SelectedProjectTask.Id);
                 assignId = Convert.ToInt32(_viewModel.SelectedProjectTask.AssigmentId);
@@ -99,7 +109,15 @@ namespace AdaaMobile
             timeSheetList.Add(timeSheetDetails);
 			timeSheetRequest.data = timeSheetList;
 			var status=await Locator.Default.DataService.SubmitTimeSheet(DateTime.Now.Year, _viewModel.SelectedWeek.WeekNumber, "", timeSheetRequest, null);
+			if (status.Result)
+			{
+				Locator.Default.NavigationService.GoBack();
+			}
+			else
+			{
+				await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.TimeSheet_ErrorHappened, AppResources.Ok);
 
+			}
         }
 
 

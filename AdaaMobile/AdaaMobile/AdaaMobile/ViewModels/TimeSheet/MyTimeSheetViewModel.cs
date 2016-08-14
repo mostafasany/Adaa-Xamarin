@@ -196,12 +196,12 @@ namespace AdaaMobile.ViewModels
             {
                 var currentCulture = CultureInfo.CurrentCulture;
                 var weekNo = currentCulture.Calendar.GetWeekOfYear(
-                                new DateTime(2013, 12, 31),
+					DateTime.Now,
                                 currentCulture.DateTimeFormat.CalendarWeekRule,
                                 currentCulture.DateTimeFormat.FirstDayOfWeek);
 
                 WeekList = response.Result;
-                SelectedWeek = WeekList[weekNo - 1];
+                SelectedWeek = WeekList[weekNo - 2];
             }
         }
 
