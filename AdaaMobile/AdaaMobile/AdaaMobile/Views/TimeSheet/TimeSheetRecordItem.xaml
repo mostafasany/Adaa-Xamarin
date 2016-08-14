@@ -17,7 +17,7 @@
 			<Label x:Name="lblTitle" HorizontalOptions="Start" Grid.Column="1" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Title,Source={x:Reference ParentView}}" />
 			<Label x:Name="lblHours" HorizontalOptions="End" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
 			<Grid WidthRequest="25"  x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85">
-				<Image HorizontalOptions="Center" x:Name="imgArrow" HeightRequest="10" WidthRequest="10" VerticalOptions="Center">
+				<Image HorizontalOptions="Center" x:Name="imgArrow" HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
 					<Image.Source>
 						<OnPlatform x:TypeArguments="ImageSource" iOS="note" Android="note.png" WinPhone="note.png" />
 					</Image.Source>

@@ -4,7 +4,6 @@ using Xamarin.Forms;
 using AdaaMobile.ViewModels;
 using AdaaMobile.Strings;
 using AdaaMobile.Models.Response;
-using AdaaMobile.DataServices;
 using AdaaMobile.Models.Request;
 
 namespace AdaaMobile
@@ -24,7 +23,7 @@ namespace AdaaMobile
             _viewModel = Locator.Default.MyTimeSheetViewModel;
             BindingContext = _viewModel;
 
-            Title = AppResources.EServices;
+            Title = AppResources.TimeSheet_AddNewTask;
 
             //Add submit action
             Action action = () =>
@@ -89,9 +88,9 @@ namespace AdaaMobile
         }
         private async void LoadAssigments()
         {
-            lblAssignmentResult.Text = "Select Assignment";
-            lblTaskResult.Text = "Select Task";
-            lblDurationResult.Text = "Select Duration";
+            lblAssignmentResult.Text = AppResources.TimeSheet_SelectAssigmnet;
+            lblTaskResult.Text = AppResources.TimeSheet_SelectTask;
+            lblDurationResult.Text = AppResources.TimeSheet_SelectDuration;
             var response = await Locator.Default.DataService.GetAssignmentAsync();
 
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.MyTimesheetPage" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" x:Name="ParentView">
+
   <ContentPage.Resources>
     <ResourceDictionary>
       <Color x:Key="TabColor">#00676e</Color>
@@ -13,7 +14,7 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <Grid  BackgroundColor="White">
+  <Grid  BackgroundColor="White" Padding="0,0,0,20">
 
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
@@ -102,7 +103,7 @@
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
           <ViewCell>
-            <Grid Padding="4,3" HeightRequest="10">
+            <Grid Padding="4,3" HeightRequest="10" BackgroundColor="#D1D1D1">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -126,8 +127,11 @@
       </ListView.ItemTemplate>
     </ListView>
 
-    <controls:ExtendedButton Grid.Row="4" HeightRequest="40" Command="{Binding AddNewTaskCommand}" VerticalOptions="Start" HorizontalOptions="Fill" BorderRadius="0" Text="Add New Task" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
+    <controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Text="{ext:Translate TimeSheet_AddNewTask}"  Grid.Row="4" MinimumHeightRequest="60" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}"  BorderRadius="0" TextColor="Black">
     </controls:ExtendedButton>
+
+    <!--<controls:ExtendedButton Grid.Row="4" HeightRequest="50" Command="{Binding AddNewTaskCommand}" VerticalOptions="Start" HorizontalOptions="Fill" BorderRadius="0" Text="Add New Task" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
+    </controls:ExtendedButton>-->
 
   </Grid>
 

@@ -1,4 +1,5 @@
-﻿using AdaaMobile.ViewModels;
+﻿using AdaaMobile.Strings;
+using AdaaMobile.ViewModels;
 using System;
 
 namespace AdaaMobile.Models.Response
@@ -13,7 +14,7 @@ namespace AdaaMobile.Models.Response
         {
             get
             {
-                return "Reference " + Id;
+                return AppResources.TimeSheet_Refrence + " #" + Id;
             }
         }
 

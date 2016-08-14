@@ -682,4 +682,25 @@
   <data name="TimeSheet_RemainingHours" xml:space="preserve">
     <value>تبقى ساعات</value>
   </data>
+  <data name="TimeSheet_AssigName" xml:space="preserve">
+    <value>اسم الواجب</value>
+  </data>
+  <data name="TimeSheet_Comment" xml:space="preserve">
+    <value>التعليق</value>
+  </data>
+  <data name="TimeSheet_Duration" xml:space="preserve">
+    <value>مدة</value>
+  </data>
+  <data name="TimeSheet_Refrence" xml:space="preserve">
+    <value>مرجع</value>
+  </data>
+  <data name="TimeSheet_SelectAssigmnet" xml:space="preserve">
+    <value>حدد تعيين</value>
+  </data>
+  <data name="TimeSheet_SelectDuration" xml:space="preserve">
+    <value>حدد المدة</value>
+  </data>
+  <data name="TimeSheet_SelectTask" xml:space="preserve">
+    <value>حدد المهام</value>
+  </data>
 </root>

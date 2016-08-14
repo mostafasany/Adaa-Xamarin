@@ -1529,6 +1529,33 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assigment Name.
+        /// </summary>
+        public static string TimeSheet_AssigName {
+            get {
+                return ResourceManager.GetString("TimeSheet_AssigName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        public static string TimeSheet_Comment {
+            get {
+                return ResourceManager.GetString("TimeSheet_Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        public static string TimeSheet_Duration {
+            get {
+                return ResourceManager.GetString("TimeSheet_Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EndDate.
         /// </summary>
         public static string TimeSheet_EndDate {
@@ -1556,7 +1583,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Pending Taksk.
+        ///   Looks up a localized string similar to My Pending Tasks.
         /// </summary>
         public static string TimeSheet_MyPendingTasks {
             get {
@@ -1592,6 +1619,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reference.
+        /// </summary>
+        public static string TimeSheet_Refrence {
+            get {
+                return ResourceManager.GetString("TimeSheet_Refrence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remaining Hours.
         /// </summary>
         public static string TimeSheet_RemainingHours {
@@ -1606,6 +1642,33 @@ namespace AdaaMobile.Strings {
         public static string TimeSheet_RemoveTask {
             get {
                 return ResourceManager.GetString("TimeSheet_RemoveTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Assigment.
+        /// </summary>
+        public static string TimeSheet_SelectAssigmnet {
+            get {
+                return ResourceManager.GetString("TimeSheet_SelectAssigmnet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Duration.
+        /// </summary>
+        public static string TimeSheet_SelectDuration {
+            get {
+                return ResourceManager.GetString("TimeSheet_SelectDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Task.
+        /// </summary>
+        public static string TimeSheet_SelectTask {
+            get {
+                return ResourceManager.GetString("TimeSheet_SelectTask", resourceCulture);
             }
         }
         

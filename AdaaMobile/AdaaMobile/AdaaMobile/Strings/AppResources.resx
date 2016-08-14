@@ -635,7 +635,7 @@
     <value>My Assignments</value>
   </data>
   <data name="TimeSheet_MyPendingTasks" xml:space="preserve">
-    <value>My Pending Taksk</value>
+    <value>My Pending Tasks</value>
   </data>
   <data name="TimeSheet_MyTimeSheet" xml:space="preserve">
     <value>My Timesheet</value>
@@ -684,5 +684,26 @@
   </data>
   <data name="TimeSheet_RemainingHours" xml:space="preserve">
     <value>Remaining Hours</value>
+  </data>
+  <data name="TimeSheet_AssigName" xml:space="preserve">
+    <value>Assigment Name</value>
+  </data>
+  <data name="TimeSheet_Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="TimeSheet_Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="TimeSheet_Refrence" xml:space="preserve">
+    <value>Reference</value>
+  </data>
+  <data name="TimeSheet_SelectAssigmnet" xml:space="preserve">
+    <value>Select Assigment</value>
+  </data>
+  <data name="TimeSheet_SelectDuration" xml:space="preserve">
+    <value>Select Duration</value>
+  </data>
+  <data name="TimeSheet_SelectTask" xml:space="preserve">
+    <value>Select Task</value>
   </data>
 </root>

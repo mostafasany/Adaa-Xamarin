@@ -20,7 +20,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
           </Grid.ColumnDefinitions>
-          <Label x:Name="lblDuration" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="Duration" />
+          <Label x:Name="lblDuration" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate TimeSheet_Duration}" />
           <Image x:Name="imageReasonType" HeightRequest="15" WidthRequest="15" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
             <Image.Source>
               <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
