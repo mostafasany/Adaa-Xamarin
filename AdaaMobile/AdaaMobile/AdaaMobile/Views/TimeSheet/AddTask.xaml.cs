@@ -141,7 +141,7 @@ namespace AdaaMobile
 			lblTaskResult.Text = AppResources.TimeSheet_SelectTask;
 			lblDurationResult.Text = AppResources.TimeSheet_SelectDuration;
 			var response = await Locator.Default.DataService.GetAssignmentAsync();
-
+			loadingControl.IsRunning = false;
 			if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
 			{
 				AssignmentPicker.Items.Clear();
