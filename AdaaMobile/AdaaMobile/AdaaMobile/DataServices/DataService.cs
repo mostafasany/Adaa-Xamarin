@@ -86,7 +86,16 @@ namespace AdaaMobile.DataServices
         public async Task<ResponseWrapper<List<Week>>> GetWeeksPerYearAsync(int year, CancellationToken? token = null)
         {
             var request = _requestFactory();
-            request.RequestUrl = TimeSheetBaseUrl + string.Format("getWeeksPerYear?year={0}&lang={1}", year, Locator.Default.AppSettings.SelectedCultureName);
+            string language = "";
+            if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
+            {
+                language = "en";
+            }
+            else
+            {
+                language = "ar";
+            }
+            request.RequestUrl = TimeSheetBaseUrl + string.Format("getWeeksPerYear?year={0}&lang={1}", year, language);
             request.ResultContentType = ContentType.Json;
             return await request.GetAsync<List<Week>>(token);
         }
