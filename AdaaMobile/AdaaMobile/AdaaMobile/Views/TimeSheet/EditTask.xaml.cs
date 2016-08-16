@@ -53,7 +53,7 @@ namespace AdaaMobile
             string day = _viewModel.SelectedProjectTask.Day.DayName;
 
 
-			if (!string.IsNullOrEmpty(lblDurationResult.Text) && lblDurationResult.Text != "Select Duration")
+			if (DurationPicker.SelectedIndex > -1)
             {
                 duration = lblDurationResult.Text;
 			}else

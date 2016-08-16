@@ -14,26 +14,25 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <!--<Grid  BackgroundColor="White" Padding="0,0,0,20">
-
+  <Grid  BackgroundColor="White" Padding="0,0,0,20">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
       <RowDefinition Height="Auto" />
-    </Grid.RowDefinitions>-->
+    </Grid.RowDefinitions>
 
   <ActivityIndicator  IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60"  VerticalOptions="Center" HorizontalOptions="Center" />
 
-  <StackLayout  Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent">
-
+ <!-- <StackLayout  Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent">
+-->
     <Grid BackgroundColor="#6cb3b8" HeightRequest="90" Grid.Row="0">
 
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
@@ -141,8 +140,8 @@
 
     <!--</Grid>-->
 
-  </StackLayout>
+ <!-- </StackLayout>-->
 
-  <!--</Grid>-->
+  </Grid>
 
 </ContentPage>

@@ -66,7 +66,7 @@ namespace AdaaMobile
 				return;
 			}
 
-			if (!string.IsNullOrEmpty(lblDurationResult.Text))
+			if (DurationPicker.SelectedIndex>-1)
 			{
 				duration = lblDurationResult.Text;
 
