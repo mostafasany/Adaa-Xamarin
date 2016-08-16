@@ -301,8 +301,8 @@ namespace AdaaMobile.ViewModels
             day.IsSelected = true;
             SelectedDay = day;
 
-            if (SelectedDay != null)
-                FormatTimeSheet(timeSheetResponse.Result, SelectedDay.Date);
+			if (SelectedDay != null)
+				LoadTimeSheet();
 
         }
 
