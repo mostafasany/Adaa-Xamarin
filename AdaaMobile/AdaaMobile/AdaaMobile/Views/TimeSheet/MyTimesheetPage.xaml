@@ -1,125 +1,131 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.MyTimesheetPage" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" x:Name="ParentView">
-	<ContentPage.Resources>
-		<ResourceDictionary>
-			<Color x:Key="TabColor">#00676e</Color>
-			<converters:BoolToColorConverter x:Key="DayColorConverter" FalseColor="Black" TrueColor="{StaticResource YellowAccent}" />
-			<converters:BoolToColorConverter x:Key="MonthColorConverter" FalseColor="Black" TrueColor="White" />
-			<converters:BoolToColorConverter x:Key="DayBackColorConverter" FalseColor="#FFB4D7DB" TrueColor="{StaticResource AppBackgroundNormal}" />
-			<converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
-			<converters:StringFormatConverter x:Key="StringFormatConverter" />
-			<converters:DateFormatConverter x:Key="DateFormatConverter" />
-			<converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter" />
-		</ResourceDictionary>
-	</ContentPage.Resources>
-	<Grid RowSpacing="0">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
-			<RowDefinition Height="Auto" />
-		</Grid.RowDefinitions>
-		<!-- <StackLayout  Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent"> </StackLayout> -->
-		<Grid BackgroundColor="#6cb3b8" HeightRequest="50" Grid.Row="0">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="20" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="20" />
-			</Grid.ColumnDefinitions>
-			<Image RotationY="180" x:Name="LeftButton" HeightRequest="25" WidthRequest="25" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
-				<Image.Source>
-					<OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
-				</Image.Source>
-			</Image>
-			<Label Grid.Column="2" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" TextColor="White" FontSize="Small" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding SelectedWeek.WeekText}" />
-			<Image x:Name="RightButton" HeightRequest="25" WidthRequest="25" Grid.Column="3" HorizontalOptions="Start" VerticalOptions="Center">
-				<Image.Source>
-					<OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
-				</Image.Source>
-			</Image>
-		</Grid>
-		<controls:HorizontalListView Grid.Row="1" ItemsSource="{Binding DaysList}" ItemTapped="Day_Tapped" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-			<controls:HorizontalListView.HeightRequest>
-				<OnPlatform x:TypeArguments="x:Double" Android="69" iOS="68" WinPhone="80" />
-			</controls:HorizontalListView.HeightRequest>
-			<controls:HorizontalListView.ItemTemplate>
-				<DataTemplate>
-					<ViewCell>
-						<ViewCell.View>
-							<Grid RowSpacing="0">
-								<Grid.RowDefinitions>
-									<RowDefinition Height="3" />
-									<RowDefinition Height="*" />
-									<RowDefinition Height="3" />
-									<RowDefinition Height="Auto" />
-								</Grid.RowDefinitions>
-								<BoxView BackgroundColor="{StaticResource YellowAccent}" VerticalOptions="Fill" HorizontalOptions="Fill" Grid.Row="0" Grid.RowSpan="3" />
-								<Label Grid.Row="1" VerticalTextAlignment="Center" VerticalOptions="Start" HorizontalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black" FontSize="Small" Text="{Binding AbbrWeek}" />
-								<BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}" x:Name="DayBack" VerticalOptions="Fill" HorizontalOptions="Fill" Grid.Row="3" />
-								<BoxView BackgroundColor="#AAFFFFFF" VerticalOptions="Fill" HorizontalOptions="End" WidthRequest="1" Grid.Row="3" />
-								<StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="8,4,8,4" Spacing="2" Grid.Row="3">
-									<Label x:Name="DayLabel" BackgroundColor="Transparent" TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding Day}" />
-									<Label x:Name="MonthLabel" BackgroundColor="Transparent" TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}" FontSize="Small" HorizontalTextAlignment="Center" Text="{Binding AbbrMonth}" />
-								</StackLayout>
-							</Grid>
-						</ViewCell.View>
-					</ViewCell>
-				</DataTemplate>
-			</controls:HorizontalListView.ItemTemplate>
-		</controls:HorizontalListView>
-		<Grid HeightRequest="60" Padding="20,0,10,0" BackgroundColor="{StaticResource AppBackgroundNormal}" Grid.Row="2">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
-			<StackLayout Padding="0,10,0,0" Grid.Column="0" Orientation="Vertical" BackgroundColor="{StaticResource AppBackgroundNormal}" HorizontalOptions="Fill">
-				<Label HorizontalOptions="Center" FontSize="14" VerticalOptions="Center" Text="{ext:Translate TimeSheet_LoginHours}" TextColor="White" InputTransparent="True" />
-				<Label HorizontalOptions="Center" FontSize="12" VerticalOptions="Center" Text="{Binding TimeSheetFormated.LoggedInHoursFormated }" TextColor="{StaticResource YellowAccent}" InputTransparent="True" />
-			</StackLayout>
-			<StackLayout Grid.Column="1" HeightRequest="2" WidthRequest="1" BackgroundColor="White" />
-			<StackLayout Grid.Column="2" Orientation="Vertical" Padding="5,10,0,0" BackgroundColor="{StaticResource AppBackgroundNormal}" HorizontalOptions="Fill">
-				<Label HorizontalOptions="Center" FontSize="14" VerticalOptions="Center" Text="{ext:Translate TimeSheet_RemainingHours}" TextColor="White" InputTransparent="True" />
-				<Label HorizontalOptions="Center" FontSize="12" VerticalOptions="Center" Text="{Binding TimeSheetFormated.RemainingHoursFormated}" TextColor="{StaticResource YellowAccent}" InputTransparent="True" />
-			</StackLayout>
-		</Grid>
-		<ScrollView VerticalOptions="Fill" Grid.Row="3">
-			<Label TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoProjects}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
-			<ListView ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true" CachingStrategy="RecycleElement" RowHeight="40" SeparatorColor="Transparent" Grid.Row="3">
-				<ListView.GroupHeaderTemplate>
-					<DataTemplate>
-						<ViewCell>
-							<Grid Padding="4,3" HeightRequest="10" BackgroundColor="#D1D1D1">
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="*" />
-								</Grid.ColumnDefinitions>
-								<Label FontSize="12" Text="{Binding Name}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
-								<Label FontSize="12" Text="{Binding TotalHoursFormated}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
-							</Grid>
-						</ViewCell>
-					</DataTemplate>
-				</ListView.GroupHeaderTemplate>
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						<ViewCell>
-							<ViewCell.View>
-								<Grid Padding="2,3">
-									<masterView:TimeSheetRecordItem EditVisible="{Binding CanEdit}" Title="{Binding Name}" Message="{Binding Day.HoursFormated}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
-								</Grid>
-							</ViewCell.View>
-						</ViewCell>
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>
-			<ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
-		</ScrollView>
-		<Grid HorizontalOptions="Fill" Grid.Row="4" VerticalOptions="Fill" Padding="15,20">
-			<controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Text="{ext:Translate TimeSheet_AddNewTask}" MinimumHeightRequest="70" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
-			</controls:ExtendedButton>
-		</Grid>
-	</Grid>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="TabColor">#00676e</Color>
+      <converters:BoolToColorConverter x:Key="DayColorConverter" FalseColor="Black" TrueColor="{StaticResource YellowAccent}" />
+      <converters:BoolToColorConverter x:Key="MonthColorConverter" FalseColor="Black" TrueColor="White" />
+      <converters:BoolToColorConverter x:Key="DayBackColorConverter" FalseColor="#FFB4D7DB" TrueColor="{StaticResource AppBackgroundNormal}" />
+      <converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+      <converters:StringFormatConverter x:Key="StringFormatConverter" />
+      <converters:DateFormatConverter x:Key="DateFormatConverter" />
+      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <Grid RowSpacing="0">
+   
+     <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid BackgroundColor="#6cb3b8" HeightRequest="50" Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="20" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="20" />
+      </Grid.ColumnDefinitions>
+      <Image RotationY="180" x:Name="LeftButton" HeightRequest="25" WidthRequest="25" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+        <Image.Source>
+          <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
+        </Image.Source>
+      </Image>
+      <Label Grid.Column="2" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" TextColor="White" FontSize="Small" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding SelectedWeek.WeekText}" />
+      <Image x:Name="RightButton" HeightRequest="25" WidthRequest="25" Grid.Column="3" HorizontalOptions="Start" VerticalOptions="Center">
+        <Image.Source>
+          <OnPlatform x:TypeArguments="ImageSource" iOS="chevronblue" Android="chevronblue.png" WinPhone="chevronblue.png" />
+        </Image.Source>
+      </Image>
+    </Grid>
+
+    <controls:HorizontalListView Grid.Row="1" ItemsSource="{Binding DaysList}" ItemTapped="Day_Tapped" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+      <controls:HorizontalListView.HeightRequest>
+        <OnPlatform x:TypeArguments="x:Double" Android="69" iOS="68" WinPhone="80" />
+      </controls:HorizontalListView.HeightRequest>
+      <controls:HorizontalListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="3" />
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="3" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <BoxView BackgroundColor="{StaticResource YellowAccent}" VerticalOptions="Fill" HorizontalOptions="Fill" Grid.Row="0" Grid.RowSpan="3" />
+                <Label Grid.Row="1" VerticalTextAlignment="Center" VerticalOptions="Start" HorizontalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black" FontSize="Small" Text="{Binding AbbrWeek}" />
+                <BoxView BackgroundColor="{Binding IsSelected,Converter={StaticResource DayBackColorConverter}}" x:Name="DayBack" VerticalOptions="Fill" HorizontalOptions="Fill" Grid.Row="3" />
+                <BoxView BackgroundColor="#AAFFFFFF" VerticalOptions="Fill" HorizontalOptions="End" WidthRequest="1" Grid.Row="3" />
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="8,4,8,4" Spacing="2" Grid.Row="3">
+                  <Label x:Name="DayLabel" BackgroundColor="Transparent" TextColor="{Binding IsSelected,Converter={StaticResource DayColorConverter}}" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding Day}" />
+                  <Label x:Name="MonthLabel" BackgroundColor="Transparent" TextColor="{Binding IsSelected,Converter={StaticResource MonthColorConverter}}" FontSize="Small" HorizontalTextAlignment="Center" Text="{Binding AbbrMonth}" />
+                </StackLayout>
+              </Grid>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </controls:HorizontalListView.ItemTemplate>
+    </controls:HorizontalListView>
+
+    <Grid HeightRequest="60" Padding="20,0,10,0" BackgroundColor="{StaticResource AppBackgroundNormal}" Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <StackLayout Padding="0,10,0,0" Grid.Column="0" Orientation="Vertical" BackgroundColor="{StaticResource AppBackgroundNormal}" HorizontalOptions="Fill">
+        <Label HorizontalOptions="Center" FontSize="14" VerticalOptions="Center" Text="{ext:Translate TimeSheet_LoginHours}" TextColor="White" InputTransparent="True" />
+        <Label HorizontalOptions="Center" FontSize="12" VerticalOptions="Center" Text="{Binding TimeSheetFormated.LoggedInHoursFormated }" TextColor="{StaticResource YellowAccent}" InputTransparent="True" />
+      </StackLayout>
+      <StackLayout Grid.Column="1" HeightRequest="2" WidthRequest="1" BackgroundColor="White" />
+      <StackLayout Grid.Column="2" Orientation="Vertical" Padding="5,10,0,0" BackgroundColor="{StaticResource AppBackgroundNormal}" HorizontalOptions="Fill">
+        <Label HorizontalOptions="Center" FontSize="14" VerticalOptions="Center" Text="{ext:Translate TimeSheet_RemainingHours}" TextColor="White" InputTransparent="True" />
+        <Label HorizontalOptions="Center" FontSize="12" VerticalOptions="Center" Text="{Binding TimeSheetFormated.RemainingHoursFormated}" TextColor="{StaticResource YellowAccent}" InputTransparent="True" />
+      </StackLayout>
+    </Grid>
+
+    <ScrollView VerticalOptions="Fill" Grid.Row="3">
+      <Label TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoProjects}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
+      <ListView ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true" CachingStrategy="RecycleElement" RowHeight="40" SeparatorColor="Transparent" Grid.Row="3">
+        <ListView.GroupHeaderTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid Padding="4,3" HeightRequest="10" BackgroundColor="#D1D1D1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label FontSize="12" Text="{Binding Name}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+                <Label FontSize="12" Text="{Binding TotalHoursFormated}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.GroupHeaderTemplate>
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <Grid Padding="2,3">
+                  <masterView:TimeSheetRecordItem EditVisible="{Binding CanEdit}" Title="{Binding Name}" Message="{Binding Day.HoursFormated}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
+                </Grid>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
+    </ScrollView>
+
+    <Grid HorizontalOptions="Fill" Grid.Row="4" VerticalOptions="Fill" Padding="15,20">
+      <controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Text="{ext:Translate TimeSheet_AddNewTask}" MinimumHeightRequest="70" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
+      </controls:ExtendedButton>
+    </Grid>
+
+  </Grid>
 </ContentPage>

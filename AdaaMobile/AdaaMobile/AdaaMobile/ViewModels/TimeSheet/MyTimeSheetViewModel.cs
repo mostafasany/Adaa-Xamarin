@@ -129,10 +129,18 @@ namespace AdaaMobile.ViewModels
             {
                 IsBusy = true;
 
-                await LoadWeeks();
+                var response = await _dataService.GetWeeksPerYearAsync(2016, null);
+                if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
+                {
+                    var currentCulture = CultureInfo.CurrentCulture;
+                    var weekNo = currentCulture.Calendar.GetWeekOfYear(
+                        DateTime.Now,
+                                    currentCulture.DateTimeFormat.CalendarWeekRule,
+                                    currentCulture.DateTimeFormat.FirstDayOfWeek);
 
-                await RefreshTimeSheet();
-
+                    WeekList = response.Result;
+                    SelectWeek(weekNo - 2);
+                }
             }
             catch (Exception ex)
             {
@@ -142,27 +150,6 @@ namespace AdaaMobile.ViewModels
                 IsBusy = false;
             }
 
-        }
-
-        async Task RefreshTimeSheet()
-        {
-            try
-            {
-                IsBusy = true;
-
-
-                await PopulateAttendanceDaysAsync();
-
-                await LoadTimeSheet();
-
-            }
-            catch (Exception ex)
-            {
-            }
-            finally
-            {
-                IsBusy = false;
-            }
         }
 
         private async Task OpenRequestDetailsPage(ProjectTask projectTask)
@@ -187,31 +174,53 @@ namespace AdaaMobile.ViewModels
             _navigationService.NavigateToPage(typeof(AddTask));
         }
 
-        #region Weeks
+        #region WeekDays
 
-        public async Task LoadWeeks()
+        private void FixWindowSize(List<DayWrapper> daysList)
         {
-            var response = await _dataService.GetWeeksPerYearAsync(2016, null);
-            if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
+            if (daysList.Count < SmallestWindowLimit)
             {
-                var currentCulture = CultureInfo.CurrentCulture;
-                var weekNo = currentCulture.Calendar.GetWeekOfYear(
-					DateTime.Now,
-                                currentCulture.DateTimeFormat.CalendarWeekRule,
-                                currentCulture.DateTimeFormat.FirstDayOfWeek);
-
-                WeekList = response.Result;
-                SelectedWeek = WeekList[weekNo - 2];
+                for (int i = daysList.Count; i < SmallestWindowLimit; i++)
+                {
+                    daysList.Add(new DayWrapper(new DateTime(), true));
+                }
             }
         }
 
-        #endregion
+        //private void SelectDayAfterRangeLoad()
+        //{
+        //    if (DaysList == null)
+        //        return;
+        //    var daysList = DaysList;
 
-        #region WeekDays
+        //    var nowDate = DateTime.Now;
+        //    var currentDay = daysList.FirstOrDefault(a => a.Date.Date == nowDate.Date);
+        //    if (currentDay != null)
+        //    {
+        //        SelecteDay(currentDay);
+        //    }
+        //    else
+        //    {
 
-        public async Task PopulateAttendanceDaysAsync()
+        //        if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+        //        {
+        //            //Get first item
+        //            var firstDay = daysList.LastOrDefault();
+        //            SelecteDay(firstDay);
+        //        }
+        //        else
+        //        {
+        //            //Get first item
+        //            var firstDay = daysList.FirstOrDefault();
+        //            SelecteDay(firstDay);
+        //        }
+
+        //    }
+        //}
+
+        async void SelectWeek(int weekIndex)
         {
-            //Create new Days List on background task.
+            SelectedWeek = WeekList[weekIndex];
             List<DayWrapper> daysList = await Task.Run(() =>
             {
                 var days = new List<DayWrapper>();
@@ -233,53 +242,41 @@ namespace AdaaMobile.ViewModels
 
             FixWindowSize(daysList);
 
-
             DaysList = daysList;
-            SelectedDay = DaysList[0];
 
-            //Select first Day
-            SelectDayAfterRangeLoad();
-        }
-
-        private void FixWindowSize(List<DayWrapper> daysList)
-        {
-            if (daysList.Count < SmallestWindowLimit)
+            if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
             {
-                for (int i = daysList.Count; i < SmallestWindowLimit; i++)
-                {
-                    daysList.Add(new DayWrapper(new DateTime(), true));
-                }
-            }
-        }
-
-        private void SelectDayAfterRangeLoad()
-        {
-            if (DaysList == null)
-                return;
-            var daysList = DaysList;
-
-            var nowDate = DateTime.Now;
-            var currentDay = daysList.FirstOrDefault(a => a.Date.Date == nowDate.Date);
-            if (currentDay != null)
-            {
-                SelecteDay(currentDay);
+                //Get first item
+                var firstDay = daysList.LastOrDefault();
+                SelecteDay(firstDay);
             }
             else
             {
+                //Get first item
+                var firstDay = daysList.FirstOrDefault();
+                SelecteDay(firstDay);
+            }
+        }
 
-                if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
-                {
-                    //Get first item
-                    var firstDay = daysList.LastOrDefault();
-                    SelecteDay(firstDay);
-                }
-                else
-                {
-                    //Get first item
-                    var firstDay = daysList.FirstOrDefault();
-                    SelecteDay(firstDay);
-                }
+        public void GetNextWeek()
+        {
+            var indexOfCurrentWeek = WeekList.IndexOf(SelectedWeek);
+            var nextWeek = ++indexOfCurrentWeek;
+            if (nextWeek < WeekList.Count)
+            {
+                SelectWeek(nextWeek);
+            }
+        }
 
+        public void GetPreviousWeek()
+        {
+            var indexOfCurrentWeek = WeekList.IndexOf(SelectedWeek);
+            var prevWeek = --indexOfCurrentWeek;
+            if (prevWeek >= 0)
+            {
+                SelectWeek(prevWeek);
+                //SelectedWeek = WeekList[prevWeek];
+                //  RefreshTimeSheet();
             }
         }
 
@@ -301,43 +298,21 @@ namespace AdaaMobile.ViewModels
             day.IsSelected = true;
             SelectedDay = day;
 
-			if (SelectedDay != null)
-				LoadTimeSheet();
+            if (SelectedDay != null)
+                LoadTimeSheet(SelectedWeek.WeekNumber, DateTime.Now.Year, SelectedDay.Date);
 
-        }
-
-        public void GetNextDay()
-        {
-            var indexOfCurrentWeek = WeekList.IndexOf(SelectedWeek);
-            var nextWeek = ++indexOfCurrentWeek;
-            if (nextWeek < WeekList.Count)
-            {
-                SelectedWeek = WeekList[nextWeek];
-                RefreshTimeSheet();
-            }
-        }
-
-        public void GetPreviousDay()
-        {
-            var indexOfCurrentWeek = WeekList.IndexOf(SelectedWeek);
-            var prevWeek = --indexOfCurrentWeek;
-            if (prevWeek >= 0)
-            {
-                SelectedWeek = WeekList[prevWeek];
-                RefreshTimeSheet();
-            }
         }
 
         #endregion
 
         #region TimeSheet
 
-        public async Task LoadTimeSheet()
+        public async Task LoadTimeSheet(int weekNo, int year, DateTime selectedDay)
         {
-            timeSheetResponse = await _dataService.GetTimeSheet(2016, 33, null);
+            timeSheetResponse = await _dataService.GetTimeSheet(year, weekNo, null);
             if (timeSheetResponse != null && timeSheetResponse.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-                FormatTimeSheet(timeSheetResponse.Result, SelectedDay.Date);
+                FormatTimeSheet(timeSheetResponse.Result, selectedDay);
             }
         }
 

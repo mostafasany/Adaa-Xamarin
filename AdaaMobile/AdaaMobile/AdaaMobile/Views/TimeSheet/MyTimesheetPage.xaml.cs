@@ -25,12 +25,12 @@ namespace AdaaMobile
 
         private void OnTapRightButton(View arg1, object arg2)
         {
-            _viewModel.GetNextDay();
+            _viewModel.GetNextWeek();
         }
 
         private void OnTapLefttButton(View arg1, object arg2)
         {
-            _viewModel.GetPreviousDay();
+            _viewModel.GetPreviousWeek();
         }
 
         protected override void OnAppearing()
