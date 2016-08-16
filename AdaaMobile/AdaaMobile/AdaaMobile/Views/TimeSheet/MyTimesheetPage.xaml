@@ -23,10 +23,10 @@
       <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
 
-  <ActivityIndicator  IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60"  VerticalOptions="Center" HorizontalOptions="Center" />
+    <ActivityIndicator  IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60"  VerticalOptions="Center" HorizontalOptions="Center" />
 
- <!-- <StackLayout  Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent">
--->
+    <!-- <StackLayout  Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent"> </StackLayout> -->
+
     <Grid BackgroundColor="#6cb3b8" HeightRequest="90" Grid.Row="0">
 
       <Grid.ColumnDefinitions>
@@ -99,9 +99,9 @@
       </StackLayout>
     </Grid>
 
-    <ScrollView VerticalOptions="Fill">
+    <ScrollView VerticalOptions="Fill" Grid.Row="3">
 
-      <Label Grid.Row="3" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoProjects}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
+      <Label TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoProjects}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
 
       <ListView ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true" CachingStrategy="RecycleElement" RowHeight="40" SeparatorColor="Transparent" BackgroundColor="White" Grid.Row="3">
         <ListView.GroupHeaderTemplate>
@@ -133,14 +133,12 @@
 
     </ScrollView>
 
-    <!--<Grid HorizontalOptions="Fill"   Grid.Row="4" VerticalOptions="Fill" Padding="15,20">-->
+    <Grid HorizontalOptions="Fill"   Grid.Row="4" VerticalOptions="Fill" Padding="15,20">
 
-    <controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Text="{ext:Translate TimeSheet_AddNewTask}" MinimumHeightRequest="70" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
-    </controls:ExtendedButton>
+      <controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Text="{ext:Translate TimeSheet_AddNewTask}" MinimumHeightRequest="70" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
+      </controls:ExtendedButton>
 
-    <!--</Grid>-->
-
- <!-- </StackLayout>-->
+    </Grid>
 
   </Grid>
 
