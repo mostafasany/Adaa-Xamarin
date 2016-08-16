@@ -87,7 +87,7 @@
 		</Grid>
 		<Grid RowSpacing="0" VerticalOptions="FillAndExpand" Grid.Row="3">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="30" />
+				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			<ActivityIndicator IsVisible="{Binding NoProjectsExists}" IsRunning="{Binding IsBusy}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
@@ -99,7 +99,7 @@
 							<Grid Padding="4,3" HeightRequest="10" BackgroundColor="#D1D1D1">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="Auto" />
 								</Grid.ColumnDefinitions>
 								<Label FontSize="12" Text="{Binding Key.Name}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
 								<Label FontSize="12" Text="{Binding Key.TotalHoursFormated}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
