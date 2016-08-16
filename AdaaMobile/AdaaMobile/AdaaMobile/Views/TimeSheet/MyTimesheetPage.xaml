@@ -101,8 +101,8 @@
 									<ColumnDefinition Width="*" />
 									<ColumnDefinition Width="*" />
 								</Grid.ColumnDefinitions>
-								<Label FontSize="12" Text="{Binding Name}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
-								<Label FontSize="12" Text="{Binding TotalHoursFormated}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
+								<Label FontSize="12" Text="{Binding Key.Name}" Grid.Column="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+								<Label FontSize="12" Text="{Binding Key.TotalHoursFormated}" Grid.Column="1" TextColor="{StaticResource AppBackgroundNormal}" VerticalOptions="Center" HorizontalOptions="End" />
 							</Grid>
 						</ViewCell>
 					</DataTemplate>
