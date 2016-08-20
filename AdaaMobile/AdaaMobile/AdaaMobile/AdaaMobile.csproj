@@ -86,6 +86,7 @@
     <Compile Include="Helpers\EquipmentsSelectionService.cs" />
     <Compile Include="Helpers\FontHelper.cs" />
     <Compile Include="Helpers\Interfaces\IAppSettings.cs" />
+    <Compile Include="Helpers\Interfaces\ICryptoGraphyService.cs" />
     <Compile Include="Helpers\Interfaces\IDialogManager.cs" />
     <Compile Include="Helpers\Interfaces\ILocalize.cs" />
     <Compile Include="Helpers\Interfaces\INavigationService.cs" />

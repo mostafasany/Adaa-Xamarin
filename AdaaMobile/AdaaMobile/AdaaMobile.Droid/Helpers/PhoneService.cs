@@ -1,14 +1,7 @@
-﻿
-using System.Globalization;
-using AdaaMobile.Droid.Helpers;
-using AdaaMobile.Helpers;
-using Java.Util;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using AdaaMobile.Droid;
-using Android.Net;
 using Android.Content;
 using System;
-using Android.Content.PM;
 
 [assembly: Dependency(typeof(PhoneService))]
 namespace AdaaMobile.Droid

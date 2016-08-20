@@ -121,6 +121,7 @@
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
     <Compile Include="CustomRenderers\SvgImageRenderer.cs" />
     <Compile Include="Extensions\UIViewExtensions.cs" />
+    <Compile Include="Helpers\CryptoGraphyService.cs" />
     <Compile Include="Helpers\Localize.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Main.cs" />
