@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using AdaaMobile.Helpers;
 using AdaaMobile.iOS.CustomRenderers;
 using AdaaMobile.ViewModels;
 using Foundation;
 using UIKit;
 using Xamarin;
-
 namespace AdaaMobile.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 

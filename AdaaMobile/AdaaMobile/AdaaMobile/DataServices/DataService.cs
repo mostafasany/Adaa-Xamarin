@@ -12,6 +12,8 @@ using AdaaMobile.Models.Response;
 using QueryExtensions;
 using AdaaMobile.ViewModels;
 using Newtonsoft.Json;
+//using System.Security;
+//using System.Security.Cryptography;
 
 namespace AdaaMobile.DataServices
 {
@@ -44,22 +46,22 @@ namespace AdaaMobile.DataServices
 
             keyArray = UTF8Encoding.UTF8.GetBytes(key);
 
-            //TripleDESCryptoServiceProvider DES = new System.Security.Cryptography.TripleDESCryptoServiceProvider();
-            // //set the secret key for the tripleDES algorithm
-            // tdes.Key = keyArray;
-            // //mode of operation. there are other 4 modes. We choose ECB(Electronic code Book)
-            // tdes.Mode = System.Security.Cryptography.CipherMode.ECB;
-            // //padding mode(if any extra byte added)
-            // tdes.Padding = System.Security.Cryptography.PaddingMode.PKCS7;
+            //TripleDESCryptoServiceProvider DES = new Cryptography.TripleDESCryptoServiceProvider();
+            ////set the secret key for the tripleDES algorithm
+            //tdes.Key = keyArray;
+            ////mode of operation. there are other 4 modes. We choose ECB(Electronic code Book)
+            //tdes.Mode = System.Security.Cryptography.CipherMode.ECB;
+            ////padding mode(if any extra byte added)
+            //tdes.Padding = System.Security.Cryptography.PaddingMode.PKCS7;
 
-            // System.Security.Cryptography.ICryptoTransform cTransform = tdes.CreateEncryptor();
-            // //transform the specified region of bytes array to resultArray
-            // byte[] resultArray = cTransform.TransformFinalBlock
-            //         (toEncryptArray, 0, toEncryptArray.Length);
-            // //Release resources held by TripleDes Encryptor
-            // tdes.Clear();
-            // //Return the encrypted data into unreadable string format
-            // return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+            //System.Security.Cryptography.ICryptoTransform cTransform = tdes.CreateEncryptor();
+            ////transform the specified region of bytes array to resultArray
+            //byte[] resultArray = cTransform.TransformFinalBlock
+            //        (toEncryptArray, 0, toEncryptArray.Length);
+            ////Release resources held by TripleDes Encryptor
+            //tdes.Clear();
+            ////Return the encrypted data into unreadable string format
+            //return Convert.ToBase64String(resultArray, 0, resultArray.Length);
             return "mhibnQQwVQQJ3d8gmlnKJg==";
         }
 
