@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" 
+		xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
+		xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
+		x:Class="AdaaMobile.Views.ServiceDesk.ServiceDeskItemTemplate" 
+		BackgroundColor="Transparent" x:Name="ParentView" IsEnabled="True">
+	<ContentView.Resources>
+		<ResourceDictionary>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<Grid Padding="15,0">
+		<controls:ExtendedButton Clicked="Button_OnClicked" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}" Text="" TextColor="Transparent" BackgroundColor="#cc007c85">
+		</controls:ExtendedButton>
+		<controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" VerticalOptions="Start" HeightRequest="60" CornerRadius="{StaticResource CornerRadius}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="5" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="5" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Label x:Name="lblTitle" Grid.Row="0" Grid.Column="1" VerticalOptions="End" VerticalTextAlignment="Center" TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Title,Source={x:Reference ParentView}}" />
+			<Label Grid.Row="0" Grid.Column="2"  x:Name="lblDate" VerticalOptions="End" VerticalTextAlignment="Center" TextColor="{StaticResource YellowAccent}" BackgroundColor="Transparent" HorizontalTextAlignment="Start"  FontSize="Small" Text="{Binding Date,Source={x:Reference ParentView}}" />
+			<Label x:Name="lblMessages" VerticalOptions="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="1" Grid.Column="1" TextColor="White" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
+			<Image Grid.Row="1" VerticalOptions="Center" Grid.Column="2" x:Name="imgArrow" HeightRequest="10" WidthRequest="10" HorizontalOptions="End">
+				<Image.Source>
+					<OnPlatform x:TypeArguments="ImageSource" iOS="chevron" Android="chevron.png" WinPhone="chevron.png" />
+				</Image.Source>
+			</Image>
+		</controls:ExtendedGrid>
+	</Grid>
+</ContentView>
