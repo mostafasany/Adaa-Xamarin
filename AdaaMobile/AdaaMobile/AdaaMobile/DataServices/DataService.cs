@@ -38,15 +38,15 @@ namespace AdaaMobile.DataServices
 
         public string EncryptString(string toEncrypt)
         {
-            byte[] keyArray;
-            byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
+            //byte[] keyArray;
+            //byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
 
-            // Get the key from config file
-            string key = "MOEWPasswordMOEWPassword";
+            //// Get the key from config file
+            //string key = "MOEWPasswordMOEWPassword";
 
-            keyArray = UTF8Encoding.UTF8.GetBytes(key);
+            //keyArray = UTF8Encoding.UTF8.GetBytes(key);
 
-            //TripleDESCryptoServiceProvider DES = new Cryptography.TripleDESCryptoServiceProvider();
+            //System.Security.Cryptography.TripleDESCryptoServiceProvider tdes = new System.Security.Cryptography.TripleDESCryptoServiceProvider();
             ////set the secret key for the tripleDES algorithm
             //tdes.Key = keyArray;
             ////mode of operation. there are other 4 modes. We choose ECB(Electronic code Book)
@@ -62,11 +62,11 @@ namespace AdaaMobile.DataServices
             //tdes.Clear();
             ////Return the encrypted data into unreadable string format
             //return Convert.ToBase64String(resultArray, 0, resultArray.Length);
-            return "mhibnQQwVQQJ3d8gmlnKJg==";
+             return "mhibnQQwVQQJ3d8gmlnKJg==";
         }
 
 
-        public async Task<ResponseWrapper<bool>> SubmitTimeSheet(int year, int week, string userName, TimeSheetListRequest bodyParamters, CancellationToken? token = null)
+        public async Task<ResponseWrapper<bool>> SubmitTimeSheet(int year, int week, TimeSheetListRequest bodyParamters, CancellationToken? token = null)
         {
             var encryptedUserName = EncryptString(LoggedUserInfo.CurrentUserProfile.DisplayName);
             var request = _requestFactory();
