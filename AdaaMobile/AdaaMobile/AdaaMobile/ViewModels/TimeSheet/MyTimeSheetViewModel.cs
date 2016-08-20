@@ -248,10 +248,11 @@ namespace AdaaMobile.ViewModels
             }
             catch (Exception ex)
             {
+				IsBusy = false;
             }
             finally
             {
-                IsBusy = false;
+                
             }
 
 
@@ -281,7 +282,11 @@ namespace AdaaMobile.ViewModels
         {
             try
             {
-                GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
+				if (SelectedDay != null && day.Date == SelectedDay.Date)
+				{
+					return;
+				}
+				GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
                 NoProjectsExists = true;
                 ProjectsExists = false;
                 IsAddTaskButtonVisible = day.Date.Day == DateTime.Now.Day;
@@ -327,7 +332,7 @@ namespace AdaaMobile.ViewModels
             try
             {
                 IsBusy = true;
-                if (isWeekChanged)
+				if (isWeekChanged || timeSheetResponse == null)
                 {
                     timeSheetResponse = await _dataService.GetTimeSheet(year, weekNo, null);
                 }
