@@ -129,7 +129,7 @@ namespace AdaaMobile.ViewModels
 
         private async Task OpenTaskWebView()
         {
-            var encryptedUserName = Locator.Default.DataService.EncryptString(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
 
             var selectedtask = SelectedPendingTask;
             //var fullURL = string.Format("http://adaatime.linkdev.com/Account/Login?encryptedUserName=IR3aBpmwPVrlqZu5C/lQpg==&action=/PlannedLeaves/Index/?TaskID=3033");

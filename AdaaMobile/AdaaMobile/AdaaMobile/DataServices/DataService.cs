@@ -27,7 +27,7 @@ namespace AdaaMobile.DataServices
         private const string Sprint2Server = "imach";
         private const string ContenTypeKey = "Content-Type";
         private const string XmlContentType = "application/xml";
-		private const string JSONContentType = "application/json";
+        private const string JSONContentType = "application/json";
         private readonly Func<BaseRequest> _requestFactory;
         private readonly IAppSettings _appSettings;
 
@@ -37,50 +37,21 @@ namespace AdaaMobile.DataServices
             _appSettings = appSettings;
         }
 
-        public string EncryptString(string toEncrypt)
-        {
-            //byte[] keyArray;
-            //byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
-
-            //// Get the key from config file
-            //string key = "MOEWPasswordMOEWPassword";
-
-            //keyArray = UTF8Encoding.UTF8.GetBytes(key);
-
-            //System.Security.Cryptography.TripleDESCryptoServiceProvider tdes = new System.Security.Cryptography.TripleDESCryptoServiceProvider();
-            ////set the secret key for the tripleDES algorithm
-            //tdes.Key = keyArray;
-            ////mode of operation. there are other 4 modes. We choose ECB(Electronic code Book)
-            //tdes.Mode = System.Security.Cryptography.CipherMode.ECB;
-            ////padding mode(if any extra byte added)
-            //tdes.Padding = System.Security.Cryptography.PaddingMode.PKCS7;
-
-            //System.Security.Cryptography.ICryptoTransform cTransform = tdes.CreateEncryptor();
-            ////transform the specified region of bytes array to resultArray
-            //byte[] resultArray = cTransform.TransformFinalBlock
-            //        (toEncryptArray, 0, toEncryptArray.Length);
-            ////Release resources held by TripleDes Encryptor
-            //tdes.Clear();
-            ////Return the encrypted data into unreadable string format
-            //return Convert.ToBase64String(resultArray, 0, resultArray.Length);
-             return "mhibnQQwVQQJ3d8gmlnKJg==";
-        }
-
 
         public async Task<ResponseWrapper<bool>> SubmitTimeSheet(int year, int week, TimeSheetListRequest bodyParamters, CancellationToken? token = null)
         {
-            var encryptedUserName = EncryptString(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
             var request = _requestFactory();
             request.ResultContentType = ContentType.Json;
             request.RequestUrl = TimeSheetBaseUrl + string.Format("SaveTimeSheet?encryptedUserName={0}&currentWeek={1}&year={2}", encryptedUserName, week, year);
             var result = JsonConvert.SerializeObject(bodyParamters);
-            var stringContent = new StringContent(result,new UTF8Encoding(),JSONContentType);
+            var stringContent = new StringContent(result, new UTF8Encoding(), JSONContentType);
             return await request.PostAsync<bool>(stringContent);
         }
 
         public async Task<ResponseWrapper<TimeSheet>> GetTimeSheet(int year, int week, CancellationToken? token = null)
         {
-            var encryptedUserName=DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
             var request = _requestFactory();
             request.RequestUrl = TimeSheetBaseUrl + string.Format("GetTimeSheet?encryptedUserName={0}&weekNo={1}&year={2}", encryptedUserName, week, year);
             request.ResultContentType = ContentType.Json;
@@ -106,7 +77,7 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null)
         {
-            var encryptedUserName = EncryptString(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
             var request = _requestFactory();
             request.RequestUrl = TimeSheetBaseUrl + string.Format("GetFilteredAssignments?encryptedUserName={0}", encryptedUserName);
             request.ResultContentType = ContentType.Json;
@@ -115,7 +86,7 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<List<PendingTask>>> GetPendingTaskAsync(CancellationToken? token = null)
         {
-            var encryptedUserName = EncryptString(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
             var request = _requestFactory();
             request.RequestUrl = TimeSheetBaseUrl + string.Format("GetUserTasks?encryptedUserName={0}", encryptedUserName);
             request.ResultContentType = ContentType.Json;

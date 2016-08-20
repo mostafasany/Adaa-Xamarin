@@ -9,8 +9,6 @@ namespace AdaaMobile.DataServices
 {
     public interface IDataService
     {
-        string EncryptString(string toEncrypt);
-
         //Accounts module
         Task<ResponseWrapper<LoginResponse>> LoginAsync(string userName, string password);
         Task<ResponseWrapper<UserProfile>> GetCurrentUserProfile(CurrentProfileQParameters paramters, CancellationToken? token = null);
@@ -69,7 +67,7 @@ namespace AdaaMobile.DataServices
         Task<ResponseWrapper<GetEquipmentsResponse>> GetEquipmentsAsync(GetEquipmentsQParameters parameters, CancellationToken? token = null);
 
 
-		Task<ResponseWrapper<SaveDriverRequestResponse>> SaveDriverRequestAsync(SaveDriverRequestQParameters qParameters, SaveDriverRequestBParameters bParamters, CancellationToken? token = null);
+        Task<ResponseWrapper<SaveDriverRequestResponse>> SaveDriverRequestAsync(SaveDriverRequestQParameters qParameters, SaveDriverRequestBParameters bParamters, CancellationToken? token = null);
 
 
         #region TimeSheet
@@ -78,9 +76,9 @@ namespace AdaaMobile.DataServices
 
         Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null);
 
-		Task<ResponseWrapper<List<PendingTask>>> GetPendingTaskAsync(CancellationToken? token = null);
-	
-		Task<ResponseWrapper<List<AttendanceTask>>> GetTaskByAssignment(int assginmentID,CancellationToken? token = null);
+        Task<ResponseWrapper<List<PendingTask>>> GetPendingTaskAsync(CancellationToken? token = null);
+
+        Task<ResponseWrapper<List<AttendanceTask>>> GetTaskByAssignment(int assginmentID, CancellationToken? token = null);
 
         Task<ResponseWrapper<List<Week>>> GetWeeksPerYearAsync(int year, CancellationToken? token = null);
 
