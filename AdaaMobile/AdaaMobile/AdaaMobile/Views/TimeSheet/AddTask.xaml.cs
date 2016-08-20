@@ -124,7 +124,7 @@ namespace AdaaMobile
 
 			timeSheetList.Add(timeSheetDetails);
 			timeSheetRequest.data = timeSheetList;
-			var status = await Locator.Default.DataService.SubmitTimeSheet(DateTime.Now.Year, _viewModel.SelectedWeek.WeekNumber, "", timeSheetRequest, null);
+			var status = await Locator.Default.DataService.SubmitTimeSheet(DateTime.Now.Year, _viewModel.SelectedWeek.WeekNumber, timeSheetRequest, null);
 			if (status.Result)
 			{
 				Locator.Default.NavigationService.GoBack();
