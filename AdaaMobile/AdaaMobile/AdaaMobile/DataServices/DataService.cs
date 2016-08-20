@@ -24,6 +24,7 @@ namespace AdaaMobile.DataServices
         private const string Sprint2Server = "imach";
         private const string ContenTypeKey = "Content-Type";
         private const string XmlContentType = "application/xml";
+		private const string JSONContentType = "application/json";
         private readonly Func<BaseRequest> _requestFactory;
         private readonly IAppSettings _appSettings;
 
@@ -70,7 +71,7 @@ namespace AdaaMobile.DataServices
             request.ResultContentType = ContentType.Json;
             request.RequestUrl = TimeSheetBaseUrl + string.Format("SaveTimeSheet?encryptedUserName={0}&currentWeek={1}&year={2}", encryptedUserName, week, year);
             var result = JsonConvert.SerializeObject(bodyParamters);
-            var stringContent = new StringContent(result);
+            var stringContent = new StringContent(result,new UTF8Encoding(),JSONContentType);
             return await request.PostAsync<bool>(stringContent);
         }
 

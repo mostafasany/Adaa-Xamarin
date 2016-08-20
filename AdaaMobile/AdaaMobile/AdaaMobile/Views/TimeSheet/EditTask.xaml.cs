@@ -55,7 +55,7 @@ namespace AdaaMobile
 
 			if (DurationPicker.SelectedIndex > -1)
             {
-                duration = lblDurationResult.Text.Replace('H', '').Replace(':', '.').Trim();
+                duration = lblDurationResult.Text.Replace('H', ' ').Replace(':', '.').Trim();
 			}else
 			{
 				await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.TimeSheet_EnterDuration, AppResources.Ok);
