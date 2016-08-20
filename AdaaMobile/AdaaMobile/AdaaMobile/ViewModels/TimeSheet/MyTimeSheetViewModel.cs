@@ -98,6 +98,13 @@ namespace AdaaMobile.ViewModels
             set { SetProperty(ref _ProjectsExists, value); }
         }
 
+        private bool _IsAddTaskButtonVisible;
+        public bool IsAddTaskButtonVisible
+        {
+            get { return _IsAddTaskButtonVisible; }
+            set { SetProperty(ref _IsAddTaskButtonVisible, value); }
+        }
+
         #endregion
 
         #region Initialization
@@ -275,7 +282,7 @@ namespace AdaaMobile.ViewModels
                 GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
                 NoProjectsExists = true;
                 ProjectsExists = false;
-
+                IsAddTaskButtonVisible = day.Date.Day==DateTime.Now.Day;
                 IsBusy = true;
                 if (day == null)
                     return;
