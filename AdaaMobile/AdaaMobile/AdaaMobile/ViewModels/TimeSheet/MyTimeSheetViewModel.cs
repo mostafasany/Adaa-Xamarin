@@ -289,7 +289,7 @@ namespace AdaaMobile.ViewModels
 				GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
                 NoProjectsExists = true;
                 ProjectsExists = false;
-                IsAddTaskButtonVisible = day.Date.Day == DateTime.Now.Day;
+				IsAddTaskButtonVisible = day.Date == DateTime.Now.Date;
                 IsBusy = true;
                 if (day == null)
                     return;

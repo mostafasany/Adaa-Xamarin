@@ -31,6 +31,9 @@ namespace AdaaMobile.Views.ServiceDesk
 				lblTitle.HorizontalOptions = LayoutOptions.End;
 				Grid.SetColumn (lblTitle, 2);
 
+				lblSubTitle.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn(lblTitle, 2);
+
 				lblMessages.HorizontalOptions = LayoutOptions.End;
 				Grid.SetColumn (lblMessages, 2);
 
@@ -40,13 +43,28 @@ namespace AdaaMobile.Views.ServiceDesk
 		#region Title p
 
 
-		public static readonly BindableProperty TitleProperty = BindableProperty.Create<ServiceDeskItemTemplate, object> (
+		public static readonly BindableProperty TitleProperty = BindableProperty.Create<ServiceDeskItemTemplate, string> (
 			                                                              p => p.Title, 
 			                                                              default(string));
 
 		public string Title {
 			get { return (string)GetValue (TitleProperty); }
 			set { SetValue (TitleProperty, value); }
+		}
+
+		#endregion
+
+		#region SubTitle p
+
+
+		public static readonly BindableProperty SubTitleProperty = BindableProperty.Create<ServiceDeskItemTemplate, string>(
+																		  p => p.SubTitle,
+																		  default(string));
+
+		public string SubTitle
+		{
+			get { return (string)GetValue(SubTitleProperty); }
+			set { SetValue(SubTitleProperty, value); }
 		}
 
 		#endregion
