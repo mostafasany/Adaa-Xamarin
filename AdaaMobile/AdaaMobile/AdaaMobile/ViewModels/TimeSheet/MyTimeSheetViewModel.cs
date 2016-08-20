@@ -133,6 +133,8 @@ namespace AdaaMobile.ViewModels
         {
             try
             {
+                if (WeekList != null && WeekList.Count > 0)
+                    return;
                 GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
                 NoProjectsExists = true;
                 ProjectsExists = false;
