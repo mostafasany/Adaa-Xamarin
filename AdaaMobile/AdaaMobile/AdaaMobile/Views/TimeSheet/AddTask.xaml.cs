@@ -68,7 +68,7 @@ namespace AdaaMobile
 
 			if (DurationPicker.SelectedIndex>-1)
 			{
-				duration = lblDurationResult.Text;
+				duration = lblDurationResult.Text.Replace('H',' ').Replace(':','.').Trim();
 
 			}
 			else {
