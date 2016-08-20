@@ -43,7 +43,7 @@ namespace AdaaMobile
         {
             var newDay = (DayWrapper)e.Item;
             if (newDay.IsDummy == false)
-                _viewModel.SelecteDay(newDay);
+                _viewModel.SelecteDay(newDay,false);
         }
     }
 }
