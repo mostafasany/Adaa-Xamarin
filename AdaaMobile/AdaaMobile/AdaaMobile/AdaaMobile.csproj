@@ -406,6 +406,9 @@
     <Compile Include="Views\TimeSheet\TimeSheetRecordItem.xaml.cs">
       <DependentUpon>TimeSheetRecordItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ServiceDesk\ServiceDeskItemTemplate.xaml.cs">
+      <DependentUpon>ServiceDeskItemTemplate.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
@@ -553,6 +556,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceDesk\ServiceDeskItemTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Authentication\LoginPage.xaml">
@@ -617,6 +624,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mock\" />
+    <Folder Include="Views\ServiceDesk\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Authentication\SignUpPage.xaml">
