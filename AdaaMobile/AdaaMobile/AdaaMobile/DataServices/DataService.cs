@@ -12,6 +12,7 @@ using AdaaMobile.Models.Response;
 using QueryExtensions;
 using AdaaMobile.ViewModels;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 //using System.Security;
 //using System.Security.Cryptography;
 
@@ -79,7 +80,7 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<TimeSheet>> GetTimeSheet(int year, int week, CancellationToken? token = null)
         {
-            var encryptedUserName = EncryptString(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName=DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
             var request = _requestFactory();
             request.RequestUrl = TimeSheetBaseUrl + string.Format("GetTimeSheet?encryptedUserName={0}&weekNo={1}&year={2}", encryptedUserName, week, year);
             request.ResultContentType = ContentType.Json;

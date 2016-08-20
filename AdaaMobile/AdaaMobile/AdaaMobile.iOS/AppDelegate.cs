@@ -24,18 +24,18 @@ namespace AdaaMobile.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            
+
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
             SvgImageRenderer.Init();
             ExtendedGridRenderer.Init();
             LoadApplication(new App(new Locator()));
 
-			Insights.Initialize ("b2655f07a3c842df659dcf2532c519804a88ec7d");
+            Insights.Initialize("b2655f07a3c842df659dcf2532c519804a88ec7d");
 
-		
-			UINavigationBar.Appearance.BarTintColor = UIColor.White;
-			UISwitch.Appearance.OnTintColor = UIColor.FromRGBA (0, 124, 133, 255);
+
+            UINavigationBar.Appearance.BarTintColor = UIColor.White;
+            UISwitch.Appearance.OnTintColor = UIColor.FromRGBA(0, 124, 133, 255);
 
             return base.FinishedLaunching(app, options);
 
@@ -46,44 +46,28 @@ namespace AdaaMobile.iOS
         public AppDelegate()
         {
             //SetLanaguge(new AppSettings().SelectedCultureName);
-			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
+            UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
 
-			UIWindow  window = new UIWindow (UIScreen.MainScreen.Bounds);
-
-
-
-			IAppSettings settings = new AppSettings ();
-			if (!string.IsNullOrEmpty (settings.NextSelectedCultureName)) {
-				settings.SelectedCultureName = settings.NextSelectedCultureName;
-				settings.NextSelectedCultureName = string.Empty;
-			}
-			string selectedCultureNAme = settings.SelectedCultureName;
-			//selectedCultureNAme = "ar-EG";
-			if (!string.IsNullOrEmpty (selectedCultureNAme)) {
-				var iosLocaleAuto = NSLocale.AutoUpdatingCurrentLocale.LocaleIdentifier;
-				var netLocale = selectedCultureNAme.Replace ("_", "-");
-				var ci = new System.Globalization.CultureInfo (netLocale);
-
-				Thread.CurrentThread.CurrentCulture = ci;
-				Thread.CurrentThread.CurrentUICulture = ci;
-
-//				Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo (selectedCultureNAme);
-//				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo (selectedCultureNAme);
-			}
+            UIWindow window = new UIWindow(UIScreen.MainScreen.Bounds);
 
 
-			//NavigationController.NavigationBar.BarStyle = UIKit.UIBarStyle.Black;
-//			window.RootViewController.NavigationItem.BackBarButtonItem = new UIKit.UIBarButtonItem ("", UIKit.UIBarButtonItemStyle.Plain, null);
-//			window.RootViewController.NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
-//
 
+            IAppSettings settings = new AppSettings();
+            if (!string.IsNullOrEmpty(settings.NextSelectedCultureName))
+            {
+                settings.SelectedCultureName = settings.NextSelectedCultureName;
+                settings.NextSelectedCultureName = string.Empty;
+            }
+            string selectedCultureNAme = settings.SelectedCultureName;
+            if (!string.IsNullOrEmpty(selectedCultureNAme))
+            {
+                var iosLocaleAuto = NSLocale.AutoUpdatingCurrentLocale.LocaleIdentifier;
+                var netLocale = selectedCultureNAme.Replace("_", "-");
+                var ci = new System.Globalization.CultureInfo(netLocale);
 
-						//viewController = new StartingLanguageViewcontroller ();
-						//UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle ("app_bar.png"), UIBarMetrics.Default);
-						//navigation = new UINavigationController (viewController);
-						//navigation.NavigationBar.TintColor = UIColor.White;
-						//navigation.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White}; 
-						//window.RootViewController = navigation;
+                Thread.CurrentThread.CurrentCulture = ci;
+                Thread.CurrentThread.CurrentUICulture = ci;
+            }
 
         }
 
@@ -94,12 +78,8 @@ namespace AdaaMobile.iOS
             SetValueForKey(NSArray.FromStrings(culture), new NSString("AppleLanguages"));
         }
 
-		public override void FinishedLaunching (UIApplication application)
-		{
-
-
-
-		}
-
+        public override void FinishedLaunching(UIApplication application)
+        {
+        }
     }
 }
