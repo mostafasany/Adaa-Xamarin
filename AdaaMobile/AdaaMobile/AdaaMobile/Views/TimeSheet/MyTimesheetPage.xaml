@@ -96,7 +96,7 @@
         <ListView.GroupHeaderTemplate>
           <DataTemplate>
             <ViewCell>
-              <Grid Padding="4,3" HeightRequest="10" BackgroundColor="#D1D1D1">
+              <Grid Padding="8,4" HeightRequest="10" BackgroundColor="#D1D1D1">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*" />
                   <ColumnDefinition Width="Auto" />

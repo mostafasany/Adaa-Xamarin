@@ -126,6 +126,10 @@ namespace AdaaMobile.ViewModels
         {
             try
             {
+                GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
+                NoProjectsExists = true;
+                ProjectsExists = false;
+
                 IsBusy = true;
 
                 var response = await _dataService.GetWeeksPerYearAsync(2016, null);
