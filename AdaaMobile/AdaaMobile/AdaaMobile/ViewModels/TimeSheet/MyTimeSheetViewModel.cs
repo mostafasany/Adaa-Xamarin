@@ -344,14 +344,33 @@ namespace AdaaMobile.ViewModels
 
         }
 
-        private void FormatTimeSheet(TimeSheet timeSheet, DateTime selectedWeekDate)
+        private void FormatTimeSheet(TimeSheet timeSheet, DateTime selectedDay)
         {
             NoProjectsExists = false;
             TimeSheetFormated = new TimeSheetFormated();
             TimeSheetFormated.Projects = new List<Project>();
-            var currentDayTimeSheet = timeSheet.TimeSheetRecords.Where
-                                               (a => !string.IsNullOrEmpty(a.AssignmentDate) &&
-                                                DateTime.Parse(a.AssignmentDate).Day == selectedWeekDate.Day);
+            List<TimeSheetDetails> currentDayTimeSheet = new List<TimeSheetDetails>();
+            if (selectedDay.Date.ToString("dddd") == "Sunday")
+            {
+                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Sunday)).ToList();
+            }
+            else if (selectedDay.Date.ToString("dddd") == "Monday")
+            {
+                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Monday)).ToList();
+            }
+            else if (selectedDay.Date.ToString("dddd") == "Tuesday")
+            {
+                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Tuesday)).ToList();
+            }
+            else if (selectedDay.Date.ToString("dddd") == "Wednesday")
+            {
+                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Wednesday)).ToList();
+            }
+            else if (selectedDay.Date.ToString("dddd") == "Thursday")
+            {
+                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Thursday)).ToList();
+            }
+           
             var allProjects = currentDayTimeSheet.Where(a => string.IsNullOrEmpty(a.SubTaskTo));
 
             foreach (var project in allProjects)
