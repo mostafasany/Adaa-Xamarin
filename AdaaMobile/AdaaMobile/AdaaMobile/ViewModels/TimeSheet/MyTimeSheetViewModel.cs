@@ -284,7 +284,7 @@ namespace AdaaMobile.ViewModels
                 GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
                 NoProjectsExists = true;
                 ProjectsExists = false;
-                IsAddTaskButtonVisible = day.Date.Day==DateTime.Now.Day;
+                IsAddTaskButtonVisible = day.Date.Day == DateTime.Now.Day;
                 IsBusy = true;
                 if (day == null)
                     return;
@@ -349,41 +349,56 @@ namespace AdaaMobile.ViewModels
             NoProjectsExists = false;
             TimeSheetFormated = new TimeSheetFormated();
             TimeSheetFormated.Projects = new List<Project>();
-            List<TimeSheetDetails> currentDayTimeSheet = new List<TimeSheetDetails>();
+            List<TimeSheetDetails> currentDayTasks = new List<TimeSheetDetails>();
+
+            //Get All Project across the week
+            var allProjects = timeSheet.TimeSheetRecords.Where(a => string.IsNullOrEmpty(a.SubTaskTo));
+
+            //Get All Tasks Give a Day
             if (selectedDay.Date.ToString("dddd") == "Sunday")
             {
-                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Sunday)).ToList();
+                currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Sunday)).ToList();
             }
             else if (selectedDay.Date.ToString("dddd") == "Monday")
             {
-                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Monday)).ToList();
+                currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Monday)).ToList();
             }
             else if (selectedDay.Date.ToString("dddd") == "Tuesday")
             {
-                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Tuesday)).ToList();
+                currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Tuesday)).ToList();
             }
             else if (selectedDay.Date.ToString("dddd") == "Wednesday")
             {
-                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Wednesday)).ToList();
+                currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Wednesday)).ToList();
             }
             else if (selectedDay.Date.ToString("dddd") == "Thursday")
             {
-                currentDayTimeSheet = timeSheet.TimeSheetRecords.Where(a =>!string.IsNullOrEmpty(a.Thursday)).ToList();
+                currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Thursday)).ToList();
             }
-           
-            var allProjects = currentDayTimeSheet.Where(a => string.IsNullOrEmpty(a.SubTaskTo));
 
-            foreach (var project in allProjects)
+            foreach (var task in currentDayTasks)
             {
-                var newProject = new Project
+                Project existingProject = TimeSheetFormated.Projects.FirstOrDefault(a => a.Id == task.AssignmentID);
+                if (existingProject == null)
                 {
-                    Id = project.AssignmentID,
-                    Name = project.TaskTitle,
-                    Tasks = new List<ProjectTask>(),
-                };
-                var projectTasks = currentDayTimeSheet.Where(a => a.AssignmentID == newProject.Id && !string.IsNullOrEmpty(a.SubTaskTo));
-                foreach (var task in projectTasks)
+                    var dayOfWeek = new DateTime().ToString("dddd");
+                    var day = GetProjectTaskDuration(task);
+                    var newTask = new ProjectTask
+                    {
+                        Id = task.TaskID,
+                        Name = task.TaskTitle,
+                        CanEdit = dayOfWeek == (day != null ? day.DayName : ""),
+                        Day = day,
+                        AssigmentId = existingProject.Id,
+                        AssigmentName = existingProject.Name,
+                    };
+                    existingProject.Tasks.Add(newTask);
+                }
+                else
                 {
+                    var project = allProjects.FirstOrDefault(a => a.AssignmentID == task.AssignmentID);
+
+                    var newTasks = new List<ProjectTask>();
                     var dayOfWeek = new DateTime().ToString("dddd");
                     var day = GetProjectTaskDuration(task);
                     var newTask = new ProjectTask
@@ -395,14 +410,56 @@ namespace AdaaMobile.ViewModels
                         AssigmentId = project.AssignmentID,
                         AssigmentName = project.TaskTitle,
                     };
-                    newProject.Tasks.Add(newTask);
-                }
-                if (newProject.Tasks != null && newProject.Tasks.Count > 0)
-                {
-                    newProject.TotalHours = newProject.Tasks.Sum(a => a.Day.Hours);
+                    newTasks.Add(newTask);
+
+                    var newProject = new Project
+                    {
+                        Id = project.AssignmentID,
+                        Name = project.TaskTitle,
+                        Tasks = newTasks,
+                    };
                     TimeSheetFormated.Projects.Add(newProject);
                 }
             }
+
+            foreach (var project in TimeSheetFormated.Projects)
+            {
+                project.TotalHours = project.Tasks.Sum(a => a.Day.Hours);
+            }
+
+
+            //foreach (var project in allProjects)
+            //{
+            //    var newProject = new Project
+            //    {
+            //        Id = project.AssignmentID,
+            //        Name = project.TaskTitle,
+            //        Tasks = new List<ProjectTask>(),
+            //    };
+            //    var projectTasks = currentDayTasks.Where(a => a.AssignmentID == newProject.Id && !string.IsNullOrEmpty(a.SubTaskTo));
+            //    foreach (var task in projectTasks)
+            //    {
+            //        var dayOfWeek = new DateTime().ToString("dddd");
+            //        var day = GetProjectTaskDuration(task);
+            //        var newTask = new ProjectTask
+            //        {
+            //            Id = task.TaskID,
+            //            Name = task.TaskTitle,
+            //            CanEdit = dayOfWeek == (day != null ? day.DayName : ""),
+            //            Day = day,
+            //            AssigmentId = project.AssignmentID,
+            //            AssigmentName = project.TaskTitle,
+            //        };
+            //        newProject.Tasks.Add(newTask);
+            //    }
+            //    if (newProject.Tasks != null && newProject.Tasks.Count > 0)
+            //    {
+            //        newProject.TotalHours = newProject.Tasks.Sum(a => a.Day.Hours);
+            //        TimeSheetFormated.Projects.Add(newProject);
+            //    }
+            //}
+
+
             if (TimeSheetFormated.Projects != null && TimeSheetFormated.Projects.Count > 0)
             {
                 TimeSheetFormated.LoggedInHours = TimeSheetFormated.Projects.Sum(a => a.TotalHours);
