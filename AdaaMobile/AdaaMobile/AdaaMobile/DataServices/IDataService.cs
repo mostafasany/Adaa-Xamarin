@@ -72,7 +72,7 @@ namespace AdaaMobile.DataServices
 
         #region TimeSheet
 
-        Task<ResponseWrapper<bool>> SubmitTimeSheet(int year, int week, TimeSheetListRequest bodyParamters, CancellationToken? token = null);
+        Task<ResponseWrapper<bool>> SubmitTimeSheet(int year, int week, List<TimeSheetRequest> bodyParamters, CancellationToken? token = null);
 
         Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null);
 

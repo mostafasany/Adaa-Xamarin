@@ -38,7 +38,7 @@ namespace AdaaMobile.DataServices
         }
 
 
-        public async Task<ResponseWrapper<bool>> SubmitTimeSheet(int year, int week, TimeSheetListRequest bodyParamters, CancellationToken? token = null)
+        public async Task<ResponseWrapper<bool>> SubmitTimeSheet(int year, int week, List<TimeSheetRequest> bodyParamters, CancellationToken? token = null)
         {
             var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
             var request = _requestFactory();

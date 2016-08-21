@@ -47,7 +47,6 @@ namespace AdaaMobile
         {
             string duration = "", comment = "";
             int taskId, assignId;
-            TimeSheetListRequest timeSheetRequest = new TimeSheetListRequest();
             TimeSheetRequest timeSheetDetails = new TimeSheetRequest();
             List<TimeSheetRequest> timeSheetList = new List<TimeSheetRequest>();
             string day = _viewModel.SelectedProjectTask.Day.DayName;
@@ -107,8 +106,7 @@ namespace AdaaMobile
             }
 
             timeSheetList.Add(timeSheetDetails);
-			timeSheetRequest.data = timeSheetList;
-			var status=await Locator.Default.DataService.SubmitTimeSheet(DateTime.Now.Year, _viewModel.SelectedWeek.WeekNumber, timeSheetRequest, null);
+			var status=await Locator.Default.DataService.SubmitTimeSheet(DateTime.Now.Year, _viewModel.SelectedWeek.WeekNumber, timeSheetList, null);
 			if (status.Result)
 			{
 				Locator.Default.NavigationService.GoBack();
