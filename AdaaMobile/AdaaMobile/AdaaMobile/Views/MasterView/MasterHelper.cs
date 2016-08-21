@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AdaaMobile.Views.Authentication;
 using Xamarin.Forms;
 
@@ -35,14 +31,6 @@ namespace AdaaMobile.Views.MasterView
                         BarBackgroundColor = ActionBarBackgroundColor,
                         BarTextColor = ActionBarTextColor
                     };
-
-
-
-                    ////Hide nav bar in home, to show Welcome message center aligned in all platforms
-                    //if (displayPage.GetType() == typeof(HomePage))
-                    //{
-                    //    NavigationPage.SetHasNavigationBar(displayPage, false);
-                    //}
                     return navPage;
                 }
                 return displayPage;
@@ -88,9 +76,8 @@ namespace AdaaMobile.Views.MasterView
             if (pageType == typeof(DirectoryPage)) return new DirectoryPage(Enums.DirectorySourceType.Directory, Enums.DirectoryAccessType.Normal);
             if (pageType == typeof(EServices.EServicesPage)) return new EServices.EServicesPage();
             if (pageType == typeof(ForgetPasswordPage)) return new ForgetPasswordPage();
-            if (pageType == typeof(ITServiesPage)) return new ITServiesPage();
+            if (pageType == typeof(ServiceDeskHomePage)) return new ServiceDeskHomePage();
             if (pageType == typeof(LoginPage)) return new LoginPage();
-            if (pageType == typeof(ITServiesPage)) return new ITServiesPage();
             if (pageType == typeof(MyRequestsPage)) return new MyRequestsPage();
             if (pageType == typeof(MyTasksPage)) return new MyTasksPage();
             if (pageType == typeof(OracleServicesPage)) return new OracleServicesPage();

@@ -114,7 +114,7 @@ namespace AdaaMobile.ViewModels
                 Title = AppResources.AdaaTimesheet,
                 IconSource = "AdaaMobile.Images.Timesheet.svg",
                 TargetType = typeof(TimesheetPage),
-					IsEnabled = true
+                IsEnabled = true
             });
 
             data.Add(new AdaaPageItem()
@@ -145,8 +145,8 @@ namespace AdaaMobile.ViewModels
             {
                 Title = AppResources.ITServicesDesk,
                 IconSource = "AdaaMobile.Images.ITServiceDesk.svg",
-                TargetType = typeof(ITServiesPage),
-                IsEnabled = false
+                TargetType = typeof(ServiceDeskHomePage),
+                IsEnabled = true
             });
 
             data.Add(new AdaaPageItem()
@@ -178,16 +178,16 @@ namespace AdaaMobile.ViewModels
 
                 PageClickedCommand.CanExecute = false;
                 if (item.TargetType == typeof(OracleServicesPage))
-            {
-                //Open the app
-                DependencyService.Get<IPhoneService>().OpenOracleApp();
+                {
+                    //Open the app
+                    DependencyService.Get<IPhoneService>().OpenOracleApp();
 
-                return;
+                    return;
+                }
+                // _navigationService.SetMasterDetailsPage(item.TargetType);
+                _navigationService.NavigateToPage(item.TargetType);
             }
-            // _navigationService.SetMasterDetailsPage(item.TargetType);
-            _navigationService.NavigateToPage(item.TargetType);
-            }
-            finally 
+            finally
             {
 
                 PageClickedCommand.CanExecute = true;

@@ -179,6 +179,7 @@
     <Compile Include="ViewModels\OfficeMaintenanceViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestDriverViewModel.cs" />
+    <Compile Include="ViewModels\ServiceDesk\ServiceDeskHomeViewModel.cs" />
     <Compile Include="ViewModels\TaskDetailsViewmodel.cs" />
     <Compile Include="ViewModels\TimeSheet\MyAssigmentsViewModel.cs" />
     <Compile Include="ViewModels\TimeSheet\MyPendingTasksViewModel.cs" />
@@ -291,6 +292,9 @@
     <Compile Include="Views\ProfilePropertyControl.xaml.cs">
       <DependentUpon>ProfilePropertyControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ServiceDesk\ServiceDeskHomePage.xaml.cs">
+      <DependentUpon>ServiceDeskHomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -350,9 +354,6 @@
     </Compile>
     <Compile Include="Views\OracleServicesPage.xaml.cs">
       <DependentUpon>OracleServicesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ITServiesPage.xaml.cs">
-      <DependentUpon>ITServiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserServicesPage.xaml.cs">
       <DependentUpon>UserServicesPage.xaml</DependentUpon>
@@ -495,9 +496,6 @@
     <EmbeddedResource Include="Views\OracleServicesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ITServiesPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserServicesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -625,7 +623,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mock\" />
-    <Folder Include="Views\ServiceDesk\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Authentication\SignUpPage.xaml">
@@ -773,6 +770,13 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\TimeSheet\SelectedPendingTaskPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>
+      </SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ServiceDesk\ServiceDeskHomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>
       </SubType>

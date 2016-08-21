@@ -62,11 +62,17 @@ namespace AdaaMobile.ViewModels
 			cb.RegisterType<GreetingCardsViewModel> ();
 			cb.RegisterType<EquipmentsSelectionViewModel> ();
 			cb.RegisterType<MyRequestsViewModel> ().SingleInstance ();
+
+            //TimeSheet
 			cb.RegisterType<TimeSheetViewModel> ();
 			cb.RegisterType<MyTimeSheetViewModel> ().SingleInstance ();
 			cb.RegisterType<SelectTaskViewModel> ().SingleInstance ();
             cb.RegisterType<MyPendingTasksViewModel>().SingleInstance();
 			cb.RegisterType<MyAssigmentsViewModel>().SingleInstance ();
+
+            //ServiceDesk
+            cb.RegisterType<ServiceDeskHomeViewModel>();
+            
         }
 
 
@@ -99,7 +105,15 @@ namespace AdaaMobile.ViewModels
 		}
 
 
-		public TimeSheetViewModel TimeSheetViewModel {
+        public ServiceDeskHomeViewModel ServiceDeskHomeViewModel
+        {
+            get
+            {
+                return Container.Resolve<ServiceDeskHomeViewModel>();
+            }
+        }
+        
+        public TimeSheetViewModel TimeSheetViewModel {
 			get {
 				return Container.Resolve<TimeSheetViewModel> ();
 			}

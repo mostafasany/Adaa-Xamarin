@@ -1367,6 +1367,132 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Attachemnt.
+        /// </summary>
+        public static string ServcieDesk_AddAttachment {
+            get {
+                return ResourceManager.GetString("ServcieDesk_AddAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string ServcieDesk_Description {
+            get {
+                return ResourceManager.GetString("ServcieDesk_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Category.
+        /// </summary>
+        public static string ServcieDesk_SelectCategory {
+            get {
+                return ResourceManager.GetString("ServcieDesk_SelectCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Name.
+        /// </summary>
+        public static string ServcieDesk_SelectName {
+            get {
+                return ResourceManager.GetString("ServcieDesk_SelectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string ServcieDesk_Title {
+            get {
+                return ResourceManager.GetString("ServcieDesk_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On Behalf of.
+        /// </summary>
+        public static string ServiceDesk_BehalfOf {
+            get {
+                return ResourceManager.GetString("ServiceDesk_BehalfOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employee Name.
+        /// </summary>
+        public static string ServiceDesk_EmployeeName {
+            get {
+                return ResourceManager.GetString("ServiceDesk_EmployeeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Cannot Exceed 2 MB.
+        /// </summary>
+        public static string ServiceDesk_FileCannotExceed {
+            get {
+                return ResourceManager.GetString("ServiceDesk_FileCannotExceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IT Service Desk.
+        /// </summary>
+        public static string ServiceDesk_HomePagePageTitle {
+            get {
+                return ResourceManager.GetString("ServiceDesk_HomePagePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log An Incident.
+        /// </summary>
+        public static string ServiceDesk_LogAnIncident {
+            get {
+                return ResourceManager.GetString("ServiceDesk_LogAnIncident", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Cases.
+        /// </summary>
+        public static string ServiceDesk_MyCases {
+            get {
+                return ResourceManager.GetString("ServiceDesk_MyCases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Requests.
+        /// </summary>
+        public static string ServiceDesk_MyRequests {
+            get {
+                return ResourceManager.GetString("ServiceDesk_MyRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request for IT Service.
+        /// </summary>
+        public static string ServiceDesk_RequestITService {
+            get {
+                return ResourceManager.GetString("ServiceDesk_RequestITService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string ServiceDesk_Search {
+            get {
+                return ResourceManager.GetString("ServiceDesk_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service Details.
         /// </summary>
         public static string ServiceDetails {

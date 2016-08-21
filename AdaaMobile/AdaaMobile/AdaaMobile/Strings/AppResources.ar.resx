@@ -718,4 +718,46 @@
   <data name="TimeSheet_ErrorHappened" xml:space="preserve">
     <value>حدث خطأ</value>
   </data>
+  <data name="ServcieDesk_AddAttachment" xml:space="preserve">
+    <value>إضافة مرفق</value>
+  </data>
+  <data name="ServcieDesk_Description" xml:space="preserve">
+    <value>وصف</value>
+  </data>
+  <data name="ServcieDesk_SelectCategory" xml:space="preserve">
+    <value>اختر الفئة</value>
+  </data>
+  <data name="ServcieDesk_SelectName" xml:space="preserve">
+    <value>حدد اسم</value>
+  </data>
+  <data name="ServcieDesk_Title" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="ServiceDesk_BehalfOf" xml:space="preserve">
+    <value>بالنيابة عن</value>
+  </data>
+  <data name="ServiceDesk_EmployeeName" xml:space="preserve">
+    <value>اسم الموظف</value>
+  </data>
+  <data name="ServiceDesk_FileCannotExceed" xml:space="preserve">
+    <value>ملف لا يمكن أن يتجاوز 2MB</value>
+  </data>
+  <data name="ServiceDesk_HomePagePageTitle" xml:space="preserve">
+    <value>مكتب خدمة تكنولوجيا المعلومات</value>
+  </data>
+  <data name="ServiceDesk_LogAnIncident" xml:space="preserve">
+    <value>تسجيل حادث</value>
+  </data>
+  <data name="ServiceDesk_MyCases" xml:space="preserve">
+    <value>حلاتي</value>
+  </data>
+  <data name="ServiceDesk_MyRequests" xml:space="preserve">
+    <value>طلباتي</value>
+  </data>
+  <data name="ServiceDesk_RequestITService" xml:space="preserve">
+    <value>طلب خدمة تكنولوجيا المعلومات</value>
+  </data>
+  <data name="ServiceDesk_Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
 </root>

@@ -721,4 +721,46 @@
   <data name="TimeSheet_ErrorHappened" xml:space="preserve">
     <value>Error Happened</value>
   </data>
+  <data name="ServiceDesk_HomePagePageTitle" xml:space="preserve">
+    <value>IT Service Desk</value>
+  </data>
+  <data name="ServiceDesk_LogAnIncident" xml:space="preserve">
+    <value>Log An Incident</value>
+  </data>
+  <data name="ServiceDesk_MyCases" xml:space="preserve">
+    <value>My Cases</value>
+  </data>
+  <data name="ServiceDesk_MyRequests" xml:space="preserve">
+    <value>My Requests</value>
+  </data>
+  <data name="ServiceDesk_RequestITService" xml:space="preserve">
+    <value>Request for IT Service</value>
+  </data>
+  <data name="ServcieDesk_AddAttachment" xml:space="preserve">
+    <value>Add Attachemnt</value>
+  </data>
+  <data name="ServcieDesk_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ServcieDesk_SelectCategory" xml:space="preserve">
+    <value>Select Category</value>
+  </data>
+  <data name="ServcieDesk_SelectName" xml:space="preserve">
+    <value>Select Name</value>
+  </data>
+  <data name="ServcieDesk_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ServiceDesk_BehalfOf" xml:space="preserve">
+    <value>On Behalf of</value>
+  </data>
+  <data name="ServiceDesk_EmployeeName" xml:space="preserve">
+    <value>Employee Name</value>
+  </data>
+  <data name="ServiceDesk_FileCannotExceed" xml:space="preserve">
+    <value>File Cannot Exceed 2 MB</value>
+  </data>
+  <data name="ServiceDesk_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
 </root>
