@@ -9,20 +9,20 @@
 		</controls:ExtendedButton>
 		<controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" VerticalOptions="Start" HeightRequest="40" CornerRadius="{StaticResource CornerRadius}">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="5" />
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="5" />
 			</Grid.ColumnDefinitions>
 			<Label x:Name="lblTitle" HorizontalOptions="Start" Grid.Column="1" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{Binding Title,Source={x:Reference ParentView}}" />
 			<Label x:Name="lblHours" HorizontalOptions="End" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
-			<Grid WidthRequest="25"  x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85">
+			<!--<Grid WidthRequest="25"  x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85">
 				<Image HorizontalOptions="Center" x:Name="imgArrow" HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
 					<Image.Source>
 						<OnPlatform x:TypeArguments="ImageSource" iOS="note" Android="note.png" WinPhone="note.png" />
 					</Image.Source>
 				</Image>
-			</Grid>
+			</Grid>-->
 		</controls:ExtendedGrid>
 	</Grid>
 </ContentView>
