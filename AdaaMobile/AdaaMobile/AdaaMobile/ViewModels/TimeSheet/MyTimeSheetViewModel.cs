@@ -141,7 +141,7 @@ namespace AdaaMobile.ViewModels
 
                 IsBusy = true;
 
-                var response = await _dataService.GetWeeksPerYearAsync(2016, null);
+                var response = await _dataService.GetWeeksPerYearAsync(DateTime.Now.Year, null);
                 if (response != null && response.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
                 {
                     var currentCulture = CultureInfo.CurrentCulture;
@@ -232,27 +232,32 @@ namespace AdaaMobile.ViewModels
                 FixWindowSize(daysList);
 
                 DaysList = daysList;
-
-                if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+                var nowDay = daysList.FirstOrDefault(a => a.Date.Day == DateTime.Now.Day);
+                if (nowDay == null)
                 {
-                    //Get first item
-                    var firstDay = daysList.LastOrDefault();
-                    SelecteDay(firstDay, true);
+                    nowDay = daysList.FirstOrDefault();
                 }
-                else
-                {
-                    //Get first item
-                    var firstDay = daysList.FirstOrDefault();
-                    SelecteDay(firstDay, true);
-                }
+                SelecteDay(nowDay, true);
+                //if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+                //{
+                //    //Get first item
+                //    var firstDay = daysList.LastOrDefault();
+                //    SelecteDay(firstDay, true);
+                //}
+                //else
+                //{
+                //    //Get first item
+                //    var firstDay = daysList.FirstOrDefault();
+                //    SelecteDay(firstDay, true);
+                //}
             }
             catch (Exception ex)
             {
-				IsBusy = false;
+                IsBusy = false;
             }
             finally
             {
-                
+
             }
 
 
@@ -282,14 +287,14 @@ namespace AdaaMobile.ViewModels
         {
             try
             {
-				if (SelectedDay != null && day.Date == SelectedDay.Date)
-				{
-					return;
-				}
-				GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
+                if (SelectedDay != null && day.Date == SelectedDay.Date)
+                {
+                    return;
+                }
+                GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
                 NoProjectsExists = true;
                 ProjectsExists = false;
-				IsAddTaskButtonVisible = day.Date == DateTime.Now.Date;
+                IsAddTaskButtonVisible = day.Date == DateTime.Now.Date;
                 IsBusy = true;
                 if (day == null)
                     return;
@@ -318,9 +323,6 @@ namespace AdaaMobile.ViewModels
             {
                 IsBusy = false;
             }
-
-
-
         }
 
         #endregion
@@ -332,7 +334,7 @@ namespace AdaaMobile.ViewModels
             try
             {
                 IsBusy = true;
-				if (isWeekChanged || timeSheetResponse == null)
+                if (isWeekChanged || timeSheetResponse == null)
                 {
                     timeSheetResponse = await _dataService.GetTimeSheet(year, weekNo, null);
                 }

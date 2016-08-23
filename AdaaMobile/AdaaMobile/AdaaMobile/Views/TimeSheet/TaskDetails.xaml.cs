@@ -15,7 +15,7 @@ namespace AdaaMobile
 			NavigationPage.SetBackButtonTitle(this, "");
 			_viewModel = Locator.Default.MyTimeSheetViewModel;
 			BindingContext = _viewModel.SelectedProjectTask;
-			if (!_viewModel.SelectedProjectTask.CanEdit)
+			if (_viewModel.SelectedProjectTask.CanEdit)
 			{
 				string addIcon = Device.OnPlatform("note", "note.png", "note.png");
 
