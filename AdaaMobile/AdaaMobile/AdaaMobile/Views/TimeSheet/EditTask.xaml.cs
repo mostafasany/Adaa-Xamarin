@@ -75,7 +75,7 @@ namespace AdaaMobile
                 taskId = Convert.ToInt32(_viewModel.SelectedProjectTask.Id);
                 assignId = Convert.ToInt32(_viewModel.SelectedProjectTask.AssigmentId);
 
-                if (day == "Sunday")
+				if (day =="Sunday")
                 {
                     timeSheetDetails.Sunday = duration;
                     timeSheetDetails.SundayComment = comment;
