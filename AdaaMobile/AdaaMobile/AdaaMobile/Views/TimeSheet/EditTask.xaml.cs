@@ -34,6 +34,7 @@ namespace AdaaMobile
 
             LoadDuration();
             DurationPicker.SelectedIndexChanged += DurationPicker_SelectionIndexChanged;
+			HandleArabicLanguageFlowDirection();
         }
 
         protected override void OnAppearing()
@@ -42,6 +43,18 @@ namespace AdaaMobile
             _viewModel.PageLoadedCommand.Execute(null);
         }
 
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				lblDuration.HorizontalOptions = LayoutOptions.End;
+				lblDurationResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn(imageReasonType, 0);
+				imageReasonType.RotationY = 180;
+				lblAdditionalComments.HorizontalOptions = LayoutOptions.End;
+
+			}
+		}
 
         private async void EditSelectedTask()
         {
@@ -122,7 +135,7 @@ namespace AdaaMobile
         private void LoadDuration()
         {
             DurationPicker.Items.Clear();
-            lblDurationResult.Text = "Select Duration";
+			lblDurationResult.Text = AppResources.TimeSheet_SelectDuration;
             for (int i = 0; i < 24; i++)
             {
                 string value = i.ToString() + ":00 H";

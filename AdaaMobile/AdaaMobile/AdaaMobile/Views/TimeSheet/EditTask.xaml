@@ -3,9 +3,10 @@
 	<ContentPage.BackgroundImage>
 		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 	</ContentPage.BackgroundImage>
-	<Grid HorizontalOptions="Fill" Padding="10,10,10,20">
+	<StackLayout HorizontalOptions="Fill" Padding="10,10,10,20" HeightRequest="200">
+	<Grid HorizontalOptions="Fill" Padding="10,10,10,20" HeightRequest="200">
 		<controls:RoundedBoxView BackgroundColor="#22007c85" CornerRadius="{StaticResource CornerRadius}" Grid.Row="0" />
-		<controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,5,0,8">
+		<controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,5,10,8">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
@@ -40,4 +41,5 @@
 			</controls:ExtendedEditor>
 		</controls:ExtendedGrid>
 	</Grid>
+		</StackLayout>
 </ContentPage>

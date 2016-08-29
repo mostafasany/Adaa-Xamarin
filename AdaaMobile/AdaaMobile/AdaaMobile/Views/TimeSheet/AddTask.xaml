@@ -78,7 +78,7 @@
         </Grid>
       </controls:ExtendedGrid>
    
-      <controls:ExtendedGrid Grid.Row="2" VerticalOptions="Start" Padding="10,5,0,8" >
+      <controls:ExtendedGrid Grid.Row="2" VerticalOptions="Start" Padding="10,5,10,8" >
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />

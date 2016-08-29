@@ -39,8 +39,31 @@ namespace AdaaMobile
 			DurationPicker.SelectedIndexChanged += DurationPicker_SelectionIndexChanged;
 			AssignmentPicker.SelectedIndexChanged += AssignmentPicker_SelectionIndexChanged;
 			TaskPicker.SelectedIndexChanged += TaskPicker_SelectionIndexChanged;
+			HandleArabicLanguageFlowDirection();
 		}
+		void HandleArabicLanguageFlowDirection()
+		{
+			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
+			{
+				lblDuration.HorizontalOptions = LayoutOptions.End;
+				lblDurationResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn(imageReasonType, 0);
+				imageReasonType.RotationY = 180;
 
+				lblAssignment.HorizontalOptions = LayoutOptions.End;
+				lblAssignmentResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn(imageAssignmentType, 0);
+				imageAssignmentType.RotationY = 180;
+
+				lblTask.HorizontalOptions = LayoutOptions.End;
+				lblTaskResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn(imageTask, 0);
+				imageTask.RotationY = 180;
+
+				lblAdditionalComments.HorizontalOptions = LayoutOptions.End;
+
+			}
+		}
 
 		private async void AddNewTask()
 		{
