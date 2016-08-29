@@ -72,25 +72,25 @@ namespace AdaaMobile.ViewModels
 
             //ServiceDesk
             cb.RegisterType<ServiceDeskHomeViewModel>();
-			cb.RegisterType<ServiceDeskCasesViewModel>();
-			cb.RegisterType<ServiceDeskRequestsViewModel>();
+			//cb.RegisterType<ServiceDeskCasesViewModel>();
+			//cb.RegisterType<ServiceDeskRequestsViewModel>();
             
         }
 
-		public ServiceDeskRequestsViewModel ServiceDeskRequestsViewModel
-		{
-			get
-			{
-				return Container.Resolve<ServiceDeskRequestsViewModel>();
-			}
-		}
-		public ServiceDeskCasesViewModel ServiceDeskCasesViewModel
-		{
-			get
-			{
-				return Container.Resolve<ServiceDeskCasesViewModel>();
-			}
-		}
+		//public ServiceDeskRequestsViewModel ServiceDeskRequestsViewModel
+		//{
+		//	get
+		//	{
+		//		return Container.Resolve<ServiceDeskRequestsViewModel>();
+		//	}
+		//}
+		//public ServiceDeskCasesViewModel ServiceDeskCasesViewModel
+		//{
+		//	get
+		//	{
+		//		return Container.Resolve<ServiceDeskCasesViewModel>();
+		//	}
+		//}
 
 		public MyAssigmentsViewModel MyAssigmentsViewModel
         {

@@ -763,4 +763,19 @@
   <data name="ServiceDesk_Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+	 <data name="Wednesday" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+	 <data name="Thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
 </root>

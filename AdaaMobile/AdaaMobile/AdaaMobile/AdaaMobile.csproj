@@ -414,11 +414,6 @@
     <Compile Include="Views\ServiceDesk\ServiceDeskRequestsPage.xaml.cs">
       <DependentUpon>ServiceDeskRequestsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ServiceDesk\ServiceDeskRequestsViewModel.cs" />
-    <Compile Include="ViewModels\ServiceDesk\ServiceDeskCasesViewModel.cs" />
-    <Compile Include="Views\ServiceDesk\ServiceDeskCasesPage.xaml.cs">
-      <DependentUpon>ServiceDeskCasesPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
@@ -568,10 +563,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ServiceDesk\ServiceDeskRequestsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ServiceDesk\ServiceDeskCasesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

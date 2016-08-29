@@ -31,7 +31,7 @@ namespace AdaaMobile.ViewModels
                 new AdaaPageItem () { TargetType = typeof(MyTimesheetPage), Title = AppResources.ServiceDesk_LogAnIncident },
                 new AdaaPageItem () {TargetType = typeof(MyAssigmnetsPage),Title = AppResources.ServiceDesk_RequestITService},
 				new AdaaPageItem (){ TargetType = typeof(ServiceDeskRequestsPage), Title = AppResources.ServiceDesk_MyRequests },
-                new AdaaPageItem (){ TargetType = typeof(ServiceDeskCasesPage), Title = AppResources.ServiceDesk_MyCases }
+                //new AdaaPageItem (){ TargetType = typeof(ServiceDeskCasesPage), Title = AppResources.ServiceDesk_MyCases }
 
             };
             NavigateToPageCommand = new ExtendedCommand<Type>(NavigateToPage);

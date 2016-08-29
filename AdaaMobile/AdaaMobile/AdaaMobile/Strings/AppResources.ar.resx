@@ -760,4 +760,19 @@
   <data name="ServiceDesk_Search" xml:space="preserve">
     <value>بحث</value>
   </data>
+	 <data name="Sunday" xml:space="preserve">
+    <value>الأحد</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>الاثنين</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>الثلاثاء</value>
+  </data>
+	 <data name="Wednesday" xml:space="preserve">
+    <value>الأربعاء</value>
+  </data>
+	 <data name="Thursday" xml:space="preserve">
+    <value>الخميس</value>
+  </data>
 </root>
