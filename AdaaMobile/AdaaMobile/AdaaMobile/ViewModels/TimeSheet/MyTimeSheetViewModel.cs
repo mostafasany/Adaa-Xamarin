@@ -10,6 +10,7 @@ using AdaaMobile.Models.Response;
 using System.Collections.ObjectModel;
 using AdaaMobile.DataServices.Requests;
 using System.Globalization;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.ViewModels
 {
