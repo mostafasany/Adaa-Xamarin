@@ -94,28 +94,28 @@ namespace AdaaMobile
 
 
 
-			if (day == "Sunday")
+			if (day == AppResources.Sunday)
 			{
 				timeSheetDetails.Sunday = duration;
 				timeSheetDetails.SundayComment = comment;
 			}
-			else if (day == "Monday")
+			else if (day == AppResources.Monday)
 			{
 				timeSheetDetails.Monday = duration;
 				timeSheetDetails.MondayComment = comment;
 
 			}
-			else if (day == "Tuesday")
+			else if (day == AppResources.Tuesday)
 			{
 				timeSheetDetails.Tuesday = duration;
 				timeSheetDetails.TuesdayComment = comment;
 			}
-			else if (day == "Wednesday")
+			else if (day == AppResources.Wednesday)
 			{
 				timeSheetDetails.Wednesday = duration;
 				timeSheetDetails.WednesdayComment = comment;
 			}
-			else if (day == "Thursday")
+			else if (day == AppResources.Thursday)
 			{
 				timeSheetDetails.Thursday = duration;
 				timeSheetDetails.ThursdayComment = comment;

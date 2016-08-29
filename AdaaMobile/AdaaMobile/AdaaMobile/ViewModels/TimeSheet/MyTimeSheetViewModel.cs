@@ -366,23 +366,23 @@ namespace AdaaMobile.ViewModels
             var allProjects = timeSheet.TimeSheetRecords.Where(a => string.IsNullOrEmpty(a.SubTaskTo));
 
             //Get All Tasks Give a Day
-            if (selectedDay.Date.ToString("dddd") == "Sunday")
+            if (selectedDay.Date.ToString("dddd") == AppResources.Sunday)
             {
                 currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Sunday)).ToList();
             }
-            else if (selectedDay.Date.ToString("dddd") == "Monday")
+            else if (selectedDay.Date.ToString("dddd") == AppResources.Monday)
             {
                 currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Monday)).ToList();
             }
-            else if (selectedDay.Date.ToString("dddd") == "Tuesday")
+            else if (selectedDay.Date.ToString("dddd") == AppResources.Tuesday)
             {
                 currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Tuesday)).ToList();
             }
-            else if (selectedDay.Date.ToString("dddd") == "Wednesday")
+            else if (selectedDay.Date.ToString("dddd") == AppResources.Wednesday)
             {
                 currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Wednesday)).ToList();
             }
-            else if (selectedDay.Date.ToString("dddd") == "Thursday")
+            else if (selectedDay.Date.ToString("dddd") == AppResources.Thursday)
             {
                 currentDayTasks = timeSheet.TimeSheetRecords.Where(a => !string.IsNullOrEmpty(a.Thursday)).ToList();
             }
@@ -464,41 +464,41 @@ namespace AdaaMobile.ViewModels
 
         DayWithLoggedInHours GetProjectTaskDuration(TimeSheetDetails task, string selectedDay)
         {
-            if (selectedDay != "Sunday")
+            if (selectedDay != AppResources.Sunday)
             {
-                if (selectedDay != "Monday")
+                if (selectedDay != AppResources.Monday)
                 {
-                    if (selectedDay != "Tuesday")
+                    if (selectedDay != AppResources.Tuesday)
                     {
-                        if (selectedDay != "Wednesday")
+                        if (selectedDay != AppResources.Wednesday)
                         {
-                            if (selectedDay != "Thursday")
+                            if (selectedDay != AppResources.Thursday)
                             {
                                 return null;
                             }
                             else
                             {
-                                return new DayWithLoggedInHours { Hours = double.Parse(task.Thursday), DayName = "Thursday", Comment = task.ThursdayComment };
+                                return new DayWithLoggedInHours { Hours = double.Parse(task.Thursday), DayName = AppResources.Thursday, Comment = task.ThursdayComment };
                             }
                         }
                         else
                         {
-                            return new DayWithLoggedInHours { Hours = double.Parse(task.Wednesday), DayName = "Wednesday", Comment = task.WednesdayComment };
+                            return new DayWithLoggedInHours { Hours = double.Parse(task.Wednesday), DayName = AppResources.Wednesday, Comment = task.WednesdayComment };
                         }
                     }
                     else
                     {
-                        return new DayWithLoggedInHours { Hours = double.Parse(task.Tuesday), DayName = "Tuesday", Comment = task.TuesdayComment };
+                        return new DayWithLoggedInHours { Hours = double.Parse(task.Tuesday), DayName = AppResources.Tuesday, Comment = task.TuesdayComment };
                     }
                 }
                 else
                 {
-                    return new DayWithLoggedInHours { Hours = double.Parse(task.Monday), DayName = "Monday", Comment = task.MondayComment };
+                    return new DayWithLoggedInHours { Hours = double.Parse(task.Monday), DayName = AppResources.Monday, Comment = task.MondayComment };
                 }
             }
             else
             {
-                return new DayWithLoggedInHours { Hours = double.Parse(task.Sunday), DayName = "Sunday", Comment = task.SundayComment };
+                return new DayWithLoggedInHours { Hours = double.Parse(task.Sunday), DayName = AppResources.Sunday, Comment = task.SundayComment };
             }
 
         }
