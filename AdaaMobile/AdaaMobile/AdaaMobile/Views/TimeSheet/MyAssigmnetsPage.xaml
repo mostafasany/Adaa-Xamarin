@@ -35,5 +35,7 @@
 			</ListView>
 		</Grid>
 		<ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60" Grid.Row="0" Grid.RowSpan="3" VerticalOptions="Center" HorizontalOptions="Center" />
+		<Picker x:Name="YearsPicker" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Fill" WidthRequest="0" HeightRequest="0" IsVisible="false" InputTransparent="True">
+			</Picker>
 	</Grid>
 </ContentPage>

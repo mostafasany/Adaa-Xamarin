@@ -126,11 +126,12 @@ namespace AdaaMobile.ViewModels
         public AsyncExtendedCommand PageLoadedCommand { get; set; }
         public AsyncExtendedCommand AddNewTaskCommand { get; set; }
         public AsyncExtendedCommand<ProjectTask> RequestItemSelectedCommand { get; set; }
-        #endregion
+		public bool IsRefreshRequired { get; internal set; }
+		#endregion
 
-        #region Methods
+		#region Methods
 
-        private async Task Loaded()
+		private async Task Loaded()
         {
             try
             {
@@ -336,9 +337,10 @@ namespace AdaaMobile.ViewModels
             try
             {
                 IsBusy = true;
-                if (isWeekChanged || timeSheetResponse == null)
+				if (IsRefreshRequired ||isWeekChanged || timeSheetResponse == null)
                 {
                     timeSheetResponse = await _dataService.GetTimeSheet(year, weekNo, null);
+					IsRefreshRequired = false;
                 }
                 if (timeSheetResponse != null && timeSheetResponse.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
                 {

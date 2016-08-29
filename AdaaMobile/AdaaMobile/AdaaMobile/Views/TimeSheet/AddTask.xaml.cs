@@ -148,6 +148,7 @@ namespace AdaaMobile
 			var status = await Locator.Default.DataService.SubmitTimeSheet(DateTime.Now.Year, _viewModel.SelectedWeek.WeekNumber, timeSheetList, null);
 			if (status.Result)
 			{
+				_viewModel.IsRefreshRequired = true;
 				Locator.Default.NavigationService.GoBack();
 			}
 			else

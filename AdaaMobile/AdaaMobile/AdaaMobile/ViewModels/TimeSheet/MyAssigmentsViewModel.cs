@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AdaaMobile.Common;
 using AdaaMobile.Models.Response;
 using AdaaMobile.DataServices.Requests;
+using System.Linq;
 
 namespace AdaaMobile.ViewModels
 {
@@ -19,6 +20,8 @@ namespace AdaaMobile.ViewModels
 		#endregion
 
 		#region Properties
+
+		private List<Assignment> _OriginalAssignments;
 
 		private List<Assignment> _Assignment;
 
@@ -67,6 +70,12 @@ namespace AdaaMobile.ViewModels
 			RequestItemSelectedCommand = new AsyncExtendedCommand<Assignment> (OpenRequestDetailsPage);
 		}
 
+		public void FilterByDate(string year)
+		{
+			if(_OriginalAssignments!=null)
+			Assignment = _OriginalAssignments.Where(a => a.Year == year).ToList();
+		}
+
 		#endregion
 
 		#region Commands
@@ -87,6 +96,7 @@ namespace AdaaMobile.ViewModels
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null) {
 					if (response.Result != null && response.Result.Count > 0) {
 						Assignment = response.Result;
+						_OriginalAssignments=response.Result;
 					} else {
 
 					}
