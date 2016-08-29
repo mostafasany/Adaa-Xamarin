@@ -169,14 +169,15 @@ namespace AdaaMobile.ViewModels
             if (projectTask is ProjectTask)
             {
                 SelectedProjectTask = projectTask as ProjectTask;
-                if (SelectedProjectTask.CanEdit)
-                {
-                    _navigationService.NavigateToPage(typeof(EditTask));
-                }
-                else
-                {
-                    _navigationService.NavigateToPage(typeof(TaskDetails));
-                }
+				_navigationService.NavigateToPage(typeof(TaskDetails));
+                //if (SelectedProjectTask.CanEdit)
+                //{
+                //    _navigationService.NavigateToPage(typeof(EditTask));
+                //}
+                //else
+                //{
+                //    _navigationService.NavigateToPage(typeof(TaskDetails));
+                //}
             }
 
         }

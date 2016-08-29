@@ -84,6 +84,12 @@ namespace AdaaMobile.DataServices
 
         Task<ResponseWrapper<TimeSheet>> GetTimeSheet(int year, int week, CancellationToken? token = null);
 
-        #endregion
-    }
+		#endregion
+
+		#region ServiceDisk
+		Task<ResponseWrapper<List<ServiceDeskRequest>>> GetServiceDeskRequests(CancellationToken? token = null);
+		Task<ResponseWrapper<List<ServiceDeskCase>>> GetServiceDeskCases(CancellationToken? token = null);
+
+		#endregion
+	}
 }

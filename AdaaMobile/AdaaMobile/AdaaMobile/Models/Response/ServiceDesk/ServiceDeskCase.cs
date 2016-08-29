@@ -37,7 +37,7 @@
         public string CreatedBy { get; set; }
         public string DisplayName { get; set; }
         public object Description { get; set; }
-        public int ActivityOrder { get; set; }
+        public int	  ActivityOrder { get; set; }
         public string ReviewerDomain { get; set; }
         public string AffectedUser { get; set; }
         public string AffectedUserDomain { get; set; }

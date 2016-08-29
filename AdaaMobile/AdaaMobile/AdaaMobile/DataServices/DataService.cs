@@ -20,8 +20,14 @@ namespace AdaaMobile.DataServices
 {
     public class DataService : IDataService
     {
-        // private const string BaseUrl = "http://adaa.getsandbox.com";
-        private const string BaseUrl = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy";
+
+
+		//http://10.2.5.252/APIFLIX/api/SMGateway/Get_RA_ByReviewerName_MultiLanguage_SQL_Status?ReviewerName=george.zaki&Status=11fc3cef-15e5-bca4-dee0-9c1155ec8d83&lang=en
+
+		// private const string BaseUrl = "http://adaa.getsandbox.com";
+		private const string ServiceDiskBaseUrl = "http://10.2.5.252/APIFLIX/api/SMGateway/";
+
+		private const string BaseUrl = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy";
         private const string TimeSheetBaseUrl = "http://adaatime.linkdev.com/api/MobileServices/";
         private const string Server = "adaamobile";
         private const string Sprint2Server = "imach";
@@ -74,7 +80,69 @@ namespace AdaaMobile.DataServices
             request.ResultContentType = ContentType.Json;
             return await request.GetAsync<List<Week>>(token);
         }
+		public async Task<ResponseWrapper<List<ServiceDeskCase>>> GetServiceDeskCases(CancellationToken? token = null)
+		{
+			string language = "";
+			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
+			{
+				language = "en";
+			}
+			else
+			{
+				language = "ar";
+			}
+			var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+			var request = _requestFactory();
 
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("Get_RA_ByReviewerName_MultiLanguage_SQL_Status?ReviewerName={0}&Status=11fc3cef-15e5-bca4-dee0-9c1155ec8d83&lang={1}", encryptedUserName, language);
+			request.ResultContentType = ContentType.Json;
+			ServiceDeskCase serviceDiskCasee = new ServiceDeskCase();
+			serviceDiskCasee.Title ="aaaa";
+			serviceDiskCasee.Status = "pending";
+			serviceDiskCasee.Description = "aasdassax";
+			List<ServiceDeskCase> list = new List<ServiceDeskCase>();
+			list.Add(serviceDiskCasee);
+			list.Add(serviceDiskCasee);
+			list.Add(serviceDiskCasee);
+			var response= new ResponseWrapper<List<ServiceDeskCase>>();
+			response.Result = list;
+			return response;
+			//return await request.GetAsync<List<ServiceDeskCases>>(token);
+		}
+
+		async Task<ResponseWrapper<List<ServiceDeskRequest>>> IDataService.GetServiceDeskRequests(CancellationToken? token)
+		{
+			string language = "";
+			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
+			{
+				language = "en";
+			}
+			else
+			{
+				language = "ar";
+			}
+			var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+			var request = _requestFactory();
+
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetServiceRequests_SQl_multiLang?AffectedUser={0}&lang={1}&AssignedToUser={2}", encryptedUserName, language, encryptedUserName);
+			request.ResultContentType = ContentType.Json;
+
+			ServiceDeskRequest serviceDiskRequest = new ServiceDeskRequest();
+			serviceDiskRequest.Title = "aaaa";
+			serviceDiskRequest.Status = "pending";
+			serviceDiskRequest.Description = "aasdassax";
+			List<ServiceDeskRequest> list = new List<ServiceDeskRequest>();
+			list.Add(serviceDiskRequest);
+			list.Add(serviceDiskRequest);
+			list.Add(serviceDiskRequest);
+			var response = new ResponseWrapper<List<ServiceDeskRequest>>();
+			response.Result = list;
+
+			return response;
+			//return await request.GetAsync<List<ServiceDeskRequest>>(token);
+		}
+
+	
         public async Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null)
         {
             var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
@@ -391,6 +459,6 @@ namespace AdaaMobile.DataServices
         }
 
 
-        #endregion
-    }
+		#endregion
+	}
 }
