@@ -30,14 +30,14 @@ namespace AdaaMobile
 			Title = _viewModel.SelectedProjectTask.Name;
 		}
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-			if (_viewModel.IsRefreshRequired)
-			{
-				Locator.Default.NavigationService.GoBack();
-			}
-		}
+		//protected override void OnAppearing()
+		//{
+		//	base.OnAppearing();
+		//	if (_viewModel.IsRefreshRequired)
+		//	{
+		//		Locator.Default.NavigationService.GoBack();
+		//	}
+		//}
 	}
 }
 

@@ -128,7 +128,7 @@ namespace AdaaMobile
 				{
 					loadingControl.IsRunning = false;
 					_viewModel.IsRefreshRequired = true;
-					Locator.Default.NavigationService.GoBack();
+					//Locator.Default.NavigationService.GoBack();
 					//Locator.Default.NavigationService..GoBack();
 					Locator.Default.NavigationService.NavigateToPage(typeof(MyTimesheetPage));
 				}
