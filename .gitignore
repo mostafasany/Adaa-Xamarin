@@ -45,3 +45,4 @@ AdaaMobile/AdaaMobile/AdaaMobile.iOS/bin/iPhoneSimulator/Debug/AdaaMobile.dll.md
 *.mdb
 
 *.dll
+/AdaaMobile/AdaaMobile/AdaaMobile.iOS/bin/iPhone/Debug

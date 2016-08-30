@@ -14,6 +14,9 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
+
+      <ActivityIndicator x:Name="loadingControl"  IsRunning="true" HeightRequest="60" WidthRequest="60" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="Center" HorizontalOptions="Center" />
+      
 			<controls:ExtendedButton Grid.Row="0" Grid.RowSpan="2" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Transparent" BackgroundColor="Transparent" Clicked="Duration_OnClicked">
 			</controls:ExtendedButton>
 			<Grid Grid.Row="0" HorizontalOptions="Fill" ColumnSpacing="0" RowSpacing="0" Padding="0,10,15,0" InputTransparent="True">

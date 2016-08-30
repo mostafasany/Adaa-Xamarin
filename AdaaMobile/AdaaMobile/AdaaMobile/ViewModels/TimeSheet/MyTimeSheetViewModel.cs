@@ -126,18 +126,19 @@ namespace AdaaMobile.ViewModels
         public AsyncExtendedCommand PageLoadedCommand { get; set; }
         public AsyncExtendedCommand AddNewTaskCommand { get; set; }
         public AsyncExtendedCommand<ProjectTask> RequestItemSelectedCommand { get; set; }
-		public bool IsRefreshRequired { get; internal set; }
-		#endregion
+        public bool IsRefreshRequired { get; internal set; }
+        #endregion
 
-		#region Methods
+        #region Methods
 
-		private async Task Loaded()
+        private async Task Loaded()
         {
             try
             {
                 if (WeekList != null && WeekList.Count > 0)
                     return;
                 GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
+                TimeSheetFormated = new TimeSheetFormated();
                 NoProjectsExists = true;
                 ProjectsExists = false;
 
@@ -171,15 +172,7 @@ namespace AdaaMobile.ViewModels
             if (projectTask is ProjectTask)
             {
                 SelectedProjectTask = projectTask as ProjectTask;
-				_navigationService.NavigateToPage(typeof(TaskDetails));
-                //if (SelectedProjectTask.CanEdit)
-                //{
-                //    _navigationService.NavigateToPage(typeof(EditTask));
-                //}
-                //else
-                //{
-                //    _navigationService.NavigateToPage(typeof(TaskDetails));
-                //}
+                _navigationService.NavigateToPage(typeof(TaskDetails));
             }
 
         }
@@ -207,6 +200,7 @@ namespace AdaaMobile.ViewModels
             try
             {
                 GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
+                TimeSheetFormated = new TimeSheetFormated();
                 NoProjectsExists = true;
                 ProjectsExists = false;
 
@@ -295,6 +289,7 @@ namespace AdaaMobile.ViewModels
                     return;
                 }
                 GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
+                TimeSheetFormated = new TimeSheetFormated();
                 NoProjectsExists = true;
                 ProjectsExists = false;
                 IsAddTaskButtonVisible = day.Date == DateTime.Now.Date;
@@ -337,10 +332,10 @@ namespace AdaaMobile.ViewModels
             try
             {
                 IsBusy = true;
-				if (IsRefreshRequired ||isWeekChanged || timeSheetResponse == null)
+                if (IsRefreshRequired || isWeekChanged || timeSheetResponse == null)
                 {
                     timeSheetResponse = await _dataService.GetTimeSheet(year, weekNo, null);
-					IsRefreshRequired = false;
+                    IsRefreshRequired = false;
                 }
                 if (timeSheetResponse != null && timeSheetResponse.ResponseStatus == DataServices.Requests.ResponseStatus.SuccessWithResult)
                 {
