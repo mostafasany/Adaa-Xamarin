@@ -30,10 +30,6 @@ namespace AdaaMobile
 			Title = _viewModel.SelectedProjectTask.Name;
 		}
 
-		private void EditTask()
-		{
-		}
-
 	}
 }
 

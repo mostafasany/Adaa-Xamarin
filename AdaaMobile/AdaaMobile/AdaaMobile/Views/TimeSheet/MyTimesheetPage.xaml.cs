@@ -6,45 +6,45 @@ using AdaaMobile.Models;
 
 namespace AdaaMobile
 {
-    public partial class MyTimesheetPage : ContentPage
-    {
-        private readonly MyTimeSheetViewModel _viewModel;
-        public MyTimesheetPage()
-        {
-            InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
+	public partial class MyTimesheetPage : ContentPage
+	{
+		private readonly MyTimeSheetViewModel _viewModel;
+		public MyTimesheetPage()
+		{
+			InitializeComponent();
+			NavigationPage.SetBackButtonTitle(this, "");
 
-            _viewModel = Locator.Default.MyTimeSheetViewModel;
-            BindingContext = _viewModel;
+			_viewModel = Locator.Default.MyTimeSheetViewModel;
+			BindingContext = _viewModel;
 
-            RightButton.GestureRecognizers.Add(new TapGestureRecognizer(OnTapRightButton));
-            LeftButton.GestureRecognizers.Add(new TapGestureRecognizer(OnTapLefttButton));
+			RightButton.GestureRecognizers.Add(new TapGestureRecognizer(OnTapRightButton));
+			LeftButton.GestureRecognizers.Add(new TapGestureRecognizer(OnTapLefttButton));
 
-            Title = AppResources.TimeSheet_MyTimeSheet;
-        }
+			Title = AppResources.TimeSheet_MyTimeSheet;
+		}
 
-        private void OnTapRightButton(View arg1, object arg2)
-        {
-            _viewModel.GetNextWeek();
-        }
+		private void OnTapRightButton(View arg1, object arg2)
+		{
+			_viewModel.GetNextWeek();
+		}
 
-        private void OnTapLefttButton(View arg1, object arg2)
-        {
-            _viewModel.GetPreviousWeek();
-        }
+		private void OnTapLefttButton(View arg1, object arg2)
+		{
+			_viewModel.GetPreviousWeek();
+		}
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            _viewModel.PageLoadedCommand.Execute(null);
-        }
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			_viewModel.PageLoadedCommand.Execute(null);
+		}
 
-        private void Day_Tapped(object sender, HorizontaListItemTappedEventArgs e)
-        {
-            var newDay = (DayWrapper)e.Item;
-            if (newDay.IsDummy == false)
-                _viewModel.SelecteDay(newDay,false);
-        }
-    }
+		private void Day_Tapped(object sender, HorizontaListItemTappedEventArgs e)
+		{
+			var newDay = (DayWrapper)e.Item;
+			if (newDay.IsDummy == false)
+				_viewModel.SelecteDay(newDay, false);
+		}
+	}
 }
 

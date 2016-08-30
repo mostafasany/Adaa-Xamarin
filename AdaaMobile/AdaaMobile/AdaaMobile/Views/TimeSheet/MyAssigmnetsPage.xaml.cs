@@ -30,18 +30,20 @@ namespace AdaaMobile.Views
 
         void LoadYears()
         {
-            YearsPicker.SelectedIndexChanged -= YearsPicker_SelectionIndexChanged;
-            YearsPicker.Unfocus();
-            YearsPicker.Focus();
+			YearsPicker.Unfocus();
+			YearsPicker.Focus();
 
-            YearsPicker.Items.Clear();
+			if (YearsPicker.SelectedIndex < 0)
+			{
+				YearsPicker.Items.Clear();
 
-            for (int i = DateTime.Now.Year + 1; i > DateTime.Now.Year - 50; i--)
-            {
-                YearsPicker.Items.Add(i.ToString());
-            }
+				for (int i = DateTime.Now.Year + 1; i > DateTime.Now.Year - 50; i--)
+				{
+					YearsPicker.Items.Add(i.ToString());
+				}
 
-            YearsPicker.SelectedIndexChanged += YearsPicker_SelectionIndexChanged;
+				YearsPicker.SelectedIndexChanged += YearsPicker_SelectionIndexChanged;
+			}
 
         }
 
@@ -51,7 +53,7 @@ namespace AdaaMobile.Views
             try
             {
                 var picker = sender as Picker;
-                if (picker != null)
+                if (picker != null && picker.SelectedIndex>=0)
                 {
                     year = YearsPicker.Items[picker.SelectedIndex];
 
