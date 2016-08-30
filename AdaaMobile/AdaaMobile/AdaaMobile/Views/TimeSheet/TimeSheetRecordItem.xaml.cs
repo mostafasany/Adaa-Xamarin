@@ -17,11 +17,6 @@ namespace AdaaMobile.Views.MasterView
         {
             if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
             {
-
-                //imgGrid.HorizontalOptions = LayoutOptions.Center;
-                //Grid.SetColumn(imgGrid, 0);
-                //imgArrow.RotationY = 180;
-
                 lblTitle.HorizontalOptions = LayoutOptions.End;
                 Grid.SetColumn(lblTitle, 2);
 
