@@ -33,12 +33,15 @@ namespace AdaaMobile.Views
 				LanguagePicker.Unfocused+= LanguagePicker_Unfocused;
 			}
 			HandleArabicLanguageFlowDirection();
-        }
+			VersionLabel.Text = AppResources.AppVersion + " " +DependencyService.Get<IPhoneService>().GetVersion();
+
+		}
 
 		void HandleArabicLanguageFlowDirection()
 		{
 			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
 			{
+				VersionLabel.HorizontalOptions = LayoutOptions.End;
 				LanguageButton.HorizontalOptions = LayoutOptions.End;
 				SelectedLanguageNameLabel.HorizontalOptions = LayoutOptions.End;
 			}

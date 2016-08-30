@@ -10,6 +10,8 @@ namespace AdaaMobile
 		/// <param name="number">Number to dial.</param>
 		void DialNumber(string number);
 
+		string GetVersion();
+
 		void ComposeMail (string recipient, string subject, string messagebody = null, Action<bool> completed = null);
 
 		bool ComposeMailWithAttachment (string recipient, string subject, string fileName,byte[] imageData, string messagebody = null);

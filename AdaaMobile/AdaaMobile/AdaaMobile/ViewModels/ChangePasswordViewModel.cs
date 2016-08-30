@@ -157,7 +157,7 @@ namespace AdaaMobile.ViewModels
 
         private bool IsValaidPassword(string value)
         {
-			var regexItem = new Regex(@"^[a-z0-9.@#$\-]+$");
+			var regexItem = new Regex(@"^[a-zA-Z0-9.@#$\-]+$");
 
             return regexItem.IsMatch(value);
         }

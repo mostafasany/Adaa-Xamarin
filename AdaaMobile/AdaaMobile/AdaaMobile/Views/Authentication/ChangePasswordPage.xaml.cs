@@ -41,6 +41,7 @@ namespace AdaaMobile.Views.Authentication
 		{
 			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
 			{
+				lblPasswordHint.HorizontalOptions = LayoutOptions.End;
 				ShowPasswordLabel.HorizontalOptions = LayoutOptions.End;
 				PasswordToggle.HorizontalOptions = LayoutOptions.Start;
 				lblNewPassword.HorizontalOptions = LayoutOptions.End;

@@ -1366,5 +1366,17 @@ namespace AdaaMobile.Strings {
                 return ResourceManager.GetString("Thursday", resourceCulture);
             }
         }
+        
+        public static string ChangePassDisclamier {
+            get {
+                return ResourceManager.GetString("ChangePassDisclamier", resourceCulture);
+            }
+        }
+        
+        public static string AppVersion {
+            get {
+                return ResourceManager.GetString("AppVersion", resourceCulture);
+            }
+        }
     }
 }

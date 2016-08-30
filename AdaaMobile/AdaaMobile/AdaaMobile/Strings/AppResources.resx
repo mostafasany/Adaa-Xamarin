@@ -778,4 +778,10 @@
 	 <data name="Thursday" xml:space="preserve">
     <value>Thursday</value>
   </data>
+	 <data name="ChangePassDisclamier" xml:space="preserve">
+    <value>*Note: You need to be inside ADAA when changing the password through the mobile.</value>
+  </data>
+	 <data name="AppVersion" xml:space="preserve">
+    <value>Version Number:</value>
+  </data>
 </root>

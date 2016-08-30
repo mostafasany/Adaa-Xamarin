@@ -775,4 +775,10 @@
 	 <data name="Thursday" xml:space="preserve">
     <value>الخميس</value>
   </data>
+	 <data name="ChangePassDisclamier" xml:space="preserve">
+    <value>* ملاحظة: عليك أن تكون داخل ADAA عند تغيير كلمة السر من خلال الهاتف النقال.</value>
+  </data>
+	 <data name="AppVersion" xml:space="preserve">
+    <value>رقم الاصدار:</value>
+  </data>
 </root>

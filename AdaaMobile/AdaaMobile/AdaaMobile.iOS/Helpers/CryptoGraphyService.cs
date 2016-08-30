@@ -49,6 +49,7 @@ namespace AdaaMobile.iOS.Helpers
 			tdes.Clear();
 			//Return the encrypted data into unreadable string format
 			return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+		
 		}
 
     }
