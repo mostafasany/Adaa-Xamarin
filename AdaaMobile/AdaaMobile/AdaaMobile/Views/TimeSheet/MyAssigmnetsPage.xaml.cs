@@ -30,7 +30,7 @@ namespace AdaaMobile.Views
 
         void LoadYears()
         {
-
+            YearsPicker.SelectedIndexChanged -= YearsPicker_SelectionIndexChanged;
             YearsPicker.Unfocus();
             YearsPicker.Focus();
 
@@ -40,15 +40,31 @@ namespace AdaaMobile.Views
             {
                 YearsPicker.Items.Add(i.ToString());
             }
+
             YearsPicker.SelectedIndexChanged += YearsPicker_SelectionIndexChanged;
 
         }
 
         void YearsPicker_SelectionIndexChanged(object sender, EventArgs e)
         {
-            var picker = sender as Picker;
-            string year = YearsPicker.Items[picker.SelectedIndex];
-            (BindingContext as MyAssigmentsViewModel).FilterByDate(year);
+            string year = DateTime.Now.Year.ToString();
+            try
+            {
+                var picker = sender as Picker;
+                if (picker != null)
+                {
+                    year = YearsPicker.Items[picker.SelectedIndex];
+
+                }
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                (BindingContext as MyAssigmentsViewModel).FilterByDate(year);
+            }
+
         }
 
         protected override void OnAppearing()
