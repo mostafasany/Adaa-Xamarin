@@ -92,11 +92,11 @@
       </Grid.RowDefinitions>
       <ActivityIndicator IsVisible="{Binding NoProjectsExists}" IsRunning="{Binding IsBusy}"  WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
       <Label Grid.Row="1" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoProjectsExists}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />
-      <ListView Grid.Row="1" IsVisible="{Binding ProjectsExists}" ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true" CachingStrategy="RecycleElement" RowHeight="40" SeparatorColor="Transparent">
+      <ListView Grid.Row="1" IsVisible="{Binding ProjectsExists}" ItemsSource="{Binding GroupedTimeSheet}" IsGroupingEnabled="true" CachingStrategy="RecycleElement" RowHeight="60" SeparatorColor="Transparent">
         <ListView.GroupHeaderTemplate>
           <DataTemplate>
             <ViewCell>
-              <Grid Padding="8,4" HeightRequest="10" BackgroundColor="#cccccc">
+              <Grid Padding="8,4" HeightRequest="7" BackgroundColor="#cccccc">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*" />
                   <ColumnDefinition Width="Auto" />
