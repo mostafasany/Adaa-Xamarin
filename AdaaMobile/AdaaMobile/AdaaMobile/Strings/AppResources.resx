@@ -641,16 +641,16 @@
     <value>My Timesheet</value>
   </data>
   <data name="TimeSheet_ADAATimeSheet" xml:space="preserve">
-    <value>ADAA Time Sheet</value>
+    <value>ADAA TimeSheet</value>
   </data>
   <data name="TimeSheet_AssigmentName" xml:space="preserve">
     <value>Assigment Name / Task</value>
   </data>
   <data name="TimeSheet_AssigmentDate" xml:space="preserve">
-    <value>Assigment Date</value>
+    <value>Current Account Plan</value>
   </data>
   <data name="TimeSheet_EndDate" xml:space="preserve">
-    <value>EndDate</value>
+    <value>End Date</value>
   </data>
   <data name="TimeSheet_ReferenceName" xml:space="preserve">
     <value>Reference Number</value>
@@ -772,16 +772,16 @@
   <data name="Tuesday" xml:space="preserve">
     <value>Tuesday</value>
   </data>
-	 <data name="Wednesday" xml:space="preserve">
+  <data name="Wednesday" xml:space="preserve">
     <value>Wednesday</value>
   </data>
-	 <data name="Thursday" xml:space="preserve">
+  <data name="Thursday" xml:space="preserve">
     <value>Thursday</value>
   </data>
-	 <data name="ChangePassDisclamier" xml:space="preserve">
+  <data name="ChangePassDisclamier" xml:space="preserve">
     <value>*Note: You need to be inside ADAA when changing the password through the mobile.</value>
   </data>
-	 <data name="AppVersion" xml:space="preserve">
+  <data name="AppVersion" xml:space="preserve">
     <value>Version Number:</value>
   </data>
 </root>

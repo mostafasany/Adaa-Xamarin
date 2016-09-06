@@ -638,7 +638,7 @@
     <value>الجدول الزمني</value>
   </data>
   <data name="TimeSheet_ADAATimeSheet" xml:space="preserve">
-    <value>ADAA Time Sheet</value>
+    <value>ADAA TimeSheet</value>
   </data>
   <data name="TimeSheet_AssigmentDate" xml:space="preserve">
     <value>التاريخ</value>
@@ -760,7 +760,7 @@
   <data name="ServiceDesk_Search" xml:space="preserve">
     <value>بحث</value>
   </data>
-	 <data name="Sunday" xml:space="preserve">
+  <data name="Sunday" xml:space="preserve">
     <value>الأحد</value>
   </data>
   <data name="Monday" xml:space="preserve">
@@ -769,16 +769,16 @@
   <data name="Tuesday" xml:space="preserve">
     <value>الثلاثاء</value>
   </data>
-	 <data name="Wednesday" xml:space="preserve">
+  <data name="Wednesday" xml:space="preserve">
     <value>الأربعاء</value>
   </data>
-	 <data name="Thursday" xml:space="preserve">
+  <data name="Thursday" xml:space="preserve">
     <value>الخميس</value>
   </data>
-	 <data name="ChangePassDisclamier" xml:space="preserve">
+  <data name="ChangePassDisclamier" xml:space="preserve">
     <value>* ملاحظة: عليك أن تكون داخل ADAA عند تغيير كلمة السر من خلال الهاتف النقال.</value>
   </data>
-	 <data name="AppVersion" xml:space="preserve">
+  <data name="AppVersion" xml:space="preserve">
     <value>رقم الاصدار:</value>
   </data>
 </root>

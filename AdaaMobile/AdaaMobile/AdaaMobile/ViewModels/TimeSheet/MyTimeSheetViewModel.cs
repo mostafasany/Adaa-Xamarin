@@ -280,7 +280,7 @@ namespace AdaaMobile.ViewModels
 				TimeSheetFormated = new TimeSheetFormated();
 				NoProjectsExists = true;
 				ProjectsExists = false;
-				IsAddTaskButtonVisible = day.Date == DateTime.Now.Date;
+				IsAddTaskButtonVisible = day.Date == DateTime.Now.Date || day.Date==DateTime.Now.Date.AddDays(1);
 				IsBusy = true;
 				if (day == null)
 					return;
@@ -429,7 +429,10 @@ namespace AdaaMobile.ViewModels
 				TimeSheetFormated.LoggedInHours = TimeSheetFormated.Projects.Sum(a => a.TotalHours);
 				TimeSheetFormated.RemainingHours = 8 - TimeSheetFormated.LoggedInHours;
 			}
-
+            else
+            {
+                TimeSheetFormated.RemainingHours = 8;
+            }
 			GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
 			foreach (var item in TimeSheetFormated.Projects)
 			{

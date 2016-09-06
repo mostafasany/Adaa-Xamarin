@@ -18,11 +18,11 @@ namespace AdaaMobile.Models.Response
 
 		public DateTime FinishDate { get; set; }
 
-		public string FinishDateFormated { get { return FinishDate.Date.ToString("yyyy MMMMM dd"); } }
+		public string FinishDateFormated { get { return FinishDate.Date.ToString("dd MMMMM yyyy"); } }
 
-		public string StartDateFormated { get { return StartDate.Date.ToString("yyyy MMMMM dd"); } }
+		public string StartDateFormated { get { return StartDate.Date.ToString("dd MMMMM yyyy"); } }
 
-		public string AssignmentStatusCode {
+        public string AssignmentStatusCode {
 			get {
 				if (Locator.Default.AppSettings.SelectedCultureName.Contains ("ar")) {
 					return AssignmentStatusNameAR;
