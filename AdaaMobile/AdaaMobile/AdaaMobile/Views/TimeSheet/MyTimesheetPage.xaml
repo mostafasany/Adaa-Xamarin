@@ -69,7 +69,7 @@
         </DataTemplate>
       </controls:HorizontalListView.ItemTemplate>
     </controls:HorizontalListView>
-    <Grid HeightRequest="60" Padding="20,0,10,0" BackgroundColor="{StaticResource AppBackgroundNormal}" Grid.Row="2">
+    <Grid HeightRequest="60" Padding="20,0,10,0" BackgroundColor="{StaticResource AppBackgroundNormal}" Grid.Row="2" Opacity="0.8">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
