@@ -418,6 +418,7 @@
       <DependentUpon>ServiceDeskCasesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ServiceDesk\ServiceDeskCasesViewModel.cs" />
+    <Compile Include="ViewModels\ServiceDesk\ServiceDeskRequestsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
