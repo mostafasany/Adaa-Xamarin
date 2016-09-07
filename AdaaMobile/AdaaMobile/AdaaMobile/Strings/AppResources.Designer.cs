@@ -1727,6 +1727,15 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Task.
+        /// </summary>
+        public static string TimeSheet_EditTask {
+            get {
+                return ResourceManager.GetString("TimeSheet_EditTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End Date.
         /// </summary>
         public static string TimeSheet_EndDate {

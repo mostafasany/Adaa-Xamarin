@@ -19,7 +19,7 @@ namespace AdaaMobile
 			_viewModel = Locator.Default.MyTimeSheetViewModel;
 			BindingContext = _viewModel;
 
-			Title = AppResources.EServices;
+			Title = AppResources.TimeSheet_EditTask;
 
 			//Add submit action
 			Action action = () =>

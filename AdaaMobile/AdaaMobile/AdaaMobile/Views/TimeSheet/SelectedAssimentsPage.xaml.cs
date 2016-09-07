@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using AdaaMobile.ViewModels;
-using AdaaMobile.Strings;
 
 namespace AdaaMobile
 {

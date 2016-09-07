@@ -784,4 +784,7 @@
   <data name="AppVersion" xml:space="preserve">
     <value>Version Number:</value>
   </data>
+  <data name="TimeSheet_EditTask" xml:space="preserve">
+    <value>Edit Task</value>
+  </data>
 </root>
