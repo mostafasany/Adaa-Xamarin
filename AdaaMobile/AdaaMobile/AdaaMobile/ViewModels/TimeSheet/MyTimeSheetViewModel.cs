@@ -427,7 +427,14 @@ namespace AdaaMobile.ViewModels
 			if (TimeSheetFormated.Projects != null && TimeSheetFormated.Projects.Count > 0)
 			{
 				TimeSheetFormated.LoggedInHours = TimeSheetFormated.Projects.Sum(a => a.TotalHours);
-				TimeSheetFormated.RemainingHours = 8 - TimeSheetFormated.LoggedInHours;
+				if (TimeSheetFormated.LoggedInHours > 8)
+				{
+					TimeSheetFormated.RemainingHours = 0;
+				}
+				else {
+
+					TimeSheetFormated.RemainingHours = 8 - TimeSheetFormated.LoggedInHours;
+				}
 			}
             else
             {

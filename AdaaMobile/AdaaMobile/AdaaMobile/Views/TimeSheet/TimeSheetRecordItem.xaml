@@ -4,7 +4,7 @@
 		<ResourceDictionary>
 		</ResourceDictionary>
 	</ContentView.Resources>
-	<Grid Padding="15,0">
+	<Grid Padding="15,0" HeightRequest="40">
 		<controls:ExtendedButton Clicked="Button_OnClicked" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}" Text="" TextColor="Transparent" BackgroundColor="#6cb3b8">
 		</controls:ExtendedButton>
 		<controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" VerticalOptions="Start" HeightRequest="40" CornerRadius="{StaticResource CornerRadius}">
