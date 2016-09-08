@@ -23,7 +23,7 @@
 		</Image>
 		<Grid x:Name="MyRequestsListGrid" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True" BackgroundColor="Transparent">
 <!--			<Label x:Name="NoRequestsLabel" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoServiceDeskRequests}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />-->
-			<ListView x:Name="MyRequestsList" ItemsSource="{Binding ServiceDeskRequests}" IsGroupingEnabled="False" HasUnevenRows="False" CachingStrategy="RecycleElement" RowHeight="70" SeparatorColor="Transparent" BackgroundColor="Transparent">
+			<ListView x:Name="MyRequestsList" ItemsSource="{Binding Casses}" IsGroupingEnabled="False" HasUnevenRows="False" CachingStrategy="RecycleElement" RowHeight="70" SeparatorColor="Transparent" BackgroundColor="Transparent">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>

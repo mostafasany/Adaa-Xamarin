@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace AdaaMobile.ViewModels
 {
-	public class ServiceDeskCasesViewModel : BindableBase
+	public class ServiceDeskRequestsViewModel : BindableBase
 	{
 		#region Fields
 
@@ -20,27 +20,29 @@ namespace AdaaMobile.ViewModels
 		#endregion
 
 		#region Properties
+		private List<ServiceDeskRequest> _IncidentRequests;
+		private List<ServiceDeskRequest> _ServiceRequests;
 
-		private List<ServiceDeskCase> _OriginalCasses;
+		private List<ServiceDeskRequest> _OriginalRequests;
 
-		private List<ServiceDeskCase> _Casses;
+		private List<ServiceDeskRequest> _Requests;
 
-		public List<ServiceDeskCase> Casses {
-			get { return _Casses; }
-			set { SetProperty (ref _Casses, value); OnPropertyChanged ("NoCasses");}
+		public List<ServiceDeskRequest> Requests {
+			get { return _Requests; }
+			set { SetProperty (ref _Requests, value); OnPropertyChanged ("NoRequests");}
 		}
 
-		private ServiceDeskCase _SelectedCasses;
+		private ServiceDeskRequest _SelectedRequests;
 
-		public ServiceDeskCase SelectedCasses {
-			get { return _SelectedCasses; }
-			set { SetProperty (ref _SelectedCasses, value); }
+		public ServiceDeskRequest SelectedRequests {
+			get { return _SelectedRequests; }
+			set { SetProperty (ref _SelectedRequests, value); }
 		}
 
-		public bool NoCasses {
+		public bool NoRequests {
 			get 
 			{
-				if (Casses != null && Casses.Count > 0) {
+				if (Requests != null && Requests.Count > 0) {
 					return false;
 				} else {
 					return true;
@@ -57,17 +59,24 @@ namespace AdaaMobile.ViewModels
 			}
 		}
 
+		public bool incidents
+		{
+			get;
+			set;
+
+		}
+
 
 		#endregion
 
 		#region Initialization
 
-		public ServiceDeskCasesViewModel (INavigationService navigationService, IDataService dataservice)
+		public ServiceDeskRequestsViewModel (INavigationService navigationService, IDataService dataservice)
 		{
 			_navigationService = navigationService;
 			_dataService = dataservice;
 			PageLoadedCommand = new AsyncExtendedCommand (Loaded);
-			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskCase> (OpenRequestDetailsPage);
+			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskRequest> (OpenRequestDetailsPage);
 		}
 
 
@@ -77,7 +86,7 @@ namespace AdaaMobile.ViewModels
 
 		public AsyncExtendedCommand PageLoadedCommand { get; set; }
 
-		public AsyncExtendedCommand<ServiceDeskCase> RequestItemSelectedCommand { get; set; }
+		public AsyncExtendedCommand<ServiceDeskRequest> RequestItemSelectedCommand { get; set; }
 
 		#endregion
 
@@ -87,11 +96,13 @@ namespace AdaaMobile.ViewModels
 		{
 			try {
 				IsBusy = true;
-				var response = await _dataService.GetServiceDeskCases (null);
+				var response = await _dataService.GetServiceDeskRequests (incidents,null);
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null) {
 					if (response.Result != null && response.Result.Count > 0) {
-						Casses = response.Result;
-						_OriginalCasses =response.Result;
+
+						_ServiceRequests = response.Result;
+						incidents = true;
+						LoadIncidints();
 					} else {
 
 					}
@@ -105,10 +116,44 @@ namespace AdaaMobile.ViewModels
 
 		}
 
-		private async Task OpenRequestDetailsPage (ServiceDeskCase casses)
+		private async Task LoadIncidints()
 		{
-			SelectedCasses = casses;
-			_navigationService.NavigateToPage (typeof(SelectedAssimentsPage));
+			try
+			{
+				IsBusy = true;
+				var response = await _dataService.GetServiceDeskRequests(incidents, null);
+				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+				{
+					if (response.Result != null && response.Result.Count > 0)
+					{
+						
+
+							_IncidentRequests = response.Result;
+					
+
+						Requests = _IncidentRequests.Concat(_ServiceRequests).ToList();
+					}
+					else {
+
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+
+		}
+
+		private async Task OpenRequestDetailsPage (ServiceDeskRequest requests)
+		{
+			SelectedRequests = requests;
+			//_navigationService.NavigateToPage (typeof(SelectedAssimentsPage));
 		}
 
 		#endregion

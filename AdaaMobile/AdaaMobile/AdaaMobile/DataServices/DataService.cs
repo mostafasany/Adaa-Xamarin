@@ -20,12 +20,12 @@ namespace AdaaMobile.DataServices
 {
     public class DataService : IDataService
     {
-
-
+		//http://10.2.5.252/FLIXAPIADAA/api/SMGateway/GetIncidentsData_SQLMultiLang?AffecteduserName=george.zaki&lang=en&AssignedTouserName=george.zaki
+		//http://10.2.5.252/FLIXAPIADAA/api/SMGateway/GetServiceRequests_SQl_multiLang?AffectedUser=george.zaki&lang=en&AssignedToUser=george.zaki
 		//http://10.2.5.252/APIFLIX/api/SMGateway/Get_RA_ByReviewerName_MultiLanguage_SQL_Status?ReviewerName=george.zaki&Status=11fc3cef-15e5-bca4-dee0-9c1155ec8d83&lang=en
 
 		// private const string BaseUrl = "http://adaa.getsandbox.com";
-		private const string ServiceDiskBaseUrl = "http://10.2.5.252/APIFLIX/api/SMGateway/";
+		private const string ServiceDiskBaseUrl = "http://10.2.5.252/FLIXAPIADAA/api/SMGateway/";
 
 		private const string BaseUrl = "https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy";
         private const string TimeSheetBaseUrl = "http://adaatime.linkdev.com/api/MobileServices/";
@@ -100,6 +100,7 @@ namespace AdaaMobile.DataServices
 			serviceDiskCasee.Title ="aaaa";
 			serviceDiskCasee.Status = "pending";
 			serviceDiskCasee.Description = "aasdassax";
+
 			List<ServiceDeskCase> list = new List<ServiceDeskCase>();
 			list.Add(serviceDiskCasee);
 			list.Add(serviceDiskCasee);
@@ -110,7 +111,7 @@ namespace AdaaMobile.DataServices
 			//return await request.GetAsync<List<ServiceDeskCases>>(token);
 		}
 
-		async Task<ResponseWrapper<List<ServiceDeskRequest>>> IDataService.GetServiceDeskRequests(CancellationToken? token)
+		async Task<ResponseWrapper<List<ServiceDeskRequest>>> IDataService.GetServiceDeskRequests(bool incidents,CancellationToken? token)
 		{
 			string language = "";
 			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
@@ -123,14 +124,31 @@ namespace AdaaMobile.DataServices
 			}
 			var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
 			var request = _requestFactory();
+			if (incidents)
+			{
+				request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetIncidentsData_SQLMultiLang?AffecteduserName={0}&lang={1}&AssignedTouserName={2}", encryptedUserName, language, encryptedUserName);
 
-			request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetServiceRequests_SQl_multiLang?AffectedUser={0}&lang={1}&AssignedToUser={2}", encryptedUserName, language, encryptedUserName);
+			}
+			else
+			{
+				request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetServiceRequests_SQl_multiLang?AffectedUser={0}&lang={1}&AssignedToUser={2}", encryptedUserName, language, encryptedUserName);
+			}
 			request.ResultContentType = ContentType.Json;
 
 			ServiceDeskRequest serviceDiskRequest = new ServiceDeskRequest();
 			serviceDiskRequest.Title = "aaaa";
 			serviceDiskRequest.Status = "pending";
-			serviceDiskRequest.Description = "aasdassax";
+			serviceDiskRequest.AreaID = "aasdassax";
+			if (incidents)
+			{
+				serviceDiskRequest.Area = "aasdassax";
+
+			}
+			else
+			{
+				serviceDiskRequest.Classification = "aasdassax";
+
+			}	
 			List<ServiceDeskRequest> list = new List<ServiceDeskRequest>();
 			list.Add(serviceDiskRequest);
 			list.Add(serviceDiskRequest);

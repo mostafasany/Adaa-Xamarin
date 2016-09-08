@@ -6,14 +6,14 @@ namespace AdaaMobile
 {
     public partial class ServiceDeskCasesPage : ContentPage
     {
-        //ServiceDeskRequestsViewModel _viewModel;
+		ServiceDeskCasesViewModel _viewModel;
         public ServiceDeskCasesPage()
         {
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
 
-            //_viewModel = Locator.Default.ServiceDeskRequestsViewModel;
-            //BindingContext = _viewModel;
+            _viewModel = Locator.Default.ServiceDeskCasesViewModel;
+            BindingContext = _viewModel;
 
             Title = AppResources.ServiceDesk_MyRequests;
 
@@ -22,7 +22,7 @@ namespace AdaaMobile
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			//_viewModel.PageLoadedCommand.Execute (null);
+			_viewModel.PageLoadedCommand.Execute (null);
 		}
     }
 }
