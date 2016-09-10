@@ -15,7 +15,7 @@ namespace AdaaMobile
             _viewModel = Locator.Default.ServiceDeskCasesViewModel;
             BindingContext = _viewModel;
 
-            Title = AppResources.ServiceDesk_MyRequests;
+			Title = AppResources.ServiceDesk_MyCases;
 
         }
 

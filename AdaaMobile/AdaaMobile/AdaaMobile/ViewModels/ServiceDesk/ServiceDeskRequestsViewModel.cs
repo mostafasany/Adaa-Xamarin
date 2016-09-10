@@ -20,21 +20,21 @@ namespace AdaaMobile.ViewModels
 		#endregion
 
 		#region Properties
-		private List<ServiceDeskRequest> _IncidentRequests;
-		private List<ServiceDeskRequest> _ServiceRequests;
+		private List<ServiceDeskRequests> _IncidentRequests;
+		private List<ServiceDeskRequests> _ServiceRequests;
 
-		private List<ServiceDeskRequest> _OriginalRequests;
+		private List<ServiceDeskRequests> _OriginalRequests;
 
-		private List<ServiceDeskRequest> _Requests;
+		private List<ServiceDeskRequests> _Requests;
 
-		public List<ServiceDeskRequest> Requests {
+		public List<ServiceDeskRequests> Requests {
 			get { return _Requests; }
 			set { SetProperty (ref _Requests, value); OnPropertyChanged ("NoRequests");}
 		}
 
-		private ServiceDeskRequest _SelectedRequests;
+		private ServiceDeskRequests _SelectedRequests;
 
-		public ServiceDeskRequest SelectedRequests {
+		public ServiceDeskRequests SelectedRequests {
 			get { return _SelectedRequests; }
 			set { SetProperty (ref _SelectedRequests, value); }
 		}
@@ -76,7 +76,7 @@ namespace AdaaMobile.ViewModels
 			_navigationService = navigationService;
 			_dataService = dataservice;
 			PageLoadedCommand = new AsyncExtendedCommand (Loaded);
-			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskRequest> (OpenRequestDetailsPage);
+			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskRequests> (OpenRequestDetailsPage);
 		}
 
 
@@ -86,7 +86,7 @@ namespace AdaaMobile.ViewModels
 
 		public AsyncExtendedCommand PageLoadedCommand { get; set; }
 
-		public AsyncExtendedCommand<ServiceDeskRequest> RequestItemSelectedCommand { get; set; }
+		public AsyncExtendedCommand<ServiceDeskRequests> RequestItemSelectedCommand { get; set; }
 
 		#endregion
 
@@ -101,13 +101,13 @@ namespace AdaaMobile.ViewModels
 					if (response.Result != null && response.Result.Count > 0) {
 
 						_ServiceRequests = response.Result;
-						incidents = true;
-						LoadIncidints();
+			
 					} else {
 
 					}
 				}
-
+				incidents = true;
+				await LoadIncidints();
 			} catch (Exception ex) {
 
 			} finally {
@@ -130,8 +130,15 @@ namespace AdaaMobile.ViewModels
 
 							_IncidentRequests = response.Result;
 					
+						if (_ServiceRequests != null)
+						{
+							Requests = _IncidentRequests.Concat(_ServiceRequests).ToList();
 
-						Requests = _IncidentRequests.Concat(_ServiceRequests).ToList();
+						}
+						else
+						{
+							Requests = _IncidentRequests;
+						}
 					}
 					else {
 
@@ -150,7 +157,7 @@ namespace AdaaMobile.ViewModels
 
 		}
 
-		private async Task OpenRequestDetailsPage (ServiceDeskRequest requests)
+		private async Task OpenRequestDetailsPage (ServiceDeskRequests requests)
 		{
 			SelectedRequests = requests;
 			//_navigationService.NavigateToPage (typeof(SelectedAssimentsPage));

@@ -21,18 +21,18 @@ namespace AdaaMobile.ViewModels
 
 		#region Properties
 
-		private List<ServiceDeskCase> _OriginalCasses;
+		private List<ServiceDeskCases> _OriginalCasses;
 
-		private List<ServiceDeskCase> _Casses;
+		private List<ServiceDeskCases> _Casses;
 
-		public List<ServiceDeskCase> Casses {
+		public List<ServiceDeskCases> Casses {
 			get { return _Casses; }
 			set { SetProperty (ref _Casses, value); OnPropertyChanged ("NoCasses");}
 		}
 
-		private ServiceDeskCase _SelectedCasses;
+		private ServiceDeskCases _SelectedCasses;
 
-		public ServiceDeskCase SelectedCasses {
+		public ServiceDeskCases SelectedCasses {
 			get { return _SelectedCasses; }
 			set { SetProperty (ref _SelectedCasses, value); }
 		}
@@ -67,7 +67,7 @@ namespace AdaaMobile.ViewModels
 			_navigationService = navigationService;
 			_dataService = dataservice;
 			PageLoadedCommand = new AsyncExtendedCommand (Loaded);
-			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskCase> (OpenRequestDetailsPage);
+			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskCases> (OpenRequestDetailsPage);
 		}
 
 
@@ -77,7 +77,7 @@ namespace AdaaMobile.ViewModels
 
 		public AsyncExtendedCommand PageLoadedCommand { get; set; }
 
-		public AsyncExtendedCommand<ServiceDeskCase> RequestItemSelectedCommand { get; set; }
+		public AsyncExtendedCommand<ServiceDeskCases> RequestItemSelectedCommand { get; set; }
 
 		#endregion
 
@@ -105,7 +105,7 @@ namespace AdaaMobile.ViewModels
 
 		}
 
-		private async Task OpenRequestDetailsPage (ServiceDeskCase casses)
+		private async Task OpenRequestDetailsPage (ServiceDeskCases casses)
 		{
 			SelectedCasses = casses;
 			_navigationService.NavigateToPage (typeof(SelectedAssimentsPage));
