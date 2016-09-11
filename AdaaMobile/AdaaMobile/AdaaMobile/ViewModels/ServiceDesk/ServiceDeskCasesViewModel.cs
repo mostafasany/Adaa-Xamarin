@@ -21,18 +21,18 @@ namespace AdaaMobile.ViewModels
 
 		#region Properties
 
-		private List<ServiceDeskCases> _OriginalCasses;
+		private ServiceDeskCases _OriginalCasses;
 
-		private List<ServiceDeskCases> _Casses;
+		private ServiceDeskCases _Casses;
 
-		public List<ServiceDeskCases> Casses {
+		public ServiceDeskCases Casses {
 			get { return _Casses; }
 			set { SetProperty (ref _Casses, value); OnPropertyChanged ("NoCasses");}
 		}
 
-		private ServiceDeskCases _SelectedCasses;
+		private ServiceDeskCase _SelectedCasses;
 
-		public ServiceDeskCases SelectedCasses {
+		public ServiceDeskCase SelectedCasses {
 			get { return _SelectedCasses; }
 			set { SetProperty (ref _SelectedCasses, value); }
 		}
@@ -40,7 +40,7 @@ namespace AdaaMobile.ViewModels
 		public bool NoCasses {
 			get 
 			{
-				if (Casses != null && Casses.Count > 0) {
+				if (Casses != null) {
 					return false;
 				} else {
 					return true;
@@ -66,8 +66,9 @@ namespace AdaaMobile.ViewModels
 		{
 			_navigationService = navigationService;
 			_dataService = dataservice;
-			PageLoadedCommand = new AsyncExtendedCommand (Loaded);
-			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskCases> (OpenRequestDetailsPage);
+			PageLoadedCommand = new AsyncExtendedCommand(Loaded);
+
+			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskCase> (OpenRequestDetailsPage);
 		}
 
 
@@ -77,7 +78,7 @@ namespace AdaaMobile.ViewModels
 
 		public AsyncExtendedCommand PageLoadedCommand { get; set; }
 
-		public AsyncExtendedCommand<ServiceDeskCases> RequestItemSelectedCommand { get; set; }
+		public AsyncExtendedCommand<ServiceDeskCase> RequestItemSelectedCommand { get; set; }
 
 		#endregion
 
@@ -89,7 +90,7 @@ namespace AdaaMobile.ViewModels
 				IsBusy = true;
 				var response = await _dataService.GetServiceDeskCases (null);
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null) {
-					if (response.Result != null && response.Result.Count > 0) {
+					if (response.Result != null ) {
 						Casses = response.Result;
 						_OriginalCasses =response.Result;
 					} else {
@@ -105,12 +106,42 @@ namespace AdaaMobile.ViewModels
 
 		}
 
-		private async Task OpenRequestDetailsPage (ServiceDeskCases casses)
+		private async Task OpenRequestDetailsPage (ServiceDeskCase casses)
 		{
 			SelectedCasses = casses;
-			_navigationService.NavigateToPage (typeof(SelectedAssimentsPage));
+			await LoadDetails();
+			_navigationService.NavigateToPage (typeof(SelectedServiceCasesPage));
 		}
 
+		private async Task LoadDetails()
+		{
+			try
+			{
+				IsBusy = true;
+				var response = await _dataService.GetServiceDeskCasesDetails(SelectedCasses.Parent_ID,null);
+				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+				{
+					if (response.Result != null)
+					{
+						
+						_SelectedCasses = response.Result.result.Table1[0];
+					}
+					else {
+
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+
+		}
 		#endregion
 
 	}

@@ -1,4 +1,6 @@
-﻿namespace AdaaMobile.Models.Response
+﻿using System;
+
+namespace AdaaMobile.Models.Response
 {
 
 	public class ServiceDeskCases
@@ -15,7 +17,8 @@
 	public class ServiceDeskCase
 	{
 		public int MustVote { get; set; }
-		public string CreatedDate { get; set; }
+		public DateTime CreatedDate { get; set; }
+		public string CreatedDateFormated { get { return CreatedDate.Date.ToString("dd MMMMM yyyy"); } }
 		public string Id { get; set; }
 		public string RA_Guid { get; set; }
 		public string Title { get; set; }
@@ -23,6 +26,8 @@
 		public string ReviewerId { get; set; }
 		public string Decision { get; set; }
 		public object DecisionDate { get; set; }
+		//public string DecisionDateFormated { get { return DecisionDate.Date.ToString("dd MMMMM yyyy"); } }
+
 		public string StatusID { get; set; }
 		public object comment { get; set; }
 		public string Status { get; set; }
@@ -30,8 +35,12 @@
 		public string Decision_AR { get; set; }
 		public string Status_FR { get; set; }
 		public string Decision_FR { get; set; }
-		public string CreatedDate_AR { get; set; }
+		public object CreatedDate_AR { get; set; }
+		//public string CreatedDate_ARFormated { get { return CreatedDate_AR.Date.ToString("dd MMMMM yyyy"); } }
+
 		public object DecisionDate_AR { get; set; }
+		//public string DecisionDate_ARFormated { get { return DecisionDate_AR.Date.ToString("dd MMMMM yyyy"); } }
+
 		private string _Parent_ID;
 		public string Parent_ID
 		{

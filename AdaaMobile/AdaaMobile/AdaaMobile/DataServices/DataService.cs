@@ -80,7 +80,7 @@ namespace AdaaMobile.DataServices
             request.ResultContentType = ContentType.Json;
             return await request.GetAsync<List<Week>>(token);
         }
-		public async Task<ResponseWrapper<List<ServiceDeskCases>>> GetServiceDeskCases(CancellationToken? token = null)
+		public async Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCases(CancellationToken? token = null)
 		{
 			string language = "";
 			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
@@ -91,30 +91,18 @@ namespace AdaaMobile.DataServices
 			{
 				language = "ar";
 			}
-			var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+			//var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
 			var request = _requestFactory();
 
 
-			request.RequestUrl = "Get_RA_ByReviewerName_MultiLanguage_SQL_Status?ReviewerName=OtOKaLu4Z8I0vG/D9nXUmg==&Status=00000000-0000-0000-0000-000000000000&lang=en";
+			request.RequestUrl = ServiceDiskBaseUrl +"Get_RA_ByReviewerName_MultiLanguage_SQL_Status?ReviewerName=OtOKaLu4Z8I0vG/D9nXUmg==&Status=00000000-0000-0000-0000-000000000000&lang=en";
 			request.ResultContentType = ContentType.Json;
-			//ServiceDeskCase serviceDiskCasee = new ServiceDeskCase();
-			//serviceDiskCasee.Title ="aaaa";
-			//serviceDiskCasee.Status = "pending";
-			//serviceDiskCasee.Description = "aasdassax";
-
-			//List<ServiceDeskCase> list = new List<ServiceDeskCase>();
-			//list.Add(serviceDiskCasee);
-			//list.Add(serviceDiskCasee);
-			//list.Add(serviceDiskCasee);
-			//var response= new ResponseWrapper<List<ServiceDeskCase>>();
-			//response.Result = list;
-			//return response;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<List<ServiceDeskCases>>(stringContent, token);
+			var response = await request.PostAsync<ServiceDeskCases>(stringContent, token);
 			return response;
 		}
 
-		async Task<ResponseWrapper<List<ServiceDeskRequests>>> IDataService.GetServiceDeskRequests(bool incidents,CancellationToken? token)
+		async Task<ResponseWrapper<ServiceDeskRequests>> IDataService.GetServiceDeskRequests(bool incidents,CancellationToken? token)
 		{
 
 			string language = "";
@@ -126,48 +114,47 @@ namespace AdaaMobile.DataServices
 			{
 				language = "ar";
 			}
-			var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+			//var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
 			var request = _requestFactory();
 			if (incidents)
 			{
-				request.RequestUrl = ServiceDiskBaseUrl + "GetIncidentsData_SQLMultiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang=en&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg == ";
+				request.RequestUrl = ServiceDiskBaseUrl + "GetIncidentsData_SQLMultiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang=en&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg ==";
 
 			}
 			else
 			{
-				request.RequestUrl = ServiceDiskBaseUrl + "GetServiceRequests_SQl_multiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang=en&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg == ";
+				request.RequestUrl = ServiceDiskBaseUrl + "GetServiceRequests_SQl_multiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang=en&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg ==";
 			}
 			request.ResultContentType = ContentType.Json;
-
-			//ServiceDeskRequest serviceDiskRequest = new ServiceDeskRequest();
-			//serviceDiskRequest.Title = "aaaa";
-			//serviceDiskRequest.Status = "pending";
-			//serviceDiskRequest.AreaID = "aasdassax";
-			//if (incidents)
-			//{
-			//	serviceDiskRequest.Area = "aasdassax";
-
-			//}
-			//else
-			//{
-			//	serviceDiskRequest.Classification = "aasdassax";
-
-			//}	
-			//List<ServiceDeskRequest> list = new List<ServiceDeskRequest>();
-			//list.Add(serviceDiskRequest);
-			//list.Add(serviceDiskRequest);
-			//list.Add(serviceDiskRequest);
-			//var response = new ResponseWrapper<List<ServiceDeskRequest>>();
-			//response.Result = list;
-
-			//return response;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<List<ServiceDeskRequests>>(stringContent, token);
+			var response = await request.PostAsync<ServiceDeskRequests>(stringContent, token);
 			return response;
 		}
+		async Task<ResponseWrapper<ServiceDeskCases>> IDataService.GetServiceDeskCasesDetails(string caseId, CancellationToken? token)
+		{
+			string language = "";
+			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
+			{
+				language = "en";
+			}
+			else
+			{
+				language = "ar";
+			}
+			//var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+			var request = _requestFactory();
 
+
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetActivityDetailsByID_Security?id={0}&UserName=george.zaki&UserDomain=dev", caseId);
+			request.ResultContentType = ContentType.Json;
+
+			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+			var response = await request.PostAsync<ServiceDeskCases>(stringContent, token);
+			return response;
+		}
 	
-        public async Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null)
+
+		public async Task<ResponseWrapper<List<Assignment>>> GetAssignmentAsync(CancellationToken? token = null)
         {
             var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
             var request = _requestFactory();
@@ -481,6 +468,8 @@ namespace AdaaMobile.DataServices
             request.ResultContentType = ContentType.Xml;
             return await request.GetAsync<GetEquipmentsResponse>(token);
         }
+
+
 
 
 		#endregion

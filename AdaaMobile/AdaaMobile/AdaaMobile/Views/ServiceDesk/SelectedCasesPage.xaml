@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" 
+  xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile"
+   xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile"
+    xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
+     xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile"
+      xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" 
+      x:Class="AdaaMobile.SelectedServiceRequestPage" BackgroundColor="White">
+	<ContentPage.BackgroundImage>
+		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
+	</ContentPage.BackgroundImage>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Color x:Key="TabColor">#00676e</Color>
+			<converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="0,0,0,20">
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+
+		<ScrollView Grid.Row="0" VerticalOptions="Fill">
+			<Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="15,20" RowSpacing="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+				
+
+				</Grid.RowDefinitions>
+				<controls:RoundedBoxView BackgroundColor="{StaticResource AppBackgroundNormal}" Opacity="0.8" CornerRadius="{StaticResource CornerRadius}" VerticalOptions="Fill" Grid.Row="0" />
+				<StackLayout Grid.Row="0" Spacing="9" Padding="15" VerticalOptions="Start">
+					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_AssigmentName}" Value="{Binding ID}" />
+					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_StartDate}"  Value="{Binding Type}" />
+					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_EndDate}" Value="{Binding Status}" />
+					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_Status}"  Value="{Binding CreatedDate}"/>
+					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_AssigmentDate}"  Value="{Binding Description}" />
+					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_Status}"  Value="{Binding CreatedDate}"/>
+					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_AssigmentDate}"  Value="{Binding Description}" />
+				</StackLayout>
+			</Grid>
+		</ScrollView>
+		<Label Grid.Row="1" x:Name="lblAdditionalComments" TextColor="Gray" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate AdditionalComments}" />
+				<controls:ExtendedEditor x:Name="AdditionalCommentsEditor" Grid.Row="2" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black" MaxLength="60" HeightRequest="60">
+				</controls:ExtendedEditor>
+				 <controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Grid.Row = "3" Text="{ext:Translate TimeSheet_AddNewTask}" MinimumHeightRequest="70"
+                               VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="{StaticResource YellowAccent}" TextColor="Black">
+    		  </controls:ExtendedButton>
+	</Grid>
+</ContentPage>

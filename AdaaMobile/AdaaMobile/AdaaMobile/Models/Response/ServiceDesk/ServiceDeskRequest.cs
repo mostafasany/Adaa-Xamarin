@@ -20,6 +20,7 @@ namespace AdaaMobile.Models.Response
 		public string Type { get; set; }
         public string Description { get; set; }
 		public DateTime CreatedDate { get; set; }
+		public string CreatedDateFormated { get { return CreatedDate.Date.ToString("dd MMMMM yyyy"); } }
 		private string _AreaID;
         public string AreaID {
 			get

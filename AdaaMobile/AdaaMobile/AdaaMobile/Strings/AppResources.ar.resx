@@ -784,4 +784,45 @@
   <data name="TimeSheet_EditTask" xml:space="preserve">
     <value>تحديث</value>
   </data>
+	<data name="ServiceDeskRequest_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+	<data name="ServiceDeskRequest_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+	<data name="ServiceDeskRequest_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+	<data name="ServiceDeskRequest_CreatedDate" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+	<data name="ServiceDeskRequest_Category1" xml:space="preserve">
+    <value>Category1</value>
+  </data>
+	<data name="ServiceDeskRequest_Category2" xml:space="preserve">
+    <value>Category2</value>
+  </data>
+		<data name="ServiceDeskRequest_CancelRequest" xml:space="preserve">
+    <value>Cancel Request</value>
+  </data>
+		<data name="ServiceDeskCases_ID" xml:space="preserve">
+    <value>Service Request ID</value>
+  </data>
+	<data name="ServiceDeskRequest_ParentID" xml:space="preserve">
+    <value>Parent ID</value>
+  </data>
+	<data name="ServiceDeskRequest_AssignedUser" xml:space="preserve">
+    <value>Assigned User</value>
+  </data>
+	<data name="ServiceDeskRequest_CreatedON" xml:space="preserve">
+    <value>Created On</value>
+  </data>
+	<data name="ServiceDeskRequest_CreatedBy" xml:space="preserve">
+    <value>Created By</value>
+  </data>
+	<data name="ServiceDeskRequest_AffectedUser" xml:space="preserve">
+    <value>Affected User</value>
+  </data>
+
+
 </root>

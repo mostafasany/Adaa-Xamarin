@@ -72,8 +72,8 @@ namespace AdaaMobile.ViewModels
 
             //ServiceDesk
             cb.RegisterType<ServiceDeskHomeViewModel>();
-			cb.RegisterType<ServiceDeskCasesViewModel>();
-			cb.RegisterType<ServiceDeskRequestsViewModel>();
+			cb.RegisterType<ServiceDeskCasesViewModel>().SingleInstance();
+			cb.RegisterType<ServiceDeskRequestsViewModel>().SingleInstance();
             
         }
 
