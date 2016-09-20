@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" x:Class="AdaaMobile.Views.MasterView.TimeSheetRecordItem" BackgroundColor="Transparent" x:Name="ParentView" IsEnabled="True">
 	<ContentView.Resources>
 		<ResourceDictionary>
 		</ResourceDictionary>
 	</ContentView.Resources>
-	<Grid Padding="15,0" HeightRequest="40">
+	<Grid Padding="15,0" HeightRequest="50">
 		<controls:ExtendedButton Clicked="Button_OnClicked" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}" Text="" TextColor="Transparent" BackgroundColor="#6cb3b8">
 		</controls:ExtendedButton>
 		<controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" VerticalOptions="Start" HeightRequest="40" CornerRadius="{StaticResource CornerRadius}">

@@ -122,7 +122,7 @@ namespace AdaaMobile.ViewModels
                 }
                 else
                 {
-					_navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
+					//_navigationService.SetAppCurrentPage(typeof(AddaMasterPage));
                     var response = await _dataService.LoginAsync(UserName, Password);
 
                     if (response.ResponseStatus == ResponseStatus.SuccessWithResult)

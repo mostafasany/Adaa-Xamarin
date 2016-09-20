@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AdaaMobile.AddTask" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:masterView="clr-namespace:AdaaMobile.Views.MasterView;assembly=AdaaMobile" x:Name="ParentView">
   <ContentPage.BackgroundImage>
     <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
@@ -16,9 +16,9 @@
 
     <controls:RoundedBoxView BackgroundColor="#22007c85" VerticalOptions="Fill" CornerRadius="{StaticResource CornerRadius}" Grid.Row="0" />
 
-    <controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,15,10,8" >
+    <controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,5,10,8" >
 
-      <controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,15,10,8" >
+      <controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,0,10,5" >
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
@@ -48,7 +48,7 @@
         </Grid>
       </controls:ExtendedGrid>
  
-      <controls:ExtendedGrid Grid.Row="1" VerticalOptions="Start" Padding="10,5,10,8" >
+      <controls:ExtendedGrid Grid.Row="1" VerticalOptions="Start" Padding="10,0,10,5" >
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
@@ -78,7 +78,7 @@
         </Grid>
       </controls:ExtendedGrid>
    
-      <controls:ExtendedGrid Grid.Row="2" VerticalOptions="Start" Padding="10,5,10,8" >
+      <controls:ExtendedGrid Grid.Row="2" VerticalOptions="Start" Padding="10,0,10,5" >
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
