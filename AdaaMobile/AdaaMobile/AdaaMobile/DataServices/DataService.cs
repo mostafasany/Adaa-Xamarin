@@ -518,29 +518,80 @@ namespace AdaaMobile.DataServices
 
         }
 
-        public Task<ResponseWrapper<OnBehalfResult>> GetOnBelfUsers(CancellationToken? token = default(CancellationToken?))
+        public async Task<ResponseWrapper<OnBehalfResult>> GetOnBelfUsers(CancellationToken? token = default(CancellationToken?))
         {
-            throw new NotImplementedException();
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
+            var request = _requestFactory();
+            request.RequestUrl = ServiceDiskBaseUrl + string.Format("AD_GetUsersForOnBehalf_DepartmentWithDomain?UserName={0}&DomainName={1}", encryptedUserName, "dev");
+            request.ResultContentType = ContentType.Json;
+            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+            var response = await request.PostAsync<OnBehalfResult>(stringContent, token);
+            return response;
         }
 
-        public Task<ResponseWrapper<ParentCategoryResult>> GetParentCategories(string mouduleName, CancellationToken? token = default(CancellationToken?))
+        public async Task<ResponseWrapper<ParentCategoryResult>> GetParentCategories(string mouduleName, CancellationToken? token = default(CancellationToken?))
         {
-            throw new NotImplementedException();
+            string language = "ar";
+            if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
+            {
+                language = "en";
+            }
+            var request = _requestFactory();
+            //http://10.2.5.252/FLIXAPIADAA/api/SMGateway/GetParentCategories?ListName=Incident%20Classification&lang=en 
+            request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetParentCategories?ListName={0}&lang={1}", mouduleName, language);
+            request.ResultContentType = ContentType.Json;
+            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+            var response = await request.PostAsync<ParentCategoryResult>(stringContent, token);
+            return response;
         }
 
-        public Task<ResponseWrapper<ChildCategory>> GetChildCategories(string mouduleName, string categoryId, CancellationToken? token = default(CancellationToken?))
+        public async Task<ResponseWrapper<ChildCategory>> GetChildCategories(string mouduleName, string categoryId, CancellationToken? token = default(CancellationToken?))
         {
-            throw new NotImplementedException();
+            string language = "ar";
+            if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
+            {
+                language = "en";
+            }
+            var request = _requestFactory();
+            //http://10.2.5.252/FLIXAPIADAA/api/SMGateway/GetChildCategories?ListName=Incident%20Classification&CategoryID=a72e882c-2b39-a865-b9be-32899144ec85&lang=en
+            request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetChildCategories?ListName={0}&CategoryID={1}&lang={2}", mouduleName, categoryId, language);
+            request.ResultContentType = ContentType.Json;
+            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+            var response = await request.PostAsync<ChildCategory>(stringContent, token);
+            return response;
         }
 
-        public Task<ResponseWrapper<CategoryTemplate>> GetTemplateId(string categoryId, CancellationToken? token = default(CancellationToken?))
+        public async Task<ResponseWrapper<CategoryTemplate>> GetTemplateId(string categoryId, CancellationToken? token = default(CancellationToken?))
         {
-            throw new NotImplementedException();
+            string language = "ar";
+            if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
+            {
+                language = "en";
+            }
+            var request = _requestFactory();
+            //http://10.2.5.252/FLIXAPIADAA/api/SMGateway/GetCategoryLinksByCatID?CategoryID=719d0dfd-fec3-0d73-895b-7c33afb26219&lang=en 
+            request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetCategoryLinksByCatID?CategoryID={0}&lang={1}", categoryId, language);
+            request.ResultContentType = ContentType.Json;
+            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+            var response = await request.PostAsync<CategoryTemplate>(stringContent, token);
+            return response;
         }
 
-        public Task<ResponseWrapper<TemplateExtension>> GetTemplateExtension(string templateId, CancellationToken? token = default(CancellationToken?))
+        public async Task<ResponseWrapper<TemplateExtension>> GetTemplateExtension(string templateId, CancellationToken? token = default(CancellationToken?))
         {
-            throw new NotImplementedException();
+            string language = "ar";
+            if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
+            {
+                language = "en";
+            }
+            var request = _requestFactory();
+            //http://10.2.5.252/FLIXAPIADAA/api/SMGateway/getClassExtentions_multiLanguage?TemplalteID=291a7559-fdbd-eeda-7cb6-dc02ac421849&lang=en
+            request.RequestUrl = ServiceDiskBaseUrl + string.Format("getClassExtentions_multiLanguage?TemplalteID={0}&lang={1}", templateId, language);
+            request.ResultContentType = ContentType.Json;
+            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+            var response = await request.PostAsync<TemplateExtension>(stringContent, token);
+            return response;
         }
 
         #endregion
