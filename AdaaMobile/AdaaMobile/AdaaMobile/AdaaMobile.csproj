@@ -98,8 +98,13 @@
     <Compile Include="Controls\ImageButton\ImageButton.cs" />
     <Compile Include="Helpers\SvgAssembly.cs" />
     <Compile Include="Helpers\UserSelectionService.cs" />
+    <Compile Include="Models\Response\ServiceDesk\CategoryTemplate.cs" />
+    <Compile Include="Models\Response\ServiceDesk\ChildCategory.cs" />
+    <Compile Include="Models\Response\ServiceDesk\OnBehalf.cs" />
+    <Compile Include="Models\Response\ServiceDesk\ParentCategory.cs" />
     <Compile Include="Models\Response\ServiceDesk\ServiceDeskCase.cs" />
     <Compile Include="Models\Response\ServiceDesk\ServiceDeskRequest.cs" />
+    <Compile Include="Models\Response\ServiceDesk\TemplateExtension.cs" />
     <Compile Include="Models\TimeSheetFormated.cs" />
     <Compile Include="Models\EquipmentWrapper.cs" />
     <Compile Include="Models\MaintenancePriority.cs" />

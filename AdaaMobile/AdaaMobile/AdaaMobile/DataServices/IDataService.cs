@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Request;
 using AdaaMobile.Models.Response;
+using AdaaMobile.Models.Response.ServiceDesk;
 
 namespace AdaaMobile.DataServices
 {
@@ -84,16 +85,23 @@ namespace AdaaMobile.DataServices
 
         Task<ResponseWrapper<TimeSheet>> GetTimeSheet(int year, int week, CancellationToken? token = null);
 
-		#endregion
+        #endregion
 
-		#region ServiceDisk
-		Task<ResponseWrapper<ServiceDeskRequests>> GetServiceDeskRequests(bool incidents,CancellationToken? token = null );
-		Task<ResponseWrapper<ServiceDeskRequests>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = null);
-		Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCases(CancellationToken? token = null);
-		Task<ResponseWrapper<ServiceDeskCases>> AcceptServiceDeskCases(string caseId,CancellationToken? token = null);
-		Task<ResponseWrapper<ServiceDeskCases>> RejectServiceDeskCases(string caseId,CancellationToken? token = null);
-		Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCasesDetails(string caseId,CancellationToken? token = null);
+        #region ServiceDisk
 
-		#endregion
-	}
+        Task<ResponseWrapper<ServiceDeskRequests>> GetServiceDeskRequests(bool incidents, CancellationToken? token = null);
+        Task<ResponseWrapper<ServiceDeskRequests>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = null);
+        Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCases(CancellationToken? token = null);
+        Task<ResponseWrapper<ServiceDeskCases>> AcceptServiceDeskCases(string caseId, CancellationToken? token = null);
+        Task<ResponseWrapper<ServiceDeskCases>> RejectServiceDeskCases(string caseId, CancellationToken? token = null);
+        Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCasesDetails(string caseId, CancellationToken? token = null);
+
+        Task<ResponseWrapper<OnBehalfResult>> GetOnBelfUsers(CancellationToken? token = null);
+        Task<ResponseWrapper<ParentCategoryResult>> GetParentCategories(string mouduleName, CancellationToken? token = null);
+        Task<ResponseWrapper<ChildCategory>> GetChildCategories(string mouduleName, string categoryId, CancellationToken? token = null);
+        Task<ResponseWrapper<CategoryTemplate>> GetTemplateId(string categoryId, CancellationToken? token = null);
+        Task<ResponseWrapper<TemplateExtension>> GetTemplateExtension(string templateId, CancellationToken? token = null);
+
+        #endregion
+    }
 }
