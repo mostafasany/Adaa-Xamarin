@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" x:Class="AdaaMobile.SelectedServiceCasesPage" BackgroundColor="White">
 	<ContentPage.BackgroundImage>
 		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
@@ -37,9 +37,9 @@
 					</controls:ExtendedEditor>
 				</StackLayout>
 				<Grid HorizontalOptions="Fill" VerticalOptions="Fill"  RowSpacing="10" Grid.Row="2">
-					<controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Grid.Row="0" Grid.Column="0" Text="{ext:Translate Accept}" MinimumHeightRequest="70" VerticalOptions="Start" BackgroundColor="Green" TextColor="White">
+					<controls:ExtendedButton Command="{Binding CaseAccepted}" Grid.Row="0" Grid.Column="0" Text="{ext:Translate Accept}" MinimumHeightRequest="70" VerticalOptions="Start" BackgroundColor="Green" TextColor="White">
 					</controls:ExtendedButton>
-					<controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Grid.Row="0" Grid.Column="1" Text="{ext:Translate Reject}" MinimumHeightRequest="70" VerticalOptions="Start" BackgroundColor="Red" TextColor="White">
+					<controls:ExtendedButton Command="{Binding CaseRejected}" Grid.Row="0" Grid.Column="1" Text="{ext:Translate Reject}" MinimumHeightRequest="70" VerticalOptions="Start" BackgroundColor="Red" TextColor="White">
 					</controls:ExtendedButton>
 				</Grid>
 			</Grid>

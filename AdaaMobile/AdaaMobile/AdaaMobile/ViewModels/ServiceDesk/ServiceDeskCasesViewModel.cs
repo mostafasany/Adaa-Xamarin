@@ -67,7 +67,8 @@ namespace AdaaMobile.ViewModels
 			_navigationService = navigationService;
 			_dataService = dataservice;
 			PageLoadedCommand = new AsyncExtendedCommand(Loaded);
-
+			CaseAccepted = new AsyncExtendedCommand(Accepted);
+			CaseRejected = new AsyncExtendedCommand(Rejected);
 			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskCase> (OpenRequestDetailsPage);
 		}
 
@@ -77,7 +78,8 @@ namespace AdaaMobile.ViewModels
 		#region Commands
 
 		public AsyncExtendedCommand PageLoadedCommand { get; set; }
-
+		public AsyncExtendedCommand CaseAccepted { get; set; }
+		public AsyncExtendedCommand CaseRejected { get; set; }
 		public AsyncExtendedCommand<ServiceDeskCase> RequestItemSelectedCommand { get; set; }
 
 		#endregion
@@ -105,7 +107,62 @@ namespace AdaaMobile.ViewModels
 			}
 
 		}
+		private async Task Accepted()
+		{
+			try
+			{
+				IsBusy = true;
+				var response = await _dataService.AcceptServiceDeskCases(null);
+				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+				{
+					if (response.Result != null)
+					{
 
+					}
+					else {
+
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+
+		}
+		private async Task Rejected()
+		{
+			try
+			{
+				IsBusy = true;
+				var response = await _dataService.RejectServiceDeskCases(null);
+				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+				{
+					if (response.Result != null)
+					{
+
+					}
+					else {
+
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+
+		}
 		private async Task OpenRequestDetailsPage (ServiceDeskCase casses)
 		{
 			SelectedCasses = casses;
