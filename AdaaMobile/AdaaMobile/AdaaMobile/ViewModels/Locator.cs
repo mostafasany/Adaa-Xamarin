@@ -74,6 +74,7 @@ namespace AdaaMobile.ViewModels
             cb.RegisterType<ServiceDeskHomeViewModel>();
 			cb.RegisterType<ServiceDeskCasesViewModel>().SingleInstance();
 			cb.RegisterType<ServiceDeskRequestsViewModel>().SingleInstance();
+            cb.RegisterType<ServiceDeskLogIncidentViewModel>().SingleInstance();
             
         }
 
@@ -120,6 +121,14 @@ namespace AdaaMobile.ViewModels
 			}
 		}
 
+        public ServiceDeskLogIncidentViewModel ServiceDeskLogIncidentViewModel
+        {
+            get
+            {
+                return Container.Resolve<ServiceDeskLogIncidentViewModel>();
+            }
+        }
+        
 
         public ServiceDeskHomeViewModel ServiceDeskHomeViewModel
         {

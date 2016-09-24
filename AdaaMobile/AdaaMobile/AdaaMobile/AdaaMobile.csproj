@@ -184,6 +184,7 @@
     <Compile Include="ViewModels\OfficeMaintenanceViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestDriverViewModel.cs" />
+    <Compile Include="ViewModels\ServiceDesk\ServiceDeskLogIncidentViewModel.cs" />
     <Compile Include="ViewModels\ServiceDesk\ServiceDeskHomeViewModel.cs" />
     <Compile Include="ViewModels\TaskDetailsViewmodel.cs" />
     <Compile Include="ViewModels\TimeSheet\MyAssigmentsViewModel.cs" />
@@ -296,6 +297,9 @@
     </Compile>
     <Compile Include="Views\ProfilePropertyControl.xaml.cs">
       <DependentUpon>ProfilePropertyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceDesk\ServiceDeskLogIncident.xaml.cs">
+      <DependentUpon>ServiceDeskLogIncident.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ServiceDesk\ServiceDeskHomePage.xaml.cs">
       <DependentUpon>ServiceDeskHomePage.xaml</DependentUpon>
@@ -810,6 +814,13 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ServiceDesk\ServiceDeskHomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>
+      </SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ServiceDesk\ServiceDeskLogIncident.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>
       </SubType>
