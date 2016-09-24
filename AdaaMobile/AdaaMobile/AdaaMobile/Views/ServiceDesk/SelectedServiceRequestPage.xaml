@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" x:Class="AdaaMobile.SelectedServiceRequestPage" BackgroundColor="White">
 	<ContentPage.BackgroundImage>
 		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
@@ -34,7 +34,7 @@
 					</controls:ExtendedEditor>
 				</StackLayout>
 				<controls:RoundedBoxView BackgroundColor="#22007c85" CornerRadius="1" BorderColor="{StaticResource AppBackgroundNormal}" BorderThickness="1" Grid.Row="2" />
-				<controls:ExtendedButton Command="{Binding AddNewTaskCommand}" Grid.Row="2" Text="{ext:Translate ServiceDeskRequest_CancelRequest}" MinimumHeightRequest="70" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black">
+				<controls:ExtendedButton Command="{Binding CancelRequest}" Grid.Row="2" Text="{ext:Translate ServiceDeskRequest_CancelRequest}" MinimumHeightRequest="70" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black">
 				</controls:ExtendedButton>
 			</Grid>
 		</ScrollView>

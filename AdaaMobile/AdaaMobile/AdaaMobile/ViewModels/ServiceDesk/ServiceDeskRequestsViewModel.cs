@@ -7,6 +7,7 @@ using AdaaMobile.Common;
 using AdaaMobile.Models.Response;
 using AdaaMobile.DataServices.Requests;
 using System.Linq;
+using System.Diagnostics.Contracts;
 
 namespace AdaaMobile.ViewModels
 {
@@ -78,6 +79,7 @@ namespace AdaaMobile.ViewModels
 			_dataService = dataservice;
 			PageLoadedCommand = new AsyncExtendedCommand (Loaded);
 			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskRequest> (OpenRequestDetailsPage);
+			CancelRequest = new AsyncExtendedCommand(Cancel);
 		}
 
 
@@ -86,7 +88,7 @@ namespace AdaaMobile.ViewModels
 		#region Commands
 
 		public AsyncExtendedCommand PageLoadedCommand { get; set; }
-
+		public AsyncExtendedCommand CancelRequest { get; set; }
 		public AsyncExtendedCommand<ServiceDeskRequest> RequestItemSelectedCommand { get; set; }
 
 		#endregion
@@ -149,6 +151,34 @@ namespace AdaaMobile.ViewModels
 					}
 				}
 
+			}
+			catch (Exception ex)
+			{
+
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+
+		}
+
+		private async Task Cancel()
+		{
+			try
+			{
+				IsBusy = true;
+				var response = await _dataService.CancelServiceDeskRequests(SelectedRequests, null);
+				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+				{
+					if (response.Result != null)
+					{
+					
+					}
+					else {
+
+					}
+				}
 			}
 			catch (Exception ex)
 			{

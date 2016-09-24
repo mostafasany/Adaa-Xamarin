@@ -469,6 +469,25 @@ namespace AdaaMobile.DataServices
             return await request.GetAsync<GetEquipmentsResponse>(token);
         }
 
+		public async Task<ResponseWrapper<ServiceDeskRequests>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = default(CancellationToken?))
+		{
+			var request = _requestFactory();
+
+			if (serviceRequest.Type == "Incidents")
+			{
+				request.RequestUrl = ServiceDiskBaseUrl + string.Format("UpdateIncidentStatus?ID={0}&status=canceled&comment=null&ActionBy=9wHHq0pN/U3QAtg5NxDpZQ==",serviceRequest.ID);
+			}
+			else
+			{
+				request.RequestUrl = ServiceDiskBaseUrl + string.Format("UpdateServiceRequestStatus?ID={0}&status=canceled&comment=null&ActionBy=9wHHq0pN/U3QAtg5NxDpZQ==",serviceRequest.ID);
+
+			}
+			request.ResultContentType = ContentType.Json;
+			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+			var response = await request.PostAsync<ServiceDeskRequests>(stringContent, token);
+			return response;
+		}
+
 
 
 

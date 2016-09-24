@@ -88,6 +88,7 @@ namespace AdaaMobile.DataServices
 
 		#region ServiceDisk
 		Task<ResponseWrapper<ServiceDeskRequests>> GetServiceDeskRequests(bool incidents,CancellationToken? token = null );
+		Task<ResponseWrapper<ServiceDeskRequests>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = null);
 		Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCases(CancellationToken? token = null);
 		Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCasesDetails(string caseId,CancellationToken? token = null);
 
