@@ -555,7 +555,7 @@ namespace AdaaMobile.DataServices
             return response;
         }
 
-		public async Task<ResponseWrapper<string>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = default(CancellationToken?))
+		public async Task<ResponseWrapper<AcceptAndReject>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = default(CancellationToken?))
 		{
 			var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
 			var request = _requestFactory();
@@ -571,28 +571,28 @@ namespace AdaaMobile.DataServices
 			}
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<string>(stringContent, token);
+			var response = await request.PostAsync<AcceptAndReject>(stringContent, token);
 			return response;
 		}
 
-		public async Task<ResponseWrapper<string>> AcceptServiceDeskCases(ServiceDeskCase serviceDesk, CancellationToken? token = null)
+		public async Task<ResponseWrapper<AcceptAndReject>> AcceptServiceDeskCases(ServiceDeskCase serviceDesk, CancellationToken? token = null)
 		{
 			var request = _requestFactory();
 			request.RequestUrl = ServiceDiskBaseUrl + string.Format("Reviewer_ApproveWithRAID?ReviewerId={0}&comment={1}&RAID={2}", serviceDesk.ReviewerId, serviceDesk.comment, serviceDesk.Id);
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<string>(stringContent, token);
+			var response = await request.PostAsync<AcceptAndReject>(stringContent, token);
 			return response;
 
 		}
 
-		public async Task<ResponseWrapper<string>> RejectServiceDeskCases(ServiceDeskCase serviceDesk, CancellationToken? token = null)
+		public async Task<ResponseWrapper<AcceptAndReject>> RejectServiceDeskCases(ServiceDeskCase serviceDesk, CancellationToken? token = null)
 		{
 			var request = _requestFactory();
 			request.RequestUrl = ServiceDiskBaseUrl + string.Format("Reviewer_RejectWithRAID?ReviewerId={0}&comment={1}&RAID={2} ", serviceDesk.ReviewerId, serviceDesk.comment, serviceDesk.Id);
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<string>(stringContent, token);
+			var response = await request.PostAsync<AcceptAndReject>(stringContent, token);
 			return response;
 
 		}
