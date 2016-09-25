@@ -434,6 +434,7 @@
     <Compile Include="Views\ServiceDesk\SelectedServiceCasesPage.xaml.cs">
       <DependentUpon>SelectedServiceCasesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Response\ServiceDesk\AcceptAndReject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NGraphics.Custom">
