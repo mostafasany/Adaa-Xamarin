@@ -112,7 +112,7 @@ namespace AdaaMobile.ViewModels
 			try
 			{
 				IsBusy = true;
-				var response = await _dataService.AcceptServiceDeskCases(SelectedCasses.Id, null);
+				var response = await _dataService.AcceptServiceDeskCases(SelectedCasses, null);
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
 				{
 					if (response.Result != null)
@@ -140,7 +140,7 @@ namespace AdaaMobile.ViewModels
 			try
 			{
 				IsBusy = true;
-				var response = await _dataService.RejectServiceDeskCases(SelectedCasses.Id,null);
+				var response = await _dataService.RejectServiceDeskCases(SelectedCasses,null);
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
 				{
 					if (response.Result != null)

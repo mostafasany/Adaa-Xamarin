@@ -95,7 +95,7 @@ namespace AdaaMobile.DataServices
 			var request = _requestFactory();
 
 
-			request.RequestUrl = ServiceDiskBaseUrl + "Get_RA_ByReviewerName_MultiLanguage_SQL_Status?ReviewerName=OtOKaLu4Z8I0vG/D9nXUmg==&Status=00000000-0000-0000-0000-000000000000&lang=en";
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("Get_RA_ByReviewerName_MultiLanguage_SQL_Status?ReviewerName=OtOKaLu4Z8I0vG/D9nXUmg==&Status=00000000-0000-0000-0000-000000000000&lang={0}",language);
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
 			var response = await request.PostAsync<ServiceDeskCases>(stringContent, token);
@@ -118,12 +118,12 @@ namespace AdaaMobile.DataServices
 			var request = _requestFactory();
 			if (incidents)
 			{
-				request.RequestUrl = ServiceDiskBaseUrl + "GetIncidentsData_SQLMultiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang=en&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg ==";
+				request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetIncidentsData_SQLMultiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang={0}&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg ==",language);
 
 			}
 			else
 			{
-				request.RequestUrl = ServiceDiskBaseUrl + "GetServiceRequests_SQl_multiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang=en&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg ==";
+				request.RequestUrl = ServiceDiskBaseUrl +string.Format( "GetServiceRequests_SQl_multiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang={0}&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg ==",language);
 			}
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
@@ -469,43 +469,43 @@ namespace AdaaMobile.DataServices
 			return await request.GetAsync<GetEquipmentsResponse>(token);
 		}
 
-		public async Task<ResponseWrapper<ServiceDeskRequests>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = default(CancellationToken?))
+		public async Task<ResponseWrapper<string>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = default(CancellationToken?))
 		{
 			var request = _requestFactory();
 
 			if (serviceRequest.Type == "Incidents")
 			{
-				request.RequestUrl = ServiceDiskBaseUrl + string.Format("UpdateIncidentStatus?ID={0}&status=canceled&comment=null&ActionBy=9wHHq0pN/U3QAtg5NxDpZQ==", serviceRequest.ID);
+				request.RequestUrl = ServiceDiskBaseUrl + string.Format("UpdateIncidentStatus?ID={0}&status=canceled&comment={1}&ActionBy=9wHHq0pN/U3QAtg5NxDpZQ==", serviceRequest.ID,serviceRequest.Comment);
 			}
 			else
 			{
-				request.RequestUrl = ServiceDiskBaseUrl + string.Format("UpdateServiceRequestStatus?ID={0}&status=canceled&comment=null&ActionBy=9wHHq0pN/U3QAtg5NxDpZQ==", serviceRequest.ID);
+				request.RequestUrl = ServiceDiskBaseUrl + string.Format("UpdateServiceRequestStatus?ID={0}&status=canceled&comment={1}&ActionBy=9wHHq0pN/U3QAtg5NxDpZQ==", serviceRequest.ID,serviceRequest.Comment);
 
 			}
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<ServiceDeskRequests>(stringContent, token);
+			var response = await request.PostAsync<string>(stringContent, token);
 			return response;
 		}
 
-		public async Task<ResponseWrapper<ServiceDeskCases>> AcceptServiceDeskCases(string caseId, CancellationToken? token = null)
+		public async Task<ResponseWrapper<string>> AcceptServiceDeskCases(ServiceDeskCase serviceDesk, CancellationToken? token = null)
 		{
 			var request = _requestFactory();
-			request.RequestUrl = ServiceDiskBaseUrl + string.Format("Reviewer_ApproveWithRAID?ReviewerId=323&comment=georgecomment&RAID={0}", caseId);
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("Reviewer_ApproveWithRAID?ReviewerId={0}&comment={1}&RAID={2}",serviceDesk.ReviewerId, serviceDesk.comment, serviceDesk.Id);
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<ServiceDeskCases>(stringContent, token);
+			var response = await request.PostAsync<string>(stringContent, token);
 			return response;
 
 		}
 
-		public async Task<ResponseWrapper<ServiceDeskCases>> RejectServiceDeskCases(string caseId, CancellationToken? token = null)
+		public async Task<ResponseWrapper<string>> RejectServiceDeskCases(ServiceDeskCase serviceDesk, CancellationToken? token = null)
 		{
 			var request = _requestFactory();
-			request.RequestUrl = ServiceDiskBaseUrl + string.Format("Reviewer_RejectWithRAID?ReviewerId=323&comment=georgecomment&RAID={0} ", caseId);
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("Reviewer_RejectWithRAID?ReviewerId={0}&comment={1}&RAID={2} ",serviceDesk.ReviewerId, serviceDesk.comment,serviceDesk.Id);
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<ServiceDeskCases>(stringContent, token);
+			var response = await request.PostAsync<string>(stringContent, token);
 			return response;
 
 		}

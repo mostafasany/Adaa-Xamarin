@@ -29,7 +29,7 @@ namespace AdaaMobile.Models.Response
 		//public string DecisionDateFormated { get { return DecisionDate.Date.ToString("dd MMMMM yyyy"); } }
 
 		public string StatusID { get; set; }
-		public object comment { get; set; }
+		public string comment { get; set; }
 		public string Status { get; set; }
 		public string Status_AR { get; set; }
 		public string Decision_AR { get; set; }
@@ -78,6 +78,8 @@ namespace AdaaMobile.Models.Response
 		public object VotedByUser { get; set; }
 		public object VotedByUserDomain { get; set; }
 		public string WITYPE { get; set; }
+
+
 	}
 
 }

@@ -19,21 +19,21 @@
 				</Grid.RowDefinitions>
 				<controls:RoundedBoxView BackgroundColor="{StaticResource AppBackgroundNormal}" Opacity="0.8" CornerRadius="{StaticResource CornerRadius}" VerticalOptions="Fill" Grid.Row="0" />
 				<StackLayout Grid.Row="0" Spacing="9" Padding="15" VerticalOptions="Start">
-					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskCases_ID}" Value="{Binding Id}" />
-					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_ParentID}" Value="{Binding Parent_ID}" />
-					<dayPass:RowInfoControl Title="{ext:Translate ServcieDesk_Description}" Value="{Binding Description}" />
-					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_AssignedUser}" Value="{Binding ReviewerDisplayName}" />
-					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_CreatedON}" Value="{Binding CreatedDateFormated}" />
-					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_CreatedBy}" Value="{Binding CreatedBy}" />
-					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_AffectedUser}" Value="{Binding AffectedUser}" />
-					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Category1}" Value="{Binding Parent_Title}" />
-					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Category2}" Value="{Binding Parent_Title}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskCases_ID}" Value="{Binding SelectedCasses.Id}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_ParentID}" Value="{Binding SelectedCasses.Parent_ID}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServcieDesk_Description}" Value="{Binding SelectedCasses.Description}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_AssignedUser}" Value="{Binding SelectedCasses.ReviewerDisplayName}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_CreatedON}" Value="{Binding SelectedCasses.CreatedDateFormated}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_CreatedBy}" Value="{Binding SelectedCasses.CreatedBy}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_AffectedUser}" Value="{Binding SelectedCasses.AffectedUser}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Category1}" Value="{Binding SelectedCasses.Parent_Title}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Category2}" Value="{Binding SelectedCasses.Parent_Title}" />
 				</StackLayout>
 				<controls:RoundedBoxView BackgroundColor="#22007c85" CornerRadius="{StaticResource CornerRadius}" Grid.Row="0" />
 				<controls:RoundedBoxView BackgroundColor="#22007c85" CornerRadius="{StaticResource CornerRadius}" Grid.Row="1" />
 				<StackLayout Grid.Row="1" Spacing="9" Padding="15" VerticalOptions="Start">
 					<Label x:Name="lblAdditionalComments" TextColor="Gray" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate AdditionalComments}" />
-					<controls:ExtendedEditor x:Name="AdditionalCommentsEditor" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black" MaxLength="60" HeightRequest="60">
+					<controls:ExtendedEditor x:Name="AdditionalCommentsEditor" Text = "{Binding SelectedCasses.comment}" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black" MaxLength="60" HeightRequest="60">
 					</controls:ExtendedEditor>
 				</StackLayout>
 				<Grid HorizontalOptions="Fill" VerticalOptions="Fill"  RowSpacing="10" Grid.Row="2">

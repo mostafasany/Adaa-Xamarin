@@ -14,7 +14,7 @@ namespace AdaaMobile
 			NavigationPage.SetBackButtonTitle (this, "");
 
 			_viewModel = Locator.Default.ServiceDeskCasesViewModel;
-			BindingContext = _viewModel.SelectedCasses;
+			BindingContext = _viewModel;
 
 			Title = _viewModel.SelectedCasses.Title;
 
