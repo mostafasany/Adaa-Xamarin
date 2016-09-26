@@ -1,18 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-		xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile"
-        xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions" 
-        xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile"
-        xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" 
-        xmlns:ServiceDesk="clr-namespace:AdaaMobile.Views.ServiceDesk;assembly=AdaaMobile" 
-		x:Name="MainWindow" x:Class="AdaaMobile.ServiceDeskCasesPage">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" xmlns:ServiceDesk="clr-namespace:AdaaMobile.Views.ServiceDesk;assembly=AdaaMobile" x:Name="MainWindow" x:Class="AdaaMobile.ServiceDeskCasesPage">
 	<ContentPage.BackgroundImage>
 		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 	</ContentPage.BackgroundImage>
 	<Grid RowSpacing="15">
 		<Grid.RowDefinitions>
-			<RowDefinition Height="5" />
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
@@ -21,15 +14,17 @@
 				<OnPlatform x:TypeArguments="ImageSource" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 			</Image.Source>
 		</Image>
+		<SearchBar x:Name="CassesSearchBar" HorizontalTextAlignment="Start" Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="#1A7C85" TextColor="Black" PlaceholderColor="#FFCCCCCC" FontSize="Small" Placeholder="{ext:Translate SearchAllContacts}">
+		</SearchBar>
 		<Grid x:Name="MyRequestsListGrid" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True" BackgroundColor="Transparent">
-<!--			<Label x:Name="NoRequestsLabel" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoServiceDeskRequests}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />-->
+			<!--			<Label x:Name="NoRequestsLabel" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoServiceDeskRequests}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />-->
 			<ListView x:Name="MyRequestsList" ItemsSource="{Binding Casses.result.Table1}" IsGroupingEnabled="False" HasUnevenRows="False" CachingStrategy="RecycleElement" RowHeight="70" SeparatorColor="Transparent" BackgroundColor="Transparent">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>
 							<ViewCell.View>
 								<Grid Padding="2,3">
-									<ServiceDesk:ServiceDeskItemTemplate Title="{Binding Status}" SubTitle = "{Binding Id}"   Message="{Binding Title}" Date="{Binding Type}"  Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference MainWindow}}" CommandParamter="{Binding}" />
+									<ServiceDesk:ServiceDeskItemTemplate Title="{Binding Status}" SubTitle="{Binding Id}" Message="{Binding Title}" Date="{Binding Type}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference MainWindow}}" CommandParamter="{Binding}" />
 								</Grid>
 							</ViewCell.View>
 						</ViewCell>
@@ -38,5 +33,7 @@
 			</ListView>
 		</Grid>
 		<ActivityIndicator IsRunning="{Binding IsBusy}" HeightRequest="60" WidthRequest="60" Grid.Row="0" Grid.RowSpan="3" VerticalOptions="Center" HorizontalOptions="Center" />
+		<Picker x:Name="FilterPicker" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Fill" WidthRequest="0" HeightRequest="0" IsVisible="false" InputTransparent="True">
+		</Picker>
 	</Grid>
 </ContentPage>

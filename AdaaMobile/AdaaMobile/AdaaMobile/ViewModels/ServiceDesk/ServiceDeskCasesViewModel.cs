@@ -72,6 +72,43 @@ namespace AdaaMobile.ViewModels
 			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskCase> (OpenRequestDetailsPage);
 		}
 
+		public void FilterByStatus(string status)
+		{
+			if (_OriginalCasses != null)
+			{
+				if (status == "All")
+				{
+					Casses.result.Table1 = _OriginalCasses.result.Table1;
+				}
+				else
+				{
+					List<ServiceDeskCase> objlist = _OriginalCasses.result.Table1.ToList();
+				    List<ServiceDeskCase> resultlist= objlist.Where(a => a.Status == status).ToList();
+					Casses.result.Table1 = resultlist.ToArray();
+
+				}
+			}
+		}
+
+		public void searchBy(string search)
+		{
+			if (_OriginalCasses != null)
+			{
+				if (string.IsNullOrEmpty(search))
+				{
+					Casses.result.Table1 = _OriginalCasses.result.Table1;
+				}
+				else
+				{
+				
+					List<ServiceDeskCase> objlist = _OriginalCasses.result.Table1.ToList();
+					List<ServiceDeskCase> resultlist = objlist.Where(a => a.Id.ToLower().Contains(search.ToLower()) ||
+					                                                 a.Title.ToLower().Contains(search.ToLower())).ToList();
+					Casses.result.Table1 = resultlist.ToArray();
+				
+				}
+			}
+		}
 
 		#endregion
 
