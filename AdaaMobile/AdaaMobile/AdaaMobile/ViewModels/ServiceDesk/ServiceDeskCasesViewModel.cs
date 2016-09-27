@@ -7,6 +7,7 @@ using AdaaMobile.Common;
 using AdaaMobile.Models.Response;
 using AdaaMobile.DataServices.Requests;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace AdaaMobile.ViewModels
 {
@@ -21,11 +22,11 @@ namespace AdaaMobile.ViewModels
 
 		#region Properties
 
-		private ServiceDeskCases _OriginalCasses;
+		private ObservableCollection<ServiceDeskCase> _OriginalCasses;
 
-		private ServiceDeskCases _Casses;
+		private ObservableCollection<ServiceDeskCase> _Casses;
 
-		public ServiceDeskCases Casses {
+		public ObservableCollection<ServiceDeskCase> Casses {
 			get { return _Casses; }
 			set { SetProperty (ref _Casses, value); OnPropertyChanged ("NoCasses");}
 		}
@@ -78,13 +79,13 @@ namespace AdaaMobile.ViewModels
 			{
 				if (status == "All")
 				{
-					Casses.result.Table1 = _OriginalCasses.result.Table1;
+					Casses= _OriginalCasses;
 				}
 				else
 				{
-					List<ServiceDeskCase> objlist = _OriginalCasses.result.Table1.ToList();
+					List<ServiceDeskCase> objlist = _OriginalCasses.ToList();
 				    List<ServiceDeskCase> resultlist= objlist.Where(a => a.Status == status).ToList();
-					Casses.result.Table1 = resultlist.ToArray();
+					Casses= new ObservableCollection<ServiceDeskCase>(resultlist);
 
 				}
 			}
@@ -96,15 +97,15 @@ namespace AdaaMobile.ViewModels
 			{
 				if (string.IsNullOrEmpty(search))
 				{
-					Casses.result.Table1 = _OriginalCasses.result.Table1;
+					Casses = _OriginalCasses;
 				}
 				else
 				{
-				
-					List<ServiceDeskCase> objlist = _OriginalCasses.result.Table1.ToList();
+
+					List<ServiceDeskCase> objlist = _OriginalCasses.ToList();
 					List<ServiceDeskCase> resultlist = objlist.Where(a => a.Id.ToLower().Contains(search.ToLower()) ||
 					                                                 a.Title.ToLower().Contains(search.ToLower())).ToList();
-					Casses.result.Table1 = resultlist.ToArray();
+					Casses = new ObservableCollection<ServiceDeskCase>(resultlist);
 				
 				}
 			}
@@ -130,8 +131,8 @@ namespace AdaaMobile.ViewModels
 				var response = await _dataService.GetServiceDeskCases (null);
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null) {
 					if (response.Result != null ) {
-						Casses = response.Result;
-						_OriginalCasses =response.Result;
+						Casses = new ObservableCollection<ServiceDeskCase>(response.Result.result.Table1); 
+						_OriginalCasses =new ObservableCollection<ServiceDeskCase>(response.Result.result.Table1);
 					} else {
 
 					}
@@ -154,7 +155,11 @@ namespace AdaaMobile.ViewModels
 				{
 					if (response.Result != null)
 					{
+						if (response.Result.result == "")
+						{
+							Locator.Default.NavigationService.GoBack();
 
+						}
 					}
 					else {
 
@@ -182,7 +187,10 @@ namespace AdaaMobile.ViewModels
 				{
 					if (response.Result != null)
 					{
-
+						if (response.Result.result == "")
+						{
+							Locator.Default.NavigationService.GoBack();
+						}				
 					}
 					else {
 

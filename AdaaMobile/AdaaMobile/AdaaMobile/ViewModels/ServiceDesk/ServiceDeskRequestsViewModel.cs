@@ -171,10 +171,13 @@ namespace AdaaMobile.ViewModels
 				var response = await _dataService.CancelServiceDeskRequests(SelectedRequests, null);
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
 				{
-					if (response.Result != null)
+					if (response.Result != null )
 					{
-					
-					}
+						if (response.Result.result == "")
+						{
+							Locator.Default.NavigationService.GoBack();
+
+						}					}
 					else {
 
 					}
