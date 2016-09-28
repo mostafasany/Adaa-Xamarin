@@ -507,7 +507,7 @@ namespace AdaaMobile.DataServices
 			return response;
 		}
 
-		public async Task<ResponseWrapper<ChildCategory>> GetChildCategories(string mouduleName, string categoryId, CancellationToken? token = default(CancellationToken?))
+		public async Task<ResponseWrapper<ChildCategoryResult>> GetChildCategories(string mouduleName, string categoryId, CancellationToken? token = default(CancellationToken?))
 		{
 			string language = "ar";
 			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
@@ -519,7 +519,7 @@ namespace AdaaMobile.DataServices
 			request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetChildCategories?ListName={0}&CategoryID={1}&lang={2}", mouduleName, categoryId, language);
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<ChildCategory>(stringContent, token);
+			var response = await request.PostAsync<ChildCategoryResult>(stringContent, token);
 			return response;
 		}
 

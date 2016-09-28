@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using AdaaMobile.ViewModels;
 using AdaaMobile.Strings;
+using System.Collections.Generic;
+using AdaaMobile.Models.Response.ServiceDesk;
 
 namespace AdaaMobile
 {
@@ -19,18 +21,15 @@ namespace AdaaMobile
 
             Title = AppResources.TimeSheet_AddNewTask;
 
-            //Add submit action
-            Action action = () =>
-            {
-                LogIncident();
-            };
-            ToolbarItems.Add(
-                new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
-
             LoadOnBelhaf();
             LoadParentCategories();
             HandleArabicLanguageFlowDirection();
+			DurationPicker.SelectedIndexChanged += DurationPicker_SelectionIndexChanged;
+			AssignmentPicker.SelectedIndexChanged += AssignmentPicker_SelectionIndexChanged;
         }
+
+		List<ParentCategory> ParentCategoryList;
+		List<ChildCategory> ChildCategoryList;
 
         protected override void OnAppearing()
         {
@@ -46,38 +45,36 @@ namespace AdaaMobile
                 lblDurationResult.HorizontalOptions = LayoutOptions.End;
                 Grid.SetColumn(imageReasonType, 0);
                 imageReasonType.RotationY = 180;
-
-
-
-            }
-        }
-
-        private async void LoadOnBelhaf()
-        {
-            lblDurationResult.Text = "Select name";
-            var response = await Locator.Default.DataService.GetOnBelfUsers();
-            loadingControl.IsRunning = false;
-            if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
-            {
-                DurationPicker.Items.Clear();
-                for (int i = 0; i < response.Result.result.Count; i++)
-                {
-                    DurationPicker.Items.Add(response.Result.result[i].ToString());
-                }
             }
         }
 
         private async void LoadParentCategories()
         {
-            lblAssignmentResult.Text = "Select categories";
+            lblDurationResult.Text = "Select category";
             var response = await Locator.Default.DataService.GetParentCategories(moduleName);
+            loadingControl.IsRunning = false;
+            if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
+            {
+				ParentCategoryList = response.Result.result;
+                DurationPicker.Items.Clear();
+                for (int i = 0; i < response.Result.result.Count; i++)
+                {
+					DurationPicker.Items.Add(response.Result.result[i].name);
+                }
+            }
+        }
+
+        private async void LoadOnBelhaf ()
+        {
+            lblAssignmentResult.Text = "Select name";
+            var response = await Locator.Default.DataService.GetOnBelfUsers();
             loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
                 AssignmentPicker.Items.Clear();
                 for (int i = 0; i < response.Result.result.Count; i++)
                 {
-                    AssignmentPicker.Items.Add(response.Result.result[i].ToString());
+					AssignmentPicker.Items.Add(response.Result.result[i].DisplayName);
                 }
             }
         }
@@ -98,14 +95,31 @@ namespace AdaaMobile
             DurationPicker.Focus();
         }
 
-        private void DurationPicker_SelectionIndexChanged(object sender, EventArgs e)
-        {
-            if (sender != null && sender is Picker)
-            {
-                var picker = sender as Picker;
-                lblDurationResult.Text = DurationPicker.Items[picker.SelectedIndex];
-            }
-        }
+       
+
+		private void AssignmentPicker_SelectionIndexChanged(object sender, EventArgs e)
+		{
+			if (sender != null && sender is Picker)
+			{
+				var picker = sender as Picker;
+				lblAssignmentResult.Text = AssignmentPicker.Items[picker.SelectedIndex];
+			}
+		}
+
+		private async void DurationPicker_SelectionIndexChanged(object sender, EventArgs e)
+		{
+			if (sender != null && sender is Picker)
+			{
+				var picker = sender as Picker;
+				var item=ParentCategoryList[picker.SelectedIndex];
+				lblDurationResult.Text = item.name;
+				var response = await Locator.Default.DataService.GetChildCategories(moduleName, item.id);
+				if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
+				{
+					ChildCategoryList = response.Result.result;
+				}
+			}
+		}
 
         private void ShowPassword_Toggled(object sender, ToggledEventArgs e)
         {
