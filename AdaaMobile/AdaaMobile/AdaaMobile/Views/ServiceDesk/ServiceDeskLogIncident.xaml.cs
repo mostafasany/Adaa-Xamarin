@@ -47,7 +47,7 @@ namespace AdaaMobile
                 Grid.SetColumn(imageReasonType, 0);
                 imageReasonType.RotationY = 180;
 
-            
+
 
             }
         }
@@ -86,11 +86,11 @@ namespace AdaaMobile
         {
         }
 
-		private void Assignment_OnClicked(object sender, EventArgs e)
-		{
-			AssignmentPicker.Unfocus();
-			AssignmentPicker.Focus();
-		}
+        private void Assignment_OnClicked(object sender, EventArgs e)
+        {
+            AssignmentPicker.Unfocus();
+            AssignmentPicker.Focus();
+        }
 
         private void Duration_OnClicked(object sender, EventArgs e)
         {
