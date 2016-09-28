@@ -47,7 +47,7 @@ namespace AdaaMobile
                 Grid.SetColumn(imageReasonType, 0);
                 imageReasonType.RotationY = 180;
 
-                lblAdditionalComments.HorizontalOptions = LayoutOptions.End;
+            
 
             }
         }
@@ -85,6 +85,12 @@ namespace AdaaMobile
         private async void LogIncident()
         {
         }
+
+		private void Assignment_OnClicked(object sender, EventArgs e)
+		{
+			AssignmentPicker.Unfocus();
+			AssignmentPicker.Focus();
+		}
 
         private void Duration_OnClicked(object sender, EventArgs e)
         {
