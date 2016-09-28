@@ -11,6 +11,8 @@
       <RowDefinition Height="8" />
       <RowDefinition Height="Auto" />
       <RowDefinition Height="8" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="8" />
     </Grid.RowDefinitions>
     <ActivityIndicator x:Name="loadingControl"  IsRunning="true" HeightRequest="60" WidthRequest="60" Grid.Row="0" Grid.RowSpan="4" VerticalOptions="Center" HorizontalOptions="Center" />
 
@@ -18,7 +20,18 @@
 
     <controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,5,10,8" >
 
-      <controls:ExtendedGrid Grid.Row="0" VerticalOptions="Start" Padding="10,0,10,5" >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <Grid  Grid.Row="0" Padding="0,0" >
+        <Label VerticalOptions="Center" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" TextColor="{StaticResource AppBackgroundNormal}"
+        Text="{ext:Translate ShowPassword}" x:Name="ShowPasswordLabel" HorizontalOptions="Start" />
+        <Switch Toggled="ShowPassword_Toggled" VerticalOptions="Center" HorizontalOptions="End" x:Name="PasswordToggle" IsToggled="False"/>
+      </Grid>
+
+      <controls:ExtendedGrid Grid.Row="1" VerticalOptions="Start" Padding="10,0,10,5" >
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
@@ -48,7 +61,28 @@
         </Grid>
       </controls:ExtendedGrid>
 
-      <controls:ExtendedGrid Grid.Row="2" VerticalOptions="Start" Padding="10,0,10,5" >
+    </controls:ExtendedGrid>
+
+    <controls:RoundedBoxView Grid.Row="2" BackgroundColor="#22007c85" VerticalOptions="Fill" CornerRadius="{StaticResource CornerRadius}" />
+
+    <controls:ExtendedGrid Grid.Row="2" VerticalOptions="Start" Padding="10,0,10,5" >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <Label Grid.Row="0" x:Name="lblTitle" TextColor="Gray" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate Reason}" />
+      <controls:ExtendedEditor x:Name="TitleEditor" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="Black" Text="{Binding Reason,Mode=TwoWay}" MaxLength="60" HeightRequest="90">
+      </controls:ExtendedEditor>
+
+      <Label Grid.Row="2" x:Name="lblDesc" TextColor="Gray" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate Reason}" />
+      <controls:ExtendedEditor x:Name="DescEditor" Grid.Row="3" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="Black" Text="{Binding Reason,Mode=TwoWay}" MaxLength="60" HeightRequest="90">
+      </controls:ExtendedEditor>
+
+      <controls:ExtendedGrid Grid.Row="4" VerticalOptions="Start" Padding="10,0,10,5" >
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
@@ -79,19 +113,6 @@
       </controls:ExtendedGrid>
 
     </controls:ExtendedGrid>
-
-    <controls:RoundedBoxView Grid.Row="2" BackgroundColor="#22007c85" VerticalOptions="Fill" CornerRadius="{StaticResource CornerRadius}" />
-
-    <controls:ExtendedGrid Grid.Row="2" VerticalOptions="StartAndExpand" Padding="10,10,10,10" BackgroundColor="Transparent">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-      </Grid.RowDefinitions>
-      <Label Grid.Row="0" x:Name="lblAdditionalComments" TextColor="Gray" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate AdditionalComments}" />
-      <controls:ExtendedEditor x:Name="AdditionalCommentsEditor" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="Black" Text="{Binding AdditionalComments,Mode=TwoWay}" MaxLength="60" HeightRequest="90">
-      </controls:ExtendedEditor>
-    </controls:ExtendedGrid>
-
   </Grid>
 
 </ContentPage>

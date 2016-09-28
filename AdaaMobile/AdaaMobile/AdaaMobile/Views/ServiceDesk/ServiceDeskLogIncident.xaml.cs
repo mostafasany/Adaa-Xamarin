@@ -101,6 +101,9 @@ namespace AdaaMobile
             }
         }
 
+        private void ShowPassword_Toggled(object sender, ToggledEventArgs e)
+        {
+        }
     }
 }
 
