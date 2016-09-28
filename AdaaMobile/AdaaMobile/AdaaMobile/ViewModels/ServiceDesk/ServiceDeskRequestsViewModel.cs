@@ -28,25 +28,29 @@ namespace AdaaMobile.ViewModels
 
 		private ServiceDeskRequests _Requests;
 
-		public ServiceDeskRequests Requests {
+		public ServiceDeskRequests Requests
+		{
 			get { return _Requests; }
-			set { SetProperty (ref _Requests, value); OnPropertyChanged ("NoRequests");}
+			set { SetProperty(ref _Requests, value); OnPropertyChanged("NoRequests"); }
 		}
 
 		private ServiceDeskRequest _SelectedRequests;
 
-		public ServiceDeskRequest SelectedRequests {
+		public ServiceDeskRequest SelectedRequests
+		{
 			get { return _SelectedRequests; }
-			set { SetProperty (ref _SelectedRequests, value); }
+			set { SetProperty(ref _SelectedRequests, value); }
 		}
 
-		public bool NoRequests {
-			get 
+		public bool NoRequests
+		{
+			get
 			{
-				if (Requests != null )
+				if (Requests != null)
 				{
 					return false;
-				} else {
+				}
+				else {
 					return true;
 				}
 			}
@@ -54,31 +58,27 @@ namespace AdaaMobile.ViewModels
 
 		private bool _IsBusy;
 
-		public bool IsBusy {
+		public bool IsBusy
+		{
 			get { return _IsBusy; }
-			set {
-				SetProperty (ref _IsBusy, value);
+			set
+			{
+				SetProperty(ref _IsBusy, value);
 			}
 		}
 
-		public bool incidents
-		{
-			get;
-			set;
-
-		}
 
 
 		#endregion
 
 		#region Initialization
 
-		public ServiceDeskRequestsViewModel (INavigationService navigationService, IDataService dataservice)
+		public ServiceDeskRequestsViewModel(INavigationService navigationService, IDataService dataservice)
 		{
 			_navigationService = navigationService;
 			_dataService = dataservice;
-			PageLoadedCommand = new AsyncExtendedCommand (Loaded);
-			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskRequest> (OpenRequestDetailsPage);
+			PageLoadedCommand = new AsyncExtendedCommand(Loaded);
+			RequestItemSelectedCommand = new AsyncExtendedCommand<ServiceDeskRequest>(OpenRequestDetailsPage);
 			CancelRequest = new AsyncExtendedCommand(Cancel);
 		}
 
@@ -95,25 +95,33 @@ namespace AdaaMobile.ViewModels
 
 		#region Methods
 
-		private async Task Loaded ()
+		private async Task Loaded()
 		{
-			try {
+			try
+			{
 				IsBusy = true;
-				var response = await _dataService.GetServiceDeskRequests (incidents,null);
-				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null) {
-					if (response.Result != null ) {
+				var response = await _dataService.GetServiceDeskRequests(false, null);
+				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+				{
+					if (response.Result != null)
+					{
 
 						_ServiceRequests = response.Result;
-			
-					} else {
+
+					}
+					else {
 
 					}
 				}
-				incidents = true;
-				await LoadIncidints();
-			} catch (Exception ex) {
 
-			} finally {
+				await LoadIncidints();
+			}
+			catch (Exception ex)
+			{
+
+			}
+			finally
+			{
 				IsBusy = false;
 			}
 
@@ -124,15 +132,15 @@ namespace AdaaMobile.ViewModels
 			try
 			{
 				IsBusy = true;
-				var response = await _dataService.GetServiceDeskRequests(incidents, null);
+				var response = await _dataService.GetServiceDeskRequests(true, null);
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
 				{
 					if (response.Result != null)
 					{
-						
+
 
 						_IncidentRequests = response.Result;
-					
+
 						if (_ServiceRequests != null)
 						{
 							List<ServiceDeskRequest> list = new List<ServiceDeskRequest>();
@@ -171,13 +179,14 @@ namespace AdaaMobile.ViewModels
 				var response = await _dataService.CancelServiceDeskRequests(SelectedRequests, null);
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
 				{
-					if (response.Result != null )
+					if (response.Result != null)
 					{
 						if (response.Result.result == "")
 						{
 							Locator.Default.NavigationService.GoBack();
 
-						}					}
+						}
+					}
 					else {
 
 					}
@@ -194,10 +203,10 @@ namespace AdaaMobile.ViewModels
 
 		}
 
-		private async Task OpenRequestDetailsPage (ServiceDeskRequest request)
+		private async Task OpenRequestDetailsPage(ServiceDeskRequest request)
 		{
 			SelectedRequests = request;
-			_navigationService.NavigateToPage (typeof(SelectedServiceRequestPage));
+			_navigationService.NavigateToPage(typeof(SelectedServiceRequestPage));
 		}
 
 		#endregion
