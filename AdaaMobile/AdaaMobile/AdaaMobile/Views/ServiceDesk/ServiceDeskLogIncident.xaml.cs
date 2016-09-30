@@ -100,7 +100,6 @@ namespace AdaaMobile
             loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.result.Count.ToString(), AppResources.Ok);
                 ParentCategoryList = response.Result.result;
                 ParentCategoriesPicker.Items.Clear();
                 for (int i = 0; i < response.Result.result.Count; i++)
@@ -116,13 +115,14 @@ namespace AdaaMobile
             ParentCategoriesPicker.Focus();
         }
 
-        private void ParentCategoriesPicker_SelectionIndexChanged(object sender, EventArgs e)
+        private async void ParentCategoriesPicker_SelectionIndexChanged(object sender, EventArgs e)
         {
             if (sender != null && sender is Picker)
             {
                 var picker = sender as Picker;
                 var item = ParentCategoryList[picker.SelectedIndex];
                 lblParentCategoriesResult.Text = item.name;
+                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, item.id, AppResources.Ok);
                 LoadParentChildCategories(item.id);
             }
         }
@@ -137,7 +137,7 @@ namespace AdaaMobile
             var response = await Locator.Default.DataService.GetChildCategories(moduleName, parentId);
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.result.Count.ToString(), AppResources.Ok);
+               
                 ChildCategoryList = response.Result.result;
                 ParentChildCategoriesPicker.Items.Clear();
                 for (int i = 0; i < response.Result.result.Count; i++)
