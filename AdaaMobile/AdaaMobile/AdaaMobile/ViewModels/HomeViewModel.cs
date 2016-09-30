@@ -127,7 +127,7 @@ namespace AdaaMobile.ViewModels
 
             data.Add(new AdaaPageItem()
             {
-                Title = AppResources.MyTasks,
+                Title = AppResources.CorrespondenceTrackingSystem,
                 IconSource = "AdaaMobile.Images.MyTasks.svg",
                 TargetType = typeof(MyTasksPage),
                 IsEnabled = false
