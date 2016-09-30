@@ -61,6 +61,7 @@ namespace AdaaMobile
 
         private async void LoadOnBelhaf()
         {
+            loadingControl.IsRunning = true;
             lblOnBelHalfResult.Text = AppResources.ServcieDesk_SelectName;
             var response = await Locator.Default.DataService.GetOnBelfUsers();
             loadingControl.IsRunning = false;
@@ -95,6 +96,7 @@ namespace AdaaMobile
 
         private async void LoadParentCategories()
         {
+            loadingControl.IsRunning = true;
             lblParentCategoriesResult.Text = AppResources.ServcieDesk_SelectCategory;
             var response = await Locator.Default.DataService.GetParentCategories(moduleName);
             loadingControl.IsRunning = false;
@@ -133,11 +135,12 @@ namespace AdaaMobile
 
         private async void LoadParentChildCategories(string parentId)
         {
+            loadingControl.IsRunning = true;
             lblParentChildCategoriesResult.Text = AppResources.ServcieDesk_SelectSubCategory;
             var response = await Locator.Default.DataService.GetChildCategories(moduleName, parentId);
+            loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-               
                 ChildCategoryList = response.Result.result;
                 ParentChildCategoriesPicker.Items.Clear();
                 for (int i = 0; i < response.Result.result.Count; i++)
@@ -145,7 +148,6 @@ namespace AdaaMobile
                     ParentChildCategoriesPicker.Items.Add(response.Result.result[i].name);
                 }
             }
-            loadingControl.IsRunning = false;
         }
 
         private void ParentChildCategories_OnClicked(object sender, EventArgs e)
