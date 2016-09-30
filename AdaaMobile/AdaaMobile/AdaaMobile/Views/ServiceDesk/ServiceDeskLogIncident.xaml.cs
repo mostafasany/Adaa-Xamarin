@@ -17,7 +17,7 @@ namespace AdaaMobile
             _viewModel = Locator.Default.ServiceDeskLogIncidentViewModel;
             BindingContext = _viewModel;
 
-            Title = AppResources.TimeSheet_AddNewTask;
+            Title = AppResources.ServiceDesk_LogAnIncident;
 
             LoadOnBelhaf();
             LoadParentCategories();
@@ -100,6 +100,7 @@ namespace AdaaMobile
             loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
+                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.result.Count.ToString(), AppResources.Ok);
                 ParentCategoryList = response.Result.result;
                 ParentCategoriesPicker.Items.Clear();
                 for (int i = 0; i < response.Result.result.Count; i++)
@@ -136,6 +137,7 @@ namespace AdaaMobile
             var response = await Locator.Default.DataService.GetChildCategories(moduleName, parentId);
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
+                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.result.Count.ToString(), AppResources.Ok);
                 ChildCategoryList = response.Result.result;
                 ParentChildCategoriesPicker.Items.Clear();
                 for (int i = 0; i < response.Result.result.Count; i++)
