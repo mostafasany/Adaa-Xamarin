@@ -41,7 +41,8 @@ namespace AdaaMobile
 			if (FilterPicker.SelectedIndex < 0)
 			{
 				FilterPicker.Items.Clear();
-				List<string> optionList = new List<string> { "All", "Active", "Canceled", "Closed", "Resolved"};
+	
+				List<string> optionList = new List<string> { AppResources.ServcieDesk_All, AppResources.ServcieDesk_Active, AppResources.ServcieDesk_Canceled, AppResources.ServcieDesk_Closed, AppResources.ServcieDesk_Resolved};
 
 				for (int i = 0; i < optionList.Count; i++)
 				{

@@ -41,7 +41,8 @@ namespace AdaaMobile
 			if (FilterPicker.SelectedIndex < 0)
 			{
 				FilterPicker.Items.Clear();
-				List<string> optionList = new List<string> { "All", "Pending", "In Progress", "Completed", "Faild", "Accepted", "Rejected" };
+
+				List<string> optionList = new List<string> { AppResources.ServcieDesk_All, AppResources.ServcieDesk_Pending, AppResources.ServcieDesk_InProgress,AppResources.ServcieDesk_Completed,AppResources.ServcieDesk_Faild, AppResources.ServcieDesk_Accepted, AppResources.ServcieDesk_Rejected};
 
 				for (int i = 0; i < optionList.Count; i++)
 				{

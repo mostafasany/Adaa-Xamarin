@@ -826,4 +826,39 @@
   <data name="ServcieDesk_SelectSubCategory" xml:space="preserve">
     <value>اختر التصنيف الفرعي</value>
   </data>
+
+	<data name="ServcieDesk_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+	<data name="ServcieDesk_Canceled" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+	<data name="ServcieDesk_Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+	<data name="ServcieDesk_Resolved" xml:space="preserve">
+    <value>Resolved</value>
+  </data>
+	<data name="ServcieDesk_All" xml:space="preserve">
+    <value>All</value>
+  </data>
+	<data name="ServcieDesk_Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+	<data name="ServcieDesk_InProgress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+	<data name="ServcieDesk_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+		<data name="ServcieDesk_Faild" xml:space="preserve">
+    <value>Faild</value>
+  </data>
+			<data name="ServcieDesk_Accepted" xml:space="preserve">
+    <value>Accepted</value>
+  </data>
+			<data name="ServcieDesk_Rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+
 </root>
