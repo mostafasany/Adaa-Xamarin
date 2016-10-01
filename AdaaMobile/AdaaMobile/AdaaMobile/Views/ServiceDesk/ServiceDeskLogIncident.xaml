@@ -133,7 +133,7 @@
         <StackLayout Grid.Row="6" Orientation="Vertical" x:Name="customControls">
 
         </StackLayout>
-      
+
       </controls:ExtendedGrid>
 
       <controls:ImageButton x:Name="AddAttachment" HeightRequest="50" Grid.Row="4" Text="{ext:Translate ServcieDesk_AddAttachment}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Center" BackgroundColor="#FF35A946" TextColor="White" HorizontalOptions="Fill">

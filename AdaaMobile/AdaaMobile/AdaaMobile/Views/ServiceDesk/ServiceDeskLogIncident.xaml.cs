@@ -269,8 +269,13 @@ namespace AdaaMobile
                 MaxLength = int.Parse(extension.MaxLength),
                 Keyboard = Keyboard.Text,
             };
-            //stringEditor.
+            stringEditor.TextChanged += StringEditor_TextChanged;
             customControls.Children.Add(stringEditor);
+        }
+
+        private void StringEditor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ExtendedEditor editor = sender as ExtendedEditor;
         }
 
         void RenderDouble(TemplateExtension extension)
