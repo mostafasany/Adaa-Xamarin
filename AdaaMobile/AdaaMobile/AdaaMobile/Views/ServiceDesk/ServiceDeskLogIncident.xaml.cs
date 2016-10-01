@@ -9,8 +9,6 @@ namespace AdaaMobile
 {
     public partial class ServiceDeskLogIncident : ContentPage
     {
-        private readonly ServiceDeskLogIncidentViewModel _viewModel;
-        string moduleName = "Incident%20Classification";
         public ServiceDeskLogIncident()
         {
             InitializeComponent();
@@ -19,17 +17,15 @@ namespace AdaaMobile
             _viewModel = Locator.Default.ServiceDeskLogIncidentViewModel;
             BindingContext = _viewModel;
 
-            Title = AppResources.TimeSheet_AddNewTask;
+            Title = AppResources.ServiceDesk_LogAnIncident;
 
             LoadOnBelhaf();
             LoadParentCategories();
             HandleArabicLanguageFlowDirection();
-			DurationPicker.SelectedIndexChanged += DurationPicker_SelectionIndexChanged;
-			AssignmentPicker.SelectedIndexChanged += AssignmentPicker_SelectionIndexChanged;
+            OnBelHalfPicker.SelectedIndexChanged += OnBelHalfPicker_SelectionIndexChanged;
+            ParentCategoriesPicker.SelectedIndexChanged += ParentCategoriesPicker_SelectionIndexChanged;
+            ParentChildCategoriesPicker.SelectedIndexChanged += ParentChildCategoriesPicker_SelectionIndexChanged;
         }
-
-		List<ParentCategory> ParentCategoryList;
-		List<ChildCategory> ChildCategoryList;
 
         protected override void OnAppearing()
         {
@@ -41,89 +37,148 @@ namespace AdaaMobile
         {
             if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
             {
-                lblDuration.HorizontalOptions = LayoutOptions.End;
-                lblDurationResult.HorizontalOptions = LayoutOptions.End;
-                Grid.SetColumn(imageReasonType, 0);
-                imageReasonType.RotationY = 180;
+                lblOnBelHalf.HorizontalOptions = LayoutOptions.End;
+                lblOnBelHalfResult.HorizontalOptions = LayoutOptions.End;
+                lblParentCategories.HorizontalOptions = LayoutOptions.End;
+                lblParentCategoriesResult.HorizontalOptions = LayoutOptions.End;
+                Grid.SetColumn(imageParentCategories, 0);
+                imageParentCategories.RotationY = 180;
+                Grid.SetColumn(imageParentChild, 0);
+                imageParentChild.RotationY = 180;
             }
         }
 
-        private async void LoadParentCategories()
-        {
-            lblDurationResult.Text = "Select category";
-            var response = await Locator.Default.DataService.GetParentCategories(moduleName);
-            loadingControl.IsRunning = false;
-            if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
-            {
-				ParentCategoryList = response.Result.result;
-                DurationPicker.Items.Clear();
-                for (int i = 0; i < response.Result.result.Count; i++)
-                {
-					DurationPicker.Items.Add(response.Result.result[i].name);
-                }
-            }
-        }
+        #region Members
 
-        private async void LoadOnBelhaf ()
+        string moduleName = "Incident%20Classification";
+        private readonly ServiceDeskLogIncidentViewModel _viewModel;
+        List<ParentCategory> ParentCategoryList;
+        List<ChildCategory> ChildCategoryList;
+
+        #endregion
+
+        #region OnBelHalf
+
+        private async void LoadOnBelhaf()
         {
-            lblAssignmentResult.Text = "Select name";
+            loadingControl.IsRunning = true;
+            lblOnBelHalfResult.Text = AppResources.ServcieDesk_SelectName;
             var response = await Locator.Default.DataService.GetOnBelfUsers();
             loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-                AssignmentPicker.Items.Clear();
+                OnBelHalfPicker.Items.Clear();
                 for (int i = 0; i < response.Result.result.Count; i++)
                 {
-					AssignmentPicker.Items.Add(response.Result.result[i].DisplayName);
+                    OnBelHalfPicker.Items.Add(response.Result.result[i].DisplayName);
                 }
             }
+        }
+
+        private void OnBelHalf_OnClicked(object sender, EventArgs e)
+        {
+            OnBelHalfPicker.Unfocus();
+            OnBelHalfPicker.Focus();
+        }
+
+        private void OnBelHalfPicker_SelectionIndexChanged(object sender, EventArgs e)
+        {
+            if (sender != null && sender is Picker)
+            {
+                var picker = sender as Picker;
+                lblOnBelHalfResult.Text = OnBelHalfPicker.Items[picker.SelectedIndex];
+            }
+        }
+
+        #endregion
+
+        #region ParentCategories
+
+        private async void LoadParentCategories()
+        {
+            loadingControl.IsRunning = true;
+            lblParentCategoriesResult.Text = AppResources.ServcieDesk_SelectCategory;
+            var response = await Locator.Default.DataService.GetParentCategories(moduleName);
+            loadingControl.IsRunning = false;
+            if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
+            {
+                ParentCategoryList = response.Result.result;
+                ParentCategoriesPicker.Items.Clear();
+                for (int i = 0; i < response.Result.result.Count; i++)
+                {
+                    ParentCategoriesPicker.Items.Add(response.Result.result[i].name);
+                }
+            }
+        }
+
+        private void ParentCategories_OnClicked(object sender, EventArgs e)
+        {
+            ParentCategoriesPicker.Unfocus();
+            ParentCategoriesPicker.Focus();
+        }
+
+        private async void ParentCategoriesPicker_SelectionIndexChanged(object sender, EventArgs e)
+        {
+            if (sender != null && sender is Picker)
+            {
+                var picker = sender as Picker;
+                var item = ParentCategoryList[picker.SelectedIndex];
+                lblParentCategoriesResult.Text = item.name;
+                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, item.id, AppResources.Ok);
+                LoadParentChildCategories(item.id);
+            }
+        }
+
+        #endregion
+
+        #region ParentChildCategories
+
+        private async void LoadParentChildCategories(string parentId)
+        {
+            loadingControl.IsRunning = true;
+            lblParentChildCategoriesResult.Text = AppResources.ServcieDesk_SelectSubCategory;
+            var response = await Locator.Default.DataService.GetChildCategories(moduleName, parentId);
+            loadingControl.IsRunning = false;
+            if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
+            {
+                ChildCategoryList = response.Result.result;
+                ParentChildCategoriesPicker.Items.Clear();
+                for (int i = 0; i < response.Result.result.Count; i++)
+                {
+                    ParentChildCategoriesPicker.Items.Add(response.Result.result[i].name);
+                }
+            }
+        }
+
+        private void ParentChildCategories_OnClicked(object sender, EventArgs e)
+        {
+            ParentChildCategoriesPicker.Unfocus();
+            ParentChildCategoriesPicker.Focus();
+        }
+
+        private async void ParentChildCategoriesPicker_SelectionIndexChanged(object sender, EventArgs e)
+        {
+            if (sender != null && sender is Picker)
+            {
+                var picker = sender as Picker;
+                var item = ChildCategoryList[picker.SelectedIndex];
+                lblParentChildCategoriesResult.Text = item.name;
+                var response = await Locator.Default.DataService.GetChildCategories(moduleName, item.id);
+                if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
+                {
+                    ChildCategoryList = response.Result.result;
+                }
+            }
+        }
+
+        #endregion
+
+        private void ShowPassword_Toggled(object sender, ToggledEventArgs e)
+        {
         }
 
         private async void LogIncident()
         {
         }
-
-        private void Assignment_OnClicked(object sender, EventArgs e)
-        {
-            AssignmentPicker.Unfocus();
-            AssignmentPicker.Focus();
-        }
-
-        private void Duration_OnClicked(object sender, EventArgs e)
-        {
-            DurationPicker.Unfocus();
-            DurationPicker.Focus();
-        }
-
-       
-
-		private void AssignmentPicker_SelectionIndexChanged(object sender, EventArgs e)
-		{
-			if (sender != null && sender is Picker)
-			{
-				var picker = sender as Picker;
-				lblAssignmentResult.Text = AssignmentPicker.Items[picker.SelectedIndex];
-			}
-		}
-
-		private async void DurationPicker_SelectionIndexChanged(object sender, EventArgs e)
-		{
-			if (sender != null && sender is Picker)
-			{
-				var picker = sender as Picker;
-				var item=ParentCategoryList[picker.SelectedIndex];
-				lblDurationResult.Text = item.name;
-				var response = await Locator.Default.DataService.GetChildCategories(moduleName, item.id);
-				if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
-				{
-					ChildCategoryList = response.Result.result;
-				}
-			}
-		}
-
-        private void ShowPassword_Toggled(object sender, ToggledEventArgs e)
-        {
-        }
     }
 }
-
