@@ -177,7 +177,7 @@ namespace AdaaMobile
             loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-                var template = response.Result;
+                var template = response.Result.result[0];
                 await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName,
                     template.ID + "-" +
                     template.CategoryID + "-" +

@@ -157,7 +157,7 @@
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="60" />
+            <ColumnDefinition Width="50" />
           </Grid.ColumnDefinitions>
           <Grid WidthRequest="25" x:Name="imgGrid1" Grid.Column="1" BackgroundColor="#cc007c85">
             <Image HorizontalOptions="Center" x:Name="imgArrow1" HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
@@ -167,7 +167,7 @@
             </Image>
           </Grid>
           <Label x:Name="lblHours" HorizontalOptions="End" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
-          <Grid WidthRequest="25" x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85" HorizontalOptions="End">
+          <Grid WidthRequest="50" x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85" HorizontalOptions="End">
             <Image HorizontalOptions="Center" x:Name="imgArrow2" HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
               <Image.Source>
                 <OnPlatform x:TypeArguments="ImageSource" iOS="note" Android="note.png" WinPhone="note.png" />
