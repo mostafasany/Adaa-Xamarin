@@ -18,6 +18,8 @@ namespace AdaaMobile
 	}
 	public partial class ServiceDeskLogIncident : ContentPage
 	{
+		
+
 		public ServiceDeskLogIncident()
 		{
 			InitializeComponent();
@@ -496,6 +498,11 @@ namespace AdaaMobile
 			{
 				onBehalfOfGrid.IsVisible = false;
 			}
+		}
+
+		void AddAttachment_Clicked(object sender, System.EventArgs e)
+		{
+			
 		}
 
 		private void LogIncident()
