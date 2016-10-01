@@ -196,7 +196,6 @@ namespace AdaaMobile
                 var extensions = response.Result.Table1;
                 foreach (var extension in extensions)
                 {
-                    await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, extension.Type, AppResources.Ok);
                     switch (extension.Type)
                     {
                         case "datetime":
@@ -218,6 +217,7 @@ namespace AdaaMobile
                             RenderDouble(extension);
                             break;
                         default:
+                            await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, extension.Type, AppResources.Ok);
                             break;
                     }
                 }
@@ -261,12 +261,15 @@ namespace AdaaMobile
             customControls.Children.Add(stringLabel);
             ExtendedEditor stringEditor = new ExtendedEditor
             {
+                Text = extension.DefaultValue != null ? extension.DefaultValue.ToString() : "",
                 HorizontalOptions = LayoutOptions.Fill,
                 TextColor = Xamarin.Forms.Color.Black,
                 BackgroundColor = Xamarin.Forms.Color.Transparent,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                MaxLength = 60,
+                MaxLength = int.Parse(extension.MaxLength),
+                Keyboard = Keyboard.Text,
             };
+            //stringEditor.
             customControls.Children.Add(stringEditor);
         }
 
@@ -284,11 +287,13 @@ namespace AdaaMobile
             customControls.Children.Add(doubleLabel);
             ExtendedEditor doubleEditor = new ExtendedEditor
             {
+                Text = extension.DefaultValue != null ? extension.DefaultValue.ToString() : "",
                 HorizontalOptions = LayoutOptions.Fill,
                 TextColor = Xamarin.Forms.Color.Black,
                 BackgroundColor = Xamarin.Forms.Color.Transparent,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                MaxLength = 60,
+                MaxLength = int.Parse(extension.MaxLength),
+                Keyboard = Keyboard.Numeric,
             };
             customControls.Children.Add(doubleEditor);
         }
@@ -307,11 +312,13 @@ namespace AdaaMobile
             customControls.Children.Add(intLabel);
             ExtendedEditor intEditor = new ExtendedEditor
             {
+                Text = extension.DefaultValue != null ? extension.DefaultValue.ToString() : "",
                 HorizontalOptions = LayoutOptions.Fill,
                 TextColor = Xamarin.Forms.Color.Black,
                 BackgroundColor = Xamarin.Forms.Color.Transparent,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                MaxLength = 60,
+                MaxLength = int.Parse(extension.MaxLength),
+                Keyboard = Keyboard.Numeric,
             };
             customControls.Children.Add(intEditor);
         }
