@@ -172,18 +172,12 @@ namespace AdaaMobile
 
         async void LoadTemplates(string childCategroyId)
         {
-            await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, childCategroyId, AppResources.Ok);
+            // await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, childCategroyId, AppResources.Ok);
             var response = await Locator.Default.DataService.GetTemplateId(childCategroyId);
             loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
                 var template = response.Result.result[0];
-                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName,
-                    template.ID + "-" +
-                    template.CategoryID + "-" +
-                    template.TemplateID + "-" +
-                    template.ClassName + "-" +
-                     template.TemplateName, AppResources.Ok);
                 LoadExtensions(template.TemplateID);
             }
         }
@@ -198,8 +192,27 @@ namespace AdaaMobile
             loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
             {
-                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Table1.Count.ToString(), AppResources.Ok);
                 var extensions = response.Result.Table1;
+                foreach (var extension in extensions)
+                {
+                    switch (extension.Type)
+                    {
+                        case "datetime":
+
+                        case "string":
+
+                        case "bool":
+
+                        case "enum":
+
+                        case "int":
+
+                        case "double":
+
+                        default:
+                            break;
+                    }
+                }
             }
         }
 
