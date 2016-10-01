@@ -4,6 +4,8 @@ using AdaaMobile.ViewModels;
 using AdaaMobile.Strings;
 using System.Collections.Generic;
 using AdaaMobile.Models.Response.ServiceDesk;
+using AdaaMobile.Controls;
+using System.Threading.Tasks;
 
 namespace AdaaMobile
 {
@@ -16,21 +18,20 @@ namespace AdaaMobile
 
             _viewModel = Locator.Default.ServiceDeskLogIncidentViewModel;
             BindingContext = _viewModel;
-
             Title = AppResources.ServiceDesk_LogAnIncident;
 
-            LoadOnBelhaf();
-            LoadParentCategories();
             HandleArabicLanguageFlowDirection();
             OnBelHalfPicker.SelectedIndexChanged += OnBelHalfPicker_SelectionIndexChanged;
             ParentCategoriesPicker.SelectedIndexChanged += ParentCategoriesPicker_SelectionIndexChanged;
             ParentChildCategoriesPicker.SelectedIndexChanged += ParentChildCategoriesPicker_SelectionIndexChanged;
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.PageLoadedCommand.Execute(null);
+            //_viewModel.PageLoadedCommand.Execute(null);
+            await LoadOnBelhaf();
+            await LoadParentCategories();
         }
 
         void HandleArabicLanguageFlowDirection()
@@ -59,7 +60,7 @@ namespace AdaaMobile
 
         #region OnBelHalf
 
-        private async void LoadOnBelhaf()
+        private async Task LoadOnBelhaf()
         {
             loadingControl.IsRunning = true;
             lblOnBelHalfResult.Text = AppResources.ServcieDesk_SelectName;
@@ -94,7 +95,7 @@ namespace AdaaMobile
 
         #region ParentCategories
 
-        private async void LoadParentCategories()
+        private async Task LoadParentCategories()
         {
             loadingControl.IsRunning = true;
             lblParentCategoriesResult.Text = AppResources.ServcieDesk_SelectCategory;
@@ -117,7 +118,7 @@ namespace AdaaMobile
             ParentCategoriesPicker.Focus();
         }
 
-        private async void ParentCategoriesPicker_SelectionIndexChanged(object sender, EventArgs e)
+        private void ParentCategoriesPicker_SelectionIndexChanged(object sender, EventArgs e)
         {
             if (sender != null && sender is Picker)
             {
@@ -155,7 +156,7 @@ namespace AdaaMobile
             ParentChildCategoriesPicker.Focus();
         }
 
-        private async void ParentChildCategoriesPicker_SelectionIndexChanged(object sender, EventArgs e)
+        private void ParentChildCategoriesPicker_SelectionIndexChanged(object sender, EventArgs e)
         {
             if (sender != null && sender is Picker)
             {
@@ -172,7 +173,6 @@ namespace AdaaMobile
 
         async void LoadTemplates(string childCategroyId)
         {
-            // await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, childCategroyId, AppResources.Ok);
             var response = await Locator.Default.DataService.GetTemplateId(childCategroyId);
             loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
@@ -188,6 +188,7 @@ namespace AdaaMobile
 
         async void LoadExtensions(string templateId)
         {
+            customControls.Children.Clear();
             var response = await Locator.Default.DataService.GetTemplateExtension(templateId);
             loadingControl.IsRunning = false;
             if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
@@ -195,25 +196,151 @@ namespace AdaaMobile
                 var extensions = response.Result.Table1;
                 foreach (var extension in extensions)
                 {
+                    await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, extension.Type, AppResources.Ok);
                     switch (extension.Type)
                     {
                         case "datetime":
-
+                            RenderDateTime(extension);
+                            break;
                         case "string":
-
+                            RenderString(extension);
+                            break;
                         case "bool":
-
+                            RenderBool(extension);
+                            break;
                         case "enum":
-
+                            RenderEnum(extension);
+                            break;
                         case "int":
-
+                            RenderInt(extension);
+                            break;
                         case "double":
-
+                            RenderDouble(extension);
+                            break;
                         default:
                             break;
                     }
                 }
             }
+        }
+
+        void RenderDateTime(TemplateExtension extension)
+        {
+            Label dateLabel = new Label
+            {
+                Text = extension.DisplayName,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                TextColor = Xamarin.Forms.Color.Gray,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                HorizontalTextAlignment = TextAlignment.Start,
+                FontSize = 20,
+            };
+            customControls.Children.Add(dateLabel);
+            DatePicker datePicker = new DatePicker
+            {
+                Format = "d MMM yyyy",
+                HorizontalOptions = LayoutOptions.Fill,
+                MinimumDate = DateTime.Now,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+            };
+            customControls.Children.Add(datePicker);
+        }
+
+        void RenderString(TemplateExtension extension)
+        {
+            Label stringLabel = new Label
+            {
+                Text = extension.DisplayName,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                TextColor = Xamarin.Forms.Color.Gray,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                HorizontalTextAlignment = TextAlignment.Start,
+                FontSize = 20,
+            };
+            customControls.Children.Add(stringLabel);
+            ExtendedEditor stringEditor = new ExtendedEditor
+            {
+                HorizontalOptions = LayoutOptions.Fill,
+                TextColor = Xamarin.Forms.Color.Black,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                MaxLength = 60,
+            };
+            customControls.Children.Add(stringEditor);
+        }
+
+        void RenderDouble(TemplateExtension extension)
+        {
+            Label doubleLabel = new Label
+            {
+                Text = extension.DisplayName,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                TextColor = Xamarin.Forms.Color.Gray,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                HorizontalTextAlignment = TextAlignment.Start,
+                FontSize = 20,
+            };
+            customControls.Children.Add(doubleLabel);
+            ExtendedEditor doubleEditor = new ExtendedEditor
+            {
+                HorizontalOptions = LayoutOptions.Fill,
+                TextColor = Xamarin.Forms.Color.Black,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                MaxLength = 60,
+            };
+            customControls.Children.Add(doubleEditor);
+        }
+
+        void RenderInt(TemplateExtension extension)
+        {
+            Label intLabel = new Label
+            {
+                Text = extension.DisplayName,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                TextColor = Xamarin.Forms.Color.Gray,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                HorizontalTextAlignment = TextAlignment.Start,
+                FontSize = 20,
+            };
+            customControls.Children.Add(intLabel);
+            ExtendedEditor intEditor = new ExtendedEditor
+            {
+                HorizontalOptions = LayoutOptions.Fill,
+                TextColor = Xamarin.Forms.Color.Black,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                MaxLength = 60,
+            };
+            customControls.Children.Add(intEditor);
+        }
+
+        void RenderBool(TemplateExtension extension)
+        {
+            Label boolLabel = new Label
+            {
+                Text = extension.DisplayName,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Start,
+                TextColor = Xamarin.Forms.Color.Gray,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                HorizontalTextAlignment = TextAlignment.Start,
+                FontSize = 20,
+            };
+            customControls.Children.Add(boolLabel);
+            Switch switchToggle = new Switch
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.End,
+                IsToggled = false,
+            };
+            customControls.Children.Add(switchToggle);
+        }
+
+        void RenderEnum(TemplateExtension extension)
+        {
+
         }
 
         #endregion
@@ -222,7 +349,7 @@ namespace AdaaMobile
         {
         }
 
-        private async void LogIncident()
+        private void LogIncident()
         {
         }
     }

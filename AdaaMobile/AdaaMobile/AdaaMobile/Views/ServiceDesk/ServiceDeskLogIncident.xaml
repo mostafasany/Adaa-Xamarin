@@ -72,6 +72,7 @@
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Label Grid.Row="0" x:Name="lblTitle" TextColor="Gray" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate ServcieDesk_Title}" />
         <controls:ExtendedEditor x:Name="TitleEditor" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="Black" Text="{Binding Reason,Mode=TwoWay}" MaxLength="60">
@@ -129,10 +130,13 @@
           <Label x:Name="lblParentChildCategoriesResult" BackgroundColor="Transparent" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Fill" TextColor="{StaticResource AppBackgroundNormal}" Font="SemiBold" InputTransparent="True">
           </Label>
         </controls:ExtendedGrid>
+        <StackLayout Grid.Row="6" Orientation="Vertical" x:Name="customControls">
 
+        </StackLayout>
+      
       </controls:ExtendedGrid>
 
-      <controls:ImageButton x:Name="AddAttachment" Grid.Row="4" Text="{ext:Translate ServcieDesk_AddAttachment}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Center" BackgroundColor="#FF35A946" TextColor="White" HorizontalOptions="Fill">
+      <controls:ImageButton x:Name="AddAttachment" HeightRequest="50" Grid.Row="4" Text="{ext:Translate ServcieDesk_AddAttachment}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Center" BackgroundColor="#FF35A946" TextColor="White" HorizontalOptions="Fill">
         <controls:ImageButton.ImageHeightRequest>
           <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="24" />
         </controls:ImageButton.ImageHeightRequest>
@@ -149,7 +153,7 @@
 
       <Label Grid.Row="5" HorizontalOptions="Center" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate ServiceDesk_FileCannotExceed}" />
 
-      <Grid HeightRequest="35" Grid.Row="6">
+      <Grid HeightRequest="50" Grid.Row="6">
         <controls:ExtendedButton Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}" Text="" TextColor="Transparent" BackgroundColor="#6cb3b8">
         </controls:ExtendedButton>
         <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" VerticalOptions="Start" HeightRequest="50" CornerRadius="{StaticResource CornerRadius}">
@@ -168,7 +172,7 @@
           </Grid>
           <Label x:Name="lblHours" HorizontalOptions="End" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
           <Grid WidthRequest="50" x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85" HorizontalOptions="End">
-            <Image HorizontalOptions="Center" x:Name="imgArrow2" HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
+            <Image HorizontalOptions="Center" x:Name="imgArrow2" HeightRequest="50" WidthRequest="20" VerticalOptions="Center">
               <Image.Source>
                 <OnPlatform x:TypeArguments="ImageSource" iOS="note" Android="note.png" WinPhone="note.png" />
               </Image.Source>
