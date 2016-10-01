@@ -8,6 +8,7 @@ using AdaaMobile.Models.Response;
 using AdaaMobile.DataServices.Requests;
 using System.Linq;
 using System.Diagnostics.Contracts;
+using System.Collections.ObjectModel;
 
 namespace AdaaMobile.ViewModels
 {
@@ -21,14 +22,14 @@ namespace AdaaMobile.ViewModels
 		#endregion
 
 		#region Properties
-		private ServiceDeskRequests _IncidentRequests;
-		private ServiceDeskRequests _ServiceRequests;
+		private ObservableCollection<ServiceDeskRequest> _IncidentRequests;
+		private ObservableCollection<ServiceDeskRequest> _ServiceRequests;
 
-		private ServiceDeskRequests _OriginalRequests;
+		private ObservableCollection<ServiceDeskRequest> _OriginalRequests;
 
-		private ServiceDeskRequests _Requests;
+		private ObservableCollection<ServiceDeskRequest> _Requests;
 
-		public ServiceDeskRequests Requests
+		public ObservableCollection<ServiceDeskRequest> Requests
 		{
 			get { return _Requests; }
 			set { SetProperty(ref _Requests, value); OnPropertyChanged("NoRequests"); }
@@ -82,6 +83,50 @@ namespace AdaaMobile.ViewModels
 			CancelRequest = new AsyncExtendedCommand(Cancel);
 		}
 
+		public void FilterByStatus(string status)
+		{
+			if (_OriginalRequests != null)
+			{
+				if (status == "All")
+				{
+					Requests = _OriginalRequests;
+				}
+				else
+				{
+					List<ServiceDeskRequest> objlist = _OriginalRequests.ToList();
+					List<ServiceDeskRequest> resultlist = objlist.Where(a => a.Status == status).ToList();
+					Requests = new ObservableCollection<ServiceDeskRequest>(resultlist);
+
+				}
+			}
+		}
+
+		public void searchBy(string search)
+		{
+			if (_OriginalRequests != null)
+			{
+				if (string.IsNullOrEmpty(search))
+				{
+					Requests = _OriginalRequests;
+				}
+				else
+				{
+					try
+					{
+						List<ServiceDeskRequest> objlist = _OriginalRequests.ToList();
+						List<ServiceDeskRequest> resultlist = objlist.Where(a => a.Classification.ToLower().Contains(search.ToLower()) ||
+						                                                    a.Title.ToLower().Contains(search.ToLower())).ToList();
+						Requests = new ObservableCollection<ServiceDeskRequest>(resultlist);
+					}
+					catch (Exception ex)
+					{
+
+					}
+	
+
+				}
+			}
+		}
 
 		#endregion
 
@@ -106,7 +151,7 @@ namespace AdaaMobile.ViewModels
 					if (response.Result != null)
 					{
 
-						_ServiceRequests = response.Result;
+						_ServiceRequests =new ObservableCollection<ServiceDeskRequest>(response.Result.result.Table1);  
 
 					}
 					else {
@@ -139,20 +184,23 @@ namespace AdaaMobile.ViewModels
 					{
 
 
-						_IncidentRequests = response.Result;
+						_IncidentRequests = new ObservableCollection<ServiceDeskRequest>(response.Result.result.Table1);
 
 						if (_ServiceRequests != null)
 						{
+							
 							List<ServiceDeskRequest> list = new List<ServiceDeskRequest>();
-							list.AddRange(_IncidentRequests.result.Table1);
-							list.AddRange(_ServiceRequests.result.Table1);
-							Requests.result.Table1 = list.ToArray();
+							list.AddRange(_IncidentRequests);
+							list.AddRange(_ServiceRequests);
+							Requests = new ObservableCollection<ServiceDeskRequest>(list);
+
 
 						}
 						else
 						{
 							Requests = _IncidentRequests;
 						}
+						_OriginalRequests = new ObservableCollection<ServiceDeskRequest>(Requests.ToList());
 					}
 					else {
 
