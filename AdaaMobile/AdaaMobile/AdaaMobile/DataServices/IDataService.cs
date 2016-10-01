@@ -102,7 +102,7 @@ namespace AdaaMobile.DataServices
         Task<ResponseWrapper<ParentCategoryResult>> GetParentCategories(string mouduleName, CancellationToken? token = null);
         Task<ResponseWrapper<ChildCategoryResult>> GetChildCategories(string mouduleName, string categoryId, CancellationToken? token = null);
         Task<ResponseWrapper<CategoryTemplate>> GetTemplateId(string categoryId, CancellationToken? token = null);
-        Task<ResponseWrapper<TemplateExtension>> GetTemplateExtension(string templateId, CancellationToken? token = null);
+        Task<ResponseWrapper<TemplateExtensionResult>> GetTemplateExtension(string templateId, CancellationToken? token = null);
 
         #endregion
     }

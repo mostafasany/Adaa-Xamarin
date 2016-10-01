@@ -539,7 +539,7 @@ namespace AdaaMobile.DataServices
 			return response;
 		}
 
-		public async Task<ResponseWrapper<TemplateExtension>> GetTemplateExtension(string templateId, CancellationToken? token = default(CancellationToken?))
+		public async Task<ResponseWrapper<TemplateExtensionResult>> GetTemplateExtension(string templateId, CancellationToken? token = default(CancellationToken?))
 		{
 			string language = "ar";
 			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
@@ -551,7 +551,7 @@ namespace AdaaMobile.DataServices
 			request.RequestUrl = ServiceDiskBaseUrl + string.Format("getClassExtentions_multiLanguage?TemplalteID={0}&lang={1}", templateId, language);
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<TemplateExtension>(stringContent, token);
+			var response = await request.PostAsync<TemplateExtensionResult>(stringContent, token);
 			return response;
 		}
 

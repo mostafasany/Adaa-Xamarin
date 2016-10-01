@@ -152,12 +152,12 @@
       <Grid HeightRequest="35" Grid.Row="6">
         <controls:ExtendedButton Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}" Text="" TextColor="Transparent" BackgroundColor="#6cb3b8">
         </controls:ExtendedButton>
-        <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" VerticalOptions="Start" HeightRequest="40" CornerRadius="{StaticResource CornerRadius}">
+        <controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" VerticalOptions="Start" HeightRequest="50" CornerRadius="{StaticResource CornerRadius}">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="60" />
           </Grid.ColumnDefinitions>
           <Grid WidthRequest="25" x:Name="imgGrid1" Grid.Column="1" BackgroundColor="#cc007c85">
             <Image HorizontalOptions="Center" x:Name="imgArrow1" HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
@@ -167,7 +167,7 @@
             </Image>
           </Grid>
           <Label x:Name="lblHours" HorizontalOptions="End" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
-          <Grid WidthRequest="25" x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85">
+          <Grid WidthRequest="25" x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85" HorizontalOptions="End">
             <Image HorizontalOptions="Center" x:Name="imgArrow2" HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
               <Image.Source>
                 <OnPlatform x:TypeArguments="ImageSource" iOS="note" Android="note.png" WinPhone="note.png" />

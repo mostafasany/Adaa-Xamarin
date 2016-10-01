@@ -124,8 +124,7 @@ namespace AdaaMobile
                 var picker = sender as Picker;
                 var item = ParentCategoryList[picker.SelectedIndex];
                 lblParentCategoriesResult.Text = item.name;
-                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, item.id, AppResources.Ok);
-                LoadParentChildCategories(item.id);
+                LoadParentChildCategories(item.parent);
             }
         }
 
@@ -163,11 +162,44 @@ namespace AdaaMobile
                 var picker = sender as Picker;
                 var item = ChildCategoryList[picker.SelectedIndex];
                 lblParentChildCategoriesResult.Text = item.name;
-                var response = await Locator.Default.DataService.GetChildCategories(moduleName, item.id);
-                if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
-                {
-                    ChildCategoryList = response.Result.result;
-                }
+                LoadTemplates(item.id);
+            }
+        }
+
+        #endregion
+
+        #region Template
+
+        async void LoadTemplates(string childCategroyId)
+        {
+            await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, childCategroyId, AppResources.Ok);
+            var response = await Locator.Default.DataService.GetTemplateId(childCategroyId);
+            loadingControl.IsRunning = false;
+            if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
+            {
+                var template = response.Result;
+                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName,
+                    template.ID + "-" +
+                    template.CategoryID + "-" +
+                    template.TemplateID + "-" +
+                    template.ClassName + "-" +
+                     template.TemplateName, AppResources.Ok);
+                LoadExtensions(template.TemplateID);
+            }
+        }
+
+        #endregion
+
+        #region Extensions
+
+        async void LoadExtensions(string templateId)
+        {
+            var response = await Locator.Default.DataService.GetTemplateExtension(templateId);
+            loadingControl.IsRunning = false;
+            if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
+            {
+                await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, response.Result.Table1.Count.ToString(), AppResources.Ok);
+                var extensions = response.Result.Table1;
             }
         }
 
