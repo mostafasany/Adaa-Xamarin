@@ -523,7 +523,7 @@ namespace AdaaMobile.DataServices
 			return response;
 		}
 
-		public async Task<ResponseWrapper<CategoryTemplate>> GetTemplateId(string categoryId, CancellationToken? token = default(CancellationToken?))
+		public async Task<ResponseWrapper<CategoryTemplateResult>> GetTemplateId(string categoryId, CancellationToken? token = default(CancellationToken?))
 		{
 			string language = "ar";
 			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
@@ -535,7 +535,7 @@ namespace AdaaMobile.DataServices
 			request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetCategoryLinksByCatID?CategoryID={0}&lang={1}", categoryId, language);
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-			var response = await request.PostAsync<CategoryTemplate>(stringContent, token);
+			var response = await request.PostAsync<CategoryTemplateResult>(stringContent, token);
 			return response;
 		}
 
