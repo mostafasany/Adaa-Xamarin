@@ -411,15 +411,13 @@ namespace AdaaMobile.DataServices
 			{
 				language = "en";
 			}
-			else
-			{
-				language = "ar";
-			}
+
 			//var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+			var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
 			var request = _requestFactory();
 
 
-			request.RequestUrl = ServiceDiskBaseUrl + "Get_RA_ByReviewerName_MultiLanguage_SQL_Status?ReviewerName=OtOKaLu4Z8I0vG/D9nXUmg==&Status=00000000-0000-0000-0000-000000000000&lang=en";
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("Get_RA_ByReviewerName_MultiLanguage_SQL_Status?ReviewerName={0}&Status=00000000-0000-0000-0000-000000000000&lang={1}", encryptedUserName, language);
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
 			var response = await request.PostAsync<ServiceDeskCases>(stringContent, token);
@@ -434,20 +432,18 @@ namespace AdaaMobile.DataServices
 			{
 				language = "en";
 			}
-			else
-			{
-				language = "ar";
-			}
-			//var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+
+			var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+			//var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
 			var request = _requestFactory();
 			if (incidents)
 			{
-				request.RequestUrl = ServiceDiskBaseUrl + "GetIncidentsData_SQLMultiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang=en&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg ==";
+				request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetIncidentsData_SQLMultiLang?AffecteduserName={0}&lang={1}&AssignedTouserName={2}", encryptedUserName, language, encryptedUserName);
 
 			}
 			else
 			{
-				request.RequestUrl = ServiceDiskBaseUrl + "GetServiceRequests_SQl_multiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang=en&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg ==";
+				request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetServiceRequests_SQl_multiLang?AffecteduserName={0}&lang={1}&AssignedTouserName={2}", encryptedUserName, language, encryptedUserName);
 			}
 			request.ResultContentType = ContentType.Json;
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
@@ -457,20 +453,18 @@ namespace AdaaMobile.DataServices
 
 		async Task<ResponseWrapper<ServiceDeskCases>> IDataService.GetServiceDeskCasesDetails(string caseId, CancellationToken? token)
 		{
-			string language = "";
+			string language = "ar";
 			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
 			{
 				language = "en";
 			}
-			else
-			{
-				language = "ar";
-			}
+
 			//var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+			var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
 			var request = _requestFactory();
 
 
-			request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetActivityDetailsByID_Security?id={0}&UserName=george.zaki&UserDomain=dev", caseId);
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetActivityDetailsByID_Security?id={0}&UserName={1}&UserDomain=dev", caseId, encryptedUserName);
 			request.ResultContentType = ContentType.Json;
 
 			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
@@ -612,25 +606,25 @@ namespace AdaaMobile.DataServices
 
 		}
 
-        public async Task<ResponseWrapper<AcceptAndReject>> LogIncident(LogIncidentRequest request, CancellationToken? token = default(CancellationToken?))
-        {
-            var requestFactory = _requestFactory();
-            requestFactory.RequestUrl = ServiceDiskBaseUrl + string.Format("NewIncidentWithTemplateV1");
-            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-            var response = await requestFactory.PostAsync<AcceptAndReject>(stringContent, token);
-            return response;
-        }
+		public async Task<ResponseWrapper<AcceptAndReject>> LogIncident(LogIncidentRequest request, CancellationToken? token = default(CancellationToken?))
+		{
+			var requestFactory = _requestFactory();
+			requestFactory.RequestUrl = ServiceDiskBaseUrl + string.Format("NewIncidentWithTemplateV1");
+			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+			var response = await requestFactory.PostAsync<AcceptAndReject>(stringContent, token);
+			return response;
+		}
 
-        public async Task<ResponseWrapper<AcceptAndReject>> NewServiceRequest(NewServiceRequest request, CancellationToken? token = default(CancellationToken?))
-        {
-            var requestFactory = _requestFactory();
-            requestFactory.RequestUrl = ServiceDiskBaseUrl + string.Format("SaveMultiServiceRequest");
-            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-            var response = await requestFactory.PostAsync<AcceptAndReject>(stringContent, token);
-            return response;
-        }
+		public async Task<ResponseWrapper<AcceptAndReject>> NewServiceRequest(NewServiceRequest request, CancellationToken? token = default(CancellationToken?))
+		{
+			var requestFactory = _requestFactory();
+			requestFactory.RequestUrl = ServiceDiskBaseUrl + string.Format("SaveMultiServiceRequest");
+			var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+			var response = await requestFactory.PostAsync<AcceptAndReject>(stringContent, token);
+			return response;
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 
 }

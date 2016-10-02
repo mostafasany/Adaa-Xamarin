@@ -30,7 +30,7 @@ namespace AdaaMobile
             BindingContext = _viewModel;
             Title = AppResources.ServiceDesk_LogAnIncident;
 
-            HandleArabicLanguageFlowDirection();
+            //HandleArabicLanguageFlowDirection();
             OnBelHalfPicker.SelectedIndexChanged += OnBelHalfPicker_SelectionIndexChanged;
             ParentCategoriesPicker.SelectedIndexChanged += ParentCategoriesPicker_SelectionIndexChanged;
             ParentChildCategoriesPicker.SelectedIndexChanged += ParentChildCategoriesPicker_SelectionIndexChanged;
@@ -349,7 +349,7 @@ namespace AdaaMobile
             {
                 Format = "d MMM yyyy",
                 HorizontalOptions = LayoutOptions.Fill,
-                MinimumDate = DateTime.Now,
+                //MinimumDate = DateTime.Now,
                 BackgroundColor = Xamarin.Forms.Color.Transparent,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 BindingContext = extension,
@@ -593,7 +593,7 @@ namespace AdaaMobile
             request.Source = source;
             request.templateId = templateId;
             request.Title = title;
-            request.Urgency = urgency;
+            request.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
             var response = await Locator.Default.DataService.LogIncident(request);
             if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
             {

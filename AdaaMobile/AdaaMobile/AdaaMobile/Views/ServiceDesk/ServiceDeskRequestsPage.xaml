@@ -14,7 +14,7 @@
 				<OnPlatform x:TypeArguments="ImageSource" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 			</Image.Source>
 		</Image>
-		<SearchBar x:Name="RequestSearchBar" HorizontalTextAlignment="Start" Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="#1A7C85" TextColor="Black" PlaceholderColor="#FFCCCCCC" FontSize="Small" Placeholder="{ext:Translate SearchAllContacts}">
+		<SearchBar x:Name="RequestSearchBar" HorizontalTextAlignment="Start" Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="#1A7C85" TextColor="Black" PlaceholderColor="#FFCCCCCC" FontSize="Small" Placeholder="{ext:Translate ServiceDesk_Search}">
 		</SearchBar>
 		<Grid x:Name="MyRequestsListGrid" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True" BackgroundColor="Transparent">
 			<!--			<Label x:Name="NoRequestsLabel" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoServiceDeskRequests}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />-->
@@ -24,7 +24,7 @@
 						<ViewCell>
 							<ViewCell.View>
 								<Grid Padding="2,3">
-									<ServiceDesk:ServiceDeskItemTemplate Title="{Binding Status}" SubTitle="{Binding Classification}" Message="{Binding Title}" Date="{Binding Type}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference MainWindow}}" CommandParamter="{Binding}" />
+									<ServiceDesk:ServiceDeskItemTemplate Title="{Binding Status}" SubTitle="{Binding ID}" Message="{Binding Classification}" Date="{Binding Type}" Command="{Binding Path=BindingContext.RequestItemSelectedCommand, Source={x:Reference MainWindow}}" CommandParamter="{Binding}" />
 								</Grid>
 							</ViewCell.View>
 						</ViewCell>

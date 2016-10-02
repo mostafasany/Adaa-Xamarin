@@ -114,7 +114,10 @@ namespace AdaaMobile.ViewModels
 					try
 					{
 						List<ServiceDeskRequest> objlist = _OriginalRequests.ToList();
-						List<ServiceDeskRequest> resultlist = objlist.Where(a =>a.Title.ToLower().Contains(search.ToLower())).ToList();
+						List<ServiceDeskRequest> resultlist = objlist.Where(a =>a.Title.ToLower().Contains(search.ToLower())||
+						                                                    a.ID.ToLower().Contains(search.ToLower())||
+						                                                    (!string.IsNullOrEmpty(a.Classification) && 
+						                                                     a.Classification.ToLower().Contains(search.ToLower()))).ToList();
 						Requests = new ObservableCollection<ServiceDeskRequest>(resultlist);
 					}
 					catch (Exception ex)

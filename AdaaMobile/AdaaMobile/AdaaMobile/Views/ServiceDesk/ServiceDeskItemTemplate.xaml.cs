@@ -32,7 +32,7 @@ namespace AdaaMobile.Views.ServiceDesk
 				Grid.SetColumn (lblTitle, 2);
 
 				lblSubTitle.HorizontalOptions = LayoutOptions.End;
-				Grid.SetColumn(lblTitle, 2);
+				Grid.SetColumn(lblSubTitle, 2);
 
 				lblMessages.HorizontalOptions = LayoutOptions.End;
 				Grid.SetColumn (lblMessages, 2);

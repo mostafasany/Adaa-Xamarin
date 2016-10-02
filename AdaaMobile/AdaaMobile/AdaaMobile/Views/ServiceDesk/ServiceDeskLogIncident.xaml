@@ -126,7 +126,7 @@
         <StackLayout Grid.Row="6" Orientation="Vertical" x:Name="customControls">
         </StackLayout>
       </controls:ExtendedGrid>
-      <controls:ImageButton x:Name="AddAttachment" Clicked="AddAttachment_Clicked" HeightRequest="50" Grid.Row="4" Text="{ext:Translate ServcieDesk_AddAttachment}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Center" BackgroundColor="#cc007c85" TextColor="White" HorizontalOptions="Fill">
+      <controls:ImageButton x:Name="AddAttachment" IsVisible="false"  Clicked="AddAttachment_Clicked" HeightRequest="50" Grid.Row="4" Text="{ext:Translate ServcieDesk_AddAttachment}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Center" BackgroundColor="#cc007c85" TextColor="White" HorizontalOptions="Fill">
         <controls:ImageButton.ImageHeightRequest>
           <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="24" />
         </controls:ImageButton.ImageHeightRequest>
@@ -140,7 +140,7 @@
           <OnPlatform x:TypeArguments="ImageSource" WinPhone="checkgreen.png" Android="save.png" iOS="save" />
         </controls:ImageButton.Source>
       </controls:ImageButton>
-      <Label Grid.Row="5" HorizontalOptions="Center" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate ServiceDesk_FileCannotExceed}" />
+      <Label Grid.Row="5" IsVisible="false" HorizontalOptions="Center" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate ServiceDesk_FileCannotExceed}" />
       <Grid HeightRequest="50" Grid.Row="6" x:Name="attachmentGrid" IsVisible="false">
         <controls:ExtendedButton Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}" Text="" TextColor="Transparent" BackgroundColor="#6cb3b8">
         </controls:ExtendedButton>
