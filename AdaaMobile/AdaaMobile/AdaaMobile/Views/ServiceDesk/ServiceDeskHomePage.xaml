@@ -22,7 +22,7 @@
           <ViewCell>
             <ViewCell.View>
               <Grid Padding="12,5">
-                <masterView:EServiceItemControl Message="{Binding Title}" IndicatorColor="Transparent" Command="{Binding  BindingContext.NavigateToPageCommand,Source={x:Reference ParentView}}" CommandParamter="{Binding TargetType}" />
+                <masterView:EServiceItemControl Message="{Binding Title}" IndicatorColor="Transparent" Command="{Binding  BindingContext.NavigateToPageCommand,Source={x:Reference ParentView}}" CommandParamter="{Binding}" />
               </Grid>
             </ViewCell.View>
           </ViewCell>

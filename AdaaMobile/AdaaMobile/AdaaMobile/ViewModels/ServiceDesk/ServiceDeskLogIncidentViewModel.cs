@@ -3,9 +3,6 @@ using AdaaMobile.Helpers;
 using System;
 using System.Threading.Tasks;
 using AdaaMobile.Common;
-using AdaaMobile.Models;
-using System.Collections.ObjectModel;
-using AdaaMobile.Models.Response.ServiceDesk;
 
 namespace AdaaMobile.ViewModels
 {
@@ -28,21 +25,6 @@ namespace AdaaMobile.ViewModels
                 SetProperty(ref _IsBusy, value);
             }
         }
-
-
-        //private ObservableCollection<OnBehalf> _OnBehalfList;
-        //public ObservableCollection<OnBehalf> OnBehalfList
-        //{
-        //    get { return _OnBehalfList; }
-        //    set { SetProperty(ref _OnBehalfList, value); }
-        //}
-
-        //private ObservableCollection<ParentCategory> _ParentCategoryList;
-        //public ObservableCollection<ParentCategory> ParentCategoryList
-        //{
-        //    get { return _ParentCategoryList; }
-        //    set { SetProperty(ref _ParentCategoryList, value); }
-        //}
 
         #endregion
 
@@ -68,14 +50,6 @@ namespace AdaaMobile.ViewModels
             try
             {
                 IsBusy = true;
-                //var onbelfResult = await _dataService.GetOnBelfUsers(null);
-                //if (onbelfResult != null && onbelfResult.Result != null)
-                //    OnBehalfList = new ObservableCollection<OnBehalf>(onbelfResult.Result.result);
-
-                //var parentCategoryResult = await _dataService.GetParentCategories(null);
-                //if (parentCategoryResult != null && parentCategoryResult.Result != null)
-                //    ParentCategoryList = new ObservableCollection<ParentCategory>(parentCategoryResult.Result.result);
-
             }
             catch (Exception ex)
             {

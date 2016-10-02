@@ -71,7 +71,7 @@ namespace AdaaMobile.ViewModels
 			cb.RegisterType<MyAssigmentsViewModel>().SingleInstance ();
 
             //ServiceDesk
-            cb.RegisterType<ServiceDeskHomeViewModel>();
+            cb.RegisterType<ServiceDeskHomeViewModel>().SingleInstance();
 			cb.RegisterType<ServiceDeskCasesViewModel>().SingleInstance();
 			cb.RegisterType<ServiceDeskRequestsViewModel>().SingleInstance();
             cb.RegisterType<ServiceDeskLogIncidentViewModel>().SingleInstance();

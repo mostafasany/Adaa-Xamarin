@@ -596,7 +596,6 @@ namespace AdaaMobile.DataServices
 
 		public async Task<ResponseWrapper<AcceptAndReject>> RejectServiceDeskCases(ServiceDeskCase serviceDesk, CancellationToken? token = null)
 		{
-
 			var request = _requestFactory();
 			if (serviceDesk.Id.Contains("MA"))
 			{
@@ -613,7 +612,25 @@ namespace AdaaMobile.DataServices
 
 		}
 
-		#endregion
-	}
+        public async Task<ResponseWrapper<AcceptAndReject>> LogIncident(LogIncidentRequest request, CancellationToken? token = default(CancellationToken?))
+        {
+            var requestFactory = _requestFactory();
+            requestFactory.RequestUrl = ServiceDiskBaseUrl + string.Format("NewIncidentWithTemplateV1");
+            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+            var response = await requestFactory.PostAsync<AcceptAndReject>(stringContent, token);
+            return response;
+        }
+
+        public async Task<ResponseWrapper<AcceptAndReject>> NewServiceRequest(NewServiceRequest request, CancellationToken? token = default(CancellationToken?))
+        {
+            var requestFactory = _requestFactory();
+            requestFactory.RequestUrl = ServiceDiskBaseUrl + string.Format("SaveMultiServiceRequest");
+            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+            var response = await requestFactory.PostAsync<AcceptAndReject>(stringContent, token);
+            return response;
+        }
+
+        #endregion
+    }
 
 }

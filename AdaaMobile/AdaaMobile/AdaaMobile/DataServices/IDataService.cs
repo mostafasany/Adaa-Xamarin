@@ -88,22 +88,21 @@ namespace AdaaMobile.DataServices
         #endregion
 
 
-		#region ServiceDisk
-		Task<ResponseWrapper<ServiceDeskRequests>> GetServiceDeskRequests(bool incidents,CancellationToken? token = null );
-		Task<ResponseWrapper<AcceptAndReject>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = null);
-		Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCases(CancellationToken? token = null);
-		Task<ResponseWrapper<AcceptAndReject>> AcceptServiceDeskCases(ServiceDeskCase serviceDesk,CancellationToken? token = null);
-		Task<ResponseWrapper<AcceptAndReject>> RejectServiceDeskCases(ServiceDeskCase serviceDesk,CancellationToken? token = null);
-		Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCasesDetails(string caseId,CancellationToken? token = null);
-
-
+        #region ServiceDisk
+        Task<ResponseWrapper<ServiceDeskRequests>> GetServiceDeskRequests(bool incidents, CancellationToken? token = null);
+        Task<ResponseWrapper<AcceptAndReject>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = null);
+        Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCases(CancellationToken? token = null);
+        Task<ResponseWrapper<AcceptAndReject>> AcceptServiceDeskCases(ServiceDeskCase serviceDesk, CancellationToken? token = null);
+        Task<ResponseWrapper<AcceptAndReject>> RejectServiceDeskCases(ServiceDeskCase serviceDesk, CancellationToken? token = null);
+        Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCasesDetails(string caseId, CancellationToken? token = null);
 
         Task<ResponseWrapper<OnBehalfResult>> GetOnBelfUsers(CancellationToken? token = null);
         Task<ResponseWrapper<ParentCategoryResult>> GetParentCategories(string mouduleName, CancellationToken? token = null);
         Task<ResponseWrapper<ChildCategoryResult>> GetChildCategories(string mouduleName, string categoryId, CancellationToken? token = null);
         Task<ResponseWrapper<CategoryTemplateResult>> GetTemplateId(string categoryId, CancellationToken? token = null);
         Task<ResponseWrapper<TemplateExtensionResult>> GetTemplateExtension(string templateId, CancellationToken? token = null);
-
+        Task<ResponseWrapper<AcceptAndReject>> LogIncident(LogIncidentRequest request, CancellationToken? token = null);
+        Task<ResponseWrapper<AcceptAndReject>> NewServiceRequest(NewServiceRequest request, CancellationToken? token = null);
         #endregion
     }
 }

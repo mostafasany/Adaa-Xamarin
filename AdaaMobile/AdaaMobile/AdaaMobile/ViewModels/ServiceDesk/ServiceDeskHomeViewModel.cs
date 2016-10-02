@@ -1,10 +1,8 @@
 ﻿using AdaaMobile.Helpers;
-using System;
 using AdaaMobile.Common;
 using AdaaMobile.Models;
 using AdaaMobile.Strings;
 using System.Collections.ObjectModel;
-using AdaaMobile.Views;
 
 namespace AdaaMobile.ViewModels
 {
@@ -19,6 +17,7 @@ namespace AdaaMobile.ViewModels
         #region Properties
 
         public ObservableCollection<AdaaPageItem> PagesList { get; private set; }
+        public string Module { get; private set; }
 
         #endregion
 
@@ -30,26 +29,37 @@ namespace AdaaMobile.ViewModels
             PagesList = new ObservableCollection<AdaaPageItem>() {
                 new AdaaPageItem () { TargetType = typeof(ServiceDeskLogIncident), Title = AppResources.ServiceDesk_LogAnIncident },
                 new AdaaPageItem () {TargetType = typeof(ServiceDeskLogIncident),Title = AppResources.ServiceDesk_RequestITService},
-				new AdaaPageItem (){ TargetType = typeof(ServiceDeskRequestsPage), Title = AppResources.ServiceDesk_MyRequests },
+                new AdaaPageItem (){ TargetType = typeof(ServiceDeskRequestsPage), Title = AppResources.ServiceDesk_MyRequests },
                 new AdaaPageItem (){ TargetType = typeof(ServiceDeskCasesPage), Title = AppResources.ServiceDesk_MyCases }
-
             };
-            NavigateToPageCommand = new ExtendedCommand<Type>(NavigateToPage);
+            NavigateToPageCommand = new ExtendedCommand<AdaaPageItem>(NavigateToPage);
         }
 
         #endregion
 
         #region Commands
 
-        public ExtendedCommand<Type> NavigateToPageCommand { get; set; }
+        public ExtendedCommand<AdaaPageItem> NavigateToPageCommand { get; set; }
 
         #endregion
 
         #region Methods
 
-        private void NavigateToPage(Type pageType)
+        private void NavigateToPage(AdaaPageItem pageType)
         {
-            _navigationService.NavigateToPage(pageType);
+            if (pageType.Title == AppResources.ServiceDesk_LogAnIncident)
+            {
+                Module = "Incident%20Classification";
+            }
+            else if (pageType.Title == AppResources.ServiceDesk_RequestITService)
+            {
+                Module = "Service%20request%20area";
+            }
+            else
+            {
+                Module = "";
+            }
+            _navigationService.NavigateToPage(pageType.TargetType);
         }
 
         #endregion
