@@ -28,7 +28,7 @@ namespace AdaaMobile
 
             _viewModel = Locator.Default.ServiceDeskLogIncidentViewModel;
             BindingContext = _viewModel;
-            Title = AppResources.ServiceDesk_LogAnIncident;
+            Title = AppResources.ServiceDesk_RequestITService;
 
             //HandleArabicLanguageFlowDirection();
             OnBelHalfPicker.SelectedIndexChanged += OnBelHalfPicker_SelectionIndexChanged;

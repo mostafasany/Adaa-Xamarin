@@ -184,6 +184,9 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
+    <None Include="Resources\drawable\CTS.png" />
+    <None Include="Resources\drawable\Filter.png" />
+    <None Include="Resources\drawable\placeholder.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />

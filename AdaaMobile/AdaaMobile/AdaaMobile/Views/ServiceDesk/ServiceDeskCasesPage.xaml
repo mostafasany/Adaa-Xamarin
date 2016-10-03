@@ -14,7 +14,7 @@
 				<OnPlatform x:TypeArguments="ImageSource" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
 			</Image.Source>
 		</Image>
-		<SearchBar x:Name="CassesSearchBar" HorizontalTextAlignment="Start" Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="#1A7C85" TextColor="Black" PlaceholderColor="#FFCCCCCC" FontSize="Small" Placeholder="{ext:Translate ServiceDesk_Search}">
+		<SearchBar x:Name="CassesSearchBar"  HorizontalTextAlignment="Start" Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="White" TextColor="Black" PlaceholderColor="#FFCCCCCC" FontSize="Small" Placeholder="{ext:Translate ServiceDesk_Search}">
 		</SearchBar>
 		<Grid x:Name="MyRequestsListGrid" Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True" BackgroundColor="Transparent">
 			<!--			<Label x:Name="NoRequestsLabel" Grid.Column="0" TextColor="Black" BackgroundColor="Transparent" IsVisible="{Binding NoServiceDeskRequests}" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Text="{ext:Translate NoData}" />-->
