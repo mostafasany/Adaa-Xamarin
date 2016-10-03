@@ -23,7 +23,7 @@ namespace AdaaMobile
 			filter();
 		};
 			ToolbarItems.Add(
-				new ToolbarItem("", "Filter.png", action, ToolbarItemOrder.Primary));
+				new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
 			CassesSearchBar.TextChanged += CassesSearchBar_TextChanged;
 
 		}
