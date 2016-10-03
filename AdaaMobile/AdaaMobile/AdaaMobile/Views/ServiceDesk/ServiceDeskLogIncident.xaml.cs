@@ -556,7 +556,7 @@ namespace AdaaMobile
             string title = TitleEditor.Text;
             string descr = DescEditor.Text;
             string impact = "low";
-            string urgency = "";
+            string urgency = "725a4cad-088c-4f55-a845-000db8872e01";
             string classification = SelectedChildCategory == null ? SelectedParentCategory.id : SelectedChildCategory.id;
             string source = "mobile";
             string affectedUser = string.IsNullOrEmpty(SelectedOnBehalf) ? LoggedUserInfo.CurrentUserProfile.DisplayName : SelectedOnBehalf;
@@ -567,7 +567,12 @@ namespace AdaaMobile
             string RA_Values = "[";
             foreach (var item in RenderdControlList)
             {
-                if (!string.IsNullOrEmpty(item.Value))
+                if (string.IsNullOrEmpty(item.Value) && item.TemplateExtension.Required)
+                {
+                    await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, item.TemplateExtension.DisplayName + " is requried", AppResources.Ok);
+                    return;
+                }
+                else if (!string.IsNullOrEmpty(item.Value))
                 {
                     RA_Values += string.Format("{0}|{1},", item.TemplateExtension.Name, item.Value);
                 }

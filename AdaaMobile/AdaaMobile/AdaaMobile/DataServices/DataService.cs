@@ -438,12 +438,13 @@ namespace AdaaMobile.DataServices
             var request = _requestFactory();
             if (incidents)
             {
+                //http://196.205.5.99/FLIXAPIADAA/api/SMGateway/GetIncidentsData_SQLMultiLang?AffecteduserName=OtOKaLu4Z8I0vG/D9nXUmg==&lang=en&AssignedTouserName=OtOKaLu4Z8I0vG/D9nXUmg == 
                 request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetIncidentsData_SQLMultiLang?AffecteduserName={0}&lang={1}&AssignedTouserName={2}", encryptedUserName, language, encryptedUserName);
-
             }
             else
             {
-                request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetServiceRequests_SQl_multiLang?AffecteduserName={0}&lang={1}&AssignedTouserName={2}", encryptedUserName, language, encryptedUserName);
+                //http://196.205.5.99/FLIXAPIADAA/api/SMGateway/GetServiceRequests_SQl_multiLang?AffectedUser=george.zaki&lang=en&AssignedToUser=george.zaki 
+                request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetServiceRequests_SQl_multiLang?AffectedUser={0}&lang={1}&AssignedToUser={2}", encryptedUserName, language, encryptedUserName);
             }
             request.ResultContentType = ContentType.Json;
             var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
