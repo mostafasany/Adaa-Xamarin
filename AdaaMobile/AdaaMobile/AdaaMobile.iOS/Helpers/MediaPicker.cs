@@ -7,10 +7,14 @@ using AdaaMobile.Models;
 using AdaaMobile.Helpers;
 using AdaaMobile.ViewModels;
 using AdaaMobile.Strings;
+using Xamarin.Forms;
+using AdaaMobile.iOS.Helpers;
 
+
+[assembly: Dependency(typeof(MediaPicker))]
 namespace AdaaMobile.iOS.Helpers
 {
-	[assembly: Dependency(typeof(MediaPicker))]
+	
 	public class MediaPicker :IMediaPicker
 	{
 		AppDelegate appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;

@@ -412,8 +412,8 @@ namespace AdaaMobile.DataServices
                 language = "en";
             }
 
-            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
-            //var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
+            //var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
             var request = _requestFactory();
 
 
@@ -460,8 +460,8 @@ namespace AdaaMobile.DataServices
                 language = "en";
             }
 
-            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
-            //var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
+            //var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
             var request = _requestFactory();
 
 
@@ -476,8 +476,8 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<OnBehalfResult>> GetOnBelfUsers(CancellationToken? token = default(CancellationToken?))
         {
-            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
-            //var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
+            //var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
             var request = _requestFactory();
             request.RequestUrl = ServiceDiskBaseUrl + string.Format("AD_GetUsersForOnBehalf_DepartmentWithDomain?UserName={0}&DomainName={1}", encryptedUserName, "dev");
             request.ResultContentType = ContentType.Json;
@@ -552,8 +552,8 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<AcceptAndReject>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = default(CancellationToken?))
         {
-            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
-            //var encryptedUserName = "9wHHq0pN/U3QAtg5NxDpZQ==";
+            //var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            var encryptedUserName = "9wHHq0pN/U3QAtg5NxDpZQ==";
             var request = _requestFactory();
 
             if (serviceRequest.Type == "Incidents")
