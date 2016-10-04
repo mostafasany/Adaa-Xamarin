@@ -438,6 +438,7 @@
     </Compile>
     <Compile Include="Models\Response\ServiceDesk\AcceptAndReject.cs" />
     <Compile Include="Helpers\IMediaPicker.cs" />
+    <Compile Include="Models\MediaFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
