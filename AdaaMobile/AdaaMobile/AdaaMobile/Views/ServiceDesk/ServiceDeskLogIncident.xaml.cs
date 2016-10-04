@@ -176,7 +176,7 @@ namespace AdaaMobile
                     var picker = sender as Picker;
                     SelectedParentCategory = ParentCategoryList[picker.SelectedIndex];
                     lblParentCategoriesResult.Text = SelectedParentCategory.name;
-                    LoadParentChildCategories(SelectedParentCategory.parent);
+					LoadParentChildCategories(SelectedParentCategory.id);
                 }
             }
             catch (Exception ex)
@@ -561,10 +561,10 @@ namespace AdaaMobile
             string source = "mobile";
             string affectedUser = string.IsNullOrEmpty(SelectedOnBehalf) ? LoggedUserInfo.CurrentUserProfile.DisplayName : SelectedOnBehalf;
             string createdByUser = LoggedUserInfo.CurrentUserProfile.DisplayName;
-            string fileNames = "";
-            string files = "";
+			string[] fileNames=new string[0];
+            string[] files =new string[0];
             string templateId = SelectedTemplate != null ? SelectedTemplate.ID : "";
-            string RA_Values = "[";
+			List<string> RA_Values = new List<string>();
             foreach (var item in RenderdControlList)
             {
                 if (string.IsNullOrEmpty(item.Value) && item.TemplateExtension.Required)
@@ -574,27 +574,19 @@ namespace AdaaMobile
                 }
                 else if (!string.IsNullOrEmpty(item.Value))
                 {
-                    RA_Values += string.Format("{0}|{1},", item.TemplateExtension.Name, item.Value);
+					RA_Values.Add(string.Format("{0}|{1},", item.TemplateExtension.Name, item.Value));
                 }
             }
-            if (RA_Values == "[")
-            {
-                RA_Values = "";
-            }
-            else
-            {
-                RA_Values = RA_Values.Remove(RA_Values.Length - 1); //Remove Comma
-                RA_Values += "]";
-            }
+           
             LogIncidentRequest request = new LogIncidentRequest();
-            request.AffectedUser = affectedUser;
+            request.AffectedUser = "DEV\\" + affectedUser;
             request.Classification = classification;
-            request.CreatedByUser = createdByUser;
+            request.CreatedByUser = "DEV\\" + createdByUser;
             request.Description = descr;
             request.Files = files;
             request.FilesNames = fileNames;
             request.Impact = impact;
-            request.RA_values = RA_Values;
+			request.RA_values = RA_Values.ToArray();
             request.Source = source;
             request.templateId = templateId;
             request.Title = title;
@@ -604,7 +596,7 @@ namespace AdaaMobile
             {
                 if (response.Result != null)
                 {
-                    if (response.Result.result == "")
+                    if (response.Result.result != "")
                     {
                         Locator.Default.NavigationService.GoBack();
                     }
