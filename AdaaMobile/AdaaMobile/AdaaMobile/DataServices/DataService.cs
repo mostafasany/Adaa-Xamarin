@@ -412,8 +412,8 @@ namespace AdaaMobile.DataServices
                 language = "en";
             }
 
-            //var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
-            var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            //var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
             var request = _requestFactory();
 
 
@@ -460,8 +460,8 @@ namespace AdaaMobile.DataServices
                 language = "en";
             }
 
-            //var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
-            var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            //var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
             var request = _requestFactory();
 
 
@@ -476,8 +476,8 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<OnBehalfResult>> GetOnBelfUsers(CancellationToken? token = default(CancellationToken?))
         {
-            //var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
-            var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            //var encryptedUserName = "OtOKaLu4Z8I0vG/D9nXUmg==";
             var request = _requestFactory();
             request.RequestUrl = ServiceDiskBaseUrl + string.Format("AD_GetUsersForOnBehalf_DepartmentWithDomain?UserName={0}&DomainName={1}", encryptedUserName, "dev");
             request.ResultContentType = ContentType.Json;
@@ -552,8 +552,8 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<AcceptAndReject>> CancelServiceDeskRequests(ServiceDeskRequest serviceRequest, CancellationToken? token = default(CancellationToken?))
         {
-            //var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
-            var encryptedUserName = "9wHHq0pN/U3QAtg5NxDpZQ==";
+            var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
+            //var encryptedUserName = "9wHHq0pN/U3QAtg5NxDpZQ==";
             var request = _requestFactory();
 
             if (serviceRequest.Type == "Incidents")
@@ -608,18 +608,21 @@ namespace AdaaMobile.DataServices
 
         }
 
-        public async Task<ResponseWrapper<AcceptAndReject>> LogIncident(LogIncidentRequest request, CancellationToken? token = default(CancellationToken?))
+        public async Task<ResponseWrapper<AcceptAndReject>> LogIncident(LogIncidentRequest requestObject, CancellationToken? token = default(CancellationToken?))
         {
-            var requestFactory = _requestFactory();
-            requestFactory.RequestUrl = ServiceDiskBaseUrl + string.Format("NewIncidentWithTemplateV1");
-            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-            var response = await requestFactory.PostAsync<AcceptAndReject>(stringContent, token);
+            var request = _requestFactory();
+            request.RequestUrl = ServiceDiskBaseUrl + string.Format("NewIncidentWithTemplateV1");
+			request.ResultContentType = ContentType.Json;
+			var result = JsonConvert.SerializeObject(requestObject);
+            var stringContent = new StringContent(result, new UTF8Encoding(), JSONContentType);
+            var response = await request.PostAsync<AcceptAndReject>(stringContent, token);
             return response;
         }
 
         public async Task<ResponseWrapper<AcceptAndReject>> NewServiceRequest(NewServiceRequest request, CancellationToken? token = default(CancellationToken?))
         {
             var requestFactory = _requestFactory();
+			requestFactory.ResultContentType = ContentType.Json;
             requestFactory.RequestUrl = ServiceDiskBaseUrl + string.Format("SaveMultiServiceRequest");
             var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
             var response = await requestFactory.PostAsync<AcceptAndReject>(stringContent, token);
