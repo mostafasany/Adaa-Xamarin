@@ -7,6 +7,7 @@ using AdaaMobile.Models;
 using AdaaMobile.Helpers;
 using AdaaMobile.ViewModels;
 using AdaaMobile.Strings;
+using Xamarin.Forms;
 
 namespace AdaaMobile.iOS.Helpers
 {
@@ -95,6 +96,7 @@ namespace AdaaMobile.iOS.Helpers
 			imagePicker.NavigationBar.TintColor = UIColor.White;
 			imagePicker.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White};
 			//Locator.Default.NavigationService.NavigateToPage();
+			UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(imagePicker, true, null);
 			//appDelegate.navigation.PresentViewController(imagePicker, true,null);
 			var ntcs = new TaskCompletionSource<PPMediaFile>();
 			if (Interlocked.CompareExchange(ref _completionSource, ntcs, null) != null)
