@@ -515,30 +515,16 @@ namespace AdaaMobile
 			try
 			{
 				loadingControl.IsRunning = true;
-				var aaa = DependencyService.Get<ICryptoGraphyService>();
-				var _mediaPicker = DependencyService.Get<IMediaPicker>();
-				await _mediaPicker.TakePhotoAsync(new CameraMediaStorageOptions { DefaultCamera = CameraDevice.Front, MaxPixelDimension = 400 }).ContinueWith(t =>
+
+				var mediaPicker = DependencyService.Get<IMediaPicker>();
+				var mediaFile = await mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions
 				{
-					if (t.IsFaulted)
-					{
-						var s = t.Exception.InnerException.ToString();
-					}
-					else if (t.IsCanceled)
-					{
-						var canceled = true;
-					}
-					else
-					{
-						var mediaFile = t.Result;
-
-						ImageSource ImageSource = ImageSource.FromStream(() => mediaFile.Source);
-
-						return mediaFile;
-					}
-
-					return null;
-				}, null);
-			}
+					DefaultCamera = CameraDevice.Front,
+					MaxPixelDimension = 400
+				});
+				var imageSource = ImageSource.FromStream(() => mediaFile.Source);
+			
+			}																																			
 			catch (Exception ex)
 			{
 
@@ -550,93 +536,93 @@ namespace AdaaMobile
 		}
 
 		private async void LogIncident()
+{
+	try
+	{
+		loadingControl.IsRunning = true;
+
+		if (string.IsNullOrEmpty(TitleEditor.Text))
 		{
-			try
-			{
-				loadingControl.IsRunning = true;
+			await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.ServiceDesk_TitleCannotBeEmpty, AppResources.Ok);
+			return;
+		}
+		if (string.IsNullOrEmpty(DescEditor.Text))
+		{
+			await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.ServiceDesk_DescCannotBeEmpty, AppResources.Ok);
+			return;
+		}
+		if (SelectedParentCategory == null)
+		{
+			await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.ServiceDesk_ParentCategroyCannotBeEmpty, AppResources.Ok);
+			return;
+		}
 
-				if (string.IsNullOrEmpty(TitleEditor.Text))
+		//Check Validation
+		string title = TitleEditor.Text;
+		string descr = DescEditor.Text;
+		string impact = "low";
+		string urgency = "725a4cad-088c-4f55-a845-000db8872e01";
+		string classification = SelectedChildCategory == null ? SelectedParentCategory.id : SelectedChildCategory.id;
+		string source = "mobile";
+		string affectedUser = string.IsNullOrEmpty(SelectedOnBehalf) ? LoggedUserInfo.CurrentUserProfile.DisplayName : SelectedOnBehalf;
+		string createdByUser = LoggedUserInfo.CurrentUserProfile.DisplayName;
+		string[] fileNames = new string[0];
+		string[] files = new string[0];
+		string templateId = SelectedTemplate != null ? SelectedTemplate.ID : "";
+		List<string> RA_Values = new List<string>();
+		if (RenderdControlList != null)
+		{
+			foreach (var item in RenderdControlList)
+			{
+				if (string.IsNullOrEmpty(item.Value) && item.TemplateExtension.Required)
 				{
-					await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.ServiceDesk_TitleCannotBeEmpty, AppResources.Ok);
+					await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, item.TemplateExtension.DisplayName + " is requried", AppResources.Ok);
 					return;
 				}
-				if (string.IsNullOrEmpty(DescEditor.Text))
+				else if (!string.IsNullOrEmpty(item.Value))
 				{
-					await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.ServiceDesk_DescCannotBeEmpty, AppResources.Ok);
-					return;
+					RA_Values.Add(string.Format("{0}|{1},", item.TemplateExtension.Name, item.Value));
 				}
-				if (SelectedParentCategory == null)
-				{
-					await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.ServiceDesk_ParentCategroyCannotBeEmpty, AppResources.Ok);
-					return;
-				}
-
-				//Check Validation
-				string title = TitleEditor.Text;
-				string descr = DescEditor.Text;
-				string impact = "low";
-				string urgency = "725a4cad-088c-4f55-a845-000db8872e01";
-				string classification = SelectedChildCategory == null ? SelectedParentCategory.id : SelectedChildCategory.id;
-				string source = "mobile";
-				string affectedUser = string.IsNullOrEmpty(SelectedOnBehalf) ? LoggedUserInfo.CurrentUserProfile.DisplayName : SelectedOnBehalf;
-				string createdByUser = LoggedUserInfo.CurrentUserProfile.DisplayName;
-				string[] fileNames = new string[0];
-				string[] files = new string[0];
-				string templateId = SelectedTemplate != null ? SelectedTemplate.ID : "";
-				List<string> RA_Values = new List<string>();
-				if (RenderdControlList != null)
-				{
-					foreach (var item in RenderdControlList)
-					{
-						if (string.IsNullOrEmpty(item.Value) && item.TemplateExtension.Required)
-						{
-							await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, item.TemplateExtension.DisplayName + " is requried", AppResources.Ok);
-							return;
-						}
-						else if (!string.IsNullOrEmpty(item.Value))
-						{
-							RA_Values.Add(string.Format("{0}|{1},", item.TemplateExtension.Name, item.Value));
-						}
-					}
-				}
-
-				LogIncidentRequest request = new LogIncidentRequest();
-				request.AffectedUser = "DEV\\" + affectedUser;
-				request.Classification = classification;
-				request.CreatedByUser = "DEV\\" + createdByUser;
-				request.Description = descr;
-				request.Files = files;
-				request.FilesNames = fileNames;
-				request.Impact = impact;
-				request.RA_values = RA_Values.ToArray();
-				request.Source = source;
-				request.templateId = templateId;
-				request.Title = title;
-				request.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
-				var response = await Locator.Default.DataService.LogIncident(request);
-				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
-				{
-					if (response.Result != null)
-					{
-						if (response.Result.result != "")
-						{
-							Locator.Default.NavigationService.GoBack();
-						}
-					}
-					else
-					{
-						await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-
-			}
-			finally
-			{
-				loadingControl.IsRunning = false;
 			}
 		}
+
+		LogIncidentRequest request = new LogIncidentRequest();
+		request.AffectedUser = "DEV\\" + affectedUser;
+		request.Classification = classification;
+		request.CreatedByUser = "DEV\\" + createdByUser;
+		request.Description = descr;
+		request.Files = files;
+		request.FilesNames = fileNames;
+		request.Impact = impact;
+		request.RA_values = RA_Values.ToArray();
+		request.Source = source;
+		request.templateId = templateId;
+		request.Title = title;
+		request.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
+		var response = await Locator.Default.DataService.LogIncident(request);
+		if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+		{
+			if (response.Result != null)
+			{
+				if (response.Result.result != "")
+				{
+					Locator.Default.NavigationService.GoBack();
+				}
+			}
+			else
+			{
+				await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
+			}
+		}
+	}
+	catch (Exception ex)
+	{
+
+	}
+	finally
+	{
+		loadingControl.IsRunning = false;
+	}
+}
 	}
 }
