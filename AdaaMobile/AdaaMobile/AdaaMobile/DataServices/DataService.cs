@@ -619,13 +619,14 @@ namespace AdaaMobile.DataServices
             return response;
         }
 
-        public async Task<ResponseWrapper<AcceptAndReject>> NewServiceRequest(NewServiceRequest request, CancellationToken? token = default(CancellationToken?))
+        public async Task<ResponseWrapper<AcceptAndReject>> NewServiceRequest(NewServiceRequest requestObject, CancellationToken? token = default(CancellationToken?))
         {
-            var requestFactory = _requestFactory();
-			requestFactory.ResultContentType = ContentType.Json;
-            requestFactory.RequestUrl = ServiceDiskBaseUrl + string.Format("SaveMultiServiceRequest");
-            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
-            var response = await requestFactory.PostAsync<AcceptAndReject>(stringContent, token);
+            var request = _requestFactory();
+			request.ResultContentType = ContentType.Json;
+            request.RequestUrl = ServiceDiskBaseUrl + string.Format("SaveMultiServiceRequest");
+			var result = JsonConvert.SerializeObject(requestObject);
+            var stringContent = new StringContent(result, new UTF8Encoding(), JSONContentType);
+            var response = await request.PostAsync<AcceptAndReject>(stringContent, token);
             return response;
         }
 

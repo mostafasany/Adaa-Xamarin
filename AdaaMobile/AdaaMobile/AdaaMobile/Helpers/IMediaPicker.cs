@@ -1,11 +1,11 @@
-﻿using PP.Core.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdaaMobile.Models;
 
-namespace PP.Core.Interfaces.Helpers
+namespace AdaaMobile.Helpers
 {
     /// <summary>
     /// Interface IMediaPicker

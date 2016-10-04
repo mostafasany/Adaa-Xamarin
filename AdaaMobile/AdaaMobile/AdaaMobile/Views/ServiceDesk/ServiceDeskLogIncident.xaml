@@ -126,7 +126,7 @@
         <StackLayout Grid.Row="6" Orientation="Vertical" x:Name="customControls">
         </StackLayout>
       </controls:ExtendedGrid>
-      <controls:ImageButton x:Name="AddAttachment" IsVisible="false"  Clicked="AddAttachment_Clicked" HeightRequest="50" Grid.Row="4" Text="{ext:Translate ServcieDesk_AddAttachment}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Center" BackgroundColor="#cc007c85" TextColor="White" HorizontalOptions="Fill">
+      <controls:ImageButton x:Name="AddAttachment"  Clicked="AddAttachment_Clicked" HeightRequest="50" Grid.Row="4" Text="{ext:Translate ServcieDesk_AddAttachment}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Center" BackgroundColor="#cc007c85" TextColor="White" HorizontalOptions="Fill">
         <controls:ImageButton.ImageHeightRequest>
           <OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="24" />
         </controls:ImageButton.ImageHeightRequest>

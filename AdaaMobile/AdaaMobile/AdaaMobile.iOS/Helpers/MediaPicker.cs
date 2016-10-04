@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MonoTouch.UIKit;
 using System.Threading;
-using System.IO;
-using System.Linq;
-using System.Drawing;
-using Xamarin.Forms;
-using PP.Core.Interfaces.Helpers;
-using PP.Core;
-using PP.Core.Models;
-using MonoTouch.Foundation;
-using PP.Core.Localization;
+using UIKit;
+using Foundation;
+using AdaaMobile.Models;
+using AdaaMobile.Helpers;
 
-namespace PP.iOS
+namespace AdaaMobile.iOS.Helpers
 {
 	public class MediaPicker :IMediaPicker
 	{
@@ -81,8 +75,9 @@ namespace PP.iOS
 				}
 			} else {
 				imagePicker.DismissViewController (true,null);
-				iOSDialoge dialog = new iOSDialoge();
-				dialog.Alert(Messages.NotAllowedType, null, Messages.ok);			}
+				//iOSDialoge dialog = new iOSDialoge();
+				//dialog.Alert(Messages.NotAllowedType, null, Messages.ok);		
+			}
 
 			tcs.SetResult (null);
 		}
@@ -95,7 +90,7 @@ namespace PP.iOS
 
 			imagePicker.NavigationBar.TintColor = UIColor.White;
 			imagePicker.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White}; 
-			appDelegate.navigation.PresentViewController(imagePicker, true,null);
+			//appDelegate.navigation.PresentViewController(imagePicker, true,null);
 			var ntcs = new TaskCompletionSource<PPMediaFile>();
 			if (Interlocked.CompareExchange(ref _completionSource, ntcs, null) != null)
 				throw new InvalidOperationException("Only one operation can be active at at time");

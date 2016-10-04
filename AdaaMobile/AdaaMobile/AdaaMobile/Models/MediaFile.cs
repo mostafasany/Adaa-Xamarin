@@ -1,11 +1,8 @@
-﻿using Cirrious.MvvmCross.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
+﻿using System;
+using System.Threading.Tasks;
+using AdaaMobile.Common;
 
-namespace PP.Core.Models
+namespace AdaaMobile.Models
 {
     public class PPMediaFile
     {
@@ -17,20 +14,21 @@ namespace PP.Core.Models
 
         public bool isSelected { get; set; }
 
-        private MvxCommand _DeleteCommand;
-        public ICommand DeleteCommand
+        private AsyncExtendedCommand _DeleteCommand;
+        public AsyncExtendedCommand DeleteCommand
         {
             get
             {
-                _DeleteCommand = _DeleteCommand ?? new MvxCommand(DoDeleteCommand);
+                _DeleteCommand = _DeleteCommand ?? new AsyncExtendedCommand(DoDeleteCommand);
                 return _DeleteCommand;
             }
         }
 
 
-        private void DoDeleteCommand()
+        private Task DoDeleteCommand()
         {
             isSelected = true;
+			return null;
             //if (OnDeleted != null)
             //    OnDeleted(this, new EventArgs());
         }
