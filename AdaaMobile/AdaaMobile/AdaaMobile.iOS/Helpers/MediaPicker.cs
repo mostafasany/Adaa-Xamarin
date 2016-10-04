@@ -5,9 +5,12 @@ using UIKit;
 using Foundation;
 using AdaaMobile.Models;
 using AdaaMobile.Helpers;
+using AdaaMobile.ViewModels;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.iOS.Helpers
 {
+	[assembly: Dependency(typeof(MediaPicker))]
 	public class MediaPicker :IMediaPicker
 	{
 		AppDelegate appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
@@ -75,6 +78,7 @@ namespace AdaaMobile.iOS.Helpers
 				}
 			} else {
 				imagePicker.DismissViewController (true,null);
+				Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName ,"Not Allowed Type",AppResources.Ok);
 				//iOSDialoge dialog = new iOSDialoge();
 				//dialog.Alert(Messages.NotAllowedType, null, Messages.ok);		
 			}
@@ -89,7 +93,8 @@ namespace AdaaMobile.iOS.Helpers
 			imagePicker.Canceled += Handle_Canceled;
 
 			imagePicker.NavigationBar.TintColor = UIColor.White;
-			imagePicker.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White}; 
+			imagePicker.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White};
+			//Locator.Default.NavigationService.NavigateToPage();
 			//appDelegate.navigation.PresentViewController(imagePicker, true,null);
 			var ntcs = new TaskCompletionSource<PPMediaFile>();
 			if (Interlocked.CompareExchange(ref _completionSource, ntcs, null) != null)
