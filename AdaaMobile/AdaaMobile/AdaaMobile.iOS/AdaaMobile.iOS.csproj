@@ -144,6 +144,7 @@
     <Compile Include="CustomRenderers\HorizontalListView\CustomUICollectionViewDelegateFlowLayout.cs" />
     <Compile Include="Helpers\PhoneService.cs" />
     <Compile Include="CustomRenderers\ExtendedPickerRenderer.cs" />
+    <Compile Include="Helpers\MediaPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdaaMobile\AdaaMobile.csproj">

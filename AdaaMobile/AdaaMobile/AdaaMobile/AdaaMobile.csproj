@@ -437,6 +437,7 @@
       <DependentUpon>SelectedServiceCasesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Response\ServiceDesk\AcceptAndReject.cs" />
+    <Compile Include="Helpers\IMediaPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

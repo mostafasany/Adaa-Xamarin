@@ -190,6 +190,7 @@
     <None Include="Resources\drawable-hdpi\Filter.png" />
     <None Include="Resources\drawable-xhdpi\Filter.png" />
     <None Include="Resources\drawable-xxhdpi\Filter.png" />
+    <None Include="Helpers\MediaPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
