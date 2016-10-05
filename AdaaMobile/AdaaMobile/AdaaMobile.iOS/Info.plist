@@ -20,7 +20,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.adaa.Adaa</string>
+	<string>com.adaa.AdaaMobile</string>
 	<key>CFBundleVersion</key>
 	<string>1.0.24</string>
 	<key>CFBundleName</key>
