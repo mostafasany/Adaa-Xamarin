@@ -29,7 +29,8 @@ namespace AdaaMobile
 
 			_viewModel = Locator.Default.ServiceDeskLogIncidentViewModel;
 			BindingContext = _viewModel;
-			Title = AppResources.ServiceDesk_RequestITService;
+			Title = AppResources.ServiceDesk_LogAnIncident;
+
 
 			//HandleArabicLanguageFlowDirection();
 			OnBelHalfPicker.SelectedIndexChanged += OnBelHalfPicker_SelectionIndexChanged;
@@ -51,6 +52,7 @@ namespace AdaaMobile
 			if (!string.IsNullOrEmpty(Locator.Default.ServiceDeskHomeViewModel.Module))
 			{
 				moduleName = Locator.Default.ServiceDeskHomeViewModel.Module;
+				Title = AppResources.ServiceDesk_RequestITService;
 			}
 			//_viewModel.PageLoadedCommand.Execute(null);
 			LoadOnBelhaf();
