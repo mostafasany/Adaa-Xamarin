@@ -114,17 +114,18 @@ namespace AdaaMobile.ViewModels
 					try
 					{
 						List<ServiceDeskRequest> objlist = _OriginalRequests.ToList();
-						List<ServiceDeskRequest> resultlist = objlist.Where(a =>a.Title.ToLower().Contains(search.ToLower())||
-						                                                    a.ID.ToLower().Contains(search.ToLower())||
-						                                                    (!string.IsNullOrEmpty(a.Classification) && 
-						                                                     a.Classification.ToLower().Contains(search.ToLower()))).ToList();
+						List<ServiceDeskRequest> resultlist = objlist.Where(a =>
+																			(!string.IsNullOrEmpty(a.Title) && a.Title.ToLower().Contains(search.ToLower())) ||
+																			(!string.IsNullOrEmpty(a.ID) && a.ID.ToLower().Contains(search.ToLower())) ||
+																			(!string.IsNullOrEmpty(a.Classification) && a.Classification.ToLower().Contains(search.ToLower())))
+																	 .ToList();
 						Requests = new ObservableCollection<ServiceDeskRequest>(resultlist);
 					}
 					catch (Exception ex)
 					{
 
 					}
-	
+
 
 				}
 			}
@@ -153,7 +154,7 @@ namespace AdaaMobile.ViewModels
 					if (response.Result != null)
 					{
 
-						_ServiceRequests =new ObservableCollection<ServiceDeskRequest>(response.Result.result.Table1);  
+						_ServiceRequests = new ObservableCollection<ServiceDeskRequest>(response.Result.result.Table1);
 
 					}
 					else {
@@ -190,7 +191,7 @@ namespace AdaaMobile.ViewModels
 
 						if (_ServiceRequests != null)
 						{
-							
+
 							List<ServiceDeskRequest> list = new List<ServiceDeskRequest>();
 							list.AddRange(_IncidentRequests);
 							list.AddRange(_ServiceRequests);

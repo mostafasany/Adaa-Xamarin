@@ -24,7 +24,7 @@ namespace AdaaMobile
 			filter();
 		};
 			ToolbarItems.Add(
-				new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
+				new ToolbarItem("", "Filter.png", action, ToolbarItemOrder.Primary));
 			RequestSearchBar.TextChanged += RequestSearchBar_TextChanged;
 
 		}

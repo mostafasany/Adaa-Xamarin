@@ -53,8 +53,8 @@ namespace AdaaMobile
 				moduleName = Locator.Default.ServiceDeskHomeViewModel.Module;
 			}
 			//_viewModel.PageLoadedCommand.Execute(null);
-			await LoadOnBelhaf();
-			await LoadParentCategories();
+			LoadOnBelhaf();
+			LoadParentCategories();
 		}
 
 		void HandleArabicLanguageFlowDirection()
@@ -581,11 +581,11 @@ namespace AdaaMobile
 						}
 						else if (!string.IsNullOrEmpty(item.Value))
 						{
-							RA_Values.Add(string.Format("{0}|{1},", item.TemplateExtension.Name, item.Value));
+							RA_Values.Add(string.Format("{0}|{1}", item.TemplateExtension.Name, item.Value));
 						}
 					}
 				}
-				ResponseWrapper<AcceptAndReject> response = null;
+
 				if (moduleName == "Incident%20Classification")
 				{
 
@@ -602,9 +602,22 @@ namespace AdaaMobile
 					request.templateId = templateId;
 					request.Title = title;
 					request.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
-					response = await Locator.Default.DataService.LogIncident(request);
+					ResponseWrapper<AcceptAndReject> response = await Locator.Default.DataService.LogIncident(request);
+					if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
+					{
+						if (response.Result != null)
+						{
+							if (response.Result.result != "")
+							{
+								Locator.Default.NavigationService.GoBack();
+							}
+						}
+						else
+						{
+							await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
+						}
+					}
 				}
-
 				else {
 					NewServiceRequest request = new NewServiceRequest();
 					request.affectedUserField = "DEV\\" + createdByUser;
@@ -617,27 +630,25 @@ namespace AdaaMobile
 					request.rA_ValuesField = RA_Values.ToArray();
 					request.templateIDField = templateId;
 					request.titleField = title;
-					//.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
-					response = await Locator.Default.DataService.NewServiceRequest(request);
-				}
-				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
-				{
-					if (response.Result != null)
+
+					ResponseWrapper<string> response = await Locator.Default.DataService.NewServiceRequest(request);
+					if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
 					{
-						if (response.Result.result != "")
+						if (response.Result != "")
 						{
 							Locator.Default.NavigationService.GoBack();
 						}
-					}
-					else
-					{
-						await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
+						else
+						{
+							await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
+						}
 					}
 				}
+
 			}
 			catch (Exception ex)
 			{
-
+				await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
 			}
 			finally
 			{
