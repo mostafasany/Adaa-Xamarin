@@ -28,8 +28,16 @@ using CoreGraphics;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
+<<<<<<< HEAD
 using Xamarin.Forms.Labs.Services.Media;
 using XLabs.Platform.Services.Media;
+=======
+<<<<<<< HEAD
+=======
+using AdaaMobile.iOS.Helpers;
+>>>>>>> origin/master
+
+>>>>>>> origin/master
 
 [assembly: Dependency(typeof(MediaPicker))]
 namespace XLabs.Platform.Services.Media
@@ -619,6 +627,7 @@ namespace XLabs.Platform.Services.Media
 				{
 					return;
 				}
+<<<<<<< HEAD
 			}
 			else if (!GetShouldRotate(device.Orientation))
 			{
@@ -781,6 +790,32 @@ namespace XLabs.Platform.Services.Media
 			{
 				ext = ((isPhoto) ? ".jpg" : ".mp4");
 			}
+=======
+			} else {
+				imagePicker.DismissViewController (true,null);
+				Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName ,"Not Allowed Type",AppResources.Ok);
+				//iOSDialoge dialog = new iOSDialoge();
+				//dialog.Alert(Messages.NotAllowedType, null, Messages.ok);		
+			}
+
+			tcs.SetResult (null);
+		}
+		public  Task<PPMediaFile> SelectPhotoAsync(){
+			imagePicker = new UIImagePickerController ();
+			imagePicker.SourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
+			imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes (UIImagePickerControllerSourceType.PhotoLibrary);
+			imagePicker.FinishedPickingMedia += Handle_FinishedPickingMedia;
+			imagePicker.Canceled += Handle_Canceled;
+
+			imagePicker.NavigationBar.TintColor = UIColor.White;
+			imagePicker.NavigationBar.TitleTextAttributes =  new UIStringAttributes{ForegroundColor = UIColor.White};
+			//Locator.Default.NavigationService.NavigateToPage();
+			UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(imagePicker, true, null);
+			//appDelegate.navigation.PresentViewController(imagePicker, true,null);
+			var ntcs = new TaskCompletionSource<PPMediaFile>();
+			if (Interlocked.CompareExchange(ref _completionSource, ntcs, null) != null)
+				throw new InvalidOperationException("Only one operation can be active at at time");
+>>>>>>> origin/master
 
 			name = Path.GetFileNameWithoutExtension(name);
 
