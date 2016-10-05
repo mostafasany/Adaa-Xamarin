@@ -17,19 +17,4 @@ namespace AdaaMobile.Models.Request
         public string templateId { get; set; }
         public string[] RA_values { get; set; }
     }
-
-	public class NewServiceREquest
-	{
-		public string titleField { get; set; }
-		public string descriptionField { get; set; }
-		public string calssificationIDField { get; set; }
-		public string templateIDField { get; set; }
-		public string[] filesNamesField { get; set; }
-		public string[] filesBytesField { get; set; }
-		public string pocoStatusField { get; set; }
-		public string[] RA_values { get; set; }
-		public string AffectedUser { get; set; }
-		public string createdByUserField { get; set; }
-
-	}
 }

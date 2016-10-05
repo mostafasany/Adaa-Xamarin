@@ -10,7 +10,7 @@ using System.Linq;
 using Xamarin.Forms.Labs.Services.Media;
 using AdaaMobile.Models.Request;
 using AdaaMobile.DataServices.Requests;
-using AdaaMobile.Helpers;
+using AdaaMobile.Models.Response;
 
 namespace AdaaMobile
 {
@@ -48,14 +48,13 @@ namespace AdaaMobile
 		protected async override void OnAppearing()
 		{
 			base.OnAppearing();
-			//_viewModel.PageLoadedCommand.Execute(null);
-			await LoadOnBelhaf();
-			await LoadParentCategories();
 			if (!string.IsNullOrEmpty(Locator.Default.ServiceDeskHomeViewModel.Module))
 			{
 				moduleName = Locator.Default.ServiceDeskHomeViewModel.Module;
 			}
-
+			//_viewModel.PageLoadedCommand.Execute(null);
+			await LoadOnBelhaf();
+			await LoadParentCategories();
 		}
 
 		void HandleArabicLanguageFlowDirection()
@@ -514,6 +513,7 @@ namespace AdaaMobile
 		{
 			try
 			{
+				return;
 				loadingControl.IsRunning = true;
 
 				var mediaPicker = DependencyService.Get<IMediaPicker>();
@@ -585,21 +585,41 @@ namespace AdaaMobile
 						}
 					}
 				}
+				ResponseWrapper<AcceptAndReject> response = null;
+				if (moduleName == "Incident%20Classification")
+				{
 
-				LogIncidentRequest request = new LogIncidentRequest();
-				request.AffectedUser = "DEV\\" + affectedUser;
-				request.Classification = classification;
-				request.CreatedByUser = "DEV\\" + createdByUser;
-				request.Description = descr;
-				request.Files = files;
-				request.FilesNames = fileNames;
-				request.Impact = impact;
-				request.RA_values = RA_Values.ToArray();
-				request.Source = source;
-				request.templateId = templateId;
-				request.Title = title;
-				request.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
-				var response = await Locator.Default.DataService.LogIncident(request);
+					LogIncidentRequest request = new LogIncidentRequest();
+					request.AffectedUser = "DEV\\" + affectedUser;
+					request.Classification = classification;
+					request.CreatedByUser = "DEV\\" + createdByUser;
+					request.Description = descr;
+					request.Files = files;
+					request.FilesNames = fileNames;
+					request.Impact = impact;
+					request.RA_values = RA_Values.ToArray();
+					request.Source = source;
+					request.templateId = templateId;
+					request.Title = title;
+					request.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
+					response = await Locator.Default.DataService.LogIncident(request);
+				}
+
+				else {
+					NewServiceRequest request = new NewServiceRequest();
+					request.affectedUserField = "DEV\\" + createdByUser;
+					request.calssificationIDField = classification;
+					request.createdByUserField = "DEV\\" + createdByUser;
+					request.descriptionField = descr;
+					request.pocoStatusField = "New";
+					request.filesBytesField = files;
+					request.filesNamesField = fileNames;
+					request.rA_ValuesField = RA_Values.ToArray();
+					request.templateIDField = templateId;
+					request.titleField = title;
+					//.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
+					response = await Locator.Default.DataService.NewServiceRequest(request);
+				}
 				if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
 				{
 					if (response.Result != null)
