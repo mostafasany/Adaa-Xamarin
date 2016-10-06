@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using AdaaMobile.ViewModels;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile
 {
@@ -16,7 +17,7 @@ namespace AdaaMobile
             _viewModel = Locator.Default.ServiceDeskRequestsViewModel;
             BindingContext = _viewModel;
 
-            Title = _viewModel.SelectedRequests.Title;
+            Title = AppResources.RequestDetailsCap;
         }
     }
 }
