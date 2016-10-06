@@ -52,7 +52,8 @@ namespace AdaaMobile
 			if (!string.IsNullOrEmpty(Locator.Default.ServiceDeskHomeViewModel.Module))
 			{
 				moduleName = Locator.Default.ServiceDeskHomeViewModel.Module;
-				Title = AppResources.ServiceDesk_RequestITService;
+				if (moduleName == "Service%20request%20area")
+					Title = AppResources.ServiceDesk_RequestITService;
 			}
 			//_viewModel.PageLoadedCommand.Execute(null);
 			LoadOnBelhaf();

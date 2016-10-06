@@ -638,7 +638,7 @@
     <value>الجدول الزمني</value>
   </data>
   <data name="TimeSheet_ADAATimeSheet" xml:space="preserve">
-    <value>ADAA TimeSheet</value>
+    <value>ADAA Timesheet</value>
   </data>
   <data name="TimeSheet_AssigmentDate" xml:space="preserve">
     <value>التاريخ</value>
@@ -804,6 +804,9 @@
   </data>
   <data name="ServiceDeskCases_ID" xml:space="preserve">
     <value>Service Request ID</value>
+  </data>
+		 <data name="ServiceDeskCases_CaseDetails" xml:space="preserve">
+    <value>تفاصيل</value>
   </data>
   <data name="ServiceDeskRequest_ParentID" xml:space="preserve">
     <value>Parent ID</value>

@@ -641,7 +641,7 @@
     <value>My Timesheet</value>
   </data>
   <data name="TimeSheet_ADAATimeSheet" xml:space="preserve">
-    <value>ADAA TimeSheet</value>
+    <value>ADAA Timesheet</value>
   </data>
   <data name="TimeSheet_AssigmentName" xml:space="preserve">
     <value>Assigment Name / Task</value>
@@ -807,6 +807,9 @@
   </data>
   <data name="ServiceDeskCases_ID" xml:space="preserve">
     <value>Service Request ID</value>
+  </data>
+	 <data name="ServiceDeskCases_CaseDetails" xml:space="preserve">
+    <value>Service Request Details</value>
   </data>
   <data name="ServiceDeskRequest_ParentID" xml:space="preserve">
     <value>Parent ID</value>

@@ -4,10 +4,14 @@ namespace AdaaMobile.Models
 {
     public class TimeSheetFormated
     {
-        public double LoggedInHours { get; set; }
+		public TimeSheetFormated()
+		{
+			RemainingHours = 8;
+		}
+		public double LoggedInHours { get; set; }
         public string LoggedInHoursFormated { get { return LoggedInHours.ToString() + " H"; } }
-        public double RemainingHours { get; set; }
-        public string RemainingHoursFormated { get { return RemainingHours.ToString() + " H"; } }
+		public double RemainingHours { get; set; } = 8;
+		public string RemainingHoursFormated { get { return RemainingHours.ToString() + " H"; } }
         public List<Project> Projects { get; set; }
 
     }
