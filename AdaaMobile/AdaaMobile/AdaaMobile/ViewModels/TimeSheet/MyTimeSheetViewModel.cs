@@ -280,7 +280,7 @@ namespace AdaaMobile.ViewModels
 				TimeSheetFormated = new TimeSheetFormated();
 				NoProjectsExists = true;
 				ProjectsExists = false;
-				IsAddTaskButtonVisible = day.Date == DateTime.Now.Date || day.Date==DateTime.Now.Date.AddDays(1);
+				IsAddTaskButtonVisible = isBetween(day.Date);
 				IsBusy = true;
 				if (day == null)
 					return;
@@ -309,6 +309,30 @@ namespace AdaaMobile.ViewModels
 			{
 				IsBusy = false;
 			}
+		}
+
+		public bool isBetween(DateTime input)
+		{
+			var date1 = FirstDayOfWeek(DateTime.Now);
+			var date2 = LastDayOfWeek(DateTime.Now);
+			if (input.Date >= date1.Date && input.Date <= date2.Date)
+				return true;
+			else
+				return false;
+		}
+
+		public static DateTime FirstDayOfWeek(DateTime date)
+		{
+			DayOfWeek fdow = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
+			int offset = fdow - date.DayOfWeek;
+			DateTime fdowDate = date.AddDays(offset);
+			return fdowDate;
+		}
+
+		public static DateTime LastDayOfWeek(DateTime date)
+		{
+			DateTime ldowDate = FirstDayOfWeek(date).AddDays(6);
+			return ldowDate;
 		}
 
 		#endregion
@@ -380,11 +404,12 @@ namespace AdaaMobile.ViewModels
 				{
 					var dayOfWeek = DateTime.Now.ToString("dddd");
 					var day = GetProjectTaskDuration(task, selectedDay.Date.ToString("dddd"));
+					bool canEdit = isBetween(selectedDay.Date);
 					var newTask = new ProjectTask
 					{
 						Id = task.TaskID,
 						Name = task.TaskTitle,
-						CanEdit = dayOfWeek == (day != null ? day.DayName : ""),
+						CanEdit = canEdit,
 						Day = day,
 						AssigmentId = existingProject.Id,
 						AssigmentName = existingProject.Name,
@@ -398,11 +423,12 @@ namespace AdaaMobile.ViewModels
 					var newTasks = new List<ProjectTask>();
 					var dayOfWeek = DateTime.Now.ToString("dddd");
 					var day = GetProjectTaskDuration(task, selectedDay.Date.ToString("dddd"));
+					bool canEdit = isBetween(selectedDay.Date);
 					var newTask = new ProjectTask
 					{
 						Id = task.TaskID,
 						Name = task.TaskTitle,
-						CanEdit = dayOfWeek == (day != null ? day.DayName : ""),
+						CanEdit = canEdit,
 						Day = day,
 						AssigmentId = project.AssignmentID,
 						AssigmentName = project.TaskTitle,

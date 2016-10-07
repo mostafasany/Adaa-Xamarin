@@ -32,7 +32,7 @@ namespace AdaaMobile
 			Title = AppResources.ServiceDesk_LogAnIncident;
 
 
-			//HandleArabicLanguageFlowDirection();
+			HandleArabicLanguageFlowDirection();
 			OnBelHalfPicker.SelectedIndexChanged += OnBelHalfPicker_SelectionIndexChanged;
 			ParentCategoriesPicker.SelectedIndexChanged += ParentCategoriesPicker_SelectionIndexChanged;
 			ParentChildCategoriesPicker.SelectedIndexChanged += ParentChildCategoriesPicker_SelectionIndexChanged;
@@ -64,10 +64,19 @@ namespace AdaaMobile
 		{
 			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
 			{
+				ShowPasswordLabel.HorizontalOptions = LayoutOptions.End;
+				PasswordToggle.HorizontalOptions = LayoutOptions.Start;
+
+
 				lblOnBelHalf.HorizontalOptions = LayoutOptions.End;
 				lblOnBelHalfResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn(imageOnBelHalfType, 0);
+				imageOnBelHalfType.RotationY = 180;
+
 				lblParentCategories.HorizontalOptions = LayoutOptions.End;
 				lblParentCategoriesResult.HorizontalOptions = LayoutOptions.End;
+				lblDesc.HorizontalOptions = LayoutOptions.End;
+				lblTitle.HorizontalOptions = LayoutOptions.End;
 				Grid.SetColumn(imageParentCategories, 0);
 				imageParentCategories.RotationY = 180;
 				Grid.SetColumn(imageParentChild, 0);
