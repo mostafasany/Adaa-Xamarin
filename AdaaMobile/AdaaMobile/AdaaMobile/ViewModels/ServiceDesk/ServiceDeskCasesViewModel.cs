@@ -210,6 +210,8 @@ namespace AdaaMobile.ViewModels
 		}
 		private async Task OpenRequestDetailsPage (ServiceDeskCase casses)
 		{
+			if (IsBusy)
+				return;
 			SelectedCasses = casses;
 			await LoadDetails();
 			_navigationService.NavigateToPage (typeof(SelectedServiceCasesPage));

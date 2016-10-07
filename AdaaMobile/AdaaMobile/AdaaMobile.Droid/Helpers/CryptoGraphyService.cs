@@ -1,4 +1,3 @@
-using System;
 using AdaaMobile.Droid.Helpers;
 using AdaaMobile.Helpers;
 using Xamarin.Forms;
