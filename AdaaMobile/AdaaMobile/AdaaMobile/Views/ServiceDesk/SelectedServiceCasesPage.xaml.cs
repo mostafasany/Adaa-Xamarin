@@ -18,6 +18,7 @@ namespace AdaaMobile
 			BindingContext = _viewModel;
 
 			Title = AppResources.ServiceDeskCases_CaseDetails;
+
 		}
 	}
 }

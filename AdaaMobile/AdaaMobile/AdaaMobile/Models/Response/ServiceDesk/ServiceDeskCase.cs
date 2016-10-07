@@ -1,4 +1,5 @@
 ﻿using System;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.Models.Response
 {
@@ -19,7 +20,29 @@ namespace AdaaMobile.Models.Response
 		public int MustVote { get; set; }
 		public DateTime CreatedDate { get; set; }
 		public string CreatedDateFormated { get { return CreatedDate.Date.ToString("dd MMMMM yyyy"); } }
-		public string Id { get; set; }
+
+		private string _Id;
+		public string Id
+		{
+			get {
+				return _Id;
+			}
+			set
+			{
+				_Id = value;
+				if (_Id.Contains("MA"))
+				{
+					AcceptTitle = AppResources.ServiceDesk_MarkAsComplete;
+					RejectTitle = AppResources.ServiceDesk_MarkAsFaild;
+				}
+				else
+				{
+					AcceptTitle = AppResources.Accept;
+					RejectTitle = AppResources.Reject;
+				}
+			}
+		}
+
 		public string RA_Guid { get; set; }
 		public string Title { get; set; }
 		public string Reviewer { get; set; }
@@ -30,7 +53,27 @@ namespace AdaaMobile.Models.Response
 
 		public string StatusID { get; set; }
 		public string comment { get; set; }
-		public string Status { get; set; }
+
+		private string _Status;
+		public string Status
+		{
+			get
+			{
+				return _Status;
+			}
+			set
+			{
+				_Status = value;
+				if (_Status == "Accepted" || _Status == "Rejected" || _Status == "Completed" || _Status == "Failed")
+				{
+					ButtonsVisiblity = false;
+				}
+				else
+				{
+					ButtonsVisiblity = true;
+				}
+			}
+		}
 		public string Status_AR { get; set; }
 		public string Decision_AR { get; set; }
 		public string Status_FR { get; set; }
@@ -80,6 +123,9 @@ namespace AdaaMobile.Models.Response
 		public string WITYPE { get; set; }
 
 
+		public string AcceptTitle { get; set; }
+		public string RejectTitle { get; set; }
+		public bool ButtonsVisiblity { get; set; }
 	}
 
 }

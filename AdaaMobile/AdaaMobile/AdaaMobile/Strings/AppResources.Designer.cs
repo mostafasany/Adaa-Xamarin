@@ -1558,5 +1558,17 @@ namespace AdaaMobile.Strings {
                 return ResourceManager.GetString("ServiceDesk_TitleCannotBeEmpty", resourceCulture);
             }
         }
+        
+        public static string ServiceDesk_MarkAsComplete {
+            get {
+                return ResourceManager.GetString("ServiceDesk_MarkAsComplete", resourceCulture);
+            }
+        }
+        
+        public static string ServiceDesk_MarkAsFaild {
+            get {
+                return ResourceManager.GetString("ServiceDesk_MarkAsFaild", resourceCulture);
+            }
+        }
     }
 }
