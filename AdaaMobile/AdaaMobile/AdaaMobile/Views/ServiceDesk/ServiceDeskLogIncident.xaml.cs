@@ -516,7 +516,6 @@ namespace AdaaMobile
 		{
 			try
 			{
-				return;
 				loadingControl.IsRunning = true;
 
 				var mediaPicker = DependencyService.Get<IMediaPicker>();
@@ -591,7 +590,6 @@ namespace AdaaMobile
 
 				if (moduleName == "Incident%20Classification")
 				{
-
 					LogIncidentRequest request = new LogIncidentRequest();
 					request.AffectedUser = "DEV\\" + affectedUser;
 					request.Classification = classification;

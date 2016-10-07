@@ -8,13 +8,12 @@ using Android.OS;
 using Android.Provider;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using PP.Core.Interfaces.Helpers;
-using PP.Core.Models;
-using PP.Droid.Helpers;
+using AdaaMobile.Models;
+using AdaaMobile.Helpers;
 
 [assembly: Dependency(typeof(MediaPicker))]
 
-namespace PP.Droid.Helpers
+namespace AdaaMobile.Droid
 {
     /// <summary>
     ///     Class MediaPicker.
