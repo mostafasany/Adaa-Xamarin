@@ -2,6 +2,7 @@ using AdaaMobile.Droid.Helpers;
 using AdaaMobile.Helpers;
 using Xamarin.Forms;
 using System.Text;
+using System;
 
 [assembly: Dependency(typeof(CryptoGraphyService))]
 
