@@ -575,7 +575,7 @@ namespace AdaaMobile
 		{
 			try
 			{
-				return;
+				//return;
 				loadingControl.IsRunning = true;
 
 				var mediaPicker = DependencyService.Get<IMediaPicker>();
