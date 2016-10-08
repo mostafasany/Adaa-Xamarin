@@ -460,6 +460,12 @@ namespace AdaaMobile.ViewModels
 				else {
 
 					TimeSheetFormated.RemainingHours = 8 - TimeSheetFormated.LoggedInHours;
+					var number = (int)TimeSheetFormated.RemainingHours;
+					var dec = TimeSheetFormated.RemainingHours - number;
+					if (dec > 0)
+					{
+						TimeSheetFormated.RemainingHours = number + 0.3;
+					}
 				}
 			}
             else
