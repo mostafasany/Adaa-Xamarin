@@ -29,10 +29,8 @@ namespace AdaaMobile
 
 			_viewModel = Locator.Default.ServiceDeskLogIncidentViewModel;
 			BindingContext = _viewModel;
-			Title = AppResources.ServiceDesk_LogAnIncident;
 
-
-			//HandleArabicLanguageFlowDirection();
+			HandleArabicLanguageFlowDirection();
 			OnBelHalfPicker.SelectedIndexChanged += OnBelHalfPicker_SelectionIndexChanged;
 			ParentCategoriesPicker.SelectedIndexChanged += ParentCategoriesPicker_SelectionIndexChanged;
 			ParentChildCategoriesPicker.SelectedIndexChanged += ParentChildCategoriesPicker_SelectionIndexChanged;
@@ -54,6 +52,9 @@ namespace AdaaMobile
 				moduleName = Locator.Default.ServiceDeskHomeViewModel.Module;
 				if (moduleName == "Service%20request%20area")
 					Title = AppResources.ServiceDesk_RequestITService;
+				else {
+					Title = AppResources.ServiceDesk_LogAnIncident;
+				}
 			}
 			//_viewModel.PageLoadedCommand.Execute(null);
 			LoadOnBelhaf();
@@ -64,10 +65,19 @@ namespace AdaaMobile
 		{
 			if (Locator.Default.AppSettings.SelectedCultureName.Contains("ar"))
 			{
+				ShowPasswordLabel.HorizontalOptions = LayoutOptions.End;
+				PasswordToggle.HorizontalOptions = LayoutOptions.Start;
+
+
 				lblOnBelHalf.HorizontalOptions = LayoutOptions.End;
 				lblOnBelHalfResult.HorizontalOptions = LayoutOptions.End;
+				Grid.SetColumn(imageOnBelHalfType, 0);
+				imageOnBelHalfType.RotationY = 180;
+
 				lblParentCategories.HorizontalOptions = LayoutOptions.End;
 				lblParentCategoriesResult.HorizontalOptions = LayoutOptions.End;
+				lblDesc.HorizontalOptions = LayoutOptions.End;
+				lblTitle.HorizontalOptions = LayoutOptions.End;
 				Grid.SetColumn(imageParentCategories, 0);
 				imageParentCategories.RotationY = 180;
 				Grid.SetColumn(imageParentChild, 0);
@@ -468,9 +478,58 @@ namespace AdaaMobile
 			customControls2.Children.Add(switchToggle);
 		}
 
-		void RenderEnum(TemplateExtension extension)
+		async void RenderEnum(TemplateExtension extension)
 		{
+			var response = await Locator.Default.DataService.GetParentCategories(extension.EnumListName);
+			loadingControl.IsRunning = false;
+			if (response != null && response.ResponseStatus == AdaaMobile.DataServices.Requests.ResponseStatus.SuccessWithResult)
+			{
+				if (response.Result.result != null && response.Result.result.Count() > 0)
+				{
+					Label boolLabel = new Label
+					{
+						Text = extension.DisplayName,
+						VerticalOptions = LayoutOptions.Center,
+						HorizontalOptions = LayoutOptions.Start,
+						TextColor = Xamarin.Forms.Color.Gray,
+						BackgroundColor = Xamarin.Forms.Color.Transparent,
+						HorizontalTextAlignment = TextAlignment.Start,
+						FontSize = 20,
+					};
+					customControls2.Children.Add(boolLabel);
+					Picker picker = new Picker
+					{
+						VerticalOptions = LayoutOptions.Center,
+						HorizontalOptions = LayoutOptions.End,
+						BindingContext = extension,
+						WidthRequest = 400,
+						BackgroundColor = Xamarin.Forms.Color.Transparent,
+					};
+					for (int i = 0; i < response.Result.result.Count; i++)
+					{
+						picker.Items.Add(response.Result.result[i].name);
+					}
+					picker.SelectedIndexChanged += picker_SelectionIndexChanged;
+					customControls2.Children.Add(picker);
+				}
+			}
+		}
 
+		private void picker_SelectionIndexChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				if (sender != null && sender is Picker)
+				{
+					var picker = sender as Picker;
+					var extensionTemplate = picker.BindingContext as TemplateExtension;
+					var renderControl = RenderdControlList.FirstOrDefault(a => a.TemplateExtension.ID == extensionTemplate.ID);
+					renderControl.Value = picker.Items[picker.SelectedIndex];
+				}
+			}
+			catch (Exception ex)
+			{
+			}
 		}
 
 		private void StringEditor_TextChanged(object sender, TextChangedEventArgs e)
@@ -516,16 +575,15 @@ namespace AdaaMobile
 		{
 			try
 			{
-				return;
+				//return;
 				loadingControl.IsRunning = true;
 
 				var mediaPicker = DependencyService.Get<IMediaPicker>();
-				var mediaFile = await mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions
+				var mediaFile = await mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions { });
+				if (mediaFile != null)
 				{
-					DefaultCamera = CameraDevice.Front,
-					MaxPixelDimension = 400
-				});
-				var imageSource = ImageSource.FromStream(() => mediaFile.Source);
+					var imageSource = ImageSource.FromStream(() => mediaFile.Source);
+				}
 
 			}
 			catch (Exception ex)
@@ -591,7 +649,6 @@ namespace AdaaMobile
 
 				if (moduleName == "Incident%20Classification")
 				{
-
 					LogIncidentRequest request = new LogIncidentRequest();
 					request.AffectedUser = "DEV\\" + affectedUser;
 					request.Classification = classification;

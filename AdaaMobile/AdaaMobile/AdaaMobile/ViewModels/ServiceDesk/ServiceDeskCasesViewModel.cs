@@ -8,6 +8,7 @@ using AdaaMobile.Models.Response;
 using AdaaMobile.DataServices.Requests;
 using System.Linq;
 using System.Collections.ObjectModel;
+using AdaaMobile.Strings;
 
 namespace AdaaMobile.ViewModels
 {
@@ -160,6 +161,10 @@ namespace AdaaMobile.ViewModels
 							Locator.Default.NavigationService.GoBack();
 
 						}
+						else
+						{
+							Locator.Default.DialogManager.DisplayAlert(AppResources.Error, response.Result.result, AppResources.Ok);
+						}
 					}
 					else {
 
@@ -190,7 +195,11 @@ namespace AdaaMobile.ViewModels
 						if (response.Result.result == "")
 						{
 							Locator.Default.NavigationService.GoBack();
-						}				
+						}	
+						else
+						{
+							 Locator.Default.DialogManager.DisplayAlert(AppResources.Error, response.Result.result, AppResources.Ok);
+						}
 					}
 					else {
 
@@ -210,6 +219,8 @@ namespace AdaaMobile.ViewModels
 		}
 		private async Task OpenRequestDetailsPage (ServiceDeskCase casses)
 		{
+			if (IsBusy)
+				return;
 			SelectedCasses = casses;
 			await LoadDetails();
 			_navigationService.NavigateToPage (typeof(SelectedServiceCasesPage));

@@ -126,8 +126,46 @@ namespace XLabs.Platform.Services.Media
 			{
 				throw new NotSupportedException();
 			}
+//			var window = UIApplication.SharedApplication.KeyWindow;
+//			var viewController = window.RootViewController;
+//			#if __IOS_10__
+//            if (viewController == null || (viewController.PresentedViewController != null && viewController.PresentedViewController.GetType() == typeof(UIAlertController)))
+//            {
+//                window =
+//                    UIApplication.SharedApplication.Windows.OrderByDescending(w => w.WindowLevel)
+//                        .FirstOrDefault(w => w.RootViewController != null);
 
+//                if (window == null)
+//                {
+//                    throw new InvalidOperationException("Could not find current view controller");
+//                }
+
+//                viewController = window.RootViewController;
+//            }
+//#endif
+//			while (viewController.PresentedViewController != null)
+//			{
+//				viewController = viewController.PresentedViewController;
+//			}
+//			var imagePicker = new UIImagePickerController();
+//			imagePicker.SourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
+//			imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
+//			//imagePicker.FinishedPickingMedia += Handle_FinishedPickingMedia;
+//			//imagePicker.Canceled += Handle_Canceled;
+
+//			imagePicker.NavigationBar.TintColor = UIColor.White;
+//			imagePicker.NavigationBar.TitleTextAttributes = new UIStringAttributes { ForegroundColor = UIColor.White };
+//			viewController.PresentViewController(imagePicker, true, finish);
+//			var ntcs = new TaskCompletionSource<MediaFile>();
+//			//if (Interlocked.CompareExchange(ref _completionSource, ntcs, null) != null)
+//			//throw new InvalidOperationException("Only one operation can be active at at time");
+
+//			return null;
 			return GetMediaAsync(UIImagePickerControllerSourceType.PhotoLibrary, TypeImage);
+		}
+
+		void finish()
+		{
 		}
 
 		/// <summary>
@@ -211,6 +249,10 @@ namespace XLabs.Platform.Services.Media
 			string mediaType,
 			MediaStorageOptions options = null)
 		{
+			try
+			{
+
+			
 			var window = UIApplication.SharedApplication.KeyWindow;
 			if (window == null)
 			{
@@ -274,6 +316,11 @@ namespace XLabs.Platform.Services.Media
 						Interlocked.Exchange(ref _pickerDelegate, null);
 						return t;
 					}).Unwrap();
+				}
+			catch (Exception ex)
+			{
+				return null;
+			}
 		}
 
 		/// <summary>

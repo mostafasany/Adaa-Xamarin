@@ -37,7 +37,7 @@
 					</controls:ExtendedEditor>
 				</StackLayout>
 				<Grid HorizontalOptions="Fill" VerticalOptions="Fill" RowSpacing="10" Grid.Row="2">
-					<controls:ImageButton x:Name="Accept" Grid.Row="0" Command="{Binding CaseAccepted}" Grid.Column="0" Text="{ext:Translate Accept}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Start" BackgroundColor="Green" TextColor="White" HorizontalOptions="Fill">
+					<controls:ImageButton x:Name="Accept"  IsVisible = "{Binding SelectedCasses.ButtonsVisiblity}" Grid.Row="0" Command="{Binding CaseAccepted}" Grid.Column="0" Text="{Binding SelectedCasses.AcceptTitle}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Start" BackgroundColor="Green" TextColor="White" HorizontalOptions="Fill">
 						<controls:ImageButton.ImageHeightRequest>
 							<OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="24" />
 						</controls:ImageButton.ImageHeightRequest>
@@ -51,7 +51,7 @@
 							<OnPlatform x:TypeArguments="ImageSource" WinPhone="accept.png" Android="accept.png" iOS="accept" />
 						</controls:ImageButton.Source>
 					</controls:ImageButton>
-					<controls:ImageButton x:Name="Reject" Grid.Row="0" Command="{Binding CaseRejected}" Grid.Column="1" Text="{ext:Translate Reject}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Start" BackgroundColor="Red" TextColor="White" HorizontalOptions="Fill">
+					<controls:ImageButton x:Name="Reject" IsVisible = "{Binding SelectedCasses.ButtonsVisiblity}" Grid.Row="0" Command="{Binding CaseRejected}" Grid.Column="1" Text="{Binding SelectedCasses.RejectTitle}" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" VerticalOptions="Start" BackgroundColor="Red" TextColor="White" HorizontalOptions="Fill">
 						<controls:ImageButton.ImageHeightRequest>
 							<OnPlatform x:TypeArguments="x:Int32" WinPhone="26" Android="22" iOS="24" />
 						</controls:ImageButton.ImageHeightRequest>

@@ -27,15 +27,18 @@ namespace AdaaMobile.Views.ServiceDesk
 
 				lblDate.HorizontalOptions = LayoutOptions.Start;
 				Grid.SetColumn (lblDate, 1);
+				lblDate.HorizontalTextAlignment = TextAlignment.End;
 
 				lblTitle.HorizontalOptions = LayoutOptions.End;
 				Grid.SetColumn (lblTitle, 2);
+				lblTitle.HorizontalTextAlignment = TextAlignment.End;
 
 				lblSubTitle.HorizontalOptions = LayoutOptions.End;
 				Grid.SetColumn(lblSubTitle, 2);
 
 				lblMessages.HorizontalOptions = LayoutOptions.End;
 				Grid.SetColumn (lblMessages, 2);
+				lblMessages.HorizontalTextAlignment = TextAlignment.End;
 
 			}
 		}

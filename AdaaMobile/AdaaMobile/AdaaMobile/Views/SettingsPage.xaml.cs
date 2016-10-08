@@ -33,7 +33,7 @@ namespace AdaaMobile.Views
 				LanguagePicker.Unfocused+= LanguagePicker_Unfocused;
 			}
 			HandleArabicLanguageFlowDirection();
-			VersionLabel.Text = AppResources.AppVersion + " " +DependencyService.Get<IPhoneService>().GetVersion();
+			VersionLabel.Text = AppResources.AppVersion + "2.0.0.0";//+DependencyService.Get<IPhoneService>().GetVersion();
 
 		}
 

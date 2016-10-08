@@ -23,7 +23,7 @@ namespace AdaaMobile.Views
               LoadYears();
           };
             ToolbarItems.Add(
-                new ToolbarItem("", "right.png", action, ToolbarItemOrder.Primary));
+                new ToolbarItem("", "Filter.png", action, ToolbarItemOrder.Primary));
 
 
         }
