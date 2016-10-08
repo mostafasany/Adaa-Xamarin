@@ -453,6 +453,12 @@ namespace AdaaMobile.ViewModels
 			if (TimeSheetFormated.Projects != null && TimeSheetFormated.Projects.Count > 0)
 			{
 				TimeSheetFormated.LoggedInHours = TimeSheetFormated.Projects.Sum(a => a.TotalHours);
+				var number = (int)TimeSheetFormated.LoggedInHours;
+				var dec = TimeSheetFormated.LoggedInHours - number;
+				if (dec > 0.3)
+				{
+					TimeSheetFormated.LoggedInHours = number + 1;
+				}
 				if (TimeSheetFormated.LoggedInHours > 8)
 				{
 					TimeSheetFormated.RemainingHours = 0;
@@ -460,18 +466,18 @@ namespace AdaaMobile.ViewModels
 				else {
 
 					TimeSheetFormated.RemainingHours = 8 - TimeSheetFormated.LoggedInHours;
-					var number = (int)TimeSheetFormated.RemainingHours;
-					var dec = TimeSheetFormated.RemainingHours - number;
+					number = (int)TimeSheetFormated.RemainingHours;
+					dec = TimeSheetFormated.RemainingHours - number;
 					if (dec > 0)
 					{
 						TimeSheetFormated.RemainingHours = number + 0.3;
 					}
 				}
 			}
-            else
-            {
-                TimeSheetFormated.RemainingHours = 8;
-            }
+			else
+			{
+				TimeSheetFormated.RemainingHours = 8;
+			}
 			GroupedTimeSheet = new ObservableCollection<Grouping<Project, ProjectTask>>();
 			foreach (var item in TimeSheetFormated.Projects)
 			{

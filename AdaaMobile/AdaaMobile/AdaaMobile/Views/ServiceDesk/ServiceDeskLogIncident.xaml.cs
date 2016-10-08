@@ -11,6 +11,7 @@ using Xamarin.Forms.Labs.Services.Media;
 using AdaaMobile.Models.Request;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Response;
+using System.IO;
 
 namespace AdaaMobile
 {
@@ -30,6 +31,16 @@ namespace AdaaMobile
 			_viewModel = Locator.Default.ServiceDeskLogIncidentViewModel;
 			BindingContext = _viewModel;
 
+			if (!string.IsNullOrEmpty(Locator.Default.ServiceDeskHomeViewModel.Module))
+			{
+				moduleName = Locator.Default.ServiceDeskHomeViewModel.Module;
+				if (moduleName == "Service%20request%20area")
+					Title = AppResources.ServiceDesk_RequestITService;
+				else {
+					Title = AppResources.ServiceDesk_LogAnIncident;
+				}
+			}
+
 			HandleArabicLanguageFlowDirection();
 			OnBelHalfPicker.SelectedIndexChanged += OnBelHalfPicker_SelectionIndexChanged;
 			ParentCategoriesPicker.SelectedIndexChanged += ParentCategoriesPicker_SelectionIndexChanged;
@@ -47,15 +58,7 @@ namespace AdaaMobile
 		protected async override void OnAppearing()
 		{
 			base.OnAppearing();
-			if (!string.IsNullOrEmpty(Locator.Default.ServiceDeskHomeViewModel.Module))
-			{
-				moduleName = Locator.Default.ServiceDeskHomeViewModel.Module;
-				if (moduleName == "Service%20request%20area")
-					Title = AppResources.ServiceDesk_RequestITService;
-				else {
-					Title = AppResources.ServiceDesk_LogAnIncident;
-				}
-			}
+
 			//_viewModel.PageLoadedCommand.Execute(null);
 			LoadOnBelhaf();
 			LoadParentCategories();
@@ -96,7 +99,8 @@ namespace AdaaMobile
 		ChildCategory SelectedChildCategory;
 		CategoryTemplate SelectedTemplate;
 		List<RenderdControl> RenderdControlList;
-
+		byte[] attachment;
+		string attachmentName = "";
 		#endregion
 
 		#region OnBelHalf
@@ -575,14 +579,20 @@ namespace AdaaMobile
 		{
 			try
 			{
-				//return;
+				return;
 				loadingControl.IsRunning = true;
 
 				var mediaPicker = DependencyService.Get<IMediaPicker>();
 				var mediaFile = await mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions { });
 				if (mediaFile != null)
 				{
-					var imageSource = ImageSource.FromStream(() => mediaFile.Source);
+					attachment = ReadFully(mediaFile.Source);
+					attachmentName = mediaFile.Path;
+					//var imageSource = ImageSource.FromStream(() => mediaFile.Source);
+				}
+				else {
+					attachment = new byte[0];
+					attachmentName = "";
 				}
 
 			}
@@ -593,6 +603,20 @@ namespace AdaaMobile
 			finally
 			{
 				loadingControl.IsRunning = false;
+			}
+		}
+
+		public static byte[] ReadFully(Stream input)
+		{
+			byte[] buffer = new byte[16 * 1024];
+			using (MemoryStream ms = new MemoryStream())
+			{
+				int read;
+				while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+				{
+					ms.Write(buffer, 0, read);
+				}
+				return ms.ToArray();
 			}
 		}
 
