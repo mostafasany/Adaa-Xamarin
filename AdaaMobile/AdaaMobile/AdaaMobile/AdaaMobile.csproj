@@ -608,6 +608,7 @@
     <EmbeddedResource Include="Views\ServiceDesk\SelectedServiceCasesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Images\cts.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Authentication\LoginPage.xaml">
