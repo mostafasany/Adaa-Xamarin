@@ -1,22 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using AdaaMobile.Common;
+using System.Collections.Generic;
 
 namespace AdaaMobile.Models
 {
-    public class TimeSheetFormated
+    public class TimeSheetFormated : BindableBase
     {
-		public TimeSheetFormated()
-		{
-			RemainingHours = 8;
-		}
-		public double LoggedInHours { get; set; }
+        public TimeSheetFormated()
+        {
+            RemainingHours = 8;
+        }
+
+        private double _LoggedInHours;
+        public double LoggedInHours
+        {
+            get { return _LoggedInHours; }
+            set { SetProperty(ref _LoggedInHours, value); }
+        }
+
+        private double _RemainingHours = 8;
+        public double RemainingHours
+        {
+            get { return _RemainingHours; }
+            set { SetProperty(ref _RemainingHours, value); }
+        }
+
         public string LoggedInHoursFormated { get { return LoggedInHours.ToString() + " H"; } }
-		public double RemainingHours { get; set; } = 8;
-		public string RemainingHoursFormated { get { return RemainingHours.ToString() + " H"; } }
+        public string RemainingHoursFormated { get { return RemainingHours.ToString() + " H"; } }
         public List<Project> Projects { get; set; }
 
     }
 
-    public class Project
+    public class Project : BindableBase
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -30,7 +44,7 @@ namespace AdaaMobile.Models
 
     }
 
-    public class ProjectTask
+    public class ProjectTask : BindableBase
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -40,7 +54,7 @@ namespace AdaaMobile.Models
         public bool CanEdit { get; set; }
     }
 
-    public class DayWithLoggedInHours
+    public class DayWithLoggedInHours : BindableBase
     {
         public double Hours { get; set; }
         public string HoursFormated { get { return Hours.ToString() + " H"; } }
