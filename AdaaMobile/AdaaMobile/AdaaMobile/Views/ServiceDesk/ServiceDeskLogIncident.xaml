@@ -158,7 +158,7 @@
               </Image.Source>
             </Image>
           </Grid>
-          <Label x:Name="lblHours" HorizontalOptions="End" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Small" Text="{Binding Message,Source={x:Reference ParentView}}" />
+          <Label x:Name="lblFileName" HorizontalOptions="End" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Small" />
           <Grid WidthRequest="50" x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85" HorizontalOptions="End">
             <Image HorizontalOptions="Center" x:Name="imgArrow2" HeightRequest="50" WidthRequest="20" VerticalOptions="Center">
               <Image.Source>

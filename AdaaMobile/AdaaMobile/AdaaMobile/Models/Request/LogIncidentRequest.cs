@@ -13,7 +13,7 @@ namespace AdaaMobile.Models.Request
         public string AffectedUser { get; set; }
         public string CreatedByUser { get; set; }
         public string[] FilesNames { get; set; }
-        public string[] Files { get; set; }
+        public byte[] Files { get; set; }
         public string templateId { get; set; }
         public string[] RA_values { get; set; }
     }

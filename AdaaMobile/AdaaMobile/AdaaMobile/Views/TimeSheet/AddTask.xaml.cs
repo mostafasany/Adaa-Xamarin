@@ -151,6 +151,12 @@ namespace AdaaMobile
                     timeSheetDetails.ThursdayComment = comment;
                 }
 
+                if(double.Parse(duration) > _viewModel.TimeSheetFormated.LoggedInHours)
+                {
+                    await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.TimeSheet_Exceed8Hours, AppResources.Ok);
+                    return;
+                }
+
                 timeSheetList.Add(timeSheetDetails);
                 var status = await Locator.Default.DataService.SubmitTimeSheet(DateTime.Now.Year, _viewModel.SelectedWeek.WeekNumber, timeSheetList, null);
                 if (status.Result)
@@ -196,7 +202,7 @@ namespace AdaaMobile
         private void LoadDuration()
         {
             DurationPicker.Items.Clear();
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < 9; i++)
             {
                 string value = i.ToString() + ":00 H";
                 DurationPicker.Items.Add(value);
