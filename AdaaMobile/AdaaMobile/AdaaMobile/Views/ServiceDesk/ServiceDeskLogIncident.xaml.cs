@@ -660,13 +660,13 @@ namespace AdaaMobile
                 string affectedUser = string.IsNullOrEmpty(SelectedOnBehalf) ? LoggedUserInfo.CurrentUserProfile.DisplayName : SelectedOnBehalf;
                 string createdByUser = LoggedUserInfo.CurrentUserProfile.DisplayName;
                 List<string> fileNames = new List<string>();
-                byte[] files = new byte[0];
+                List<byte[]> files = new List<byte[]>();
 
                 if (string.IsNullOrEmpty(attachmentName))
                     fileNames.Add(attachmentName);
 
                 if (attachment.Length > 0)
-                    files = attachment;
+                    files.Add(attachment);
 
                 string templateId = SelectedTemplate != null ? SelectedTemplate.ID : "";
                 List<string> RA_Values = new List<string>();
@@ -693,7 +693,7 @@ namespace AdaaMobile
                     request.Classification = classification;
                     request.CreatedByUser = "DEV\\" + createdByUser;
                     request.Description = descr;
-                    request.Files = files;
+                    request.Files = files.ToArray();
                     request.FilesNames = fileNames.ToArray();
                     request.Impact = impact;
                     request.RA_values = RA_Values.ToArray();
@@ -725,7 +725,7 @@ namespace AdaaMobile
                     request.createdByUserField = "DEV\\" + createdByUser;
                     request.descriptionField = descr;
                     request.pocoStatusField = "New";
-                    request.filesBytesField = files;
+                    request.filesBytesField = files.ToArray();
                     request.filesNamesField = fileNames.ToArray();
                     request.rA_ValuesField = RA_Values.ToArray();
                     request.templateIDField = templateId;

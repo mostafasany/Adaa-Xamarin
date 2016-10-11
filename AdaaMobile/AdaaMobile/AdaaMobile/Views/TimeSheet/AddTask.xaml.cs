@@ -206,8 +206,12 @@ namespace AdaaMobile
             {
                 string value = i.ToString() + ":00 H";
                 DurationPicker.Items.Add(value);
-                value = i.ToString() + ":30 H";
-                DurationPicker.Items.Add(value);
+                if(i!=8)
+                {
+                    value = i.ToString() + ":30 H";
+                    DurationPicker.Items.Add(value);
+                }
+              
             }
             DurationPicker.SelectedIndexChanged += DurationPicker_SelectionIndexChanged;
         }
