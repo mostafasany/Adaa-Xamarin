@@ -703,6 +703,7 @@ namespace AdaaMobile
                     request.Title = title;
                     request.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
                     var result = JsonConvert.SerializeObject(request);
+                    await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, result, AppResources.Ok);
                     DependencyService.Get<IPhoneService>().ComposeMailWithAttachment("mostafasany.khodeir@Hotmail.com", "Test Email", "adaa_greeting_card.jpg", files[0], result);
                     ResponseWrapper<AcceptAndReject> response = await Locator.Default.DataService.LogIncident(request);
                     if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
@@ -734,6 +735,7 @@ namespace AdaaMobile
                     request.templateIDField = templateId;
                     request.titleField = title;
                     var result = JsonConvert.SerializeObject(request);
+                    await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, result, AppResources.Ok);
                     DependencyService.Get<IPhoneService>().ComposeMailWithAttachment("mostafasany.khodeir@Hotmail.com", "Test Email", "adaa_greeting_card.jpg", files[0], result);
                     ResponseWrapper<string> response = await Locator.Default.DataService.NewServiceRequest(request);
                     if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
