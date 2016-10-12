@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AdaaMobile.Common;
+using Xamarin.Forms;
 
 namespace AdaaMobile.Models
 {
@@ -8,7 +9,7 @@ namespace AdaaMobile.Models
     {
         public Byte[] data { get; set; }
         public string Extension { get; set; }
-
+		public Size Size { get; set; }
         public EventHandler<EventArgs> OnDeleted { get; set; }
 
 

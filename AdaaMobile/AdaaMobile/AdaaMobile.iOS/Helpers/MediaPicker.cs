@@ -69,8 +69,10 @@ namespace XLabs.Platform.Services.Media
                 {
                     Byte[] myimageByteArray = new Byte[imageData.Length];
                     System.Runtime.InteropServices.Marshal.Copy(imageData.Bytes, myimageByteArray, 0, Convert.ToInt32(imageData.Length));
-
+					image.Size=new Size((double)originalImage.Size.Width, (double)originalImage.Size.Height);
                     image.data = myimageByteArray;
+
+
                     image.Extension = imageNAme;
                     result = image;
                     if (OnMediaSelected != null)
@@ -107,7 +109,8 @@ namespace XLabs.Platform.Services.Media
             if (Interlocked.CompareExchange(ref _completionSource, ntcs, null) != null)
                 throw new InvalidOperationException("Only one operation can be active at at time");
 
-            return null;
+
+            return ntcs.Task;
 
         }
 
