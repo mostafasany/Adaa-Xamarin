@@ -7,11 +7,12 @@ using AdaaMobile.Models.Response.ServiceDesk;
 using AdaaMobile.Controls;
 using System.Threading.Tasks;
 using System.Linq;
-using Xamarin.Forms.Labs.Services.Media;
+//using Xamarin.Forms.Labs.Services.Media;
 using AdaaMobile.Models.Request;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Response;
 using System.IO;
+using AdaaMobile.Helpers;
 
 namespace AdaaMobile
 {
@@ -584,13 +585,13 @@ namespace AdaaMobile
                 loadingControl.IsRunning = true;
 
                 var mediaPicker = DependencyService.Get<IMediaPicker>();
-                var mediaFile = await mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions { });
+				var mediaFile = await mediaPicker.SelectPhotoAsync();
                 if (mediaFile != null)
                 {
                     attachmentGrid.IsVisible = true;
-                    attachment = ReadFully(mediaFile.Source);
-                    attachmentName = Path.GetFileName(mediaFile.Path);
-                    lblFileName.Text = Path.GetFileName(mediaFile.Path);
+                    //attachment = ReadFully(mediaFile.Source);
+                    //attachmentName = Path.GetFileName(mediaFile.Path);
+                    //lblFileName.Text = Path.GetFileName(mediaFile.Path);
                    // await Locator.Default.DialogManager.DisplayAlert(attachment.Length.ToString(), mediaFile.Path, AppResources.Ok);
                     //var imageSource = ImageSource.FromStream(() => mediaFile.Source);
                 }
