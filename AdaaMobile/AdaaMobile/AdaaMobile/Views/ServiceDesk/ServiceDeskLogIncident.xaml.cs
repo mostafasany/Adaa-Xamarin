@@ -12,6 +12,7 @@ using AdaaMobile.Models.Request;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Response;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace AdaaMobile
 {
@@ -591,7 +592,7 @@ namespace AdaaMobile
                     attachment = ReadFully(mediaFile.Source);
                     attachmentName = Path.GetFileName(mediaFile.Path);
                     lblFileName.Text = Path.GetFileName(mediaFile.Path);
-                   // await Locator.Default.DialogManager.DisplayAlert(attachment.Length.ToString(), mediaFile.Path, AppResources.Ok);
+                    // await Locator.Default.DialogManager.DisplayAlert(attachment.Length.ToString(), mediaFile.Path, AppResources.Ok);
                     //var imageSource = ImageSource.FromStream(() => mediaFile.Source);
                 }
                 else
@@ -701,6 +702,8 @@ namespace AdaaMobile
                     request.templateId = templateId;
                     request.Title = title;
                     request.Urgency = "725a4cad-088c-4f55-a845-000db8872e01";
+                    var result = JsonConvert.SerializeObject(request);
+                    DependencyService.Get<IPhoneService>().ComposeMailWithAttachment("mostafasany.khodeir@Hotmail.com", "Test Email", "adaa_greeting_card.jpg", files[0], result);
                     ResponseWrapper<AcceptAndReject> response = await Locator.Default.DataService.LogIncident(request);
                     if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
                     {
@@ -730,7 +733,8 @@ namespace AdaaMobile
                     request.rA_ValuesField = RA_Values.ToArray();
                     request.templateIDField = templateId;
                     request.titleField = title;
-
+                    var result = JsonConvert.SerializeObject(request);
+                    DependencyService.Get<IPhoneService>().ComposeMailWithAttachment("mostafasany.khodeir@Hotmail.com", "Test Email", "adaa_greeting_card.jpg", files[0], result);
                     ResponseWrapper<string> response = await Locator.Default.DataService.NewServiceRequest(request);
                     if (response.ResponseStatus == ResponseStatus.SuccessWithResult && response.Result != null)
                     {
