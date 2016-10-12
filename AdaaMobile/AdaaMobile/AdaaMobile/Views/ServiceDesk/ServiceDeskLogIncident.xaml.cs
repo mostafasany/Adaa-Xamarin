@@ -7,12 +7,12 @@ using AdaaMobile.Models.Response.ServiceDesk;
 using AdaaMobile.Controls;
 using System.Threading.Tasks;
 using System.Linq;
-using Xamarin.Forms.Labs.Services.Media;
 using AdaaMobile.Models.Request;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Response;
 using System.IO;
 using Newtonsoft.Json;
+using AdaaMobile.Helpers;
 
 namespace AdaaMobile
 {
@@ -585,13 +585,13 @@ namespace AdaaMobile
                 loadingControl.IsRunning = true;
 
                 var mediaPicker = DependencyService.Get<IMediaPicker>();
-                var mediaFile = await mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions { });
+                var mediaFile = await mediaPicker.SelectPhotoAsync();
                 if (mediaFile != null)
                 {
                     attachmentGrid.IsVisible = true;
-                    attachment = ReadFully(mediaFile.Source);
-                    attachmentName = Path.GetFileName(mediaFile.Path);
-                    lblFileName.Text = Path.GetFileName(mediaFile.Path);
+                    attachment = mediaFile.data;
+                    attachmentName = Path.GetFileName("1"+mediaFile.Extension);
+                    lblFileName.Text = Path.GetFileName("1" + mediaFile.Extension);
                     // await Locator.Default.DialogManager.DisplayAlert(attachment.Length.ToString(), mediaFile.Path, AppResources.Ok);
                     //var imageSource = ImageSource.FromStream(() => mediaFile.Source);
                 }
@@ -612,20 +612,6 @@ namespace AdaaMobile
             finally
             {
                 loadingControl.IsRunning = false;
-            }
-        }
-
-        public static byte[] ReadFully(Stream input)
-        {
-            byte[] buffer = new byte[16 * 1024];
-            using (MemoryStream ms = new MemoryStream())
-            {
-                int read;
-                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    ms.Write(buffer, 0, read);
-                }
-                return ms.ToArray();
             }
         }
 
