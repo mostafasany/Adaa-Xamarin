@@ -651,7 +651,7 @@ namespace AdaaMobile
 				if (!string.IsNullOrEmpty(attachmentName))
 					fileNames.Add(attachmentName);
 
-				if (attachment.Length > 0)
+				if (attachment!=null && attachment.Length > 0)
 					files.Add(attachment);
 
 				string templateId = SelectedTemplate != null ? SelectedTemplate.ID : "";
