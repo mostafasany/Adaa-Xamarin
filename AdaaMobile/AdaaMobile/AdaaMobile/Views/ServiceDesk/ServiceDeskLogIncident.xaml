@@ -159,7 +159,7 @@
             </Image>
           </Grid>-->
 					<Label x:Name="lblFileName" HorizontalOptions="Fill" Grid.Column="1" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Small" />
-					<Grid WidthRequest="50" x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85" HorizontalOptions="End">
+					<Grid WidthRequest="50" x:Name="imgGrid" Grid.Column="2" BackgroundColor="#cc007c85" HorizontalOptions="End">
 						<!--<Grid.GestureRecognizers>
 							<TapGestureRecognizer Tapped="Item_Tapped" />
 						</Grid.GestureRecognizers>-->

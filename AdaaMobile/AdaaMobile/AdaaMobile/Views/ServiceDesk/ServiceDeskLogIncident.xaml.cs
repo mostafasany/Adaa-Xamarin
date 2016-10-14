@@ -13,6 +13,7 @@ using AdaaMobile.Models.Response;
 using System.IO;
 using Newtonsoft.Json;
 using AdaaMobile.Helpers;
+using System.Text;
 
 namespace AdaaMobile
 {
@@ -101,7 +102,7 @@ namespace AdaaMobile
 		ChildCategory SelectedChildCategory;
 		CategoryTemplate SelectedTemplate;
 		List<RenderdControl> RenderdControlList;
-		byte[] attachment;
+		string attachment;
 		string attachmentName = "";
 		#endregion
 
@@ -589,8 +590,13 @@ namespace AdaaMobile
 				if (mediaFile != null)
 				{
 					attachmentGrid.IsVisible = true;
-					attachment = mediaFile.data;
-					String s = Convert.ToBase64String(attachment);
+				
+					//String s = Convert.ToBase64String(attachment);
+					//string result = System.Text.Encoding.UTF8.GetString(attachment,0,attachment.Length-1);
+					//char[] characters = attachment.Select(b => (char)b).ToArray();
+					//var test= new string(characters);
+					var value = ByteArrayToString(mediaFile.data);
+					attachment = string.Format("[{0}]", value);
 					attachmentName = Guid.NewGuid().ToString();
 					lblFileName.Text = attachmentName;
 
@@ -598,7 +604,7 @@ namespace AdaaMobile
 				else
 				{
 					attachmentGrid.IsVisible = false;
-					attachment = new byte[0];
+					attachment = "";
 					attachmentName = "";
 					lblFileName.Text = "";
 				}
@@ -612,6 +618,24 @@ namespace AdaaMobile
 			{
 				loadingControl.IsRunning = false;
 			}
+		}
+
+		public static string ByteArrayToString(byte[] ba)
+		{
+			StringBuilder hex = new StringBuilder(ba.Length * 2);
+			for (int i = 0; i < ba.Length; i++)
+			{
+				hex.Append(ba[i]);
+				if (i != ba.Length - 1)
+				{
+					hex.Append(",");
+				}
+				else {
+					
+				}
+			}
+
+			return hex.ToString();
 		}
 
 		private async void LogIncident()
@@ -646,7 +670,7 @@ namespace AdaaMobile
 				string affectedUser = string.IsNullOrEmpty(SelectedOnBehalf) ? LoggedUserInfo.CurrentUserProfile.DisplayName : SelectedOnBehalf;
 				string createdByUser = LoggedUserInfo.CurrentUserProfile.DisplayName;
 				List<string> fileNames = new List<string>();
-				List<byte[]> files = new List<byte[]>();
+				List<string> files = new List<string>();
 
 				if (!string.IsNullOrEmpty(attachmentName))
 					fileNames.Add(attachmentName);
@@ -704,6 +728,10 @@ namespace AdaaMobile
 							await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
 						}
 					}
+					else
+					{
+						await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
+					}
 				}
 				else
 				{
@@ -731,6 +759,10 @@ namespace AdaaMobile
 							await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
 						}
 					}
+					else
+					{
+						await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, AppResources.Error, AppResources.Ok);
+					}
 				}
 
 			}
@@ -749,7 +781,7 @@ namespace AdaaMobile
 		void OnTapGestureRecognizerTapped(object sender, System.EventArgs e)
 		{
 			attachmentGrid.IsVisible = false;
-			attachment = new byte[0];
+			attachment = "";
 			attachmentName = "";
 			lblFileName.Text = "";
 		}

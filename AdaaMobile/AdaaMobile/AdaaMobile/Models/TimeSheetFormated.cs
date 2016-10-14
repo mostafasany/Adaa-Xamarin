@@ -8,24 +8,53 @@ namespace AdaaMobile.Models
         public TimeSheetFormated()
         {
             RemainingHours = 8;
+			LoggedInHours = 0;
         }
 
-        private double _LoggedInHours;
+        private double _LoggedInHours=0;
         public double LoggedInHours
         {
             get { return _LoggedInHours; }
-            set { SetProperty(ref _LoggedInHours, value); }
+            set
+			{ 
+				SetProperty(ref _LoggedInHours, value);
+				LoggedInHoursFormated=LoggedInHours.ToString() + " H";
+			}
         }
 
         private double _RemainingHours = 8;
         public double RemainingHours
         {
             get { return _RemainingHours; }
-            set { SetProperty(ref _RemainingHours, value); }
+            set
+			{
+				SetProperty(ref _RemainingHours, value);
+				RemainingHoursFormated = RemainingHours.ToString() + " H";
+			}
         }
 
-        public string LoggedInHoursFormated { get { return LoggedInHours.ToString() + " H"; } }
-        public string RemainingHoursFormated { get { return RemainingHours.ToString() + " H"; } }
+		private string _LoggedInHoursFormated;
+		public string LoggedInHoursFormated
+		{
+			get { return _LoggedInHoursFormated; }
+			set
+			{
+				SetProperty(ref _LoggedInHoursFormated, value);
+			}
+		}
+
+		private string _RemainingHoursFormated;
+		public string RemainingHoursFormated
+		{
+			get { return _RemainingHoursFormated; }
+			set
+			{
+				SetProperty(ref _RemainingHoursFormated, value);
+			}
+		}
+
+        //public string LoggedInHoursFormated { get { return LoggedInHours.ToString() + " H"; } }
+        //public string RemainingHoursFormated { get { return RemainingHours.ToString() + " H"; } }
         public List<Project> Projects { get; set; }
 
     }
