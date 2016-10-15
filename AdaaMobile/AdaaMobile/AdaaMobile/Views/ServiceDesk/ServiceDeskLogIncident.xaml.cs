@@ -25,6 +25,7 @@ namespace AdaaMobile
 	}
 	public partial class ServiceDeskLogIncident : ContentPage
 	{
+		
 		public ServiceDeskLogIncident()
 		{
 			InitializeComponent();
@@ -590,11 +591,6 @@ namespace AdaaMobile
 				if (mediaFile != null)
 				{
 					attachmentGrid.IsVisible = true;
-				
-					//String s = Convert.ToBase64String(attachment);
-					//string result = System.Text.Encoding.UTF8.GetString(attachment,0,attachment.Length-1);
-					//char[] characters = attachment.Select(b => (char)b).ToArray();
-					//var test= new string(characters);
 					var value = ByteArrayToString(mediaFile.data);
 					attachment = value;
 					attachmentName = Guid.NewGuid().ToString();
@@ -769,13 +765,14 @@ namespace AdaaMobile
 
 		}
 
-
-		void OnTapGestureRecognizerTapped(object sender, System.EventArgs e)
+		void Handle_Clicked(object sender, System.EventArgs e)
 		{
 			attachmentGrid.IsVisible = false;
 			attachment = new List<int>();
 			attachmentName = "";
 			lblFileName.Text = "";
+			
 		}
+
 	}
 }
