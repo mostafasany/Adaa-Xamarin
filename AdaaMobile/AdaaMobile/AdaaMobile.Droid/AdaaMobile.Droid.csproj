@@ -158,7 +158,11 @@
     <Compile Include="Helpers\CryptoGraphyService.cs" />
     <Compile Include="Helpers\Localize.cs" />
     <Compile Include="CustomRenderers\ImageCircleRenderer.cs" />
-    <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Helpers\MediaPicker.cs" />
+    <Compile Include="Helpers\MediaPicker\MediaExtensions.cs" />
+    <Compile Include="Helpers\MediaPicker\MediaPickerActivity.cs" />
+    <Compile Include="Helpers\MediaPicker\MediaStorageOptions.cs" />
+    <Compile Include="Helpers\MediaPicker\TaskUtils.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Plugins\Connectivity\ConnectivityChangeBroadcastReceiver.cs" />
     <Compile Include="Plugins\Connectivity\ConnectivityImplementation.cs" />
@@ -179,7 +183,6 @@
     <None Include="Resources\drawable-hdpi\Filter.png" />
     <None Include="Resources\drawable-xhdpi\Filter.png" />
     <None Include="Resources\drawable-xxhdpi\Filter.png" />
-    <None Include="Helpers\MediaPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />

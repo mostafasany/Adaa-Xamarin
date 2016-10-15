@@ -1,15 +1,15 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Provider;
 using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
 using AdaaMobile.Models;
 using AdaaMobile.Helpers;
+using PP.Droid.Helpers;
+using AdaaMobile.Droid;
 
 [assembly: Dependency(typeof(MediaPicker))]
 
@@ -25,7 +25,7 @@ namespace AdaaMobile.Droid
 
         private static Context Context
         {
-            get { return Xamarin.Forms.Forms.Context ?? Application.Context; }
+            get { return Xamarin.Forms.Forms.Context ?? Android.App.Application.Context; }
         }
 
         /// <summary>
