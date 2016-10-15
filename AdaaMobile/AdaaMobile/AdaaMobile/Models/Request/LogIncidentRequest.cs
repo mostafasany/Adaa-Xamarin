@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Generic;
+
 namespace AdaaMobile.Models.Request
 {
     public class LogIncidentRequest
@@ -13,7 +15,7 @@ namespace AdaaMobile.Models.Request
         public string AffectedUser { get; set; }
         public string CreatedByUser { get; set; }
         public string[] FilesNames { get; set; }
-        public string[] Files { get; set; }
+        public List<int> [] Files { get; set; }
         public string templateId { get; set; }
         public string[] RA_values { get; set; }
     }

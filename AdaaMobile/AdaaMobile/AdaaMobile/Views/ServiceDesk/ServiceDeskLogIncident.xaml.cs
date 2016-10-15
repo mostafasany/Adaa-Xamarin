@@ -102,7 +102,7 @@ namespace AdaaMobile
 		ChildCategory SelectedChildCategory;
 		CategoryTemplate SelectedTemplate;
 		List<RenderdControl> RenderdControlList;
-		string attachment;
+		List<int> attachment;
 		string attachmentName = "";
 		#endregion
 
@@ -596,7 +596,7 @@ namespace AdaaMobile
 					//char[] characters = attachment.Select(b => (char)b).ToArray();
 					//var test= new string(characters);
 					var value = ByteArrayToString(mediaFile.data);
-					attachment = string.Format("[{0}]", value);
+					attachment = value;
 					attachmentName = Guid.NewGuid().ToString();
 					lblFileName.Text = attachmentName;
 
@@ -604,7 +604,7 @@ namespace AdaaMobile
 				else
 				{
 					attachmentGrid.IsVisible = false;
-					attachment = "";
+					attachment = new List<int>();
 					attachmentName = "";
 					lblFileName.Text = "";
 				}
@@ -620,22 +620,14 @@ namespace AdaaMobile
 			}
 		}
 
-		public static string ByteArrayToString(byte[] ba)
+		public List<int>  ByteArrayToString(byte[] ba)
 		{
-			StringBuilder hex = new StringBuilder(ba.Length * 2);
-			for (int i = 0; i < ba.Length; i++)
+			List<int> arr = new List<int>();
+			foreach (var item in ba)
 			{
-				hex.Append(ba[i]);
-				if (i != ba.Length - 1)
-				{
-					hex.Append(",");
-				}
-				else {
-					
-				}
+				arr.Add(int.Parse(item.ToString()));
 			}
-
-			return hex.ToString();
+			return arr;
 		}
 
 		private async void LogIncident()
@@ -670,12 +662,12 @@ namespace AdaaMobile
 				string affectedUser = string.IsNullOrEmpty(SelectedOnBehalf) ? LoggedUserInfo.CurrentUserProfile.DisplayName : SelectedOnBehalf;
 				string createdByUser = LoggedUserInfo.CurrentUserProfile.DisplayName;
 				List<string> fileNames = new List<string>();
-				List<string> files = new List<string>();
+				List<List<int>> files = new List<List<int>>();
 
 				if (!string.IsNullOrEmpty(attachmentName))
 					fileNames.Add(attachmentName);
 
-				if (attachment!=null && attachment.Length > 0)
+				if (attachment!=null && attachment.Count() > 0)
 					files.Add(attachment);
 
 				string templateId = SelectedTemplate != null ? SelectedTemplate.ID : "";
@@ -781,7 +773,7 @@ namespace AdaaMobile
 		void OnTapGestureRecognizerTapped(object sender, System.EventArgs e)
 		{
 			attachmentGrid.IsVisible = false;
-			attachment = "";
+			attachment = new List<int>();
 			attachmentName = "";
 			lblFileName.Text = "";
 		}
