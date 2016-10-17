@@ -178,11 +178,11 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
     <None Include="Resources\drawable\CTS.png" />
-    <None Include="Resources\drawable\Filter.png" />
+    <EmbeddedResource Include="Resources\drawable\Filter.png" />
     <None Include="Resources\drawable\placeholder.png" />
-    <None Include="Resources\drawable-hdpi\Filter.png" />
-    <None Include="Resources\drawable-xhdpi\Filter.png" />
-    <None Include="Resources\drawable-xxhdpi\Filter.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Filter.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Filter.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Filter.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />

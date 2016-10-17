@@ -10,10 +10,8 @@ using System.Linq;
 using AdaaMobile.Models.Request;
 using AdaaMobile.DataServices.Requests;
 using AdaaMobile.Models.Response;
-using System.IO;
 using Newtonsoft.Json;
 using AdaaMobile.Helpers;
-using System.Text;
 
 namespace AdaaMobile
 {
