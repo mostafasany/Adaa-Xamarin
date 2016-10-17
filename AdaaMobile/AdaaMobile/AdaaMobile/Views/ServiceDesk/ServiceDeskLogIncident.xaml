@@ -140,31 +140,31 @@
 					<OnPlatform x:TypeArguments="ImageSource" WinPhone="checkgreen.png" Android="save.png" iOS="save" />
 				</controls:ImageButton.Source>
 			</controls:ImageButton>
-			<Label Grid.Row="5" IsVisible="false" HorizontalOptions="Center" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate ServiceDesk_FileCannotExceed}" />
+			<Label Grid.Row="5" HorizontalOptions="Center" TextColor="Black" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate ServiceDesk_FileCannotExceed}" />
 			<Grid HeightRequest="50" Grid.Row="6" x:Name="attachmentGrid" IsVisible="false">
 				<controls:ExtendedButton Clicked="Handle_Clicked" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}" Text="" TextColor="Transparent" BackgroundColor="#6cb3b8">
 				</controls:ExtendedButton>
 				<controls:ExtendedGrid ColumnSpacing="15" x:Name="ContentGrid" InputTransparent="True" VerticalOptions="Start" HeightRequest="50" CornerRadius="{StaticResource CornerRadius}">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="5" />
-						<!--<ColumnDefinition Width="Auto" />-->
+						<ColumnDefinition Width="Auto" />
 						<ColumnDefinition Width="*" />
 						<ColumnDefinition Width="50" />
 					</Grid.ColumnDefinitions>
-					<!-- <Grid WidthRequest="25" x:Name="imgGrid1" Grid.Column="1" BackgroundColor="#cc007c85">
+					 <Grid WidthRequest="25" x:Name="imgGrid1" Grid.Column="1">
             <Image HorizontalOptions="Center" x:Name="imgArrow1" HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
               <Image.Source>
-                <OnPlatform x:TypeArguments="ImageSource" iOS="note" Android="note.png" WinPhone="note.png" />
+                <OnPlatform x:TypeArguments="ImageSource" iOS="image" Android="image_andorid.png" WinPhone="image.png" />
               </Image.Source>
             </Image>
-          </Grid>-->
-					<Label x:Name="lblFileName" HorizontalOptions="Fill" Grid.Column="1" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Small" />
+          </Grid>
+					<Label x:Name="lblFileName" HorizontalOptions="Fill" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Small" />
 					<controls:ExtendedButton Grid.Column="2" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Red" BackgroundColor="Transparent" Clicked="Handle_Clicked">
 					</controls:ExtendedButton>
-					<Grid WidthRequest="50" x:Name="imgGrid" Grid.Column="2" BackgroundColor="#cc007c85" HorizontalOptions="End">
+					<Grid WidthRequest="50" x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85" HorizontalOptions="End">
 						<Image HorizontalOptions="Center" x:Name="imgArrow2" HeightRequest="50" WidthRequest="20" VerticalOptions="Center">
 							<Image.Source>
-								<OnPlatform x:TypeArguments="ImageSource" iOS="note" Android="note.png" WinPhone="note.png" />
+								<OnPlatform x:TypeArguments="ImageSource" iOS="trash" Android="trash_andorid.png" WinPhone="trash.png" />
 							</Image.Source>
 						</Image>
 					</Grid>

@@ -593,11 +593,11 @@ namespace AdaaMobile
 					attachment = value;
 					attachmentName = Guid.NewGuid().ToString();
 					lblFileName.Text = attachmentName;
-
 				}
 				else
 				{
-					attachmentGrid.IsVisible = false;
+                    await Locator.Default.DialogManager.DisplayAlert(AppResources.ApplicationName, "Cant Upload", AppResources.Ok);
+                    attachmentGrid.IsVisible = false;
 					attachment = new List<int>();
 					attachmentName = "";
 					lblFileName.Text = "";
