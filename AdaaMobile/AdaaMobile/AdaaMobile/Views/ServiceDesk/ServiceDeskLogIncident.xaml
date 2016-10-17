@@ -162,7 +162,7 @@
 					<controls:ExtendedButton Grid.Column="2" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="0" Text="" TextColor="Red" BackgroundColor="Transparent" Clicked="Handle_Clicked">
 					</controls:ExtendedButton>
 					<Grid WidthRequest="50" x:Name="imgGrid" Grid.Column="3" BackgroundColor="#cc007c85" HorizontalOptions="End">
-						<Image HorizontalOptions="Center" x:Name="imgArrow2" HeightRequest="50" WidthRequest="20" VerticalOptions="Center">
+						<Image HorizontalOptions="Center" x:Name="imgArrow2" HeightRequest="30" WidthRequest="20" VerticalOptions="Center">
 							<Image.Source>
 								<OnPlatform x:TypeArguments="ImageSource" iOS="trash" Android="trash_andorid.png" WinPhone="trash.png" />
 							</Image.Source>
