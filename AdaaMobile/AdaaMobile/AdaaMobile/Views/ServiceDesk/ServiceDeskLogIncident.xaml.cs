@@ -172,7 +172,7 @@ namespace AdaaMobile
                         string name = response.Result.result[i].name;
                         if (name[0] == '-')
                         {
-                            name.Remove(0, 1);
+                            name=name.Remove(0, 1);
                         }
                         ParentCategoriesPicker.Items.Add(name);
                     }
@@ -199,7 +199,12 @@ namespace AdaaMobile
                     customControls.IsVisible = false;
                     var picker = sender as Picker;
                     SelectedParentCategory = ParentCategoryList[picker.SelectedIndex];
-                    lblParentCategoriesResult.Text = SelectedParentCategory.name;
+					var name = SelectedParentCategory.name;
+					if (name[0] == '-')
+					{
+						name = name.Remove(0, 1);
+					}
+                    lblParentCategoriesResult.Text = name;
                     LoadParentChildCategories(SelectedParentCategory.id);
                 }
             }
@@ -233,7 +238,7 @@ namespace AdaaMobile
                             string name = response.Result.result[i].name;
                             if (name[0] == '-')
                             {
-                                name.Remove(0, 1);
+                                name=name.Remove(0, 1);
                             }
                             ParentChildCategoriesPicker.Items.Add(name);
                         }
@@ -264,7 +269,12 @@ namespace AdaaMobile
                 {
                     var picker = sender as Picker;
                     SelectedChildCategory = ChildCategoryList[picker.SelectedIndex];
-                    lblParentChildCategoriesResult.Text = SelectedChildCategory.name;
+					var name = SelectedChildCategory.name;
+					if (name[0] == '-')
+					{
+						name = name.Remove(0, 1);
+					}
+                    lblParentChildCategoriesResult.Text = name;
                     LoadTemplates(SelectedChildCategory.id);
                 }
             }
