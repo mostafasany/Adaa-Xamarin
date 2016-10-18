@@ -1421,7 +1421,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Attachemnt.
+        ///   Looks up a localized string similar to Add  Attachment.
         /// </summary>
         public static string ServcieDesk_AddAttachment {
             get {
