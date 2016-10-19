@@ -452,7 +452,25 @@ namespace AdaaMobile.DataServices
 			return response;
 		}
 
-		async Task<ResponseWrapper<ServiceDeskCases>> IDataService.GetServiceDeskCasesDetails(string caseId, CancellationToken? token)
+        public async Task<ResponseWrapper<AttatchmentRoot>> GetServiceDeskRequestsAttachments(bool incidents,string id, CancellationToken? token = default(CancellationToken?))
+        {
+            var request = _requestFactory();
+            if (incidents)
+            {
+                request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetServiceRequestAttachments?SRId={0}", id);
+            }
+            else
+            {
+                request.RequestUrl = ServiceDiskBaseUrl + string.Format("/GetIncidentAttachments?IncidentId={0}", id);
+            }
+            request.ResultContentType = ContentType.Json;
+            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+            var response = await request.PostAsync<AttatchmentRoot>(stringContent, token);
+            return response;
+        }
+
+
+        async Task<ResponseWrapper<ServiceDeskCases>> IDataService.GetServiceDeskCasesDetails(string caseId, CancellationToken? token)
 		{
 			string language = "ar";
 			if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
@@ -632,7 +650,8 @@ namespace AdaaMobile.DataServices
 			return response;
 		}
 
-		#endregion
-	}
+      
+        #endregion
+    }
 
 }

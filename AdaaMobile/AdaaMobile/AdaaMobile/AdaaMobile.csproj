@@ -100,6 +100,7 @@
     <Compile Include="Helpers\UserSelectionService.cs" />
     <Compile Include="Models\Request\NewServiceRequest.cs" />
     <Compile Include="Models\Request\LogIncidentRequest.cs" />
+    <Compile Include="Models\Response\Attatchment.cs" />
     <Compile Include="Models\Response\ServiceDesk\CategoryTemplate.cs" />
     <Compile Include="Models\Response\ServiceDesk\ChildCategory.cs" />
     <Compile Include="Models\Response\ServiceDesk\OnBehalf.cs" />

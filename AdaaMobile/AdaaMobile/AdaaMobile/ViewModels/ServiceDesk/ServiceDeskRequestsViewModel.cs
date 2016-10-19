@@ -35,7 +35,15 @@ namespace AdaaMobile.ViewModels
 			set { SetProperty(ref _Requests, value); OnPropertyChanged("NoRequests"); }
 		}
 
-		private ServiceDeskRequest _SelectedRequests;
+        private ObservableCollection<Attatchment> _Attatchments;
+
+        public ObservableCollection<Attatchment> Attatchments
+        {
+            get { return _Attatchments; }
+            set { SetProperty(ref _Attatchments, value); OnPropertyChanged("Attatchments"); }
+        }
+
+        private ServiceDeskRequest _SelectedRequests;
 
 		public ServiceDeskRequest SelectedRequests
 		{
