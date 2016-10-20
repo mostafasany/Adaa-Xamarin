@@ -457,11 +457,11 @@ namespace AdaaMobile.DataServices
             var request = _requestFactory();
             if (incidents)
             {
-                request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetServiceRequestAttachments?SRId={0}", id);
+                request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetIncidentAttachments?IncidentId={0}", id);
             }
             else
             {
-                request.RequestUrl = ServiceDiskBaseUrl + string.Format("/GetIncidentAttachments?IncidentId={0}", id);
+                request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetServiceRequestAttachments?SRId={0}", id);
             }
             request.ResultContentType = ContentType.Json;
             var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);

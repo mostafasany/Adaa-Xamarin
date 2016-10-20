@@ -1,76 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:AdaaMobile.Controls;assembly=AdaaMobile" xmlns:models="clr-namespace:AdaaMobile.Models;assembly=AdaaMobile" xmlns:converters="clr-namespace:AdaaMobile.Converters;assembly=AdaaMobile" xmlns:helpers="clr-namespace:AdaaMobile.Helpers;assembly=AdaaMobile" xmlns:dayPass="clr-namespace:AdaaMobile.Views.DayPass;assembly=AdaaMobile" xmlns:ext="clr-namespace:AdaaMobile.MarkupExtensions;assembly=AdaaMobile" x:Class="AdaaMobile.SelectedServiceRequestPage" BackgroundColor="White">
-  <ContentPage.BackgroundImage>
-    <OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
-  </ContentPage.BackgroundImage>
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <Color x:Key="TabColor">#00676e</Color>
-      <converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter" />
-    </ResourceDictionary>
-  </ContentPage.Resources>
-  <Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="0,0,0,20">
-    <ScrollView Grid.Row="0" VerticalOptions="Fill">
-      <Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="15,20" RowSpacing="10">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-      
-        <controls:RoundedBoxView BackgroundColor="{StaticResource AppBackgroundNormal}" Opacity="0.8" CornerRadius="{StaticResource CornerRadius}" VerticalOptions="Fill" Grid.Row="0" />
-        <StackLayout Grid.Row="0" Spacing="9" Padding="15" VerticalOptions="Start">
-          <dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_ID}" Value="{Binding SelectedRequests.ID}" />
-          <dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Type}" Value="{Binding SelectedRequests.Type}" />
-          <dayPass:RowInfoControl Title="{ext:Translate TimeSheet_Status}" Value="{Binding SelectedRequests.Status}" />
-          <dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_CreatedDate}" Value="{Binding SelectedRequests.CreatedDateFormated}" />
-          <dayPass:RowInfoControl Title="{ext:Translate ServcieDesk_Description}" Value="{Binding SelectedRequests.Description}" />
-          <dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Category1}" Value="{Binding SelectedRequests.Classification}" />
-          <dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Category2}" Value="{Binding SelectedRequests.ClassificationID}" />
-        </StackLayout>
-      
-        <controls:RoundedBoxView BackgroundColor="#22007c85" CornerRadius="{StaticResource CornerRadius}" Grid.Row="1" />
-        <StackLayout Grid.Row="1" Spacing="9" Padding="15" VerticalOptions="Start">
-          <Label x:Name="lblAdditionalComments" TextColor="Gray" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate AdditionalComments}" />
-          <controls:ExtendedEditor x:Name="AdditionalCommentsEditor" Text= "{Binding SelectedRequests.Comment}" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black" MaxLength="60" HeightRequest="60">
-          </controls:ExtendedEditor>
-        </StackLayout>
-
-        <ListView  Grid.Row="2" ItemsSource="{Binding Attatchments}" IsGroupingEnabled="False" HasUnevenRows="False" CachingStrategy="RecycleElement"  SeparatorColor="Transparent" BackgroundColor="Transparent">
-          <ListView.ItemTemplate>
-            <DataTemplate>
-              <ViewCell>
-                <ViewCell.View>
-                  <Grid HeightRequest="50" Grid.Row="6">
-                    <controls:ExtendedButton Clicked="Handle_Clicked" Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}" Text="" TextColor="Transparent" BackgroundColor="#6cb3b8">
-                    </controls:ExtendedButton>
-                    <controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True" VerticalOptions="Start" HeightRequest="50" CornerRadius="{StaticResource CornerRadius}">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                      </Grid.ColumnDefinitions>
-                      <Grid WidthRequest="25" Grid.Column="1">
-                        <Image HorizontalOptions="Center"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
-                          <Image.Source>
-                            <OnPlatform x:TypeArguments="ImageSource" iOS="image" Android="image_andorid.png" WinPhone="image.png" />
-                          </Image.Source>
-                        </Image>
-                      </Grid>
-                      <Label Text="{Binding FileName}" HorizontalOptions="Fill" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Small" />
-                    </controls:ExtendedGrid>
-                  </Grid>
-                </ViewCell.View>
-              </ViewCell>
-            </DataTemplate>
-          </ListView.ItemTemplate>
-        </ListView>
-
-        <controls:RoundedBoxView BackgroundColor="#22007c85" CornerRadius="1" BorderColor="{StaticResource AppBackgroundNormal}" BorderThickness="1" Grid.Row="3" />
-        <controls:ExtendedButton Command="{Binding CancelRequest}" Grid.Row="3" Text="{ext:Translate ServiceDeskRequest_CancelRequest}" MinimumHeightRequest="70" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black">
-        </controls:ExtendedButton>
-      </Grid>
-    </ScrollView>
-  </Grid>
+	<ContentPage.BackgroundImage>
+		<OnPlatform x:TypeArguments="x:String" WinPhone="home_white.jpg" Android="home_white.jpg" iOS="homewhite" />
+	</ContentPage.BackgroundImage>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Color x:Key="TabColor">#00676e</Color>
+			<converters:FontSizeExtendedConverter x:Key="FontSizeExtendedConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="0,0,0,20">
+		<ScrollView Grid.Row="0" VerticalOptions="Fill">
+			<Grid HorizontalOptions="Fill" VerticalOptions="Fill" Padding="15,20" RowSpacing="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<controls:RoundedBoxView BackgroundColor="{StaticResource AppBackgroundNormal}" Opacity="0.8" CornerRadius="{StaticResource CornerRadius}" VerticalOptions="Fill" Grid.Row="0" />
+				<StackLayout Grid.Row="0" Spacing="9" Padding="15" VerticalOptions="Start">
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_ID}" Value="{Binding SelectedRequests.ID}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Type}" Value="{Binding SelectedRequests.Type}" />
+					<dayPass:RowInfoControl Title="{ext:Translate TimeSheet_Status}" Value="{Binding SelectedRequests.Status}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_CreatedDate}" Value="{Binding SelectedRequests.CreatedDateFormated}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServcieDesk_Description}" Value="{Binding SelectedRequests.Description}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Category1}" Value="{Binding SelectedRequests.Classification}" />
+					<dayPass:RowInfoControl Title="{ext:Translate ServiceDeskRequest_Category2}" Value="{Binding SelectedRequests.ClassificationID}" />
+				</StackLayout>
+				<controls:RoundedBoxView BackgroundColor="#22007c85" CornerRadius="{StaticResource CornerRadius}" Grid.Row="2" />
+				<StackLayout Grid.Row="2" Spacing="9" Padding="15" VerticalOptions="Start">
+					<Label x:Name="lblAdditionalComments" TextColor="Gray" BackgroundColor="Transparent" HorizontalTextAlignment="Start" FontSize="{x:Static helpers:FontHelper.MilliFontSize}" Text="{ext:Translate AdditionalComments}" />
+					<controls:ExtendedEditor x:Name="AdditionalCommentsEditor" Text="{Binding SelectedRequests.Comment}" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black" MaxLength="60" HeightRequest="60">
+					</controls:ExtendedEditor>
+				</StackLayout>
+				<Grid x:Name="attachmentsList" HeightRequest="100" VerticalOptions="FillAndExpand" Grid.Row="1">
+					<ListView ItemsSource="{Binding Attatchments}" SeparatorColor="Transparent" BackgroundColor="Transparent">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<ViewCell.View>
+										<Grid HeightRequest="30">
+											<controls:ExtendedButton Padding="0" VerticalOptions="Fill" HorizontalOptions="Fill" BorderRadius="{StaticResource BorderRadius}" Text="" TextColor="Transparent" BackgroundColor="#6cb3b8">
+											</controls:ExtendedButton>
+											<controls:ExtendedGrid ColumnSpacing="15" InputTransparent="True" VerticalOptions="Start" HeightRequest="50" CornerRadius="{StaticResource CornerRadius}">
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="5" />
+													<ColumnDefinition Width="Auto" />
+													<ColumnDefinition Width="*" />
+												</Grid.ColumnDefinitions>
+												<Grid WidthRequest="25" Grid.Column="1">
+													<Image HorizontalOptions="Center" HeightRequest="20" WidthRequest="20" VerticalOptions="Center">
+														<Image.Source>
+															<OnPlatform x:TypeArguments="ImageSource" iOS="image" Android="image_andorid.png" WinPhone="image.png" />
+														</Image.Source>
+													</Image>
+												</Grid>
+												<Label Text="{Binding FileName}" HorizontalOptions="Fill" Grid.Column="2" TextColor="White" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Small" />
+											</controls:ExtendedGrid>
+										</Grid>
+									</ViewCell.View>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+				</Grid>
+				<controls:RoundedBoxView BackgroundColor="#22007c85" CornerRadius="1" BorderColor="{StaticResource AppBackgroundNormal}" BorderThickness="1" Grid.Row="3" />
+				<controls:ExtendedButton Command="{Binding CancelRequest}" Grid.Row="3" Text="{ext:Translate ServiceDeskRequest_CancelRequest}" MinimumHeightRequest="70" VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="Transparent" TextColor="Black">
+				</controls:ExtendedButton>
+			</Grid>
+		</ScrollView>
+	</Grid>
 </ContentPage>

@@ -272,7 +272,16 @@ namespace AdaaMobile.ViewModels
 		{
 			try
 			{
-				if (!IsRefreshRequired && SelectedDay != null && day.Date == SelectedDay.Date)
+				if (IsRefreshRequired)
+				{
+					if (SelectedDay != null)
+					{
+						await LoadTimeSheet(SelectedWeek.WeekNumber, DateTime.Now.Year, SelectedDay.Date, isWeekChanged);
+						SelectedDay.IsSelected = true;
+						return;
+					}
+				}
+				else if (!IsRefreshRequired && SelectedDay != null && day.Date == SelectedDay.Date)
 				{
 					return;
 				}
