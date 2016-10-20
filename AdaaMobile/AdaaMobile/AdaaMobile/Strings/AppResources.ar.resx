@@ -166,7 +166,7 @@
     <value>تغيير كلمة السر</value>
   </data>
   <data name="DayPass" xml:space="preserve">
-    <value>إذن عمل</value>
+    <value>إذن ترخيص عن العمل</value>
   </data>
   <data name="DelegateName" xml:space="preserve">
     <value>اسم الموظف المنتدب</value>
@@ -184,16 +184,16 @@
     <value>وقت المغادرة</value>
   </data>
   <data name="Directory" xml:space="preserve">
-    <value>سجل الموظفين</value>
+    <value>سجل </value>
   </data>
   <data name="DirectoryCap" xml:space="preserve">
-    <value>سجل الموظفين</value>
+    <value>سجل </value>
   </data>
   <data name="DriverRequest" xml:space="preserve">
     <value>طلب سائق</value>
   </data>
   <data name="Duration" xml:space="preserve">
-    <value>الوقت</value>
+    <value>المدة</value>
   </data>
   <data name="EmployeeID" xml:space="preserve">
     <value>رقم الموظف</value>
@@ -217,7 +217,7 @@
     <value>وقت الدخول</value>
   </data>
   <data name="FlowDirection" xml:space="preserve">
-    <value>من اليمين لليسار</value>
+    <value>من اليسار إلى اليمين</value>
   </data>
   <data name="ForgetPassword" xml:space="preserve">
     <value>إستعادة كلمة المرور</value>
@@ -226,7 +226,7 @@
     <value>الإسم بالكامل</value>
   </data>
   <data name="GreetingCard" xml:space="preserve">
-    <value>بطاقة تحية</value>
+    <value>بطاقة تهنئة</value>
   </data>
   <data name="Group" xml:space="preserve">
     <value>مجموعة</value>
@@ -250,13 +250,13 @@
     <value>الموقع</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>سجل الدخول</value>
+    <value>تسجيل الدخول</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>تسجيل الخروج</value>
   </data>
   <data name="MobileNumber" xml:space="preserve">
-    <value>رقم المحمول</value>
+    <value>رقم الهاتف المحمول</value>
   </data>
   <data name="MyDelegationsCap" xml:space="preserve">
     <value>الإنتداب الخاص بي</value>
@@ -268,7 +268,7 @@
     <value>طلباتي</value>
   </data>
   <data name="MySubAttendanceCap" xml:space="preserve">
-    <value>غياب الموظفين التابعين لي</value>
+    <value>سجل الحضورللموظفين التابعين لي</value>
   </data>
   <data name="MyTasks" xml:space="preserve">
     <value>مهامي</value>
@@ -277,13 +277,13 @@
     <value>مهامي</value>
   </data>
   <data name="NewDelegationCap" xml:space="preserve">
-    <value>طلب انتداب</value>
+    <value>طلب انتداب جديد</value>
   </data>
   <data name="NewRequestCap" xml:space="preserve">
     <value>طلب جديد</value>
   </data>
   <data name="OfferMaintenance" xml:space="preserve">
-    <value>إصلاح المكتب</value>
+    <value>صيانة المكتب</value>
   </data>
   <data name="OfferServices" xml:space="preserve">
     <value>خدمات المكتب</value>
@@ -325,7 +325,7 @@
     <value>ar</value>
   </data>
   <data name="ReturnToday" xml:space="preserve">
-    <value>العودة</value>
+    <value>العودة اليوم؟</value>
   </data>
   <data name="RuleStatus" xml:space="preserve">
     <value>الحالة</value>
@@ -346,7 +346,7 @@
     <value>تسجيل حساب جديد</value>
   </data>
   <data name="Submit" xml:space="preserve">
-    <value>اضف</value>
+    <value>إرسال</value>
   </data>
   <data name="SubOrdinate" xml:space="preserve">
     <value>الموظف التابع</value>
@@ -394,7 +394,7 @@
     <value>موافق</value>
   </data>
   <data name="UnlockAccountError" xml:space="preserve">
-    <value>تم فتح حسابك بنجاح</value>
+    <value>فشل في فتح الحساب</value>
     <comment>When backend doesn't return any message</comment>
   </data>
   <data name="Late" xml:space="preserve">
@@ -410,7 +410,7 @@
     <value>اسم المستخدم او كلمة المرور خاطئة</value>
   </data>
   <data name="ChooseLanguage" xml:space="preserve">
-    <value>اختر اللغة</value>
+    <value>تغيير اللغة</value>
   </data>
   <data name="EmployeeDirectory" xml:space="preserve">
     <value>سجل الموظفين</value>
@@ -446,7 +446,7 @@
     <value>يوجد خطأ في اسم المستخدم او كلمة المرور</value>
   </data>
   <data name="PassAndConfirmPassAreNotEqual" xml:space="preserve">
-    <value>كلمة المرور غير مطابقة لتأكيد كلمة المرور</value>
+    <value>كلمة المرور الجديدة غير مطابقة لتأكيد كلمة المرور</value>
   </data>
   <data name="PassLessThan8CharsMessage" xml:space="preserve">
     <value>كلمة المرور وتأكيد كلمة المرور يجب ألا تقل عن 8 حروف</value>
@@ -455,7 +455,7 @@
     <value>يجب الا تحتوي كلمة المرور على حروف خاصة</value>
   </data>
   <data name="PleaseEnterPassAndConfirmPass" xml:space="preserve">
-    <value>يجب إدخال كلمة المرور و تأكيد كلمة المرور</value>
+    <value>يجب إدخال كلمة مرور جديدة  و تأكيد كلمة المرور</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>
@@ -494,13 +494,13 @@
     <value>طلب جديد</value>
   </data>
   <data name="PleaseEnterMissingFields" xml:space="preserve">
-    <value>Please enter missing fields</value>
+    <value>الرجاء إدخال البيانات</value>
   </data>
   <data name="TextLimit" xml:space="preserve">
     <value>الحد الأقصى</value>
   </data>
   <data name="DepartureTime" xml:space="preserve">
-    <value>ميعاد المغادرة</value>
+    <value>وقت المغادرة</value>
   </data>
   <data name="Personal" xml:space="preserve">
     <value>شخصي</value>
@@ -527,7 +527,7 @@
     <value>طلب سائق</value>
   </data>
   <data name="RequestOfficeMaintenance" xml:space="preserve">
-    <value>طلب تصليح لمكتب</value>
+    <value>طلب صيانة مكتب</value>
   </data>
   <data name="Destination" xml:space="preserve">
     <value>الوجهة</value>
@@ -536,7 +536,7 @@
     <value>الأولوية</value>
   </data>
   <data name="RequestDateTime" xml:space="preserve">
-    <value>وقت الطلب</value>
+    <value>وقت و تاريخ الطلب</value>
   </data>
   <data name="RequestType" xml:space="preserve">
     <value>نوع الطلب</value>
@@ -557,7 +557,7 @@
     <value>عادية</value>
   </data>
   <data name="Urgent" xml:space="preserve">
-    <value>طارئة</value>
+    <value>عاجله</value>
   </data>
   <data name="ChooseOfficeLocation" xml:space="preserve">
     <value>الرجاء اختيار موقع المكتب</value>
@@ -566,7 +566,7 @@
     <value>يرجى إدخال تفاصيل الخدمة</value>
   </data>
   <data name="OfficeLocation" xml:space="preserve">
-    <value>مكان المكتب</value>
+    <value>موقع المكتب</value>
   </data>
   <data name="OfficeMaintenanceCap" xml:space="preserve">
     <value>صيانة المكتب</value>
@@ -596,16 +596,16 @@
     <value>تفاصيل الخدمة</value>
   </data>
   <data name="ChooseGreetingCardType" xml:space="preserve">
-    <value>اختر كارت تهنئة</value>
+    <value>اختر نوع بطاقة التهنئة</value>
   </data>
   <data name="SelectOfficleLocationFirst" xml:space="preserve">
     <value>الرجاء تحديد موقع المكتب أولا</value>
   </data>
   <data name="EnterAdditionalComments" xml:space="preserve">
-    <value>برجاء إدخال التعليقات الإضافية</value>
+    <value>الرجاء إدخال التعليقات الإضافية</value>
   </data>
   <data name="CardSavedMessaga" xml:space="preserve">
-    <value>تم حفظ بطاقة التحية</value>
+    <value>تم حفظ البطاقة</value>
   </data>
   <data name="YouHaveNoSubordinates" xml:space="preserve">
     <value>ليس لديك موظفين تابعين لك </value>
@@ -617,34 +617,34 @@
     <value>حفظ البطاقة</value>
   </data>
   <data name="PassReasonShouldnotContainSpecialCharchters" xml:space="preserve">
-    <value>يجب أن لا يحتوي السبب على  أي أحرف خاصة</value>
+    <value>يجب أن لا يحتوي السبب على  حروف خاصة</value>
   </data>
   <data name="ReturnDateShouldBeGreaterThanDepartureDate" xml:space="preserve">
-    <value>تاريخ  التسجيل يجب أن يكون أكبر من تاريخ المغادرة</value>
+    <value>تاريخ  العودة يجب أن يكون أكبر من تاريخ المغادرة</value>
   </data>
   <data name="RequestDate" xml:space="preserve">
     <value>التاريخ </value>
   </data>
   <data name="RequestTitle" xml:space="preserve">
-    <value>الاسم</value>
+    <value>العنوان</value>
   </data>
   <data name="TimeSheet_MyAssignment" xml:space="preserve">
     <value>مهامي</value>
   </data>
   <data name="TimeSheet_MyPendingTasks" xml:space="preserve">
-    <value>قيد العمل</value>
+    <value>مهامي المعلقة</value>
   </data>
   <data name="TimeSheet_MyTimeSheet" xml:space="preserve">
     <value>الجدول الزمني</value>
   </data>
   <data name="TimeSheet_ADAATimeSheet" xml:space="preserve">
-    <value>ADAA Timesheet</value>
+    <value>ساعات العمل</value>
   </data>
   <data name="TimeSheet_AssigmentDate" xml:space="preserve">
     <value>التاريخ</value>
   </data>
   <data name="TimeSheet_AssigmentName" xml:space="preserve">
-    <value>اسم الواجب</value>
+    <value>أسم المهمة</value>
   </data>
   <data name="TimeSheet_EndDate" xml:space="preserve">
     <value>تاريخ الانتهاء</value>
@@ -668,52 +668,52 @@
     <value>إضافة مهمة جديدة</value>
   </data>
   <data name="TimeSheet_ViewTodaysTask" xml:space="preserve">
-    <value>المهام مشاركات اليوم</value>
+    <value>مهام اليوم</value>
   </data>
   <data name="TimeSheet_OpenTask" xml:space="preserve">
-    <value>فتح العمل</value>
+    <value>فتح مهمة</value>
   </data>
   <data name="TimeSheet_RemoveTask" xml:space="preserve">
-    <value>إزالة العمل</value>
+    <value>إزالة المهمة</value>
   </data>
   <data name="TimeSheet_LoginHours" xml:space="preserve">
-    <value>تسجيل في ساعات</value>
+    <value>الساعات المسجلة</value>
   </data>
   <data name="TimeSheet_RemainingHours" xml:space="preserve">
-    <value>تبقى ساعات</value>
+    <value>الساعات المتبقية</value>
   </data>
   <data name="TimeSheet_AssigName" xml:space="preserve">
-    <value>اسم الواجب</value>
+    <value>الأسم</value>
   </data>
   <data name="TimeSheet_Comment" xml:space="preserve">
-    <value>التعليق</value>
+    <value>الملاحظات</value>
   </data>
   <data name="TimeSheet_Duration" xml:space="preserve">
     <value>مدة</value>
   </data>
   <data name="TimeSheet_Refrence" xml:space="preserve">
-    <value>مرجع</value>
+    <value>المرجع</value>
   </data>
   <data name="TimeSheet_SelectAssigmnet" xml:space="preserve">
-    <value>حدد تعيين</value>
+    <value>اختيار المهمة</value>
   </data>
   <data name="TimeSheet_SelectDuration" xml:space="preserve">
-    <value>حدد المدة</value>
+    <value>اختيار المدة</value>
   </data>
   <data name="TimeSheet_SelectTask" xml:space="preserve">
-    <value>حدد المهام</value>
+    <value>اختيار المهمة</value>
   </data>
   <data name="TimeSheet_EnterAssigmnet" xml:space="preserve">
-    <value>يرجى اختيار تعيين</value>
+    <value>يرجى اختيار المهمة</value>
   </data>
   <data name="TimeSheet_EnterComment" xml:space="preserve">
-    <value>يرجى اختيار تعليق</value>
+    <value>يرجى ادخال الملاحظات </value>
   </data>
   <data name="TimeSheet_EnterDuration" xml:space="preserve">
     <value>الرجاء إدخال مدة</value>
   </data>
   <data name="TimeSheet_EnterTask" xml:space="preserve">
-    <value>يرجى اختيار العمل</value>
+    <value>يرجى اختيار المهمة</value>
   </data>
   <data name="TimeSheet_ErrorHappened" xml:space="preserve">
     <value>حدث خطأ</value>
@@ -743,19 +743,19 @@
     <value>ملف لا يمكن أن يتجاوز 2MB</value>
   </data>
   <data name="ServiceDesk_HomePagePageTitle" xml:space="preserve">
-    <value>مكتب خدمة تكنولوجيا المعلومات</value>
+    <value>مكتب الدعم الفني لتنقية المعلومات</value>
   </data>
   <data name="ServiceDesk_LogAnIncident" xml:space="preserve">
-    <value>تسجيل حادث</value>
+    <value>طلب دعم فني لمشكلة تقنية</value>
   </data>
   <data name="ServiceDesk_MyCases" xml:space="preserve">
-    <value>حلاتي</value>
+    <value>مهامي</value>
   </data>
   <data name="ServiceDesk_MyRequests" xml:space="preserve">
     <value>طلباتي</value>
   </data>
   <data name="ServiceDesk_RequestITService" xml:space="preserve">
-    <value>طلب خدمة تكنولوجيا المعلومات</value>
+    <value>طلب خدمة تقنية </value>
   </data>
   <data name="ServiceDesk_Search" xml:space="preserve">
     <value>بحث</value>
@@ -782,102 +782,105 @@
     <value>رقم الاصدار:</value>
   </data>
   <data name="TimeSheet_EditTask" xml:space="preserve">
-    <value>تحديث</value>
+    <value>تعديل</value>
   </data>
   <data name="ServiceDeskRequest_ID" xml:space="preserve">
-    <value>ID</value>
+    <value>الرقم التسلسلي</value>
   </data>
   <data name="ServiceDeskRequest_Type" xml:space="preserve">
-    <value>Type</value>
+    <value>النوع</value>
   </data>
   <data name="ServiceDeskRequest_CreatedDate" xml:space="preserve">
-    <value>Created Date</value>
+    <value>تاريخ الإنشاء</value>
   </data>
   <data name="ServiceDeskRequest_Category1" xml:space="preserve">
-    <value>Category1</value>
+    <value>التصنيف</value>
   </data>
   <data name="ServiceDeskRequest_Category2" xml:space="preserve">
-    <value>Category2</value>
+    <value>التصنيف الفرعي</value>
   </data>
   <data name="ServiceDeskRequest_CancelRequest" xml:space="preserve">
-    <value>Cancel Request</value>
+    <value>إلغاء الطلب</value>
   </data>
   <data name="ServiceDeskCases_ID" xml:space="preserve">
-    <value>Service Request ID</value>
+    <value>رقم الخدمة</value>
   </data>
   <data name="ServiceDeskCases_CaseDetails" xml:space="preserve">
-    <value>تفاصيل</value>
+    <value>تفاصيل الخدمة</value>
   </data>
   <data name="ServiceDeskRequest_ParentID" xml:space="preserve">
     <value>Parent ID</value>
   </data>
   <data name="ServiceDeskRequest_AssignedUser" xml:space="preserve">
-    <value>Assigned User</value>
+    <value>الموظف المعني</value>
   </data>
   <data name="ServiceDeskRequest_CreatedON" xml:space="preserve">
-    <value>Created On</value>
+    <value>تاريخ الإنشاء</value>
   </data>
   <data name="ServiceDeskRequest_CreatedBy" xml:space="preserve">
-    <value>Created By</value>
+    <value>إنشئت من قبل</value>
   </data>
   <data name="ServiceDeskRequest_AffectedUser" xml:space="preserve">
-    <value>Affected User</value>
+    <value>الأشخاص المتضررين</value>
   </data>
   <data name="CorrespondenceTrackingSystem" xml:space="preserve">
-    <value>Correspondence Tracking System</value>
+    <value>نظام تتبع المراسلات </value>
   </data>
   <data name="ServcieDesk_SelectSubCategory" xml:space="preserve">
     <value>اختر التصنيف الفرعي</value>
   </data>
   <data name="ServcieDesk_Active" xml:space="preserve">
-    <value>Active</value>
+    <value>فعًال</value>
   </data>
   <data name="ServcieDesk_Canceled" xml:space="preserve">
-    <value>Canceled</value>
+    <value>ملغاه</value>
   </data>
   <data name="ServcieDesk_Closed" xml:space="preserve">
-    <value>Closed</value>
+    <value>مغلقة</value>
   </data>
   <data name="ServcieDesk_Resolved" xml:space="preserve">
-    <value>Resolved</value>
+    <value>حلًت</value>
   </data>
   <data name="ServcieDesk_All" xml:space="preserve">
-    <value>All</value>
+    <value>كل</value>
   </data>
   <data name="ServcieDesk_Pending" xml:space="preserve">
-    <value>Pending</value>
+    <value>معلقة</value>
   </data>
   <data name="ServcieDesk_InProgress" xml:space="preserve">
-    <value>In Progress</value>
+    <value>قيد التنفيذ</value>
   </data>
   <data name="ServcieDesk_Completed" xml:space="preserve">
-    <value>Completed</value>
+    <value>منجزة</value>
   </data>
   <data name="ServcieDesk_Faild" xml:space="preserve">
-    <value>Failed</value>
+    <value>فشل</value>
   </data>
   <data name="ServcieDesk_Accepted" xml:space="preserve">
-    <value>Accepted</value>
+    <value>موافق عليها</value>
   </data>
   <data name="ServcieDesk_Rejected" xml:space="preserve">
-    <value>Rejected</value>
+    <value>مروفوض</value>
   </data>
   <data name="ServiceDesk_DescCannotBeEmpty" xml:space="preserve">
     <value>الوصف لا يمكن أن يكون فارغا</value>
   </data>
   <data name="ServiceDesk_ParentCategroyCannotBeEmpty" xml:space="preserve">
-    <value>الفئة لا يمكن أن يكون فارغا</value>
+    <value>التصنيف لا يمكن أن يكون فارغاً</value>
   </data>
   <data name="ServiceDesk_TitleCannotBeEmpty" xml:space="preserve">
     <value>العنوان لا يمكن أن يكون فارغا</value>
   </data>
   <data name="ServiceDesk_MarkAsComplete" xml:space="preserve">
-    <value>Mark As Completed</value>
+    <value>تعيين كمنجزة</value>
   </data>
   <data name="ServiceDesk_MarkAsFaild" xml:space="preserve">
-    <value>Mark As Faild</value>
+    <value>تعيين كفشل</value>
   </data>
   <data name="TimeSheet_Exceed8Hours" xml:space="preserve">
     <value>لا يمكن أن يتجاوز 8 ساعات</value>
+  </data>
+  <data name="AttendanceTab" xml:space="preserve">
+    <value>الحضور</value>
   </data>
 </root>

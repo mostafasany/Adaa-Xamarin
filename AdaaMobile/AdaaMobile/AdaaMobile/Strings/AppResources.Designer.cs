@@ -152,7 +152,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عربى.
+        ///   Looks up a localized string similar to Arabic.
         /// </summary>
         public static string Arabic {
             get {
@@ -917,7 +917,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offer Maintenance.
+        ///   Looks up a localized string similar to Office Maintenance.
         /// </summary>
         public static string OfferMaintenance {
             get {
@@ -926,7 +926,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offer Services.
+        ///   Looks up a localized string similar to Office Services.
         /// </summary>
         public static string OfferServices {
             get {
@@ -1421,7 +1421,7 @@ namespace AdaaMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add  Attachment.
+        ///   Looks up a localized string similar to Add Attachemnt.
         /// </summary>
         public static string ServcieDesk_AddAttachment {
             get {

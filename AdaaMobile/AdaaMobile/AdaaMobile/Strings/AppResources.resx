@@ -139,7 +139,7 @@
     <value>Announcement Type</value>
   </data>
   <data name="Arabic" xml:space="preserve">
-    <value>عربى</value>
+    <value>Arabic</value>
   </data>
   <data name="Attendance" xml:space="preserve">
     <value>Attendance</value>
@@ -286,10 +286,10 @@
     <value>NEW REQUEST</value>
   </data>
   <data name="OfferMaintenance" xml:space="preserve">
-    <value>Offer Maintenance</value>
+    <value>Office Maintenance</value>
   </data>
   <data name="OfferServices" xml:space="preserve">
-    <value>Offer Services</value>
+    <value>Office Services</value>
   </data>
   <data name="OfficeNumber" xml:space="preserve">
     <value>Office Number</value>
@@ -737,7 +737,7 @@
     <value>Request for IT Service</value>
   </data>
   <data name="ServcieDesk_AddAttachment" xml:space="preserve">
-    <value>Add  Attachment</value>
+    <value>Add Attachemnt</value>
   </data>
   <data name="ServcieDesk_Description" xml:space="preserve">
     <value>Description</value>
