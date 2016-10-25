@@ -636,11 +636,7 @@ namespace AdaaMobile
 
         public List<int> ByteArrayToString(byte[] ba)
         {
-            List<int> arr = new List<int>();
-            foreach (var item in ba)
-            {
-                arr.Add(int.Parse(item.ToString()));
-            }
+			var arr = ba.Select(x => (int)x).ToList();
             return arr;
         }
 
