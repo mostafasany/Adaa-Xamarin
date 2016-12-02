@@ -21,9 +21,10 @@ namespace AdaaMobile
         public string Value { get; set; }
 
     }
+
     public partial class ServiceDeskLogIncident : ContentPage
     {
-
+        string domain = "adaa";
         public ServiceDeskLogIncident()
         {
             InitializeComponent();
@@ -64,6 +65,8 @@ namespace AdaaMobile
             //_viewModel.PageLoadedCommand.Execute(null);
             LoadOnBelhaf();
             LoadParentCategories();
+
+            domain = await Locator.Default.DataService.GetDomain(null);
         }
 
         void HandleArabicLanguageFlowDirection()
@@ -172,7 +175,7 @@ namespace AdaaMobile
                         string name = response.Result.result[i].name;
                         if (name[0] == '-')
                         {
-                            name=name.Remove(0, 1);
+                            name = name.Remove(0, 1);
                         }
                         ParentCategoriesPicker.Items.Add(name);
                     }
@@ -199,11 +202,11 @@ namespace AdaaMobile
                     customControls.IsVisible = false;
                     var picker = sender as Picker;
                     SelectedParentCategory = ParentCategoryList[picker.SelectedIndex];
-					var name = SelectedParentCategory.name;
-					if (name[0] == '-')
-					{
-						name = name.Remove(0, 1);
-					}
+                    var name = SelectedParentCategory.name;
+                    if (name[0] == '-')
+                    {
+                        name = name.Remove(0, 1);
+                    }
                     lblParentCategoriesResult.Text = name;
                     LoadParentChildCategories(SelectedParentCategory.id);
                 }
@@ -238,7 +241,7 @@ namespace AdaaMobile
                             string name = response.Result.result[i].name;
                             if (name[0] == '-')
                             {
-                                name=name.Remove(0, 1);
+                                name = name.Remove(0, 1);
                             }
                             ParentChildCategoriesPicker.Items.Add(name);
                         }
@@ -269,11 +272,11 @@ namespace AdaaMobile
                 {
                     var picker = sender as Picker;
                     SelectedChildCategory = ChildCategoryList[picker.SelectedIndex];
-					var name = SelectedChildCategory.name;
-					if (name[0] == '-')
-					{
-						name = name.Remove(0, 1);
-					}
+                    var name = SelectedChildCategory.name;
+                    if (name[0] == '-')
+                    {
+                        name = name.Remove(0, 1);
+                    }
                     lblParentChildCategoriesResult.Text = name;
                     LoadTemplates(SelectedChildCategory.id);
                 }
@@ -636,7 +639,7 @@ namespace AdaaMobile
 
         public List<int> ByteArrayToString(byte[] ba)
         {
-			var arr = ba.Select(x => (int)x).ToList();
+            var arr = ba.Select(x => (int)x).ToList();
             return arr;
         }
 
@@ -701,9 +704,9 @@ namespace AdaaMobile
                 if (moduleName == "Incident%20Classification")
                 {
                     LogIncidentRequest request = new LogIncidentRequest();
-                    request.AffectedUser = "DEV\\" + affectedUser;
+                    request.AffectedUser = string.Format("{0}\\{1}", domain, affectedUser);// DEV\\" + affectedUser;
                     request.Classification = classification;
-                    request.CreatedByUser = "DEV\\" + createdByUser;
+                    request.CreatedByUser = string.Format("{0}\\{1}", domain, createdByUser);//;  "DEV\\" + createdByUser;
                     request.Description = descr;
                     request.Files = files.ToArray();
                     request.FilesNames = fileNames.ToArray();
@@ -738,9 +741,9 @@ namespace AdaaMobile
                 else
                 {
                     NewServiceRequest request = new NewServiceRequest();
-                    request.affectedUserField = "DEV\\" + createdByUser;
+                    request.affectedUserField = string.Format("{0}\\{1}", domain, createdByUser);  //"DEV\\" + createdByUser;
                     request.calssificationIDField = classification;
-                    request.createdByUserField = "DEV\\" + createdByUser;
+                    request.createdByUserField = string.Format("{0}\\{1}", domain, createdByUser);// "DEV\\" + createdByUser;
                     request.descriptionField = descr;
                     request.pocoStatusField = "New";
                     request.filesBytesField = files.ToArray();

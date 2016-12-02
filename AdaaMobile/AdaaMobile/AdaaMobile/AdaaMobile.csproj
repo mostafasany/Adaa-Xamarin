@@ -108,6 +108,7 @@
     <Compile Include="Models\Response\ServiceDesk\ServiceDeskCase.cs" />
     <Compile Include="Models\Response\ServiceDesk\ServiceDeskRequest.cs" />
     <Compile Include="Models\Response\ServiceDesk\TemplateExtension.cs" />
+    <Compile Include="Models\Response\DomianRequest.cs" />
     <Compile Include="Models\TimeSheetFormated.cs" />
     <Compile Include="Models\EquipmentWrapper.cs" />
     <Compile Include="Models\MaintenancePriority.cs" />

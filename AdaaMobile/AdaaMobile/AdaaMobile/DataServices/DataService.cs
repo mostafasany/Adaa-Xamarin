@@ -418,6 +418,26 @@ namespace AdaaMobile.DataServices
 
         #region Service Desk
 
+        public async Task<string> GetDomain(CancellationToken? token = null)
+        {
+            var request = _requestFactory();
+
+            //https://adaamobile.adaa.abudhabi.ae/proxyservice/proxy?server=servicedesk&url=GetDomainName
+            request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetDomainName");
+            request.ResultContentType = ContentType.Json;
+            var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
+            var response = await request.PostAsync<DomianRequest>(stringContent, token);
+            if(response.ResponseStatus==ResponseStatus.SuccessWithResult)
+            {
+                return response.Result.result[0];
+            }
+            else
+            {
+                return "adaa";
+            }
+           
+        }
+
         public async Task<ResponseWrapper<ServiceDeskCases>> GetServiceDeskCases(CancellationToken? token = null)
         {
             string language = "ar";
