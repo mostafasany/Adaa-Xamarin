@@ -115,6 +115,11 @@ namespace AdaaMobile.Droid
             instance.StartActivity(Intent.CreateChooser(emailIntent, "Send email"));
             return true;
         }
+
+        public void OpenCrosspondenceApp()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

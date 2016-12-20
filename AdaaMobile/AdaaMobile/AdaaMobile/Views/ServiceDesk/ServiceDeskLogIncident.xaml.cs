@@ -536,7 +536,12 @@ namespace AdaaMobile
                     };
                     for (int i = 0; i < response.Result.result.Count; i++)
                     {
-                        picker.Items.Add(response.Result.result[i].name);
+                        var name = response.Result.result[i].name;
+                        if (name[0] == '-')
+                        {
+                            name = name.Remove(0, 1);
+                        }
+                        picker.Items.Add(name);
                     }
                     picker.SelectedIndexChanged += picker_SelectionIndexChanged;
                     customControls2.Children.Add(picker);

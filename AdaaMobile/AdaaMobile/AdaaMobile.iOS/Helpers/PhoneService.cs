@@ -116,6 +116,14 @@ namespace AdaaMobile.iOS.Helpers
 
 			return true;
         }
+
+        public void OpenCrosspondenceApp()
+        {
+            //UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("https://witunes.apple.com/us/app/ad-dof/id1032231693?mt=8"));
+
+            //https://itunes.apple.com/us/app/everteam-icts/id1070849774?mt=8
+            UIApplication.SharedApplication.OpenUrl(new NSUrl(@"itms-apps://itunes.apple.com/app/id1070849774"));
+        }
     }
 
 }
