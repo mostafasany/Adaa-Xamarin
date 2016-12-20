@@ -130,7 +130,7 @@ namespace AdaaMobile.ViewModels
                 Title = AppResources.CorrespondenceTrackingSystem,
                 IconSource = "AdaaMobile.Images.cts.svg",
                 TargetType = typeof(MyTasksPage),
-                IsEnabled = false
+                IsEnabled = Device.OS == TargetPlatform.iOS? true:false,
             });
 
             data.Add(new AdaaPageItem()
@@ -181,6 +181,13 @@ namespace AdaaMobile.ViewModels
                 {
                     //Open the app
                     DependencyService.Get<IPhoneService>().OpenOracleApp();
+
+                    return;
+                }
+                if (item.TargetType == typeof(MyTasksPage))
+                {
+                    //Open the app
+                    DependencyService.Get<IPhoneService>().OpenCrosspondenceApp();
 
                     return;
                 }

@@ -21,7 +21,9 @@ namespace AdaaMobile
         /// </summary>
         void OpenOracleApp();
 
-		string SavePictureToDisk (string filename, byte[] imageData,bool addToGallery=true);
+        void OpenCrosspondenceApp();
+
+        string SavePictureToDisk (string filename, byte[] imageData,bool addToGallery=true);
 
 	}
 }
