@@ -52,7 +52,7 @@
     <CodesignKey>iPhone Developer: mostafa khodeir (E9P7JNNV3C)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>f2da258d-5978-44dc-965e-44858cef3c56</CodesignProvision>
+    <CodesignProvision>642e2fdc-a9cb-4d75-be15-cd3e5c98b906</CodesignProvision>
     <IpaPackageName>
     </IpaPackageName>
     <MtouchLink>None</MtouchLink>
