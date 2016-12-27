@@ -124,14 +124,27 @@ namespace AdaaMobile.ViewModels
                 TargetType = typeof(MyRequestsPage),
                 IsEnabled = true
             });
-
-            data.Add(new AdaaPageItem()
-            {
-                Title = AppResources.CorrespondenceTrackingSystem,
-                IconSource = "AdaaMobile.Images.cts.svg",
-                TargetType = typeof(MyTasksPage),
-                IsEnabled = Device.OS == TargetPlatform.iOS? true:false,
-            });
+			if (Device.OS == TargetPlatform.iOS)
+			{
+				data.Add(new AdaaPageItem()
+				{
+					Title = AppResources.CorrespondenceTrackingSystem,
+					IconSource = "AdaaMobile.Images.cts.svg",
+					TargetType = typeof(MyTasksPage),
+					IsEnabled = true,
+				});
+			}
+			else
+			{
+				data.Add(new AdaaPageItem()
+				{
+					Title = AppResources.CorrespondenceTrackingSystem,
+					IconSource = "AdaaMobile.Images.cts.svg",
+					TargetType = typeof(MyTasksPage),
+					IsEnabled = false,
+				});
+			}
+         
 
             data.Add(new AdaaPageItem()
             {
