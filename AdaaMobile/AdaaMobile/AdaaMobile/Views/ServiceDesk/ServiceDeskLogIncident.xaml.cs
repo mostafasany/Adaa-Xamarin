@@ -62,6 +62,12 @@ namespace AdaaMobile
         {
             base.OnAppearing();
 
+            //In case of Image picker opened
+            if (Locator.Default.NavigationService.IsExternalAppOpen)
+            {
+                return;
+            }
+
             //_viewModel.PageLoadedCommand.Execute(null);
             LoadOnBelhaf();
             LoadParentCategories();
@@ -611,9 +617,10 @@ namespace AdaaMobile
             {
                 //return;
                 loadingControl.IsRunning = true;
-
+                Locator.Default.NavigationService.IsExternalAppOpen = true;
                 var mediaPicker = DependencyService.Get<IMediaPicker>();
                 var mediaFile = await mediaPicker.SelectPhotoAsync();
+                Locator.Default.NavigationService.IsExternalAppOpen = false;
                 if (mediaFile != null)
                 {
                     attachmentGrid.IsVisible = true;

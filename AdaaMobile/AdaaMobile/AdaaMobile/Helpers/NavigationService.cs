@@ -11,8 +11,8 @@ namespace AdaaMobile.Helpers
 {
 	public class NavigationService : INavigationService
 	{
-
-		public bool SetAppCurrentPage<TPageType> (TPageType pageType) where TPageType : Type
+        public bool IsExternalAppOpen { get; set; }
+        public bool SetAppCurrentPage<TPageType> (TPageType pageType) where TPageType : Type
 		{
 			try {
 				//if (Application.Current.MainPage != null && App.Current.MainPage.GetType() == typeof(TPageType)) return false;

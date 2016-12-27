@@ -20,6 +20,11 @@ namespace AdaaMobile.Views.MasterView
             _lastSelectedControl = HomeControl;
             _lastSelectedControl.IsSelected = true;
             Icon = "menu.png";
+
+            if (Device.OS == TargetPlatform.iOS)
+                CrosspondencePage.IsPageSupported = true;
+            else
+                CrosspondencePage.IsPageSupported = false;
         }
 
         private void SideMenuItemControl_OnTapped(object sender, EventArgs e)

@@ -28,7 +28,7 @@
 					<BoxView HorizontalOptions="Fill" VerticalOptions="Start" HeightRequest="1" Color="White" Opacity="0.5" />
 					<StackLayout Spacing="{StaticResource InnerStackSpacing}" Padding="{StaticResource InnerStackPadding}">
 						<masterView:SideMenuItemControl Svg="AdaaMobile.Images.MyRequests.svg" Title="{ext:Translate MyRequests}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:MyRequestsPage}" IsPageSupported="True" />
-						<masterView:SideMenuItemControl Svg="AdaaMobile.Images.MyTasks.svg" Title="{ext:Translate CorrespondenceTrackingSystem}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:MyTasksPage}"/>
+						<masterView:SideMenuItemControl x:Name="CrosspondencePage" Svg="AdaaMobile.Images.MyTasks.svg" Title="{ext:Translate CorrespondenceTrackingSystem}" Tapped="SideMenuItemControl_OnTapped" VerticalOptions="Start" HorizontalOptions="Fill" BindingContext="{x:Type views:MyTasksPage}"/>
 					</StackLayout>
 					<BoxView HorizontalOptions="Fill" VerticalOptions="Start" HeightRequest="1" Color="White" Opacity="0.5" />
 					<StackLayout Spacing="{StaticResource InnerStackSpacing}" Padding="{StaticResource InnerStackPadding}">

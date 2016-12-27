@@ -4,12 +4,14 @@ namespace AdaaMobile.Helpers
 {
 	public interface INavigationService
 	{
-		/// <summary>
-		/// This will set the App.Current.MainPage
-		/// </summary>
-		/// <typeparam name="TPageType"></typeparam>
-		/// <param name="pageType"></param>
-		bool SetAppCurrentPage<TPageType> (TPageType pageType) where TPageType : Type;
+        bool IsExternalAppOpen { get; set; }
+
+        /// <summary>
+        /// This will set the App.Current.MainPage
+        /// </summary>
+        /// <typeparam name="TPageType"></typeparam>
+        /// <param name="pageType"></param>
+        bool SetAppCurrentPage<TPageType> (TPageType pageType) where TPageType : Type;
 
 
 		/// <summary>
