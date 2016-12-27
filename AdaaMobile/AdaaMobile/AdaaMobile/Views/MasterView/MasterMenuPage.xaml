@@ -13,6 +13,7 @@
 				<OnPlatform x:TypeArguments="ImageSource" WinPhone="" Android="navigationimage.png" iOS="navigation-image.png" />
 			</Image.Source>
 		</Image>
+
 		<ScrollView>
 			<StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,6,0,6">
 				<StackLayout x:Name="MenuStack" VerticalOptions="Fill" HorizontalOptions="Fill">

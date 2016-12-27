@@ -48,6 +48,15 @@ namespace AdaaMobile.Views.MasterView
             //Update color selection
             UpdateSelectedMenu(selectedControl);
 
+            if (pageType == typeof(MyTasksPage))
+            {
+                //Open the app
+                DependencyService.Get<IPhoneService>().OpenCrosspondenceApp();
+
+                return;
+            }
+
+
             //Now navigate to the target page.
             Locator.Default.NavigationService.SetMasterDetailsPage(pageType);
         }
