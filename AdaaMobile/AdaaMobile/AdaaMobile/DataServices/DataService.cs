@@ -540,6 +540,7 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<ParentCategoryResult>> GetParentCategories(string mouduleName, CancellationToken? token = default(CancellationToken?))
         {
+			var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
             string language = "ar";
             if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
             {
@@ -547,7 +548,7 @@ namespace AdaaMobile.DataServices
             }
             var request = _requestFactory();
             //http://10.2.5.252/FLIXAPIADAA/api/SMGateway/GetParentCategories?ListName=Incident%20Classification&lang=en 
-            request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetParentCategories?ListName={0}&lang={1}", mouduleName, language);
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetParentCategoriesMobile?ListName={0}&lang={1}&Username={2}", mouduleName, language,encryptedUserName);
             request.ResultContentType = ContentType.Json;
             var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
             var response = await request.PostAsync<ParentCategoryResult>(stringContent, token);
@@ -556,6 +557,7 @@ namespace AdaaMobile.DataServices
 
         public async Task<ResponseWrapper<ChildCategoryResult>> GetChildCategories(string mouduleName, string categoryId, CancellationToken? token = default(CancellationToken?))
         {
+			var encryptedUserName = DependencyService.Get<ICryptoGraphyService>().Encrypt(LoggedUserInfo.CurrentUserProfile.DisplayName);
             string language = "ar";
             if (String.IsNullOrEmpty(Locator.Default.AppSettings.SelectedCultureName) || Locator.Default.AppSettings.SelectedCultureName.StartsWith("en"))
             {
@@ -563,7 +565,7 @@ namespace AdaaMobile.DataServices
             }
             var request = _requestFactory();
             //http://10.2.5.252/FLIXAPIADAA/api/SMGateway/GetChildCategories?ListName=Incident%20Classification&CategoryID=a72e882c-2b39-a865-b9be-32899144ec85&lang=en
-            request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetChildCategories?ListName={0}&CategoryID={1}&lang={2}", mouduleName, categoryId, language);
+			request.RequestUrl = ServiceDiskBaseUrl + string.Format("GetChildCategoriesMobile?ListName={0}&CategoryID={1}&lang={2}&Username={3}", mouduleName, categoryId, language,encryptedUserName);
             request.ResultContentType = ContentType.Json;
             var stringContent = new StringContent("", new UTF8Encoding(), JSONContentType);
             var response = await request.PostAsync<ChildCategoryResult>(stringContent, token);
